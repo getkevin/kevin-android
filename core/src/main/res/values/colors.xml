@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="kevin_red">#FF0020</color>
+
+    <color name="blue">#5D80FE</color>
+    <color name="dark_blue">#0B1E42</color>
+    <color name="dark_blue_50">#800B1E42</color>
+    <color name="dark_blue_60">#990B1E42</color>
+    <color name="light_baby_blue">#F0F5FC</color>
+    <color name="light_baby_blue_90">#E6F0F5FC</color>
+
+    <color name="black">#000000</color>
+
+    <color name="gray_02">#949AA3</color>
+    <color name="gray_03">#DBDEE7</color>
+    <color name="gray_04">#F2F2F2</color>
+
+    <color name="white">#FFFFFFFF</color>
+    <color name="white_50">#80FFFFFF</color>
+
+</resources>

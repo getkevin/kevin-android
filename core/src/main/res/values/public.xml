@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public name="Theme.Kevin.Base" type="style" />
+    <public name="Kevin.Toolbar" type="style" />
+    <public name="Kevin.Button.Primary" type="style" />
+    <public name="kevinPrimaryBackgroundColor" type="attr" />
+    <public name="kevinSecondaryBackgroundColor" type="attr" />
+    <public name="kevinToolbarColor" type="attr" />
+    <public name="kevinSelectedOnPrimaryColor" type="attr" />
+    <public name="kevinSelectedOnSecondaryColor" type="attr" />
+    <public name="kevinRippleOnPrimaryColor" type="attr" />
+    <public name="kevinRippleOnSecondaryColor" type="attr" />
+    <public name="kevinErrorTextColor" type="attr" />
+    <public name="kevinPrimaryTextColor" type="attr" />
+    <public name="kevinSecondaryTextColor" type="attr" />
+    <public name="kevinToolbarStyle" type="attr" />
+    <public name="kevinPrimaryButtonStyle" type="attr" />
+</resources>

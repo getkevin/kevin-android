@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Kevin.Toolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="android:height">?attr/actionBarSize</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="android:maxHeight">?attr/actionBarSize</item>
+        <item name="navigationIcon">@drawable/ic_arrow_back</item>
+        <item name="android:background">?kevinToolbarColor</item>
+        <item name="titleTextColor">?kevinPrimaryTextColor</item>
+    </style>
+
+    <style name="Kevin.Button.Primary" parent="Widget.MaterialComponents.Button">
+        <item name="android:minWidth">150dp</item>
+        <item name="android:minHeight">64dp</item>
+        <item name="android:maxHeight">64dp</item>
+        <item name="cornerRadius">32dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="backgroundTint">@color/blue</item>
+    </style>
+
+    <style name="Kevin.Text.Label" parent="@android:style/TextAppearance">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">?kevinSecondaryTextColor</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="Kevin.Text.ModalTitle" parent="@android:style/TextAppearance">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">?kevinPrimaryTextColor</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="Kevin.Text.Title" parent="@android:style/TextAppearance">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">?kevinPrimaryTextColor</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="CustomBottomSheetDialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/CustomBottomSheet</item>
+    </style>
+
+    <style name="CustomBottomSheet" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="shapeAppearanceOverlay">@style/CustomShapeAppearanceBottomSheetDialog</item>
+        <item name="backgroundTint">?kevinSecondaryBackgroundColor</item>
+    </style>
+
+    <style name="CustomShapeAppearanceBottomSheetDialog" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">10dp</item>
+        <item name="cornerSizeTopLeft">10dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
+</resources>

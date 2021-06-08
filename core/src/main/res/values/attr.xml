@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="kevinPrimaryBackgroundColor" format="color|reference" />
+    <attr name="kevinSecondaryBackgroundColor" format="color|reference" />
+
+    <attr name="kevinToolbarColor" format="color|reference" />
+
+    <attr name="kevinSelectedOnPrimaryColor" format="color|reference" />
+    <attr name="kevinSelectedOnSecondaryColor" format="color|reference" />
+
+    <attr name="kevinRippleOnPrimaryColor" format="color|reference" />
+    <attr name="kevinRippleOnSecondaryColor" format="color|reference" />
+
+    <attr name="kevinErrorTextColor" format="color|reference" />
+    <attr name="kevinPrimaryTextColor" format="color|reference" />
+    <attr name="kevinSecondaryTextColor" format="color|reference" />
+
+    <!--    Component style attributes-->
+    <attr name="kevinToolbarStyle" format="reference" />
+    <attr name="kevinPrimaryButtonStyle" format="reference" />
+</resources>

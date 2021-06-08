@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="primaryBackgroundColor" format="color|reference" />
+    <attr name="rippleOnPrimaryColor" format="color|reference" />
+    <attr name="toolbarColor" format="color|reference" />
+    <attr name="primaryTextColor" format="color|reference" />
+
+</resources>

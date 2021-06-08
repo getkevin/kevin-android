@@ -1,0 +1,126 @@
+package eu.kevin.inapppayments.paymentsession
+
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.OnLifecycleEvent
+import androidx.savedstate.SavedStateRegistryOwner
+import eu.kevin.accounts.bankselection.BankSelectionFragment
+import eu.kevin.accounts.bankselection.BankSelectionFragmentConfiguration
+import eu.kevin.core.architecture.BaseFlowSession
+import eu.kevin.core.architecture.routing.GlobalRouter
+import eu.kevin.core.entities.ActivityResult
+import eu.kevin.core.extensions.setFragmentResultListener
+import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationFragment
+import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationFragmentConfiguration
+import eu.kevin.inapppayments.paymentsession.enums.PaymentSessionFlowItem
+import eu.kevin.inapppayments.paymentsession.enums.PaymentSessionFlowItem.*
+import eu.kevin.inapppayments.paymentsession.enums.PaymentType
+import kotlin.math.min
+
+internal class PaymentSession(
+    private val fragmentManager: FragmentManager,
+    configuration: PaymentSessionConfiguration,
+    private val lifecycleOwner: LifecycleOwner,
+    registryOwner: SavedStateRegistryOwner
+) : BaseFlowSession(lifecycleOwner, registryOwner), LifecycleObserver {
+
+    private val backStackListener = FragmentManager.OnBackStackChangedListener {
+        currentFlowIndex = fragmentManager.backStackEntryCount - 1
+    }
+
+    private var sessionListener: PaymentSessionListener? = null
+
+    private val sessionConfiguration: PaymentSessionConfiguration = configuration
+
+    private val flowItems = mutableListOf<PaymentSessionFlowItem>()
+    private var currentFlowIndex by savedState(-1)
+    private var sessionData by savedState(PaymentSessionData())
+
+    init {
+        lifecycleOwner.lifecycle.addObserver(this)
+        fragmentManager.addOnBackStackChangedListener(backStackListener)
+        listenForFragmentResults()
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+    private fun onDestroy() {
+        sessionListener = null
+    }
+
+    fun beginFlow(listener: PaymentSessionListener) {
+        this.sessionListener = listener
+        if (currentFlowIndex == -1) {
+            sessionData = sessionData.copy(
+                selectedPaymentType = sessionConfiguration.paymentType,
+                selectedCountry = sessionConfiguration.preselectedCountry,
+                selectedBankId = sessionConfiguration.preselectedBank
+            )
+        }
+        updateFlow()
+        if (currentFlowIndex == -1) {
+            GlobalRouter.pushFragment(getFlowFragment(0))
+        }
+    }
+
+    private fun updateFlow() {
+        val flow = mutableListOf<PaymentSessionFlowItem>()
+
+        if (sessionData.selectedPaymentType == PaymentType.BANK) {
+            if (!sessionConfiguration.skipBankSelection) {
+                flow.add(BANK_SELECTION)
+            }
+        }
+
+        flow.add(PAYMENT_CONFIRMATION)
+
+        flowItems.clear()
+        flowItems.addAll(flow)
+    }
+
+    private fun handleFowNavigation() {
+        currentFlowIndex = min(currentFlowIndex + 1, flowItems.size)
+        if (flowItems.size == currentFlowIndex) {
+            sessionListener?.onSessionFinished(
+                ActivityResult.Success(PaymentSessionResult(sessionConfiguration.paymentId))
+            )
+        } else {
+            GlobalRouter.pushFragment(getFlowFragment(currentFlowIndex))
+        }
+    }
+
+    private fun getFlowFragment(index: Int): Fragment {
+        return when (flowItems[index]) {
+            BANK_SELECTION -> {
+                BankSelectionFragment().also {
+                    it.configuration = BankSelectionFragmentConfiguration(
+                        sessionData.selectedCountry,
+                        sessionData.selectedBankId,
+                        sessionConfiguration.paymentId
+                    )
+                }
+            }
+            PAYMENT_CONFIRMATION -> {
+                PaymentConfirmationFragment().also {
+                    it.configuration = PaymentConfirmationFragmentConfiguration(
+                        sessionConfiguration.paymentId,
+                        sessionData.selectedPaymentType!!,
+                        sessionData.selectedBankId,
+                    )
+                }
+            }
+        }
+    }
+
+    private fun listenForFragmentResults() {
+        fragmentManager.setFragmentResultListener(BankSelectionFragment.Contract, lifecycleOwner) {
+            sessionData = sessionData.copy(selectedBankId = it)
+            handleFowNavigation()
+        }
+        fragmentManager.setFragmentResultListener(PaymentConfirmationFragment.Contract, lifecycleOwner) {
+            handleFowNavigation()
+        }
+    }
+}

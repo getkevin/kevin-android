@@ -1,0 +1,5 @@
+rootProject.name = "Kevin"
+include ':demo'
+include ':core'
+include ':accounts'
+include ':in-app-payments'
