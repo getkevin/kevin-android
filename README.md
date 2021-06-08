@@ -14,6 +14,10 @@ implementation 'com.github.getkevin.kevin-android:core:xxx'
 implementation 'com.github.getkevin.kevin-android:accounts:xxx'
 implementation 'com.github.getkevin.kevin-android:in-app-payments:xxx'
 ```
+or import all features all together:
+```
+implementation 'com.github.getkevin:kevin-android:xxx'
+```
 2. Initialize plugins you will use in your Application file:
 
 ```
