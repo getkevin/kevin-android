@@ -1,6 +1,6 @@
 # kevin. Android SDK
 
-> Android integration implementing kevin. account linking and bank/card in-app payments.
+> Android integration for kevin. account linking and bank/card in-app payments.
 
 ## Prerequisites
 
@@ -10,9 +10,9 @@
 1. Import library features you will use:
 
 ```
-implementation 'com.github.getkevin:kevin-core-android:xxx'
-implementation 'com.github.getkevin:kevin-accounts-android:xxx'
-implementation 'com.github.getkevin:kevin-in-app-payments-android:xxx'
+implementation 'com.github.getkevin.kevin-android:core:xxx'
+implementation 'com.github.getkevin.kevin-android:accounts:xxx'
+implementation 'com.github.getkevin.kevin-android:in-app-payments:xxx'
 ```
 2. Initialize plugins you will use in your Application file:
 
@@ -23,7 +23,6 @@ Kevin.configure(
     KevinConfiguration
         .builder()
         .setTheme(R.style.KevinTheme)
-        .setHost("your.kevin.host")
         .build()
 )
 ```
@@ -50,7 +49,7 @@ val linkAccount = registerForActivityResult(LinkAccountContract()) { result ->
 ```
 val config = AccountLinkingConfiguration.Builder(state)
     .setPreselectedCountry("LT")
-    .setPreselectedBank("SOME_BANK")
+    .setPreselectedBank("SOME_BANK_ID")
     .setSkipBankSelection(false)
     .build()
 linkAccount.launch(config)
@@ -78,11 +77,11 @@ val makePayment = registerForActivityResult(PaymentSessionContract()) { result -
 ```
 val config = PaymentSessionConfiguration.Builder(payment.id, PaymentType.BANK)
     .setPreselectedCountry("LT")
-    .setPreselectedBank("SOME_BANK")
+    .setPreselectedBank("SOME_BANK_ID")
     .setSkipBankSelection(false)
     .build()
 linkAccount.launch(config)
 ```
 ## Examples
 
-The ./sample folder contains a project showing how kevin. can be used.
+The ./demo folder contains a project showing how kevin. can be used.
