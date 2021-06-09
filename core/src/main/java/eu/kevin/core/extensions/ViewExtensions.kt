@@ -7,6 +7,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 
 fun View.fadeOut() {
+    if (visibility == GONE) return
     animate().apply {
         duration = 200L
         alpha(0f)
@@ -19,6 +20,7 @@ fun View.fadeOut() {
 }
 
 fun View.fadeIn() {
+    if (visibility == VISIBLE) return
     animate().apply {
         duration = 200L
         alpha(1f)
