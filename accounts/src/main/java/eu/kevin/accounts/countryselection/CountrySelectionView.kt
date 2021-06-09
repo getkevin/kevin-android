@@ -2,7 +2,6 @@ package eu.kevin.accounts.countryselection
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import eu.kevin.accounts.countryselection.adapters.CountryListAdapter
 import eu.kevin.accounts.databinding.FragmentCountrySelectionBinding
@@ -12,6 +11,8 @@ import eu.kevin.core.entities.LoadingState
 import eu.kevin.core.entities.isLoading
 import eu.kevin.core.extensions.fadeIn
 import eu.kevin.core.extensions.fadeOut
+import eu.kevin.core.helpers.ErrorHelper
+import eu.kevin.core.helpers.SnackbarHelper
 
 internal class CountrySelectionView(context: Context) : BaseView<FragmentCountrySelectionBinding>(context), IView<CountrySelectionState> {
 
@@ -32,21 +33,10 @@ internal class CountrySelectionView(context: Context) : BaseView<FragmentCountry
 
     override fun render(state: CountrySelectionState) = with(binding) {
         when (state.loadingState) {
-            is LoadingState.FailureWithMessage -> {
-                Toast.makeText(context, state.loadingState.message, Toast.LENGTH_SHORT).show()
-            }
             is LoadingState.Loading -> showLoading(state.loadingState.isLoading())
+            is LoadingState.FailureWithMessage -> showError(state.loadingState.message)
             is LoadingState.Failure -> {
-                progressView.fadeOut()
-                when (state.loadingState.error) {
-                    else -> {
-                        Toast.makeText(
-                            context,
-                            state.loadingState.error.message,
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
+                showError(ErrorHelper.getMessage(context, state.loadingState.error))
             }
         }
         countriesAdapter.updateItems(state.supportedCountries)
@@ -60,5 +50,10 @@ internal class CountrySelectionView(context: Context) : BaseView<FragmentCountry
                 progressView.fadeOut()
             }
         }
+    }
+
+    private fun showError(message: String) {
+        binding.progressView.fadeOut()
+        SnackbarHelper.showError(this, message)
     }
 }

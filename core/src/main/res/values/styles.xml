@@ -42,6 +42,7 @@
 
     <style name="CustomBottomSheetDialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/CustomBottomSheet</item>
+        <item name="snackbarStyle">@style/ModalSnackbar</item>
     </style>
 
     <style name="CustomBottomSheet" parent="Widget.MaterialComponents.BottomSheet">
@@ -55,5 +56,9 @@
         <item name="cornerSizeTopLeft">10dp</item>
         <item name="cornerSizeBottomRight">0dp</item>
         <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
+
+    <style name="ModalSnackbar" parent="Widget.MaterialComponents.Snackbar">
+        <item name="elevation">22dp</item>
     </style>
 </resources>

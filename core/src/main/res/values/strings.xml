@@ -29,6 +29,8 @@
     <string name="window_bank_selection_select_bank_label">Select bank</string>
     <string name="error_country_not_selected">Country has to be selected</string>
     <string name="error_bank_not_selected">Bank has to be selected</string>
+    <string name="error_unknown">Unknown error occurred</string>
+    <string name="error_no_internet">No internet connection</string>
     <string name="window_account_linking_title">Account linking</string>
     <string name="window_payment_type_title">Select payment type</string>
     <string name="window_payment_confirmation_title">Payment confirmation</string>

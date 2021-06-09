@@ -17,13 +17,13 @@ inline fun <T> executeRequest(body: () -> T): T {
                     val error = Json {
                         ignoreUnknownKeys = true
                     }.decodeFromString(ErrorResponse.serializer(), errorString).error
-                    ApiError(error.name, error.description, error.code, requestError.code())
+                    ApiError(error.name, error.description, error.code, requestError.code(), requestError)
                 } catch (e: Exception) {
-                    ApiError(description = requestError.message(), statusCode = requestError.code())
+                    ApiError(description = requestError.message(), statusCode = requestError.code(), cause = e)
                 }
             }
             else -> {
-                ApiError(requestError.localizedMessage ?: "", requestError.cause)
+                ApiError(requestError.localizedMessage ?: "", requestError)
             }
         }
         throw errorToThrow

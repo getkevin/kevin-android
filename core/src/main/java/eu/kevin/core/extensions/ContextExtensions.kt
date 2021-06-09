@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable
 import android.util.TypedValue
 import androidx.annotation.AttrRes
 import androidx.annotation.ColorInt
+import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 
@@ -14,6 +15,11 @@ fun Context.getColorFromAttr(@AttrRes attribute: Int): Int {
         theme.resolveAttribute(attribute, it, true)
         it.data
     }
+}
+
+@ColorInt
+fun Context.getColorCompat(@ColorRes res: Int): Int {
+    return ContextCompat.getColor(this, res)
 }
 
 fun Context.getDrawableCompat(@DrawableRes id: Int): Drawable? {
