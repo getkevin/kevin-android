@@ -36,4 +36,10 @@
     <string name="window_payment_confirmation_title">Payment confirmation</string>
     <string name="payment_type_bank_title">Bank</string>
     <string name="payment_type_card_title">Card</string>
+
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="dialog_exit_confirmation_title">Warning!</string>
+    <string name="dialog_exit_confirmation_accounts_message">Are you sure you want to abort account linking?</string>
+    <string name="dialog_exit_confirmation_payments_message">Are you sure you want to abort this payment?</string>
 </resources>
