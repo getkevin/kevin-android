@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import eu.kevin.core.architecture.BaseFragmentActivity
 import eu.kevin.core.architecture.routing.GlobalRouter
 import eu.kevin.core.entities.ActivityResult
@@ -42,6 +43,30 @@ internal class PaymentSessionActivity : BaseFragmentActivity(), PaymentSessionLi
     override fun onStart() {
         super.onStart()
         paymentSession.beginFlow(this)
+    }
+
+    override fun handleBack() {
+        with(supportFragmentManager) {
+            if (backStackEntryCount == 1) {
+                showExitConfirmation()
+            } else {
+                popBackStack()
+            }
+        }
+    }
+
+    private fun showExitConfirmation() {
+        MaterialAlertDialogBuilder(this)
+            .setCancelable(false)
+            .setTitle(eu.kevin.accounts.R.string.dialog_exit_confirmation_title)
+            .setMessage(R.string.dialog_exit_confirmation_payments_message)
+            .setPositiveButton(eu.kevin.accounts.R.string.yes) { _, _ ->
+                returnActivityResult(ActivityResult.Canceled)
+            }
+            .setNegativeButton(eu.kevin.accounts.R.string.no) { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
     }
 
     override fun returnActivityResult(result: ActivityResult<*>) {

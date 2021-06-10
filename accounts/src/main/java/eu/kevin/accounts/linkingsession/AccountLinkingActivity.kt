@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import eu.kevin.accounts.KevinAccountsPlugin
 import eu.kevin.accounts.R
 import eu.kevin.accounts.linkingsession.entities.AccountLinkingConfiguration
@@ -41,6 +42,30 @@ internal class AccountLinkingActivity : BaseFragmentActivity(), AccountLinkingSe
     override fun onStart() {
         super.onStart()
         accountLinkingSession.beginFlow(this)
+    }
+
+    override fun handleBack() {
+        with(supportFragmentManager) {
+            if (backStackEntryCount == 1) {
+                showExitConfirmation()
+            } else {
+                popBackStack()
+            }
+        }
+    }
+
+    private fun showExitConfirmation() {
+        MaterialAlertDialogBuilder(this)
+            .setCancelable(false)
+            .setTitle(R.string.dialog_exit_confirmation_title)
+            .setMessage(R.string.dialog_exit_confirmation_accounts_message)
+            .setPositiveButton(R.string.yes) { _, _ ->
+                returnActivityResult(ActivityResult.Canceled)
+            }
+            .setNegativeButton(R.string.no) { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
     }
 
     override fun returnActivityResult(result: ActivityResult<*>) {

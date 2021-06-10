@@ -22,7 +22,7 @@ abstract class BaseFragmentActivity : AppCompatActivity() {
     protected open fun handleBack() {
         with(supportFragmentManager) {
             if (backStackEntryCount == 1) {
-                return returnActivityResult(ActivityResult.Canceled)
+                returnActivityResult(ActivityResult.Canceled)
             } else {
                 popBackStack()
             }
