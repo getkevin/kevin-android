@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 /**
- * Data class representing LinkedBank entity
+ * Data class representing linked Bank entity
  * @property id bank id
  * @property name bank name
  * @property officialName bank official name
