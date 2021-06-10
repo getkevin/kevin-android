@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.viewModels
 import eu.kevin.accounts.bankselection.BankSelectionIntent.*
 import eu.kevin.accounts.countryselection.CountrySelectionFragment
+import eu.kevin.accounts.bankselection.entities.Bank
 import eu.kevin.core.architecture.BaseFragment
 import eu.kevin.core.architecture.interfaces.IView
 import eu.kevin.core.extensions.setFragmentResultListener
@@ -55,11 +56,11 @@ class BankSelectionFragment : BaseFragment<BankSelectionState, BankSelectionInte
         viewModel.intents.offer(HandleContinueClicked)
     }
 
-    object Contract: FragmentResultContract<String>() {
+    object Contract: FragmentResultContract<Bank>() {
         override val requestKey = "bank_selection_request_key"
         override val resultKey = "bank_selection_result_key"
-        override fun parseResult(data: Bundle): String {
-            return data.getString(resultKey) ?: ""
+        override fun parseResult(data: Bundle): Bank {
+            return data.getParcelable(resultKey)!!
         }
     }
 }

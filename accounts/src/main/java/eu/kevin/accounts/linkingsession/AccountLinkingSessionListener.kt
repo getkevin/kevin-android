@@ -4,4 +4,5 @@ import eu.kevin.core.entities.ActivityResult
 
 internal interface AccountLinkingSessionListener {
     fun onSessionFinished(sessionResult: ActivityResult<AccountLinkingResult>)
+    fun showLoading(show: Boolean)
 }

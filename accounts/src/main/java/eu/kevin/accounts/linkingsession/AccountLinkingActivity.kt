@@ -3,10 +3,13 @@ package eu.kevin.accounts.linkingsession
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import eu.kevin.accounts.KevinAccountsPlugin
 import eu.kevin.accounts.R
+import eu.kevin.accounts.databinding.ActivityAccountLinkingBinding
 import eu.kevin.accounts.linkingsession.entities.AccountLinkingConfiguration
 import eu.kevin.core.architecture.BaseFragmentActivity
 import eu.kevin.core.architecture.routing.GlobalRouter
@@ -20,13 +23,16 @@ internal class AccountLinkingActivity : BaseFragmentActivity(), AccountLinkingSe
     private var accountLinkingConfiguration: AccountLinkingConfiguration? = null
     private lateinit var accountLinkingSession: AccountLinkingSession
 
+    private lateinit var binding: ActivityAccountLinkingBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         if (!KevinAccountsPlugin.isConfigured()) {
             throw KevinException("Accounts plugin is not configured!")
         }
         setTheme(KevinAccountsPlugin.getTheme())
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_account_linking)
+        binding = ActivityAccountLinkingBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         accountLinkingConfiguration = intent?.extras?.getParcelable(LinkAccountContract.CONFIGURATION_KEY)
 
@@ -97,5 +103,9 @@ internal class AccountLinkingActivity : BaseFragmentActivity(), AccountLinkingSe
 
     override fun onSessionFinished(sessionResult: ActivityResult<AccountLinkingResult>) {
         returnActivityResult(sessionResult)
+    }
+
+    override fun showLoading(show: Boolean) {
+        binding.loadingView.visibility = if (show) VISIBLE else GONE
     }
 }

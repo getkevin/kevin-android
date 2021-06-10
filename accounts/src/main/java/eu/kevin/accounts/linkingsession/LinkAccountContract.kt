@@ -11,8 +11,8 @@ import eu.kevin.core.entities.ActivityResult
  * This contract takes in [AccountLinkingConfiguration] and returns [AccountLinkingResult] on success
  * This contract will also produce different results, you can see them in [ActivityResult]
  */
-class LinkAccountContract : ActivityResultContract<AccountLinkingConfiguration?, ActivityResult<AccountLinkingResult>>() {
-    override fun createIntent(context: Context, config: AccountLinkingConfiguration?): Intent {
+class LinkAccountContract : ActivityResultContract<AccountLinkingConfiguration, ActivityResult<AccountLinkingResult>>() {
+    override fun createIntent(context: Context, config: AccountLinkingConfiguration): Intent {
         val intent = Intent(context, AccountLinkingActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
         intent.putExtra(CONFIGURATION_KEY, config)

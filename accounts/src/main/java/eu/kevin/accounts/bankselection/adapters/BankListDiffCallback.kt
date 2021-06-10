@@ -1,9 +1,9 @@
 package eu.kevin.accounts.bankselection.adapters
 
 import androidx.recyclerview.widget.DiffUtil
-import eu.kevin.accounts.bankselection.entities.Bank
+import eu.kevin.accounts.bankselection.entities.BankListItem
 
-internal class BankListDiffCallback(private val oldList: List<Bank>, private val newList: List<Bank>): DiffUtil.Callback() {
+internal class BankListDiffCallback(private val oldList: List<BankListItem>, private val newList: List<BankListItem>): DiffUtil.Callback() {
 
     override fun getOldListSize() = oldList.size
     override fun getNewListSize() = newList.size

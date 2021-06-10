@@ -3,12 +3,13 @@ package eu.kevin.accounts.bankselection
 import androidx.lifecycle.*
 import androidx.savedstate.SavedStateRegistryOwner
 import eu.kevin.accounts.bankselection.BankSelectionIntent.*
-import eu.kevin.accounts.bankselection.entities.Bank
 import eu.kevin.accounts.bankselection.exceptions.BankNotSelectedException
+import eu.kevin.accounts.bankselection.factories.BankListItemFactory
 import eu.kevin.accounts.bankselection.managers.BanksManager
 import eu.kevin.accounts.countryselection.CountrySelectionFragment
 import eu.kevin.accounts.countryselection.CountrySelectionFragmentConfiguration
 import eu.kevin.accounts.countryselection.managers.CountriesManager
+import eu.kevin.accounts.bankselection.entities.Bank
 import eu.kevin.accounts.networking.AccountsClientProvider
 import eu.kevin.core.architecture.BaseViewModel
 import eu.kevin.core.architecture.routing.GlobalRouter
@@ -57,24 +58,18 @@ class BankSelectionViewModel constructor(
                 if (selectedCountry == null) {
                     selectedCountry = supportedCountries.first()
                 }
-                val supportedBanks = banksManager.getSupportedBanks(selectedCountry, configuration.authState)
-                    .sortedBy { it.officialName }
-                    .map {
-                        Bank(it.id, it.officialName ?: "", it.imageUri)
-                    }
+                val apiBanks = banksManager.getSupportedBanks(selectedCountry, configuration.authState)
 
-                val selectedBank = supportedBanks.firstOrNull { it.bankId == configuration.selectedBankId }
-                if (selectedBank != null) {
-                    supportedBanks.firstOrNull { it.bankId == configuration.selectedBankId }?.isSelected = true
-                } else {
-                    supportedBanks.firstOrNull()?.isSelected = true
+                val banks = apiBanks.map {
+                    Bank(it.id, it.name, it.officialName, it.imageUri, it.bic)
                 }
 
                 updateState {
                     it.copy(
                         selectedCountry = selectedCountry,
                         loadingState = LoadingState.Loading(false),
-                        supportedBanks = supportedBanks
+                        bankListItems = BankListItemFactory.getBankList(apiBanks, configuration.selectedBankId),
+                        banks = banks
                     )
                 }
             } catch (e: Exception) {
@@ -90,7 +85,7 @@ class BankSelectionViewModel constructor(
     private suspend fun handleBankSelection(bankId: String) {
         updateState { oldState ->
             oldState.copy(
-                supportedBanks = state.value.supportedBanks.map {
+                bankListItems = state.value.bankListItems.map {
                     it.copy(isSelected = it.bankId == bankId)
                 }
             )
@@ -111,19 +106,17 @@ class BankSelectionViewModel constructor(
         }
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val supportedBanks = banksManager.getSupportedBanks(selectedCountry, configuration.authState)
-                    .sortedBy { it.officialName }
-                    .map {
-                        Bank(it.id, it.officialName ?: "", it.imageUri)
-                    }
-
-                supportedBanks.firstOrNull()?.isSelected = true
+                val apiBanks = banksManager.getSupportedBanks(selectedCountry, configuration.authState)
+                val banks = apiBanks.map {
+                    Bank(it.id, it.name, it.officialName, it.imageUri, it.bic)
+                }
 
                 updateState {
                     it.copy(
                         selectedCountry = selectedCountry,
                         loadingState = LoadingState.Loading(false),
-                        supportedBanks = supportedBanks
+                        bankListItems = BankListItemFactory.getBankList(apiBanks),
+                        banks = banks
                     )
                 }
             } catch (e: Exception) {
@@ -139,7 +132,7 @@ class BankSelectionViewModel constructor(
     private suspend fun handleContinueClicked() {
         if (state.value.loadingState.isLoading()) return
 
-        val selectedBank = state.value.supportedBanks.firstOrNull { it.isSelected }
+        val selectedBank = state.value.bankListItems.firstOrNull { it.isSelected }
         if (selectedBank == null) {
             updateState {
                 it.copy(
@@ -148,7 +141,10 @@ class BankSelectionViewModel constructor(
             }
             return
         }
-        GlobalRouter.returnFragmentResult(BankSelectionFragment.Contract, selectedBank.bankId)
+        GlobalRouter.returnFragmentResult(
+            BankSelectionFragment.Contract,
+            state.value.banks.first { it.id == selectedBank.bankId }
+        )
     }
 
     class Factory(owner: SavedStateRegistryOwner) : AbstractSavedStateViewModelFactory(owner, null) {

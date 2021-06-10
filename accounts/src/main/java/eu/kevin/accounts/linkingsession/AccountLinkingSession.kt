@@ -12,10 +12,15 @@ import eu.kevin.accounts.linkingsession.enums.AccountLinkingFlowItem
 import eu.kevin.accounts.linkingsession.enums.AccountLinkingFlowItem.*
 import eu.kevin.accounts.bankselection.BankSelectionFragment
 import eu.kevin.accounts.bankselection.BankSelectionFragmentConfiguration
+import eu.kevin.accounts.bankselection.entities.Bank
+import eu.kevin.accounts.networking.AccountsClientProvider
 import eu.kevin.core.architecture.BaseFlowSession
 import eu.kevin.core.architecture.routing.GlobalRouter
 import eu.kevin.core.entities.ActivityResult
 import eu.kevin.core.extensions.setFragmentResultListener
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 internal class AccountLinkingSession(
     private val fragmentManager: FragmentManager,
@@ -31,6 +36,7 @@ internal class AccountLinkingSession(
     }
 
     private val flowItems = mutableListOf<AccountLinkingFlowItem>()
+    private val accountsClient = AccountsClientProvider.kevinAccountsClient
     private var currentFlowIndex by savedState(-1)
     private var sessionData by savedState(AccountLinkingSessionData())
 
@@ -47,15 +53,33 @@ internal class AccountLinkingSession(
 
     fun beginFlow(listener: AccountLinkingSessionListener?) {
         sessionListener = listener
-        if (currentFlowIndex == -1) {
-            sessionData = sessionData.copy(
-                selectedCountry = configuration.preselectedCountry,
-                selectedBank = configuration.preselectedBank
-            )
-        }
-        initializeFlow()
-        if (currentFlowIndex == -1) {
-            GlobalRouter.pushFragment(getFlowFragment(0))
+
+        lifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+            val selectedBank = if (configuration.preselectedBank != null) {
+                withContext(Dispatchers.Main) {
+                    sessionListener?.showLoading(true)
+                }
+                val apiBanks = accountsClient.getSupportedBanks(configuration.state, configuration.preselectedCountry)
+                apiBanks.data.firstOrNull { it.id == configuration.preselectedBank }?.let {
+                    Bank(it.id, it.name, it.officialName, it.imageUri, it.bic)
+                }
+            } else {
+                null
+            }
+
+            withContext(Dispatchers.Main) {
+                sessionListener?.showLoading(false)
+                if (currentFlowIndex == -1) {
+                    sessionData = sessionData.copy(
+                        selectedCountry = configuration.preselectedCountry,
+                        selectedBank = selectedBank
+                    )
+                }
+                initializeFlow()
+                if (currentFlowIndex == -1) {
+                    GlobalRouter.pushFragment(getFlowFragment(0))
+                }
+            }
         }
     }
 
@@ -72,7 +96,10 @@ internal class AccountLinkingSession(
     private fun handleFowNavigation() {
         if (flowItems.size == currentFlowIndex) {
             sessionListener?.onSessionFinished(
-                ActivityResult.Success(AccountLinkingResult(sessionData.authorization!!))
+                ActivityResult.Success(AccountLinkingResult(
+                    sessionData.authorization!!,
+                    sessionData.selectedBank!!
+                ))
             )
         } else {
             GlobalRouter.pushFragment(getFlowFragment(currentFlowIndex))
@@ -85,7 +112,7 @@ internal class AccountLinkingSession(
                 BankSelectionFragment().also {
                     it.configuration = BankSelectionFragmentConfiguration(
                         sessionData.selectedCountry,
-                        sessionData.selectedBank,
+                        sessionData.selectedBank?.id,
                         configuration.state
                     )
                 }
@@ -94,7 +121,7 @@ internal class AccountLinkingSession(
                 AccountLinkingFragment().also {
                     it.configuration = AccountLinkingFragmentConfiguration(
                         configuration.state,
-                        sessionData.selectedBank!!
+                        sessionData.selectedBank?.id!!
                     )
                 }
             }
@@ -103,8 +130,8 @@ internal class AccountLinkingSession(
 
     private fun initFragmentResultListeners() {
         with(fragmentManager) {
-            setFragmentResultListener(BankSelectionFragment.Contract, lifecycleOwner) { result ->
-                sessionData = sessionData.copy(selectedBank = result)
+            setFragmentResultListener(BankSelectionFragment.Contract, lifecycleOwner) { selectedBank ->
+                sessionData = sessionData.copy(selectedBank = selectedBank)
                 currentFlowIndex++
                 handleFowNavigation()
             }

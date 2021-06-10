@@ -2,10 +2,7 @@ package eu.kevin.inapppayments.paymentsession
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.*
 import androidx.savedstate.SavedStateRegistryOwner
 import eu.kevin.accounts.bankselection.BankSelectionFragment
 import eu.kevin.accounts.bankselection.BankSelectionFragmentConfiguration
@@ -22,7 +19,7 @@ import kotlin.math.min
 
 internal class PaymentSession(
     private val fragmentManager: FragmentManager,
-    configuration: PaymentSessionConfiguration,
+    private val configuration: PaymentSessionConfiguration,
     private val lifecycleOwner: LifecycleOwner,
     registryOwner: SavedStateRegistryOwner
 ) : BaseFlowSession(lifecycleOwner, registryOwner), LifecycleObserver {
@@ -32,8 +29,6 @@ internal class PaymentSession(
     }
 
     private var sessionListener: PaymentSessionListener? = null
-
-    private val sessionConfiguration: PaymentSessionConfiguration = configuration
 
     private val flowItems = mutableListOf<PaymentSessionFlowItem>()
     private var currentFlowIndex by savedState(-1)
@@ -54,9 +49,9 @@ internal class PaymentSession(
         this.sessionListener = listener
         if (currentFlowIndex == -1) {
             sessionData = sessionData.copy(
-                selectedPaymentType = sessionConfiguration.paymentType,
-                selectedCountry = sessionConfiguration.preselectedCountry,
-                selectedBankId = sessionConfiguration.preselectedBank
+                selectedPaymentType = configuration.paymentType,
+                selectedCountry = configuration.preselectedCountry,
+                selectedBankId = configuration.preselectedBank
             )
         }
         updateFlow()
@@ -69,7 +64,7 @@ internal class PaymentSession(
         val flow = mutableListOf<PaymentSessionFlowItem>()
 
         if (sessionData.selectedPaymentType == PaymentType.BANK) {
-            if (!sessionConfiguration.skipBankSelection) {
+            if (!configuration.skipBankSelection) {
                 flow.add(BANK_SELECTION)
             }
         }
@@ -84,7 +79,7 @@ internal class PaymentSession(
         currentFlowIndex = min(currentFlowIndex + 1, flowItems.size)
         if (flowItems.size == currentFlowIndex) {
             sessionListener?.onSessionFinished(
-                ActivityResult.Success(PaymentSessionResult(sessionConfiguration.paymentId))
+                ActivityResult.Success(PaymentSessionResult(configuration.paymentId))
             )
         } else {
             GlobalRouter.pushFragment(getFlowFragment(currentFlowIndex))
@@ -98,14 +93,14 @@ internal class PaymentSession(
                     it.configuration = BankSelectionFragmentConfiguration(
                         sessionData.selectedCountry,
                         sessionData.selectedBankId,
-                        sessionConfiguration.paymentId
+                        configuration.paymentId
                     )
                 }
             }
             PAYMENT_CONFIRMATION -> {
                 PaymentConfirmationFragment().also {
                     it.configuration = PaymentConfirmationFragmentConfiguration(
-                        sessionConfiguration.paymentId,
+                        configuration.paymentId,
                         sessionData.selectedPaymentType!!,
                         sessionData.selectedBankId,
                     )
@@ -116,7 +111,7 @@ internal class PaymentSession(
 
     private fun listenForFragmentResults() {
         fragmentManager.setFragmentResultListener(BankSelectionFragment.Contract, lifecycleOwner) {
-            sessionData = sessionData.copy(selectedBankId = it)
+            sessionData = sessionData.copy(selectedBankId = it.id)
             handleFowNavigation()
         }
         fragmentManager.setFragmentResultListener(PaymentConfirmationFragment.Contract, lifecycleOwner) {

@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 class MainViewModel : ViewModel() {
 
     private val kevinAuthClient = KevinAuthClientFactory(
-        baseUrl = "https://your.base.url/",
+        baseUrl = "https://p.gimbutas.net/kevin/",
         "",
         timeout = 120000L
     ).createClient(null)
