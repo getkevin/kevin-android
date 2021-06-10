@@ -1,45 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="country_name_at">Austria</string>
-    <string name="country_name_be">Belgium</string>
-    <string name="country_name_bg">Bulgaria</string>
-    <string name="country_name_cz">Czechia</string>
-    <string name="country_name_de">Germany</string>
-    <string name="country_name_dk">Denmark</string>
-    <string name="country_name_ee">Estonia</string>
-    <string name="country_name_es">Spain</string>
-    <string name="country_name_fi">Finland</string>
-    <string name="country_name_fr">France</string>
-    <string name="country_name_gb">United Kingdom</string>
-    <string name="country_name_it">Italy</string>
-    <string name="country_name_lt">Lithuania</string>
-    <string name="country_name_lu">Luxembourg</string>
-    <string name="country_name_lv">Latvia</string>
-    <string name="country_name_nl">Netherlands</string>
-    <string name="country_name_no">Norway</string>
-    <string name="country_name_pl">Poland</string>
-    <string name="country_name_pt">Portugal</string>
-    <string name="country_name_ro">Romania</string>
-    <string name="country_name_se">Sweden</string>
 
     <string name="Continue">continue</string>
-    <string name="window_country_selection_title">Select country</string>
-    <string name="window_bank_selection_title">Bank selection</string>
-    <string name="window_bank_selection_select_country_label">Select country</string>
-    <string name="window_bank_selection_select_bank_label">Select bank</string>
-    <string name="error_country_not_selected">Country has to be selected</string>
-    <string name="error_bank_not_selected">Bank has to be selected</string>
     <string name="error_unknown">Unknown error occurred</string>
     <string name="error_no_internet">No internet connection</string>
-    <string name="window_account_linking_title">Account linking</string>
-    <string name="window_payment_type_title">Select payment type</string>
-    <string name="window_payment_confirmation_title">Payment confirmation</string>
-    <string name="payment_type_bank_title">Bank</string>
-    <string name="payment_type_card_title">Card</string>
 
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="dialog_exit_confirmation_title">Warning!</string>
-    <string name="dialog_exit_confirmation_accounts_message">Are you sure you want to abort account linking?</string>
-    <string name="dialog_exit_confirmation_payments_message">Are you sure you want to abort this payment?</string>
 </resources>

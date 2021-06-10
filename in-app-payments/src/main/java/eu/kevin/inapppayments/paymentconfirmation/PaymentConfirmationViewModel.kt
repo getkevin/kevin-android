@@ -41,7 +41,7 @@ internal class PaymentConfirmationViewModel(
 
     private fun handlePaymentCompleted(uri: Uri) {
         val status = uri.getQueryParameter("statusGroup")
-        if (status =="completed") {
+        if (status == "completed") {
             GlobalRouter.returnFragmentResult(PaymentConfirmationFragment.Contract, Unit)
         }
     }

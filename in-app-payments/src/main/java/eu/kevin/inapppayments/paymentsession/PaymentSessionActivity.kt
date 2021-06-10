@@ -59,7 +59,7 @@ internal class PaymentSessionActivity : BaseFragmentActivity(), PaymentSessionLi
         MaterialAlertDialogBuilder(this)
             .setCancelable(false)
             .setTitle(eu.kevin.accounts.R.string.dialog_exit_confirmation_title)
-            .setMessage(eu.kevin.accounts.R.string.dialog_exit_confirmation_payments_message)
+            .setMessage(R.string.dialog_exit_confirmation_payments_message)
             .setPositiveButton(eu.kevin.accounts.R.string.yes) { _, _ ->
                 returnActivityResult(ActivityResult.Canceled)
             }
