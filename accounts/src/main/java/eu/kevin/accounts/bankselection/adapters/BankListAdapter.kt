@@ -6,21 +6,21 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import coil.ImageLoader
 import coil.request.ImageRequest
-import eu.kevin.accounts.bankselection.entities.Bank
+import eu.kevin.accounts.bankselection.entities.BankListItem
 import eu.kevin.accounts.databinding.ViewBankListItemBinding
 import eu.kevin.core.architecture.BaseListAdapter
 
 internal class BankListAdapter(
-    override var items: List<Bank> = emptyList(),
+    override var items: List<BankListItem> = emptyList(),
     private val onBankClicked: (String) -> Unit
-) : BaseListAdapter<Bank, ViewBankListItemBinding>(items) {
+) : BaseListAdapter<BankListItem, ViewBankListItemBinding>(items) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return ViewHolder(ViewBankListItemBinding.inflate(inflater, parent, false))
     }
 
-    override fun onBindViewHolder(binding: ViewBankListItemBinding, item: Bank, position: Int) {
+    override fun onBindViewHolder(binding: ViewBankListItemBinding, item: BankListItem, position: Int) {
         with(binding) {
             root.setOnClickListener {
                 onBankClicked.invoke(item.bankId)
@@ -31,7 +31,7 @@ internal class BankListAdapter(
         }
     }
 
-    override fun updateItems(items: List<Bank>) {
+    override fun updateItems(items: List<BankListItem>) {
         val diffResult = DiffUtil.calculateDiff(BankListDiffCallback(this.items, items))
         this.items = items
         diffResult.dispatchUpdatesTo(this)

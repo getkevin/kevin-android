@@ -31,7 +31,7 @@ class MainFragment : Fragment(), MainViewCallback {
                 Toast.makeText(requireContext(), "Account linking cancelled", Toast.LENGTH_SHORT).show()
             }
             is ActivityResult.Failure -> {
-
+                Toast.makeText(requireContext(), result.error.message, Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -45,7 +45,7 @@ class MainFragment : Fragment(), MainViewCallback {
                 Toast.makeText(requireContext(), "Payment cancelled", Toast.LENGTH_SHORT).show()
             }
             is ActivityResult.Failure -> {
-
+                Toast.makeText(requireContext(), result.error.message, Toast.LENGTH_SHORT).show()
             }
         }
     }

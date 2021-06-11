@@ -23,7 +23,7 @@ android {
             appIconRound: "@mipmap/ic_launcher_round"
         ]
 
-        resValue 'string', 'config_app_name', 'Kevin'
+        resValue 'string', 'config_app_name', 'Kevin demo'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

@@ -50,7 +50,7 @@ internal class BankSelectionView(context: Context) : BaseView<FragmentBankSelect
     }
 
     override fun render(state: BankSelectionState) = with(binding) {
-        banksAdapter.updateItems(state.supportedBanks)
+        banksAdapter.updateItems(state.bankListItems)
         countrySelectionView.image = CountryHelper.getCountryFlagDrawable(context, state.selectedCountry)
         countrySelectionView.title = CountryHelper.getCountryName(context, state.selectedCountry)
         when (state.loadingState) {
