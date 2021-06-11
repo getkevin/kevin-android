@@ -26,6 +26,13 @@ class BankSelectionViewModel constructor(
 
     override fun getInitialData() = BankSelectionState()
 
+    private var banks: List<Bank> = emptyList()
+        set(value) {
+            field = value
+            savedStateHandle.set("banks", value)
+        }
+        get() = savedStateHandle.get("banks") ?: emptyList()
+
     override suspend fun handleIntent(intent: BankSelectionIntent) {
         when (intent) {
             is Initialize -> initialize(intent.configuration)
@@ -60,7 +67,7 @@ class BankSelectionViewModel constructor(
                 }
                 val apiBanks = banksManager.getSupportedBanks(selectedCountry, configuration.authState)
 
-                val banks = apiBanks.map {
+                banks = apiBanks.map {
                     Bank(it.id, it.name, it.officialName, it.imageUri, it.bic)
                 }
 
@@ -69,7 +76,6 @@ class BankSelectionViewModel constructor(
                         selectedCountry = selectedCountry,
                         loadingState = LoadingState.Loading(false),
                         bankListItems = BankListItemFactory.getBankList(apiBanks, configuration.selectedBankId),
-                        banks = banks
                     )
                 }
             } catch (e: Exception) {
@@ -107,7 +113,7 @@ class BankSelectionViewModel constructor(
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val apiBanks = banksManager.getSupportedBanks(selectedCountry, configuration.authState)
-                val banks = apiBanks.map {
+                banks = apiBanks.map {
                     Bank(it.id, it.name, it.officialName, it.imageUri, it.bic)
                 }
 
@@ -116,7 +122,6 @@ class BankSelectionViewModel constructor(
                         selectedCountry = selectedCountry,
                         loadingState = LoadingState.Loading(false),
                         bankListItems = BankListItemFactory.getBankList(apiBanks),
-                        banks = banks
                     )
                 }
             } catch (e: Exception) {
@@ -143,7 +148,7 @@ class BankSelectionViewModel constructor(
         }
         GlobalRouter.returnFragmentResult(
             BankSelectionFragment.Contract,
-            state.value.banks.first { it.id == selectedBank.bankId }
+            banks.first { it.id == selectedBank.bankId }
         )
     }
 

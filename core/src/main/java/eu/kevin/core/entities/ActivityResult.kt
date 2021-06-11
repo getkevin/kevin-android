@@ -31,6 +31,6 @@ sealed class ActivityResult<out T : Parcelable> : Parcelable {
      */
     @Parcelize
     data class Failure(
-        val errorMessage: String
+        val error: Throwable
     ) : ActivityResult<Nothing>()
 }

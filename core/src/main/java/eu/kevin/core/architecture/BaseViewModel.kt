@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.consumeAsFlow
 import kotlinx.coroutines.launch
 
 abstract class BaseViewModel<S : IState, I : IIntent>(
-    private val savedStateHandle: SavedStateHandle
+    protected val savedStateHandle: SavedStateHandle
 ) : ViewModel(), IModel<S, I> {
 
     override val intents = Channel<I>(Channel.UNLIMITED)

@@ -54,36 +54,48 @@ internal class AccountLinkingSession(
     fun beginFlow(listener: AccountLinkingSessionListener?) {
         sessionListener = listener
 
-        lifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-            val selectedBank = if (configuration.preselectedBank != null) {
+        if (configuration.preselectedBank != null) {
+            sessionListener?.showLoading(true)
+            lifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+                val selectedBank = getSelectedBank()
                 withContext(Dispatchers.Main) {
-                    sessionListener?.showLoading(true)
-                }
-                val apiBanks = accountsClient.getSupportedBanks(configuration.state, configuration.preselectedCountry)
-                apiBanks.data.firstOrNull { it.id == configuration.preselectedBank }?.let {
-                    Bank(it.id, it.name, it.officialName, it.imageUri, it.bic)
-                }
-            } else {
-                null
-            }
-
-            withContext(Dispatchers.Main) {
-                sessionListener?.showLoading(false)
-                if (currentFlowIndex == -1) {
-                    sessionData = sessionData.copy(
-                        selectedCountry = configuration.preselectedCountry,
-                        selectedBank = selectedBank
-                    )
-                }
-                initializeFlow()
-                if (currentFlowIndex == -1) {
-                    GlobalRouter.pushFragment(getFlowFragment(0))
+                    sessionListener?.showLoading(false)
+                    initializeFlow(selectedBank)
                 }
             }
+        } else {
+            initializeFlow(selectedBank = null)
         }
     }
 
-    private fun initializeFlow() {
+    private fun initializeFlow(selectedBank: Bank?) {
+        if (currentFlowIndex == -1) {
+            sessionData = sessionData.copy(
+                selectedCountry = configuration.preselectedCountry,
+                selectedBank = selectedBank
+            )
+        }
+        updateFlowItems()
+        if (currentFlowIndex == -1) {
+            GlobalRouter.pushFragment(getFlowFragment(0))
+        }
+    }
+
+    private suspend fun getSelectedBank(): Bank? {
+        return try {
+            val apiBanks = accountsClient.getSupportedBanks(configuration.state, configuration.preselectedCountry)
+            apiBanks.data.firstOrNull { it.id == configuration.preselectedBank }?.let {
+                Bank(it.id, it.name, it.officialName, it.imageUri, it.bic)
+            }
+        } catch (error: Exception) {
+            withContext(Dispatchers.Main) {
+                sessionListener?.onSessionFinished(ActivityResult.Failure(error))
+            }
+            null
+        }
+    }
+
+    private fun updateFlowItems() {
         val flow = mutableListOf<AccountLinkingFlowItem>()
         if (!configuration.skipBankSelection) {
             flow.add(BANK_SELECTION)
