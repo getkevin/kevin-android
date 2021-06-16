@@ -43,7 +43,7 @@ internal class PaymentConfirmationViewModel(
 
     private fun handlePaymentCompleted(uri: Uri) {
         val status = uri.getQueryParameter("statusGroup")
-        if (status != "failed") {
+        if (status == "completed") {
             val result = PaymentConfirmationResult(
                 uri.getQueryParameter("paymentId") ?: ""
             )

@@ -36,7 +36,7 @@ internal class AccountLinkingViewModel(
 
     private fun handleAuthorizationReceived(uri: Uri) {
         val status = uri.getQueryParameter("status")
-        if (status != "failure") {
+        if (status == "success") {
             val result = AccountLinkingFragmentResult(
                 uri.getQueryParameter("requestId")!!,
                 uri.getQueryParameter("code")!!
