@@ -1,4 +1,4 @@
-package eu.kevin.inapppayments.paymentsession
+package eu.kevin.inapppayments.paymentsession.entities
 
 import android.os.Parcelable
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType

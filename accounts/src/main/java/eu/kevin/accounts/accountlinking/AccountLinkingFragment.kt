@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import eu.kevin.accounts.accountlinking.AccountLinkingIntent.*
 import eu.kevin.core.architecture.BaseFragment
 import eu.kevin.core.architecture.interfaces.IView
+import eu.kevin.core.entities.FragmentResult
 import eu.kevin.core.fragment.FragmentResultContract
 
 internal class AccountLinkingFragment : BaseFragment<AccountLinkingState, AccountLinkingIntent, AccountLinkingViewModel>(),
@@ -43,10 +44,10 @@ internal class AccountLinkingFragment : BaseFragment<AccountLinkingState, Accoun
         viewModel.intents.offer(HandleAuthorization(uri))
     }
 
-    object Contract: FragmentResultContract<AccountLinkingFragmentResult>() {
+    object Contract: FragmentResultContract<FragmentResult<AccountLinkingFragmentResult>>() {
         override val requestKey = "account_linking_request_key"
         override val resultKey = "account_linking_result_key"
-        override fun parseResult(data: Bundle): AccountLinkingFragmentResult {
+        override fun parseResult(data: Bundle): FragmentResult<AccountLinkingFragmentResult> {
             return data.getParcelable(resultKey)!!
         }
     }

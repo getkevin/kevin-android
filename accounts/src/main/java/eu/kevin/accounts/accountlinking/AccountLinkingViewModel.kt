@@ -9,6 +9,7 @@ import eu.kevin.accounts.BuildConfig
 import eu.kevin.accounts.accountlinking.AccountLinkingIntent.*
 import eu.kevin.core.architecture.BaseViewModel
 import eu.kevin.core.architecture.routing.GlobalRouter
+import eu.kevin.core.entities.FragmentResult
 
 internal class AccountLinkingViewModel(
     savedStateHandle: SavedStateHandle
@@ -34,11 +35,16 @@ internal class AccountLinkingViewModel(
     }
 
     private fun handleAuthorizationReceived(uri: Uri) {
-        val result = AccountLinkingFragmentResult(
-            uri.getQueryParameter("requestId")!!,
-            uri.getQueryParameter("code")!!
-        )
-        GlobalRouter.returnFragmentResult(AccountLinkingFragment.Contract, result)
+        val status = uri.getQueryParameter("status")
+        if (status == "success") {
+            val result = AccountLinkingFragmentResult(
+                uri.getQueryParameter("requestId")!!,
+                uri.getQueryParameter("code")!!
+            )
+            GlobalRouter.returnFragmentResult(AccountLinkingFragment.Contract, FragmentResult.Success(result))
+        } else {
+            GlobalRouter.returnFragmentResult(AccountLinkingFragment.Contract, FragmentResult.Canceled)
+        }
     }
 
     class Factory(owner: SavedStateRegistryOwner) : AbstractSavedStateViewModelFactory(owner, null) {
