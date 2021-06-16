@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.fragment.app.viewModels
 import eu.kevin.core.architecture.BaseFragment
 import eu.kevin.core.architecture.interfaces.IView
+import eu.kevin.core.entities.FragmentResult
 import eu.kevin.core.fragment.FragmentResultContract
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.*
 
@@ -44,11 +45,11 @@ internal class PaymentConfirmationFragment : BaseFragment<PaymentConfirmationSta
         viewModel.intents.offer(HandlePaymentCompleted(uri))
     }
 
-    object Contract: FragmentResultContract<Unit>() {
+    object Contract: FragmentResultContract<FragmentResult<PaymentConfirmationResult>>() {
         override val requestKey = "payment_confirmation_request_key"
         override val resultKey = "payment_confirmation_result_key"
-        override fun parseResult(data: Bundle) {
-            return
+        override fun parseResult(data: Bundle): FragmentResult<PaymentConfirmationResult> {
+            return data.getParcelable(resultKey)!!
         }
     }
 }

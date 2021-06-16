@@ -9,9 +9,11 @@ import eu.kevin.accounts.bankselection.BankSelectionFragmentConfiguration
 import eu.kevin.core.architecture.BaseFlowSession
 import eu.kevin.core.architecture.routing.GlobalRouter
 import eu.kevin.core.entities.ActivityResult
+import eu.kevin.core.entities.FragmentResult
 import eu.kevin.core.extensions.setFragmentResultListener
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationFragment
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationFragmentConfiguration
+import eu.kevin.inapppayments.paymentsession.entities.PaymentSessionData
 import eu.kevin.inapppayments.paymentsession.enums.PaymentSessionFlowItem
 import eu.kevin.inapppayments.paymentsession.enums.PaymentSessionFlowItem.*
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
@@ -114,8 +116,13 @@ internal class PaymentSession(
             sessionData = sessionData.copy(selectedBankId = it.id)
             handleFowNavigation()
         }
-        fragmentManager.setFragmentResultListener(PaymentConfirmationFragment.Contract, lifecycleOwner) {
-            handleFowNavigation()
+        fragmentManager.setFragmentResultListener(PaymentConfirmationFragment.Contract, lifecycleOwner) { result ->
+            when (result) {
+                is FragmentResult.Success -> {
+                    handleFowNavigation()
+                }
+                is FragmentResult.Canceled -> sessionListener?.onSessionFinished(ActivityResult.Canceled)
+            }
         }
     }
 }

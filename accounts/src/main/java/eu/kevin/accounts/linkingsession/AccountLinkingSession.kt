@@ -17,6 +17,7 @@ import eu.kevin.accounts.networking.AccountsClientProvider
 import eu.kevin.core.architecture.BaseFlowSession
 import eu.kevin.core.architecture.routing.GlobalRouter
 import eu.kevin.core.entities.ActivityResult
+import eu.kevin.core.entities.FragmentResult
 import eu.kevin.core.extensions.setFragmentResultListener
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -148,9 +149,14 @@ internal class AccountLinkingSession(
                 handleFowNavigation()
             }
             setFragmentResultListener(AccountLinkingFragment.Contract, lifecycleOwner) { result ->
-                sessionData = sessionData.copy(authorization = result.authCode)
-                currentFlowIndex++
-                handleFowNavigation()
+                when (result) {
+                    is FragmentResult.Success -> {
+                        sessionData = sessionData.copy(authorization = result.value.authCode)
+                        currentFlowIndex++
+                        handleFowNavigation()
+                    }
+                    is FragmentResult.Canceled -> sessionListener?.onSessionFinished(ActivityResult.Canceled)
+                }
             }
         }
     }

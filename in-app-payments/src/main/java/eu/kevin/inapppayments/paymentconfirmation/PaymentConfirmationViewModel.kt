@@ -7,9 +7,11 @@ import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
 import eu.kevin.core.architecture.BaseViewModel
 import eu.kevin.core.architecture.routing.GlobalRouter
+import eu.kevin.core.entities.FragmentResult
 import eu.kevin.inapppayments.BuildConfig
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.*
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType.*
+import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationFragment.Contract
 
 internal class PaymentConfirmationViewModel(
     savedStateHandle: SavedStateHandle
@@ -41,8 +43,13 @@ internal class PaymentConfirmationViewModel(
 
     private fun handlePaymentCompleted(uri: Uri) {
         val status = uri.getQueryParameter("statusGroup")
-        if (status == "completed") {
-            GlobalRouter.returnFragmentResult(PaymentConfirmationFragment.Contract, Unit)
+        if (status != "failed") {
+            val result = PaymentConfirmationResult(
+                uri.getQueryParameter("paymentId") ?: ""
+            )
+            GlobalRouter.returnFragmentResult(Contract, FragmentResult.Success(result))
+        } else {
+            GlobalRouter.returnFragmentResult(Contract, FragmentResult.Canceled)
         }
     }
 
