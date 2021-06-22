@@ -15,7 +15,7 @@ android {
         versionName "1.0"
 
         consumerProguardFiles "proguard-rules.pro"
-        resConfigs("en", "lt")
+        resConfigs("en", "lt", "ru")
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField "String", "KEVIN_ACCOUNTS_API_URL", "\"https://api.getkevin.eu/\""

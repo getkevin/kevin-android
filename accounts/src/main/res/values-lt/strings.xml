@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="country_name_at">Austrija</string>
+    <string name="country_name_be">Belgija</string>
+    <string name="country_name_bg">Bulgarija</string>
+    <string name="country_name_cz">Čekija</string>
+    <string name="country_name_de">Vokietija</string>
+    <string name="country_name_dk">Danija</string>
+    <string name="country_name_ee">Estija</string>
+    <string name="country_name_es">Ispanija</string>
+    <string name="country_name_fi">Suomija</string>
+    <string name="country_name_fr">Prancūzija</string>
+    <string name="country_name_gb">Jungtinė Karalystė</string>
+    <string name="country_name_it">Italija</string>
+    <string name="country_name_lt">Lietuva</string>
+    <string name="country_name_lu">Liuksemburgas</string>
+    <string name="country_name_lv">Latvija</string>
+    <string name="country_name_nl">Nyderlandai</string>
+    <string name="country_name_no">Norvegija</string>
+    <string name="country_name_pl">Lenkija</string>
+    <string name="country_name_pt">Portugalija</string>
+    <string name="country_name_ro">Rumunija</string>
+    <string name="country_name_se">Švedija</string>
+    <string name="window_account_linking_title">Sąskaitos prijungimas</string>
+    <string name="window_country_selection_title">Pasirinkite šalį</string>
+    <string name="window_bank_selection_title">Pasirinkite banką</string>
+    <string name="window_bank_selection_select_country_label">Pasirinkite šalį</string>
+    <string name="window_bank_selection_select_bank_label">Pasirinkite banką</string>
+    <string name="error_bank_not_selected">Bankas turi būti pasirinktas</string>
+    <string name="dialog_exit_confirmation_accounts_message">Ar tikrai norite nutraukti sąskaitos prijungimą?</string>
+</resources>
