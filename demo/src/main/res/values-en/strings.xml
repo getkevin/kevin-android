@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="window_link_account_button">Link account</string>
+    <string name="window_make_bank_payment_button">Make bank payment</string>
+    <string name="window_card_bank_payment_button">Make card payment</string>
+</resources>

@@ -16,7 +16,7 @@ android {
         versionName "1.0"
         versionCode 1
 
-        resConfigs("en")
+        resConfigs("en", "lt", "ru")
 
         manifestPlaceholders = [
             appIcon: "@mipmap/ic_launcher",

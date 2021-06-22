@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="country_name_at">Австрия</string>
+    <string name="country_name_be">Бельгия</string>
+    <string name="country_name_bg">Болгария</string>
+    <string name="country_name_cz">Чехия</string>
+    <string name="country_name_de">Германия</string>
+    <string name="country_name_dk">Дания</string>
+    <string name="country_name_ee">Эстония</string>
+    <string name="country_name_es">Испания</string>
+    <string name="country_name_fi">Финляндия</string>
+    <string name="country_name_fr">Франция</string>
+    <string name="country_name_gb">Великобритания</string>
+    <string name="country_name_it">Италия</string>
+    <string name="country_name_lt">Литва</string>
+    <string name="country_name_lu">Люксембург</string>
+    <string name="country_name_lv">Латвия</string>
+    <string name="country_name_nl">Нидерланды</string>
+    <string name="country_name_no">Норвегия</string>
+    <string name="country_name_pl">Польша</string>
+    <string name="country_name_pt">Португалия</string>
+    <string name="country_name_ro">Румыния</string>
+    <string name="country_name_se">Швеция</string>
+    <string name="window_account_linking_title">Связывание аккаунта</string>
+    <string name="window_country_selection_title">Выберите страну</string>
+    <string name="window_bank_selection_select_country_label">Выберите страну</string>
+    <string name="window_bank_selection_title">Выбор банка</string>
+    <string name="window_bank_selection_select_bank_label">Выбор банка</string>
+    <string name="dialog_exit_confirmation_accounts_message">Вы уверены, что хотите отменить привязку учетной записи?</string>
+    <string name="error_bank_not_selected">Банк должен быть выбран</string>
+</resources>
