@@ -21,11 +21,11 @@
     <string name="country_name_pt">Portugalija</string>
     <string name="country_name_ro">Rumunija</string>
     <string name="country_name_se">Švedija</string>
-    <string name="window_account_linking_title">Sąskaitos prijungimas</string>
+    <string name="window_account_linking_title">Sąskaitos susiejimas</string>
     <string name="window_country_selection_title">Pasirinkite šalį</string>
     <string name="window_bank_selection_title">Pasirinkite banką</string>
     <string name="window_bank_selection_select_country_label">Pasirinkite šalį</string>
     <string name="window_bank_selection_select_bank_label">Pasirinkite banką</string>
     <string name="error_bank_not_selected">Bankas turi būti pasirinktas</string>
-    <string name="dialog_exit_confirmation_accounts_message">Ar tikrai norite nutraukti sąskaitos prijungimą?</string>
+    <string name="dialog_exit_confirmation_accounts_message">Ar tikrai norite nutraukti sąskaitos susiejimą?</string>
 </resources>

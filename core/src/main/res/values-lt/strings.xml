@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Continue">toliau</string>
-    <string name="error_unknown">Įvyko nežinoma klaidą</string>
+    <string name="Continue">tęsti</string>
+    <string name="error_unknown">Įvyko nežinoma klaida</string>
     <string name="error_no_internet">Nėra interneto ryšio</string>
     <string name="yes">Taip</string>
     <string name="no">Ne</string>

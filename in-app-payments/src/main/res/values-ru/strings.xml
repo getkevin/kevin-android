@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="window_payment_type_title">Выберите способ оплаты</string>
-    <string name="window_payment_confirmation_title">Подтверждение об оплате</string>
-    <string name="payment_type_bank_title">банк</string>
+    <string name="window_payment_confirmation_title">Подтверждение оплаты</string>
+    <string name="payment_type_bank_title">Банк</string>
     <string name="payment_type_card_title">Карта</string>
     <string name="dialog_exit_confirmation_payments_message">Вы уверены, что хотите отменить этот платеж?</string>
 </resources>
