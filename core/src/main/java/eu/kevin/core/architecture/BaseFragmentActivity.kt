@@ -1,11 +1,14 @@
 package eu.kevin.core.architecture
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
+import eu.kevin.core.context.KevinContextWrapper
 import eu.kevin.core.R
 import eu.kevin.core.architecture.interfaces.Navigable
 import eu.kevin.core.entities.ActivityResult
+import eu.kevin.core.plugin.Kevin
 
 abstract class BaseFragmentActivity : AppCompatActivity() {
 
@@ -38,6 +41,16 @@ abstract class BaseFragmentActivity : AppCompatActivity() {
                 add(fragmentContainerId, fragment, fragment::class.simpleName)
                 addToBackStack(fragment::class.simpleName)
             }
+        }
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        val locale = Kevin.getLocale()
+        if (newBase != null && locale != null) {
+            val context = KevinContextWrapper.wrap(newBase, locale)
+            super.attachBaseContext(context)
+        } else {
+            super.attachBaseContext(newBase)
         }
     }
 }
