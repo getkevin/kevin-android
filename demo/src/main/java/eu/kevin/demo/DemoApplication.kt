@@ -12,7 +12,7 @@ class DemoApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        Kevin.setLocale(Locale("lt"))
+        Kevin.setLocale(Locale("en"))
         Kevin.addPlugin(KevinAccountsPlugin)
         Kevin.addPlugin(KevinPaymentsPlugin)
         Kevin.configure(
