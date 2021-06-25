@@ -1,9 +1,10 @@
 package eu.kevin.demo
 
 import android.app.Application
+import eu.kevin.accounts.KevinAccountsConfiguration
 import eu.kevin.accounts.KevinAccountsPlugin
 import eu.kevin.core.plugin.Kevin
-import eu.kevin.core.plugin.KevinConfiguration
+import eu.kevin.inapppayments.KevinPaymentsConfiguration
 import eu.kevin.inapppayments.KevinPaymentsPlugin
 import java.util.*
 
@@ -13,12 +14,15 @@ class DemoApplication : Application() {
         super.onCreate()
 
         Kevin.setLocale(Locale("en"))
-        Kevin.addPlugin(KevinAccountsPlugin)
-        Kevin.addPlugin(KevinPaymentsPlugin)
-        Kevin.configure(
-            KevinConfiguration
-                .builder()
-                .setTheme(R.style.KevinTheme)
+        Kevin.setTheme(R.style.KevinTheme)
+        KevinAccountsPlugin.configure(
+            KevinAccountsConfiguration.builder()
+                .setCallbackUrl("https://redirect.getkevin.eu/authorization.html")
+                .build()
+        )
+        KevinPaymentsPlugin.configure(
+            KevinPaymentsConfiguration.builder()
+                .setCallbackUrl("https://redirect.getkevin.eu/payment.html")
                 .build()
         )
     }

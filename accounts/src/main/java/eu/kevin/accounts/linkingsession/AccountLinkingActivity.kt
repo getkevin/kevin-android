@@ -15,6 +15,7 @@ import eu.kevin.core.architecture.BaseFragmentActivity
 import eu.kevin.core.architecture.routing.GlobalRouter
 import eu.kevin.core.entities.ActivityResult
 import eu.kevin.core.extensions.setFragmentResult
+import eu.kevin.core.plugin.Kevin
 import eu.kevin.core.plugin.KevinException
 import kotlinx.coroutines.launch
 
@@ -29,7 +30,7 @@ internal class AccountLinkingActivity : BaseFragmentActivity(), AccountLinkingSe
         if (!KevinAccountsPlugin.isConfigured()) {
             throw KevinException("Accounts plugin is not configured!")
         }
-        setTheme(KevinAccountsPlugin.getTheme())
+        setTheme(Kevin.getTheme())
         super.onCreate(savedInstanceState)
         binding = ActivityAccountLinkingBinding.inflate(layoutInflater)
         setContentView(binding.root)

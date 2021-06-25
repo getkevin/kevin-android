@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import eu.kevin.accounts.KevinAccountsPlugin
 import eu.kevin.accounts.R
 import eu.kevin.accounts.databinding.FragmentAccountLinkingBinding
 import eu.kevin.core.architecture.BaseView
@@ -30,7 +31,7 @@ internal class AccountLinkingView(context: Context) : BaseView<FragmentAccountLi
                     view: WebView,
                     request: WebResourceRequest
                 ): Boolean {
-                    if (request.url.toString().startsWith("https://redirect.getkevin.eu/authorization.html")) {
+                    if (request.url.toString().startsWith(KevinAccountsPlugin.getCallbackUrl())) {
                         delegate?.onAuthorizationReceived(request.url)
                     } else {
                         view.loadUrl(request.url.toString())
