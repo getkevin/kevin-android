@@ -21,7 +21,13 @@
     <string name="country_name_pt">Portugal</string>
     <string name="country_name_ro">Romania</string>
     <string name="country_name_se">Sweden</string>
-
+    <string name="country_name_hu">Hungary</string>
+    <string name="country_name_ie">Ireland</string>
+    <string name="country_name_si">Slovenia</string>
+    <string name="country_name_sk">Slovakia</string>
+    <string name="country_name_mt">Malta</string>
+    <string name="country_name_cy">Cyprus</string>
+    <string name="country_name_hr">Croatia</string>
     <string name="window_account_linking_title">Account linking</string>
     <string name="window_country_selection_title">Select country</string>
     <string name="window_bank_selection_title">Bank selection</string>
