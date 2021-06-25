@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Continue">continue</string>
+    <string name="Continue">Continue</string>
     <string name="error_unknown">Unknown error occurred</string>
     <string name="error_no_internet">No internet connection</string>
     <string name="yes">Yes</string>
