@@ -11,6 +11,7 @@ import eu.kevin.accounts.databinding.FragmentAccountLinkingBinding
 import eu.kevin.core.architecture.BaseView
 import eu.kevin.core.architecture.interfaces.IView
 import eu.kevin.core.extensions.getColorFromAttr
+import eu.kevin.core.extensions.hideKeyboard
 
 internal class AccountLinkingView(context: Context) : BaseView<FragmentAccountLinkingBinding>(context),
     IView<AccountLinkingState> {
@@ -44,6 +45,7 @@ internal class AccountLinkingView(context: Context) : BaseView<FragmentAccountLi
 
     override fun onDetachedFromWindow() {
         binding.accountLinkWebView.destroy()
+        hideKeyboard()
         super.onDetachedFromWindow()
     }
 
