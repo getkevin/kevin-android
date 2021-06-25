@@ -1,19 +1,12 @@
 package eu.kevin.core.plugin
 
+import androidx.annotation.StyleRes
 import java.util.*
-import java.util.concurrent.atomic.AtomicBoolean
 
 object Kevin {
 
-    private val configurationLock = AtomicBoolean(false)
-    private val plugins = mutableSetOf<KevinPlugin>()
     private var locale: Locale? = null
-
-    fun addPlugin(plugin: KevinPlugin) {
-        synchronized(this) {
-            plugins.add(plugin)
-        }
-    }
+    private var theme: Int = 0
 
     fun setLocale(locale: Locale?) {
         synchronized(this) {
@@ -21,19 +14,18 @@ object Kevin {
         }
     }
 
+    fun setTheme(@StyleRes theme: Int) {
+        synchronized(this) {
+            this.theme = theme
+        }
+    }
+
     fun getLocale(): Locale? {
         return locale
     }
 
-    fun configure(configuration: KevinConfiguration) {
-        synchronized(configurationLock) {
-            if (configurationLock.get()) {
-                throw KevinException("Kevin configuration can be called only once!")
-            }
-            plugins.forEach {
-                it.configure(configuration)
-            }
-            configurationLock.set(true)
-        }
+    @StyleRes
+    fun getTheme(): Int {
+        return theme
     }
 }

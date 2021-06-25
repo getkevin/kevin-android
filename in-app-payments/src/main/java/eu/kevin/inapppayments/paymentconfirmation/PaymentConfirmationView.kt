@@ -8,6 +8,7 @@ import android.webkit.WebViewClient
 import eu.kevin.core.architecture.BaseView
 import eu.kevin.core.architecture.interfaces.IView
 import eu.kevin.core.extensions.getColorFromAttr
+import eu.kevin.inapppayments.KevinPaymentsPlugin
 import eu.kevin.inapppayments.R
 import eu.kevin.inapppayments.databinding.FragmentPaymentConfirmationBinding
 
@@ -30,7 +31,7 @@ internal class PaymentConfirmationView(context: Context) : BaseView<FragmentPaym
                     view: WebView,
                     request: WebResourceRequest
                 ): Boolean {
-                    if (request.url.toString().startsWith("https://redirect.getkevin.eu/payment.html")) {
+                    if (request.url.toString().startsWith(KevinPaymentsPlugin.getCallbackUrl())) {
                         delegate?.onPaymentCompleted(request.url)
                     } else {
                         view.loadUrl(request.url.toString())

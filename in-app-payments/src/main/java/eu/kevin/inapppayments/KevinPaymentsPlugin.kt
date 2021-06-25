@@ -1,14 +1,13 @@
 package eu.kevin.inapppayments
 
-import eu.kevin.core.plugin.KevinConfiguration
 import eu.kevin.core.plugin.KevinPlugin
 
 object KevinPaymentsPlugin: KevinPlugin {
 
     private const val KEVIN_PAYMENTS_PLUGIN_KEY = "kevinPaymentsPluginKey"
-    private lateinit var configuration: KevinConfiguration
+    private lateinit var configuration: KevinPaymentsConfiguration
 
-    override fun configure(configuration: KevinConfiguration) {
+    fun configure(configuration: KevinPaymentsConfiguration) {
         this.configuration = configuration
     }
 
@@ -20,7 +19,7 @@ object KevinPaymentsPlugin: KevinPlugin {
         return KEVIN_PAYMENTS_PLUGIN_KEY
     }
 
-    override fun getTheme(): Int {
-        return configuration.getTheme()
+    fun getCallbackUrl(): String {
+        return configuration.getCallbackUrl()
     }
 }

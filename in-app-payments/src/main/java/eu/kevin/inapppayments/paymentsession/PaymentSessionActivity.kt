@@ -9,6 +9,7 @@ import eu.kevin.core.architecture.BaseFragmentActivity
 import eu.kevin.core.architecture.routing.GlobalRouter
 import eu.kevin.core.entities.ActivityResult
 import eu.kevin.core.extensions.setFragmentResult
+import eu.kevin.core.plugin.Kevin
 import eu.kevin.core.plugin.KevinException
 import eu.kevin.inapppayments.KevinPaymentsPlugin
 import eu.kevin.inapppayments.R
@@ -24,7 +25,7 @@ internal class PaymentSessionActivity : BaseFragmentActivity(), PaymentSessionLi
         if (!KevinPaymentsPlugin.isConfigured()) {
             throw KevinException("Payments plugin is not configured!")
         }
-        setTheme(KevinPaymentsPlugin.getTheme())
+        setTheme(Kevin.getTheme())
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_payment_session)
 
