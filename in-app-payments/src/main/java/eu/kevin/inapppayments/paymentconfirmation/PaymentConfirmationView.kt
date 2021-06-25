@@ -8,6 +8,7 @@ import android.webkit.WebViewClient
 import eu.kevin.core.architecture.BaseView
 import eu.kevin.core.architecture.interfaces.IView
 import eu.kevin.core.extensions.getColorFromAttr
+import eu.kevin.core.extensions.hideKeyboard
 import eu.kevin.inapppayments.KevinPaymentsPlugin
 import eu.kevin.inapppayments.R
 import eu.kevin.inapppayments.databinding.FragmentPaymentConfirmationBinding
@@ -44,6 +45,7 @@ internal class PaymentConfirmationView(context: Context) : BaseView<FragmentPaym
 
     override fun onDetachedFromWindow() {
         binding.confirmationWebView.destroy()
+        hideKeyboard()
         super.onDetachedFromWindow()
     }
 
