@@ -21,6 +21,13 @@
     <string name="country_name_pt">Португалия</string>
     <string name="country_name_ro">Румыния</string>
     <string name="country_name_se">Швеция</string>
+    <string name="country_name_hu">Венгрия</string>
+    <string name="country_name_ie">Ирландия</string>
+    <string name="country_name_si">Словения</string>
+    <string name="country_name_sk">Словакия</string>
+    <string name="country_name_mt">Мальта</string>
+    <string name="country_name_cy">Кипр</string>
+    <string name="country_name_hr">Хорватия</string>
     <string name="window_account_linking_title">Связывание аккаунта</string>
     <string name="window_country_selection_title">Выберите страну</string>
     <string name="window_bank_selection_select_country_label">Выберите страну</string>

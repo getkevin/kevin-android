@@ -13,7 +13,7 @@ object CountryHelper {
             context.packageName
         )
         if (resourceId == 0) {
-            return ContextCompat.getDrawable(context, R.drawable.ic_country_flag_lt)!!
+            return ContextCompat.getDrawable(context, R.drawable.ic_country_flag_eu)!!
         }
         return ContextCompat.getDrawable(context, resourceId)!!
     }
@@ -24,7 +24,7 @@ object CountryHelper {
             context.packageName
         )
         if (resourceId == 0) {
-            return ""
+            return countryIso
         }
         return context.getString(resourceId)
     }
