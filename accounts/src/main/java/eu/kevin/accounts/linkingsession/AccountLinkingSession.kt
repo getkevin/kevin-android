@@ -125,6 +125,7 @@ internal class AccountLinkingSession(
                 BankSelectionFragment().also {
                     it.configuration = BankSelectionFragmentConfiguration(
                         sessionData.selectedCountry,
+                        configuration.disableCountrySelection,
                         sessionData.selectedBank?.id,
                         configuration.state
                     )

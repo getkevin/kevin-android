@@ -10,6 +10,7 @@ import kotlinx.parcelize.Parcelize
 data class AccountLinkingConfiguration internal constructor(
     val state: String,
     val preselectedCountry: String?,
+    val disableCountrySelection: Boolean,
     val preselectedBank: String?,
     val skipBankSelection: Boolean
 ) : Parcelable {
@@ -20,6 +21,11 @@ data class AccountLinkingConfiguration internal constructor(
                 "if skipBankSelection is true, preselectedBank must be provided"
             }
         }
+        if (disableCountrySelection) {
+            requireNotNull(preselectedCountry) {
+                "if disableCountrySelection is true, valid preselectedCountry must be provided"
+            }
+        }
     }
 
     /**
@@ -27,6 +33,7 @@ data class AccountLinkingConfiguration internal constructor(
      */
     class Builder(private val state: String) {
         private var preselectedCountry: String? = null
+        private var disableCountrySelection: Boolean = false
         private var preselectedBank: String? = null
         private var skipBankSelection: Boolean = false
 
@@ -39,6 +46,19 @@ data class AccountLinkingConfiguration internal constructor(
          */
         fun setPreselectedCountry(country: String): Builder {
             this.preselectedCountry = country
+            return this
+        }
+
+        /**
+         * @param isDisabled if true, country selection field will be disabled, and user will not be
+         * able to select country. For this to work, valid country iso has to be provided with
+         * [setPreselectedCountry]
+         * If incorrect or unsupported country is provided, user will be able to select country.
+         *
+         * Default 'false'
+         */
+        fun setDisableCountrySelection(isDisabled: Boolean): Builder {
+            this.disableCountrySelection = isDisabled
             return this
         }
 
@@ -71,6 +91,7 @@ data class AccountLinkingConfiguration internal constructor(
             return AccountLinkingConfiguration(
                 state,
                 preselectedCountry,
+                disableCountrySelection,
                 preselectedBank,
                 skipBankSelection
             )

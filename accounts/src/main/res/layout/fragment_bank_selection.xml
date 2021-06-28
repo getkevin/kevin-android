@@ -28,6 +28,7 @@
         app:layout_constraintTop_toBottomOf="@id/action_bar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/content_root"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -39,9 +40,11 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="24dp"
                 android:text="@string/window_bank_selection_select_country_label"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible" />
 
             <eu.kevin.core.views.SelectionView
                 android:id="@+id/country_selection_view"
@@ -50,9 +53,11 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="12dp"
                 android:foreground="@drawable/ripple_on_primary_rounded"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/country_selection_label" />
+                app:layout_constraintTop_toBottomOf="@id/country_selection_label"
+                tools:visibility="visible" />
 
             <TextView
                 android:id="@+id/bank_selection_label"
@@ -64,7 +69,8 @@
                 android:text="@string/window_bank_selection_select_bank_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/country_selection_view" />
+                app:layout_constraintTop_toBottomOf="@id/country_selection_view"
+                app:layout_goneMarginTop="24dp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/banks_recycler_view"

@@ -13,6 +13,7 @@ import eu.kevin.core.entities.FragmentResult
 import eu.kevin.core.extensions.setFragmentResultListener
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationFragment
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationFragmentConfiguration
+import eu.kevin.inapppayments.paymentsession.entities.PaymentSessionConfiguration
 import eu.kevin.inapppayments.paymentsession.entities.PaymentSessionData
 import eu.kevin.inapppayments.paymentsession.enums.PaymentSessionFlowItem
 import eu.kevin.inapppayments.paymentsession.enums.PaymentSessionFlowItem.*
@@ -94,6 +95,7 @@ internal class PaymentSession(
                 BankSelectionFragment().also {
                     it.configuration = BankSelectionFragmentConfiguration(
                         sessionData.selectedCountry,
+                        configuration.disableCountrySelection,
                         sessionData.selectedBankId,
                         configuration.paymentId
                     )
