@@ -61,7 +61,7 @@ class BankSelectionViewModel constructor(
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 var disableCountrySelection = configuration.isCountrySelectionDisabled
-                val supportedCountries = countriesManager.getSupportedCountries(configuration.authState)
+                val supportedCountries = getSupportedCountries(configuration)
                 var selectedCountry = supportedCountries.firstOrNull { it == configuration.selectedCountry }
                 if (selectedCountry == null) {
                     disableCountrySelection = false
@@ -103,7 +103,11 @@ class BankSelectionViewModel constructor(
 
     private fun handleCountrySelectionClick(configuration: BankSelectionFragmentConfiguration) {
         GlobalRouter.pushModalFragment(CountrySelectionFragment().also {
-            it.configuration = CountrySelectionFragmentConfiguration(state.value.selectedCountry, configuration.authState)
+            it.configuration = CountrySelectionFragmentConfiguration(
+                state.value.selectedCountry,
+                configuration.countriesFilter,
+                configuration.authState
+            )
         })
     }
 
@@ -153,6 +157,20 @@ class BankSelectionViewModel constructor(
             BankSelectionFragment.Contract,
             banks.first { it.id == selectedBank.bankId }
         )
+    }
+
+    private suspend fun getSupportedCountries(configuration: BankSelectionFragmentConfiguration): List<String> {
+        val apiCountries = countriesManager.getSupportedCountries(configuration.authState).map {
+            it.lowercase()
+        }
+        return if (configuration.countriesFilter.isNotEmpty()) {
+            val filterIsos = configuration.countriesFilter.map { it.iso }
+            apiCountries.filter {
+                filterIsos.contains(it)
+            }
+        } else {
+            apiCountries
+        }
     }
 
     class Factory(owner: SavedStateRegistryOwner) : AbstractSavedStateViewModelFactory(owner, null) {

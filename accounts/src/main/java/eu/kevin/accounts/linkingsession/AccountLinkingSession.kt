@@ -72,7 +72,7 @@ internal class AccountLinkingSession(
     private fun initializeFlow(selectedBank: Bank?) {
         if (currentFlowIndex == -1) {
             sessionData = sessionData.copy(
-                selectedCountry = configuration.preselectedCountry,
+                selectedCountry = configuration.preselectedCountry?.iso,
                 selectedBank = selectedBank
             )
         }
@@ -84,7 +84,7 @@ internal class AccountLinkingSession(
 
     private suspend fun getSelectedBank(): Bank? {
         return try {
-            val apiBanks = accountsClient.getSupportedBanks(configuration.state, configuration.preselectedCountry)
+            val apiBanks = accountsClient.getSupportedBanks(configuration.state, configuration.preselectedCountry?.iso)
             apiBanks.data.firstOrNull { it.id == configuration.preselectedBank }?.let {
                 Bank(it.id, it.name, it.officialName, it.imageUri, it.bic)
             }
@@ -126,6 +126,7 @@ internal class AccountLinkingSession(
                     it.configuration = BankSelectionFragmentConfiguration(
                         sessionData.selectedCountry,
                         configuration.disableCountrySelection,
+                        configuration.countriesFilter,
                         sessionData.selectedBank?.id,
                         configuration.state
                     )

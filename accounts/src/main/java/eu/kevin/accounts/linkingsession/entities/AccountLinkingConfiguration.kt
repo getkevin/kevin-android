@@ -1,6 +1,7 @@
 package eu.kevin.accounts.linkingsession.entities
 
 import android.os.Parcelable
+import eu.kevin.accounts.countryselection.enums.KevinCountry
 import kotlinx.parcelize.Parcelize
 
 /**
@@ -9,8 +10,9 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class AccountLinkingConfiguration internal constructor(
     val state: String,
-    val preselectedCountry: String?,
+    val preselectedCountry: KevinCountry?,
     val disableCountrySelection: Boolean,
+    val countriesFilter: List<KevinCountry>,
     val preselectedBank: String?,
     val skipBankSelection: Boolean
 ) : Parcelable {
@@ -26,25 +28,31 @@ data class AccountLinkingConfiguration internal constructor(
                 "if disableCountrySelection is true, valid preselectedCountry must be provided"
             }
         }
+        if (preselectedCountry != null && countriesFilter.isNotEmpty()) {
+            if (!countriesFilter.contains(preselectedCountry)) {
+                throw IllegalArgumentException("preselected country has to be included in countries filter")
+            }
+        }
     }
 
     /**
      * @property state state representing account linking session
      */
     class Builder(private val state: String) {
-        private var preselectedCountry: String? = null
+        private var preselectedCountry: KevinCountry? = null
         private var disableCountrySelection: Boolean = false
+        private var countriesFilter: List<KevinCountry> = emptyList()
         private var preselectedBank: String? = null
         private var skipBankSelection: Boolean = false
 
         /**
-         * @param country country iso code that will be used during initial
+         * @param country [KevinCountry] that will be used during initial
          * AccountLinkingSession setup. If country is provided, it will be preselected
          * in bank selection window.
          *
          * Default 'null'
          */
-        fun setPreselectedCountry(country: String): Builder {
+        fun setPreselectedCountry(country: KevinCountry): Builder {
             this.preselectedCountry = country
             return this
         }
@@ -59,6 +67,18 @@ data class AccountLinkingConfiguration internal constructor(
          */
         fun setDisableCountrySelection(isDisabled: Boolean): Builder {
             this.disableCountrySelection = isDisabled
+            return this
+        }
+
+        /**
+         * @param countries list of countries that will be shown during country selection. If this
+         * list contains countries, only those that are in this list and are supported will be shown
+         * in country selection. If list is empty, all supported countries will be shown.
+         *
+         * Default 'emptyList()'
+         */
+        fun setCountriesFilter(countries: List<KevinCountry>): Builder {
+            this.countriesFilter = countries
             return this
         }
 
@@ -92,6 +112,7 @@ data class AccountLinkingConfiguration internal constructor(
                 state,
                 preselectedCountry,
                 disableCountrySelection,
+                countriesFilter,
                 preselectedBank,
                 skipBankSelection
             )

@@ -53,7 +53,7 @@ internal class PaymentSession(
         if (currentFlowIndex == -1) {
             sessionData = sessionData.copy(
                 selectedPaymentType = configuration.paymentType,
-                selectedCountry = configuration.preselectedCountry,
+                selectedCountry = configuration.preselectedCountry?.iso,
                 selectedBankId = configuration.preselectedBank
             )
         }
@@ -96,6 +96,7 @@ internal class PaymentSession(
                     it.configuration = BankSelectionFragmentConfiguration(
                         sessionData.selectedCountry,
                         configuration.disableCountrySelection,
+                        configuration.countriesFilter,
                         sessionData.selectedBankId,
                         configuration.paymentId
                     )
