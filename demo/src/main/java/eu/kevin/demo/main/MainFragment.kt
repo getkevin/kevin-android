@@ -90,7 +90,9 @@ class MainFragment : Fragment(), MainViewCallback {
 
     private fun openAccountLinkingSession(state: String) {
         val config = AccountLinkingConfiguration.Builder(state)
-            .setPreselectedCountry(KevinCountry.LITHUANIA)
+            .setPreselectedCountry(KevinCountry.LATVIA)
+            .setSkipBankSelection(true)
+            .setPreselectedBank("SWEDBANK_LT")
             .setDisableCountrySelection(false)
             .build()
         linkAccount.launch(config)

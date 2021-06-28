@@ -98,7 +98,7 @@ internal class AccountLinkingSession(
 
     private fun updateFlowItems() {
         val flow = mutableListOf<AccountLinkingFlowItem>()
-        if (!configuration.skipBankSelection) {
+        if (!configuration.skipBankSelection || sessionData.selectedBank == null) {
             flow.add(BANK_SELECTION)
         }
         flow.add(LINK_ACCOUNT_WEB_VIEW)

@@ -97,8 +97,11 @@ data class AccountLinkingConfiguration internal constructor(
 
         /**
          * @param skip if it's set to true, bank selection window will be skipped.
-         * Bank has to be provided with [setPreselectedBank] for this to work,
-         * otherwise calling [build] will throw [IllegalArgumentException]
+         * Correct bank id has to be provided with [setPreselectedBank] for this to work.
+         * If preselected country is provided, it has to match banks country, otherwise bank selection
+         * won't be skipped.
+         * If incorrect or unsupported bank id is provided, user will be asked to
+         * select bank.
          *
          * Default is 'false'
          */
