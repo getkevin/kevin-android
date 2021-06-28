@@ -60,9 +60,11 @@ class BankSelectionViewModel constructor(
         }
         viewModelScope.launch(Dispatchers.IO) {
             try {
+                var disableCountrySelection = configuration.isCountrySelectionDisabled
                 val supportedCountries = countriesManager.getSupportedCountries(configuration.authState)
                 var selectedCountry = supportedCountries.firstOrNull { it == configuration.selectedCountry }
                 if (selectedCountry == null) {
+                    disableCountrySelection = false
                     selectedCountry = supportedCountries.first()
                 }
                 val apiBanks = banksManager.getSupportedBanks(selectedCountry, configuration.authState)
@@ -74,6 +76,7 @@ class BankSelectionViewModel constructor(
                 updateState {
                     it.copy(
                         selectedCountry = selectedCountry,
+                        isCountrySelectionDisabled = disableCountrySelection,
                         loadingState = LoadingState.Loading(false),
                         bankListItems = BankListItemFactory.getBankList(apiBanks, configuration.selectedBankId),
                     )

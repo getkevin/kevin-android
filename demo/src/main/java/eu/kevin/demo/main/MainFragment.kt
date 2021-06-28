@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import eu.kevin.accounts.linkingsession.LinkAccountContract
 import eu.kevin.accounts.linkingsession.entities.AccountLinkingConfiguration
 import eu.kevin.core.entities.ActivityResult
-import eu.kevin.inapppayments.paymentsession.PaymentSessionConfiguration
+import eu.kevin.inapppayments.paymentsession.entities.PaymentSessionConfiguration
 import eu.kevin.inapppayments.paymentsession.PaymentSessionContract
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 import eu.kevin.demo.auth.entities.ApiPayment
@@ -90,6 +90,7 @@ class MainFragment : Fragment(), MainViewCallback {
     private fun openAccountLinkingSession(state: String) {
         val config = AccountLinkingConfiguration.Builder(state)
             .setPreselectedCountry("LT")
+            .setDisableCountrySelection(false)
             .build()
         linkAccount.launch(config)
     }

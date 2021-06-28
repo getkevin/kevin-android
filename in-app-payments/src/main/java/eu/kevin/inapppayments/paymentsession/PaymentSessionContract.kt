@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContract
 import eu.kevin.core.entities.ActivityResult
+import eu.kevin.inapppayments.paymentsession.entities.PaymentSessionConfiguration
 
 /**
  * Activity result contract for payment session. This is an entry point for payment flow.

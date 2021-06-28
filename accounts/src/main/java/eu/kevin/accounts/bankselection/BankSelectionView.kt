@@ -3,6 +3,7 @@ package eu.kevin.accounts.bankselection
 import android.content.Context
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.transition.TransitionManager
 import eu.kevin.accounts.R
 import eu.kevin.accounts.bankselection.adapters.BankListAdapter
 import eu.kevin.core.views.GridListItemDecoration
@@ -53,10 +54,20 @@ internal class BankSelectionView(context: Context) : BaseView<FragmentBankSelect
         banksAdapter.updateItems(state.bankListItems)
         countrySelectionView.image = CountryHelper.getCountryFlagDrawable(context, state.selectedCountry)
         countrySelectionView.title = CountryHelper.getCountryName(context, state.selectedCountry)
+        showCountrySelection(!state.isCountrySelectionDisabled)
         when (state.loadingState) {
             is LoadingState.Loading -> startLoading(state.loadingState.isLoading)
             is LoadingState.FailureWithMessage -> showErrorMessage(state.loadingState.message)
             is LoadingState.Failure -> showFailure(state.loadingState.error)
+        }
+    }
+
+    private fun showCountrySelection(show: Boolean) {
+        val visibility = if (show) VISIBLE else GONE
+        with(binding) {
+            TransitionManager.beginDelayedTransition(contentRoot)
+            countrySelectionLabel.visibility = visibility
+            countrySelectionView.visibility = visibility
         }
     }
 

@@ -13,6 +13,7 @@ import eu.kevin.core.plugin.Kevin
 import eu.kevin.core.plugin.KevinException
 import eu.kevin.inapppayments.KevinPaymentsPlugin
 import eu.kevin.inapppayments.R
+import eu.kevin.inapppayments.paymentsession.entities.PaymentSessionConfiguration
 import kotlinx.coroutines.launch
 
 internal class PaymentSessionActivity : BaseFragmentActivity(), PaymentSessionListener {
