@@ -29,10 +29,4 @@ enum class KevinCountry(val iso: String) {
     SWEDEN("se"),
     SLOVENIA("si"),
     SLOVAKIA("sk");
-
-    companion object {
-        fun createFromIso(iso: String): KevinCountry? {
-            return values().firstOrNull { it.iso == iso }
-        }
-    }
 }
