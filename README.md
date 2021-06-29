@@ -22,7 +22,7 @@ implementation 'com.github.getkevin:kevin-android:xxx'
 
 ```kotlin
 Kevin.setLocale(Locale("en"))   //  optional locale setup (by default phone locale will be used)
-Kevin.setTheme(R.style.KevinTheme)  //  supply optional theme
+Kevin.setTheme(R.style.KevinTheme)  //  supply a mandatory theme
 KevinAccountsPlugin.configure(
     KevinAccountsConfiguration.builder()
         .setCallbackUrl("https://your.callback.url")    //  callback is mandatory
