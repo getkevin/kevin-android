@@ -29,4 +29,10 @@ enum class KevinCountry(val iso: String) {
     SWEDEN("se"),
     SLOVENIA("si"),
     SLOVAKIA("sk");
+
+    companion object {
+        fun parse(iso: String?): KevinCountry? {
+            return values().firstOrNull { it.iso.lowercase() == iso }
+        }
+    }
 }

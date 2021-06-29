@@ -52,7 +52,7 @@ data class AccountLinkingConfiguration internal constructor(
          *
          * Default 'null'
          */
-        fun setPreselectedCountry(country: KevinCountry): Builder {
+        fun setPreselectedCountry(country: KevinCountry?): Builder {
             this.preselectedCountry = country
             return this
         }
@@ -77,8 +77,8 @@ data class AccountLinkingConfiguration internal constructor(
          *
          * Default 'emptyList()'
          */
-        fun setCountryFilter(countries: List<KevinCountry>): Builder {
-            this.countryFilter = countries
+        fun setCountryFilter(countries: List<KevinCountry?>): Builder {
+            this.countryFilter = countries.filterNotNull()
             return this
         }
 
