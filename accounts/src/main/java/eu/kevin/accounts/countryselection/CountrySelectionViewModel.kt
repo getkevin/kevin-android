@@ -43,7 +43,7 @@ class CountrySelectionViewModel constructor(
         }
         viewModelScope.launch {
             try {
-                val supportedCountries = countriesManager.getSupportedCountries(configuration.authState)
+                val supportedCountries = getSupportedCountries(configuration)
                     .sortedBy { it }
                     .map {
                         Country(it)
@@ -75,6 +75,20 @@ class CountrySelectionViewModel constructor(
     private fun handleCountrySelection(countryIso: String) {
         val selectedCountry = state.value.supportedCountries.firstOrNull { it.iso == countryIso }
         GlobalRouter.returnFragmentResult(CountrySelectionFragment.Contract, selectedCountry!!.iso)
+    }
+
+    private suspend fun getSupportedCountries(configuration: CountrySelectionFragmentConfiguration): List<String> {
+        val apiCountries = countriesManager.getSupportedCountries(configuration.authState).map {
+            it.lowercase()
+        }
+        return if (configuration.countryFilter.isNotEmpty()) {
+            val filterIsos = configuration.countryFilter.map { it.iso }
+            apiCountries.filter {
+                filterIsos.contains(it)
+            }
+        } else {
+            apiCountries
+        }
     }
 
     class Factory(owner: SavedStateRegistryOwner) : AbstractSavedStateViewModelFactory(owner, null) {

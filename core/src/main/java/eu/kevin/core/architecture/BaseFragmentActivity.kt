@@ -37,7 +37,14 @@ abstract class BaseFragmentActivity : AppCompatActivity() {
     protected fun pushFragment(fragmentContainerId: Int, fragment: Fragment) {
         with(supportFragmentManager) {
             commit {
-                setCustomAnimations(R.anim.slide_in, R.anim.fade_out, R.anim.fade_in, R.anim.slide_out)
+                if (backStackEntryCount != 0) {
+                    setCustomAnimations(
+                        R.anim.slide_in,
+                        R.anim.fade_out,
+                        R.anim.fade_in,
+                        R.anim.slide_out
+                    )
+                }
                 add(fragmentContainerId, fragment, fragment::class.simpleName)
                 addToBackStack(fragment::class.simpleName)
             }

@@ -22,8 +22,8 @@ import kotlinx.coroutines.launch
 internal class AccountLinkingActivity : BaseFragmentActivity(), AccountLinkingSessionListener {
 
     private var accountLinkingConfiguration: AccountLinkingConfiguration? = null
-    private lateinit var accountLinkingSession: AccountLinkingSession
 
+    private lateinit var accountLinkingSession: AccountLinkingSession
     private lateinit var binding: ActivityAccountLinkingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

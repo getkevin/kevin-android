@@ -1,6 +1,7 @@
 package eu.kevin.inapppayments.paymentsession.entities
 
 import android.os.Parcelable
+import eu.kevin.accounts.countryselection.enums.KevinCountry
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 import kotlinx.parcelize.Parcelize
 
@@ -11,8 +12,9 @@ import kotlinx.parcelize.Parcelize
 data class PaymentSessionConfiguration(
     val paymentId: String,
     val paymentType: PaymentType,
-    val preselectedCountry: String?,
+    val preselectedCountry: KevinCountry?,
     val disableCountrySelection: Boolean,
+    val countryFilter: List<KevinCountry>,
     val preselectedBank: String?,
     val skipBankSelection: Boolean
 ) : Parcelable {
@@ -28,6 +30,11 @@ data class PaymentSessionConfiguration(
                 "if disableCountrySelection is true, valid preselectedCountry must be provided"
             }
         }
+        if (preselectedCountry != null && countryFilter.isNotEmpty()) {
+            if (!countryFilter.contains(preselectedCountry)) {
+                throw IllegalArgumentException("preselected country has to be included in countries filter")
+            }
+        }
     }
 
     /**
@@ -35,19 +42,20 @@ data class PaymentSessionConfiguration(
      * @property paymentType [PaymentType] type of payment method to be used during payment session
      */
     class Builder(private val paymentId: String, private val paymentType: PaymentType) {
-        private var preselectedCountry: String? = null
+        private var preselectedCountry: KevinCountry? = null
         private var disableCountrySelection: Boolean = false
+        private var countryFilter: List<KevinCountry> = emptyList()
         private var preselectedBank: String? = null
         private var skipBankSelection: Boolean = false
 
         /**
-         * @param country country iso code that will be used during initial
+         * @param country [KevinCountry] that will be used during initial
          * PaymentSession setup. If country is provided, it will be preselected
          * in bank selection window.
          *
          * Default 'null'
          */
-        fun setPreselectedCountry(country: String): Builder {
+        fun setPreselectedCountry(country: KevinCountry?): Builder {
             this.preselectedCountry = country
             return this
         }
@@ -66,6 +74,18 @@ data class PaymentSessionConfiguration(
         }
 
         /**
+         * @param countries list of countries that will be shown during country selection. If this
+         * list contains countries, only those that are in this list and are supported will be shown
+         * in country selection. If list is empty, all supported countries will be shown.
+         *
+         * Default 'emptyList()'
+         */
+        fun setCountryFilter(countries: List<KevinCountry?>): Builder {
+            this.countryFilter = countries.filterNotNull()
+            return this
+        }
+
+        /**
          * @param bank bankId that will be used during initial PaymentSession setup.
          * If bankId is provided, it will be preselected in bank selection window.
          * In order for bank to be preselected, correct country iso code of that bank has to be
@@ -80,8 +100,11 @@ data class PaymentSessionConfiguration(
 
         /**
          * @param skip if it's set to true, bank selection window will be skipped.
-         * Bank has to be provided with [setPreselectedBank] for this to work,
-         * otherwise calling [build] will throw [IllegalArgumentException]
+         * Correct bank id has to be provided with [setPreselectedBank] for this to work.
+         * If preselected country is provided, it has to match banks country, otherwise bank selection
+         * won't be skipped.
+         * If incorrect or unsupported bank id is provided, user will be asked to
+         * select bank.
          *
          * Default is 'false'
          */
@@ -96,6 +119,7 @@ data class PaymentSessionConfiguration(
                 paymentType,
                 preselectedCountry,
                 disableCountrySelection,
+                countryFilter,
                 preselectedBank,
                 skipBankSelection
             )

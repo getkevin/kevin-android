@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.fragment.app.Fragment
+import eu.kevin.accounts.countryselection.enums.KevinCountry
 import eu.kevin.accounts.linkingsession.LinkAccountContract
 import eu.kevin.accounts.linkingsession.entities.AccountLinkingConfiguration
 import eu.kevin.core.entities.ActivityResult
@@ -81,7 +82,7 @@ class MainFragment : Fragment(), MainViewCallback {
 
     private fun openPaymentSession(payment: ApiPayment, paymentType: PaymentType) {
         val config = PaymentSessionConfiguration.Builder(payment.id, paymentType)
-            .setPreselectedCountry("LT")
+            .setPreselectedCountry(KevinCountry.LITHUANIA)
             .setSkipBankSelection(false)
             .build()
         makePayment.launch(config)
@@ -89,7 +90,7 @@ class MainFragment : Fragment(), MainViewCallback {
 
     private fun openAccountLinkingSession(state: String) {
         val config = AccountLinkingConfiguration.Builder(state)
-            .setPreselectedCountry("LT")
+            .setPreselectedCountry(KevinCountry.LITHUANIA)
             .setDisableCountrySelection(false)
             .build()
         linkAccount.launch(config)

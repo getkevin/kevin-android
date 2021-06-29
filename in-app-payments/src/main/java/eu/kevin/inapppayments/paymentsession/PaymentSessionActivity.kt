@@ -3,6 +3,7 @@ package eu.kevin.inapppayments.paymentsession
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import eu.kevin.core.architecture.BaseFragmentActivity
@@ -13,6 +14,7 @@ import eu.kevin.core.plugin.Kevin
 import eu.kevin.core.plugin.KevinException
 import eu.kevin.inapppayments.KevinPaymentsPlugin
 import eu.kevin.inapppayments.R
+import eu.kevin.inapppayments.databinding.ActivityPaymentSessionBinding
 import eu.kevin.inapppayments.paymentsession.entities.PaymentSessionConfiguration
 import kotlinx.coroutines.launch
 
@@ -21,6 +23,7 @@ internal class PaymentSessionActivity : BaseFragmentActivity(), PaymentSessionLi
     private var paymentSessionConfiguration: PaymentSessionConfiguration? = null
 
     private lateinit var paymentSession: PaymentSession
+    private lateinit var binding: ActivityPaymentSessionBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         if (!KevinPaymentsPlugin.isConfigured()) {
@@ -28,7 +31,8 @@ internal class PaymentSessionActivity : BaseFragmentActivity(), PaymentSessionLi
         }
         setTheme(Kevin.getTheme())
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_payment_session)
+        binding = ActivityPaymentSessionBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         paymentSessionConfiguration = intent?.extras?.getParcelable(PaymentSessionContract.CONFIGURATION_KEY)
 
@@ -100,5 +104,9 @@ internal class PaymentSessionActivity : BaseFragmentActivity(), PaymentSessionLi
 
     override fun onSessionFinished(sessionResult: ActivityResult<PaymentSessionResult>) {
         returnActivityResult(sessionResult)
+    }
+
+    override fun showLoading(show: Boolean) {
+        binding.loadingView.visibility = if (show) View.VISIBLE else View.GONE
     }
 }
