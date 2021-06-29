@@ -1,58 +1,99 @@
 package eu.kevin.core.networking
 
-import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import eu.kevin.core.networking.interceptors.AuthorizationInterceptor
-import eu.kevin.core.networking.interceptors.UserAgentInterceptor
+import eu.kevin.core.networking.exceptions.ApiError
+import eu.kevin.core.networking.exceptions.ErrorResponse
 import eu.kevin.core.networking.serializers.DateSerializer
+import io.ktor.client.*
+import io.ktor.client.engine.android.*
+import io.ktor.client.features.*
+import io.ktor.client.features.json.*
+import io.ktor.client.features.json.serializer.*
+import io.ktor.client.features.logging.*
+import io.ktor.client.request.*
+import io.ktor.client.statement.*
+import io.ktor.http.*
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.modules.SerializersModule
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Converter
-import retrofit2.Retrofit
 import java.util.*
-import java.util.concurrent.TimeUnit
 
 abstract class BaseApiFactory<T : BaseApiClient>(
     private val baseUrl: String,
     private val userAgent: String,
-    private val timeout: Long? = null,
-    private val httpLoggingInterceptorLevel: HttpLoggingInterceptor.Level = HttpLoggingInterceptor.Level.BASIC
+    private val timeout: Int? = null,
+    private val logLevel: LogLevel = LogLevel.NONE
 ) {
     abstract fun createClient(tokenDelegate: TokenDelegate?): T
 
-    protected fun createRetrofit(tokenDelegate: TokenDelegate? = null): Retrofit {
-        return with(Retrofit.Builder()) {
-            baseUrl(baseUrl)
-            addConverterFactory(createConverterFactory())
-            client(createOkHttpClient(tokenDelegate))
-            build()
-        }
-    }
-
-    protected open fun createConverterFactory(): Converter.Factory {
-        return Json {
-            serializersModule = SerializersModule {
-                contextual(Date::class, DateSerializer)
+    protected fun createKtorClient(): HttpClient {
+        return HttpClient(Android) {
+            engine {
+                timeout?.let {
+                    connectTimeout = it
+                    socketTimeout = it
+                }
             }
-            ignoreUnknownKeys = true
-        }.asConverterFactory("application/json".toMediaType())
-    }
 
-    private fun createOkHttpClient(tokenDelegate: TokenDelegate?): OkHttpClient {
-        return with(OkHttpClient().newBuilder()) {
+            defaultRequest {
+                url.takeFrom(URLBuilder().takeFrom(baseUrl).apply {
+                    encodedPath += url.encodedPath
+                })
+                header(HttpHeaders.ContentType, ContentType.Application.Json)
+                header(HttpHeaders.UserAgent, userAgent)
+            }
+
+            HttpResponseValidator {
+                handleResponseException {
+                    handleRequestError(it)
+                }
+            }
+
             timeout?.let {
-                readTimeout(it, TimeUnit.MILLISECONDS)
-                writeTimeout(it, TimeUnit.MILLISECONDS)
-                connectTimeout(it, TimeUnit.MILLISECONDS)
+                install(HttpTimeout) {
+                    requestTimeoutMillis = it.toLong()
+                    socketTimeoutMillis = it.toLong()
+                    connectTimeoutMillis = it.toLong()
+                }
             }
-            addInterceptor(UserAgentInterceptor(userAgent))
-            tokenDelegate?.let {
-                addInterceptor(AuthorizationInterceptor(tokenDelegate))
+
+            install(JsonFeature) {
+                serializer = createSerializer()
             }
-            addInterceptor(HttpLoggingInterceptor().setLevel(httpLoggingInterceptorLevel))
-            build()
+
+            install(Logging) {
+                logger = Logger.ANDROID
+                level = logLevel
+            }
         }
+    }
+
+    protected open fun createSerializer(): KotlinxSerializer {
+        return KotlinxSerializer(
+            Json {
+                serializersModule = SerializersModule {
+                    contextual(Date::class, DateSerializer)
+                }
+                ignoreUnknownKeys = true
+            }
+        )
+    }
+
+    private suspend fun handleRequestError(requestError: Throwable) {
+        val errorToThrow = when (requestError) {
+            is ClientRequestException -> {
+                val errorString = requestError.response.readText()
+                try {
+                    val error = Json {
+                        ignoreUnknownKeys = true
+                    }.decodeFromString(ErrorResponse.serializer(), errorString).error
+                    ApiError(error.name, error.description, error.code, requestError.response.status.value, requestError)
+                } catch (e: Exception) {
+                    ApiError(description = requestError.message, statusCode = requestError.response.status.value, cause = e)
+                }
+            }
+            else -> {
+                ApiError(description = requestError.message, cause = requestError)
+            }
+        }
+        throw errorToThrow
     }
 }
