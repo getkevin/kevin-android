@@ -9,18 +9,18 @@
 ## Getting Started
 1. Import library features you will use:
 
-```
+```gradle
 implementation 'com.github.getkevin.kevin-android:core:xxx'
 implementation 'com.github.getkevin.kevin-android:accounts:xxx'
 implementation 'com.github.getkevin.kevin-android:in-app-payments:xxx'
 ```
 or import all features all together:
-```
+```gradle
 implementation 'com.github.getkevin:kevin-android:xxx'
 ```
 2. Initialize plugins you will use in your Application file:
 
-```
+```kotlin
 Kevin.setLocale(Locale("en"))   //  optional locale setup (by default phone locale will be used)
 Kevin.setTheme(R.style.KevinTheme)  //  supply optional theme
 KevinAccountsPlugin.configure(
@@ -37,7 +37,7 @@ KevinPaymentsPlugin.configure(
 ## Account Linking
 1. Use registerForActivityResult with our ActivityResultContract:
 
-```
+```kotlin
 val linkAccount = registerForActivityResult(LinkAccountContract()) { result ->
     when (result) {
         is ActivityResult.Success -> {
@@ -54,7 +54,7 @@ val linkAccount = registerForActivityResult(LinkAccountContract()) { result ->
 ```
 2. Customize flow by tweaking our configuration and launch the flow:
 
-```
+```kotlin
 val config = AccountLinkingConfiguration.Builder(payment.id, paymentType)
     .setPreselectedCountry(KevinCountry.LITHUANIA)  //  optional option to preselect country
     .setCountryFilter(listOf(   //  optional option to supply country list
@@ -71,7 +71,7 @@ linkAccount.launch(config)
 ## In-App Payments
 1. Use registerForActivityResult with our ActivityResultContract:
 
-```
+```kotlin
 val makePayment = registerForActivityResult(PaymentSessionContract()) { result ->
     when (result) {
         is ActivityResult.Success -> {
@@ -88,7 +88,7 @@ val makePayment = registerForActivityResult(PaymentSessionContract()) { result -
 ```
 2. Customize flow by tweaking our configuration and launch the flow:
 
-```
+```kotlin
 val config = PaymentSessionConfiguration.Builder(payment.id, paymentType)
     .setPreselectedCountry(KevinCountry.LITHUANIA)  //  optional option to preselect country
     .setCountryFilter(listOf(   //  optional option to supply country list
@@ -105,7 +105,7 @@ linkAccount.launch(config)
 ## UI customization
 Built-in windows can be widely customised. Override kevin. theme and control a wide array of properties:
 
-```
+```xml
 <style name="KevinTheme" parent="Theme.Kevin.Base">
     <item name="android:statusBarColor">#FFFFFF</item>
     <item name="android:navigationBarColor">#FFFFFF</item>
