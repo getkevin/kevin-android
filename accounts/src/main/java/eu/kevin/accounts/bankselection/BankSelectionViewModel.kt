@@ -105,7 +105,7 @@ class BankSelectionViewModel constructor(
         GlobalRouter.pushModalFragment(CountrySelectionFragment().also {
             it.configuration = CountrySelectionFragmentConfiguration(
                 state.value.selectedCountry,
-                configuration.countriesFilter,
+                configuration.countryFilter,
                 configuration.authState
             )
         })
@@ -163,8 +163,8 @@ class BankSelectionViewModel constructor(
         val apiCountries = countriesManager.getSupportedCountries(configuration.authState).map {
             it.lowercase()
         }
-        return if (configuration.countriesFilter.isNotEmpty()) {
-            val filterIsos = configuration.countriesFilter.map { it.iso }
+        return if (configuration.countryFilter.isNotEmpty()) {
+            val filterIsos = configuration.countryFilter.map { it.iso }
             apiCountries.filter {
                 filterIsos.contains(it)
             }

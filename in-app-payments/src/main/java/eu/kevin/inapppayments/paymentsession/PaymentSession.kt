@@ -139,7 +139,7 @@ internal class PaymentSession(
                     it.configuration = BankSelectionFragmentConfiguration(
                         sessionData.selectedCountry,
                         configuration.disableCountrySelection,
-                        configuration.countriesFilter,
+                        configuration.countryFilter,
                         sessionData.selectedBank?.id,
                         configuration.paymentId
                     )

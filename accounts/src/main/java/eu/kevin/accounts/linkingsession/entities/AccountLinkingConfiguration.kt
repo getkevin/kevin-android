@@ -12,7 +12,7 @@ data class AccountLinkingConfiguration internal constructor(
     val state: String,
     val preselectedCountry: KevinCountry?,
     val disableCountrySelection: Boolean,
-    val countriesFilter: List<KevinCountry>,
+    val countryFilter: List<KevinCountry>,
     val preselectedBank: String?,
     val skipBankSelection: Boolean
 ) : Parcelable {
@@ -28,8 +28,8 @@ data class AccountLinkingConfiguration internal constructor(
                 "if disableCountrySelection is true, valid preselectedCountry must be provided"
             }
         }
-        if (preselectedCountry != null && countriesFilter.isNotEmpty()) {
-            if (!countriesFilter.contains(preselectedCountry)) {
+        if (preselectedCountry != null && countryFilter.isNotEmpty()) {
+            if (!countryFilter.contains(preselectedCountry)) {
                 throw IllegalArgumentException("preselected country has to be included in countries filter")
             }
         }
@@ -41,7 +41,7 @@ data class AccountLinkingConfiguration internal constructor(
     class Builder(private val state: String) {
         private var preselectedCountry: KevinCountry? = null
         private var disableCountrySelection: Boolean = false
-        private var countriesFilter: List<KevinCountry> = emptyList()
+        private var countryFilter: List<KevinCountry> = emptyList()
         private var preselectedBank: String? = null
         private var skipBankSelection: Boolean = false
 
@@ -77,8 +77,8 @@ data class AccountLinkingConfiguration internal constructor(
          *
          * Default 'emptyList()'
          */
-        fun setCountriesFilter(countries: List<KevinCountry>): Builder {
-            this.countriesFilter = countries
+        fun setCountryFilter(countries: List<KevinCountry>): Builder {
+            this.countryFilter = countries
             return this
         }
 
@@ -115,7 +115,7 @@ data class AccountLinkingConfiguration internal constructor(
                 state,
                 preselectedCountry,
                 disableCountrySelection,
-                countriesFilter,
+                countryFilter,
                 preselectedBank,
                 skipBankSelection
             )
