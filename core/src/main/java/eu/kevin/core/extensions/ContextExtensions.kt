@@ -3,14 +3,19 @@ package eu.kevin.core.extensions
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.util.TypedValue
-import androidx.annotation.AttrRes
-import androidx.annotation.ColorInt
-import androidx.annotation.ColorRes
-import androidx.annotation.DrawableRes
+import androidx.annotation.*
 import androidx.core.content.ContextCompat
 
 @ColorInt
 fun Context.getColorFromAttr(@AttrRes attribute: Int): Int {
+    return TypedValue().let {
+        theme.resolveAttribute(attribute, it, true)
+        it.data
+    }
+}
+
+@StyleRes
+fun Context.getStyleFromAttr(@AttrRes attribute: Int): Int {
     return TypedValue().let {
         theme.resolveAttribute(attribute, it, true)
         it.data

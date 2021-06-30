@@ -4,10 +4,12 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
-import eu.kevin.core.context.KevinContextWrapper
 import eu.kevin.core.R
 import eu.kevin.core.architecture.interfaces.Navigable
+import eu.kevin.core.context.KevinContextWrapper
 import eu.kevin.core.entities.ActivityResult
+import eu.kevin.core.extensions.getStyleFromAttr
+import eu.kevin.core.extensions.setAnimationsFromStyle
 import eu.kevin.core.plugin.Kevin
 
 abstract class BaseFragmentActivity : AppCompatActivity() {
@@ -38,11 +40,9 @@ abstract class BaseFragmentActivity : AppCompatActivity() {
         with(supportFragmentManager) {
             commit {
                 if (backStackEntryCount != 0) {
-                    setCustomAnimations(
-                        R.anim.slide_in,
-                        R.anim.fade_out,
-                        R.anim.fade_in,
-                        R.anim.slide_out
+                    setAnimationsFromStyle(
+                        getStyleFromAttr(R.attr.kevinWindowTransitionStyle),
+                        this@BaseFragmentActivity
                     )
                 }
                 add(fragmentContainerId, fragment, fragment::class.simpleName)

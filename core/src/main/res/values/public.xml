@@ -3,6 +3,7 @@
     <public name="Theme.Kevin.Base" type="style" />
     <public name="Kevin.Toolbar" type="style" />
     <public name="Kevin.Button.Primary" type="style" />
+    <public name="Kevin.Window.Transition" type="style" />
     <public name="kevinPrimaryBackgroundColor" type="attr" />
     <public name="kevinSecondaryBackgroundColor" type="attr" />
     <public name="kevinToolbarColor" type="attr" />
@@ -15,4 +16,5 @@
     <public name="kevinSecondaryTextColor" type="attr" />
     <public name="kevinToolbarStyle" type="attr" />
     <public name="kevinPrimaryButtonStyle" type="attr" />
+    <public name="kevinWindowTransitionStyle" type="attr" />
 </resources>
