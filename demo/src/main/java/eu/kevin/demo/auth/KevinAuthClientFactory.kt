@@ -2,22 +2,21 @@ package eu.kevin.demo.auth
 
 import eu.kevin.core.networking.BaseApiFactory
 import eu.kevin.core.networking.TokenDelegate
-import okhttp3.logging.HttpLoggingInterceptor
+import io.ktor.client.features.logging.*
 
 class KevinAuthClientFactory(
     baseUrl: String,
     userAgent: String,
-    timeout: Long? = null,
-    httpLoggingInterceptorLevel: HttpLoggingInterceptor.Level = HttpLoggingInterceptor.Level.BASIC,
+    timeout: Int? = null,
+    logLevel: LogLevel,
 ) : BaseApiFactory<KevinAuthClient>(
     baseUrl,
     userAgent,
     timeout,
-    httpLoggingInterceptorLevel
+    logLevel
 ) {
 
     override fun createClient(tokenDelegate: TokenDelegate?): KevinAuthClient {
-        val service = createRetrofit(tokenDelegate).create(KevinAuthService::class.java)
-        return KevinAuthApiClient(service)
+        return KevinAuthApiClient(createKtorClient())
     }
 }

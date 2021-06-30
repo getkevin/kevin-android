@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 import eu.kevin.demo.auth.KevinAuthClientFactory
+import io.ktor.client.features.logging.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,7 +17,8 @@ class MainViewModel : ViewModel() {
     private val kevinAuthClient = KevinAuthClientFactory(
         baseUrl = "https://your.base.url/",
         "",
-        timeout = 120000L
+        timeout = 120000,
+        logLevel = LogLevel.NONE
     ).createClient(null)
 
     private val _viewState = MutableStateFlow<MainViewState>(MainViewState.Loading(false))

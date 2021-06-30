@@ -6,8 +6,8 @@ buildscript {
         okhttp3_loggin_interceptor_version = '4.9.1'
         androidx_core_ktx_version = '1.5.0'
         lifecycle_version = '2.3.1'
-        retrofit_version = '2.9.0'
         coil_version = '1.2.1'
+        ktor_version = '1.6.0'
 
         junit_version = '4.13.2'
         androidx_junit_version = '1.1.2'
