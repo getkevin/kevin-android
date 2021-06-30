@@ -12,6 +12,8 @@
 
         <item name="colorControlHighlight">?kevinRippleOnPrimaryColor</item>
 
+        <item name="android:windowAnimationStyle">?kevinWindowTransitionStyle</item>
+
         <item name="kevinToolbarColor">@color/white</item>
 
         <item name="kevinPrimaryBackgroundColor">@color/white</item>
@@ -29,5 +31,6 @@
 
         <item name="kevinPrimaryButtonStyle">@style/Kevin.Button.Primary</item>
         <item name="kevinToolbarStyle">@style/Kevin.Toolbar</item>
+        <item name="kevinWindowTransitionStyle">@style/Kevin.Window.Transition</item>
     </style>
 </resources>

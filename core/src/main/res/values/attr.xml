@@ -18,4 +18,5 @@
     <!--    Component style attributes-->
     <attr name="kevinToolbarStyle" format="reference" />
     <attr name="kevinPrimaryButtonStyle" format="reference" />
+    <attr name="kevinWindowTransitionStyle" format="reference" />
 </resources>
