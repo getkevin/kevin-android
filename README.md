@@ -110,6 +110,7 @@ Built-in windows can be widely customised. Override kevin. theme and control a w
     <item name="android:statusBarColor">#FFFFFF</item>
     <item name="android:navigationBarColor">#FFFFFF</item>
     <item name="android:windowLightStatusBar">true</item>
+    <item name="android:windowAnimationStyle">?kevinWindowTransitionStyle</item>
 
     <item name="kevinToolbarColor">#FFFFFF</item>
     <item name="fontFamily">@font/custom_font</item>
@@ -129,6 +130,7 @@ Built-in windows can be widely customised. Override kevin. theme and control a w
 
     <item name="kevinToolbarStyle">@style/KevinToolbarTheme</item>
     <item name="kevinPrimaryButtonStyle">@style/KevinPrimaryButtonStyle</item>
+    <item name="kevinWindowTransitionStyle">@style/KevinWindowTransition</item>
 </style>
 
 <style name="KevinToolbarTheme" parent="Kevin.Toolbar">
@@ -163,6 +165,13 @@ Built-in windows can be widely customised. Override kevin. theme and control a w
     <item name="android:backgroundTint">#0B1E42</item>
     <item name="android:textAppearance">@android:style/TextAppearance.Material.Widget.Button
     </item>
+</style>
+
+<style name="KevinWindowTransition" parent="Kevin.Window.Transition">
+    <item name="android:activityOpenEnterAnimation">@anim/slide_in</item>
+    <item name="android:activityOpenExitAnimation">@anim/fade_out</item>
+    <item name="android:activityCloseEnterAnimation">@anim/fade_in</item>
+    <item name="android:activityCloseExitAnimation">@anim/slide_out</item>
 </style>
 ```
 
