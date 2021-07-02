@@ -2,10 +2,11 @@ package eu.kevin.accounts.countryselection.managers
 
 import eu.kevin.accounts.networking.KevinAccountsClient
 
-class CountriesManager(
+class KevinCountriesManager(
     private val kevinAccountsClient: KevinAccountsClient
-) {
-    suspend fun getSupportedCountries(authState: String): List<String> {
+) : CountriesManagerInterface {
+
+    override suspend fun getSupportedCountries(authState: String): List<String> {
         return kevinAccountsClient.getSupportedCountries(authState).data
     }
 }

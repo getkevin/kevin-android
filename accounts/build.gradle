@@ -65,7 +65,11 @@ dependencies {
 
     implementation "io.coil-kt:coil:$coil_version"
 
+    testImplementation project(':testcore')
     testImplementation "junit:junit:$junit_version"
+    testImplementation "io.mockk:mockk:1.11.0"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
     androidTestImplementation "androidx.test.ext:junit:$androidx_junit_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
 

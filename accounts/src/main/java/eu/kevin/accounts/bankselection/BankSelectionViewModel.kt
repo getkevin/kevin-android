@@ -5,22 +5,26 @@ import androidx.savedstate.SavedStateRegistryOwner
 import eu.kevin.accounts.bankselection.BankSelectionIntent.*
 import eu.kevin.accounts.bankselection.exceptions.BankNotSelectedException
 import eu.kevin.accounts.bankselection.factories.BankListItemFactory
-import eu.kevin.accounts.bankselection.managers.BanksManager
+import eu.kevin.accounts.bankselection.managers.KevinBankManager
 import eu.kevin.accounts.countryselection.CountrySelectionFragment
 import eu.kevin.accounts.countryselection.CountrySelectionFragmentConfiguration
-import eu.kevin.accounts.countryselection.managers.CountriesManager
+import eu.kevin.accounts.countryselection.managers.KevinCountriesManager
 import eu.kevin.accounts.bankselection.entities.Bank
+import eu.kevin.accounts.bankselection.managers.BankManagerInterface
+import eu.kevin.accounts.countryselection.usecases.SupportedCountryUseCase
 import eu.kevin.accounts.networking.AccountsClientProvider
 import eu.kevin.core.architecture.BaseViewModel
 import eu.kevin.core.architecture.routing.GlobalRouter
 import eu.kevin.core.entities.LoadingState
 import eu.kevin.core.entities.isLoading
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class BankSelectionViewModel constructor(
-    private val banksManager: BanksManager,
-    private val countriesManager: CountriesManager,
+    private val countryUseCase: SupportedCountryUseCase,
+    private val banksManager: BankManagerInterface,
+    private val ioDispatcher: CoroutineDispatcher,
     savedStateHandle: SavedStateHandle
 ) : BaseViewModel<BankSelectionState, BankSelectionIntent>(savedStateHandle) {
 
@@ -31,7 +35,13 @@ class BankSelectionViewModel constructor(
             field = value
             savedStateHandle.set("banks", value)
         }
-        get() = savedStateHandle.get("banks") ?: emptyList()
+        get() {
+            return if (field.isNotEmpty()) {
+                field
+            } else {
+                savedStateHandle.get("banks") ?: emptyList()
+            }
+        }
 
     override suspend fun handleIntent(intent: BankSelectionIntent) {
         when (intent) {
@@ -58,10 +68,10 @@ class BankSelectionViewModel constructor(
                 loadingState = LoadingState.Loading(true)
             )
         }
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(ioDispatcher) {
             try {
                 var disableCountrySelection = configuration.isCountrySelectionDisabled
-                val supportedCountries = getSupportedCountries(configuration)
+                val supportedCountries = countryUseCase.getSupportedCountries(configuration.authState, configuration.countryFilter)
                 var selectedCountry = supportedCountries.firstOrNull { it == configuration.selectedCountry }
                 if (selectedCountry == null) {
                     disableCountrySelection = false
@@ -117,7 +127,7 @@ class BankSelectionViewModel constructor(
                 loadingState = LoadingState.Loading(true)
             )
         }
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(ioDispatcher) {
             try {
                 val apiBanks = banksManager.getSupportedBanks(selectedCountry, configuration.authState)
                 banks = apiBanks.map {
@@ -159,20 +169,6 @@ class BankSelectionViewModel constructor(
         )
     }
 
-    private suspend fun getSupportedCountries(configuration: BankSelectionFragmentConfiguration): List<String> {
-        val apiCountries = countriesManager.getSupportedCountries(configuration.authState).map {
-            it.lowercase()
-        }
-        return if (configuration.countryFilter.isNotEmpty()) {
-            val filterIsos = configuration.countryFilter.map { it.iso }
-            apiCountries.filter {
-                filterIsos.contains(it)
-            }
-        } else {
-            apiCountries
-        }
-    }
-
     class Factory(owner: SavedStateRegistryOwner) : AbstractSavedStateViewModelFactory(owner, null) {
         override fun <T : ViewModel?> create(
             key: String,
@@ -180,12 +176,15 @@ class BankSelectionViewModel constructor(
             handle: SavedStateHandle
         ): T {
             return BankSelectionViewModel(
-                BanksManager(
+                SupportedCountryUseCase(
+                    KevinCountriesManager(
+                        kevinAccountsClient = AccountsClientProvider.kevinAccountsClient
+                    )
+                ),
+                KevinBankManager(
                     kevinAccountsClient = AccountsClientProvider.kevinAccountsClient
                 ),
-                CountriesManager(
-                    kevinAccountsClient = AccountsClientProvider.kevinAccountsClient
-                ),
+                Dispatchers.IO,
                 handle
             ) as T
         }
