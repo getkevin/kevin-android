@@ -24,22 +24,13 @@ class CountrySelectionFragment : BaseModalFragment<CountrySelectionState, Countr
     }
 
     override fun onAttached() {
-        viewModel.intents.offer(Initialize(configuration!!))
-    }
-
-    override fun onBackPressed(): Boolean {
-        viewModel.intents.offer(HandleBackClicked)
-        return true
+        viewModel.intents.trySend(Initialize(configuration!!))
     }
 
     // CountriesViewDelegate
 
-    override fun onBackClicked() {
-        viewModel.intents.offer(HandleBackClicked)
-    }
-
     override fun onCountryClicked(iso: String) {
-        viewModel.intents.offer(HandleCountrySelection(iso))
+        viewModel.intents.trySend(HandleCountrySelection(iso))
         dismiss()
     }
 

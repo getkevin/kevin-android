@@ -32,7 +32,7 @@ abstract class BaseViewModel<S : IState, I : IIntent>(
         }
     }
 
-    fun getSavedState(): S? {
+    protected fun getSavedState(): S? {
         return savedStateHandle.get("saved_state")
     }
 

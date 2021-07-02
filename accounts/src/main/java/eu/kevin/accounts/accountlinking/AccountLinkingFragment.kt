@@ -26,22 +26,22 @@ internal class AccountLinkingFragment : BaseFragment<AccountLinkingState, Accoun
     }
 
     override fun onAttached() {
-        viewModel.intents.offer(Initialize(configuration!!))
+        viewModel.intents.trySend(Initialize(configuration!!))
     }
 
     override fun onBackPressed(): Boolean {
-        viewModel.intents.offer(HandleBackClicked)
+        viewModel.intents.trySend(HandleBackClicked)
         return true
     }
 
     // AccountLinkingViewDelegate
 
     override fun onBackClicked() {
-        viewModel.intents.offer(HandleBackClicked)
+        viewModel.intents.trySend(HandleBackClicked)
     }
 
     override fun onAuthorizationReceived(uri: Uri) {
-        viewModel.intents.offer(HandleAuthorization(uri))
+        viewModel.intents.trySend(HandleAuthorization(uri))
     }
 
     object Contract: FragmentResultContract<FragmentResult<AccountLinkingFragmentResult>>() {

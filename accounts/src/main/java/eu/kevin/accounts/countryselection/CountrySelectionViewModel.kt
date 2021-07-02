@@ -4,16 +4,19 @@ import androidx.lifecycle.*
 import androidx.savedstate.SavedStateRegistryOwner
 import eu.kevin.accounts.countryselection.CountrySelectionIntent.*
 import eu.kevin.accounts.countryselection.entities.Country
-import eu.kevin.accounts.countryselection.managers.CountriesManager
+import eu.kevin.accounts.countryselection.managers.KevinCountriesManager
+import eu.kevin.accounts.countryselection.usecases.SupportedCountryUseCase
 import eu.kevin.accounts.networking.AccountsClientProvider
 import eu.kevin.core.architecture.BaseViewModel
 import eu.kevin.core.architecture.routing.GlobalRouter
 import eu.kevin.core.entities.LoadingState
-import eu.kevin.core.entities.isLoading
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class CountrySelectionViewModel constructor(
-    private val countriesManager: CountriesManager,
+    private val countryUseCase: SupportedCountryUseCase,
+    private val ioDispatcher: CoroutineDispatcher,
     savedStateHandle: SavedStateHandle
 ) : BaseViewModel<CountrySelectionState, CountrySelectionIntent>(savedStateHandle) {
 
@@ -22,11 +25,6 @@ class CountrySelectionViewModel constructor(
     override suspend fun handleIntent(intent: CountrySelectionIntent) {
         when (intent) {
             is Initialize -> initialize(intent.configuration)
-            is HandleBackClicked -> {
-                if (!state.value.loadingState.isLoading()) {
-                    GlobalRouter.popCurrentFragment()
-                }
-            }
             is HandleCountrySelection -> handleCountrySelection(intent.iso)
         }
     }
@@ -41,9 +39,9 @@ class CountrySelectionViewModel constructor(
                 loadingState = LoadingState.Loading(true)
             )
         }
-        viewModelScope.launch {
+        viewModelScope.launch(ioDispatcher) {
             try {
-                val supportedCountries = getSupportedCountries(configuration)
+                val supportedCountries = countryUseCase.getSupportedCountries(configuration.authState, configuration.countryFilter)
                     .sortedBy { it }
                     .map {
                         Country(it)
@@ -77,20 +75,6 @@ class CountrySelectionViewModel constructor(
         GlobalRouter.returnFragmentResult(CountrySelectionFragment.Contract, selectedCountry!!.iso)
     }
 
-    private suspend fun getSupportedCountries(configuration: CountrySelectionFragmentConfiguration): List<String> {
-        val apiCountries = countriesManager.getSupportedCountries(configuration.authState).map {
-            it.lowercase()
-        }
-        return if (configuration.countryFilter.isNotEmpty()) {
-            val filterIsos = configuration.countryFilter.map { it.iso }
-            apiCountries.filter {
-                filterIsos.contains(it)
-            }
-        } else {
-            apiCountries
-        }
-    }
-
     class Factory(owner: SavedStateRegistryOwner) : AbstractSavedStateViewModelFactory(owner, null) {
         override fun <T : ViewModel?> create(
             key: String,
@@ -98,9 +82,12 @@ class CountrySelectionViewModel constructor(
             handle: SavedStateHandle
         ): T {
             return CountrySelectionViewModel(
-                CountriesManager(
-                    kevinAccountsClient = AccountsClientProvider.kevinAccountsClient
+                SupportedCountryUseCase(
+                    KevinCountriesManager(
+                        kevinAccountsClient = AccountsClientProvider.kevinAccountsClient
+                    )
                 ),
+                Dispatchers.IO,
                 handle
             ) as T
         }

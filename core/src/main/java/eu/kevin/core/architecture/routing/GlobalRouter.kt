@@ -5,29 +5,35 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import eu.kevin.core.fragment.FragmentResultContract
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.channels.BroadcastChannel
-import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
 object GlobalRouter {
 
-    private val mainRouterChannel = BroadcastChannel<Fragment>(capacity = 1)
-    private val mainModalRouterChannel = BroadcastChannel<BottomSheetDialogFragment>(capacity = 1)
-    private val popFragmentChannel = BroadcastChannel<Fragment?>(capacity = 1)
-    private val fragmentResultChannel = BroadcastChannel<RouterFragmentResultWrapper>(capacity = 1)
+    private val mainRouterChannel = Channel<Fragment>(capacity = 1)
+    private val mainModalRouterChannel = Channel<BottomSheetDialogFragment>(capacity = 1)
+    private val popFragmentChannel = Channel<Fragment?>(capacity = 1)
+    private val fragmentResultChannel = Channel<RouterFragmentResultWrapper>(capacity = 1)
 
-    fun pushFragment(fragment: Fragment) = mainRouterChannel.offer(fragment)
-    fun pushModalFragment(fragment: BottomSheetDialogFragment) = mainModalRouterChannel.offer(fragment)
-    fun popCurrentFragment() = popFragmentChannel.offer(null)
+    fun pushFragment(fragment: Fragment) {
+        mainRouterChannel.trySend(fragment)
+    }
+    fun pushModalFragment(fragment: BottomSheetDialogFragment) {
+        mainModalRouterChannel.trySend(fragment)
+    }
+    fun popCurrentFragment() {
+        popFragmentChannel.trySend(null)
+    }
     fun <T>returnFragmentResult(contract: FragmentResultContract<T>, result: T) {
-        fragmentResultChannel.offer(RouterFragmentResultWrapper(contract, result))
+        fragmentResultChannel.trySend(RouterFragmentResultWrapper(contract, result))
     }
 
     fun addOnPushFragmentListener(scope: CoroutineScope, action: (Fragment) -> Unit) {
         scope.launch {
-            mainRouterChannel.asFlow().flowOn(Dispatchers.Main).collect { fragment ->
+            mainRouterChannel.receiveAsFlow().flowOn(Dispatchers.Main).collect { fragment ->
                 action.invoke(fragment)
             }
         }
@@ -35,7 +41,7 @@ object GlobalRouter {
 
     fun addOnPushModalFragmentListener(scope: CoroutineScope, action: (BottomSheetDialogFragment) -> Unit) {
         scope.launch {
-            mainModalRouterChannel.asFlow().flowOn(Dispatchers.Main).collect { fragment ->
+            mainModalRouterChannel.receiveAsFlow().flowOn(Dispatchers.Main).collect { fragment ->
                 action.invoke(fragment)
             }
         }
@@ -43,7 +49,7 @@ object GlobalRouter {
 
     fun addOnPopCurrentFragmentListener(scope: CoroutineScope, action: (Fragment?) -> Unit) {
         scope.launch {
-            popFragmentChannel.asFlow().flowOn(Dispatchers.Main).collect { fragment ->
+            popFragmentChannel.receiveAsFlow().flowOn(Dispatchers.Main).collect { fragment ->
                 action.invoke(fragment)
             }
         }
@@ -51,7 +57,7 @@ object GlobalRouter {
 
     fun addOnReturnFragmentResultListener(scope: CoroutineScope, action: (RouterFragmentResultWrapper) -> Unit) {
         scope.launch {
-            fragmentResultChannel.asFlow().flowOn(Dispatchers.Main).collect { result ->
+            fragmentResultChannel.receiveAsFlow().flowOn(Dispatchers.Main).collect { result ->
                 action.invoke(result)
             }
         }

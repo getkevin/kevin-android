@@ -27,33 +27,33 @@ class BankSelectionFragment : BaseFragment<BankSelectionState, BankSelectionInte
     }
 
     override fun onAttached() {
-        viewModel.intents.offer(Initialize(configuration!!))
+        viewModel.intents.trySend(Initialize(configuration!!))
         parentFragmentManager.setFragmentResultListener(CountrySelectionFragment.Contract, this) {
-            viewModel.intents.offer(HandleCountrySelected(it, configuration!!))
+            viewModel.intents.trySend(HandleCountrySelected(it, configuration!!))
         }
     }
 
     override fun onBackPressed(): Boolean {
-        viewModel.intents.offer(HandleBackClicked)
+        viewModel.intents.trySend(HandleBackClicked)
         return true
     }
 
     // BankSelectionViewDelegate
 
     override fun onBackClicked() {
-        viewModel.intents.offer(HandleBackClicked)
+        viewModel.intents.trySend(HandleBackClicked)
     }
 
     override fun onBankClicked(bankId: String) {
-        viewModel.intents.offer(HandleBankSelection(bankId))
+        viewModel.intents.trySend(HandleBankSelection(bankId))
     }
 
     override fun onSelectCountryClicked() {
-        viewModel.intents.offer(HandleCountrySelectionClick(configuration!!))
+        viewModel.intents.trySend(HandleCountrySelectionClick(configuration!!))
     }
 
     override fun onContinueClicked() {
-        viewModel.intents.offer(HandleContinueClicked)
+        viewModel.intents.trySend(HandleContinueClicked)
     }
 
     object Contract: FragmentResultContract<Bank>() {
