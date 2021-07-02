@@ -10,7 +10,7 @@ import eu.kevin.accounts.countryselection.CountrySelectionFragment
 import eu.kevin.accounts.countryselection.CountrySelectionFragmentConfiguration
 import eu.kevin.accounts.countryselection.managers.KevinCountriesManager
 import eu.kevin.accounts.bankselection.entities.Bank
-import eu.kevin.accounts.bankselection.managers.BankManager
+import eu.kevin.accounts.bankselection.managers.BankManagerInterface
 import eu.kevin.accounts.countryselection.usecases.SupportedCountryUseCase
 import eu.kevin.accounts.networking.AccountsClientProvider
 import eu.kevin.core.architecture.BaseViewModel
@@ -23,7 +23,7 @@ import kotlinx.coroutines.launch
 
 class BankSelectionViewModel constructor(
     private val countryUseCase: SupportedCountryUseCase,
-    private val banksManager: BankManager,
+    private val banksManager: BankManagerInterface,
     private val ioDispatcher: CoroutineDispatcher,
     savedStateHandle: SavedStateHandle
 ) : BaseViewModel<BankSelectionState, BankSelectionIntent>(savedStateHandle) {

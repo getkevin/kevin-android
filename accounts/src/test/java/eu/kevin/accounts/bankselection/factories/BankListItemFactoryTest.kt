@@ -19,7 +19,7 @@ class BankListItemFactoryTest : BaseUnitTest() {
                 ApiBank("LUMINOR_LT", "Luminor", "Luminor Bank AS", "LT", false, "", "AGBLLT2X", false),
                 ApiBank("CITADELE_LT", "Citadele", "Citadele Bank", "LT", false, "", "INDULT2X", false),
                 ApiBank("MEDBANK_LT", "Medicinos Bankas", "UAB Medicinos bankas", "LT", false, "", "MDBALT22", false)
-                ),
+            ),
             null
         )
         assertEquals(listItems.size, 5)
