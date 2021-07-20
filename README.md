@@ -111,6 +111,7 @@ Built-in windows can be widely customised. Override kevin. theme and control a w
     <item name="android:navigationBarColor">#FFFFFF</item>
     <item name="android:windowLightStatusBar">true</item>
     <item name="android:windowAnimationStyle">?kevinWindowTransitionStyle</item>
+    <item name="bottomSheetDialogTheme">@style/KevinBottomSheetTheme</item>
 
     <item name="kevinToolbarColor">#FFFFFF</item>
     <item name="fontFamily">@font/custom_font</item>
@@ -131,6 +132,12 @@ Built-in windows can be widely customised. Override kevin. theme and control a w
     <item name="kevinToolbarStyle">@style/KevinToolbarTheme</item>
     <item name="kevinPrimaryButtonStyle">@style/KevinPrimaryButtonStyle</item>
     <item name="kevinWindowTransitionStyle">@style/KevinWindowTransition</item>
+</style>
+
+<style name="KevinBottomSheetTheme" parent="Theme.Kevin.BottomSheet.Base">
+    <item name="android:statusBarColor">@android:color/transparent</item>
+    <item name="android:windowLightStatusBar">false</item>
+    <item name="android:navigationBarColor">@color/black_50</item>
 </style>
 
 <style name="KevinToolbarTheme" parent="Kevin.Toolbar">

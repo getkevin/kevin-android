@@ -6,7 +6,9 @@ import android.content.Context
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.core.view.*
 
 fun View.fadeOut() {
     if (visibility == GONE) return
@@ -37,4 +39,38 @@ fun View.fadeIn() {
 fun View.hideKeyboard() {
     val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     imm.hideSoftInputFromWindow(this.windowToken, 0)
+}
+
+fun View.applySystemInsetsPadding(top: Boolean = false, bottom: Boolean = false) {
+    val originalPaddingTop = paddingTop
+    val originalPaddingBottom = paddingBottom
+    ViewCompat.setOnApplyWindowInsetsListener(this) { view, windowInsets ->
+        val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+        if (top) {
+            view.updatePadding(top = originalPaddingTop + insets.top)
+        }
+        if (bottom) {
+            view.updatePadding(bottom = originalPaddingBottom + insets.bottom)
+        }
+        windowInsets
+    }
+}
+
+fun View.applySystemInsetsMargin(top: Boolean = false, bottom: Boolean = false) {
+    val originalMarginTop = marginTop
+    val originalMarginBottom = marginBottom
+    ViewCompat.setOnApplyWindowInsetsListener(this) { view, windowInsets ->
+        val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+        if (top) {
+            view.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                topMargin = originalMarginTop + insets.top
+            }
+        }
+        if (bottom) {
+            view.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                bottomMargin = originalMarginBottom + insets.bottom
+            }
+        }
+        windowInsets
+    }
 }

@@ -1,6 +1,6 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="BaseAppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
         <item name="colorPrimary">@color/blue</item>
         <item name="colorPrimaryVariant">@color/dark_blue</item>
@@ -17,6 +17,9 @@
         <item name="android:ambientShadowAlpha">0.01</item>
         <item name="android:spotShadowAlpha">0.1</item>
 
+        <item name="android:statusBarColor">@color/black_50</item>
+        <item name="android:navigationBarColor">@color/black_50</item>
+
         <!--        Whitelabel styles-->
         <item name="primaryBackgroundColor">@color/white</item>
 
@@ -28,7 +31,13 @@
 
     </style>
 
-    <style name="KevinTheme" parent="Theme.Kevin.Base">
+    <style name="AppTheme" parent="BaseAppTheme" />
+
+    <style name="BaseKevinTheme" parent="Theme.Kevin.Base">
+        <item name="android:statusBarColor">@color/black_50</item>
+        <item name="android:navigationBarColor">@color/black_50</item>
+
+        <item name="bottomSheetDialogTheme">@style/KevinBottomSheetTheme</item>
         <item name="kevinToolbarColor">@color/white</item>
 
         <item name="kevinPrimaryBackgroundColor">@color/white</item>
@@ -44,4 +53,12 @@
         <item name="kevinPrimaryTextColor">@color/dark_blue</item>
         <item name="kevinSecondaryTextColor">@color/gray_02</item>
     </style>
+
+    <style name="KevinTheme" parent="BaseKevinTheme" />
+
+    <style name="BaseKevinBottomSheetTheme" parent="Theme.Kevin.BottomSheet.Base">
+        <item name="android:navigationBarColor">@color/black_50</item>
+    </style>
+
+    <style name="KevinBottomSheetTheme" parent="BaseKevinBottomSheetTheme" />
 </resources>

@@ -2,11 +2,10 @@ package eu.kevin.inapppayments.paymentconfirmation
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.webkit.WebResourceRequest
-import android.webkit.WebView
-import android.webkit.WebViewClient
+import android.webkit.*
 import eu.kevin.core.architecture.BaseView
 import eu.kevin.core.architecture.interfaces.IView
+import eu.kevin.core.extensions.applySystemInsetsPadding
 import eu.kevin.core.extensions.getColorFromAttr
 import eu.kevin.core.extensions.hideKeyboard
 import eu.kevin.inapppayments.KevinPaymentsPlugin
@@ -22,10 +21,14 @@ internal class PaymentConfirmationView(context: Context) : BaseView<FragmentPaym
 
     init {
         binding.root.setBackgroundColor(context.getColorFromAttr(R.attr.kevinPrimaryBackgroundColor))
-        binding.actionBar.setNavigationOnClickListener {
-            delegate?.onBackClicked()
+        with(binding.actionBar) {
+            setNavigationOnClickListener {
+                delegate?.onBackClicked()
+            }
+            applySystemInsetsPadding(top = true)
         }
         with(binding.confirmationWebView) {
+            applySystemInsetsPadding(bottom = true)
             settings.javaScriptEnabled = true
             webViewClient = object : WebViewClient() {
                 override fun shouldOverrideUrlLoading(

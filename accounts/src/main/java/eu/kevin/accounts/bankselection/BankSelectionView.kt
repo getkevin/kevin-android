@@ -13,9 +13,7 @@ import eu.kevin.accounts.databinding.FragmentBankSelectionBinding
 import eu.kevin.core.architecture.BaseView
 import eu.kevin.core.architecture.interfaces.IView
 import eu.kevin.core.entities.LoadingState
-import eu.kevin.core.extensions.fadeIn
-import eu.kevin.core.extensions.fadeOut
-import eu.kevin.core.extensions.getColorFromAttr
+import eu.kevin.core.extensions.*
 import eu.kevin.core.helpers.ErrorHelper
 import eu.kevin.core.helpers.SnackbarHelper
 
@@ -38,12 +36,15 @@ internal class BankSelectionView(context: Context) : BaseView<FragmentBankSelect
                 layoutManager = GridLayoutManager(context, 2)
                 adapter = banksAdapter
             }
+            scrollView.applySystemInsetsPadding(bottom = true)
             continueButton.setOnClickListener {
                 delegate?.onContinueClicked()
             }
+            continueButton.applySystemInsetsMargin(bottom = true)
             actionBar.setNavigationOnClickListener {
                 delegate?.onBackClicked()
             }
+            actionBar.applySystemInsetsPadding(top = true)
             countrySelectionView.setOnClickListener {
                 delegate?.onSelectCountryClicked()
             }

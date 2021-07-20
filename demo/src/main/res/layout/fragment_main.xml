@@ -56,6 +56,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/make_bank_payment_button" />
 
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:text="@string/main_menu_dark_mode_toggle"
+        app:layout_constraintBottom_toBottomOf="@id/dark_mode_switch"
+        app:layout_constraintEnd_toStartOf="@id/dark_mode_switch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/dark_mode_switch" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/dark_mode_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/make_card_payment_button" />
+
     <ProgressBar
         android:id="@+id/progress_view"
         android:layout_width="wrap_content"

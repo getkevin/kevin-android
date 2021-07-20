@@ -3,5 +3,4 @@
     android:id="@+id/mainRouterContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?primaryBackgroundColor"
-    android:fitsSystemWindows="true" />
+    android:background="?primaryBackgroundColor" />

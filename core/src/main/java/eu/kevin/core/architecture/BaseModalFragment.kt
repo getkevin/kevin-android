@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import eu.kevin.core.R
 import eu.kevin.core.architecture.interfaces.IIntent
 import eu.kevin.core.architecture.interfaces.IState
 import eu.kevin.core.architecture.interfaces.IView
@@ -55,10 +54,6 @@ abstract class BaseModalFragment<S : IState, I : IIntent, M : BaseViewModel<S, I
     override fun onDestroyView() {
         job.cancel()
         super.onDestroyView()
-    }
-
-    override fun getTheme(): Int {
-        return R.style.CustomBottomSheetDialog
     }
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {

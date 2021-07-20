@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.WindowCompat
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import eu.kevin.core.architecture.BaseFragmentActivity
@@ -30,6 +31,7 @@ internal class PaymentSessionActivity : BaseFragmentActivity(), PaymentSessionLi
             throw KevinException("Payments plugin is not configured!")
         }
         setTheme(Kevin.getTheme())
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
         binding = ActivityPaymentSessionBinding.inflate(layoutInflater)
         setContentView(binding.root)
