@@ -17,8 +17,8 @@
         <item name="android:ambientShadowAlpha">0.01</item>
         <item name="android:spotShadowAlpha">0.1</item>
 
-        <item name="android:statusBarColor">@color/black_50</item>
-        <item name="android:navigationBarColor">@color/black_50</item>
+        <item name="android:statusBarColor">@color/black_30</item>
+        <item name="android:navigationBarColor">@color/black_30</item>
 
         <!--        Whitelabel styles-->
         <item name="primaryBackgroundColor">@color/white</item>
@@ -34,10 +34,6 @@
     <style name="AppTheme" parent="BaseAppTheme" />
 
     <style name="BaseKevinTheme" parent="Theme.Kevin.Base">
-        <item name="android:statusBarColor">@color/black_50</item>
-        <item name="android:navigationBarColor">@color/black_50</item>
-
-        <item name="bottomSheetDialogTheme">@style/KevinBottomSheetTheme</item>
         <item name="kevinToolbarColor">@color/white</item>
 
         <item name="kevinPrimaryBackgroundColor">@color/white</item>
@@ -56,9 +52,7 @@
 
     <style name="KevinTheme" parent="BaseKevinTheme" />
 
-    <style name="BaseKevinBottomSheetTheme" parent="Theme.Kevin.BottomSheet.Base">
-        <item name="android:navigationBarColor">@color/black_50</item>
-    </style>
+    <style name="BaseKevinBottomSheetTheme" parent="Theme.Kevin.BottomSheet.Base" />
 
     <style name="KevinBottomSheetTheme" parent="BaseKevinBottomSheetTheme" />
 </resources>

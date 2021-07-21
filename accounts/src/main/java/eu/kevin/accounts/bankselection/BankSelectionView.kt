@@ -36,7 +36,7 @@ internal class BankSelectionView(context: Context) : BaseView<FragmentBankSelect
                 layoutManager = GridLayoutManager(context, 2)
                 adapter = banksAdapter
             }
-            scrollView.applySystemInsetsPadding(bottom = true)
+            scrollView.applySystemInsetsMargin(bottom = true)
             continueButton.setOnClickListener {
                 delegate?.onContinueClicked()
             }
@@ -52,7 +52,7 @@ internal class BankSelectionView(context: Context) : BaseView<FragmentBankSelect
     }
 
     override fun render(state: BankSelectionState) = with(binding) {
-        banksAdapter.updateItems(state.bankListItems)
+        banksAdapter.updateItems(state.bankListItems + state.bankListItems + state.bankListItems + state.bankListItems)
         countrySelectionView.image = CountryHelper.getCountryFlagDrawable(context, state.selectedCountry)
         countrySelectionView.title = CountryHelper.getCountryName(context, state.selectedCountry)
         showCountrySelection(!state.isCountrySelectionDisabled)
