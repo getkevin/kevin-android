@@ -111,7 +111,6 @@ Built-in windows can be widely customised. Override kevin. theme and control a w
     <item name="android:navigationBarColor">#FFFFFF</item>
     <item name="android:windowLightStatusBar">true</item>
     <item name="android:windowAnimationStyle">?kevinWindowTransitionStyle</item>
-    <item name="bottomSheetDialogTheme">@style/KevinBottomSheetTheme</item>
 
     <item name="kevinToolbarColor">#FFFFFF</item>
     <item name="fontFamily">@font/custom_font</item>
@@ -132,12 +131,6 @@ Built-in windows can be widely customised. Override kevin. theme and control a w
     <item name="kevinToolbarStyle">@style/KevinToolbarTheme</item>
     <item name="kevinPrimaryButtonStyle">@style/KevinPrimaryButtonStyle</item>
     <item name="kevinWindowTransitionStyle">@style/KevinWindowTransition</item>
-</style>
-
-<style name="KevinBottomSheetTheme" parent="Theme.Kevin.BottomSheet.Base">
-    <item name="android:statusBarColor">@android:color/transparent</item>
-    <item name="android:windowLightStatusBar">false</item>
-    <item name="android:navigationBarColor">@color/black_50</item>
 </style>
 
 <style name="KevinToolbarTheme" parent="Kevin.Toolbar">
@@ -179,6 +172,24 @@ Built-in windows can be widely customised. Override kevin. theme and control a w
     <item name="android:activityOpenExitAnimation">@anim/fade_out</item>
     <item name="android:activityCloseEnterAnimation">@anim/fade_in</item>
     <item name="android:activityCloseExitAnimation">@anim/slide_out</item>
+</style>
+```
+
+You can also customize BottomSheetDialog window. Our SDK supports edge to edge ui, so you can choose
+if you want to draw behind system bars or not:
+
+```xml
+<style name="KevinTheme" parent="Theme.Kevin.Base">
+    <item name="bottomSheetDialogTheme">@style/KevinBottomSheetTheme</item>
+</style>
+
+<style name="KevinBottomSheetTheme" parent="Theme.Kevin.BottomSheet.Base">
+    <item name="android:windowIsFloating">false</item>
+    <item name="enableEdgeToEdge">true</item>
+    <item name="android:navigationBarColor">@android:color/transparent</item>
+    <item name="paddingBottomSystemWindowInsets">false</item>
+    <item name="android:statusBarColor">@android:color/transparent</item>
+    <item name="android:windowLightStatusBar">false</item>
 </style>
 ```
 
