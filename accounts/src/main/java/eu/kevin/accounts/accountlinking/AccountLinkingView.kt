@@ -10,6 +10,7 @@ import eu.kevin.accounts.R
 import eu.kevin.accounts.databinding.FragmentAccountLinkingBinding
 import eu.kevin.core.architecture.BaseView
 import eu.kevin.core.architecture.interfaces.IView
+import eu.kevin.core.extensions.applySystemInsetsMargin
 import eu.kevin.core.extensions.applySystemInsetsPadding
 import eu.kevin.core.extensions.getColorFromAttr
 import eu.kevin.core.extensions.hideKeyboard
@@ -32,7 +33,7 @@ internal class AccountLinkingView(context: Context) : BaseView<FragmentAccountLi
         }
 
         with(binding.accountLinkWebView) {
-            applySystemInsetsPadding(bottom = true)
+            applySystemInsetsMargin(bottom = true)
             settings.javaScriptEnabled = true
             webViewClient = object : WebViewClient() {
                 override fun shouldOverrideUrlLoading(
