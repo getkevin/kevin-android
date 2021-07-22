@@ -16,7 +16,7 @@
 
         <item name="bottomSheetDialogTheme">@style/Theme.Kevin.BottomSheet.Base</item>
 
-        <item name="android:navigationBarColor">@color/black_30</item>
+        <item name="android:navigationBarColor">@color/gray</item>
         <item name="android:statusBarColor">@color/black_30</item>
 
         <item name="kevinToolbarColor">@color/white</item>
@@ -44,6 +44,7 @@
     <style name="Theme.Kevin.BottomSheet.Base.21" parent="Theme.MaterialComponents.DayNight.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/Kevin.BottomSheet.Style</item>
         <item name="snackbarStyle">@style/Kevin.BottomSheet.Snackbar</item>
+        <item name="colorAccent">@color/blue</item>
         <item name="android:windowIsFloating">false</item>
         <item name="android:navigationBarColor">@color/black_30</item>
         <item name="enableEdgeToEdge">true</item>

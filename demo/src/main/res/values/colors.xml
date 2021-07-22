@@ -10,6 +10,7 @@
     <color name="black">#000000</color>
     <color name="black_30">#4D000000</color>
 
+    <color name="gray">#BBBBBB</color>
     <color name="gray_02">#949AA3</color>
     <color name="gray_03">#DBDEE7</color>
     <color name="gray_04">#F2F2F2</color>

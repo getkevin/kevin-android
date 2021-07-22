@@ -36,7 +36,7 @@ internal class BankSelectionView(context: Context) : BaseView<FragmentBankSelect
                 layoutManager = GridLayoutManager(context, 2)
                 adapter = banksAdapter
             }
-            scrollView.applySystemInsetsMargin(bottom = true)
+            scrollView.applySystemInsetsPadding(bottom = true)
             continueButton.setOnClickListener {
                 delegate?.onContinueClicked()
             }
