@@ -3,7 +3,7 @@
     package="eu.kevin.accounts">
 
     <application>
-        <activity android:name="eu.kevin.accounts.linkingsession.AccountLinkingActivity"/>
+        <activity android:name="eu.kevin.accounts.linkingsession.AccountLinkingActivity" />
     </application>
 
 </manifest>

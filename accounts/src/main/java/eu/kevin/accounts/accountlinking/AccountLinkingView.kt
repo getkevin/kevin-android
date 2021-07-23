@@ -2,18 +2,18 @@ package eu.kevin.accounts.accountlinking
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.core.view.updateLayoutParams
 import eu.kevin.accounts.KevinAccountsPlugin
 import eu.kevin.accounts.R
 import eu.kevin.accounts.databinding.FragmentAccountLinkingBinding
 import eu.kevin.core.architecture.BaseView
 import eu.kevin.core.architecture.interfaces.IView
-import eu.kevin.core.extensions.applySystemInsetsMargin
-import eu.kevin.core.extensions.applySystemInsetsPadding
-import eu.kevin.core.extensions.getColorFromAttr
-import eu.kevin.core.extensions.hideKeyboard
+import eu.kevin.core.extensions.*
+import eu.kevin.core.helpers.KeyboardManager
 
 internal class AccountLinkingView(context: Context) : BaseView<FragmentAccountLinkingBinding>(context),
     IView<AccountLinkingState> {
@@ -21,6 +21,8 @@ internal class AccountLinkingView(context: Context) : BaseView<FragmentAccountLi
     override val binding = FragmentAccountLinkingBinding.inflate(LayoutInflater.from(context), this)
 
     var delegate: AccountLinkingViewDelegate? = null
+
+    private var lastClickPosition: Int = 0
 
     init {
         binding.root.setBackgroundColor(context.getColorFromAttr(R.attr.kevinPrimaryBackgroundColor))
@@ -30,6 +32,26 @@ internal class AccountLinkingView(context: Context) : BaseView<FragmentAccountLi
                 delegate?.onBackClicked()
             }
             applySystemInsetsPadding(top = true)
+        }
+
+        binding.accountLinkWebView.setOnTouchListener { v, event ->
+            if (event.action == MotionEvent.ACTION_UP) {
+                lastClickPosition = v.height - event.y.toInt()
+            }
+            false
+        }
+
+        KeyboardManager(binding.root).apply {
+            onKeyboardSizeChanged {
+                binding.root.updateLayoutParams<MarginLayoutParams> {
+                    bottomMargin = it
+                }
+            }
+            onKeyboardVisibilityChanged {
+                if (lastClickPosition < it) {
+                    binding.accountLinkWebView.scrollBy(0, (it - lastClickPosition) + dp(64))
+                }
+            }
         }
 
         with(binding.accountLinkWebView) {

@@ -2,13 +2,13 @@ package eu.kevin.inapppayments.paymentconfirmation
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.webkit.*
+import androidx.core.view.updateLayoutParams
 import eu.kevin.core.architecture.BaseView
 import eu.kevin.core.architecture.interfaces.IView
-import eu.kevin.core.extensions.applySystemInsetsMargin
-import eu.kevin.core.extensions.applySystemInsetsPadding
-import eu.kevin.core.extensions.getColorFromAttr
-import eu.kevin.core.extensions.hideKeyboard
+import eu.kevin.core.extensions.*
+import eu.kevin.core.helpers.KeyboardManager
 import eu.kevin.inapppayments.KevinPaymentsPlugin
 import eu.kevin.inapppayments.R
 import eu.kevin.inapppayments.databinding.FragmentPaymentConfirmationBinding
@@ -20,6 +20,8 @@ internal class PaymentConfirmationView(context: Context) : BaseView<FragmentPaym
 
     var delegate: PaymentConfirmationViewDelegate? = null
 
+    private var lastClickPosition: Int = 0
+
     init {
         binding.root.setBackgroundColor(context.getColorFromAttr(R.attr.kevinPrimaryBackgroundColor))
         with(binding.actionBar) {
@@ -28,6 +30,27 @@ internal class PaymentConfirmationView(context: Context) : BaseView<FragmentPaym
             }
             applySystemInsetsPadding(top = true)
         }
+
+        binding.confirmationWebView.setOnTouchListener { v, event ->
+            if (event.action == MotionEvent.ACTION_UP) {
+                lastClickPosition = v.height - event.y.toInt()
+            }
+            false
+        }
+
+        KeyboardManager(binding.root).apply {
+            onKeyboardSizeChanged {
+                binding.root.updateLayoutParams<MarginLayoutParams> {
+                    bottomMargin = it
+                }
+            }
+            onKeyboardVisibilityChanged {
+                if (lastClickPosition < it) {
+                    binding.confirmationWebView.scrollBy(0, (it - lastClickPosition) + dp(64))
+                }
+            }
+        }
+
         with(binding.confirmationWebView) {
             applySystemInsetsMargin(bottom = true)
             settings.javaScriptEnabled = true
