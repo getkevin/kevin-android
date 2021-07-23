@@ -12,9 +12,11 @@ import androidx.core.view.WindowInsetsCompat
 class KeyboardManager(private val rootView: View) {
 
     private var onKeyboardSizeChanged: (Int) -> Unit = {}
+    private var onKeyboardVisibilityChanged: (Int) -> Unit = {}
 
     private var lastWindowInsets: WindowInsetsCompat? = null
     private var deferredInsets = false
+    private var lastKeyboardHeight = 0
 
     init {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -31,6 +33,10 @@ class KeyboardManager(private val rootView: View) {
         onKeyboardSizeChanged = action
     }
 
+    fun onKeyboardVisibilityChanged(action: (Int) -> Unit) {
+        onKeyboardVisibilityChanged = action
+    }
+
     private fun listenForKeyboardInsets() {
         ViewCompat.setOnApplyWindowInsetsListener(rootView) { v, windowInsets ->
             lastWindowInsets = windowInsets
@@ -41,6 +47,7 @@ class KeyboardManager(private val rootView: View) {
                     Insets.max(it, Insets.NONE)
                 }
                 onKeyboardSizeChanged.invoke(diff.bottom)
+                lastKeyboardHeight = diff.bottom
             }
             windowInsets
         }
@@ -76,6 +83,7 @@ class KeyboardManager(private val rootView: View) {
                         ViewCompat.dispatchApplyWindowInsets(rootView, lastWindowInsets!!)
                     }
                 }
+                onKeyboardVisibilityChanged.invoke(lastKeyboardHeight)
             }
         })
     }

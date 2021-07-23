@@ -2,6 +2,7 @@ package eu.kevin.inapppayments.paymentconfirmation
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.webkit.*
 import androidx.core.view.updateLayoutParams
 import eu.kevin.core.architecture.BaseView
@@ -18,6 +19,7 @@ internal class PaymentConfirmationView(context: Context) : BaseView<FragmentPaym
     override val binding = FragmentPaymentConfirmationBinding.inflate(LayoutInflater.from(context), this)
 
     var delegate: PaymentConfirmationViewDelegate? = null
+    private var lastClickPosition: Int = 0
 
     init {
         binding.root.setBackgroundColor(context.getColorFromAttr(R.attr.kevinPrimaryBackgroundColor))
@@ -28,9 +30,24 @@ internal class PaymentConfirmationView(context: Context) : BaseView<FragmentPaym
             applySystemInsetsPadding(top = true)
         }
 
-        KeyboardManager(binding.root).onKeyboardSizeChanged {
-            binding.root.updateLayoutParams<MarginLayoutParams> {
-                bottomMargin = it
+        binding.confirmationWebView.setOnTouchListener { v, event ->
+            if (event.action == MotionEvent.ACTION_UP) {
+                lastClickPosition = v.height - event.y.toInt()
+            }
+            false
+        }
+
+        KeyboardManager(binding.root).apply {
+            onKeyboardSizeChanged {
+
+                binding.root.updateLayoutParams<MarginLayoutParams> {
+                    bottomMargin = it
+                }
+            }
+            onKeyboardVisibilityChanged {
+                if (lastClickPosition < it) {
+                    binding.confirmationWebView.scrollBy(0, (it - lastClickPosition) + 150)
+                }
             }
         }
 
