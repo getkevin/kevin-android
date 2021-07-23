@@ -3,9 +3,11 @@ package eu.kevin.inapppayments.paymentconfirmation
 import android.content.Context
 import android.view.LayoutInflater
 import android.webkit.*
+import androidx.core.view.updateLayoutParams
 import eu.kevin.core.architecture.BaseView
 import eu.kevin.core.architecture.interfaces.IView
 import eu.kevin.core.extensions.*
+import eu.kevin.core.helpers.KeyboardManager
 import eu.kevin.inapppayments.KevinPaymentsPlugin
 import eu.kevin.inapppayments.R
 import eu.kevin.inapppayments.databinding.FragmentPaymentConfirmationBinding
@@ -26,7 +28,11 @@ internal class PaymentConfirmationView(context: Context) : BaseView<FragmentPaym
             applySystemInsetsPadding(top = true)
         }
 
-        binding.root.listenForKeyboardInsets()
+        KeyboardManager(binding.root).onKeyboardSizeChanged {
+            binding.root.updateLayoutParams<MarginLayoutParams> {
+                bottomMargin = it
+            }
+        }
 
         with(binding.confirmationWebView) {
             applySystemInsetsMargin(bottom = true)

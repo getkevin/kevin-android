@@ -3,9 +3,7 @@
     package="eu.kevin.inapppayments">
 
     <application>
-        <activity
-            android:name="eu.kevin.inapppayments.paymentsession.PaymentSessionActivity"
-            android:windowSoftInputMode="adjustNothing" />
+        <activity android:name="eu.kevin.inapppayments.paymentsession.PaymentSessionActivity" />
     </application>
 
 </manifest>

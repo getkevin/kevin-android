@@ -3,9 +3,7 @@
     package="eu.kevin.accounts">
 
     <application>
-        <activity
-            android:name="eu.kevin.accounts.linkingsession.AccountLinkingActivity"
-            android:windowSoftInputMode="adjustNothing" />
+        <activity android:name="eu.kevin.accounts.linkingsession.AccountLinkingActivity" />
     </application>
 
 </manifest>

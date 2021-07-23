@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.core.view.updateLayoutParams
 import eu.kevin.accounts.KevinAccountsPlugin
 import eu.kevin.accounts.R
 import eu.kevin.accounts.databinding.FragmentAccountLinkingBinding
 import eu.kevin.core.architecture.BaseView
 import eu.kevin.core.architecture.interfaces.IView
 import eu.kevin.core.extensions.*
+import eu.kevin.core.helpers.KeyboardManager
 
 internal class AccountLinkingView(context: Context) : BaseView<FragmentAccountLinkingBinding>(context),
     IView<AccountLinkingState> {
@@ -29,7 +31,11 @@ internal class AccountLinkingView(context: Context) : BaseView<FragmentAccountLi
             applySystemInsetsPadding(top = true)
         }
 
-        binding.root.listenForKeyboardInsets()
+        KeyboardManager(binding.root).onKeyboardSizeChanged {
+            binding.root.updateLayoutParams<MarginLayoutParams> {
+                bottomMargin = it
+            }
+        }
 
         with(binding.accountLinkWebView) {
             applySystemInsetsMargin(bottom = true)
