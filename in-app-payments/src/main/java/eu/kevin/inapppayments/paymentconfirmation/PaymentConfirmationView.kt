@@ -19,6 +19,7 @@ internal class PaymentConfirmationView(context: Context) : BaseView<FragmentPaym
     override val binding = FragmentPaymentConfirmationBinding.inflate(LayoutInflater.from(context), this)
 
     var delegate: PaymentConfirmationViewDelegate? = null
+
     private var lastClickPosition: Int = 0
 
     init {
