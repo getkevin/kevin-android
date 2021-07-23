@@ -9,6 +9,7 @@ import eu.kevin.core.architecture.BaseView
 import eu.kevin.core.architecture.interfaces.IView
 import eu.kevin.core.entities.LoadingState
 import eu.kevin.core.entities.isLoading
+import eu.kevin.core.extensions.applySystemInsetsPadding
 import eu.kevin.core.extensions.fadeIn
 import eu.kevin.core.extensions.fadeOut
 import eu.kevin.core.helpers.ErrorHelper
@@ -25,6 +26,7 @@ internal class CountrySelectionView(context: Context) : BaseView<FragmentCountry
     }
 
     init {
+        binding.countriesRecyclerView.applySystemInsetsPadding(bottom = true)
         with(binding.countriesRecyclerView) {
             layoutManager = LinearLayoutManager(context)
             adapter = countriesAdapter

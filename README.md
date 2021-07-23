@@ -175,6 +175,24 @@ Built-in windows can be widely customised. Override kevin. theme and control a w
 </style>
 ```
 
+You can also customize BottomSheetDialog window. Our SDK supports edge to edge ui, so you can choose
+if you want to draw behind system bars or not:
+
+```xml
+<style name="KevinTheme" parent="Theme.Kevin.Base">
+    <item name="bottomSheetDialogTheme">@style/KevinBottomSheetTheme</item>
+</style>
+
+<style name="KevinBottomSheetTheme" parent="Theme.Kevin.BottomSheet.Base">
+    <item name="android:windowIsFloating">false</item>
+    <item name="enableEdgeToEdge">true</item>
+    <item name="android:navigationBarColor">@android:color/transparent</item>
+    <item name="paddingBottomSystemWindowInsets">false</item>
+    <item name="android:statusBarColor">@android:color/transparent</item>
+    <item name="android:windowLightStatusBar">false</item>
+</style>
+```
+
 ## Examples
 
 The ./demo folder contains a project showing how kevin. can be used.

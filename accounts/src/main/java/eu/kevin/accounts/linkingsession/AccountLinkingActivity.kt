@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import androidx.core.view.WindowCompat
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import eu.kevin.accounts.KevinAccountsPlugin
@@ -31,6 +32,7 @@ internal class AccountLinkingActivity : BaseFragmentActivity(), AccountLinkingSe
             throw KevinException("Accounts plugin is not configured!")
         }
         setTheme(Kevin.getTheme())
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
         binding = ActivityAccountLinkingBinding.inflate(layoutInflater)
         setContentView(binding.root)

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Kevin.Base" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Kevin.Base.21" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/blue</item>
         <item name="colorPrimaryVariant">@color/dark_blue</item>
         <item name="colorOnPrimary">@color/white</item>
@@ -13,6 +13,11 @@
         <item name="colorControlHighlight">?kevinRippleOnPrimaryColor</item>
 
         <item name="android:windowAnimationStyle">?kevinWindowTransitionStyle</item>
+
+        <item name="bottomSheetDialogTheme">@style/Theme.Kevin.BottomSheet.Base</item>
+
+        <item name="android:navigationBarColor">@color/gray</item>
+        <item name="android:statusBarColor">@color/black_30</item>
 
         <item name="kevinToolbarColor">@color/white</item>
 
@@ -33,4 +38,19 @@
         <item name="kevinToolbarStyle">@style/Kevin.Toolbar</item>
         <item name="kevinWindowTransitionStyle">@style/Kevin.Window.Transition</item>
     </style>
+
+    <style name="Theme.Kevin.Base" parent="Theme.Kevin.Base.21" />
+
+    <style name="Theme.Kevin.BottomSheet.Base.21" parent="Theme.MaterialComponents.DayNight.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Kevin.BottomSheet.Style</item>
+        <item name="snackbarStyle">@style/Kevin.BottomSheet.Snackbar</item>
+        <item name="colorAccent">@color/blue</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:navigationBarColor">@color/black_30</item>
+        <item name="enableEdgeToEdge">true</item>
+        <item name="paddingBottomSystemWindowInsets">false</item>
+    </style>
+
+    <style name="Theme.Kevin.BottomSheet.Base" parent="Theme.Kevin.BottomSheet.Base.21" />
+
 </resources>

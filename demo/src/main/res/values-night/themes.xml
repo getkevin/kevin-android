@@ -1,7 +1,6 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-
+    <style name="BaseAppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/blue</item>
         <item name="colorPrimaryVariant">@color/dark_blue</item>
         <item name="colorOnPrimary">@color/white</item>
@@ -14,6 +13,9 @@
         <item name="fontFamily">@font/poppins</item>
         <item name="colorControlHighlight">?rippleOnPrimaryColor</item>
 
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@color/black</item>
+
         <!--        Whitelabel styles-->
         <item name="primaryBackgroundColor">@color/black</item>
 
@@ -24,7 +26,12 @@
         <item name="primaryTextColor">@color/white</item>
     </style>
 
-    <style name="KevinTheme" parent="Theme.Kevin.Base">
+    <style name="AppTheme" parent="BaseAppTheme" />
+
+    <style name="KevinTheme" parent="BaseKevinTheme">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@color/black</item>
+
         <item name="kevinToolbarColor">@color/black</item>
 
         <item name="kevinPrimaryBackgroundColor">@color/black</item>
@@ -40,4 +47,5 @@
         <item name="kevinPrimaryTextColor">@color/white</item>
         <item name="kevinSecondaryTextColor">@color/gray_02</item>
     </style>
+
 </resources>
