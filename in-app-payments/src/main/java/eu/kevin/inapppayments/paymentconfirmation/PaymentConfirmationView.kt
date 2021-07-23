@@ -39,7 +39,6 @@ internal class PaymentConfirmationView(context: Context) : BaseView<FragmentPaym
 
         KeyboardManager(binding.root).apply {
             onKeyboardSizeChanged {
-
                 binding.root.updateLayoutParams<MarginLayoutParams> {
                     bottomMargin = it
                 }
