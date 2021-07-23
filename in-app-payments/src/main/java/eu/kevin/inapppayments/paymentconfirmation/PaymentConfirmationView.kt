@@ -46,7 +46,7 @@ internal class PaymentConfirmationView(context: Context) : BaseView<FragmentPaym
             }
             onKeyboardVisibilityChanged {
                 if (lastClickPosition < it) {
-                    binding.confirmationWebView.scrollBy(0, (it - lastClickPosition) + 150)
+                    binding.confirmationWebView.scrollBy(0, (it - lastClickPosition) + dp(64))
                 }
             }
         }

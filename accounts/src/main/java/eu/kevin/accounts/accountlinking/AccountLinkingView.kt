@@ -49,7 +49,7 @@ internal class AccountLinkingView(context: Context) : BaseView<FragmentAccountLi
             }
             onKeyboardVisibilityChanged {
                 if (lastClickPosition < it) {
-                    binding.accountLinkWebView.scrollBy(0, (it - lastClickPosition) + 150)
+                    binding.accountLinkWebView.scrollBy(0, (it - lastClickPosition) + dp(64))
                 }
             }
         }

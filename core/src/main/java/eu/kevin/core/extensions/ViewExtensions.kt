@@ -11,6 +11,9 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.core.view.*
 
+fun View.dp(value: Int): Int = context.dp(value)
+fun View.pxToDp(px: Int): Float = pxToDp(px)
+
 fun View.fadeOut() {
     if (visibility == GONE) return
     animate().apply {
