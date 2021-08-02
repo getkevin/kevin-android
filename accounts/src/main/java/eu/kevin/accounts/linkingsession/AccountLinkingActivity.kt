@@ -20,7 +20,7 @@ import eu.kevin.core.plugin.Kevin
 import eu.kevin.core.plugin.KevinException
 import kotlinx.coroutines.launch
 
-internal class AccountLinkingActivity : BaseFragmentActivity(), AccountLinkingSessionListener {
+class AccountLinkingActivity : BaseFragmentActivity(), AccountLinkingSessionListener {
 
     private var accountLinkingConfiguration: AccountLinkingConfiguration? = null
 
