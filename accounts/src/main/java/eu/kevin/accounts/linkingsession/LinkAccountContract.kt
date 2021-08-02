@@ -23,7 +23,7 @@ class LinkAccountContract : ActivityResultContract<AccountLinkingConfiguration, 
         return result?.extras?.getParcelable(RESULT_KEY)!!
     }
 
-    internal companion object {
+    companion object {
         const val CONFIGURATION_KEY = "configuration_key"
         const val RESULT_KEY = "result_key"
     }
