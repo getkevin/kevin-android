@@ -193,6 +193,168 @@ if you want to draw behind system bars or not:
 </style>
 ```
 
+## Flutter Android
+Our SDK can also be used in flutter. Setup is very similar to regular android:
+
+1. Add dependencies as shown in Getting started section
+2. Initialize plugins you will use inside your Application class as shown in Getting started section
+3. For theme customization, refer to UI customization section
+
+### Account linking
+1. Create method channel and handle account linking method call inside flutter activity
+```kotlin
+class MainActivity : FlutterActivity() {
+    private val CHANNEL = "com.startActivity/testChannel"
+    private var flutterResult: MethodChannel.Result? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        GeneratedPluginRegistrant.registerWith(flutterEngine!!)
+
+        MethodChannel(
+            flutterEngine!!.dartExecutor.binaryMessenger, CHANNEL
+        ).setMethodCallHandler { call, result ->
+            if (call.method.equals("OpenKevinAccountLinking")) {
+                flutterResult = result
+
+                val accountLinkingConfiguration = AccountLinkingConfiguration.Builder("state")
+                    .setPreselectedCountry(KevinCountry.LITHUANIA)
+                    .setDisableCountrySelection(false)
+                    .build()
+                val intent = Intent(this, AccountLinkingActivity::class.java)
+                intent.putExtra(LinkAccountContract.CONFIGURATION_KEY, accountLinkingConfiguration)
+                startActivityForResult(intent, REQUEST_CODE)
+            } else {
+                result.notImplemented()
+            }
+        }
+    }
+
+    companion object {
+        const val REQUEST_CODE = 100
+    }
+}
+```
+2. Handle activity result inside your flutter activity
+```kotlin
+class MainActivity : FlutterActivity() {
+    private var flutterResult: MethodChannel.Result? = null
+    
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == REQUEST_CODE) {
+            val result = data?.getParcelableExtra<ActivityResult<AccountLinkingResult>>(LinkAccountContract.RESULT_KEY)
+            when (result) {
+                is ActivityResult.Success -> {
+                    flutterResult?.success(result.value.linkToken)
+                }
+                is ActivityResult.Canceled -> {
+                    flutterResult?.success("canceled")
+                }
+                is ActivityResult.Failure -> {
+                    flutterResult?.success("failed")
+                }
+            }
+        } else {
+            flutterResult?.error("error", "oooops", null)
+        }
+    }
+
+    companion object {
+        const val REQUEST_CODE = 100
+    }
+}
+```
+3. Open account linking activity from flutter and get the result
+
+```dart
+static const platform = MethodChannel('com.example/methodChannel');
+Future<void> _startAccountLinkingActivity() async {
+    try {
+      final String result = await platform.invokeMethod('OpenKevinAccountLinking');
+      // do something with result
+    } on PlatformException catch (e) {
+      debugPrint("Error: '${e.message}'.");
+    }
+  }
+```
+
+### In-app payments
+1. Create method channel and handle payment method call inside flutter activity
+```kotlin
+class MainActivity : FlutterActivity() {
+    private val CHANNEL = "com.startActivity/testChannel"
+    private var flutterResult: MethodChannel.Result? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        GeneratedPluginRegistrant.registerWith(flutterEngine!!)
+
+        MethodChannel(
+            flutterEngine!!.dartExecutor.binaryMessenger, CHANNEL
+        ).setMethodCallHandler { call, result ->
+            if (call.method.equals("OpenKevinPayment")) {
+                flutterResult = result
+
+                val paymentSessionConfiguration = PaymentSessionConfiguration.Builder("paymentId", PaymentType.BANK)
+                    .setPreselectedCountry(KevinCountry.LITHUANIA)
+                    .setSkipBankSelection(false)
+                    .build()
+                val intent = Intent(this, PaymentSessionActivity::class.java)
+                intent.putExtra(PaymentSessionContract.CONFIGURATION_KEY, paymentSessionConfiguration)
+                startActivityForResult(intent, REQUEST_CODE)
+            } else {
+                result.notImplemented()
+            }
+        }
+    }
+
+    companion object {
+        const val REQUEST_CODE = 100
+    }
+}
+```
+2. Handle activity result inside your flutter activity
+```kotlin
+class MainActivity : FlutterActivity() {
+    private var flutterResult: MethodChannel.Result? = null
+    
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == REQUEST_CODE) {
+            val result = data?.getParcelableExtra<ActivityResult<PaymentSessionResult>>(PaymentSessionContract.RESULT_KEY)
+            when (result) {
+                is ActivityResult.Success -> {
+                    flutterResult?.success(result.value.paymentId)
+                }
+                is ActivityResult.Canceled -> {
+                    flutterResult?.success("canceled")
+                }
+                is ActivityResult.Failure -> {
+                    flutterResult?.success("failed")
+                }
+            }
+        } else {
+            flutterResult?.error("error", "oooops", null)
+        }
+    }
+
+    companion object {
+        const val REQUEST_CODE = 100
+    }
+}
+```
+3. Open payment activity from flutter and get the result
+
+```dart
+static const platform = MethodChannel('com.example/methodChannel');
+Future<void> _startPaymentActivity() async {
+  try {
+    final String result = await platform.invokeMethod('OpenKevinPayment');
+    // do something with result
+  } on PlatformException catch (e) {
+    debugPrint("Error: '${e.message}'.");
+  }
+}
+```
 ## Examples
 
 The ./demo folder contains a project showing how kevin. can be used.
