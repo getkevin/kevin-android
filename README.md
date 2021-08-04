@@ -360,8 +360,8 @@ Future<void> _startPaymentActivity() async {
 }
 ```
 
-## React native
-Our SDK can also be used in React native. Setup is very similar to regular android:
+## React Native
+Our SDK can also be used in React Native. Setup is very similar to regular android:
 
 1. Add dependencies as shown in ***Getting started*** section to your native Android module
 2. Initialize plugins you will use inside your Application class as shown in ***Getting started*** section
