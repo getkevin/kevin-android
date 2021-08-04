@@ -194,16 +194,17 @@ if you want to draw behind system bars or not:
 ```
 
 ## Flutter Android
-Our SDK can also be used in flutter. Setup is very similar to regular android:
+Our SDK can also be used in Flutter. Setup is very similar to regular android:
 
-1. Add dependencies as shown in Getting started section
-2. Initialize plugins you will use inside your Application class as shown in Getting started section
-3. For theme customization, refer to UI customization section
+1. Add dependencies as shown in ***Getting started*** section
+2. Initialize plugins you will use inside your Application class as shown in ***Getting started*** section
+3. For theme customization, refer to ***UI customization*** section
 
 ### Account linking
-1. Create method channel and handle account linking method call inside flutter activity
+1. Create method channel and handle account linking method call inside Flutter activity
 ```kotlin
 class MainActivity : FlutterActivity() {
+
     private val CHANNEL = "com.startActivity/testChannel"
     private var flutterResult: MethodChannel.Result? = null
 
@@ -235,9 +236,10 @@ class MainActivity : FlutterActivity() {
     }
 }
 ```
-2. Handle activity result inside your flutter activity
+2. Handle activity result inside your Flutter activity
 ```kotlin
 class MainActivity : FlutterActivity() {
+
     private var flutterResult: MethodChannel.Result? = null
     
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -264,7 +266,7 @@ class MainActivity : FlutterActivity() {
     }
 }
 ```
-3. Open account linking activity from flutter and get the result
+3. Open account linking activity from Flutter and get the result
 
 ```dart
 static const platform = MethodChannel('com.example/methodChannel');
@@ -279,9 +281,10 @@ Future<void> _startAccountLinkingActivity() async {
 ```
 
 ### In-app payments
-1. Create method channel and handle payment method call inside flutter activity
+1. Create method channel and handle payment method call inside Flutter activity
 ```kotlin
 class MainActivity : FlutterActivity() {
+
     private val CHANNEL = "com.startActivity/testChannel"
     private var flutterResult: MethodChannel.Result? = null
 
@@ -313,9 +316,10 @@ class MainActivity : FlutterActivity() {
     }
 }
 ```
-2. Handle activity result inside your flutter activity
+2. Handle activity result inside your Flutter activity
 ```kotlin
 class MainActivity : FlutterActivity() {
+
     private var flutterResult: MethodChannel.Result? = null
     
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -342,7 +346,7 @@ class MainActivity : FlutterActivity() {
     }
 }
 ```
-3. Open payment activity from flutter and get the result
+3. Open payment activity from Flutter and get the result
 
 ```dart
 static const platform = MethodChannel('com.example/methodChannel');
