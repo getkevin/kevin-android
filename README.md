@@ -55,7 +55,7 @@ val linkAccount = registerForActivityResult(LinkAccountContract()) { result ->
 2. Customize flow by tweaking our configuration and launch the flow:
 
 ```kotlin
-val config = AccountLinkingConfiguration.Builder(payment.id, paymentType)
+val config = AccountLinkingConfiguration.Builder(state)
     .setPreselectedCountry(KevinCountry.LITHUANIA)  //  optional option to preselect country
     .setCountryFilter(listOf(   //  optional option to supply country list
         KevinCountry.LATVIA,
@@ -358,6 +358,177 @@ Future<void> _startPaymentActivity() async {
     debugPrint("Error: '${e.message}'.");
   }
 }
+```
+
+## React Native
+Our SDK can also be used in React Native. Setup is very similar to regular android:
+
+1. Add dependencies as shown in ***Getting started*** section to your native Android module
+2. Initialize plugins you will use inside your Application class as shown in ***Getting started*** section
+3. For theme customization, refer to ***UI customization*** section
+
+### Account linking
+1. Create ***KevinModule*** and register it in your ***ReactPackage*** class
+2. Create new ***ReactMethod*** in ***KevinModule*** class that will be called from JS side and will open ***AccountLinkingActivity***:
+```kotlin
+class KevinModule (val context: ReactApplicationContext?) : ReactContextBaseJavaModule(context),
+    ActivityEventListener {
+
+    private var callback: Callback? = null
+
+    init {
+        context?.addActivityEventListener(this)
+    }
+
+    @ReactMethod
+    fun linkAccount(callback: Callback) {
+        this.callback = callback
+        val accountLinkingConfiguration = AccountLinkingConfiguration.Builder("state")
+            .setPreselectedCountry(KevinCountry.LITHUANIA)  //  optional option to preselect country
+            .setCountryFilter(listOf(   //  optional option to supply country list
+                KevinCountry.LATVIA,
+                KevinCountry.LITHUANIA,
+                KevinCountry.ESTONIA
+            ))
+            .setDisableCountrySelection(false)  //  optional option to disable country selection
+            .setPreselectedBank("SOME_BANK_ID") //  optional option to preselect bank
+            .setSkipBankSelection(false)    //  optional skip of bank selection (should be used with preselectedBank)
+            .build()
+        val intent = Intent(currentActivity, AccountLinkingActivity::class.java)
+        intent.putExtra(LinkAccountContract.CONFIGURATION_KEY, accountLinkingConfiguration)
+
+        context?.startActivityForResult(intent, REQUEST_CODE, null)
+    }
+
+    companion object {
+        const val REQUEST_CODE = 1000
+    }
+}
+```
+3. Handle activity result inside ***KevinModule***:
+```kotlin
+class KevinModule (val context: ReactApplicationContext?) : ReactContextBaseJavaModule(context),
+    ActivityEventListener {
+
+    private var callback: Callback? = null
+    
+    override fun onActivityResult(
+        activity: Activity?,
+        requestCode: Int,
+        resultCode: Int,
+        data: Intent?
+    ) {
+        if (requestCode == REQUEST_CODE) {
+            val result = data?.getParcelableExtra<ActivityResult<AccountLinkingResult>>(LinkAccountContract.RESULT_KEY)
+            when (result) {
+                is ActivityResult.Success -> {
+                    callback?.invoke(result.value.linkToken)
+                }
+                is ActivityResult.Canceled -> {
+                    callback?.invoke("Canceled")
+                }
+                is ActivityResult.Failure -> {
+                    callback?.invoke("Failed")
+                }
+            }
+        }
+    }
+
+    companion object {
+        const val REQUEST_CODE = 1000
+    }
+}
+```
+4. Call newly created ***ReactMethod*** from JS and handle received result:
+```js
+    import { NativeModules } from 'react-native';
+    const { KevinModule } = NativeModules;
+    
+    KevinModule.linkAccount(result => {
+      // do something with the result
+    });
+```
+
+### In-app payments
+1. Create ***KevinModule*** and register it in your ***ReactPackage*** class
+2. Create new ***ReactMethod*** in ***KevinModule*** class that will be called from JS side and will open ***PaymentSessionActivity***:
+```kotlin
+class KevinModule (val context: ReactApplicationContext?) : ReactContextBaseJavaModule(context),
+    ActivityEventListener {
+
+    private var callback: Callback? = null
+
+    init {
+        context?.addActivityEventListener(this)
+    }
+
+    @ReactMethod
+    fun makePayment(callback: Callback) {
+        this.callback = callback
+        val paymentSessionConfiguration = PaymentSessionConfiguration.Builder("state", PaymentType.BANK)
+            .setPreselectedCountry(KevinCountry.LITHUANIA)  //  optional option to preselect country
+            .setCountryFilter(listOf(   //  optional option to supply country list
+                KevinCountry.LATVIA,
+                KevinCountry.LITHUANIA,
+                KevinCountry.ESTONIA
+            ))
+            .setDisableCountrySelection(false)  //  optional option to disable country selection
+            .setPreselectedBank("SOME_BANK_ID") //  optional option to preselect bank
+            .setSkipBankSelection(false)    //  optional skip of bank selection (should be used with preselectedBank)
+            .build()
+        val intent = Intent(currentActivity, PaymentSessionActivity::class.java)
+        intent.putExtra(PaymentSessionContract.CONFIGURATION_KEY, paymentSessionConfiguration)
+
+        context?.startActivityForResult(intent, REQUEST_CODE, null)
+    }
+
+    companion object {
+        const val REQUEST_CODE = 1000
+    }
+}
+```
+3. Handle activity result inside ***KevinModule***:
+```kotlin
+class KevinModule (val context: ReactApplicationContext?) : ReactContextBaseJavaModule(context),
+    ActivityEventListener {
+
+    private var callback: Callback? = null
+    
+    override fun onActivityResult(
+        activity: Activity?,
+        requestCode: Int,
+        resultCode: Int,
+        data: Intent?
+    ) {
+        if (requestCode == REQUEST_CODE) {
+            val result = data?.getParcelableExtra<ActivityResult<PaymentSessionResult>>(PaymentSessionContract.RESULT_KEY)
+            when (result) {
+                is ActivityResult.Success -> {
+                    callback?.invoke(result.value.paymentId)
+                }
+                is ActivityResult.Canceled -> {
+                    callback?.invoke("Canceled")
+                }
+                is ActivityResult.Failure -> {
+                    callback?.invoke("Failed")
+                }
+            }
+        }
+    }
+
+    companion object {
+        const val REQUEST_CODE = 1000
+    }
+}
+```
+4. Call newly created ***ReactMethod*** from JS and handle received result:
+```js
+    import { NativeModules } from 'react-native';
+    const { KevinModule } = NativeModules;
+    
+    KevinModule.makePayment(result => {
+      // do something with the result
+    });
 ```
 ## Examples
 
