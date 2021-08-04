@@ -19,7 +19,7 @@ import eu.kevin.inapppayments.databinding.ActivityPaymentSessionBinding
 import eu.kevin.inapppayments.paymentsession.entities.PaymentSessionConfiguration
 import kotlinx.coroutines.launch
 
-internal class PaymentSessionActivity : BaseFragmentActivity(), PaymentSessionListener {
+class PaymentSessionActivity : BaseFragmentActivity(), PaymentSessionListener {
 
     private var paymentSessionConfiguration: PaymentSessionConfiguration? = null
 
