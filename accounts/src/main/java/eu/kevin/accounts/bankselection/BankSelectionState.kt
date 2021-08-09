@@ -2,8 +2,8 @@ package eu.kevin.accounts.bankselection
 
 import android.os.Parcelable
 import eu.kevin.accounts.bankselection.entities.BankListItem
-import eu.kevin.core.architecture.interfaces.IState
-import eu.kevin.core.entities.LoadingState
+import eu.kevin.common.architecture.interfaces.IState
+import eu.kevin.common.entities.LoadingState
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

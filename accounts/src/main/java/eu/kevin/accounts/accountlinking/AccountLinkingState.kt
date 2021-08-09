@@ -1,7 +1,7 @@
 package eu.kevin.accounts.accountlinking
 
 import android.os.Parcelable
-import eu.kevin.core.architecture.interfaces.IState
+import eu.kevin.common.architecture.interfaces.IState
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

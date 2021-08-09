@@ -4,10 +4,10 @@ import android.content.Context
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.viewModels
-import eu.kevin.core.architecture.BaseFragment
-import eu.kevin.core.architecture.interfaces.IView
-import eu.kevin.core.entities.FragmentResult
-import eu.kevin.core.fragment.FragmentResultContract
+import eu.kevin.common.architecture.BaseFragment
+import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.common.fragment.FragmentResult
+import eu.kevin.common.fragment.FragmentResultContract
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.*
 
 internal class PaymentConfirmationFragment : BaseFragment<PaymentConfirmationState, PaymentConfirmationIntent, PaymentConfirmationViewModel>(),

@@ -1,8 +1,8 @@
 package eu.kevin.inapppayments.paymentconfirmation
 
 import android.net.Uri
-import eu.kevin.core.architecture.routing.GlobalRouter
-import eu.kevin.core.entities.FragmentResult
+import eu.kevin.common.architecture.routing.GlobalRouter
+import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.inapppayments.BuildConfig
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 import eu.kevin.testcore.base.BaseViewModelTest

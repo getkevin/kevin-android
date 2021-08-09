@@ -13,10 +13,10 @@ import eu.kevin.accounts.bankselection.entities.Bank
 import eu.kevin.accounts.bankselection.managers.BankManagerInterface
 import eu.kevin.accounts.countryselection.usecases.SupportedCountryUseCase
 import eu.kevin.accounts.networking.AccountsClientProvider
-import eu.kevin.core.architecture.BaseViewModel
-import eu.kevin.core.architecture.routing.GlobalRouter
-import eu.kevin.core.entities.LoadingState
-import eu.kevin.core.entities.isLoading
+import eu.kevin.common.architecture.BaseViewModel
+import eu.kevin.common.architecture.routing.GlobalRouter
+import eu.kevin.common.entities.LoadingState
+import eu.kevin.common.entities.isLoading
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

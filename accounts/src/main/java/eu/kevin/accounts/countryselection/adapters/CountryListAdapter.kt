@@ -7,8 +7,8 @@ import eu.kevin.accounts.R
 import eu.kevin.accounts.countryselection.entities.Country
 import eu.kevin.accounts.countryselection.helpers.CountryHelper
 import eu.kevin.accounts.databinding.ViewCountryListItemBinding
-import eu.kevin.core.architecture.BaseListAdapter
-import eu.kevin.core.extensions.getColorFromAttr
+import eu.kevin.common.architecture.BaseListAdapter
+import eu.kevin.common.extensions.getColorFromAttr
 
 internal class CountryListAdapter(
     override var items: List<Country> = emptyList(),

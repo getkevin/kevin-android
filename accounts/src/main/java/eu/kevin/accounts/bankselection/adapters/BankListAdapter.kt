@@ -8,7 +8,7 @@ import coil.ImageLoader
 import coil.request.ImageRequest
 import eu.kevin.accounts.bankselection.entities.BankListItem
 import eu.kevin.accounts.databinding.ViewBankListItemBinding
-import eu.kevin.core.architecture.BaseListAdapter
+import eu.kevin.common.architecture.BaseListAdapter
 
 internal class BankListAdapter(
     override var items: List<BankListItem> = emptyList(),

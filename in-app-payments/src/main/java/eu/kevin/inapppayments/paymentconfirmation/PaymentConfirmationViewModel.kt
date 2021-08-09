@@ -5,9 +5,9 @@ import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
-import eu.kevin.core.architecture.BaseViewModel
-import eu.kevin.core.architecture.routing.GlobalRouter
-import eu.kevin.core.entities.FragmentResult
+import eu.kevin.common.architecture.BaseViewModel
+import eu.kevin.common.architecture.routing.GlobalRouter
+import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.inapppayments.BuildConfig
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.*
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType.*

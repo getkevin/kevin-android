@@ -5,10 +5,10 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import eu.kevin.accounts.accountlinking.AccountLinkingIntent.*
-import eu.kevin.core.architecture.BaseFragment
-import eu.kevin.core.architecture.interfaces.IView
-import eu.kevin.core.entities.FragmentResult
-import eu.kevin.core.fragment.FragmentResultContract
+import eu.kevin.common.architecture.BaseFragment
+import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.common.fragment.FragmentResult
+import eu.kevin.common.fragment.FragmentResultContract
 
 internal class AccountLinkingFragment : BaseFragment<AccountLinkingState, AccountLinkingIntent, AccountLinkingViewModel>(),
     AccountLinkingViewDelegate {

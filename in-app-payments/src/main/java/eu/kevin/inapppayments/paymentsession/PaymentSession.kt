@@ -9,11 +9,11 @@ import eu.kevin.accounts.bankselection.BankSelectionFragment
 import eu.kevin.accounts.bankselection.BankSelectionFragmentConfiguration
 import eu.kevin.accounts.bankselection.entities.Bank
 import eu.kevin.accounts.networking.KevinAccountsClientFactory
-import eu.kevin.core.architecture.BaseFlowSession
-import eu.kevin.core.architecture.routing.GlobalRouter
+import eu.kevin.common.architecture.BaseFlowSession
+import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.core.entities.ActivityResult
-import eu.kevin.core.entities.FragmentResult
-import eu.kevin.core.extensions.setFragmentResultListener
+import eu.kevin.common.fragment.FragmentResult
+import eu.kevin.common.extensions.setFragmentResultListener
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationFragment
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationFragmentConfiguration
 import eu.kevin.inapppayments.paymentsession.entities.PaymentSessionConfiguration

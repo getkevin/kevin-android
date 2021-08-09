@@ -47,7 +47,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:visibility="visible" />
 
-            <eu.kevin.core.views.SelectionView
+            <eu.kevin.common.views.SelectionView
                 android:id="@+id/country_selection_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

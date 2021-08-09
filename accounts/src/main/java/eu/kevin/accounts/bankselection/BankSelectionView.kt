@@ -6,16 +6,16 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.transition.TransitionManager
 import eu.kevin.accounts.R
 import eu.kevin.accounts.bankselection.adapters.BankListAdapter
-import eu.kevin.core.views.GridListItemDecoration
+import eu.kevin.common.views.GridListItemDecoration
 import eu.kevin.accounts.bankselection.exceptions.BankNotSelectedException
 import eu.kevin.accounts.countryselection.helpers.CountryHelper
 import eu.kevin.accounts.databinding.FragmentBankSelectionBinding
-import eu.kevin.core.architecture.BaseView
-import eu.kevin.core.architecture.interfaces.IView
-import eu.kevin.core.entities.LoadingState
-import eu.kevin.core.extensions.*
-import eu.kevin.core.helpers.ErrorHelper
-import eu.kevin.core.helpers.SnackbarHelper
+import eu.kevin.common.architecture.BaseView
+import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.common.entities.LoadingState
+import eu.kevin.common.extensions.*
+import eu.kevin.common.helpers.ErrorHelper
+import eu.kevin.common.helpers.SnackbarHelper
 
 internal class BankSelectionView(context: Context) : BaseView<FragmentBankSelectionBinding>(context),
     IView<BankSelectionState> {

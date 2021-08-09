@@ -3,8 +3,8 @@ package eu.kevin.accounts.countryselection
 import eu.kevin.accounts.countryselection.entities.Country
 import eu.kevin.accounts.countryselection.managers.CountriesTestManager
 import eu.kevin.accounts.countryselection.usecases.SupportedCountryUseCase
-import eu.kevin.core.architecture.routing.GlobalRouter
-import eu.kevin.core.entities.LoadingState
+import eu.kevin.common.architecture.routing.GlobalRouter
+import eu.kevin.common.entities.LoadingState
 import eu.kevin.testcore.base.BaseViewModelTest
 import eu.kevin.testcore.extensions.updateInternalState
 import io.mockk.every

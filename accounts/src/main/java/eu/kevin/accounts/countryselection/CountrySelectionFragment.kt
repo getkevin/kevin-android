@@ -4,9 +4,9 @@ import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import eu.kevin.accounts.countryselection.CountrySelectionIntent.*
-import eu.kevin.core.architecture.BaseModalFragment
-import eu.kevin.core.architecture.interfaces.IView
-import eu.kevin.core.fragment.FragmentResultContract
+import eu.kevin.common.architecture.BaseModalFragment
+import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.common.fragment.FragmentResultContract
 
 class CountrySelectionFragment : BaseModalFragment<CountrySelectionState, CountrySelectionIntent, CountrySelectionViewModel>(),
     CountrySelectionViewDelegate {

@@ -6,10 +6,10 @@ import androidx.fragment.app.viewModels
 import eu.kevin.accounts.bankselection.BankSelectionIntent.*
 import eu.kevin.accounts.countryselection.CountrySelectionFragment
 import eu.kevin.accounts.bankselection.entities.Bank
-import eu.kevin.core.architecture.BaseFragment
-import eu.kevin.core.architecture.interfaces.IView
-import eu.kevin.core.extensions.setFragmentResultListener
-import eu.kevin.core.fragment.FragmentResultContract
+import eu.kevin.common.architecture.BaseFragment
+import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.common.extensions.setFragmentResultListener
+import eu.kevin.common.fragment.FragmentResultContract
 
 class BankSelectionFragment : BaseFragment<BankSelectionState, BankSelectionIntent, BankSelectionViewModel>(),
     BankSelectionViewDelegate {

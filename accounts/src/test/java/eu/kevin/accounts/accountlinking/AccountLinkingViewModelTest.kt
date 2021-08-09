@@ -2,8 +2,8 @@ package eu.kevin.accounts.accountlinking
 
 import android.net.Uri
 import eu.kevin.accounts.BuildConfig
-import eu.kevin.core.architecture.routing.GlobalRouter
-import eu.kevin.core.entities.FragmentResult
+import eu.kevin.common.architecture.routing.GlobalRouter
+import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.testcore.base.BaseViewModelTest
 import io.mockk.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi

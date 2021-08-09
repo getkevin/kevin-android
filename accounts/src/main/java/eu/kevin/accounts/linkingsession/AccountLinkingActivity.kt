@@ -12,10 +12,10 @@ import eu.kevin.accounts.KevinAccountsPlugin
 import eu.kevin.accounts.R
 import eu.kevin.accounts.databinding.ActivityAccountLinkingBinding
 import eu.kevin.accounts.linkingsession.entities.AccountLinkingConfiguration
-import eu.kevin.core.architecture.BaseFragmentActivity
-import eu.kevin.core.architecture.routing.GlobalRouter
+import eu.kevin.common.architecture.BaseFragmentActivity
+import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.core.entities.ActivityResult
-import eu.kevin.core.extensions.setFragmentResult
+import eu.kevin.common.extensions.setFragmentResult
 import eu.kevin.core.plugin.Kevin
 import eu.kevin.core.plugin.KevinException
 import kotlinx.coroutines.launch
