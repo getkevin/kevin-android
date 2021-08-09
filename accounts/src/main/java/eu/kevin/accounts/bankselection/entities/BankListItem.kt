@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class BankListItem(
+internal data class BankListItem(
     val bankId: String,
     val title: String,
     val logoUrl: String,

@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Country(
+internal data class Country(
     val iso: String,
     val title: String? = null,
     var isSelected: Boolean = false

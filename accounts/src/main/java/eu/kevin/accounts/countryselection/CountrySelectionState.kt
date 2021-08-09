@@ -7,7 +7,7 @@ import eu.kevin.common.entities.LoadingState
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class CountrySelectionState(
+internal data class CountrySelectionState(
     val supportedCountries: List<Country> = emptyList(),
     val loadingState: LoadingState? = null
 ) : IState, Parcelable

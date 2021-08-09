@@ -3,7 +3,7 @@ package eu.kevin.accounts.countryselection.usecases
 import eu.kevin.accounts.countryselection.enums.KevinCountry
 import eu.kevin.accounts.countryselection.managers.CountriesManagerInterface
 
-class SupportedCountryUseCase(
+internal class SupportedCountryUseCase(
     private val countriesManager: CountriesManagerInterface
 ) {
 
