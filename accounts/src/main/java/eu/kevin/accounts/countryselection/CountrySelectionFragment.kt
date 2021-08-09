@@ -1,12 +1,10 @@
 package eu.kevin.accounts.countryselection
 
 import android.content.Context
-import android.os.Bundle
 import androidx.fragment.app.viewModels
 import eu.kevin.accounts.countryselection.CountrySelectionIntent.*
 import eu.kevin.common.architecture.BaseModalFragment
 import eu.kevin.common.architecture.interfaces.IView
-import eu.kevin.common.fragment.FragmentResultContract
 
 class CountrySelectionFragment : BaseModalFragment<CountrySelectionState, CountrySelectionIntent, CountrySelectionViewModel>(),
     CountrySelectionViewDelegate {
@@ -32,13 +30,5 @@ class CountrySelectionFragment : BaseModalFragment<CountrySelectionState, Countr
     override fun onCountryClicked(iso: String) {
         viewModel.intents.trySend(HandleCountrySelection(iso))
         dismiss()
-    }
-
-    object Contract: FragmentResultContract<String>() {
-        override val requestKey = "country_selection_request_key"
-        override val resultKey = "country_selection_result_key"
-        override fun parseResult(data: Bundle): String {
-            return data.getString(resultKey) ?: ""
-        }
     }
 }

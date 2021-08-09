@@ -1,4 +1,4 @@
-package eu.kevin.accounts.linkingsession
+package eu.kevin.accounts.accountsession
 
 import android.app.Activity
 import android.content.Intent
@@ -11,20 +11,20 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import eu.kevin.accounts.KevinAccountsPlugin
 import eu.kevin.accounts.R
 import eu.kevin.accounts.databinding.ActivityAccountLinkingBinding
-import eu.kevin.accounts.linkingsession.entities.AccountLinkingConfiguration
+import eu.kevin.accounts.accountsession.entities.AccountSessionConfiguration
 import eu.kevin.common.architecture.BaseFragmentActivity
 import eu.kevin.common.architecture.routing.GlobalRouter
-import eu.kevin.core.entities.ActivityResult
+import eu.kevin.core.entities.SessionResult
 import eu.kevin.common.extensions.setFragmentResult
 import eu.kevin.core.plugin.Kevin
 import eu.kevin.core.plugin.KevinException
 import kotlinx.coroutines.launch
 
-class AccountLinkingActivity : BaseFragmentActivity(), AccountLinkingSessionListener {
+class AccountSessionActivity : BaseFragmentActivity(), AccountSessionListener {
 
-    private var accountLinkingConfiguration: AccountLinkingConfiguration? = null
+    private var accountSessionConfiguration: AccountSessionConfiguration? = null
 
-    private lateinit var accountLinkingSession: AccountLinkingSession
+    private lateinit var accountLinkingSession: AccountSession
     private lateinit var binding: ActivityAccountLinkingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,11 +37,11 @@ class AccountLinkingActivity : BaseFragmentActivity(), AccountLinkingSessionList
         binding = ActivityAccountLinkingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        accountLinkingConfiguration = intent?.extras?.getParcelable(LinkAccountContract.CONFIGURATION_KEY)
+        accountSessionConfiguration = intent?.extras?.getParcelable(AccountSessionContract.CONFIGURATION_KEY)
 
-        accountLinkingSession = AccountLinkingSession(
+        accountLinkingSession = AccountSession(
             supportFragmentManager,
-            accountLinkingConfiguration!!,
+            accountSessionConfiguration!!,
             this,
              this
         )
@@ -69,7 +69,7 @@ class AccountLinkingActivity : BaseFragmentActivity(), AccountLinkingSessionList
             .setTitle(R.string.dialog_exit_confirmation_title)
             .setMessage(R.string.dialog_exit_confirmation_accounts_message)
             .setPositiveButton(R.string.yes) { _, _ ->
-                returnActivityResult(ActivityResult.Canceled)
+                returnActivityResult(SessionResult.Canceled)
             }
             .setNegativeButton(R.string.no) { dialog, _ ->
                 dialog.dismiss()
@@ -77,8 +77,8 @@ class AccountLinkingActivity : BaseFragmentActivity(), AccountLinkingSessionList
             .show()
     }
 
-    override fun returnActivityResult(result: ActivityResult<*>) {
-        setResult(Activity.RESULT_OK, Intent().putExtra(LinkAccountContract.RESULT_KEY, result))
+    override fun returnActivityResult(result: SessionResult<*>) {
+        setResult(Activity.RESULT_OK, Intent().putExtra(AccountSessionContract.RESULT_KEY, result))
         finish()
     }
 
@@ -104,7 +104,7 @@ class AccountLinkingActivity : BaseFragmentActivity(), AccountLinkingSessionList
 
     // AccountLinkingSessionListener
 
-    override fun onSessionFinished(sessionResult: ActivityResult<AccountLinkingResult>) {
+    override fun onSessionFinished(sessionResult: SessionResult<AccountSessionResult>) {
         returnActivityResult(sessionResult)
     }
 

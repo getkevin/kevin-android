@@ -212,7 +212,7 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
         viewModel.intents.trySend(BankSelectionIntent.HandleContinueClicked)
         verify(exactly = 1) {
             GlobalRouter.returnFragmentResult(
-                BankSelectionFragment.Contract,
+                BankSelectionContract,
                 Bank("SWEDBANK_LT", "Swedbank", "Swedbank AB", "", "HABALT22")
             )
         }

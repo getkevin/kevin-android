@@ -41,9 +41,9 @@ internal class AccountLinkingViewModel(
                 uri.getQueryParameter("requestId")!!,
                 uri.getQueryParameter("code")!!
             )
-            GlobalRouter.returnFragmentResult(AccountLinkingFragment.Contract, FragmentResult.Success(result))
+            GlobalRouter.returnFragmentResult(AccountLinkingContract, FragmentResult.Success(result))
         } else {
-            GlobalRouter.returnFragmentResult(AccountLinkingFragment.Contract, FragmentResult.Canceled)
+            GlobalRouter.returnFragmentResult(AccountLinkingContract, FragmentResult.Canceled)
         }
     }
 

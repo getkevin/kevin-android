@@ -1,17 +1,14 @@
 package eu.kevin.accounts.bankselection
 
 import android.content.Context
-import android.os.Bundle
 import androidx.fragment.app.viewModels
 import eu.kevin.accounts.bankselection.BankSelectionIntent.*
-import eu.kevin.accounts.countryselection.CountrySelectionFragment
-import eu.kevin.accounts.bankselection.entities.Bank
+import eu.kevin.accounts.countryselection.CountrySelectionContract
 import eu.kevin.common.architecture.BaseFragment
 import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.extensions.setFragmentResultListener
-import eu.kevin.common.fragment.FragmentResultContract
 
-class BankSelectionFragment : BaseFragment<BankSelectionState, BankSelectionIntent, BankSelectionViewModel>(),
+internal class BankSelectionFragment : BaseFragment<BankSelectionState, BankSelectionIntent, BankSelectionViewModel>(),
     BankSelectionViewDelegate {
 
     var configuration: BankSelectionFragmentConfiguration? by savedState()
@@ -28,7 +25,7 @@ class BankSelectionFragment : BaseFragment<BankSelectionState, BankSelectionInte
 
     override fun onAttached() {
         viewModel.intents.trySend(Initialize(configuration!!))
-        parentFragmentManager.setFragmentResultListener(CountrySelectionFragment.Contract, this) {
+        parentFragmentManager.setFragmentResultListener(CountrySelectionContract, this) {
             viewModel.intents.trySend(HandleCountrySelected(it, configuration!!))
         }
     }
@@ -54,13 +51,5 @@ class BankSelectionFragment : BaseFragment<BankSelectionState, BankSelectionInte
 
     override fun onContinueClicked() {
         viewModel.intents.trySend(HandleContinueClicked)
-    }
-
-    object Contract: FragmentResultContract<Bank>() {
-        override val requestKey = "bank_selection_request_key"
-        override val resultKey = "bank_selection_result_key"
-        override fun parseResult(data: Bundle): Bank {
-            return data.getParcelable(resultKey)!!
-        }
     }
 }

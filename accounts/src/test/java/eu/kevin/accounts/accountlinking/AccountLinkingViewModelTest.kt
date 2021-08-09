@@ -69,7 +69,7 @@ class AccountLinkingViewModelTest : BaseViewModelTest() {
         viewModel.intents.trySend(AccountLinkingIntent.HandleAuthorization(mockUri))
         verify(exactly = 1) {
             GlobalRouter.returnFragmentResult(
-                AccountLinkingFragment.Contract,
+                AccountLinkingContract,
                 withArg {
                     assertTrue((it is FragmentResult.Success) && it.value == expectedResult)
                 }
@@ -85,7 +85,7 @@ class AccountLinkingViewModelTest : BaseViewModelTest() {
         viewModel.intents.trySend(AccountLinkingIntent.HandleAuthorization(mockUri))
         verify(exactly = 1) {
             GlobalRouter.returnFragmentResult(
-                AccountLinkingFragment.Contract,
+                AccountLinkingContract,
                 FragmentResult.Canceled
             )
         }

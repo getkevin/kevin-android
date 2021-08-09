@@ -7,7 +7,7 @@ import eu.kevin.common.entities.LoadingState
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class BankSelectionState(
+internal data class BankSelectionState(
     val selectedCountry: String = "",
     val isCountrySelectionDisabled: Boolean = true,
     val bankListItems: List<BankListItem> = emptyList(),

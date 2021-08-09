@@ -1,45 +1,45 @@
-package eu.kevin.accounts.linkingsession
+package eu.kevin.accounts.accountsession
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.*
 import androidx.savedstate.SavedStateRegistryOwner
-import eu.kevin.accounts.accountlinking.AccountLinkingFragment
+import eu.kevin.accounts.accountlinking.AccountLinkingContract
 import eu.kevin.accounts.accountlinking.AccountLinkingFragmentConfiguration
-import eu.kevin.accounts.linkingsession.entities.AccountLinkingConfiguration
-import eu.kevin.accounts.linkingsession.entities.AccountLinkingSessionData
-import eu.kevin.accounts.linkingsession.enums.AccountLinkingFlowItem
-import eu.kevin.accounts.linkingsession.enums.AccountLinkingFlowItem.*
-import eu.kevin.accounts.bankselection.BankSelectionFragment
+import eu.kevin.accounts.accountsession.entities.AccountSessionConfiguration
+import eu.kevin.accounts.accountsession.entities.AccountSessionData
+import eu.kevin.accounts.accountsession.enums.AccountSessionFlowItem
+import eu.kevin.accounts.accountsession.enums.AccountSessionFlowItem.*
+import eu.kevin.accounts.bankselection.BankSelectionContract
 import eu.kevin.accounts.bankselection.BankSelectionFragmentConfiguration
 import eu.kevin.accounts.bankselection.entities.Bank
 import eu.kevin.accounts.networking.AccountsClientProvider
 import eu.kevin.common.architecture.BaseFlowSession
 import eu.kevin.common.architecture.routing.GlobalRouter
-import eu.kevin.core.entities.ActivityResult
+import eu.kevin.core.entities.SessionResult
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.common.extensions.setFragmentResultListener
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-internal class AccountLinkingSession(
+internal class AccountSession(
     private val fragmentManager: FragmentManager,
-    private val configuration: AccountLinkingConfiguration,
+    private val configuration: AccountSessionConfiguration,
     private val lifecycleOwner: LifecycleOwner,
     registryOwner: SavedStateRegistryOwner
 ) : BaseFlowSession(lifecycleOwner, registryOwner), LifecycleObserver {
 
-    private var sessionListener: AccountLinkingSessionListener? = null
+    private var sessionListener: AccountSessionListener? = null
 
     private val backStackListener = FragmentManager.OnBackStackChangedListener {
         currentFlowIndex = fragmentManager.backStackEntryCount - 1
     }
 
-    private val flowItems = mutableListOf<AccountLinkingFlowItem>()
+    private val flowItems = mutableListOf<AccountSessionFlowItem>()
     private val accountsClient = AccountsClientProvider.kevinAccountsClient
     private var currentFlowIndex by savedState(-1)
-    private var sessionData by savedState(AccountLinkingSessionData())
+    private var sessionData by savedState(AccountSessionData())
 
     init {
         lifecycleOwner.lifecycle.addObserver(this)
@@ -52,7 +52,7 @@ internal class AccountLinkingSession(
         sessionListener = null
     }
 
-    fun beginFlow(listener: AccountLinkingSessionListener?) {
+    fun beginFlow(listener: AccountSessionListener?) {
         sessionListener = listener
 
         if (configuration.preselectedBank != null) {
@@ -90,14 +90,14 @@ internal class AccountLinkingSession(
             }
         } catch (error: Exception) {
             withContext(Dispatchers.Main) {
-                sessionListener?.onSessionFinished(ActivityResult.Failure(error))
+                sessionListener?.onSessionFinished(SessionResult.Failure(error))
             }
             null
         }
     }
 
     private fun updateFlowItems() {
-        val flow = mutableListOf<AccountLinkingFlowItem>()
+        val flow = mutableListOf<AccountSessionFlowItem>()
         if (!configuration.skipBankSelection || sessionData.selectedBank == null) {
             flow.add(BANK_SELECTION)
         }
@@ -109,7 +109,7 @@ internal class AccountLinkingSession(
     private fun handleFowNavigation() {
         if (flowItems.size == currentFlowIndex) {
             sessionListener?.onSessionFinished(
-                ActivityResult.Success(AccountLinkingResult(
+                SessionResult.Success(AccountSessionResult(
                     sessionData.authorization!!,
                     sessionData.selectedBank!!
                 ))
@@ -122,42 +122,40 @@ internal class AccountLinkingSession(
     private fun getFlowFragment(index: Int): Fragment {
         return when (flowItems[index]) {
             BANK_SELECTION -> {
-                BankSelectionFragment().also {
-                    it.configuration = BankSelectionFragmentConfiguration(
-                        sessionData.selectedCountry,
-                        configuration.disableCountrySelection,
-                        configuration.countryFilter,
-                        sessionData.selectedBank?.id,
-                        configuration.state
-                    )
-                }
+                val config = BankSelectionFragmentConfiguration(
+                    sessionData.selectedCountry,
+                    configuration.disableCountrySelection,
+                    configuration.countryFilter,
+                    sessionData.selectedBank?.id,
+                    configuration.state
+                )
+                BankSelectionContract.getFragment(config)
             }
             LINK_ACCOUNT_WEB_VIEW -> {
-                AccountLinkingFragment().also {
-                    it.configuration = AccountLinkingFragmentConfiguration(
-                        configuration.state,
-                        sessionData.selectedBank?.id!!
-                    )
-                }
+                val config = AccountLinkingFragmentConfiguration(
+                    configuration.state,
+                    sessionData.selectedBank?.id!!
+                )
+                AccountLinkingContract.getFragment(config)
             }
         }
     }
 
     private fun initFragmentResultListeners() {
         with(fragmentManager) {
-            setFragmentResultListener(BankSelectionFragment.Contract, lifecycleOwner) { selectedBank ->
+            setFragmentResultListener(BankSelectionContract, lifecycleOwner) { selectedBank ->
                 sessionData = sessionData.copy(selectedBank = selectedBank)
                 currentFlowIndex++
                 handleFowNavigation()
             }
-            setFragmentResultListener(AccountLinkingFragment.Contract, lifecycleOwner) { result ->
+            setFragmentResultListener(AccountLinkingContract, lifecycleOwner) { result ->
                 when (result) {
                     is FragmentResult.Success -> {
                         sessionData = sessionData.copy(authorization = result.value.authCode)
                         currentFlowIndex++
                         handleFowNavigation()
                     }
-                    is FragmentResult.Canceled -> sessionListener?.onSessionFinished(ActivityResult.Canceled)
+                    is FragmentResult.Canceled -> sessionListener?.onSessionFinished(SessionResult.Canceled)
                 }
             }
         }

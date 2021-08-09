@@ -91,6 +91,6 @@ class CountrySelectionViewModelTest : BaseViewModelTest() {
         val selectedCountryIso = "lt"
         mockkObject(GlobalRouter)
         viewModel.intents.trySend(CountrySelectionIntent.HandleCountrySelection(selectedCountryIso))
-        verify(exactly = 1) { GlobalRouter.returnFragmentResult(CountrySelectionFragment.Contract, selectedCountryIso) }
+        verify(exactly = 1) { GlobalRouter.returnFragmentResult(CountrySelectionContract, selectedCountryIso) }
     }
 }

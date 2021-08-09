@@ -1,14 +1,14 @@
-package eu.kevin.accounts.linkingsession.entities
+package eu.kevin.accounts.accountsession.entities
 
 import android.os.Parcelable
 import eu.kevin.accounts.countryselection.enums.KevinCountry
 import kotlinx.parcelize.Parcelize
 
 /**
- * Configuration class for [eu.kevin.accounts.linkingsession.AccountLinkingSession]
+ * Configuration class for [eu.kevin.accounts.accountsession.AccountSession]
  */
 @Parcelize
-data class AccountLinkingConfiguration internal constructor(
+data class AccountSessionConfiguration internal constructor(
     val state: String,
     val preselectedCountry: KevinCountry?,
     val disableCountrySelection: Boolean,
@@ -110,8 +110,8 @@ data class AccountLinkingConfiguration internal constructor(
             return this
         }
 
-        fun build(): AccountLinkingConfiguration {
-            return AccountLinkingConfiguration(
+        fun build(): AccountSessionConfiguration {
+            return AccountSessionConfiguration(
                 state,
                 preselectedCountry,
                 disableCountrySelection,

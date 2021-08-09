@@ -2,13 +2,10 @@ package eu.kevin.accounts.accountlinking
 
 import android.content.Context
 import android.net.Uri
-import android.os.Bundle
 import androidx.fragment.app.viewModels
 import eu.kevin.accounts.accountlinking.AccountLinkingIntent.*
 import eu.kevin.common.architecture.BaseFragment
 import eu.kevin.common.architecture.interfaces.IView
-import eu.kevin.common.fragment.FragmentResult
-import eu.kevin.common.fragment.FragmentResultContract
 
 internal class AccountLinkingFragment : BaseFragment<AccountLinkingState, AccountLinkingIntent, AccountLinkingViewModel>(),
     AccountLinkingViewDelegate {
@@ -42,13 +39,5 @@ internal class AccountLinkingFragment : BaseFragment<AccountLinkingState, Accoun
 
     override fun onAuthorizationReceived(uri: Uri) {
         viewModel.intents.trySend(HandleAuthorization(uri))
-    }
-
-    object Contract: FragmentResultContract<FragmentResult<AccountLinkingFragmentResult>>() {
-        override val requestKey = "account_linking_request_key"
-        override val resultKey = "account_linking_result_key"
-        override fun parseResult(data: Bundle): FragmentResult<AccountLinkingFragmentResult> {
-            return data.getParcelable(resultKey)!!
-        }
     }
 }

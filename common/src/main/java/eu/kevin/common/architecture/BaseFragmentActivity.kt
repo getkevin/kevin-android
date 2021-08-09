@@ -7,7 +7,7 @@ import androidx.fragment.app.commit
 import eu.kevin.core.R
 import eu.kevin.common.architecture.interfaces.Navigable
 import eu.kevin.common.context.KevinContextWrapper
-import eu.kevin.core.entities.ActivityResult
+import eu.kevin.core.entities.SessionResult
 import eu.kevin.common.extensions.getStyleFromAttr
 import eu.kevin.common.extensions.setAnimationsFromStyle
 import eu.kevin.core.plugin.Kevin
@@ -27,14 +27,14 @@ abstract class BaseFragmentActivity : AppCompatActivity() {
     protected open fun handleBack() {
         with(supportFragmentManager) {
             if (backStackEntryCount == 1) {
-                returnActivityResult(ActivityResult.Canceled)
+                returnActivityResult(SessionResult.Canceled)
             } else {
                 popBackStack()
             }
         }
     }
 
-    protected abstract fun returnActivityResult(result: ActivityResult<*>)
+    protected abstract fun returnActivityResult(result: SessionResult<*>)
 
     protected fun pushFragment(fragmentContainerId: Int, fragment: Fragment) {
         with(supportFragmentManager) {

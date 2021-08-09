@@ -5,7 +5,7 @@ import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-internal data class PaymentConfirmationFragmentConfiguration(
+data class PaymentConfirmationFragmentConfiguration(
     val paymentId: String,
     val paymentType: PaymentType,
     val selectedBank: String? = null

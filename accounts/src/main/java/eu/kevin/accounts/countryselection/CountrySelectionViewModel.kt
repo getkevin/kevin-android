@@ -72,7 +72,7 @@ class CountrySelectionViewModel constructor(
 
     private fun handleCountrySelection(countryIso: String) {
         val selectedCountry = state.value.supportedCountries.firstOrNull { it.iso == countryIso }
-        GlobalRouter.returnFragmentResult(CountrySelectionFragment.Contract, selectedCountry!!.iso)
+        GlobalRouter.returnFragmentResult(CountrySelectionContract, selectedCountry!!.iso)
     }
 
     class Factory(owner: SavedStateRegistryOwner) : AbstractSavedStateViewModelFactory(owner, null) {

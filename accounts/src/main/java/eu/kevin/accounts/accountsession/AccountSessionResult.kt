@@ -1,4 +1,4 @@
-package eu.kevin.accounts.linkingsession
+package eu.kevin.accounts.accountsession
 
 import android.os.Parcelable
 import eu.kevin.accounts.bankselection.entities.Bank
@@ -10,7 +10,7 @@ import kotlinx.parcelize.Parcelize
  * @property bank linked bank object
  */
 @Parcelize
-data class AccountLinkingResult(
+data class AccountSessionResult(
     val linkToken: String,
     val bank: Bank
 ) : Parcelable

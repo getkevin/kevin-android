@@ -90,7 +90,7 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
         viewModel.intents.trySend(PaymentConfirmationIntent.HandlePaymentCompleted(mockUri))
         verify(exactly = 1) {
             GlobalRouter.returnFragmentResult(
-                PaymentConfirmationFragment.Contract,
+                PaymentConfirmationContract,
                 withArg {
                     Assert.assertTrue((it is FragmentResult.Success) && it.value == expectedResult)
                 }
@@ -106,7 +106,7 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
         viewModel.intents.trySend(PaymentConfirmationIntent.HandlePaymentCompleted(mockUri))
         verify(exactly = 1) {
             GlobalRouter.returnFragmentResult(
-                PaymentConfirmationFragment.Contract,
+                PaymentConfirmationContract,
                 FragmentResult.Canceled
             )
         }
