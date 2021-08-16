@@ -10,12 +10,12 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import eu.kevin.accounts.KevinAccountsPlugin
 import eu.kevin.accounts.R
-import eu.kevin.accounts.databinding.ActivityAccountLinkingBinding
 import eu.kevin.accounts.accountsession.entities.AccountSessionConfiguration
+import eu.kevin.accounts.databinding.ActivityAccountLinkingBinding
 import eu.kevin.common.architecture.BaseFragmentActivity
 import eu.kevin.common.architecture.routing.GlobalRouter
-import eu.kevin.core.entities.SessionResult
 import eu.kevin.common.extensions.setFragmentResult
+import eu.kevin.core.entities.SessionResult
 import eu.kevin.core.plugin.Kevin
 import eu.kevin.core.plugin.KevinException
 import kotlinx.coroutines.launch
@@ -43,7 +43,7 @@ class AccountSessionActivity : BaseFragmentActivity(), AccountSessionListener {
             supportFragmentManager,
             accountSessionConfiguration!!,
             this,
-             this
+            this
         )
         startListeningForRouteRequests()
     }

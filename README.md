@@ -38,15 +38,15 @@ KevinPaymentsPlugin.configure(
 1. Use registerForActivityResult with our ActivityResultContract:
 
 ```kotlin
-val linkAccount = registerForActivityResult(LinkAccountContract()) { result ->
+val linkAccount = registerForActivityResult(AccountSessionContract()) { result ->
     when (result) {
-        is ActivityResult.Success -> {
+        is SessionResult.Success -> {
             //  get account token by calling result.value.linkToken
         }
-        is ActivityResult.Canceled -> {
+        is SessionResult.Canceled -> {
             //   do something on user cancellation
         }
-        is ActivityResult.Failure -> {
+        is SessionResult.Failure -> {
             //   do something on failure
         }
     }
@@ -55,7 +55,7 @@ val linkAccount = registerForActivityResult(LinkAccountContract()) { result ->
 2. Customize flow by tweaking our configuration and launch the flow:
 
 ```kotlin
-val config = AccountLinkingConfiguration.Builder(state)
+val config = AccountSessionConfiguration.Builder(state)
     .setPreselectedCountry(KevinCountry.LITHUANIA)  //  optional option to preselect country
     .setCountryFilter(listOf(   //  optional option to supply country list
         KevinCountry.LATVIA,
@@ -74,13 +74,13 @@ linkAccount.launch(config)
 ```kotlin
 val makePayment = registerForActivityResult(PaymentSessionContract()) { result ->
     when (result) {
-        is ActivityResult.Success -> {
+        is SessionResult.Success -> {
             //  get payment id by calling result.value.paymentId
         }
-        is ActivityResult.Canceled -> {
+        is SessionResult.Canceled -> {
             //   do something on user cancellation
         }
-        is ActivityResult.Failure -> {
+        is SessionResult.Failure -> {
             //   do something on failure
         }
     }
