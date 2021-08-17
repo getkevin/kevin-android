@@ -5,7 +5,7 @@ import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
 import eu.kevin.accounts.R
 
-object CountryHelper {
+internal object CountryHelper {
 
     fun getCountryFlagDrawable(context: Context, countryIso: String): Drawable {
         val resourceId = context.resources.getIdentifier(

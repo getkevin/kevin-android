@@ -2,8 +2,8 @@ package eu.kevin.accounts.accountlinking
 
 import android.net.Uri
 import eu.kevin.accounts.BuildConfig
-import eu.kevin.core.architecture.routing.GlobalRouter
-import eu.kevin.core.entities.FragmentResult
+import eu.kevin.common.architecture.routing.GlobalRouter
+import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.testcore.base.BaseViewModelTest
 import io.mockk.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -69,7 +69,7 @@ class AccountLinkingViewModelTest : BaseViewModelTest() {
         viewModel.intents.trySend(AccountLinkingIntent.HandleAuthorization(mockUri))
         verify(exactly = 1) {
             GlobalRouter.returnFragmentResult(
-                AccountLinkingFragment.Contract,
+                AccountLinkingContract,
                 withArg {
                     assertTrue((it is FragmentResult.Success) && it.value == expectedResult)
                 }
@@ -85,7 +85,7 @@ class AccountLinkingViewModelTest : BaseViewModelTest() {
         viewModel.intents.trySend(AccountLinkingIntent.HandleAuthorization(mockUri))
         verify(exactly = 1) {
             GlobalRouter.returnFragmentResult(
-                AccountLinkingFragment.Contract,
+                AccountLinkingContract,
                 FragmentResult.Canceled
             )
         }

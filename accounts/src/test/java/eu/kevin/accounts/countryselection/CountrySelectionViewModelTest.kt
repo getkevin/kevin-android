@@ -3,8 +3,8 @@ package eu.kevin.accounts.countryselection
 import eu.kevin.accounts.countryselection.entities.Country
 import eu.kevin.accounts.countryselection.managers.CountriesTestManager
 import eu.kevin.accounts.countryselection.usecases.SupportedCountryUseCase
-import eu.kevin.core.architecture.routing.GlobalRouter
-import eu.kevin.core.entities.LoadingState
+import eu.kevin.common.architecture.routing.GlobalRouter
+import eu.kevin.common.entities.LoadingState
 import eu.kevin.testcore.base.BaseViewModelTest
 import eu.kevin.testcore.extensions.updateInternalState
 import io.mockk.every
@@ -91,6 +91,6 @@ class CountrySelectionViewModelTest : BaseViewModelTest() {
         val selectedCountryIso = "lt"
         mockkObject(GlobalRouter)
         viewModel.intents.trySend(CountrySelectionIntent.HandleCountrySelection(selectedCountryIso))
-        verify(exactly = 1) { GlobalRouter.returnFragmentResult(CountrySelectionFragment.Contract, selectedCountryIso) }
+        verify(exactly = 1) { GlobalRouter.returnFragmentResult(CountrySelectionContract, selectedCountryIso) }
     }
 }

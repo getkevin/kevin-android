@@ -6,8 +6,8 @@ import eu.kevin.accounts.bankselection.factories.BankListItemFactory
 import eu.kevin.accounts.bankselection.managers.BankTestManager
 import eu.kevin.accounts.countryselection.managers.CountriesTestManager
 import eu.kevin.accounts.countryselection.usecases.SupportedCountryUseCase
-import eu.kevin.core.architecture.routing.GlobalRouter
-import eu.kevin.core.entities.LoadingState
+import eu.kevin.common.architecture.routing.GlobalRouter
+import eu.kevin.common.entities.LoadingState
 import eu.kevin.testcore.base.BaseViewModelTest
 import eu.kevin.testcore.extensions.updateInternalState
 import io.mockk.*
@@ -212,7 +212,7 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
         viewModel.intents.trySend(BankSelectionIntent.HandleContinueClicked)
         verify(exactly = 1) {
             GlobalRouter.returnFragmentResult(
-                BankSelectionFragment.Contract,
+                BankSelectionContract,
                 Bank("SWEDBANK_LT", "Swedbank", "Swedbank AB", "", "HABALT22")
             )
         }

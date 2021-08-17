@@ -1,8 +1,8 @@
 package eu.kevin.inapppayments.paymentsession
 
-import eu.kevin.core.entities.ActivityResult
+import eu.kevin.core.entities.SessionResult
 
 internal interface PaymentSessionListener {
-    fun onSessionFinished(sessionResult: ActivityResult<PaymentSessionResult>)
+    fun onSessionFinished(sessionResult: SessionResult<PaymentSessionResult>)
     fun showLoading(show: Boolean)
 }

@@ -10,10 +10,10 @@ import androidx.core.view.updateLayoutParams
 import eu.kevin.accounts.KevinAccountsPlugin
 import eu.kevin.accounts.R
 import eu.kevin.accounts.databinding.FragmentAccountLinkingBinding
-import eu.kevin.core.architecture.BaseView
-import eu.kevin.core.architecture.interfaces.IView
-import eu.kevin.core.extensions.*
-import eu.kevin.core.helpers.KeyboardManager
+import eu.kevin.common.architecture.BaseView
+import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.common.extensions.*
+import eu.kevin.common.managers.KeyboardManager
 
 internal class AccountLinkingView(context: Context) : BaseView<FragmentAccountLinkingBinding>(context),
     IView<AccountLinkingState> {

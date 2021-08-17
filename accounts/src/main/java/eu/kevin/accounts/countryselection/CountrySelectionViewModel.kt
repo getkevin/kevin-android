@@ -7,14 +7,14 @@ import eu.kevin.accounts.countryselection.entities.Country
 import eu.kevin.accounts.countryselection.managers.KevinCountriesManager
 import eu.kevin.accounts.countryselection.usecases.SupportedCountryUseCase
 import eu.kevin.accounts.networking.AccountsClientProvider
-import eu.kevin.core.architecture.BaseViewModel
-import eu.kevin.core.architecture.routing.GlobalRouter
-import eu.kevin.core.entities.LoadingState
+import eu.kevin.common.architecture.BaseViewModel
+import eu.kevin.common.architecture.routing.GlobalRouter
+import eu.kevin.common.entities.LoadingState
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class CountrySelectionViewModel constructor(
+internal class CountrySelectionViewModel constructor(
     private val countryUseCase: SupportedCountryUseCase,
     private val ioDispatcher: CoroutineDispatcher,
     savedStateHandle: SavedStateHandle
@@ -72,7 +72,7 @@ class CountrySelectionViewModel constructor(
 
     private fun handleCountrySelection(countryIso: String) {
         val selectedCountry = state.value.supportedCountries.firstOrNull { it.iso == countryIso }
-        GlobalRouter.returnFragmentResult(CountrySelectionFragment.Contract, selectedCountry!!.iso)
+        GlobalRouter.returnFragmentResult(CountrySelectionContract, selectedCountry!!.iso)
     }
 
     class Factory(owner: SavedStateRegistryOwner) : AbstractSavedStateViewModelFactory(owner, null) {

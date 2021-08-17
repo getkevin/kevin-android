@@ -5,13 +5,12 @@ import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
-import eu.kevin.core.architecture.BaseViewModel
-import eu.kevin.core.architecture.routing.GlobalRouter
-import eu.kevin.core.entities.FragmentResult
+import eu.kevin.common.architecture.BaseViewModel
+import eu.kevin.common.architecture.routing.GlobalRouter
+import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.inapppayments.BuildConfig
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.*
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType.*
-import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationFragment.Contract
 
 internal class PaymentConfirmationViewModel(
     savedStateHandle: SavedStateHandle
@@ -47,9 +46,9 @@ internal class PaymentConfirmationViewModel(
             val result = PaymentConfirmationResult(
                 uri.getQueryParameter("paymentId") ?: ""
             )
-            GlobalRouter.returnFragmentResult(Contract, FragmentResult.Success(result))
+            GlobalRouter.returnFragmentResult(PaymentConfirmationContract, FragmentResult.Success(result))
         } else {
-            GlobalRouter.returnFragmentResult(Contract, FragmentResult.Canceled)
+            GlobalRouter.returnFragmentResult(PaymentConfirmationContract, FragmentResult.Canceled)
         }
     }
 

@@ -7,10 +7,10 @@ import android.view.View
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import eu.kevin.core.architecture.BaseFragmentActivity
-import eu.kevin.core.architecture.routing.GlobalRouter
-import eu.kevin.core.entities.ActivityResult
-import eu.kevin.core.extensions.setFragmentResult
+import eu.kevin.common.architecture.BaseFragmentActivity
+import eu.kevin.common.architecture.routing.GlobalRouter
+import eu.kevin.core.entities.SessionResult
+import eu.kevin.common.extensions.setFragmentResult
 import eu.kevin.core.plugin.Kevin
 import eu.kevin.core.plugin.KevinException
 import eu.kevin.inapppayments.KevinPaymentsPlugin
@@ -69,7 +69,7 @@ class PaymentSessionActivity : BaseFragmentActivity(), PaymentSessionListener {
             .setTitle(eu.kevin.accounts.R.string.dialog_exit_confirmation_title)
             .setMessage(R.string.dialog_exit_confirmation_payments_message)
             .setPositiveButton(eu.kevin.accounts.R.string.yes) { _, _ ->
-                returnActivityResult(ActivityResult.Canceled)
+                returnActivityResult(SessionResult.Canceled)
             }
             .setNegativeButton(eu.kevin.accounts.R.string.no) { dialog, _ ->
                 dialog.dismiss()
@@ -77,7 +77,7 @@ class PaymentSessionActivity : BaseFragmentActivity(), PaymentSessionListener {
             .show()
     }
 
-    override fun returnActivityResult(result: ActivityResult<*>) {
+    override fun returnActivityResult(result: SessionResult<*>) {
         setResult(Activity.RESULT_OK, Intent().putExtra(PaymentSessionContract.RESULT_KEY, result))
         finish()
     }
@@ -104,7 +104,7 @@ class PaymentSessionActivity : BaseFragmentActivity(), PaymentSessionListener {
 
     // PaymentSessionListener
 
-    override fun onSessionFinished(sessionResult: ActivityResult<PaymentSessionResult>) {
+    override fun onSessionFinished(sessionResult: SessionResult<PaymentSessionResult>) {
         returnActivityResult(sessionResult)
     }
 

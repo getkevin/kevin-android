@@ -6,22 +6,22 @@ import eu.kevin.accounts.bankselection.BankSelectionIntent.*
 import eu.kevin.accounts.bankselection.exceptions.BankNotSelectedException
 import eu.kevin.accounts.bankselection.factories.BankListItemFactory
 import eu.kevin.accounts.bankselection.managers.KevinBankManager
-import eu.kevin.accounts.countryselection.CountrySelectionFragment
 import eu.kevin.accounts.countryselection.CountrySelectionFragmentConfiguration
 import eu.kevin.accounts.countryselection.managers.KevinCountriesManager
 import eu.kevin.accounts.bankselection.entities.Bank
 import eu.kevin.accounts.bankselection.managers.BankManagerInterface
+import eu.kevin.accounts.countryselection.CountrySelectionContract
 import eu.kevin.accounts.countryselection.usecases.SupportedCountryUseCase
 import eu.kevin.accounts.networking.AccountsClientProvider
-import eu.kevin.core.architecture.BaseViewModel
-import eu.kevin.core.architecture.routing.GlobalRouter
-import eu.kevin.core.entities.LoadingState
-import eu.kevin.core.entities.isLoading
+import eu.kevin.common.architecture.BaseViewModel
+import eu.kevin.common.architecture.routing.GlobalRouter
+import eu.kevin.common.entities.LoadingState
+import eu.kevin.common.entities.isLoading
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class BankSelectionViewModel constructor(
+internal class BankSelectionViewModel constructor(
     private val countryUseCase: SupportedCountryUseCase,
     private val banksManager: BankManagerInterface,
     private val ioDispatcher: CoroutineDispatcher,
@@ -112,13 +112,12 @@ class BankSelectionViewModel constructor(
     }
 
     private fun handleCountrySelectionClick(configuration: BankSelectionFragmentConfiguration) {
-        GlobalRouter.pushModalFragment(CountrySelectionFragment().also {
-            it.configuration = CountrySelectionFragmentConfiguration(
-                state.value.selectedCountry,
-                configuration.countryFilter,
-                configuration.authState
-            )
-        })
+        val config = CountrySelectionFragmentConfiguration(
+            state.value.selectedCountry,
+            configuration.countryFilter,
+            configuration.authState
+        )
+        GlobalRouter.pushModalFragment(CountrySelectionContract.getFragment(config))
     }
 
     private suspend fun handleCountrySelected(selectedCountry: String, configuration: BankSelectionFragmentConfiguration) {
@@ -164,7 +163,7 @@ class BankSelectionViewModel constructor(
             return
         }
         GlobalRouter.returnFragmentResult(
-            BankSelectionFragment.Contract,
+            BankSelectionContract,
             banks.first { it.id == selectedBank.bankId }
         )
     }

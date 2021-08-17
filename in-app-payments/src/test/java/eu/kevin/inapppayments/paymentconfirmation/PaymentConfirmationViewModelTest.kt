@@ -1,8 +1,8 @@
 package eu.kevin.inapppayments.paymentconfirmation
 
 import android.net.Uri
-import eu.kevin.core.architecture.routing.GlobalRouter
-import eu.kevin.core.entities.FragmentResult
+import eu.kevin.common.architecture.routing.GlobalRouter
+import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.inapppayments.BuildConfig
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 import eu.kevin.testcore.base.BaseViewModelTest
@@ -90,7 +90,7 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
         viewModel.intents.trySend(PaymentConfirmationIntent.HandlePaymentCompleted(mockUri))
         verify(exactly = 1) {
             GlobalRouter.returnFragmentResult(
-                PaymentConfirmationFragment.Contract,
+                PaymentConfirmationContract,
                 withArg {
                     Assert.assertTrue((it is FragmentResult.Success) && it.value == expectedResult)
                 }
@@ -106,7 +106,7 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
         viewModel.intents.trySend(PaymentConfirmationIntent.HandlePaymentCompleted(mockUri))
         verify(exactly = 1) {
             GlobalRouter.returnFragmentResult(
-                PaymentConfirmationFragment.Contract,
+                PaymentConfirmationContract,
                 FragmentResult.Canceled
             )
         }

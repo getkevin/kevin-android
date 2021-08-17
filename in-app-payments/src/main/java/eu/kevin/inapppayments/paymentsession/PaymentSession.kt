@@ -5,16 +5,16 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.*
 import androidx.savedstate.SavedStateRegistryOwner
 import eu.kevin.accounts.BuildConfig
-import eu.kevin.accounts.bankselection.BankSelectionFragment
+import eu.kevin.accounts.bankselection.BankSelectionContract
 import eu.kevin.accounts.bankselection.BankSelectionFragmentConfiguration
 import eu.kevin.accounts.bankselection.entities.Bank
 import eu.kevin.accounts.networking.KevinAccountsClientFactory
-import eu.kevin.core.architecture.BaseFlowSession
-import eu.kevin.core.architecture.routing.GlobalRouter
-import eu.kevin.core.entities.ActivityResult
-import eu.kevin.core.entities.FragmentResult
-import eu.kevin.core.extensions.setFragmentResultListener
-import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationFragment
+import eu.kevin.common.architecture.BaseFlowSession
+import eu.kevin.common.architecture.routing.GlobalRouter
+import eu.kevin.core.entities.SessionResult
+import eu.kevin.common.fragment.FragmentResult
+import eu.kevin.common.extensions.setFragmentResultListener
+import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationContract
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationFragmentConfiguration
 import eu.kevin.inapppayments.paymentsession.entities.PaymentSessionConfiguration
 import eu.kevin.inapppayments.paymentsession.entities.PaymentSessionData
@@ -86,7 +86,7 @@ internal class PaymentSession(
             }
         } catch (error: Exception) {
             withContext(Dispatchers.Main) {
-                sessionListener?.onSessionFinished(ActivityResult.Failure(error))
+                sessionListener?.onSessionFinished(SessionResult.Failure(error))
             }
             null
         }
@@ -125,7 +125,7 @@ internal class PaymentSession(
         currentFlowIndex = min(currentFlowIndex + 1, flowItems.size)
         if (flowItems.size == currentFlowIndex) {
             sessionListener?.onSessionFinished(
-                ActivityResult.Success(PaymentSessionResult(configuration.paymentId))
+                SessionResult.Success(PaymentSessionResult(configuration.paymentId))
             )
         } else {
             GlobalRouter.pushFragment(getFlowFragment(currentFlowIndex))
@@ -135,39 +135,37 @@ internal class PaymentSession(
     private fun getFlowFragment(index: Int): Fragment {
         return when (flowItems[index]) {
             BANK_SELECTION -> {
-                BankSelectionFragment().also {
-                    it.configuration = BankSelectionFragmentConfiguration(
-                        sessionData.selectedCountry,
-                        configuration.disableCountrySelection,
-                        configuration.countryFilter,
-                        sessionData.selectedBank?.id,
-                        configuration.paymentId
-                    )
-                }
+                val config = BankSelectionFragmentConfiguration(
+                    sessionData.selectedCountry,
+                    configuration.disableCountrySelection,
+                    configuration.countryFilter,
+                    sessionData.selectedBank?.id,
+                    configuration.paymentId
+                )
+                BankSelectionContract.getFragment(config)
             }
             PAYMENT_CONFIRMATION -> {
-                PaymentConfirmationFragment().also {
-                    it.configuration = PaymentConfirmationFragmentConfiguration(
-                        configuration.paymentId,
-                        sessionData.selectedPaymentType!!,
-                        sessionData.selectedBank?.id,
-                    )
-                }
+                val config = PaymentConfirmationFragmentConfiguration(
+                    configuration.paymentId,
+                    sessionData.selectedPaymentType!!,
+                    sessionData.selectedBank?.id,
+                )
+                PaymentConfirmationContract.getFragment(config)
             }
         }
     }
 
     private fun listenForFragmentResults() {
-        fragmentManager.setFragmentResultListener(BankSelectionFragment.Contract, lifecycleOwner) {
+        fragmentManager.setFragmentResultListener(BankSelectionContract, lifecycleOwner) {
             sessionData = sessionData.copy(selectedBank = it)
             handleFowNavigation()
         }
-        fragmentManager.setFragmentResultListener(PaymentConfirmationFragment.Contract, lifecycleOwner) { result ->
+        fragmentManager.setFragmentResultListener(PaymentConfirmationContract, lifecycleOwner) { result ->
             when (result) {
                 is FragmentResult.Success -> {
                     handleFowNavigation()
                 }
-                is FragmentResult.Canceled -> sessionListener?.onSessionFinished(ActivityResult.Canceled)
+                is FragmentResult.Canceled -> sessionListener?.onSessionFinished(SessionResult.Canceled)
             }
         }
     }

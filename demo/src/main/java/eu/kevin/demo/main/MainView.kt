@@ -5,9 +5,9 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.constraintlayout.widget.ConstraintLayout
-import eu.kevin.core.extensions.applySystemInsetsPadding
 import eu.kevin.demo.R
 import eu.kevin.demo.databinding.FragmentMainBinding
+import eu.kevin.demo.extensions.applySystemInsetsPadding
 
 class MainView(context: Context) : ConstraintLayout(context) {
 

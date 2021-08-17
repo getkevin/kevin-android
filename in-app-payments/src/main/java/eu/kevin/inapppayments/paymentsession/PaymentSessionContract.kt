@@ -3,15 +3,15 @@ package eu.kevin.inapppayments.paymentsession
 import android.content.Context
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContract
-import eu.kevin.core.entities.ActivityResult
+import eu.kevin.core.entities.SessionResult
 import eu.kevin.inapppayments.paymentsession.entities.PaymentSessionConfiguration
 
 /**
  * Activity result contract for payment session. This is an entry point for payment flow.
  * This contract takes in [PaymentSessionConfiguration] and returns [PaymentSessionResult] on success
- * This contract will also produce different results, you can see them in [ActivityResult]
+ * This contract will also produce different results, you can see them in [SessionResult]
  */
-class PaymentSessionContract : ActivityResultContract<PaymentSessionConfiguration, ActivityResult<PaymentSessionResult>>() {
+class PaymentSessionContract : ActivityResultContract<PaymentSessionConfiguration, SessionResult<PaymentSessionResult>>() {
     override fun createIntent(context: Context, config: PaymentSessionConfiguration): Intent {
         val intent = Intent(context, PaymentSessionActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
@@ -19,7 +19,7 @@ class PaymentSessionContract : ActivityResultContract<PaymentSessionConfiguratio
         return intent
     }
 
-    override fun parseResult(resultCode: Int, result: Intent?) : ActivityResult<PaymentSessionResult> {
+    override fun parseResult(resultCode: Int, result: Intent?) : SessionResult<PaymentSessionResult> {
         return result?.extras?.getParcelable(RESULT_KEY)!!
     }
 
