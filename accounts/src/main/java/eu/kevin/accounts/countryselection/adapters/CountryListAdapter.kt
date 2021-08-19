@@ -9,6 +9,7 @@ import eu.kevin.accounts.countryselection.helpers.CountryHelper
 import eu.kevin.accounts.databinding.ViewCountryListItemBinding
 import eu.kevin.common.architecture.BaseListAdapter
 import eu.kevin.common.extensions.getColorFromAttr
+import eu.kevin.common.extensions.setDebounceClickListener
 
 internal class CountryListAdapter(
     override var items: List<Country> = emptyList(),
@@ -23,7 +24,7 @@ internal class CountryListAdapter(
     override fun onBindViewHolder(binding: ViewCountryListItemBinding, item: Country, position: Int) {
         val context = binding.root.context
         with(binding) {
-            root.setOnClickListener {
+            root.setDebounceClickListener {
                 onCountryClicked.invoke(item.iso)
             }
             root.setBackgroundColor(

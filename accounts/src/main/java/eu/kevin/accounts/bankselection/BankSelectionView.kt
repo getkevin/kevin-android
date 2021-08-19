@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.transition.TransitionManager
 import eu.kevin.accounts.R
 import eu.kevin.accounts.bankselection.adapters.BankListAdapter
-import eu.kevin.common.views.GridListItemDecoration
 import eu.kevin.accounts.bankselection.exceptions.BankNotSelectedException
 import eu.kevin.accounts.countryselection.helpers.CountryHelper
 import eu.kevin.accounts.databinding.FragmentBankSelectionBinding
@@ -16,6 +15,7 @@ import eu.kevin.common.entities.LoadingState
 import eu.kevin.common.extensions.*
 import eu.kevin.common.helpers.ErrorHelper
 import eu.kevin.common.helpers.SnackbarHelper
+import eu.kevin.common.views.GridListItemDecoration
 
 internal class BankSelectionView(context: Context) : BaseView<FragmentBankSelectionBinding>(context),
     IView<BankSelectionState> {
@@ -37,7 +37,7 @@ internal class BankSelectionView(context: Context) : BaseView<FragmentBankSelect
                 adapter = banksAdapter
             }
             scrollView.applySystemInsetsPadding(bottom = true)
-            continueButton.setOnClickListener {
+            continueButton.setDebounceClickListener {
                 delegate?.onContinueClicked()
             }
             continueButton.applySystemInsetsMargin(bottom = true)
@@ -45,7 +45,7 @@ internal class BankSelectionView(context: Context) : BaseView<FragmentBankSelect
                 delegate?.onBackClicked()
             }
             actionBar.applySystemInsetsPadding(top = true)
-            countrySelectionView.setOnClickListener {
+            countrySelectionView.setDebounceClickListener {
                 delegate?.onSelectCountryClicked()
             }
         }

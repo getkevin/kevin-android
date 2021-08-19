@@ -8,6 +8,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import eu.kevin.demo.R
 import eu.kevin.demo.databinding.FragmentMainBinding
 import eu.kevin.demo.extensions.applySystemInsetsPadding
+import eu.kevin.demo.extensions.setDebounceClickListener
 
 class MainView(context: Context) : ConstraintLayout(context) {
 
@@ -32,13 +33,13 @@ class MainView(context: Context) : ConstraintLayout(context) {
     }
 
     private fun initListeners() {
-        binding.linkAccountButton.setOnClickListener {
+        binding.linkAccountButton.setDebounceClickListener {
             callback?.onLinkAccountPressed()
         }
-        binding.makeBankPaymentButton.setOnClickListener {
+        binding.makeBankPaymentButton.setDebounceClickListener {
             callback?.onMakeBankPaymentPressed()
         }
-        binding.makeCardPaymentButton.setOnClickListener {
+        binding.makeCardPaymentButton.setDebounceClickListener {
             callback?.onMakeCardPaymentPressed()
         }
         binding.darkModeSwitch.setOnCheckedChangeListener { _, isChecked ->

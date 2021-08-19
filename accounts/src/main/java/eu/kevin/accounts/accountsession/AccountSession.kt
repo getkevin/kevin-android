@@ -9,19 +9,21 @@ import eu.kevin.accounts.accountlinking.AccountLinkingFragmentConfiguration
 import eu.kevin.accounts.accountsession.entities.AccountSessionConfiguration
 import eu.kevin.accounts.accountsession.entities.AccountSessionData
 import eu.kevin.accounts.accountsession.enums.AccountSessionFlowItem
-import eu.kevin.accounts.accountsession.enums.AccountSessionFlowItem.*
+import eu.kevin.accounts.accountsession.enums.AccountSessionFlowItem.BANK_SELECTION
+import eu.kevin.accounts.accountsession.enums.AccountSessionFlowItem.LINK_ACCOUNT_WEB_VIEW
 import eu.kevin.accounts.bankselection.BankSelectionContract
 import eu.kevin.accounts.bankselection.BankSelectionFragmentConfiguration
 import eu.kevin.accounts.bankselection.entities.Bank
 import eu.kevin.accounts.networking.AccountsClientProvider
 import eu.kevin.common.architecture.BaseFlowSession
 import eu.kevin.common.architecture.routing.GlobalRouter
-import eu.kevin.core.entities.SessionResult
-import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.common.extensions.setFragmentResultListener
+import eu.kevin.common.fragment.FragmentResult
+import eu.kevin.core.entities.SessionResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlin.math.min
 
 internal class AccountSession(
     private val fragmentManager: FragmentManager,
@@ -106,15 +108,9 @@ internal class AccountSession(
         flowItems.addAll(flow)
     }
 
-    private fun handleFowNavigation() {
-        if (flowItems.size == currentFlowIndex) {
-            sessionListener?.onSessionFinished(
-                SessionResult.Success(AccountSessionResult(
-                    sessionData.authorization!!,
-                    sessionData.selectedBank!!
-                ))
-            )
-        } else {
+    private fun navigateToNextWindow() {
+        currentFlowIndex = min(currentFlowIndex + 1, flowItems.size)
+        if (currentFlowIndex < flowItems.size) {
             GlobalRouter.pushFragment(getFlowFragment(currentFlowIndex))
         }
     }
@@ -145,15 +141,18 @@ internal class AccountSession(
         with(fragmentManager) {
             setFragmentResultListener(BankSelectionContract, lifecycleOwner) { selectedBank ->
                 sessionData = sessionData.copy(selectedBank = selectedBank)
-                currentFlowIndex++
-                handleFowNavigation()
+                navigateToNextWindow()
             }
             setFragmentResultListener(AccountLinkingContract, lifecycleOwner) { result ->
                 when (result) {
                     is FragmentResult.Success -> {
                         sessionData = sessionData.copy(authorization = result.value.authCode)
-                        currentFlowIndex++
-                        handleFowNavigation()
+                        sessionListener?.onSessionFinished(
+                            SessionResult.Success(AccountSessionResult(
+                                sessionData.authorization!!,
+                                sessionData.selectedBank!!
+                            ))
+                        )
                     }
                     is FragmentResult.Canceled -> sessionListener?.onSessionFinished(SessionResult.Canceled)
                 }
