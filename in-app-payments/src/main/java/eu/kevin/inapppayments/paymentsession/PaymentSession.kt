@@ -11,15 +11,16 @@ import eu.kevin.accounts.bankselection.entities.Bank
 import eu.kevin.accounts.networking.KevinAccountsClientFactory
 import eu.kevin.common.architecture.BaseFlowSession
 import eu.kevin.common.architecture.routing.GlobalRouter
-import eu.kevin.core.entities.SessionResult
-import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.common.extensions.setFragmentResultListener
+import eu.kevin.common.fragment.FragmentResult
+import eu.kevin.core.entities.SessionResult
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationContract
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationFragmentConfiguration
 import eu.kevin.inapppayments.paymentsession.entities.PaymentSessionConfiguration
 import eu.kevin.inapppayments.paymentsession.entities.PaymentSessionData
 import eu.kevin.inapppayments.paymentsession.enums.PaymentSessionFlowItem
-import eu.kevin.inapppayments.paymentsession.enums.PaymentSessionFlowItem.*
+import eu.kevin.inapppayments.paymentsession.enums.PaymentSessionFlowItem.BANK_SELECTION
+import eu.kevin.inapppayments.paymentsession.enums.PaymentSessionFlowItem.PAYMENT_CONFIRMATION
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -121,13 +122,9 @@ internal class PaymentSession(
         flowItems.addAll(flow)
     }
 
-    private fun handleFowNavigation() {
+    private fun navigateToNextWindow() {
         currentFlowIndex = min(currentFlowIndex + 1, flowItems.size)
-        if (flowItems.size == currentFlowIndex) {
-            sessionListener?.onSessionFinished(
-                SessionResult.Success(PaymentSessionResult(configuration.paymentId))
-            )
-        } else {
+        if (currentFlowIndex < flowItems.size) {
             GlobalRouter.pushFragment(getFlowFragment(currentFlowIndex))
         }
     }
@@ -158,12 +155,14 @@ internal class PaymentSession(
     private fun listenForFragmentResults() {
         fragmentManager.setFragmentResultListener(BankSelectionContract, lifecycleOwner) {
             sessionData = sessionData.copy(selectedBank = it)
-            handleFowNavigation()
+            navigateToNextWindow()
         }
         fragmentManager.setFragmentResultListener(PaymentConfirmationContract, lifecycleOwner) { result ->
             when (result) {
                 is FragmentResult.Success -> {
-                    handleFowNavigation()
+                    sessionListener?.onSessionFinished(
+                        SessionResult.Success(PaymentSessionResult(configuration.paymentId))
+                    )
                 }
                 is FragmentResult.Canceled -> sessionListener?.onSessionFinished(SessionResult.Canceled)
             }

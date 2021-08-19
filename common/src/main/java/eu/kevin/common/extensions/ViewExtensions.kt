@@ -4,6 +4,7 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.content.Context
 import android.os.Build
+import android.os.SystemClock
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -81,4 +82,17 @@ fun View.applySystemInsetsMargin(top: Boolean = false, bottom: Boolean = false) 
         }
         windowInsets
     }
+}
+
+fun View.setDebounceClickListener(debounceTime: Long = 600L, action: () -> Unit) {
+    setOnClickListener(object : View.OnClickListener {
+        private var lastClickTime: Long = 0
+
+        override fun onClick(v: View) {
+            if (SystemClock.elapsedRealtime() - lastClickTime < debounceTime) return
+            else action()
+
+            lastClickTime = SystemClock.elapsedRealtime()
+        }
+    })
 }

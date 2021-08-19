@@ -1,7 +1,8 @@
 package eu.kevin.accounts.bankselection.adapters
 
 import android.view.LayoutInflater
-import android.view.View.*
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import coil.ImageLoader
@@ -9,6 +10,7 @@ import coil.request.ImageRequest
 import eu.kevin.accounts.bankselection.entities.BankListItem
 import eu.kevin.accounts.databinding.ViewBankListItemBinding
 import eu.kevin.common.architecture.BaseListAdapter
+import eu.kevin.common.extensions.setDebounceClickListener
 
 internal class BankListAdapter(
     override var items: List<BankListItem> = emptyList(),
@@ -22,7 +24,7 @@ internal class BankListAdapter(
 
     override fun onBindViewHolder(binding: ViewBankListItemBinding, item: BankListItem, position: Int) {
         with(binding) {
-            root.setOnClickListener {
+            root.setDebounceClickListener {
                 onBankClicked.invoke(item.bankId)
             }
             bankTitleView.text = item.title
