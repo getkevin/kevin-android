@@ -45,6 +45,7 @@ internal class BankSelectionView(context: Context) : BaseView<FragmentBankSelect
                 delegate?.onBackClicked()
             }
             actionBar.applySystemInsetsPadding(top = true)
+            actionBar.setNavigationContentDescription(R.string.navigate_back_content_description)
             countrySelectionView.setDebounceClickListener {
                 delegate?.onSelectCountryClicked()
             }

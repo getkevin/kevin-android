@@ -4,4 +4,5 @@
     <string name="window_make_bank_payment_button">Mokėjimas bankiniu pavedimu</string>
     <string name="window_link_account_button">Sąskaitos susiejimas</string>
     <string name="main_menu_dark_mode_toggle">Naudoti tamsią temą</string>
+    <string name="navigate_back_content_description">Grįžti atgal</string>
 </resources>

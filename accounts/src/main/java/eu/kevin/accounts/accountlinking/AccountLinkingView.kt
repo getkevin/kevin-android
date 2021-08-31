@@ -31,6 +31,7 @@ internal class AccountLinkingView(context: Context) : BaseView<FragmentAccountLi
             setNavigationOnClickListener {
                 delegate?.onBackClicked()
             }
+            setNavigationContentDescription(R.string.navigate_back_content_description)
             applySystemInsetsPadding(top = true)
         }
 

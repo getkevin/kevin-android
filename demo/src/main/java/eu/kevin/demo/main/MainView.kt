@@ -21,7 +21,13 @@ class MainView(context: Context) : ConstraintLayout(context) {
             context.theme.resolveAttribute(R.attr.primaryBackgroundColor, it, true)
             it.data
         })
-        binding.actionBar.applySystemInsetsPadding(top = true)
+        binding.actionBar.apply {
+            applySystemInsetsPadding(top = true)
+            setNavigationContentDescription(R.string.navigate_back_content_description)
+            setNavigationOnClickListener {
+                callback?.onBackPressed()
+            }
+        }
         binding.root.applySystemInsetsPadding(bottom = true)
         initListeners()
     }

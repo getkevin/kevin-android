@@ -5,17 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.fragment.app.Fragment
-import eu.kevin.accounts.countryselection.enums.KevinCountry
 import eu.kevin.accounts.accountsession.AccountSessionContract
 import eu.kevin.accounts.accountsession.entities.AccountSessionConfiguration
+import eu.kevin.accounts.countryselection.enums.KevinCountry
 import eu.kevin.core.entities.SessionResult
-import eu.kevin.inapppayments.paymentsession.entities.PaymentSessionConfiguration
-import eu.kevin.inapppayments.paymentsession.PaymentSessionContract
-import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 import eu.kevin.demo.auth.entities.ApiPayment
+import eu.kevin.inapppayments.paymentsession.PaymentSessionContract
+import eu.kevin.inapppayments.paymentsession.entities.PaymentSessionConfiguration
+import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
@@ -108,5 +108,9 @@ class MainFragment : Fragment(), MainViewCallback {
 
     override fun onMakeCardPaymentPressed() {
         viewModel.initializePayment(PaymentType.CARD)
+    }
+
+    override fun onBackPressed() {
+        activity?.onBackPressed()
     }
 }

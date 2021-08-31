@@ -27,6 +27,7 @@ internal class BankListAdapter(
             root.setDebounceClickListener {
                 onBankClicked.invoke(item.bankId)
             }
+            root.contentDescription = item.title
             bankTitleView.text = item.title
             loadBankImage(binding, item.logoUrl)
             root.isSelected = item.isSelected
