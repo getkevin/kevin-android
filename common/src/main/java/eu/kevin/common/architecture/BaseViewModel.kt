@@ -7,10 +7,7 @@ import eu.kevin.common.architecture.interfaces.IIntent
 import eu.kevin.common.architecture.interfaces.IModel
 import eu.kevin.common.architecture.interfaces.IState
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.consumeAsFlow
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 abstract class BaseViewModel<S : IState, I : IIntent>(
@@ -40,7 +37,7 @@ abstract class BaseViewModel<S : IState, I : IIntent>(
     protected abstract suspend fun handleIntent(intent: I)
 
     protected suspend fun updateState(handler: suspend (intent: S) -> S) {
-        _state.value = handler(state.value)
+        _state.update { handler(_state.value) }
         savedStateHandle.set("saved_state", _state.value)
     }
 }
