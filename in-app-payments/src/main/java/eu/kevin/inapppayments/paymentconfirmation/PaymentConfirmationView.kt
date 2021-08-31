@@ -3,7 +3,9 @@ package eu.kevin.inapppayments.paymentconfirmation
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.MotionEvent
-import android.webkit.*
+import android.webkit.WebResourceRequest
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.core.view.updateLayoutParams
 import eu.kevin.common.architecture.BaseView
 import eu.kevin.common.architecture.interfaces.IView
@@ -28,6 +30,7 @@ internal class PaymentConfirmationView(context: Context) : BaseView<FragmentPaym
             setNavigationOnClickListener {
                 delegate?.onBackClicked()
             }
+            setNavigationContentDescription(eu.kevin.accounts.R.string.navigate_back_content_description)
             applySystemInsetsPadding(top = true)
         }
 

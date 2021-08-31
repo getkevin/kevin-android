@@ -6,7 +6,7 @@ import eu.kevin.accounts.networking.entities.ApiBank
 internal object BankListItemFactory {
     fun getBankList(apiBanks: List<ApiBank>, selectedBankId: String? = null): List<BankListItem> {
         val banks = apiBanks.sortedBy { it.officialName }.map {
-            BankListItem(it.id, it.officialName ?: "", it.imageUri)
+            BankListItem(it.id, it.name, it.imageUri)
         }
         val selectedBank = banks.firstOrNull { it.bankId == selectedBankId }
         if (selectedBank != null) {

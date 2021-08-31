@@ -6,4 +6,5 @@
     <string name="yes">Да</string>
     <string name="no">Нет</string>
     <string name="dialog_exit_confirmation_title">Предупреждение!</string>
+    <string name="navigate_back_content_description">Вернуться назад</string>
 </resources>

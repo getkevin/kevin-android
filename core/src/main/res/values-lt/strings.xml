@@ -6,4 +6,5 @@
     <string name="yes">Taip</string>
     <string name="no">Ne</string>
     <string name="dialog_exit_confirmation_title">Įspėjimas!</string>
+    <string name="navigate_back_content_description">Grįžti atgal</string>
 </resources>
