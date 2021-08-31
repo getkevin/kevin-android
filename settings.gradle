@@ -1,4 +1,4 @@
-rootProject.name = "Kevin Sdk"
+rootProject.name = "kevin. SDK"
 include ':demo'
 include ':core'
 include ':accounts'
