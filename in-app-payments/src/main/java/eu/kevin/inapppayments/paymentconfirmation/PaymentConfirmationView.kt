@@ -57,6 +57,7 @@ internal class PaymentConfirmationView(context: Context) : BaseView<FragmentPaym
         with(binding.confirmationWebView) {
             applySystemInsetsMargin(bottom = true)
             settings.javaScriptEnabled = true
+            settings.domStorageEnabled = true
             webViewClient = object : WebViewClient() {
                 override fun shouldOverrideUrlLoading(
                     view: WebView,

@@ -58,6 +58,7 @@ internal class AccountLinkingView(context: Context) : BaseView<FragmentAccountLi
         with(binding.accountLinkWebView) {
             applySystemInsetsMargin(bottom = true)
             settings.javaScriptEnabled = true
+            settings.domStorageEnabled = true
             webViewClient = object : WebViewClient() {
                 override fun shouldOverrideUrlLoading(
                     view: WebView,
