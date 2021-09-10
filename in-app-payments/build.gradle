@@ -18,8 +18,8 @@ android {
         resConfigs("en", "lt", "ru")
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String", "KEVIN_BANK_PAYMENT_URL", "\"https://psd2.getkevin.eu/login/%s/%s/preview\""
-        buildConfigField "String", "KEVIN_CARD_PAYMENT_URL", "\"https://psd2.getkevin.eu/card-details/%s\""
+        buildConfigField "String", "KEVIN_BANK_PAYMENT_URL", "\"https://psd2.kevin.eu/login/%s/%s/preview\""
+        buildConfigField "String", "KEVIN_CARD_PAYMENT_URL", "\"https://psd2.kevin.eu/card-details/%s\""
 
         buildConfigField "int", "HTTP_CLIENT_TIMEOUT", "120000"
         buildConfigField "io.ktor.client.features.logging.LogLevel", "HTTP_LOGGING_LEVEL", "io.ktor.client.features.logging.LogLevel.NONE"
