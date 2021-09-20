@@ -24,21 +24,21 @@ internal class PaymentConfirmationFragment : BaseFragment<PaymentConfirmationSta
 
     override fun onAttached() {
         super.onAttached()
-        viewModel.intents.offer(Initialize(configuration!!))
+        viewModel.intents.trySend(Initialize(configuration!!))
     }
 
     override fun onBackPressed(): Boolean {
-        viewModel.intents.offer(HandleBackClicked)
+        viewModel.intents.trySend(HandleBackClicked)
         return true
     }
 
     // PaymentConfirmationViewDelegate
 
     override fun onBackClicked() {
-        viewModel.intents.offer(HandleBackClicked)
+        viewModel.intents.trySend(HandleBackClicked)
     }
 
     override fun onPaymentCompleted(uri: Uri) {
-        viewModel.intents.offer(HandlePaymentCompleted(uri))
+        viewModel.intents.trySend(HandlePaymentCompleted(uri))
     }
 }

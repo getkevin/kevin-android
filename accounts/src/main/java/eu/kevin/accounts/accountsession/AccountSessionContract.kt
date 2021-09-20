@@ -1,5 +1,6 @@
 package eu.kevin.accounts.accountsession
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContract
@@ -20,7 +21,15 @@ class AccountSessionContract : ActivityResultContract<AccountSessionConfiguratio
     }
 
     override fun parseResult(resultCode: Int, result: Intent?) : SessionResult<AccountSessionResult> {
-        return result?.extras?.getParcelable(RESULT_KEY)!!
+        return if (resultCode == Activity.RESULT_OK) {
+            return try {
+                result?.extras?.getParcelable(RESULT_KEY)!!
+            } catch (error: Exception) {
+                SessionResult.Failure(error)
+            }
+        } else {
+            SessionResult.Failure(UnknownError("Activity returned unknown resultCode"))
+        }
     }
 
     companion object {
