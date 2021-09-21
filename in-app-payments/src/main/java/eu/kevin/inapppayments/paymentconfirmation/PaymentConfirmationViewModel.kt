@@ -10,7 +10,7 @@ import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.inapppayments.BuildConfig
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.*
-import eu.kevin.inapppayments.paymentsession.enums.PaymentType.*
+import eu.kevin.inapppayments.paymentsession.enums.PaymentType.BANK
 
 internal class PaymentConfirmationViewModel(
     savedStateHandle: SavedStateHandle
@@ -29,7 +29,11 @@ internal class PaymentConfirmationViewModel(
     private suspend fun initialize(configuration: PaymentConfirmationFragmentConfiguration) {
         val url = when (configuration.paymentType) {
             BANK -> {
-                BuildConfig.KEVIN_BANK_PAYMENT_URL.format(configuration.paymentId, configuration.selectedBank!!)
+                if (configuration.skipAuthentication) {
+                    BuildConfig.KEVIN_BANK_PAYMENT_AUTHENTICAED_URL.format(configuration.paymentId)
+                } else {
+                    BuildConfig.KEVIN_BANK_PAYMENT_URL.format(configuration.paymentId, configuration.selectedBank!!)
+                }
             }
             else -> {
                 BuildConfig.KEVIN_CARD_PAYMENT_URL.format(configuration.paymentId)

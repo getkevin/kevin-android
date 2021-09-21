@@ -81,7 +81,8 @@ class MainFragment : Fragment(), MainViewCallback {
     }
 
     private fun openPaymentSession(payment: ApiPayment, paymentType: PaymentType) {
-        val config = PaymentSessionConfiguration.Builder(payment.id, paymentType)
+        val config = PaymentSessionConfiguration.Builder(payment.id)
+            .setPaymentType(paymentType)
             .setPreselectedCountry(KevinCountry.LITHUANIA)
             .setSkipBankSelection(false)
             .build()

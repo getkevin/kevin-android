@@ -65,7 +65,9 @@ internal class PaymentSession(
     fun beginFlow(listener: PaymentSessionListener) {
         sessionListener = listener
 
-        if (configuration.paymentType == PaymentType.BANK && configuration.preselectedBank != null) {
+        if (configuration.skipAuthentication) {
+            initializeFlow(selectedBank = null)
+        } else if (configuration.paymentType == PaymentType.BANK && configuration.preselectedBank != null) {
             sessionListener?.showLoading(true)
             lifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
                 val selectedBank = getSelectedBank()
@@ -110,7 +112,7 @@ internal class PaymentSession(
     private fun updateFlowItems() {
         val flow = mutableListOf<PaymentSessionFlowItem>()
 
-        if (sessionData.selectedPaymentType == PaymentType.BANK) {
+        if (sessionData.selectedPaymentType == PaymentType.BANK && !configuration.skipAuthentication) {
             if (!configuration.skipBankSelection || sessionData.selectedBank == null) {
                 flow.add(BANK_SELECTION)
             }
@@ -146,6 +148,7 @@ internal class PaymentSession(
                     configuration.paymentId,
                     sessionData.selectedPaymentType!!,
                     sessionData.selectedBank?.id,
+                    configuration.skipAuthentication
                 )
                 PaymentConfirmationContract.getFragment(config)
             }
