@@ -17,12 +17,12 @@ class DemoApplication : Application() {
         Kevin.setTheme(R.style.KevinTheme)
         KevinAccountsPlugin.configure(
             KevinAccountsConfiguration.builder()
-                .setCallbackUrl("https://redirect.getkevin.eu/authorization.html")
+                .setCallbackUrl("https://redirect.kevin.eu/authorization.html")
                 .build()
         )
         KevinPaymentsPlugin.configure(
             KevinPaymentsConfiguration.builder()
-                .setCallbackUrl("https://redirect.getkevin.eu/payment.html")
+                .setCallbackUrl("https://redirect.kevin.eu/payment.html")
                 .build()
         )
     }
