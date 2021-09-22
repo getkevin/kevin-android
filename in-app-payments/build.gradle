@@ -4,6 +4,12 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-parcelize'
 apply plugin: 'kotlinx-serialization'
 
+ext {
+    PUBLISH_ARTIFACT_ID = "in-app-payments"
+}
+
+apply from: "${rootProject.projectDir}/maven/publish-module.gradle"
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
