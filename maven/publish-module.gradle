@@ -43,9 +43,9 @@ afterEvaluate {
                     }
                     developers {
                         developer {
-                            id = "developer_id"
-                            name = "developer_name"
-                            email = "developer@kevin.eu"
+                            id = "edgar-zigis"
+                            name = "Edgar Žigis"
+                            email = "edgar.zigis@kevin.eu"
                         }
                     }
                     scm {
