@@ -10,13 +10,13 @@
 1. Import library features you will use:
 
 ```gradle
-implementation 'com.github.getkevin.kevin-android:core:xxx'
-implementation 'com.github.getkevin.kevin-android:accounts:xxx'
-implementation 'com.github.getkevin.kevin-android:in-app-payments:xxx'
+implementation 'eu.kevin.android:core:xxx'
+implementation 'eu.kevin.android:accounts:xxx'
+implementation 'eu.kevin.android:in-app-payments:xxx'
 ```
 or import all features all together:
 ```gradle
-implementation 'com.github.getkevin:kevin-android:xxx'
+implementation 'eu.kevin.android:kevin-android:xxx'
 ```
 2. Initialize plugins you will use in your Application file:
 
