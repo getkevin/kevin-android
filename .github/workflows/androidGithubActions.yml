@@ -17,10 +17,6 @@ jobs:
         with:
           java-version: 11
 
-        # Generates other artifacts (javadocJar is optional)
-      - name: Source jar and dokka
-        run: ./gradlew androidSourcesJar javadocJar
-
       - name: Publish to MavenCentral
         run: ./gradlew publishReleasePublicationToSonatypeRepository
         env:
