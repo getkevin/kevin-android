@@ -43,9 +43,9 @@ afterEvaluate {
                     }
                     developers {
                         developer {
-                            id = "edgar-zigis"
-                            name = "Edgar Žigis"
-                            email = "edgar.zigis@kevin.eu"
+                            id = "mobile-kevin-dev"
+                            name = "Kevin mobile developers"
+                            email = "mobile@kevin.eu"
                         }
                     }
                     scm {
