@@ -19,6 +19,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField "String", "KEVIN_BANK_PAYMENT_URL", "\"https://psd2.kevin.eu/login/%s/%s/preview\""
+        buildConfigField "String", "KEVIN_BANK_PAYMENT_AUTHENTICATED_URL", "\"https://psd2.kevin.eu/payments/%s/processing\""
         buildConfigField "String", "KEVIN_CARD_PAYMENT_URL", "\"https://psd2.kevin.eu/card-details/%s\""
 
         buildConfigField "int", "HTTP_CLIENT_TIMEOUT", "120000"

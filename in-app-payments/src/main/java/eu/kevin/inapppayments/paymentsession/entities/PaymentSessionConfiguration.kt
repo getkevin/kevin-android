@@ -16,7 +16,8 @@ data class PaymentSessionConfiguration(
     val disableCountrySelection: Boolean,
     val countryFilter: List<KevinCountry>,
     val preselectedBank: String?,
-    val skipBankSelection: Boolean
+    val skipBankSelection: Boolean,
+    val skipAuthentication: Boolean
 ) : Parcelable {
 
     init {
@@ -41,12 +42,24 @@ data class PaymentSessionConfiguration(
      * @property paymentId id of payment to be executed
      * @property paymentType [PaymentType] type of payment method to be used during payment session
      */
-    class Builder(private val paymentId: String, private val paymentType: PaymentType) {
+    class Builder(private val paymentId: String) {
+        private var paymentType: PaymentType = PaymentType.BANK
         private var preselectedCountry: KevinCountry? = null
         private var disableCountrySelection: Boolean = false
         private var countryFilter: List<KevinCountry> = emptyList()
         private var preselectedBank: String? = null
         private var skipBankSelection: Boolean = false
+        private var skipAuthentication: Boolean = false
+
+        /**
+         * @param paymentType [PaymentType] that will be used to perform the payment
+         *
+         * Default [PaymentType.BANK]
+         */
+        fun setPaymentType(paymentType: PaymentType): Builder {
+            this.paymentType = paymentType
+            return this
+        }
 
         /**
          * @param country [KevinCountry] that will be used during initial
@@ -113,15 +126,30 @@ data class PaymentSessionConfiguration(
             return this
         }
 
+        /**
+         * @param skip if it's set to true, [paymentType] will be set to [PaymentType.BANK]
+         * and country and bank selection windows will be skipped and user will be navigated
+         * straight to payment confirmation.
+         * The provided [paymentId] must be initialized with linkToken of linked bank account for this
+         * to work properly.
+         *
+         * Default is 'false'
+         */
+        fun setSkipAuthentication(skip: Boolean): Builder {
+            this.skipAuthentication = skip
+            return this
+        }
+
         fun build(): PaymentSessionConfiguration {
             return PaymentSessionConfiguration(
                 paymentId,
-                paymentType,
+                if (skipAuthentication) PaymentType.BANK else paymentType,
                 preselectedCountry,
                 disableCountrySelection,
                 countryFilter,
                 preselectedBank,
-                skipBankSelection
+                skipBankSelection,
+                skipAuthentication
             )
         }
     }

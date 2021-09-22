@@ -20,10 +20,10 @@ class AccountSessionContract : ActivityResultContract<AccountSessionConfiguratio
         return intent
     }
 
-    override fun parseResult(resultCode: Int, result: Intent?) : SessionResult<AccountSessionResult> {
+    override fun parseResult(resultCode: Int, result: Intent?): SessionResult<AccountSessionResult> {
         return if (resultCode == Activity.RESULT_OK) {
-            return try {
-                result?.extras?.getParcelable(RESULT_KEY)!!
+            try {
+                result?.extras?.getParcelable<SessionResult<AccountSessionResult>>(RESULT_KEY)!!
             } catch (error: Exception) {
                 SessionResult.Failure(error)
             }

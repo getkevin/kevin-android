@@ -8,5 +8,6 @@ import kotlinx.parcelize.Parcelize
 data class PaymentConfirmationFragmentConfiguration(
     val paymentId: String,
     val paymentType: PaymentType,
-    val selectedBank: String? = null
+    val selectedBank: String? = null,
+    val skipAuthentication: Boolean
 ) : Parcelable

@@ -20,10 +20,10 @@ class PaymentSessionContract : ActivityResultContract<PaymentSessionConfiguratio
         return intent
     }
 
-    override fun parseResult(resultCode: Int, result: Intent?) : SessionResult<PaymentSessionResult> {
+    override fun parseResult(resultCode: Int, result: Intent?): SessionResult<PaymentSessionResult> {
         return if (resultCode == Activity.RESULT_OK) {
             try {
-                result?.extras?.getParcelable(RESULT_KEY)!!
+                result?.extras?.getParcelable<SessionResult<PaymentSessionResult>>(RESULT_KEY)!!
             } catch (error: Exception) {
                 SessionResult.Failure(error)
             }
