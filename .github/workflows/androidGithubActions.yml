@@ -17,9 +17,6 @@ jobs:
         with:
           java-version: 11
 
-      - name: Release build
-        run: ./gradlew :stream-chat-android-client:assembleRelease
-
         # Generates other artifacts (javadocJar is optional)
       - name: Source jar and dokka
         run: ./gradlew androidSourcesJar javadocJar
