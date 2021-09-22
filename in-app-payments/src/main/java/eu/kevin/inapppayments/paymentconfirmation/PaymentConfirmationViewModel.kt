@@ -30,7 +30,7 @@ internal class PaymentConfirmationViewModel(
         val url = when (configuration.paymentType) {
             BANK -> {
                 if (configuration.skipAuthentication) {
-                    BuildConfig.KEVIN_BANK_PAYMENT_AUTHENTICAED_URL.format(configuration.paymentId)
+                    BuildConfig.KEVIN_BANK_PAYMENT_AUTHENTICATED_URL.format(configuration.paymentId)
                 } else {
                     BuildConfig.KEVIN_BANK_PAYMENT_URL.format(configuration.paymentId, configuration.selectedBank!!)
                 }
