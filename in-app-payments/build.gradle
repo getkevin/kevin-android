@@ -11,14 +11,11 @@ ext {
 apply from: "${rootProject.projectDir}/maven/publish-module.gradle"
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdkVersion 31
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 31
 
         consumerProguardFiles "proguard-rules.pro"
         resConfigs("en", "lt", "ru")
@@ -42,20 +39,13 @@ android {
     buildFeatures {
         viewBinding true
     }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation project(':common')
+    implementation project(':core')
+    implementation project(':accounts')
+
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1"
 
@@ -77,8 +67,4 @@ dependencies {
     testImplementation "androidx.arch.core:core-testing:$core_testing_version"
     androidTestImplementation "androidx.test.ext:junit:$androidx_junit_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
-
-    implementation project(':common')
-    implementation project(':core')
-    implementation project(':accounts')
 }

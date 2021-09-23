@@ -11,6 +11,7 @@ abstract class BaseListAdapter<T, B : ViewBinding>(
 
     abstract fun onBindViewHolder(binding: B, item: T, position: Int)
 
+    @Suppress("UNCHECKED_CAST")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         onBindViewHolder(holder.binding as B, items[position], position)
     }

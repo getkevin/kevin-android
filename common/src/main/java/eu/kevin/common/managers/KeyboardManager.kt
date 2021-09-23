@@ -38,7 +38,7 @@ class KeyboardManager(private val rootView: View) {
     }
 
     private fun listenForKeyboardInsets() {
-        ViewCompat.setOnApplyWindowInsetsListener(rootView) { v, windowInsets ->
+        ViewCompat.setOnApplyWindowInsetsListener(rootView) { _, windowInsets ->
             lastWindowInsets = windowInsets
             if (!deferredInsets) {
                 val typesInset = windowInsets.getInsets(WindowInsetsCompat.Type.ime())
