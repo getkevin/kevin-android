@@ -1,8 +1,12 @@
 package eu.kevin.accounts.countryselection
 
-import androidx.lifecycle.*
+import androidx.lifecycle.AbstractSavedStateViewModelFactory
+import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.savedstate.SavedStateRegistryOwner
-import eu.kevin.accounts.countryselection.CountrySelectionIntent.*
+import eu.kevin.accounts.countryselection.CountrySelectionIntent.HandleCountrySelection
+import eu.kevin.accounts.countryselection.CountrySelectionIntent.Initialize
 import eu.kevin.accounts.countryselection.entities.Country
 import eu.kevin.accounts.countryselection.managers.KevinCountriesManager
 import eu.kevin.accounts.countryselection.usecases.SupportedCountryUseCase
@@ -75,6 +79,7 @@ internal class CountrySelectionViewModel constructor(
         GlobalRouter.returnFragmentResult(CountrySelectionContract, selectedCountry!!.iso)
     }
 
+    @Suppress("UNCHECKED_CAST")
     class Factory(owner: SavedStateRegistryOwner) : AbstractSavedStateViewModelFactory(owner, null) {
         override fun <T : ViewModel?> create(
             key: String,

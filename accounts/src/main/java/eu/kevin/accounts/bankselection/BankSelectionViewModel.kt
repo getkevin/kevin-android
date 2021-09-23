@@ -1,16 +1,19 @@
 package eu.kevin.accounts.bankselection
 
-import androidx.lifecycle.*
+import androidx.lifecycle.AbstractSavedStateViewModelFactory
+import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.savedstate.SavedStateRegistryOwner
 import eu.kevin.accounts.bankselection.BankSelectionIntent.*
+import eu.kevin.accounts.bankselection.entities.Bank
 import eu.kevin.accounts.bankselection.exceptions.BankNotSelectedException
 import eu.kevin.accounts.bankselection.factories.BankListItemFactory
+import eu.kevin.accounts.bankselection.managers.BankManagerInterface
 import eu.kevin.accounts.bankselection.managers.KevinBankManager
+import eu.kevin.accounts.countryselection.CountrySelectionContract
 import eu.kevin.accounts.countryselection.CountrySelectionFragmentConfiguration
 import eu.kevin.accounts.countryselection.managers.KevinCountriesManager
-import eu.kevin.accounts.bankselection.entities.Bank
-import eu.kevin.accounts.bankselection.managers.BankManagerInterface
-import eu.kevin.accounts.countryselection.CountrySelectionContract
 import eu.kevin.accounts.countryselection.usecases.SupportedCountryUseCase
 import eu.kevin.accounts.networking.AccountsClientProvider
 import eu.kevin.common.architecture.BaseViewModel
@@ -168,6 +171,7 @@ internal class BankSelectionViewModel constructor(
         )
     }
 
+    @Suppress("UNCHECKED_CAST")
     class Factory(owner: SavedStateRegistryOwner) : AbstractSavedStateViewModelFactory(owner, null) {
         override fun <T : ViewModel?> create(
             key: String,

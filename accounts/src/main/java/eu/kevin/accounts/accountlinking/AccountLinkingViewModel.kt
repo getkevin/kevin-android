@@ -47,6 +47,7 @@ internal class AccountLinkingViewModel(
         }
     }
 
+    @Suppress("UNCHECKED_CAST")
     class Factory(owner: SavedStateRegistryOwner) : AbstractSavedStateViewModelFactory(owner, null) {
         override fun <T : ViewModel?> create(
             key: String,

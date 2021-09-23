@@ -26,6 +26,7 @@ open class SavedStateProvider<T>(private val savable: Bundle) {
         }
     }
 
+    @Suppress("UNCHECKED_CAST")
     protected fun getAndCache(key: String): T? = cache ?: (savable.get(key) as T?).apply { cache = this }
 
     class Nullable<T>(savable: Bundle) : SavedStateProvider<T>(savable) {
