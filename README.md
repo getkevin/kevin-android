@@ -24,10 +24,6 @@ implementation 'eu.kevin.android:core:xxx'
 implementation 'eu.kevin.android:accounts:xxx'
 implementation 'eu.kevin.android:in-app-payments:xxx'
 ```
-or import all features all together:
-```gradle
-implementation 'eu.kevin.android:kevin-android:xxx'
-```
 3. Initialize plugins you will use in your Application file:
 
 ```kotlin
