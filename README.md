@@ -99,7 +99,8 @@ val makePayment = registerForActivityResult(PaymentSessionContract()) { result -
 2. Customize flow by tweaking our configuration and launch the flow:
 
 ```kotlin
-val config = PaymentSessionConfiguration.Builder(payment.id, paymentType)
+val config = PaymentSessionConfiguration.Builder(payment.id)
+    .setPaymentType(PaymentType.BANK)  // set payment type (BANK or CARD)
     .setPreselectedCountry(KevinCountry.LITHUANIA)  //  optional option to preselect country
     .setCountryFilter(listOf(   //  optional option to supply country list
         KevinCountry.LATVIA,
@@ -108,7 +109,8 @@ val config = PaymentSessionConfiguration.Builder(payment.id, paymentType)
     ))
     .setDisableCountrySelection(false)  //  optional option to disable country selection
     .setPreselectedBank("SOME_BANK_ID") //  optional option to preselect bank
-    .setSkipBankSelection(false)    //  optional skip of bank selection (should be used with preselectedBank)
+    .setSkipBankSelection(false)    //  optional skip of bank selection (should be used with preselectedBank
+    .setSkipAuthentication(false)   //  optional skip of authentication steps (payment needs to be initialized with linked account token)
     .build()
 linkAccount.launch(config)
 ```
