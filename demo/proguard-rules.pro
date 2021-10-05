@@ -1,9 +1,17 @@
 # kotlinx.serialization
 
--keep,includedescriptorclasses class eu.kevin.sample.auth.entities.**$$serializer { *; }
--keepclassmembers class eu.kevin.demo.auth.entities.** {
+-keepattributes *Annotation*, InnerClasses
+-dontnote kotlinx.serialization.AnnotationsKt
+
+-keep,includedescriptorclasses class eu.kevin.demo.**$$serializer { *; }
+-keepclassmembers class eu.kevin.demo.** {
     *** Companion;
 }
--keepclasseswithmembers class eu.kevin.sample.auth.entities.** {
+-keepclasseswithmembers class eu.kevin.demo.** {
     kotlinx.serialization.KSerializer serializer(...);
+}
+
+-keep public class io.ktor.client.** {
+    public <methods>;
+    private <methods>;
 }
