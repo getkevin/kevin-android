@@ -1,7 +1,7 @@
 package eu.kevin.inapppayments.paymentsession.entities
 
 import android.os.Parcelable
-import eu.kevin.accounts.countryselection.enums.KevinCountry
+import eu.kevin.core.enums.KevinCountry
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 import kotlinx.parcelize.Parcelize
 

@@ -1,4 +1,4 @@
-package eu.kevin.accounts.countryselection.enums
+package eu.kevin.core.enums
 
 enum class KevinCountry(val iso: String) {
     AUSTRIA("at"),

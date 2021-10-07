@@ -10,8 +10,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import eu.kevin.accounts.accountsession.AccountSessionContract
 import eu.kevin.accounts.accountsession.entities.AccountSessionConfiguration
-import eu.kevin.accounts.countryselection.enums.KevinCountry
 import eu.kevin.core.entities.SessionResult
+import eu.kevin.core.enums.KevinCountry
 import eu.kevin.demo.auth.entities.ApiPayment
 import eu.kevin.inapppayments.paymentsession.PaymentSessionContract
 import eu.kevin.inapppayments.paymentsession.entities.PaymentSessionConfiguration
