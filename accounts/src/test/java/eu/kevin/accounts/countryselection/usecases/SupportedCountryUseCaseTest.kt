@@ -1,13 +1,13 @@
 package eu.kevin.accounts.countryselection.usecases
 
-import eu.kevin.accounts.countryselection.enums.KevinCountry
 import eu.kevin.accounts.countryselection.managers.CountriesTestManager
+import eu.kevin.core.enums.KevinCountry
 import eu.kevin.testcore.base.BaseUnitTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
-import org.junit.Assert.*
 
 @ExperimentalCoroutinesApi
 class SupportedCountryUseCaseTest : BaseUnitTest() {

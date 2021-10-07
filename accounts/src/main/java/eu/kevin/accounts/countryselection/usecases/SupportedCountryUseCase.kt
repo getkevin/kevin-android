@@ -1,7 +1,7 @@
 package eu.kevin.accounts.countryselection.usecases
 
-import eu.kevin.accounts.countryselection.enums.KevinCountry
 import eu.kevin.accounts.countryselection.managers.CountriesManagerInterface
+import eu.kevin.core.enums.KevinCountry
 
 internal class SupportedCountryUseCase(
     private val countriesManager: CountriesManagerInterface

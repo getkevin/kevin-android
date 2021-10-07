@@ -1,7 +1,7 @@
 package eu.kevin.accounts.countryselection
 
 import android.os.Parcelable
-import eu.kevin.accounts.countryselection.enums.KevinCountry
+import eu.kevin.core.enums.KevinCountry
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
