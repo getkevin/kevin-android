@@ -18,7 +18,7 @@ android {
         targetSdkVersion 31
 
         consumerProguardFiles "proguard-rules.pro"
-        resConfigs("en", "lt", "ru", "bg", "ro")
+        resConfigs("en", "lt", "ru", "bg", "ro", "hu")
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField "String", "KEVIN_BANK_PAYMENT_URL", "\"https://psd2.kevin.eu/login/%s/%s/preview\""

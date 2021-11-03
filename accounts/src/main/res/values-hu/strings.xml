@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="country_name_at">Ausztria</string>
+    <string name="country_name_be">Belgium</string>
+    <string name="country_name_bg">Bulgária</string>
+    <string name="country_name_cz">Csehország</string>
+    <string name="country_name_de">Németország</string>
+    <string name="country_name_dk">Dánia</string>
+    <string name="country_name_ee">Észtország</string>
+    <string name="country_name_es">Spanyolország</string>
+    <string name="country_name_fi">Finnország</string>
+    <string name="country_name_fr">Franciaország</string>
+    <string name="country_name_gb">Egyesült Királyság</string>
+    <string name="country_name_it">Olaszország</string>
+    <string name="country_name_lt">Litvánia</string>
+    <string name="country_name_lu">Luxemburg</string>
+    <string name="country_name_lv">Lettország</string>
+    <string name="country_name_nl">Hollandia</string>
+    <string name="country_name_no">Norvégia</string>
+    <string name="country_name_pl">Lengyelország</string>
+    <string name="country_name_pt">Portugália</string>
+    <string name="country_name_ro">Románia</string>
+    <string name="country_name_se">Svédország</string>
+    <string name="country_name_hu">Magyarország</string>
+    <string name="country_name_ie">Írország</string>
+    <string name="country_name_si">Szlovénia</string>
+    <string name="country_name_sk">Szlovákia</string>
+    <string name="country_name_mt">Málta</string>
+    <string name="country_name_cy">Ciprus</string>
+    <string name="country_name_hr">Horvátország</string>
+    <string name="window_account_linking_title">Fiók összekapcsolása</string>
+    <string name="window_country_selection_title">Válassz országot</string>
+    <string name="window_bank_selection_title">Bankválasztás</string>
+    <string name="window_bank_selection_select_country_label">Válassz országot</string>
+    <string name="window_bank_selection_select_bank_label">Válassza ki a bankot</string>
+    <string name="error_bank_not_selected">Bankot kell választani</string>
+    <string name="dialog_exit_confirmation_accounts_message">Biztosan megszakítja a fiókok összekapcsolását?</string>
+</resources>
