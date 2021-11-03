@@ -12,7 +12,7 @@ android {
         targetSdkVersion 31
 
         consumerProguardFiles "proguard-rules.pro"
-        resConfigs("en", "lt", "ru")
+        resConfigs("en", "lt", "ru", "bg")
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
