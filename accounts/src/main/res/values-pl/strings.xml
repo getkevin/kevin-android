@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="country_name_at">Austria</string>
+    <string name="country_name_be">Belgia</string>
+    <string name="country_name_bg">Bułgaria</string>
+    <string name="country_name_cz">Czechy</string>
+    <string name="country_name_de">Niemcy</string>
+    <string name="country_name_dk">Dania</string>
+    <string name="country_name_ee">Estonia</string>
+    <string name="country_name_es">Hiszpania</string>
+    <string name="country_name_fi">Finlandia</string>
+    <string name="country_name_fr">Francja</string>
+    <string name="country_name_gb">Zjednoczone Królestwo</string>
+    <string name="country_name_it">Włochy</string>
+    <string name="country_name_lt">Litwa</string>
+    <string name="country_name_lu">Luksemburg</string>
+    <string name="country_name_lv">Łotwa</string>
+    <string name="country_name_nl">Holandia</string>
+    <string name="country_name_no">Norwegia</string>
+    <string name="country_name_pl">Polska</string>
+    <string name="country_name_pt">Portugalia</string>
+    <string name="country_name_ro">Rumunia</string>
+    <string name="country_name_se">Szwecja</string>
+    <string name="country_name_hu">Węgry</string>
+    <string name="country_name_ie">Irlandia</string>
+    <string name="country_name_si">Słowenia</string>
+    <string name="country_name_sk">Słowacja</string>
+    <string name="country_name_mt">Malta</string>
+    <string name="country_name_cy">Cypr</string>
+    <string name="country_name_hr">Chorwacja</string>
+    <string name="window_account_linking_title">Łączenie kont</string>
+    <string name="window_country_selection_title">Wybierz kraj</string>
+    <string name="window_bank_selection_title">Wybór banku</string>
+    <string name="window_bank_selection_select_country_label">Wybierz kraj</string>
+    <string name="window_bank_selection_select_bank_label">Wybierz bank</string>
+    <string name="error_bank_not_selected">Bank musi być wybrany</string>
+    <string name="dialog_exit_confirmation_accounts_message">Czy na pewno chcesz przerwać łączenie kont?</string>
+</resources>
