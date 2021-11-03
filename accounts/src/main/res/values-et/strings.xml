@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="country_name_at">Austria</string>
+    <string name="country_name_be">Belgia</string>
+    <string name="country_name_bg">Bulgaaria</string>
+    <string name="country_name_cz">Tšehhi</string>
+    <string name="country_name_de">Saksamaa</string>
+    <string name="country_name_dk">Taani</string>
+    <string name="country_name_ee">Eesti</string>
+    <string name="country_name_es">Hispaania</string>
+    <string name="country_name_fi">Soome</string>
+    <string name="country_name_fr">Prantsusmaa</string>
+    <string name="country_name_gb">Ühendkuningriik</string>
+    <string name="country_name_it">Itaalia</string>
+    <string name="country_name_lt">Leedu</string>
+    <string name="country_name_lu">Luksemburg</string>
+    <string name="country_name_lv">Läti</string>
+    <string name="country_name_nl">Holland</string>
+    <string name="country_name_no">Norra</string>
+    <string name="country_name_pl">Poola</string>
+    <string name="country_name_pt">Portugal</string>
+    <string name="country_name_ro">Rumeenia</string>
+    <string name="country_name_se">Rootsi</string>
+    <string name="country_name_hu">Ungari</string>
+    <string name="country_name_ie">Iirimaa</string>
+    <string name="country_name_si">Sloveenia</string>
+    <string name="country_name_sk">Slovakkia</string>
+    <string name="country_name_mt">Malta</string>
+    <string name="country_name_cy">Küpros</string>
+    <string name="country_name_hr">Horvaatia</string>
+    <string name="window_account_linking_title">Konto linkimine</string>
+    <string name="window_country_selection_title">Vali riik</string>
+    <string name="window_bank_selection_title">Panga valik</string>
+    <string name="window_bank_selection_select_country_label">Vali riik</string>
+    <string name="window_bank_selection_select_bank_label">Valige pank</string>
+    <string name="error_bank_not_selected">Pank tuleb valida</string>
+    <string name="dialog_exit_confirmation_accounts_message">Kas olete kindel, et soovite konto linkimise katkestada?</string>
+</resources>
