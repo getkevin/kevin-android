@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Continue">Να συνεχίσει</string>
+    <string name="error_unknown">Παρουσιάστηκε άγνωστο σφάλμα</string>
+    <string name="error_no_internet">Δεν υπάρχει σύνδεση στο διαδίκτυο</string>
+    <string name="yes">Ναί</string>
+    <string name="no">Οχι</string>
+    <string name="dialog_exit_confirmation_title">Προειδοποίηση!</string>
+    <string name="navigate_back_content_description">Πλοηγηθείτε πίσω</string>
+</resources>

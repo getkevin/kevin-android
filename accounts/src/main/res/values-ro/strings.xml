@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="country_name_at">Austria</string>
+    <string name="country_name_be">Belgia</string>
+    <string name="country_name_bg">Bulgaria</string>
+    <string name="country_name_cz">Cehia</string>
+    <string name="country_name_de">Germania</string>
+    <string name="country_name_dk">Danemarca</string>
+    <string name="country_name_ee">Estonia</string>
+    <string name="country_name_es">Spania</string>
+    <string name="country_name_fi">Finlanda</string>
+    <string name="country_name_fr">Franţa</string>
+    <string name="country_name_gb">Regatul Unit</string>
+    <string name="country_name_it">Italia</string>
+    <string name="country_name_lt">Lituania</string>
+    <string name="country_name_lu">Luxemburg</string>
+    <string name="country_name_lv">Letonia</string>
+    <string name="country_name_nl">Olanda</string>
+    <string name="country_name_no">Norvegia</string>
+    <string name="country_name_pl">Polonia</string>
+    <string name="country_name_pt">Portugalia</string>
+    <string name="country_name_ro">România</string>
+    <string name="country_name_se">Suedia</string>
+    <string name="country_name_hu">Ungaria</string>
+    <string name="country_name_ie">Irlanda</string>
+    <string name="country_name_si">Slovenia</string>
+    <string name="country_name_sk">Slovacia</string>
+    <string name="country_name_mt">Malta</string>
+    <string name="country_name_cy">Cipru</string>
+    <string name="country_name_hr">Croaţia</string>
+    <string name="window_account_linking_title">Conectarea contului</string>
+    <string name="window_country_selection_title">Selecteaza tara</string>
+    <string name="window_bank_selection_title">Selecția băncii</string>
+    <string name="window_bank_selection_select_country_label">Selecteaza tara</string>
+    <string name="window_bank_selection_select_bank_label">Selectați banca</string>
+    <string name="error_bank_not_selected">Banca trebuie selectată</string>
+    <string name="dialog_exit_confirmation_accounts_message">Sigur doriți să anulați conectarea contului?</string>
+</resources>

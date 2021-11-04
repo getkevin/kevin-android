@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="window_link_account_button">Свържете акаунта</string>
+    <string name="window_make_bank_payment_button">Направете банково плащане</string>
+    <string name="window_card_bank_payment_button">Направете плащане с карта</string>
+    <string name="main_menu_dark_mode_toggle">Използвайте тъмна тема</string>
+    <string name="navigate_back_content_description">Навигирайте обратно</string>
+</resources>

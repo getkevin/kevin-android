@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="country_name_at">Австрия</string>
+    <string name="country_name_be">Белгия</string>
+    <string name="country_name_bg">България</string>
+    <string name="country_name_cz">Чехия</string>
+    <string name="country_name_de">Германия</string>
+    <string name="country_name_dk">Дания</string>
+    <string name="country_name_ee">Естония</string>
+    <string name="country_name_es">Испания</string>
+    <string name="country_name_fi">Финландия</string>
+    <string name="country_name_fr">Франция</string>
+    <string name="country_name_gb">Великобритания</string>
+    <string name="country_name_it">Италия</string>
+    <string name="country_name_lt">Литва</string>
+    <string name="country_name_lu">Люксембург</string>
+    <string name="country_name_lv">Латвия</string>
+    <string name="country_name_nl">Холандия</string>
+    <string name="country_name_no">Норвегия</string>
+    <string name="country_name_pl">Полша</string>
+    <string name="country_name_pt">Португалия</string>
+    <string name="country_name_ro">Румъния</string>
+    <string name="country_name_se">Швеция</string>
+    <string name="country_name_hu">Унгария</string>
+    <string name="country_name_ie">Ирландия</string>
+    <string name="country_name_si">Словения</string>
+    <string name="country_name_sk">Словакия</string>
+    <string name="country_name_mt">Малта</string>
+    <string name="country_name_cy">Кипър</string>
+    <string name="country_name_hr">Хърватия</string>
+    <string name="window_account_linking_title">Свързване на акаунти</string>
+    <string name="window_country_selection_title">Изберете държава</string>
+    <string name="window_bank_selection_title">Избор на банка</string>
+    <string name="window_bank_selection_select_country_label">Изберете държава</string>
+    <string name="window_bank_selection_select_bank_label">Изберете банка</string>
+    <string name="error_bank_not_selected">Банката трябва да бъде избрана</string>
+    <string name="dialog_exit_confirmation_accounts_message">Наистина ли искате да прекратите свързването на акаунти?</string>
+</resources>

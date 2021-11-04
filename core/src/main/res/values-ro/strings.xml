@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Continue">Continua</string>
+    <string name="error_unknown">A apărut o eroare necunoscută</string>
+    <string name="error_no_internet">Fără conexiune internet</string>
+    <string name="yes">Da</string>
+    <string name="no">Nu</string>
+    <string name="dialog_exit_confirmation_title">Avertizare!</string>
+    <string name="navigate_back_content_description">Navigați înapoi</string>
+</resources>
