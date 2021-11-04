@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Continue">Turpināt</string>
+    <string name="error_unknown">Radās nezināma kļūda</string>
+    <string name="error_no_internet">Nav interneta savienojuma</string>
+    <string name="yes">Jā</string>
+    <string name="no">Nē</string>
+    <string name="dialog_exit_confirmation_title">Brīdinājums!</string>
+    <string name="navigate_back_content_description">Naviģēt atpakaļ</string>
+</resources>
