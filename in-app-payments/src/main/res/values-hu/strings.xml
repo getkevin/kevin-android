@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="window_payment_type_title">Válassza ki a fizetési módot</string>
     <string name="window_payment_confirmation_title">Fizetési visszaigazolás</string>
-    <string name="payment_type_bank_title">Bank</string>
-    <string name="payment_type_card_title">Kártya</string>
     <string name="dialog_exit_confirmation_payments_message">Biztosan törölni szeretné ezt a fizetést?</string>
 </resources>

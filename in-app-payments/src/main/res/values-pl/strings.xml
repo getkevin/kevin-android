@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="window_payment_type_title">Wybierz rodzaj płatności</string>
     <string name="window_payment_confirmation_title">Potwierdzenie płatności</string>
-    <string name="payment_type_bank_title">Bank</string>
-    <string name="payment_type_card_title">Karta</string>
     <string name="dialog_exit_confirmation_payments_message">Czy na pewno chcesz anulować tę płatność?</string>
 </resources>

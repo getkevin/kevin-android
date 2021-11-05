@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Continue">продължи</string>
+    <string name="Continue">Продължи</string>
     <string name="error_unknown">Възникна неизвестна грешка</string>
     <string name="error_no_internet">Няма интернет връзка</string>
-    <string name="yes">да</string>
+    <string name="yes">Да</string>
     <string name="no">Не</string>
     <string name="dialog_exit_confirmation_title">Внимание!</string>
     <string name="navigate_back_content_description">Навигирайте обратно</string>

@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="window_payment_type_title">Selectați tipul de plată</string>
     <string name="window_payment_confirmation_title">Confirmarea platii</string>
-    <string name="payment_type_bank_title">Bancă</string>
-    <string name="payment_type_card_title">Card</string>
     <string name="dialog_exit_confirmation_payments_message">Sigur doriți să anulați această plată?</string>
 </resources>
