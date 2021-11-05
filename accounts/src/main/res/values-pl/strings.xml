@@ -28,11 +28,11 @@
     <string name="country_name_mt">Malta</string>
     <string name="country_name_cy">Cypr</string>
     <string name="country_name_hr">Chorwacja</string>
-    <string name="window_account_linking_title">Łączenie kont</string>
+    <string name="window_account_linking_title">Łączenie konta</string>
     <string name="window_country_selection_title">Wybierz kraj</string>
     <string name="window_bank_selection_title">Wybór banku</string>
     <string name="window_bank_selection_select_country_label">Wybierz kraj</string>
     <string name="window_bank_selection_select_bank_label">Wybierz bank</string>
     <string name="error_bank_not_selected">Bank musi być wybrany</string>
-    <string name="dialog_exit_confirmation_accounts_message">Czy na pewno chcesz przerwać łączenie kont?</string>
+    <string name="dialog_exit_confirmation_accounts_message">Czy na pewno chcesz przerwać łączenie konta?</string>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Continue">Continue</string>
+    <string name="Continue">Jätka</string>
     <string name="error_unknown">Ilmnes tundmatu viga</string>
     <string name="yes">Jah</string>
     <string name="error_no_internet">Interneti-ühendus puudub</string>

@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="window_payment_type_title">Изберете вид плащане</string>
     <string name="window_payment_confirmation_title">Потвърждение за плащане</string>
-    <string name="payment_type_bank_title">банка</string>
-    <string name="payment_type_card_title">карта</string>
     <string name="dialog_exit_confirmation_payments_message">Наистина ли искате да анулирате това плащане?</string>
 </resources>
