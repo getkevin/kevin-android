@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="country_name_at">Austria</string>
+    <string name="country_name_be">Beļģija</string>
+    <string name="country_name_bg">Bulgārija</string>
+    <string name="country_name_cz">Čehija</string>
+    <string name="country_name_de">Vācija</string>
+    <string name="country_name_dk">Dānija</string>
+    <string name="country_name_ee">Igaunija</string>
+    <string name="country_name_es">Spānija</string>
+    <string name="country_name_fi">Somija</string>
+    <string name="country_name_fr">Francija</string>
+    <string name="country_name_gb">Apvienotā Karaliste</string>
+    <string name="country_name_it">Itālija</string>
+    <string name="country_name_lt">Lietuva</string>
+    <string name="country_name_lu">Luksemburga</string>
+    <string name="country_name_lv">Latvija</string>
+    <string name="country_name_nl">Nīderlande</string>
+    <string name="country_name_no">Norvēģija</string>
+    <string name="country_name_pl">Polija</string>
+    <string name="country_name_pt">Portugāle</string>
+    <string name="country_name_ro">Rumānija</string>
+    <string name="country_name_se">Zviedrija</string>
+    <string name="country_name_hu">Ungārija</string>
+    <string name="country_name_ie">Īrija</string>
+    <string name="country_name_si">Slovēnija</string>
+    <string name="country_name_sk">Slovākija</string>
+    <string name="country_name_mt">Malta</string>
+    <string name="country_name_cy">Kipra</string>
+    <string name="country_name_hr">Horvātija</string>
+    <string name="window_account_linking_title">Bankas konta piesaistīšana</string>
+    <string name="window_country_selection_title">Izvēlēties valsti</string>
+    <string name="window_bank_selection_title">Bankas izvēle</string>
+    <string name="window_bank_selection_select_country_label">Izvēlēties valsti</string>
+    <string name="window_bank_selection_select_bank_label">Izvēlēties banku</string>
+    <string name="error_bank_not_selected">Bankai ir jābūt izvēlētai</string>
+    <string name="dialog_exit_confirmation_accounts_message">Vai tiešām vēlaties pārtraukt konta saistīšanu?</string>
+</resources>

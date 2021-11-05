@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="window_payment_type_title">Valige makse tüüp</string>
+    <string name="window_payment_confirmation_title">Maksekinnitus</string>
+    <string name="payment_type_card_title">Kaart</string>
+    <string name="dialog_exit_confirmation_payments_message">Kas olete kindel, et soovite selle makse tühistada?</string>
+    <string name="payment_type_bank_title">Pank</string>
+</resources>
