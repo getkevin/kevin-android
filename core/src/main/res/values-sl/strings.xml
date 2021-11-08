@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Continue">Nadaljuj</string>
+    <string name="error_unknown">Prišlo je do neznane napake</string>
+    <string name="error_no_internet">Ni internetne povezave</string>
+    <string name="yes">Da</string>
+    <string name="no">Št</string>
+    <string name="dialog_exit_confirmation_title">Opozorilo!</string>
+    <string name="navigate_back_content_description">Pomaknite se nazaj</string>
+</resources>
