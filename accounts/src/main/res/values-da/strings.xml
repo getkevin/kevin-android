@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="country_name_at">Østrig</string>
+    <string name="country_name_be">Belgien</string>
+    <string name="country_name_bg">Bulgarien</string>
+    <string name="country_name_cz">Tjekkiet</string>
+    <string name="country_name_de">Tyskland</string>
+    <string name="country_name_dk">Danmark</string>
+    <string name="country_name_ee">Estland</string>
+    <string name="country_name_es">Spanien</string>
+    <string name="country_name_fi">Finland</string>
+    <string name="country_name_fr">Frankrig</string>
+    <string name="country_name_gb">Det Forenede Kongerige</string>
+    <string name="country_name_it">Italien</string>
+    <string name="country_name_lt">Litauen</string>
+    <string name="country_name_lu">Luxembourg</string>
+    <string name="country_name_lv">Letland</string>
+    <string name="country_name_nl">Holland</string>
+    <string name="country_name_no">Norge</string>
+    <string name="country_name_pl">Polen</string>
+    <string name="country_name_pt">Portugal</string>
+    <string name="country_name_ro">Rumænien</string>
+    <string name="country_name_se">Sverige</string>
+    <string name="country_name_hu">Ungarn</string>
+    <string name="country_name_ie">Irland</string>
+    <string name="country_name_si">Slovenien</string>
+    <string name="country_name_sk">Slovakiet</string>
+    <string name="country_name_mt">Malta</string>
+    <string name="country_name_cy">Cypern</string>
+    <string name="country_name_hr">Kroatien</string>
+    <string name="country_name_gr">Grækenland</string>
+    <string name="country_name_is">Island</string>
+    <string name="country_name_li">Liechtenstein</string>
+    <string name="window_account_linking_title">Kontotilknytning</string>
+    <string name="window_country_selection_title">Vælg land</string>
+    <string name="window_bank_selection_title">Bankvalg</string>
+    <string name="window_bank_selection_select_country_label">Vælg land</string>
+    <string name="window_bank_selection_select_bank_label">Vælg bank</string>
+    <string name="error_bank_not_selected">Bank skal vælges</string>
+    <string name="dialog_exit_confirmation_accounts_message">Er du sikker på, at du vil afbryde kontotilknytning?</string>
+</resources>

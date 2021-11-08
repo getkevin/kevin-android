@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="country_name_at">Oostenrijk</string>
+    <string name="country_name_be">België</string>
+    <string name="country_name_bg">Bulgarije</string>
+    <string name="country_name_cz">Tsjechië</string>
+    <string name="country_name_de">Duitsland</string>
+    <string name="country_name_dk">Denemarken</string>
+    <string name="country_name_ee">Estland</string>
+    <string name="country_name_es">Spanje</string>
+    <string name="country_name_fi">Finland</string>
+    <string name="country_name_fr">Frankrijk</string>
+    <string name="country_name_gb">Verenigd Koninkrijk</string>
+    <string name="country_name_it">Italië</string>
+    <string name="country_name_lt">Litouwen</string>
+    <string name="country_name_lu">Luxemburg</string>
+    <string name="country_name_lv">Letland</string>
+    <string name="country_name_nl">Nederland</string>
+    <string name="country_name_no">Noorwegen</string>
+    <string name="country_name_pl">Polen</string>
+    <string name="country_name_pt">Portugal</string>
+    <string name="country_name_ro">Roemenië</string>
+    <string name="country_name_se">Zweden</string>
+    <string name="country_name_hu">Hongarije</string>
+    <string name="country_name_ie">Ierland</string>
+    <string name="country_name_si">Slovenië</string>
+    <string name="country_name_sk">Slowakije</string>
+    <string name="country_name_mt">Malta</string>
+    <string name="country_name_cy">Cyprus</string>
+    <string name="country_name_hr">Kroatië</string>
+    <string name="country_name_gr">Griekenland</string>
+    <string name="country_name_is">IJsland</string>
+    <string name="country_name_li">Liechtenstein</string>
+    <string name="window_account_linking_title">Account koppelen</string>
+    <string name="window_country_selection_title">Selecteer land</string>
+    <string name="window_bank_selection_select_country_label">Selecteer land</string>
+    <string name="window_bank_selection_title">Bank selection</string>
+    <string name="window_bank_selection_select_bank_label">Selecteer bank</string>
+    <string name="error_bank_not_selected">Bank moet worden geselecteerd</string>
+    <string name="dialog_exit_confirmation_accounts_message">Weet u zeker dat u het koppelen van uw account wilt afbreken?</string>
+</resources>
