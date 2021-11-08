@@ -35,4 +35,7 @@
     <string name="window_bank_selection_select_bank_label">Pasirinkite banką</string>
     <string name="error_bank_not_selected">Bankas turi būti pasirinktas</string>
     <string name="dialog_exit_confirmation_accounts_message">Ar tikrai norite nutraukti sąskaitos susiejimą?</string>
+    <string name="country_name_gr">Graikija</string>
+    <string name="country_name_is">Islandija</string>
+    <string name="country_name_li">Lichtenšteinas</string>
 </resources>

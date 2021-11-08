@@ -35,4 +35,7 @@
     <string name="window_bank_selection_select_bank_label">Επιλέξτε τράπεζα</string>
     <string name="error_bank_not_selected">Πρέπει να επιλεγεί τράπεζα</string>
     <string name="dialog_exit_confirmation_accounts_message">Είστε βέβαιοι ότι θέλετε να ακυρώσετε τη σύνδεση λογαριασμού;</string>
+    <string name="country_name_gr">Ελλάδα</string>
+    <string name="country_name_is">Ισλανδία</string>
+    <string name="country_name_li">Λιχτενστάιν</string>
 </resources>

@@ -35,4 +35,7 @@
     <string name="window_bank_selection_select_bank_label">Válassza ki a bankot</string>
     <string name="error_bank_not_selected">Bankot kell választani</string>
     <string name="dialog_exit_confirmation_accounts_message">Biztosan megszakítja a fiókok összekapcsolását?</string>
+    <string name="country_name_gr">Görögország</string>
+    <string name="country_name_is">Izland</string>
+    <string name="country_name_li">Liechtenstein</string>
 </resources>

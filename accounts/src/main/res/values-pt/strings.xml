@@ -35,4 +35,7 @@
     <string name="window_bank_selection_select_bank_label">Selecione o banco</string>
     <string name="error_bank_not_selected">O banco deve ser selecionado</string>
     <string name="dialog_exit_confirmation_accounts_message">Tem certeza de que deseja cancelar a vinculação da conta?</string>
+    <string name="country_name_gr">Grécia</string>
+    <string name="country_name_is">Islândia</string>
+    <string name="country_name_li">Liechtenstein</string>
 </resources>

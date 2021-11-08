@@ -30,7 +30,7 @@ internal class CountryListAdapter(
             root.setBackgroundColor(
                 if (item.isSelected) context.getColorFromAttr(R.attr.kevinSelectedOnSecondaryColor) else 0
             )
-            countryTextView.text = CountryHelper.getCountryName(context, item.iso)
+            countryTextView.text = item.title
             countryFlagImageView.setImageDrawable(CountryHelper.getCountryFlagDrawable(context, item.iso))
         }
     }

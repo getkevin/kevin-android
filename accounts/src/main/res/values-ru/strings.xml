@@ -35,4 +35,7 @@
     <string name="window_bank_selection_select_bank_label">Выбор банка</string>
     <string name="dialog_exit_confirmation_accounts_message">Вы уверены, что хотите отменить привязку учетной записи?</string>
     <string name="error_bank_not_selected">Банк должен быть выбран</string>
+    <string name="country_name_gr">Греция</string>
+    <string name="country_name_is">Исландия</string>
+    <string name="country_name_li">Лихтенштейн</string>
 </resources>

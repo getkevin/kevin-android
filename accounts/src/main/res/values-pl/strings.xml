@@ -35,4 +35,7 @@
     <string name="window_bank_selection_select_bank_label">Wybierz bank</string>
     <string name="error_bank_not_selected">Bank musi być wybrany</string>
     <string name="dialog_exit_confirmation_accounts_message">Czy na pewno chcesz przerwać łączenie konta?</string>
+    <string name="country_name_gr">Grecja</string>
+    <string name="country_name_is">Islandia</string>
+    <string name="country_name_li">Liechtenstein</string>
 </resources>
