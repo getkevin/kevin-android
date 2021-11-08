@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Continue">ďalej</string>
+    <string name="Continue">Ďalej</string>
     <string name="error_unknown">Vyskytla sa neznáma chyba</string>
     <string name="error_no_internet">Žiadne internetové pripojenie</string>
     <string name="yes">Áno</string>
