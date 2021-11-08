@@ -9,9 +9,9 @@ Get started with our [SDK reference](https://developer.kevin.eu/mobile/) and che
 
 ## Features
 
-- **Account linking** - we provide an easy solution to authenticate user bank accounts and manage their information.
-- **Bank payments** - we provide a possibility to integrate bank payments in your app with rich both full and no SCA options.
-- **Card payments** - we also support card payments.
+- **Account linking** - we provide an easy solution to authenticate and manage user bank accounts.
+- **Bank payments** - we provide a possibility to integrate bank payments in your app with both SCA and non-SCA options.
+- **Card payments** - we also provide card payments with a hybrid payment support, so the payment would be performed via bank if we detect that the card belongs to one of our supported banks.
 
 ## Documentation
 
