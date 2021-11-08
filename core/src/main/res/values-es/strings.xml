@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Continue">Continuar</string>
+    <string name="error_unknown">Ocurrió un error desconocido</string>
+    <string name="error_no_internet">Sin conexión a Internet</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
+    <string name="navigate_back_content_description">Navegar hacia atrás</string>
+    <string name="dialog_exit_confirmation_title">Advertencia!</string>
+</resources>

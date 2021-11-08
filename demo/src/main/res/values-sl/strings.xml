@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="window_link_account_button">Povežite račun</string>
+    <string name="window_make_bank_payment_button">Izvedite bančno plačilo</string>
+    <string name="window_card_bank_payment_button">Izvedite plačilo s kartico</string>
+    <string name="main_menu_dark_mode_toggle">Uporabite temno temo</string>
+    <string name="navigate_back_content_description">Pomaknite se nazaj</string>
+</resources>

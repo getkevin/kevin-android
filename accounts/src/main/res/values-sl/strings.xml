@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="country_name_at">Avstrija</string>
+    <string name="country_name_be">Belgija</string>
+    <string name="country_name_bg">Bolgarija</string>
+    <string name="country_name_cz">Češka</string>
+    <string name="country_name_dk">Danska</string>
+    <string name="country_name_de">Nemčija</string>
+    <string name="country_name_ee">Estonija</string>
+    <string name="country_name_es">Španija</string>
+    <string name="country_name_fi">Finska</string>
+    <string name="country_name_fr">Francija</string>
+    <string name="country_name_gb">Združeno kraljestvo</string>
+    <string name="country_name_it">Italija</string>
+    <string name="country_name_lt">Litva</string>
+    <string name="country_name_lu">Luksemburg</string>
+    <string name="country_name_lv">Latvija</string>
+    <string name="country_name_nl">Nizozemska</string>
+    <string name="country_name_no">Norveška</string>
+    <string name="country_name_pl">Poljska</string>
+    <string name="country_name_pt">Portugalska</string>
+    <string name="country_name_ro">Romunija</string>
+    <string name="country_name_se">Švedska</string>
+    <string name="country_name_hu">Madžarska</string>
+    <string name="country_name_ie">Irska</string>
+    <string name="country_name_si">Slovenija</string>
+    <string name="country_name_sk">Slovaška</string>
+    <string name="country_name_mt">Malta</string>
+    <string name="country_name_cy">Ciper</string>
+    <string name="country_name_hr">Hrvaška</string>
+    <string name="country_name_gr">Grčija</string>
+    <string name="country_name_is">Islandija</string>
+    <string name="country_name_li">Liechtenstein</string>
+    <string name="window_account_linking_title">Povezovanje računa</string>
+    <string name="window_country_selection_title">Izberi državo</string>
+    <string name="window_bank_selection_select_country_label">Izberi državo</string>
+    <string name="window_bank_selection_title">Izbira banke</string>
+    <string name="window_bank_selection_select_bank_label">Izberite banko</string>
+    <string name="error_bank_not_selected">Banko je treba izbrati</string>
+    <string name="dialog_exit_confirmation_accounts_message">Ali ste prepričani, da želite prekiniti povezavo računa?</string>
+</resources>

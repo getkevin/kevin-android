@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="window_payment_confirmation_title">Confirmation de paiement</string>
+    <string name="dialog_exit_confirmation_payments_message">Voulez-vous vraiment annuler ce paiement?</string>
+</resources>
