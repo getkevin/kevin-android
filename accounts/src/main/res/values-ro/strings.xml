@@ -35,4 +35,7 @@
     <string name="window_bank_selection_select_bank_label">Selectați banca</string>
     <string name="error_bank_not_selected">Banca trebuie selectată</string>
     <string name="dialog_exit_confirmation_accounts_message">Sigur doriți să anulați conectarea contului?</string>
+    <string name="country_name_gr">Grecia</string>
+    <string name="country_name_is">Islanda</string>
+    <string name="country_name_li">Liechtenstein</string>
 </resources>

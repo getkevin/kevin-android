@@ -3,7 +3,7 @@
     <string name="country_name_at">Austria</string>
     <string name="country_name_be">Belgium</string>
     <string name="country_name_bg">Bulgaria</string>
-    <string name="country_name_cz">Czechia</string>
+    <string name="country_name_cz">Czech Republic</string>
     <string name="country_name_de">Germany</string>
     <string name="country_name_dk">Denmark</string>
     <string name="country_name_ee">Estonia</string>
@@ -35,4 +35,7 @@
     <string name="window_bank_selection_select_bank_label">Select bank</string>
     <string name="error_bank_not_selected">Bank has to be selected</string>
     <string name="dialog_exit_confirmation_accounts_message">Are you sure you want to abort account linking?</string>
+    <string name="country_name_gr">Greece</string>
+    <string name="country_name_is">Iceland</string>
+    <string name="country_name_li">Liechtenstein</string>
 </resources>

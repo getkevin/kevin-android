@@ -4,6 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.LinearLayoutManager
 import eu.kevin.accounts.countryselection.adapters.CountryListAdapter
+import eu.kevin.accounts.countryselection.entities.Country
+import eu.kevin.accounts.countryselection.helpers.CountryHelper
 import eu.kevin.accounts.databinding.FragmentCountrySelectionBinding
 import eu.kevin.common.architecture.BaseView
 import eu.kevin.common.architecture.interfaces.IView
@@ -41,7 +43,14 @@ internal class CountrySelectionView(context: Context) : BaseView<FragmentCountry
                 showError(ErrorHelper.getMessage(context, state.loadingState.error))
             }
         }
-        countriesAdapter.updateItems(state.supportedCountries)
+        val countries = state.supportedCountries.map {
+            Country(
+                it.iso,
+                CountryHelper.getCountryName(context, it.iso),
+                it.isSelected
+            )
+        }.sortedBy { it.title }
+        countriesAdapter.updateItems(countries)
     }
 
     private fun showLoading(isLoading: Boolean) {

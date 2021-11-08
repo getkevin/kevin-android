@@ -3,7 +3,7 @@
     <string name="country_name_at">Austria</string>
     <string name="country_name_be">Belgium</string>
     <string name="country_name_bg">Bulgaria</string>
-    <string name="country_name_cz">Czechia</string>
+    <string name="country_name_cz">Czech Republic</string>
     <string name="country_name_de">Germany</string>
     <string name="country_name_dk">Denmark</string>
     <string name="country_name_ee">Estonia</string>
@@ -28,6 +28,9 @@
     <string name="country_name_mt">Malta</string>
     <string name="country_name_cy">Cyprus</string>
     <string name="country_name_hr">Croatia</string>
+    <string name="country_name_gr">Greece</string>
+    <string name="country_name_is">Iceland</string>
+    <string name="country_name_li">Liechtenstein</string>
     <string name="window_account_linking_title">Account linking</string>
     <string name="window_country_selection_title">Select country</string>
     <string name="window_bank_selection_title">Bank selection</string>
