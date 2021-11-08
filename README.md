@@ -1,4 +1,4 @@
-# kevin. Android SDK
+![kevin.](./images/logo.png)
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/eu.kevin.android/core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/eu.kevin.android/core)
 [![License](https://shields.io/badge/license-MIT-blue)](https://github.com/getkevin/kevin-android/blob/master/LICENSE)
