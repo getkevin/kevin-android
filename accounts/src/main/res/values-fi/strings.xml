@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="country_name_at">Itävalta</string>
+    <string name="error_bank_not_selected">Pankki on valittava</string>
+    <string name="country_name_be">Belgia</string>
+    <string name="country_name_bg">Bulgaria</string>
+    <string name="country_name_cz">Tšekin tasavalta</string>
+    <string name="country_name_de">Saksa</string>
+    <string name="country_name_dk">Tanska</string>
+    <string name="country_name_ee">Viro</string>
+    <string name="country_name_es">Espanja</string>
+    <string name="country_name_fi">Suomi</string>
+    <string name="country_name_fr">Ranska</string>
+    <string name="country_name_gb">Yhdistynyt kuningaskunta</string>
+    <string name="country_name_it">Italia</string>
+    <string name="country_name_lt">Liettua</string>
+    <string name="country_name_lu">Luxemburg</string>
+    <string name="country_name_lv">Latvia</string>
+    <string name="country_name_nl">Alankomaat</string>
+    <string name="country_name_no">Norja</string>
+    <string name="country_name_pl">Puola</string>
+    <string name="country_name_pt">Portugali</string>
+    <string name="country_name_ro">Romania</string>
+    <string name="country_name_se">Ruotsi</string>
+    <string name="country_name_hu">Unkari</string>
+    <string name="country_name_ie">Irlanti</string>
+    <string name="country_name_si">Slovenia</string>
+    <string name="country_name_sk">Slovakia</string>
+    <string name="country_name_mt">Malta</string>
+    <string name="country_name_cy">Kypros</string>
+    <string name="country_name_hr">Kroatia</string>
+    <string name="country_name_gr">Kreikka</string>
+    <string name="country_name_is">Islanti</string>
+    <string name="country_name_li">Liechtenstein</string>
+    <string name="window_account_linking_title">Tilin linkittäminen</string>
+    <string name="window_country_selection_title">Valitse maa</string>
+    <string name="window_bank_selection_select_country_label">Valitse maa</string>
+    <string name="window_bank_selection_title">Pankin valinta</string>
+    <string name="window_bank_selection_select_bank_label">Valitse pankki</string>
+    <string name="dialog_exit_confirmation_accounts_message">Haluatko varmasti keskeyttää tilin linkityksen?</string>
+</resources>
