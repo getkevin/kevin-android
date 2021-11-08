@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="country_name_at">Rakúsko</string>
+    <string name="country_name_be">Belgicko</string>
+    <string name="country_name_bg">Bulharsko</string>
+    <string name="country_name_cz">Česká republika</string>
+    <string name="country_name_de">Nemecko</string>
+    <string name="country_name_dk">Dánsko</string>
+    <string name="country_name_ee">Estónsko</string>
+    <string name="country_name_es">Španielsko</string>
+    <string name="country_name_fi">Fínsko</string>
+    <string name="country_name_fr">Francúzsko</string>
+    <string name="country_name_gb">Spojene kralovstvo</string>
+    <string name="country_name_it">Taliansko</string>
+    <string name="country_name_lt">Litva</string>
+    <string name="country_name_lu">Luxembursko</string>
+    <string name="country_name_lv">Lotyšsko</string>
+    <string name="country_name_nl">Holandsko</string>
+    <string name="country_name_no">Nórsko</string>
+    <string name="country_name_pl">Poľsko</string>
+    <string name="country_name_pt">Portugalsko</string>
+    <string name="country_name_ro">Rumunsko</string>
+    <string name="country_name_se">Švédsko</string>
+    <string name="country_name_hu">Maďarsko</string>
+    <string name="country_name_ie">Írsko</string>
+    <string name="country_name_si">Slovinsko</string>
+    <string name="country_name_sk">Slovensko</string>
+    <string name="country_name_mt">Malta</string>
+    <string name="country_name_cy">Cyprus</string>
+    <string name="country_name_hr">Chorvátsko</string>
+    <string name="country_name_gr">Grécko</string>
+    <string name="country_name_is">Island</string>
+    <string name="country_name_li">Lichtenštajnsko</string>
+    <string name="window_account_linking_title">Prepojenie účtov</string>
+    <string name="window_country_selection_title">Vyberte krajinu</string>
+    <string name="window_bank_selection_title">Výber banky</string>
+    <string name="window_bank_selection_select_country_label">Vyberte krajinu</string>
+    <string name="window_bank_selection_select_bank_label">Vyberte banku</string>
+    <string name="dialog_exit_confirmation_accounts_message">Naozaj chcete zrušiť prepojenie účtu?</string>
+    <string name="error_bank_not_selected">Je potrebné vybrať banku</string>
+</resources>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="country_name_at">Österrike</string>
+    <string name="dialog_exit_confirmation_accounts_message">Är du säker på att du vill avbryta kontolänkningen?</string>
+    <string name="country_name_be">Belgien</string>
+    <string name="country_name_bg">Bulgarien</string>
+    <string name="country_name_cz">Tjeckien</string>
+    <string name="country_name_de">Tyskland</string>
+    <string name="country_name_dk">Danmark</string>
+    <string name="country_name_ee">Estland</string>
+    <string name="country_name_es">Spanien</string>
+    <string name="country_name_fi">Finland</string>
+    <string name="country_name_fr">Frankrike</string>
+    <string name="country_name_gb">Storbritannien</string>
+    <string name="country_name_it">Italien</string>
+    <string name="country_name_lt">Litauen</string>
+    <string name="country_name_lu">Luxemburg</string>
+    <string name="country_name_lv">Lettland</string>
+    <string name="country_name_nl">Nederländerna</string>
+    <string name="country_name_no">Norge</string>
+    <string name="country_name_pl">Polen</string>
+    <string name="country_name_pt">Portugal</string>
+    <string name="country_name_ro">Rumänien</string>
+    <string name="country_name_se">Sverige</string>
+    <string name="country_name_hu">Ungern</string>
+    <string name="country_name_ie">Irland</string>
+    <string name="country_name_si">Slovenien</string>
+    <string name="country_name_sk">Slovakien</string>
+    <string name="country_name_mt">Malta</string>
+    <string name="country_name_cy">Cypern</string>
+    <string name="country_name_hr">Kroatien</string>
+    <string name="country_name_gr">Grekland</string>
+    <string name="country_name_is">Island</string>
+    <string name="country_name_li">Liechtenstein</string>
+    <string name="window_account_linking_title">Kontolänkning</string>
+    <string name="window_country_selection_title">Välj land</string>
+    <string name="window_bank_selection_title">Bankval</string>
+    <string name="window_bank_selection_select_country_label">Välj land</string>
+    <string name="window_bank_selection_select_bank_label">Välj bank</string>
+    <string name="error_bank_not_selected">Bank måste väljas</string>
+</resources>

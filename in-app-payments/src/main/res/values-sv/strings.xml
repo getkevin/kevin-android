@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="window_payment_confirmation_title">Betalningsbekräftelse</string>
+    <string name="dialog_exit_confirmation_payments_message">Är du säker på att du vill avbryta den här betalningen?</string>
+</resources>
