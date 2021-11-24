@@ -23,3 +23,22 @@ fun FragmentTransaction.setAnimationsFromStyle(@StyleRes style: Int, context: Co
     }
     styledAttributes.recycle()
 }
+
+fun FragmentTransaction.setPopAnimationsFromStyle(@StyleRes style: Int, context: Context) {
+    val attrs = intArrayOf(
+        android.R.attr.activityOpenExitAnimation,
+        android.R.attr.activityCloseEnterAnimation,
+        android.R.attr.activityCloseExitAnimation
+    )
+    val styledAttributes = context.obtainStyledAttributes(style, attrs)
+
+    with(styledAttributes) {
+        setCustomAnimations(
+            0,
+            getResourceId(0, 0),
+            getResourceId(1, 0),
+            getResourceId(2, 0)
+        )
+    }
+    styledAttributes.recycle()
+}

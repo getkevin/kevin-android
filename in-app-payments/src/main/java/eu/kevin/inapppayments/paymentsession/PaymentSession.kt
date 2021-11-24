@@ -81,6 +81,17 @@ internal class PaymentSession(
         }
     }
 
+    fun handleDeepLink(url: String) {
+        val config = PaymentConfirmationFragmentConfiguration(
+            configuration.paymentId,
+            sessionData.selectedPaymentType!!,
+            sessionData.selectedBank?.id,
+            configuration.skipAuthentication,
+            url
+        )
+        GlobalRouter.pushFragment(PaymentConfirmationContract.getFragment(config))
+    }
+
     private suspend fun getSelectedBank(): Bank? {
         return try {
             val apiBanks = accountsClient.getSupportedBanks(configuration.paymentId, configuration.preselectedCountry?.iso)

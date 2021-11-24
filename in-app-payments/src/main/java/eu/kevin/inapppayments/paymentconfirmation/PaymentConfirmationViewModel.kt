@@ -27,16 +27,20 @@ internal class PaymentConfirmationViewModel(
     }
 
     private suspend fun initialize(configuration: PaymentConfirmationFragmentConfiguration) {
-        val url = when (configuration.paymentType) {
-            BANK -> {
-                if (configuration.skipAuthentication) {
-                    BuildConfig.KEVIN_BANK_PAYMENT_AUTHENTICATED_URL.format(configuration.paymentId)
-                } else {
-                    BuildConfig.KEVIN_BANK_PAYMENT_URL.format(configuration.paymentId, configuration.selectedBank!!)
+        val url = if (configuration.deepLink != null) {
+            configuration.deepLink
+        } else {
+            when (configuration.paymentType) {
+                BANK -> {
+                    if (configuration.skipAuthentication) {
+                        BuildConfig.KEVIN_BANK_PAYMENT_AUTHENTICATED_URL.format(configuration.paymentId)
+                    } else {
+                        BuildConfig.KEVIN_BANK_PAYMENT_URL.format(configuration.paymentId, configuration.selectedBank!!)
+                    }
                 }
-            }
-            else -> {
-                BuildConfig.KEVIN_CARD_PAYMENT_URL.format(configuration.paymentId)
+                else -> {
+                    BuildConfig.KEVIN_CARD_PAYMENT_URL.format(configuration.paymentId)
+                }
             }
         }
         updateState {

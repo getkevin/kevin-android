@@ -9,5 +9,6 @@ data class PaymentConfirmationFragmentConfiguration(
     val paymentId: String,
     val paymentType: PaymentType,
     val selectedBank: String? = null,
-    val skipAuthentication: Boolean
+    val skipAuthentication: Boolean,
+    val deepLink: String? = null
 ) : Parcelable

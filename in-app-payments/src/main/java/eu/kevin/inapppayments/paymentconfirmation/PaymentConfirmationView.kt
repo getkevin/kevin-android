@@ -1,6 +1,7 @@
 package eu.kevin.inapppayments.paymentconfirmation
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.webkit.WebResourceRequest
@@ -11,6 +12,7 @@ import eu.kevin.common.architecture.BaseView
 import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.extensions.*
 import eu.kevin.common.managers.KeyboardManager
+import eu.kevin.inapppayments.BuildConfig
 import eu.kevin.inapppayments.KevinPaymentsPlugin
 import eu.kevin.inapppayments.R
 import eu.kevin.inapppayments.databinding.FragmentPaymentConfirmationBinding
@@ -66,7 +68,13 @@ internal class PaymentConfirmationView(context: Context) : BaseView<FragmentPaym
                     if (request.url.toString().startsWith(KevinPaymentsPlugin.getCallbackUrl())) {
                         delegate?.onPaymentCompleted(request.url)
                     } else {
-                        view.loadUrl(request.url.toString())
+                        if (request.url.toString().contains(BuildConfig.REVOLUT_REDIRECT_URL)) {
+                            val intent = Intent(Intent.ACTION_VIEW)
+                            intent.data = request.url
+                            this@PaymentConfirmationView.context.startActivity(intent)
+                        } else {
+                            view.loadUrl(request.url.toString())
+                        }
                     }
                     return true
                 }

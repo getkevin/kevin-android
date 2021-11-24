@@ -3,7 +3,22 @@
     package="eu.kevin.inapppayments">
 
     <application>
-        <activity android:name="eu.kevin.inapppayments.paymentsession.PaymentSessionActivity" />
+        <activity
+            android:name="eu.kevin.inapppayments.paymentsession.PaymentSessionActivity"
+            android:exported="true"
+            android:launchMode="singleTask">
+            <intent-filter android:label="test">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="api.kevin.eu"
+                    android:pathPrefix="/platform/frame/callback/payment/redirect"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -9,8 +9,8 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import eu.kevin.common.architecture.BaseFragmentActivity
 import eu.kevin.common.architecture.routing.GlobalRouter
-import eu.kevin.core.entities.SessionResult
 import eu.kevin.common.extensions.setFragmentResult
+import eu.kevin.core.entities.SessionResult
 import eu.kevin.core.plugin.Kevin
 import eu.kevin.core.plugin.KevinException
 import eu.kevin.inapppayments.KevinPaymentsPlugin
@@ -51,6 +51,14 @@ class PaymentSessionActivity : BaseFragmentActivity(), PaymentSessionListener {
     override fun onStart() {
         super.onStart()
         paymentSession.beginFlow(this)
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        val data = intent?.data
+        if (data != null) {
+            paymentSession.handleDeepLink(data.toString())
+        }
     }
 
     override fun handleBack() {
