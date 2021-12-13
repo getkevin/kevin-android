@@ -1,6 +1,7 @@
 package eu.kevin.inapppayments.paymentconfirmation
 
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import androidx.fragment.app.viewModels
 import eu.kevin.common.architecture.BaseFragment
@@ -40,5 +41,10 @@ internal class PaymentConfirmationFragment : BaseFragment<PaymentConfirmationSta
 
     override fun onPaymentCompleted(uri: Uri) {
         viewModel.intents.trySend(HandlePaymentCompleted(uri))
+    }
+
+    override fun handleUri(uri: Uri) {
+        val intent = Intent(Intent.ACTION_VIEW, uri)
+        startActivity(intent)
     }
 }

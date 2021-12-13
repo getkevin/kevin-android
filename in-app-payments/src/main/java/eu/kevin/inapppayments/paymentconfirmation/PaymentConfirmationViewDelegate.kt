@@ -5,4 +5,5 @@ import android.net.Uri
 internal interface PaymentConfirmationViewDelegate {
     fun onBackClicked()
     fun onPaymentCompleted(uri: Uri)
+    fun handleUri(uri: Uri)
 }
