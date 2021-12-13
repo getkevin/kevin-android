@@ -64,12 +64,18 @@ internal class AccountLinkingView(context: Context) : BaseView<FragmentAccountLi
                     view: WebView,
                     request: WebResourceRequest
                 ): Boolean {
-                    if (request.url.toString().startsWith(KevinAccountsPlugin.getCallbackUrl())) {
-                        delegate?.onAuthorizationReceived(request.url)
+                    val url = request.url.toString()
+                    return if (url.startsWith("http://") || url.startsWith("https://")) {
+                        if (url.startsWith(KevinAccountsPlugin.getCallbackUrl())) {
+                            delegate?.onAuthorizationReceived(request.url)
+                            true
+                        } else {
+                            false
+                        }
                     } else {
-                        view.loadUrl(request.url.toString())
+                        delegate?.handleUri(request.url)
+                        true
                     }
-                    return true
                 }
             }
         }

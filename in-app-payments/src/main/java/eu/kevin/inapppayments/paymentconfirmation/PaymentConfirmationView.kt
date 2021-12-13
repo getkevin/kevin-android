@@ -63,12 +63,18 @@ internal class PaymentConfirmationView(context: Context) : BaseView<FragmentPaym
                     view: WebView,
                     request: WebResourceRequest
                 ): Boolean {
-                    if (request.url.toString().startsWith(KevinPaymentsPlugin.getCallbackUrl())) {
-                        delegate?.onPaymentCompleted(request.url)
+                    val url = request.url.toString()
+                    return if (url.startsWith("http://") || url.startsWith("https://")) {
+                        if (url.startsWith(KevinPaymentsPlugin.getCallbackUrl())) {
+                            delegate?.onPaymentCompleted(request.url)
+                            true
+                        } else {
+                            false
+                        }
                     } else {
-                        view.loadUrl(request.url.toString())
+                        delegate?.handleUri(request.url)
+                        true
                     }
-                    return true
                 }
             }
         }

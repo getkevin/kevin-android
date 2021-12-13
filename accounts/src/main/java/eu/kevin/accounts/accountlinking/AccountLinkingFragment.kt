@@ -1,6 +1,7 @@
 package eu.kevin.accounts.accountlinking
 
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import androidx.fragment.app.viewModels
 import eu.kevin.accounts.accountlinking.AccountLinkingIntent.*
@@ -46,5 +47,12 @@ internal class AccountLinkingFragment : BaseFragment<AccountLinkingState, Accoun
 
     override fun onAuthorizationReceived(uri: Uri) {
         viewModel.intents.trySend(HandleAuthorization(uri))
+    }
+
+    override fun handleUri(uri: Uri) {
+        try {
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            startActivity(intent)
+        } catch (ignored: Exception) {}
     }
 }

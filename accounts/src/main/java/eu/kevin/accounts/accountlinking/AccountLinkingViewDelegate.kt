@@ -5,4 +5,5 @@ import android.net.Uri
 internal interface AccountLinkingViewDelegate {
     fun onBackClicked()
     fun onAuthorizationReceived(uri: Uri)
+    fun handleUri(uri: Uri)
 }
