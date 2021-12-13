@@ -12,6 +12,8 @@ internal class AccountLinkingFragment : BaseFragment<AccountLinkingState, Accoun
 
     var configuration: AccountLinkingFragmentConfiguration? by savedState()
 
+    private lateinit var view: AccountLinkingView
+
     override val viewModel: AccountLinkingViewModel by viewModels {
         AccountLinkingViewModel.Factory(this)
     }
@@ -19,6 +21,7 @@ internal class AccountLinkingFragment : BaseFragment<AccountLinkingState, Accoun
     override fun onCreateView(context: Context): IView<AccountLinkingState> {
         return AccountLinkingView(context).also {
             it.delegate = this
+            view = it
         }
     }
 
@@ -27,14 +30,18 @@ internal class AccountLinkingFragment : BaseFragment<AccountLinkingState, Accoun
     }
 
     override fun onBackPressed(): Boolean {
-        viewModel.intents.trySend(HandleBackClicked)
+        if (!view.handleWebViewBackPress()) {
+            viewModel.intents.trySend(HandleBackClicked)
+        }
         return true
     }
 
     // AccountLinkingViewDelegate
 
     override fun onBackClicked() {
-        viewModel.intents.trySend(HandleBackClicked)
+        if (!view.handleWebViewBackPress()) {
+            viewModel.intents.trySend(HandleBackClicked)
+        }
     }
 
     override fun onAuthorizationReceived(uri: Uri) {

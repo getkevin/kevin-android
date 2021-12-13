@@ -16,9 +16,12 @@ internal class PaymentConfirmationFragment : BaseFragment<PaymentConfirmationSta
 
     var configuration: PaymentConfirmationFragmentConfiguration? by savedState()
 
+    private lateinit var view: PaymentConfirmationView
+
     override fun onCreateView(context: Context): IView<PaymentConfirmationState> {
         return PaymentConfirmationView(context).also {
             it.delegate = this
+            view = it
         }
     }
 
@@ -28,14 +31,18 @@ internal class PaymentConfirmationFragment : BaseFragment<PaymentConfirmationSta
     }
 
     override fun onBackPressed(): Boolean {
-        viewModel.intents.trySend(HandleBackClicked)
+        if (!view.handleWebViewBackPress()) {
+            viewModel.intents.trySend(HandleBackClicked)
+        }
         return true
     }
 
     // PaymentConfirmationViewDelegate
 
     override fun onBackClicked() {
-        viewModel.intents.trySend(HandleBackClicked)
+        if (!view.handleWebViewBackPress()) {
+            viewModel.intents.trySend(HandleBackClicked)
+        }
     }
 
     override fun onPaymentCompleted(uri: Uri) {
