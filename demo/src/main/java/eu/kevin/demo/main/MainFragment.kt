@@ -26,7 +26,7 @@ class MainFragment : Fragment(), MainViewCallback {
     private val linkAccount = registerForActivityResult(AccountSessionContract()) { result ->
         when (result) {
             is SessionResult.Success -> {
-                Toast.makeText(requireContext(), "Account token: ${result.value.linkToken}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Account authorization code: ${result.value.authorizationCode}", Toast.LENGTH_SHORT).show()
             }
             is SessionResult.Canceled -> {
                 Toast.makeText(requireContext(), "Account linking cancelled", Toast.LENGTH_SHORT).show()
