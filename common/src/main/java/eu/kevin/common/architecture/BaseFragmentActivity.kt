@@ -4,19 +4,19 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
-import eu.kevin.core.R
 import eu.kevin.common.architecture.interfaces.Navigable
 import eu.kevin.common.context.KevinContextWrapper
-import eu.kevin.core.entities.SessionResult
 import eu.kevin.common.extensions.getStyleFromAttr
 import eu.kevin.common.extensions.setAnimationsFromStyle
+import eu.kevin.core.R
+import eu.kevin.core.entities.SessionResult
 import eu.kevin.core.plugin.Kevin
 
 abstract class BaseFragmentActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         with(supportFragmentManager) {
-            fragments.firstOrNull { it.isVisible }?.let { fragment ->
+            fragments.lastOrNull { it.isVisible }?.let { fragment ->
                 if (fragment !is Navigable || !fragment.onBackPressed()) {
                     handleBack()
                 }

@@ -86,4 +86,13 @@ internal class AccountLinkingView(context: Context) : BaseView<FragmentAccountLi
             accountLinkWebView.loadUrl(state.bankRedirectUrl)
         }
     }
+
+    fun handleWebViewBackPress(): Boolean {
+        return if (binding.accountLinkWebView.canGoBack()) {
+            binding.accountLinkWebView.goBack()
+            true
+        } else {
+            false
+        }
+    }
 }

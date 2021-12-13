@@ -85,4 +85,13 @@ internal class PaymentConfirmationView(context: Context) : BaseView<FragmentPaym
             confirmationWebView.loadUrl(state.url)
         }
     }
+
+    fun handleWebViewBackPress(): Boolean {
+        return if (binding.confirmationWebView.canGoBack()) {
+            binding.confirmationWebView.goBack()
+            true
+        } else {
+            false
+        }
+    }
 }
