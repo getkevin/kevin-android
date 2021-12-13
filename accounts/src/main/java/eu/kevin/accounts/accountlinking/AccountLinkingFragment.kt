@@ -43,7 +43,9 @@ internal class AccountLinkingFragment : BaseFragment<AccountLinkingState, Accoun
     }
 
     override fun handleUri(uri: Uri) {
-        val intent = Intent(Intent.ACTION_VIEW, uri)
-        startActivity(intent)
+        try {
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            startActivity(intent)
+        } catch (ignored: Exception) {}
     }
 }
