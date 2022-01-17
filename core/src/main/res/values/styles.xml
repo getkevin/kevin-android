@@ -20,6 +20,14 @@
         <item name="backgroundTint">@color/blue</item>
     </style>
 
+    <style name="Kevin.TextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="cornerRadius">8dp</item>
+        <item name="hintEnabled">false</item>
+        <item name="boxStrokeColor">@color/gray_2</item>
+        <item name="boxStrokeErrorColor">@color/warning_red</item>
+        <item name="boxStrokeWidth">1dp</item>
+    </style>
+
     <style name="Kevin.Text.Label" parent="@android:style/TextAppearance">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">?kevinSecondaryTextColor</item>

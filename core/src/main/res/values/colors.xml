@@ -17,8 +17,11 @@
     <color name="gray_02">#949AA3</color>
     <color name="gray_03">#DBDEE7</color>
     <color name="gray_04">#F2F2F2</color>
+    <color name="gray_2">#ffafb6bb</color>
 
     <color name="white">#FFFFFFFF</color>
     <color name="white_50">#80FFFFFF</color>
+
+    <color name="warning_red">#ffff3b30</color>
 
 </resources>

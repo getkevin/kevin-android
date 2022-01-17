@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="window_payment_confirmation_title">Payment confirmation</string>
+    <string name="window_card_payment_title">Card details</string>
     <string name="dialog_exit_confirmation_payments_message">Are you sure you want to cancel this payment?</string>
+    <string name="window_card_payment_cardholder_name_label">Cardholder name</string>
+    <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
+    <string name="window_card_payment_card_number_label">Card number</string>
+    <string name="window_card_payment_card_number_hint">123 4567 890 1234</string>
+    <string name="window_card_payment_expiry_date_label">Expiry date</string>
+    <string name="window_card_payment_expiry_date_hint">MM/YY</string>
+    <string name="window_card_payment_cvv_label">CVV / CVC </string>
+    <string name="window_card_payment_cvv_hint">123</string>
+    <string name="window_card_payment_notice">kevin. is not storing any of your personal info or card details.</string>
 </resources>
