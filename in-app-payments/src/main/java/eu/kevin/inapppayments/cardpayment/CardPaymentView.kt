@@ -17,11 +17,13 @@ internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentB
 
     override val binding = FragmentCardPaymentBinding.inflate(LayoutInflater.from(context), this)
 
+    var delegate: CardPaymentViewDelegate? = null
+
     init {
         binding.root.setBackgroundColor(context.getColorFromAttr(R.attr.kevinPrimaryBackgroundColor))
         with(binding.actionBar) {
             setNavigationOnClickListener {
-//                delegate?.onBackClicked()
+                delegate?.onBackClicked()
             }
             setNavigationContentDescription(eu.kevin.accounts.R.string.navigate_back_content_description)
             applySystemInsetsPadding(top = true)

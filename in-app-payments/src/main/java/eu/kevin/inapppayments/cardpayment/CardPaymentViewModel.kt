@@ -5,7 +5,9 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
 import eu.kevin.common.architecture.BaseViewModel
+import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.inapppayments.BuildConfig
+import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandleBackClicked
 import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.Initialize
 
 internal class CardPaymentViewModel(
@@ -16,6 +18,7 @@ internal class CardPaymentViewModel(
     override suspend fun handleIntent(intent: CardPaymentIntent) {
         when (intent) {
             is Initialize -> initialize(intent.configuration)
+            is HandleBackClicked -> GlobalRouter.popCurrentFragment()
         }
     }
 
