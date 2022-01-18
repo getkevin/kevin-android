@@ -112,11 +112,10 @@
         android:id="@+id/expiry_date_label"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="26dp"
         android:text="@string/window_card_payment_expiry_date_label"
-        app:layout_constraintEnd_toStartOf="@id/cvv_label"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/expiry_date_input"
+        app:layout_constraintStart_toStartOf="@id/expiry_date_input"
         app:layout_constraintTop_toBottomOf="@id/card_number_input" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -139,14 +138,27 @@
 
     <TextView
         android:id="@+id/cvv_label"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="26dp"
         android:text="@string/window_card_payment_cvv_label"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/expiry_date_label"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintStart_toStartOf="@id/cvv_input"
         app:layout_constraintTop_toBottomOf="@id/card_number_input" />
+
+    <ImageView
+        android:id="@+id/cvv_tooltip_icon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:contentDescription="@null"
+        android:hapticFeedbackEnabled="false"
+        android:src="@drawable/ic_question_mark"
+        app:layout_constraintBottom_toBottomOf="@id/cvv_label"
+        app:layout_constraintEnd_toEndOf="@id/cvv_input"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@id/cvv_label"
+        app:layout_constraintTop_toTopOf="@id/cvv_label" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/cvv_input"
@@ -206,7 +218,7 @@
         android:id="@+id/web_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

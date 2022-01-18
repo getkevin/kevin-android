@@ -3,6 +3,7 @@ package eu.kevin.inapppayments.cardpayment
 import android.content.Context
 import android.view.LayoutInflater
 import android.webkit.WebViewClient
+import androidx.appcompat.widget.TooltipCompat
 import eu.kevin.common.architecture.BaseView
 import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.extensions.applySystemInsetsMargin
@@ -43,6 +44,13 @@ internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentB
             settings.domStorageEnabled = true
             webViewClient = object : WebViewClient() {
 
+            }
+        }
+
+        with(binding.cvvTooltipIcon) {
+            TooltipCompat.setTooltipText(this, context.getString(R.string.window_card_payment_cvv_tooltip))
+            setDebounceClickListener {
+                performLongClick()
             }
         }
     }

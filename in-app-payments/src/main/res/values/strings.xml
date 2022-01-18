@@ -12,4 +12,5 @@
     <string name="window_card_payment_cvv_label">CVV / CVC </string>
     <string name="window_card_payment_cvv_hint">123</string>
     <string name="window_card_payment_notice">kevin. is not storing any of your personal info or card details.</string>
+    <string name="window_card_payment_cvv_tooltip">CVV is a 3 digit code displayed on the back of your card</string>
 </resources>
