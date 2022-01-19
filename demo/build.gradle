@@ -45,7 +45,7 @@ android {
         }
     }
 
-    flavorDimensions "sdk"
+    flavorDimensions "demo"
     productFlavors {
         sandbox {
             buildConfigField "String", "KEVIN_API_URL", properties.getProperty("kevinSandboxApiUrl", "")

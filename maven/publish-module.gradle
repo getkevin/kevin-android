@@ -24,7 +24,7 @@ afterEvaluate {
                 artifactId PUBLISH_ARTIFACT_ID
                 version sdkVersion
                 if (project.plugins.findPlugin("com.android.library")) {
-                    from components.release
+                    from components.prodRelease
                 } else {
                     from components.java
                 }
