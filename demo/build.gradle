@@ -4,6 +4,9 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-parcelize'
 apply plugin: 'kotlinx-serialization'
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file("local.properties").newDataInputStream())
+
 android {
     compileSdkVersion 31
 
@@ -39,6 +42,16 @@ android {
             shrinkResources true
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "sdk"
+    productFlavors {
+        sandbox {
+            buildConfigField "String", "KEVIN_API_URL", properties.getProperty("kevinSandboxApiUrl", "")
+        }
+        prod {
+            buildConfigField "String", "KEVIN_API_URL", properties.getProperty("kevinProdApiUrl", "")
         }
     }
 
