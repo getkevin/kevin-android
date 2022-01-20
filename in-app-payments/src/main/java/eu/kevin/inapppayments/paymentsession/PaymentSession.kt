@@ -120,11 +120,13 @@ internal class PaymentSession(
             }
         }
 
+        if (sessionData.selectedPaymentType == PaymentType.BANK) {
+            flow.add(PAYMENT_CONFIRMATION)
+        }
+
         if (sessionData.selectedPaymentType == PaymentType.CARD) {
             flow.add(CARD_PAYMENT)
         }
-
-        flow.add(PAYMENT_CONFIRMATION)
 
         flowItems.clear()
         flowItems.addAll(flow)
@@ -169,6 +171,16 @@ internal class PaymentSession(
         fragmentManager.setFragmentResultListener(BankSelectionContract, lifecycleOwner) {
             sessionData = sessionData.copy(selectedBank = it)
             navigateToNextWindow()
+        }
+        fragmentManager.setFragmentResultListener(CardPaymentContract, lifecycleOwner) { result ->
+            when (result) {
+                is FragmentResult.Success -> {
+                    sessionListener?.onSessionFinished(
+                        SessionResult.Success(PaymentSessionResult(configuration.paymentId))
+                    )
+                }
+                is FragmentResult.Canceled -> sessionListener?.onSessionFinished(SessionResult.Canceled)
+            }
         }
         fragmentManager.setFragmentResultListener(PaymentConfirmationContract, lifecycleOwner) { result ->
             when (result) {
