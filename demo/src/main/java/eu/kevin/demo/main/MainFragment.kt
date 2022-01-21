@@ -111,6 +111,10 @@ class MainFragment : Fragment(), MainViewCallback {
         viewModel.initializePayment(PaymentType.CARD)
     }
 
+    override fun onMakeHybridPaymentPressed() {
+        viewModel.initializePayment(PaymentType.CARD)
+    }
+
     override fun onBackPressed() {
         activity?.onBackPressed()
     }

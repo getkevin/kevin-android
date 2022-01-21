@@ -61,6 +61,7 @@ internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentB
         }
 
         binding.continueButton.setDebounceClickListener {
+            hideKeyboard()
             delegate?.onContinueClicked(
                 binding.cardholderNameInput.getInputText(),
                 binding.cardNumberInput.getInputText(),
