@@ -23,14 +23,6 @@ android {
         }
     }
 
-    flavorDimensions "sdk"
-    productFlavors {
-        sandbox {
-        }
-        prod {
-        }
-    }
-
     buildFeatures {
         viewBinding true
     }

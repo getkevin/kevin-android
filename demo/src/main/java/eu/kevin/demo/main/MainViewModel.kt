@@ -49,7 +49,7 @@ class MainViewModel : ViewModel() {
         }
     }
 
-    fun initializePayment(paymentType: PaymentType) {
+    fun initializePayment(paymentType: PaymentType, isHybrid: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
             _viewState.update { MainViewState.Loading(true) }
             try {
@@ -57,9 +57,17 @@ class MainViewModel : ViewModel() {
                     PaymentType.BANK -> kevinAuthClient.initializeBankPayment(
                         InitiatePaymentRequest("0.01")
                     )
-                    PaymentType.CARD -> kevinAuthClient.initializeCardPayment(
-                        InitiatePaymentRequest("0.01")
-                    )
+                    PaymentType.CARD -> {
+                        if (isHybrid) {
+                            kevinAuthClient.initializeHybridPayment(
+                                InitiatePaymentRequest("0.01")
+                            )
+                        } else {
+                            kevinAuthClient.initializeCardPayment(
+                                InitiatePaymentRequest("0.01")
+                            )
+                        }
+                    }
                 }
                 _viewAction.send(MainViewAction.OpenPaymentSession(payment, paymentType))
                 _viewState.update { MainViewState.Loading(false) }

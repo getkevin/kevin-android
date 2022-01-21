@@ -38,18 +38,6 @@ android {
         }
     }
 
-    flavorDimensions "sdk"
-    productFlavors {
-        sandbox {
-            buildConfigField "String", "KEVIN_ACCOUNTS_API_URL", "\"https://sandbox-api.getkevin.eu\""
-            buildConfigField "String", "KEVIN_LINK_ACCOUNT_URL", "\"https://psd2-sandbox.kevin.eu/login/%s/%s/preview\""
-        }
-        prod {
-            buildConfigField "String", "KEVIN_ACCOUNTS_API_URL", "\"https://api.kevin.eu\""
-            buildConfigField "String", "KEVIN_LINK_ACCOUNT_URL", "\"https://psd2.kevin.eu/login/%s/%s/preview\""
-        }
-    }
-
     buildFeatures {
         viewBinding true
     }
