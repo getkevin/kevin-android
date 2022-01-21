@@ -50,6 +50,17 @@ fun View.hideKeyboard() {
     }
 }
 
+fun View.showKeyboard() {
+    if (requestFocus()) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            windowInsetsController?.show(WindowInsetsCompat.Type.ime())
+        } else {
+            val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT,0)
+        }
+    }
+}
+
 fun View.applySystemInsetsPadding(top: Boolean = false, bottom: Boolean = false) {
     val originalPaddingTop = paddingTop
     val originalPaddingBottom = paddingBottom

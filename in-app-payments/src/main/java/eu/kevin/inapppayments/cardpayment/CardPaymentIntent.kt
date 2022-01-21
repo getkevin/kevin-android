@@ -19,4 +19,5 @@ internal sealed class CardPaymentIntent : IIntent {
         val uri: Uri
     ) : CardPaymentIntent()
     data class HandleCardPaymentEvent(val event: CardPaymentEvent) : CardPaymentIntent()
+    data class HandleUserSoftRedirect(val shouldRedirect: Boolean) : CardPaymentIntent()
 }

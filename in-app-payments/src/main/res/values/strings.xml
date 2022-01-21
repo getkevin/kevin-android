@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="window_payment_confirmation_title">Payment confirmation</string>
-    <string name="window_card_payment_title">Card details</string>
     <string name="dialog_exit_confirmation_payments_message">Are you sure you want to cancel this payment?</string>
     <string name="window_card_payment_cardholder_name_label">Cardholder name</string>
     <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
@@ -21,4 +20,6 @@
     <string name="error_invalid_card_number">Card number is invalid</string>
     <string name="error_short_card_number">Card number is too short</string>
     <string name="error_no_card_number">Card number must be entered</string>
+    <string name="window_card_payment_redirect_title">Continue payment via bank transfer?</string>
+    <string name="window_card_payment_redirect_subtitle">We noticed that your payment card is issued by Swedbank. Would you like to continue payment via Bank Transfer?</string>
 </resources>

@@ -20,6 +20,7 @@ import eu.kevin.inapppayments.cardpayment.inputvalidation.CardExpiryDateValidato
 import eu.kevin.inapppayments.cardpayment.inputvalidation.CardNumberValidator
 import eu.kevin.inapppayments.cardpayment.inputvalidation.CardholderNameValidator
 import eu.kevin.inapppayments.cardpayment.inputvalidation.CvvValidator
+import eu.kevin.inapppayments.cardpaymentredirect.CardPaymentRedirectContract
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -47,7 +48,8 @@ internal class CardPaymentViewModel(
                 )
             }
             is HandlePaymentResult -> handlePaymentResult(intent.uri)
-            is HandleCardPaymentEvent -> handleCardPaymentEven(intent.event)
+            is HandleCardPaymentEvent -> handleCardPaymentEvent(intent.event)
+            is HandleUserSoftRedirect -> handleUserSoftRedirect(intent.shouldRedirect)
         }
     }
 
@@ -104,9 +106,10 @@ internal class CardPaymentViewModel(
         }
     }
 
-    private suspend fun handleCardPaymentEven(event: CardPaymentEvent) {
+    private suspend fun handleCardPaymentEvent(event: CardPaymentEvent) {
         when (event) {
             is SoftRedirect -> {
+                GlobalRouter.pushModalFragment(CardPaymentRedirectContract.getFragment())
                 updateState {
                     it.copy(
                         loadingState = LoadingState.Loading(false)
@@ -116,6 +119,8 @@ internal class CardPaymentViewModel(
             is HardRedirect -> {
                 updateState {
                     it.copy(
+                        isContinueEnabled = false,
+                        showCardDetails = false,
                         loadingState = LoadingState.Loading(false)
                     )
                 }
@@ -129,6 +134,18 @@ internal class CardPaymentViewModel(
                         loadingState = LoadingState.Loading(false)
                     )
                 }
+            }
+        }
+    }
+
+    private suspend fun handleUserSoftRedirect(shouldRedirect: Boolean) {
+        _viewAction.trySend(CardPaymentViewAction.SubmitUserRedirect(shouldRedirect))
+        if (shouldRedirect) {
+            updateState {
+                it.copy(
+                    isContinueEnabled = false,
+                    showCardDetails = false
+                )
             }
         }
     }

@@ -6,10 +6,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import eu.kevin.common.architecture.BaseFragment
 import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.common.extensions.setFragmentResultListener
 import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.*
-import eu.kevin.inapppayments.cardpayment.CardPaymentViewAction.ShowFieldValidations
-import eu.kevin.inapppayments.cardpayment.CardPaymentViewAction.SubmitCardForm
+import eu.kevin.inapppayments.cardpayment.CardPaymentViewAction.*
 import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent
+import eu.kevin.inapppayments.cardpaymentredirect.CardPaymentRedirectContract
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
@@ -35,6 +36,9 @@ internal class CardPaymentFragment : BaseFragment<CardPaymentState, CardPaymentI
     override fun onAttached() {
         super.onAttached()
         viewModel.intents.trySend(Initialize(configuration!!))
+        parentFragmentManager.setFragmentResultListener(CardPaymentRedirectContract, this) { shouldRedirect ->
+            viewModel.intents.trySend(HandleUserSoftRedirect(shouldRedirect))
+        }
     }
 
     override fun onBackPressed(): Boolean {
@@ -60,6 +64,9 @@ internal class CardPaymentFragment : BaseFragment<CardPaymentState, CardPaymentI
                         action.expiryDateValidation,
                         action.cvvValidation
                     )
+                }
+                is SubmitUserRedirect -> {
+                    view.submitUserRedirect(action.shouldRedirect)
                 }
             }
         }.launchIn(lifecycleScope)

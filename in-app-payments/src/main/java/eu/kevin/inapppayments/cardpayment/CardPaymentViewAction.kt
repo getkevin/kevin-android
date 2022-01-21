@@ -17,4 +17,8 @@ internal sealed class CardPaymentViewAction : IIntent {
         val expiryDate: String,
         val cvv: String
     ) : CardPaymentViewAction()
+
+    data class SubmitUserRedirect(
+        val shouldRedirect: Boolean
+    ) : CardPaymentViewAction()
 }

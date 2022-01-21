@@ -49,6 +49,9 @@ internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentB
             cardNumberInput.editText?.addTextChangedListener {
                 cardNumberInput.error = null
                 cardNumberInput.isErrorEnabled = false
+                binding.webView.evaluateJavascript(
+                    "window.cardDetails.setCardNumber('${it?.toString() ?: ""}');"
+                ) {}
             }
             expiryDateInput.editText?.addTextChangedListener {
                 expiryDateInput.error = null
@@ -114,6 +117,7 @@ internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentB
 
                 override fun onPageFinished(view: WebView?, url: String?) {
                     super.onPageFinished(view, url)
+                    binding.webView.evaluateJavascript("window.cardDetails.enableEventMessages();") {}
                     delegate?.onPageFinishedLoading()
                 }
 
@@ -164,7 +168,6 @@ internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentB
         cvv: String
     ) {
         with(binding.webView) {
-            evaluateJavascript("window.cardDetails.enableEventMessages();") {}
             evaluateJavascript("window.cardDetails.setCardholderName('$cardholderName');") {}
             evaluateJavascript("window.cardDetails.setCardNumber('$cardNumber');") {}
             evaluateJavascript("window.cardDetails.setExpirationDate('$expiryDate');") {}
@@ -184,6 +187,14 @@ internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentB
             cardNumberInput.error = cardNumberValidation.getMessage(context)
             expiryDateInput.error = expiryDateValidation.getMessage(context)
             cvvInput.error = cvvValidation.getMessage(context)
+        }
+    }
+
+    fun submitUserRedirect(shouldRedirect: Boolean) {
+        if (shouldRedirect) {
+            binding.webView.evaluateJavascript("window.cardDetails.confirmBank();") {}
+        } else {
+            binding.webView.evaluateJavascript("window.cardDetails.cancelBank();") {}
         }
     }
 

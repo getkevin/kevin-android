@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="@string/window_card_payment_title" />
+        app:title="@string/window_payment_confirmation_title" />
 
     <ScrollView
         android:id="@+id/scroll_view"
