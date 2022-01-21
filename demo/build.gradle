@@ -24,6 +24,8 @@ android {
 
         resValue 'string', 'config_app_name', 'Kevin demo'
 
+        buildConfigField "String", "KEVIN_API_URL", "\"https://your.host.url\""
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
