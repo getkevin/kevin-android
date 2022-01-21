@@ -24,6 +24,9 @@ android {
         buildConfigField "String", "KEVIN_ACCOUNTS_API_URL", "\"https://api.kevin.eu\""
         buildConfigField "String", "KEVIN_LINK_ACCOUNT_URL", "\"https://psd2.kevin.eu/login/%s/%s/preview\""
 
+        buildConfigField "String", "KEVIN_SANDBOX_ACCOUNTS_API_URL", "\"https://sandbox-api.getkevin.eu\""
+        buildConfigField "String", "KEVIN_SANDBOX_LINK_ACCOUNT_URL", "\"https://psd2-sandbox.kevin.eu/login/%s/%s/preview\""
+
         buildConfigField "int", "HTTP_CLIENT_TIMEOUT", "120000"
         buildConfigField "io.ktor.client.features.logging.LogLevel", "HTTP_LOGGING_LEVEL", "io.ktor.client.features.logging.LogLevel.NONE"
     }

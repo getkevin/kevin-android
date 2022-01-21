@@ -7,6 +7,7 @@ object Kevin {
 
     private var locale: Locale? = null
     private var theme: Int = 0
+    private var isSandbox: Boolean = false
 
     fun setLocale(locale: Locale?) {
         synchronized(this) {
@@ -20,6 +21,12 @@ object Kevin {
         }
     }
 
+    fun setSandbox(sandbox: Boolean) {
+        synchronized(this) {
+            this.isSandbox = sandbox
+        }
+    }
+
     fun getLocale(): Locale? {
         return locale
     }
@@ -27,5 +34,9 @@ object Kevin {
     @StyleRes
     fun getTheme(): Int {
         return theme
+    }
+
+    fun isSandbox(): Boolean {
+        return isSandbox
     }
 }
