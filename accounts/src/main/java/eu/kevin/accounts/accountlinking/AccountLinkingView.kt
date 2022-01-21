@@ -65,13 +65,11 @@ internal class AccountLinkingView(context: Context) : BaseView<FragmentAccountLi
                     request: WebResourceRequest
                 ): Boolean {
                     val url = request.url.toString()
-                    return if (url.startsWith("http://") || url.startsWith("https://")) {
-                        if (url.startsWith(KevinAccountsPlugin.getCallbackUrl())) {
-                            delegate?.onAuthorizationReceived(request.url)
-                            true
-                        } else {
-                            false
-                        }
+                    return if (url.startsWith(KevinAccountsPlugin.getCallbackUrl())) {
+                        delegate?.onAuthorizationReceived(request.url)
+                        true
+                    } else if (url.startsWith("http://") || url.startsWith("https://")) {
+                        false
                     } else {
                         delegate?.handleUri(request.url)
                         true
