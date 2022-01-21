@@ -4,6 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import eu.kevin.demo.BuildConfig
 import eu.kevin.demo.auth.KevinAuthClientFactory
+import eu.kevin.demo.auth.entities.InitiateAuthenticationRequest
+import eu.kevin.demo.auth.entities.InitiatePaymentRequest
+import eu.kevin.demo.auth.enums.AuthenticationScope
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 import io.ktor.client.features.logging.*
 import kotlinx.coroutines.Dispatchers
@@ -33,7 +36,11 @@ class MainViewModel : ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             _viewState.update { MainViewState.Loading(true) }
             try {
-                val state = kevinAuthClient.getAuthState()
+                val state = kevinAuthClient.getAuthState(
+                    InitiateAuthenticationRequest(
+                        scopes = listOf(AuthenticationScope.PAYMENTS.value)
+                    )
+                )
                 _viewAction.send(MainViewAction.OpenAccountLinkingSession(state))
                 _viewState.update { MainViewState.Loading(false) }
             } catch (ignored: Exception) {
@@ -46,10 +53,13 @@ class MainViewModel : ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             _viewState.update { MainViewState.Loading(true) }
             try {
-                val payment = if (paymentType == PaymentType.BANK) {
-                    kevinAuthClient.initializeBankPayment()
-                } else {
-                    kevinAuthClient.initializeCardPayment()
+                val payment = when (paymentType) {
+                    PaymentType.BANK -> kevinAuthClient.initializeBankPayment(
+                        InitiatePaymentRequest("0.01")
+                    )
+                    PaymentType.CARD -> kevinAuthClient.initializeCardPayment(
+                        InitiatePaymentRequest("0.01")
+                    )
                 }
                 _viewAction.send(MainViewAction.OpenPaymentSession(payment, paymentType))
                 _viewState.update { MainViewState.Loading(false) }
