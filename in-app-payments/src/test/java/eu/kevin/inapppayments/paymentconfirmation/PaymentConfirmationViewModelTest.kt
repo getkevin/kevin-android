@@ -38,7 +38,12 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
             paymentId,
             selectedBank
         )
-        val config = PaymentConfirmationFragmentConfiguration(paymentId, PaymentType.BANK, selectedBank, false)
+        val config = PaymentConfirmationFragmentConfiguration(
+            paymentId,
+            PaymentType.BANK,
+            selectedBank,
+            skipAuthentication = false
+        )
 
         val states = mutableListOf<PaymentConfirmationState>()
         val job = launch {
@@ -57,7 +62,12 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
     fun `test handleIntent() Initialize with card payment`() = mainCoroutineRule.runBlockingTest {
         val paymentId = "1234567"
         val expectedRedirectUrl = BuildConfig.KEVIN_CARD_PAYMENT_URL.format(paymentId)
-        val config = PaymentConfirmationFragmentConfiguration(paymentId, PaymentType.CARD, null, false)
+        val config = PaymentConfirmationFragmentConfiguration(
+            paymentId,
+            PaymentType.CARD,
+            selectedBank = null,
+            skipAuthentication = false
+        )
 
         val states = mutableListOf<PaymentConfirmationState>()
         val job = launch {
