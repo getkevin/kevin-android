@@ -10,6 +10,7 @@ import eu.kevin.accounts.accountlinking.AccountLinkingIntent.*
 import eu.kevin.common.architecture.BaseViewModel
 import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.fragment.FragmentResult
+import eu.kevin.core.plugin.Kevin
 
 internal class AccountLinkingViewModel(
     savedStateHandle: SavedStateHandle
@@ -26,11 +27,18 @@ internal class AccountLinkingViewModel(
     }
 
     private suspend fun initialize(configuration: AccountLinkingFragmentConfiguration) {
+        val baseLinkAccountUrl = if (Kevin.isSandbox()) {
+            BuildConfig.KEVIN_SANDBOX_LINK_ACCOUNT_URL
+        } else {
+            BuildConfig.KEVIN_LINK_ACCOUNT_URL
+        }
         updateState {
-            it.copy(bankRedirectUrl = BuildConfig.KEVIN_LINK_ACCOUNT_URL.format(
-                configuration.state,
-                configuration.selectedBankId
-            ))
+            it.copy(
+                bankRedirectUrl = baseLinkAccountUrl.format(
+                    configuration.state,
+                    configuration.selectedBankId
+                )
+            )
         }
     }
 

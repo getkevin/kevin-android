@@ -14,6 +14,7 @@ import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.extensions.setFragmentResultListener
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.core.entities.SessionResult
+import eu.kevin.core.plugin.Kevin
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationContract
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationFragmentConfiguration
 import eu.kevin.inapppayments.paymentsession.entities.PaymentSessionConfiguration
@@ -45,7 +46,7 @@ internal class PaymentSession(
     private var sessionData by savedState(PaymentSessionData())
 
     private val accountsClient = KevinAccountsClientFactory(
-        baseUrl = BuildConfig.KEVIN_ACCOUNTS_API_URL,
+        baseUrl = if (Kevin.isSandbox()) BuildConfig.KEVIN_SANDBOX_ACCOUNTS_API_URL else BuildConfig.KEVIN_ACCOUNTS_API_URL,
         userAgent = "",
         timeout = BuildConfig.HTTP_CLIENT_TIMEOUT,
         logLevel = BuildConfig.HTTP_LOGGING_LEVEL

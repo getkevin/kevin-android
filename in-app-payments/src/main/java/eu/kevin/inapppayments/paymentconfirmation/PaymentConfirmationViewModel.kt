@@ -8,6 +8,7 @@ import androidx.savedstate.SavedStateRegistryOwner
 import eu.kevin.common.architecture.BaseViewModel
 import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.fragment.FragmentResult
+import eu.kevin.core.plugin.Kevin
 import eu.kevin.inapppayments.BuildConfig
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.*
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType.BANK
@@ -30,13 +31,28 @@ internal class PaymentConfirmationViewModel(
         val url = when (configuration.paymentType) {
             BANK -> {
                 if (configuration.skipAuthentication) {
-                    BuildConfig.KEVIN_BANK_PAYMENT_AUTHENTICATED_URL.format(configuration.paymentId)
+                    val baseAuthenticatedPaymentUrl = if (Kevin.isSandbox()) {
+                        BuildConfig.KEVIN_SANDBOX_BANK_PAYMENT_AUTHENTICATED_URL
+                    } else {
+                        BuildConfig.KEVIN_BANK_PAYMENT_AUTHENTICATED_URL
+                    }
+                    baseAuthenticatedPaymentUrl.format(configuration.paymentId)
                 } else {
-                    BuildConfig.KEVIN_BANK_PAYMENT_URL.format(configuration.paymentId, configuration.selectedBank!!)
+                    val basePaymentUrl = if (Kevin.isSandbox()) {
+                        BuildConfig.KEVIN_SANDBOX_BANK_PAYMENT_URL
+                    } else {
+                        BuildConfig.KEVIN_BANK_PAYMENT_URL
+                    }
+                    basePaymentUrl.format(configuration.paymentId, configuration.selectedBank!!)
                 }
             }
             else -> {
-                BuildConfig.KEVIN_CARD_PAYMENT_URL.format(configuration.paymentId)
+                val baseCardPaymentUrl = if (Kevin.isSandbox()) {
+                    BuildConfig.KEVIN_SANDBOX_CARD_PAYMENT_URL
+                } else {
+                    BuildConfig.KEVIN_CARD_PAYMENT_URL
+                }
+                baseCardPaymentUrl.format(configuration.paymentId)
             }
         }
         updateState {
