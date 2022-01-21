@@ -4,6 +4,9 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-parcelize'
 apply plugin: 'kotlinx-serialization'
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file("local.properties").newDataInputStream())
+
 android {
     compileSdkVersion 31
 
@@ -23,6 +26,8 @@ android {
         ]
 
         resValue 'string', 'config_app_name', 'Kevin demo'
+
+        buildConfigField "String", "KEVIN_API_URL", properties.getProperty("kevinSandboxApiUrl", "")
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
