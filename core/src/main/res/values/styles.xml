@@ -11,21 +11,39 @@
     </style>
 
     <style name="Kevin.Button.Primary" parent="Widget.MaterialComponents.Button">
-        <item name="android:minWidth">150dp</item>
-        <item name="android:minHeight">64dp</item>
-        <item name="android:maxHeight">64dp</item>
-        <item name="cornerRadius">32dp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="cornerRadius">8dp</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/sf_pro_text_medium</item>
+        <item name="android:textAllCaps">false</item>
         <item name="backgroundTint">@color/blue</item>
     </style>
 
-    <style name="Kevin.TextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <style name="Kevin.Button.Secondary" parent="Widget.MaterialComponents.Button">
+        <item name="android:minHeight">48dp</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/kevin_blue</item>
+        <item name="fontFamily">@font/sf_pro_text_medium</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="backgroundTint">@color/gray_5</item>
+    </style>
+
+    <style name="Kevin.TextInput.Layout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="cornerRadius">8dp</item>
         <item name="hintEnabled">false</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxBackgroundColor">@android:color/transparent</item>
         <item name="boxStrokeColor">@color/gray_2</item>
         <item name="boxStrokeErrorColor">@color/warning_red</item>
-        <item name="boxStrokeWidth">1dp</item>
+        <item name="errorTextAppearance">@style/Kevin.Text.Error</item>
+        <item name="errorIconDrawable">@null</item>
+        <item name="endIconMode">clear_text</item>
+    </style>
+
+    <style name="Kevin.TextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:textAppearance">@style/Kevin.Text.Title2</item>
     </style>
 
     <style name="Kevin.Text.Label" parent="@android:style/TextAppearance">
@@ -44,6 +62,38 @@
     <style name="Kevin.Text.Title" parent="@android:style/TextAppearance">
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">?kevinPrimaryTextColor</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="Kevin.Text.Headline3" parent="@android:style/TextAppearance">
+        <item name="android:textSize">22sp</item>
+        <item name="fontFamily">@font/circular_std_bold</item>
+        <item name="android:textColor">?kevinPrimaryTextColor</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="Kevin.Text.Title2" parent="@android:style/TextAppearance">
+        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">@font/sf_pro_text_regular</item>
+        <item name="android:textColor">?kevinPrimaryTextColor</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="Kevin.Text.Subtitle1" parent="@android:style/TextAppearance">
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/sf_pro_text_regular</item>
+        <item name="android:textColor">?kevinSecondaryTextColor</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="Kevin.Text.Error" parent="@android:style/TextAppearance">
+        <item name="android:textSize">13sp</item>
+        <item name="fontFamily">@font/sf_pro_text_regular</item>
+        <item name="android:textColor">@color/warning_red</item>
         <item name="android:gravity">start</item>
         <item name="android:textStyle">normal</item>
     </style>

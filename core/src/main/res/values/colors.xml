@@ -2,6 +2,7 @@
 <resources>
 
     <color name="kevin_red">#FF0020</color>
+    <color name="kevin_blue">#5d80fe</color>
 
     <color name="blue">#5D80FE</color>
     <color name="dark_blue">#0B1E42</color>
@@ -18,6 +19,7 @@
     <color name="gray_03">#DBDEE7</color>
     <color name="gray_04">#F2F2F2</color>
     <color name="gray_2">#ffafb6bb</color>
+    <color name="gray_5">#E6E7EE</color>
 
     <color name="white">#FFFFFFFF</color>
     <color name="white_50">#80FFFFFF</color>

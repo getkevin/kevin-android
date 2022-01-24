@@ -10,6 +10,7 @@ import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.entities.LoadingState
 import eu.kevin.common.extensions.removeWhiteSpaces
 import eu.kevin.common.fragment.FragmentResult
+import eu.kevin.core.plugin.Kevin
 import eu.kevin.inapppayments.BuildConfig
 import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.*
 import eu.kevin.inapppayments.cardpayment.CardPaymentViewAction.ShowFieldValidations
@@ -54,9 +55,13 @@ internal class CardPaymentViewModel(
     }
 
     private suspend fun initialize(configuration: CardPaymentFragmentConfiguration) {
-        val url = BuildConfig.KEVIN_CARD_PAYMENT_URL.format(configuration.paymentId)
+        val baseCardPaymentUrl = if (Kevin.isSandbox()) {
+            BuildConfig.KEVIN_SANDBOX_CARD_PAYMENT_URL
+        } else {
+            BuildConfig.KEVIN_CARD_PAYMENT_URL
+        }
         updateState {
-            it.copy(url = url)
+            it.copy(url = baseCardPaymentUrl.format(configuration.paymentId))
         }
     }
 

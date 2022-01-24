@@ -20,6 +20,7 @@
 
     <TextView
         android:id="@+id/title_view"
+        style="?kevinTextHeadline3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -31,6 +32,7 @@
 
     <TextView
         android:id="@+id/subtitle_view"
+        style="?kevinTextSubtitle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -42,7 +44,7 @@
 
     <Button
         android:id="@+id/no_button"
-        style="?kevinPrimaryButtonStyle"
+        style="?kevinSecondaryButtonStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"

@@ -15,8 +15,15 @@
     <attr name="kevinPrimaryTextColor" format="color|reference" />
     <attr name="kevinSecondaryTextColor" format="color|reference" />
 
-    <!--    Component style attributes-->
+    <!--    Component attributes-->
     <attr name="kevinToolbarStyle" format="reference" />
     <attr name="kevinPrimaryButtonStyle" format="reference" />
+    <attr name="kevinSecondaryButtonStyle" format="reference" />
     <attr name="kevinWindowTransitionStyle" format="reference" />
+    <attr name="kevinTextInputContainerStyle" format="reference" />
+    <attr name="kevinTextInputStyle" format="reference" />
+
+    <!--    Typography attributes    -->
+    <attr name="kevinTextHeadline3" format="reference" />
+    <attr name="kevinTextSubtitle1" format="reference" />
 </resources>

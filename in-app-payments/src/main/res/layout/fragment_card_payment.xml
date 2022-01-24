@@ -57,6 +57,7 @@
 
             <TextView
                 android:id="@+id/card_payment_label"
+                style="?kevinTextSubtitle1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -68,10 +69,12 @@
 
             <TextView
                 android:id="@+id/cardholder_name_label"
+                style="?kevinTextSubtitle1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="36dp"
+                android:gravity="start"
                 android:text="@string/window_card_payment_cardholder_name_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -79,7 +82,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/cardholder_name_input"
-                style="@style/Kevin.TextInput"
+                style="?kevinTextInputContainerStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -89,6 +92,7 @@
                 app:layout_constraintTop_toBottomOf="@id/cardholder_name_label">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    style="?kevinTextInputStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/window_card_payment_cardholder_name_hint"
@@ -98,10 +102,12 @@
 
             <TextView
                 android:id="@+id/card_number_label"
+                style="?kevinTextSubtitle1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="26dp"
+                android:gravity="start"
                 android:text="@string/window_card_payment_card_number_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -109,7 +115,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/card_number_input"
-                style="@style/Kevin.TextInput"
+                style="?kevinTextInputContainerStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -119,6 +125,7 @@
                 app:layout_constraintTop_toBottomOf="@id/card_number_label">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    style="?kevinTextInputStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/window_card_payment_card_number_hint"
@@ -129,9 +136,11 @@
 
             <TextView
                 android:id="@+id/expiry_date_label"
+                style="?kevinTextSubtitle1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="26dp"
+                android:gravity="start"
                 android:text="@string/window_card_payment_expiry_date_label"
                 app:layout_constraintEnd_toEndOf="@id/expiry_date_input"
                 app:layout_constraintStart_toStartOf="@id/expiry_date_input"
@@ -139,7 +148,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/expiry_date_input"
-                style="@style/Kevin.TextInput"
+                style="?kevinTextInputContainerStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -149,6 +158,7 @@
                 app:layout_constraintTop_toBottomOf="@id/expiry_date_label">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    style="?kevinTextInputStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/window_card_payment_expiry_date_hint"
@@ -159,9 +169,11 @@
 
             <TextView
                 android:id="@+id/cvv_label"
+                style="?kevinTextSubtitle1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="26dp"
+                android:gravity="start"
                 android:text="@string/window_card_payment_cvv_label"
                 app:layout_constrainedWidth="true"
                 app:layout_constraintStart_toStartOf="@id/cvv_input"
@@ -183,7 +195,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/cvv_input"
-                style="@style/Kevin.TextInput"
+                style="?kevinTextInputContainerStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -193,6 +205,7 @@
                 app:layout_constraintTop_toBottomOf="@id/cvv_label">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    style="?kevinTextInputStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/window_card_payment_cvv_hint"
@@ -214,10 +227,12 @@
 
             <TextView
                 android:id="@+id/notice_view"
+                style="@style/Kevin.Text.Subtitle1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="14dp"
                 android:layout_marginEnd="16dp"
+                android:gravity="start"
                 android:text="@string/window_card_payment_notice"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/notice_icon"

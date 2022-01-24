@@ -15,7 +15,16 @@
     <public name="kevinErrorTextColor" type="attr" />
     <public name="kevinPrimaryTextColor" type="attr" />
     <public name="kevinSecondaryTextColor" type="attr" />
+
+    <!--    Component attributes-->
     <public name="kevinToolbarStyle" type="attr" />
     <public name="kevinPrimaryButtonStyle" type="attr" />
+    <public name="kevinSecondaryButtonStyle" type="attr" />
     <public name="kevinWindowTransitionStyle" type="attr" />
+    <public name="kevinTextInputContainerStyle" type="attr" />
+    <public name="kevinTextInputStyle" type="attr" />
+
+    <!--    Typography attributes    -->
+    <public name="kevinTextHeadline3" type="attr" />
+    <public name="kevinTextSubtitle1" type="attr" />
 </resources>
