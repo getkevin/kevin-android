@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
-import android.webkit.WebViewClient
 import androidx.core.view.updateLayoutParams
+import androidx.webkit.WebViewClientCompat
 import eu.kevin.common.architecture.BaseView
 import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.extensions.*
@@ -58,7 +58,7 @@ internal class PaymentConfirmationView(context: Context) : BaseView<FragmentPaym
             applySystemInsetsMargin(bottom = true)
             settings.javaScriptEnabled = true
             settings.domStorageEnabled = true
-            webViewClient = object : WebViewClient() {
+            webViewClient = object : WebViewClientCompat() {
                 override fun shouldOverrideUrlLoading(
                     view: WebView,
                     request: WebResourceRequest

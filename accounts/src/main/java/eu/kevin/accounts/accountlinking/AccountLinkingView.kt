@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
-import android.webkit.WebViewClient
 import androidx.core.view.updateLayoutParams
+import androidx.webkit.WebViewClientCompat
 import eu.kevin.accounts.KevinAccountsPlugin
 import eu.kevin.accounts.R
 import eu.kevin.accounts.databinding.FragmentAccountLinkingBinding
@@ -59,7 +59,7 @@ internal class AccountLinkingView(context: Context) : BaseView<FragmentAccountLi
             applySystemInsetsMargin(bottom = true)
             settings.javaScriptEnabled = true
             settings.domStorageEnabled = true
-            webViewClient = object : WebViewClient() {
+            webViewClient = object : WebViewClientCompat() {
                 override fun shouldOverrideUrlLoading(
                     view: WebView,
                     request: WebResourceRequest
