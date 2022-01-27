@@ -180,6 +180,7 @@ internal class PaymentSession(
                     )
                 }
                 is FragmentResult.Canceled -> sessionListener?.onSessionFinished(SessionResult.Canceled)
+                is FragmentResult.Failure -> sessionListener?.onSessionFinished(SessionResult.Failure(result.error))
             }
         }
         fragmentManager.setFragmentResultListener(PaymentConfirmationContract, lifecycleOwner) { result ->

@@ -8,6 +8,7 @@ import androidx.savedstate.SavedStateRegistryOwner
 import eu.kevin.common.architecture.BaseViewModel
 import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.entities.LoadingState
+import eu.kevin.common.entities.isLoading
 import eu.kevin.common.extensions.removeWhiteSpaces
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.core.plugin.Kevin
@@ -37,9 +38,19 @@ internal class CardPaymentViewModel(
     override suspend fun handleIntent(intent: CardPaymentIntent) {
         when (intent) {
             is Initialize -> initialize(intent.configuration)
-            is HandleBackClicked -> GlobalRouter.popCurrentFragment()
+            is HandleBackClicked -> {
+                if (!state.value.loadingState.isLoading()) {
+                    GlobalRouter.popCurrentFragment()
+                }
+            }
             is HandlePageStartLoading -> updateState { it.copy(isContinueEnabled = false) }
             is HandlePageFinishedLoading -> updateState { it.copy(isContinueEnabled = true) }
+            is HandlePageLoadingError -> {
+                GlobalRouter.returnFragmentResult(
+                    CardPaymentContract,
+                    FragmentResult.Failure(IllegalStateException("Failed to load webpage. Check internet connection"))
+                )
+            }
             is HandleOnContinueClicked -> {
                 handleOnContinueClick(
                     intent.cardholderName,

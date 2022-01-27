@@ -3,11 +3,15 @@ package eu.kevin.inapppayments.cardpayment
 import android.content.Context
 import android.graphics.Bitmap
 import android.view.LayoutInflater
-import android.webkit.*
+import android.webkit.JavascriptInterface
+import android.webkit.WebResourceRequest
+import android.webkit.WebView
 import androidx.appcompat.widget.TooltipCompat
 import androidx.core.view.updateLayoutParams
 import androidx.core.widget.addTextChangedListener
 import androidx.transition.TransitionManager
+import androidx.webkit.WebResourceErrorCompat
+import androidx.webkit.WebViewClientCompat
 import eu.kevin.common.architecture.BaseView
 import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.entities.LoadingState
@@ -96,7 +100,7 @@ internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentB
                     }
                 }
             }, "AndroidHandler")
-            webViewClient = object : WebViewClient() {
+            webViewClient = object : WebViewClientCompat() {
                 override fun shouldOverrideUrlLoading(
                     view: WebView,
                     request: WebResourceRequest
@@ -122,9 +126,9 @@ internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentB
                 }
 
                 override fun onReceivedError(
-                    view: WebView?,
-                    request: WebResourceRequest?,
-                    error: WebResourceError?
+                    view: WebView,
+                    request: WebResourceRequest,
+                    error: WebResourceErrorCompat
                 ) {
                     super.onReceivedError(view, request, error)
                     delegate?.onPageLoadingError()

@@ -96,6 +96,7 @@ internal class CardPaymentFragment : BaseFragment<CardPaymentState, CardPaymentI
     }
 
     override fun onPageLoadingError() {
+        viewModel.intents.trySend(HandlePageLoadingError)
     }
 
     override fun onPaymentResult(uri: Uri) {
