@@ -16,8 +16,8 @@ import eu.kevin.common.managers.KeyboardManager
 import eu.kevin.inapppayments.KevinPaymentsPlugin
 import eu.kevin.inapppayments.R
 import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent.*
-import eu.kevin.inapppayments.cardpayment.inputmask.CardNumberInputMask
-import eu.kevin.inapppayments.cardpayment.inputmask.DateInputMask
+import eu.kevin.inapppayments.cardpayment.inputformatters.CardNumberFormatter
+import eu.kevin.inapppayments.cardpayment.inputformatters.DateFormatter
 import eu.kevin.inapppayments.cardpayment.inputvalidation.ValidationResult
 import eu.kevin.inapppayments.databinding.FragmentCardPaymentBinding
 
@@ -39,13 +39,12 @@ internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentB
             applySystemInsetsPadding(top = true)
         }
 
-        DateInputMask(binding.expiryDateInput.editText!!).listen()
-        CardNumberInputMask(binding.cardNumberInput.editText!!).listen()
         with(binding) {
             cardholderNameInput.editText?.addTextChangedListener {
                 cardholderNameInput.error = null
                 cardholderNameInput.isErrorEnabled = false
             }
+            cardNumberInput.editText?.addTextChangedListener(CardNumberFormatter())
             cardNumberInput.editText?.addTextChangedListener {
                 cardNumberInput.error = null
                 cardNumberInput.isErrorEnabled = false
@@ -53,6 +52,7 @@ internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentB
                     "window.cardDetails.setCardNumber('${it?.toString() ?: ""}');"
                 ) {}
             }
+            expiryDateInput.editText?.addTextChangedListener(DateFormatter())
             expiryDateInput.editText?.addTextChangedListener {
                 expiryDateInput.error = null
                 expiryDateInput.isErrorEnabled = false

@@ -13,12 +13,12 @@
     <string name="window_card_payment_notice">kevin. is not storing any of your personal info or card details.</string>
     <string name="window_card_payment_cvv_tooltip">CVV is a 3 digit code displayed on the back of your card</string>
     <string name="error_no_cardholder_name">Cardholder name must be entered</string>
-    <string name="error_short_cvv">Cvv is too short</string>
+    <string name="error_invalid_cvv">Enter valid CVV</string>
     <string name="error_no_cvv">Cvv must be entered</string>
     <string name="error_invalid_expiry_date">Expiry date is invalid</string>
     <string name="error_no_expiry_date">Expiry date must be entered</string>
+    <string name="error_card_expired">Card is expired</string>
     <string name="error_invalid_card_number">Card number is invalid</string>
-    <string name="error_short_card_number">Card number is too short</string>
     <string name="error_no_card_number">Card number must be entered</string>
     <string name="window_card_payment_redirect_title">Continue payment via bank transfer?</string>
     <string name="window_card_payment_redirect_subtitle">We noticed that your payment card is issued by Swedbank. Would you like to continue payment via Bank Transfer?</string>
