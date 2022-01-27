@@ -3,7 +3,7 @@ package eu.kevin.demo.main
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import eu.kevin.demo.BuildConfig
-import eu.kevin.demo.auth.KevinAuthClientFactory
+import eu.kevin.demo.auth.KevinApiClientFactory
 import eu.kevin.demo.auth.entities.InitiateAuthenticationRequest
 import eu.kevin.demo.auth.entities.InitiatePaymentRequest
 import eu.kevin.demo.auth.enums.AuthenticationScope
@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 
 class MainViewModel : ViewModel() {
 
-    private val kevinAuthClient = KevinAuthClientFactory(
+    private val kevinAuthClient = KevinApiClientFactory(
         baseUrl = BuildConfig.KEVIN_API_URL,
         "",
         timeout = 120000,

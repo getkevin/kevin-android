@@ -12,7 +12,6 @@
     <attr name="kevinSecondaryTextColor" format="color|reference" />
     <attr name="kevinToolbarColor" format="color|reference" />
 
-
     <!--    Component attributes-->
     <attr name="kevinToolbarStyle" format="reference" />
     <attr name="kevinPrimaryButtonStyle" format="reference" />

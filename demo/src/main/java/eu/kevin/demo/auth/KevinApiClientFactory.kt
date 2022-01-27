@@ -4,7 +4,7 @@ import eu.kevin.core.networking.BaseApiFactory
 import eu.kevin.core.networking.TokenDelegate
 import io.ktor.client.features.logging.*
 
-class KevinAuthClientFactory(
+class KevinApiClientFactory(
     baseUrl: String,
     userAgent: String,
     timeout: Int? = null,
