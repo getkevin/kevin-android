@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--    Base themes    -->
     <public name="Theme.Kevin.Base" type="style" />
     <public name="Theme.Kevin.BottomSheet.Base" type="style" />
+
+    <!--    Base component styles    -->
     <public name="Kevin.Toolbar" type="style" />
     <public name="Kevin.Button.Primary" type="style" />
+
+    <!--    Base transitions    -->
     <public name="Kevin.Window.Transition" type="style" />
+
+    <!--    Color attributes    -->
     <public name="kevinPrimaryBackgroundColor" type="attr" />
     <public name="kevinSecondaryBackgroundColor" type="attr" />
     <public name="kevinToolbarColor" type="attr" />

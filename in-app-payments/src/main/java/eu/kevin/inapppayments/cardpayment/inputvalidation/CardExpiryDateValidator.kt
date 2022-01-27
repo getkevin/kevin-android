@@ -17,14 +17,14 @@ internal object CardExpiryDateValidator {
             else -> ValidationResult.Valid
         }
     }
-}
 
-@SuppressLint("SimpleDateFormat")
-private fun checkIfNotExpired(expiryDate: String): Boolean {
-    val currentTime = Calendar.getInstance()
-    val expirationDate = Calendar.getInstance().apply {
-        time = SimpleDateFormat("MM/yy").parse(expiryDate)!!
+    @SuppressLint("SimpleDateFormat")
+    private fun checkIfNotExpired(expiryDate: String): Boolean {
+        val currentTime = Calendar.getInstance()
+        val expirationDate = Calendar.getInstance().apply {
+            time = SimpleDateFormat("MM/yy").parse(expiryDate)!!
+        }
+        return expirationDate.get(Calendar.MONTH) >= currentTime.get(Calendar.MONTH)
+            && expirationDate.get(Calendar.YEAR) >= currentTime.get(Calendar.YEAR)
     }
-    return expirationDate.get(Calendar.MONTH) >= currentTime.get(Calendar.MONTH)
-        && expirationDate.get(Calendar.YEAR) >= currentTime.get(Calendar.YEAR)
 }
