@@ -1,12 +1,13 @@
 package eu.kevin.core.plugin
 
 import androidx.annotation.StyleRes
+import eu.kevin.core.R
 import java.util.*
 
 object Kevin {
 
     private var locale: Locale? = null
-    private var theme: Int = 0
+    private var theme: Int? = null
     private var isSandbox: Boolean = false
 
     fun setLocale(locale: Locale?) {
@@ -33,7 +34,7 @@ object Kevin {
 
     @StyleRes
     fun getTheme(): Int {
-        return theme
+        return theme ?: R.style.Theme_Kevin_Base
     }
 
     fun isSandbox(): Boolean {
