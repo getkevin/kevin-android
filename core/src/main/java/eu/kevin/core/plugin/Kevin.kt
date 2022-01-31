@@ -7,7 +7,7 @@ import java.util.*
 object Kevin {
 
     private var locale: Locale? = null
-    private var theme: Int? = null
+    private var theme: Int = R.style.Theme_Kevin_Base
     private var isSandbox: Boolean = false
 
     fun setLocale(locale: Locale?) {
@@ -34,7 +34,7 @@ object Kevin {
 
     @StyleRes
     fun getTheme(): Int {
-        return theme ?: R.style.Theme_Kevin_Base
+        return theme
     }
 
     fun isSandbox(): Boolean {
