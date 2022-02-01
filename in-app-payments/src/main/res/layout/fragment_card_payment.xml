@@ -51,7 +51,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
-                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/card_icon_view"
@@ -222,11 +221,11 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="20dp"
                 android:contentDescription="@null"
                 android:src="@drawable/ic_report_warning"
+                app:layout_constraintBottom_toBottomOf="@id/notice_view"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/expiry_date_input" />
+                app:layout_constraintTop_toTopOf="@id/notice_view" />
 
             <TextView
                 android:id="@+id/notice_view"
@@ -234,12 +233,13 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="14dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
                 android:gravity="start"
                 android:text="@string/window_card_payment_notice"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/notice_icon"
-                app:layout_constraintTop_toTopOf="@id/notice_icon" />
+                app:layout_constraintTop_toBottomOf="@id/expiry_date_input" />
 
             <Button
                 android:id="@+id/continue_button"

@@ -1,51 +1,14 @@
 package eu.kevin.demo.auth
 
-import eu.kevin.demo.auth.entities.ApiAuthState
+import eu.kevin.core.networking.BaseApiClient
 import eu.kevin.demo.auth.entities.ApiPayment
 import eu.kevin.demo.auth.entities.InitiateAuthenticationRequest
 import eu.kevin.demo.auth.entities.InitiatePaymentRequest
-import io.ktor.client.*
-import io.ktor.client.request.*
 
-class KevinApiClient(private val httpClient: HttpClient) : ApiClient {
-
-    override suspend fun getAuthState(request: InitiateAuthenticationRequest): String {
-        return httpClient.post<ApiAuthState>("auth/initiate/") {
-            body = request
-        }.state
-    }
-
-    override suspend fun initializeBankPayment(
-        request: InitiatePaymentRequest
-    ): ApiPayment {
-        return httpClient.post("payments/bank/") {
-            body = request
-        }
-    }
-
-    override suspend fun initializeLinkedBankPayment(
-        accessToken: String,
-        request: InitiatePaymentRequest
-    ): ApiPayment {
-        return httpClient.post("payments/bank/linked/") {
-            header("Authorization", "Bearer $accessToken")
-            body = request
-        }
-    }
-
-    override suspend fun initializeCardPayment(
-        request: InitiatePaymentRequest
-    ): ApiPayment {
-        return httpClient.post("payments/card/") {
-            body = request
-        }
-    }
-
-    override suspend fun initializeHybridPayment(
-        request: InitiatePaymentRequest
-    ): ApiPayment {
-        return httpClient.post("payments/hybrid/") {
-            body = request
-        }
-    }
+interface KevinApiClient : BaseApiClient {
+    suspend fun getAuthState(request: InitiateAuthenticationRequest): String
+    suspend fun initializeBankPayment(request: InitiatePaymentRequest): ApiPayment
+    suspend fun initializeLinkedBankPayment(accessToken: String, request: InitiatePaymentRequest): ApiPayment
+    suspend fun initializeCardPayment(request: InitiatePaymentRequest): ApiPayment
+    suspend fun initializeHybridPayment(request: InitiatePaymentRequest): ApiPayment
 }

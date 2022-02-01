@@ -16,6 +16,7 @@ import eu.kevin.inapppayments.BuildConfig
 import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.*
 import eu.kevin.inapppayments.cardpayment.CardPaymentViewAction.ShowFieldValidations
 import eu.kevin.inapppayments.cardpayment.CardPaymentViewAction.SubmitCardForm
+import eu.kevin.inapppayments.cardpayment.entities.Amount
 import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent
 import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent.*
 import eu.kevin.inapppayments.cardpayment.inputvalidation.CardExpiryDateValidator
@@ -29,8 +30,7 @@ import eu.kevin.inapppayments.networking.KevinPaymentsClientProvider
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.receiveAsFlow
-import org.joda.money.CurrencyUnit
-import org.joda.money.Money
+import java.util.*
 
 internal class CardPaymentViewModel(
     savedStateHandle: SavedStateHandle,
@@ -53,12 +53,6 @@ internal class CardPaymentViewModel(
             }
             is HandlePageStartLoading -> updateState { it.copy(isContinueEnabled = false) }
             is HandlePageFinishedLoading -> updateState { it.copy(isContinueEnabled = true) }
-            is HandlePageLoadingError -> {
-                GlobalRouter.returnFragmentResult(
-                    CardPaymentContract,
-                    FragmentResult.Failure(IllegalStateException("Failed to load webpage. Check internet connection"))
-                )
-            }
             is HandleOnContinueClicked -> {
                 handleOnContinueClick(
                     intent.cardholderName,
@@ -86,10 +80,11 @@ internal class CardPaymentViewModel(
             )
         }
         val paymentInfo = kevinPaymentsClient.getCardPaymentInfo(configuration.paymentId)
+
         val amount = try {
-            Money.of(
-                CurrencyUnit.of(paymentInfo.currencyCode),
-                paymentInfo.amount.toBigDecimal()
+            Amount(
+                paymentInfo.amount,
+                Currency.getInstance(paymentInfo.currencyCode)
             )
         } catch (ignored: Exception) {
             null

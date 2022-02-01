@@ -13,7 +13,6 @@ internal interface CardPaymentViewDelegate {
     )
     fun onPageStartLoading()
     fun onPageFinishedLoading()
-    fun onPageLoadingError()
     fun onPaymentResult(uri: Uri)
     fun onEvent(event: CardPaymentEvent)
 }

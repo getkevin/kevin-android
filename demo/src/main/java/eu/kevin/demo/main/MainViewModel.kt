@@ -49,27 +49,35 @@ class MainViewModel : ViewModel() {
         }
     }
 
-    fun initializePayment(paymentType: PaymentType, isHybrid: Boolean) {
+    fun initializeBankPayment() {
         viewModelScope.launch(Dispatchers.IO) {
             _viewState.update { MainViewState.Loading(true) }
             try {
-                val payment = when (paymentType) {
-                    PaymentType.BANK -> kevinAuthClient.initializeBankPayment(
+                val payment = kevinAuthClient.initializeBankPayment(
+                    InitiatePaymentRequest("0.01")
+                )
+                _viewAction.send(MainViewAction.OpenPaymentSession(payment, PaymentType.BANK))
+                _viewState.update { MainViewState.Loading(false) }
+            } catch (ignored: Exception) {
+                _viewState.update { MainViewState.Loading(false) }
+            }
+        }
+    }
+
+    fun initializeCardPayment(isHybrid: Boolean) {
+        viewModelScope.launch(Dispatchers.IO) {
+            _viewState.update { MainViewState.Loading(true) }
+            try {
+                val payment = if (isHybrid) {
+                    kevinAuthClient.initializeHybridPayment(
                         InitiatePaymentRequest("0.01")
                     )
-                    PaymentType.CARD -> {
-                        if (isHybrid) {
-                            kevinAuthClient.initializeHybridPayment(
-                                InitiatePaymentRequest("0.01")
-                            )
-                        } else {
-                            kevinAuthClient.initializeCardPayment(
-                                InitiatePaymentRequest("0.01")
-                            )
-                        }
-                    }
+                } else {
+                    kevinAuthClient.initializeCardPayment(
+                        InitiatePaymentRequest("0.01")
+                    )
                 }
-                _viewAction.send(MainViewAction.OpenPaymentSession(payment, paymentType))
+                _viewAction.send(MainViewAction.OpenPaymentSession(payment, PaymentType.CARD))
                 _viewState.update { MainViewState.Loading(false) }
             } catch (ignored: Exception) {
                 _viewState.update { MainViewState.Loading(false) }

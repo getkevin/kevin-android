@@ -9,8 +9,6 @@ import android.webkit.WebView
 import androidx.appcompat.widget.TooltipCompat
 import androidx.core.view.updateLayoutParams
 import androidx.core.widget.addTextChangedListener
-import androidx.transition.TransitionManager
-import androidx.webkit.WebResourceErrorCompat
 import androidx.webkit.WebViewClientCompat
 import eu.kevin.common.architecture.BaseView
 import eu.kevin.common.architecture.interfaces.IView
@@ -128,15 +126,6 @@ internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentB
                     binding.webView.evaluateJavascript("window.cardDetails.enableEventMessages();") {}
                     delegate?.onPageFinishedLoading()
                 }
-
-                override fun onReceivedError(
-                    view: WebView,
-                    request: WebResourceRequest,
-                    error: WebResourceErrorCompat
-                ) {
-                    super.onReceivedError(view, request, error)
-                    delegate?.onPageLoadingError()
-                }
             }
         }
 
@@ -158,10 +147,7 @@ internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentB
                 webView.loadUrl(state.url)
             }
             binding.continueButton.isEnabled = state.isContinueEnabled
-            with(binding.amountView) {
-                text = state.amount?.toDisplayString(context) ?: ""
-                visibility = if (state.amount != null) VISIBLE else GONE
-            }
+            binding.amountView.text = state.amount?.getDisplayString(context)
             showCardDetails(state.showCardDetails)
 
             val loadingState = state.loadingState
@@ -211,13 +197,14 @@ internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentB
     }
 
     private fun showCardDetails(show: Boolean) {
-        TransitionManager.beginDelayedTransition(this)
         if (show) {
-            binding.webView.visibility = GONE
-            binding.scrollView.visibility = VISIBLE
+            binding.webView.fadeOut(250L) {
+                binding.scrollView.fadeIn()
+            }
         } else {
-            binding.webView.visibility = VISIBLE
-            binding.scrollView.visibility = GONE
+            binding.scrollView.fadeOut(250L) {
+                binding.webView.fadeIn()
+            }
         }
     }
 }

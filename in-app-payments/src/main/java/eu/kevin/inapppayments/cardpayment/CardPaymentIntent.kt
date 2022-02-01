@@ -8,7 +8,6 @@ internal sealed class CardPaymentIntent : IIntent {
     object HandleBackClicked : CardPaymentIntent()
     object HandlePageStartLoading : CardPaymentIntent()
     object HandlePageFinishedLoading : CardPaymentIntent()
-    object HandlePageLoadingError : CardPaymentIntent()
     data class Initialize(val configuration: CardPaymentFragmentConfiguration) : CardPaymentIntent()
     data class HandleOnContinueClicked(
         val cardholderName: String,

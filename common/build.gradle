@@ -54,7 +54,5 @@ dependencies {
     implementation "io.ktor:ktor-client-serialization:$ktor_version"
     implementation "io.ktor:ktor-client-logging:$ktor_version"
 
-    implementation "org.joda:joda-money:$joda_money_version"
-
     implementation "io.coil-kt:coil:$coil_version"
 }

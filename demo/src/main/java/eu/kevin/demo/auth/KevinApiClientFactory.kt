@@ -9,14 +9,14 @@ class KevinApiClientFactory(
     userAgent: String,
     timeout: Int? = null,
     logLevel: LogLevel,
-) : BaseApiFactory<ApiClient>(
+) : BaseApiFactory<KevinApiClient>(
     baseUrl,
     userAgent,
     timeout,
     logLevel
 ) {
 
-    override fun createClient(tokenDelegate: TokenDelegate?): ApiClient {
-        return KevinApiClient(createKtorClient())
+    override fun createClient(tokenDelegate: TokenDelegate?): KevinApiClient {
+        return KevinClient(createKtorClient())
     }
 }

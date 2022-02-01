@@ -104,15 +104,15 @@ class MainFragment : Fragment(), MainViewCallback {
     }
 
     override fun onMakeBankPaymentPressed() {
-        viewModel.initializePayment(PaymentType.BANK, isHybrid = false)
+        viewModel.initializeBankPayment()
     }
 
     override fun onMakeCardPaymentPressed() {
-        viewModel.initializePayment(PaymentType.CARD, isHybrid = false)
+        viewModel.initializeCardPayment(isHybrid = false)
     }
 
     override fun onMakeHybridPaymentPressed() {
-        viewModel.initializePayment(PaymentType.CARD, isHybrid = true)
+        viewModel.initializeCardPayment(isHybrid = true)
     }
 
     override fun onBackPressed() {

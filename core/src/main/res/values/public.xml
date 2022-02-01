@@ -23,7 +23,7 @@
     <public name="kevinPrimaryTextColor" type="attr" />
     <public name="kevinSecondaryTextColor" type="attr" />
 
-    <!--    Component attributes-->
+    <!--    Component attributes    -->
     <public name="kevinToolbarStyle" type="attr" />
     <public name="kevinPrimaryButtonStyle" type="attr" />
     <public name="kevinSecondaryButtonStyle" type="attr" />

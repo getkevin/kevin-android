@@ -15,23 +15,25 @@ import androidx.core.view.*
 fun View.dp(value: Int): Int = context.dp(value)
 fun View.pxToDp(px: Int): Float = context.pxToDp(px)
 
-fun View.fadeOut() {
+fun View.fadeOut(duration: Long = 200L, onFinished: () -> Unit = {}) {
     if (visibility == GONE) return
     animate().apply {
-        duration = 200L
+        this.duration = duration
         alpha(0f)
         setListener(object : AnimatorListenerAdapter() {
             override fun onAnimationEnd(animation: Animator?) {
                 this@fadeOut.visibility = GONE
+                onFinished()
             }
         })
     }.start()
 }
 
-fun View.fadeIn() {
+fun View.fadeIn(duration: Long = 200L) {
     if (visibility == VISIBLE) return
+    this.alpha = 0f
     animate().apply {
-        duration = 200L
+        this.duration = duration
         alpha(1f)
         setListener(object : AnimatorListenerAdapter() {
             override fun onAnimationStart(animation: Animator?) {
