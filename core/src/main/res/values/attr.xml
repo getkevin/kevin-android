@@ -23,4 +23,5 @@
     <!--    Typography attributes    -->
     <attr name="kevinTextHeadline3" format="reference" />
     <attr name="kevinTextSubtitle1" format="reference" />
+    <attr name="kevinTextAmount" format="reference" />
 </resources>

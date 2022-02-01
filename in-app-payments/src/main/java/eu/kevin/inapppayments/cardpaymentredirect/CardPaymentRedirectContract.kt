@@ -8,8 +8,10 @@ object CardPaymentRedirectContract: FragmentResultContract<Boolean>() {
     override val requestKey = "card_payment_redirect_request_key"
     override val resultKey = "card_payment_redirect_result_key"
 
-    fun getFragment(): BottomSheetDialogFragment {
-        return CardPaymentRedirectFragment()
+    fun getFragment(configuration: CardPaymentRedirectFragmentConfiguration): BottomSheetDialogFragment {
+        return CardPaymentRedirectFragment().also {
+            it.configuration = configuration
+        }
     }
 
     override fun parseResult(data: Bundle): Boolean {

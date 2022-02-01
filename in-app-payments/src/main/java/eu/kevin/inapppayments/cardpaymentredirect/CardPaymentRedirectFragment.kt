@@ -1,26 +1,23 @@
 package eu.kevin.inapppayments.cardpaymentredirect
 
-import android.os.Bundle
-import android.view.LayoutInflater
+import android.content.Context
 import android.view.View
-import android.view.ViewGroup
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import eu.kevin.common.architecture.BaseStatelessModalFragment
 import eu.kevin.common.architecture.routing.GlobalRouter
 
-internal class CardPaymentRedirectFragment : BottomSheetDialogFragment(),
+internal class CardPaymentRedirectFragment : BaseStatelessModalFragment(),
     CardPaymentRedirectViewDelegate {
 
     private lateinit var contentView: CardPaymentRedirectView
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    var configuration: CardPaymentRedirectFragmentConfiguration? by savedState()
+
+    override fun onCreateView(context: Context): View {
         isCancelable = false
-        return CardPaymentRedirectView(inflater.context).also {
+        return CardPaymentRedirectView(context).also {
             it.delegate = this
             contentView = it
+            it.setupMessage(configuration?.bankName)
         }
     }
 

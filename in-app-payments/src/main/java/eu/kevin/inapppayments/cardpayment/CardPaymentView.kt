@@ -94,7 +94,11 @@ internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentB
                 @JavascriptInterface
                 fun postMessage(message: String) {
                     when (message) {
-                        "SOFT_REDIRECT_MODAL" -> delegate?.onEvent(SoftRedirect)
+                        "SOFT_REDIRECT_MODAL" -> {
+                            delegate?.onEvent(SoftRedirect(
+                                binding.cardNumberInput.getInputText().removeWhiteSpaces()
+                            ))
+                        }
                         "HARD_REDIRECT_MODAL" -> delegate?.onEvent(HardRedirect)
                         "CARD_PAYMENT_SUBMITTING" -> delegate?.onEvent(SubmittingCardData)
                     }
@@ -154,6 +158,10 @@ internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentB
                 webView.loadUrl(state.url)
             }
             binding.continueButton.isEnabled = state.isContinueEnabled
+            with(binding.amountView) {
+                text = state.amount?.toDisplayString(context) ?: ""
+                visibility = if (state.amount != null) VISIBLE else GONE
+            }
             showCardDetails(state.showCardDetails)
 
             val loadingState = state.loadingState

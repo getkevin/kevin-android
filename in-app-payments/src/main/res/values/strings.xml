@@ -23,4 +23,5 @@
     <string name="error_no_card_number">Card number must be entered</string>
     <string name="window_card_payment_redirect_title">Continue payment via bank transfer?</string>
     <string name="window_card_payment_redirect_subtitle">Would you like to continue payment via Bank Transfer?</string>
+    <string name="window_card_payment_bank_redirect_subtitle">We noticed that your payment card is issued by %s. Would you like to continue payment via Bank Transfer?</string>
 </resources>

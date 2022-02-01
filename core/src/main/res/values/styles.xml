@@ -98,6 +98,14 @@
         <item name="android:textStyle">normal</item>
     </style>
 
+    <style name="Kevin.Text.Amount" parent="@android:style/TextAppearance">
+        <item name="android:textSize">23sp</item>
+        <item name="fontFamily">@font/circular_std_bold</item>
+        <item name="android:textColor">?kevinPrimaryTextColor</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
     <style name="Kevin.Window.Transition" parent="@android:style/Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/slide_in</item>
         <item name="android:activityOpenExitAnimation">@anim/fade_out</item>

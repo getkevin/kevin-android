@@ -36,6 +36,7 @@
 
         <item name="kevinTextHeadline3">@style/Kevin.Text.Headline3</item>
         <item name="kevinTextSubtitle1">@style/Kevin.Text.Subtitle1</item>
+        <item name="kevinTextAmount">@style/Kevin.Text.Amount</item>
 
         <item name="kevinPrimaryButtonStyle">@style/Kevin.Button.Primary</item>
         <item name="kevinSecondaryButtonStyle">@style/Kevin.Button.Secondary</item>

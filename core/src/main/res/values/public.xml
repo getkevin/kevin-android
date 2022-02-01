@@ -34,4 +34,5 @@
     <!--    Typography attributes    -->
     <public name="kevinTextHeadline3" type="attr" />
     <public name="kevinTextSubtitle1" type="attr" />
+    <public name="kevinTextAmount" type="attr" />
 </resources>

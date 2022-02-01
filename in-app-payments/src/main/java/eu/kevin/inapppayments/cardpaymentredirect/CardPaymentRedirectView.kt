@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import eu.kevin.common.extensions.applySystemInsetsMargin
 import eu.kevin.common.extensions.setDebounceClickListener
+import eu.kevin.inapppayments.R
 import eu.kevin.inapppayments.databinding.FragmentCardPaymentRedirectBinding
 
 internal class CardPaymentRedirectView(context: Context) : ConstraintLayout(context) {
@@ -24,6 +25,14 @@ internal class CardPaymentRedirectView(context: Context) : ConstraintLayout(cont
             setDebounceClickListener {
                 delegate?.onUserConfirmed()
             }
+        }
+    }
+
+    fun setupMessage(bankName: String?) {
+        binding.subtitleView.text = if (bankName != null) {
+            context.getString(R.string.window_card_payment_bank_redirect_subtitle).format(bankName)
+        } else {
+            context.getString(R.string.window_card_payment_redirect_subtitle)
         }
     }
 }

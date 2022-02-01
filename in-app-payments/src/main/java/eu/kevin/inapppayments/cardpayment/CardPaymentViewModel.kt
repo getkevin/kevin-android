@@ -23,17 +23,25 @@ import eu.kevin.inapppayments.cardpayment.inputvalidation.CardNumberValidator
 import eu.kevin.inapppayments.cardpayment.inputvalidation.CardholderNameValidator
 import eu.kevin.inapppayments.cardpayment.inputvalidation.CvvValidator
 import eu.kevin.inapppayments.cardpaymentredirect.CardPaymentRedirectContract
+import eu.kevin.inapppayments.cardpaymentredirect.CardPaymentRedirectFragmentConfiguration
+import eu.kevin.inapppayments.networking.KevinPaymentsClient
+import eu.kevin.inapppayments.networking.KevinPaymentsClientProvider
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.receiveAsFlow
+import org.joda.money.CurrencyUnit
+import org.joda.money.Money
 
 internal class CardPaymentViewModel(
-    savedStateHandle: SavedStateHandle
+    savedStateHandle: SavedStateHandle,
+    private val kevinPaymentsClient: KevinPaymentsClient
 ) : BaseViewModel<CardPaymentState, CardPaymentIntent>(savedStateHandle) {
     override fun getInitialData() = CardPaymentState()
 
     private val _viewAction = Channel<CardPaymentViewAction>(Channel.BUFFERED)
     val viewAction = _viewAction.receiveAsFlow()
+
+    private lateinit var configuration: CardPaymentFragmentConfiguration
 
     override suspend fun handleIntent(intent: CardPaymentIntent) {
         when (intent) {
@@ -66,13 +74,30 @@ internal class CardPaymentViewModel(
     }
 
     private suspend fun initialize(configuration: CardPaymentFragmentConfiguration) {
+        this.configuration = configuration
         val baseCardPaymentUrl = if (Kevin.isSandbox()) {
             BuildConfig.KEVIN_SANDBOX_CARD_PAYMENT_URL
         } else {
             BuildConfig.KEVIN_CARD_PAYMENT_URL
         }
         updateState {
-            it.copy(url = baseCardPaymentUrl.format(configuration.paymentId))
+            it.copy(
+                url = baseCardPaymentUrl.format(configuration.paymentId)
+            )
+        }
+        val paymentInfo = kevinPaymentsClient.getCardPaymentInfo(configuration.paymentId)
+        val amount = try {
+            Money.of(
+                CurrencyUnit.of(paymentInfo.currencyCode),
+                paymentInfo.amount.toBigDecimal()
+            )
+        } catch (ignored: Exception) {
+            null
+        }
+        updateState {
+            it.copy(
+                amount = amount
+            )
         }
     }
 
@@ -125,7 +150,18 @@ internal class CardPaymentViewModel(
     private suspend fun handleCardPaymentEvent(event: CardPaymentEvent) {
         when (event) {
             is SoftRedirect -> {
-                GlobalRouter.pushModalFragment(CardPaymentRedirectContract.getFragment())
+                val bankName = try {
+                    kevinPaymentsClient.getBankFromCardNumber(
+                        configuration.paymentId,
+                        event.cardNumber
+                    ).name
+                } catch (error: Exception) {
+                    null
+                }
+                val configuration = CardPaymentRedirectFragmentConfiguration(
+                    bankName
+                )
+                GlobalRouter.pushModalFragment(CardPaymentRedirectContract.getFragment(configuration))
                 updateState {
                     it.copy(
                         loadingState = LoadingState.Loading(false)
@@ -174,7 +210,8 @@ internal class CardPaymentViewModel(
             handle: SavedStateHandle
         ): T {
             return CardPaymentViewModel(
-                handle
+                handle,
+                KevinPaymentsClientProvider.kevinPaymentsClient
             ) as T
         }
     }
