@@ -16,9 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContentView(R.layout.activity_main)
-
-        listenForModalFragment()
-
+        addFragmentListeners()
         if (supportFragmentManager.backStackEntryCount == 0) {
             supportFragmentManager.commit {
                 replace(R.id.mainRouterContainer, MainFragment(), MainFragment::class.simpleName)
@@ -33,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         } else super.onBackPressed()
     }
 
-    private fun listenForModalFragment() {
+    private fun addFragmentListeners() {
         lifecycleScope.launch {
             GlobalRouter.addOnPushModalFragmentListener(this) { modalFragment ->
                 modalFragment.show(supportFragmentManager, modalFragment::class.simpleName)

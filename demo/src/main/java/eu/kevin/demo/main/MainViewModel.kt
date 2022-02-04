@@ -5,22 +5,18 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.savedstate.SavedStateRegistryOwner
-import eu.kevin.demo.countryselection.CountrySelectionContract
 import eu.kevin.common.architecture.routing.GlobalRouter
-import eu.kevin.demo.BuildConfig
+import eu.kevin.common.entities.LoadingState
+import eu.kevin.core.networking.exceptions.ApiError
 import eu.kevin.demo.ClientProvider
-import eu.kevin.demo.auth.KevinAuthClientFactory
 import eu.kevin.demo.auth.entities.InitiatePaymentRequest
+import eu.kevin.demo.countryselection.CountrySelectionContract
 import eu.kevin.demo.countryselection.CountrySelectionFragmentConfiguration
-import eu.kevin.demo.countryselection.CountrySelectionViewModel
-import eu.kevin.demo.countryselection.usecases.SupportedCountryUseCase
-import eu.kevin.demo.data.entities.Creditor
 import eu.kevin.demo.main.entities.CreditorListItem
 import eu.kevin.demo.main.entities.DonationConfiguration
 import eu.kevin.demo.main.entities.toListItems
 import eu.kevin.demo.main.usecases.GetCreditorsUseCase
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
-import io.ktor.client.features.logging.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -28,8 +24,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import java.math.BigDecimal
-import java.math.RoundingMode
 
 class MainViewModel constructor(
     private val getCreditorsUseCase: GetCreditorsUseCase
@@ -63,9 +57,13 @@ class MainViewModel constructor(
                     )
                 }
                 donationConfiguration.selectedCreditor = null
+                updateButtonState()
             } catch (e: Exception) {
                 _viewState.update {
-                    it.copy(loadingCreditors = false)
+                    it.copy(
+                        loadingCreditors = false,
+                        loadingState = LoadingState.Failure(e)
+                    )
                 }
             }
         }
@@ -92,7 +90,8 @@ class MainViewModel constructor(
             it.copy(
                 creditors = it.creditors.map {
                     it.copy(isSelected = it == donationConfiguration.selectedCreditor)
-                }
+                },
+                loadingState = LoadingState.Loading(false)
             )
         }
         updateButtonState()
@@ -104,7 +103,10 @@ class MainViewModel constructor(
 
     fun onCountrySelected(iso: String) {
         _viewState.update {
-            it.copy(selectedCountry = iso)
+            it.copy(
+                selectedCountry = iso,
+                loadingState = LoadingState.Loading(false)
+            )
         }
         loadCreditors(iso)
     }
@@ -121,13 +123,14 @@ class MainViewModel constructor(
             it.copy(
                 proceedButtonEnabled = donationConfiguration.canProceed(),
                 buttonText = donationConfiguration.getAmountText(),
+                loadingState = LoadingState.Loading(false)
             )
         }
     }
 
     fun onProceedClick() {
         viewModelScope.launch(Dispatchers.IO) {
-            _viewState.update { it.copy(isLoading = true) }
+            _viewState.update { it.copy(loadingState = LoadingState.Loading(true)) }
             try {
                 val initiatePaymentRequest = InitiatePaymentRequest(
                     amount = donationConfiguration.getAmountText(),
@@ -151,9 +154,9 @@ class MainViewModel constructor(
                         donationConfiguration.paymentType
                     )
                 )
-                _viewState.update { it.copy(isLoading = false) }
-            } catch (ignored: Exception) {
-                _viewState.update { it.copy(isLoading = false) }
+                _viewState.update { it.copy(loadingState = LoadingState.Loading(false)) }
+            } catch (error: ApiError) {
+                _viewState.update { it.copy(loadingState = LoadingState.Failure(error)) }
             }
         }
     }

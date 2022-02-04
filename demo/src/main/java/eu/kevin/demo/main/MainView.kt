@@ -10,6 +10,12 @@ import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
+import eu.kevin.common.entities.LoadingState
+import eu.kevin.common.entities.isLoading
+import eu.kevin.common.extensions.fadeIn
+import eu.kevin.common.extensions.fadeOut
+import eu.kevin.common.helpers.ErrorHelper
+import eu.kevin.common.helpers.SnackbarHelper
 import eu.kevin.demo.R
 import eu.kevin.demo.databinding.FragmentMainBinding
 import eu.kevin.demo.extensions.applySystemInsetsPadding
@@ -35,7 +41,7 @@ class MainView(context: Context) : FrameLayout(context) {
             root.applySystemInsetsPadding(bottom = true)
             recyclerView.adapter = creditorsAdapter
 
-            termsCheckbox.text = SpannableStringHelper.getSpannableWithLinks(
+            termsTextView.text = SpannableStringHelper.getSpannableWithLinks(
                 context.getString(R.string.window_main_terms_privacy_policy),
                 ContextCompat.getColor(context, R.color.blue),
                 SpannableStringLink(context.getString(R.string.window_main_terms_privacy_policy_clickable_terms)) {
@@ -49,7 +55,7 @@ class MainView(context: Context) : FrameLayout(context) {
                     )
                 }
             )
-            termsCheckbox.movementMethod = LinkMovementMethod()
+            termsTextView.movementMethod = LinkMovementMethod()
 
             paymentTypeSelectionBar.setItems(
                 PaymentType.values().map {
@@ -62,7 +68,13 @@ class MainView(context: Context) : FrameLayout(context) {
 
     fun update(state: MainViewState) {
         creditorsAdapter.update(state.creditors)
-        showLoading(state.isLoading)
+        when (state.loadingState) {
+            is LoadingState.Loading -> startLoading(state.loadingState.isLoading())
+            is LoadingState.FailureWithMessage -> showError(state.loadingState.message)
+            is LoadingState.Failure -> {
+                showError(ErrorHelper.getMessage(context, state.loadingState.error))
+            }
+        }
         with (binding) {
             proceedButton.isEnabled = state.proceedButtonEnabled
             proceedButton.text =
@@ -108,7 +120,18 @@ class MainView(context: Context) : FrameLayout(context) {
         }
     }
 
-    private fun showLoading(show: Boolean) {
-        binding.progressView.visibility = if (show) VISIBLE else GONE
+    private fun startLoading(isLoading: Boolean) {
+        with(binding) {
+            if (isLoading) {
+                progressView.fadeIn()
+            } else {
+                progressView.fadeOut()
+            }
+        }
+    }
+
+    private fun showError(message: String) {
+        binding.progressView.fadeOut()
+        SnackbarHelper.showError(this, message)
     }
 }

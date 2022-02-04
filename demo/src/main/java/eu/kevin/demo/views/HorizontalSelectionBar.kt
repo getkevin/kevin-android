@@ -2,7 +2,6 @@ package eu.kevin.demo.views
 
 import android.animation.ObjectAnimator
 import android.content.Context
-import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
@@ -13,40 +12,49 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import com.google.android.material.color.MaterialColors
 import eu.kevin.common.extensions.dp
+import eu.kevin.common.extensions.getColorFromAttr
 import eu.kevin.common.extensions.setDebounceClickListener
 import eu.kevin.demo.R
 
 class HorizontalSelectionBar : FrameLayout {
 
     private var textColor = ContextCompat.getColor(context, R.color.gray_01)
-    var selectedItemTextColor = MaterialColors.getColor(context, R.attr.primaryTextColor, Color.BLACK)
+    private var selectedItemTextColor =
+        context.getColorFromAttr(R.attr.primaryTextColor)
 
+    private val padding = dp(16)
     private var slidingViewWidth = 0
-
     private var currentItemIndex = 0
 
-    private val slidingOverlay: View
     private var itemViews = ArrayList<TextView>()
-    private lateinit var itemContainer: LinearLayout
+
+    private val slidingOverlay: View = View(context).also {
+        addView(it)
+    }
+
+    private var itemContainer: LinearLayout = LinearLayout(context).also {
+        it.orientation = LinearLayout.HORIZONTAL
+        addView(it)
+    }
 
     private var onItemSelectedCallback: (Int) -> Unit = {}
 
     constructor(context: Context) : this(context, null, 0)
     constructor(context: Context, attrs: AttributeSet) : this(context, attrs, 0)
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : this(context, attrs, defStyleAttr, 0)
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes) {
-        post {
-            itemContainer = LinearLayout(context).also {
-                it.orientation = LinearLayout.HORIZONTAL
-                addView(it)
-            }
-        }
-        slidingOverlay = View(context).also {
-            addView(it)
-        }
-    }
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : this(
+        context,
+        attrs,
+        defStyleAttr,
+        0
+    )
+
+    constructor(
+        context: Context,
+        attrs: AttributeSet?,
+        defStyleAttr: Int,
+        defStyleRes: Int
+    ) : super(context, attrs, defStyleAttr, defStyleRes)
 
     fun setItems(items: List<String>) = post {
         itemContainer.removeAllViews()
@@ -63,7 +71,7 @@ class HorizontalSelectionBar : FrameLayout {
     private fun setCurrentItem(position: Int) {
         currentItemIndex = position
         itemViews.forEachIndexed { index, textView ->
-            if(index == position) {
+            if (index == position) {
                 textView.setTextColor(selectedItemTextColor)
             } else {
                 textView.setTextColor(textColor)
@@ -82,7 +90,7 @@ class HorizontalSelectionBar : FrameLayout {
             weight = 1f
         }
         it.setTypeface(null, Typeface.BOLD);
-        if(index == currentItemIndex) {
+        if (index == currentItemIndex) {
             it.setTextColor(selectedItemTextColor)
         } else {
             it.setTextColor(textColor)
@@ -95,11 +103,11 @@ class HorizontalSelectionBar : FrameLayout {
     }
 
     private fun configureSlidingView(divisionCoefficient: Int) {
-        slidingViewWidth = (width / divisionCoefficient) - dp(16) * 2
+        slidingViewWidth = (width / divisionCoefficient) - padding * 2
         slidingOverlay.layoutParams = LayoutParams(slidingViewWidth, dp(2)).apply {
             gravity = Gravity.BOTTOM
-            marginEnd = dp(16)
-            marginStart = dp(16)
+            marginEnd = padding
+            marginStart = padding
         }
         GradientDrawable().apply {
             cornerRadius = dp(2).toFloat()
@@ -112,7 +120,7 @@ class HorizontalSelectionBar : FrameLayout {
         ObjectAnimator.ofFloat(
             slidingOverlay,
             "translationX",
-            slidingViewWidth.toFloat() * index + context.dp(16) * (index * 2)
+            slidingViewWidth.toFloat() * index + padding * (index * 2)
         ).apply {
             duration = 350
             start()
