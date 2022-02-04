@@ -70,50 +70,17 @@
                 tools:text="Card payment" />
 
             <TextView
-                android:id="@+id/cardholder_name_label"
+                android:id="@+id/card_number_label"
                 style="?kevinTextSubtitle1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="36dp"
                 android:gravity="start"
-                android:text="@string/window_card_payment_cardholder_name_label"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/card_payment_label" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/cardholder_name_input"
-                style="?kevinTextInputContainerStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cardholder_name_label">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    style="?kevinTextInputStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/window_card_payment_cardholder_name_hint"
-                    android:inputType="textPersonName|textCapWords" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/card_number_label"
-                style="?kevinTextSubtitle1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="26dp"
-                android:gravity="start"
                 android:text="@string/window_card_payment_card_number_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cardholder_name_input" />
+                app:layout_constraintTop_toBottomOf="@id/card_payment_label" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/card_number_input"
@@ -131,8 +98,45 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/window_card_payment_card_number_hint"
+                    android:imeOptions="actionNext"
                     android:inputType="number"
-                    android:maxLength="23" />
+                    android:maxLength="23"
+                    android:maxLines="1" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/cardholder_name_label"
+                style="?kevinTextSubtitle1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="26dp"
+                android:gravity="start"
+                android:text="@string/window_card_payment_cardholder_name_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/card_number_input" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/cardholder_name_input"
+                style="?kevinTextInputContainerStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardholder_name_label">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="?kevinTextInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/window_card_payment_cardholder_name_hint"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPersonName|textCapWords"
+                    android:maxLines="1" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -146,7 +150,7 @@
                 android:text="@string/window_card_payment_expiry_date_label"
                 app:layout_constraintEnd_toEndOf="@id/expiry_date_input"
                 app:layout_constraintStart_toStartOf="@id/expiry_date_input"
-                app:layout_constraintTop_toBottomOf="@id/card_number_input" />
+                app:layout_constraintTop_toBottomOf="@id/cardholder_name_input" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/expiry_date_input"
@@ -164,8 +168,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/window_card_payment_expiry_date_hint"
+                    android:imeOptions="actionNext"
                     android:inputType="number"
-                    android:maxLength="5" />
+                    android:maxLength="5"
+                    android:maxLines="1" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -179,7 +185,7 @@
                 android:text="@string/window_card_payment_cvv_label"
                 app:layout_constrainedWidth="true"
                 app:layout_constraintStart_toStartOf="@id/cvv_input"
-                app:layout_constraintTop_toBottomOf="@id/card_number_input" />
+                app:layout_constraintTop_toBottomOf="@id/cardholder_name_input" />
 
             <ImageView
                 android:id="@+id/cvv_tooltip_icon"
@@ -211,8 +217,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/window_card_payment_cvv_hint"
+                    android:imeOptions="actionDone"
                     android:inputType="number"
-                    android:maxLength="3" />
+                    android:maxLength="3"
+                    android:maxLines="1" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

@@ -46,6 +46,9 @@ internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentB
                 cardholderNameInput.error = null
                 cardholderNameInput.isErrorEnabled = false
             }
+            cardholderNameInput.editText?.setOnNextClick {
+                expiryDateInput.requestFocus()
+            }
             cardNumberInput.editText?.addTextChangedListener(CardNumberFormatter())
             cardNumberInput.editText?.addTextChangedListener {
                 cardNumberInput.error = null
@@ -54,25 +57,28 @@ internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentB
                     "window.cardDetails.setCardNumber('${it?.toString() ?: ""}');"
                 ) {}
             }
+            cardNumberInput.editText?.setOnNextClick {
+                cardholderNameInput.requestFocus()
+            }
             expiryDateInput.editText?.addTextChangedListener(DateFormatter())
             expiryDateInput.editText?.addTextChangedListener {
                 expiryDateInput.error = null
                 expiryDateInput.isErrorEnabled = false
             }
+            expiryDateInput.editText?.setOnNextClick {
+                cvvInput.requestFocus()
+            }
             cvvInput.editText?.addTextChangedListener {
                 cvvInput.error = null
                 cvvInput.isErrorEnabled = false
             }
+            cvvInput.editText?.setOnDoneClick {
+                handleContinueClick()
+            }
         }
 
         binding.continueButton.setDebounceClickListener {
-            hideKeyboard()
-            delegate?.onContinueClicked(
-                binding.cardholderNameInput.getInputText(),
-                binding.cardNumberInput.getInputText(),
-                binding.expiryDateInput.getInputText(),
-                binding.cvvInput.getInputText()
-            )
+            handleContinueClick()
         }
 
         binding.scrollView.applySystemInsetsPadding(bottom = true)
@@ -206,5 +212,15 @@ internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentB
                 binding.webView.fadeIn()
             }
         }
+    }
+
+    private fun handleContinueClick() {
+        hideKeyboard()
+        delegate?.onContinueClicked(
+            binding.cardholderNameInput.getInputText(),
+            binding.cardNumberInput.getInputText(),
+            binding.expiryDateInput.getInputText(),
+            binding.cvvInput.getInputText()
+        )
     }
 }
