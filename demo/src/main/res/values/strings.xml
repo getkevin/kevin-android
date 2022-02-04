@@ -4,4 +4,19 @@
     <string name="window_card_bank_payment_button">Make card payment</string>
     <string name="main_menu_dark_mode_toggle">Use dark theme</string>
     <string name="navigate_back_content_description">Navigate back</string>
+    <string name="window_main_terms_privacy_policy" translatable="false">I have read and agree with Terms &amp; Conditions and Privacy Policy</string>
+    <string name="window_main_terms_privacy_policy_clickable_terms" translatable="false">Terms &amp; Conditions</string>
+    <string name="window_main_terms_privacy_policy_clickable_policy" translatable="false">Privacy Policy</string>
+    <string name="privacy_policy_url" translatable="false">https://www.kevin.eu/docs/EN/privacy-policy/</string>
+    <string name="terms_url" translatable="false">https://www.kevin.eu/docs/EN/terms-and-conditions/</string>
+    <string name="window_main_proceed_button" translatable="false">Donate • %s EUR</string>
+    <string name="window_main_bank_payment" translatable="false">Bank payment</string>
+    <string name="window_main_card_payment" translatable="false">Card payment</string>
+    <string name="window_main_details_lable">Enter details</string>
+    <string name="window_main_email_label">E-mail</string>
+    <string name="window_main_amount_label">Payment amount</string>
+    <string name="window_main_country_label">Country</string>
+    <string name="window_main_country_charity_label">Select country and charity</string>
+    <string name="window_main_subtitle_label">Pick a charity you want to donate to</string>
+    <string name="window_main_title_label">Redirect payment</string>
 </resources>

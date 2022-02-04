@@ -24,6 +24,9 @@
         <item name="toolbarColor">@color/black</item>
 
         <item name="primaryTextColor">@color/white</item>
+
+        <item name="selectedOnSecondaryColor">@color/darker_blue</item>
+
     </style>
 
     <style name="AppTheme" parent="BaseAppTheme" />

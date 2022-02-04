@@ -14,10 +14,49 @@
         <item name="android:minWidth">150dp</item>
         <item name="android:minHeight">64dp</item>
         <item name="android:maxHeight">64dp</item>
-        <item name="cornerRadius">32dp</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:textSize">17sp</item>
         <item name="android:textColor">@color/white</item>
         <item name="backgroundTint">@color/blue</item>
+    </style>
+
+    <style name="TextAppearance.Kevin.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="android:textSize">34sp</item>
+        <item name="android:textColor">?primaryTextColor</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.Kevin.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">?primaryTextColor</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.Kevin.Title" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">?primaryTextColor</item>
+    </style>
+
+    <style name="TextAppearance.Kevin.Title2" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/gray_01</item>
+        <item name="android:fontFamily">@font/poppins</item>
+    </style>
+
+    <style name="TextAppearance.Kevin.ModalTitle" parent="@android:style/TextAppearance">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">?primaryTextColor</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TextAppearance.Kevin.Subtitle" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/gray_02</item>
+        <item name="android:fontFamily">@font/poppins</item>
     </style>
 
 </resources>

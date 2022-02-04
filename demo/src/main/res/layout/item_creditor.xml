@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="99dp"
+    android:layout_height="51dp"
+    android:layout_marginEnd="16dp"
+    android:background="@drawable/bg_creditor">
+
+    <ImageView
+        android:id="@+id/creditor_logo_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:adjustViewBounds="true"
+        android:maxWidth="90dp"
+        android:maxHeight="42dp"
+        tools:src="@drawable/ic_country_flag_it" />
+
+</FrameLayout>

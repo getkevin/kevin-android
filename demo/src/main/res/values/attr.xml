@@ -4,5 +4,6 @@
     <attr name="rippleOnPrimaryColor" format="color|reference" />
     <attr name="toolbarColor" format="color|reference" />
     <attr name="primaryTextColor" format="color|reference" />
+    <attr name="selectedOnSecondaryColor" format="color|reference" />
 
 </resources>
