@@ -17,7 +17,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/txtTitle"
+                android:id="@+id/title_text_view"
                 style="@style/TextAppearance.Kevin.Headline1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/txtSubtitle"
+                android:id="@+id/subtitle_text_view"
                 style="@style/TextAppearance.Kevin.Title2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
                 android:text="@string/window_main_subtitle_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txtTitle" />
+                app:layout_constraintTop_toBottomOf="@id/title_text_view" />
 
             <eu.kevin.demo.views.HorizontalSelectionBar
                 android:id="@+id/payment_type_selection_bar"
@@ -48,10 +48,10 @@
                 android:layout_marginTop="28dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txtSubtitle" />
+                app:layout_constraintTop_toBottomOf="@id/subtitle_text_view" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/country_charity_label_text_view"
                 style="@style/TextAppearance.Kevin.Headline2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
                 android:background="@drawable/bg_country_selection"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView">
+                app:layout_constraintTop_toBottomOf="@+id/country_charity_label_text_view">
 
                 <ImageView
                     android:id="@+id/country_flag_image_view"
@@ -121,7 +121,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
+                android:id="@+id/creditors_recycler_view"
                 android:layout_width="wrap_content"
                 android:layout_height="51dp"
                 android:layout_marginTop="24dp"
@@ -141,10 +141,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:indeterminate="true"
-                app:layout_constraintBottom_toBottomOf="@id/recyclerView"
-                app:layout_constraintEnd_toEndOf="@id/recyclerView"
-                app:layout_constraintStart_toStartOf="@id/recyclerView"
-                app:layout_constraintTop_toTopOf="@id/recyclerView" />
+                app:layout_constraintBottom_toBottomOf="@id/creditors_recycler_view"
+                app:layout_constraintEnd_toEndOf="@id/creditors_recycler_view"
+                app:layout_constraintStart_toStartOf="@id/creditors_recycler_view"
+                app:layout_constraintTop_toTopOf="@id/creditors_recycler_view" />
 
             <TextView
                 android:id="@+id/details_label_text_view"
@@ -156,10 +156,10 @@
                 android:text="@string/window_main_details_lable"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+                app:layout_constraintTop_toBottomOf="@+id/creditors_recycler_view" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/emnail_field_label_text_field"
                 style="@style/TextAppearance.Kevin.Subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -179,7 +179,7 @@
                 app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2">
+                app:layout_constraintTop_toBottomOf="@+id/emnail_field_label_text_field">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"

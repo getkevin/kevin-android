@@ -52,7 +52,9 @@ class MainViewModel constructor(
                     getCreditorsUseCase.getCreditors(countryIso)
                 _viewState.update {
                     it.copy(
-                        creditors = creditors.toListItems(),
+                        creditors = creditors.toListItems().mapIndexed { index, item ->
+                            item.copy(isSelected = index == 0)
+                        },
                         loadingCreditors = false
                     )
                 }

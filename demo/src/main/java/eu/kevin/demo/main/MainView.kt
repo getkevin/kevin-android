@@ -37,7 +37,7 @@ class MainView(context: Context) : FrameLayout(context) {
     init {
         with(binding) {
             root.applySystemInsetsPadding(bottom = true)
-            recyclerView.adapter = creditorsAdapter
+            creditorsRecyclerView.adapter = creditorsAdapter
 
             termsTextView.text = SpannableStringHelper.getSpannableWithLinks(
                 context.getString(R.string.window_main_terms_privacy_policy),
@@ -85,7 +85,7 @@ class MainView(context: Context) : FrameLayout(context) {
                 )
             )
             selectedCountryTextView.text = CountryHelper.getCountryName(context, state.selectedCountry)
-            recyclerView.isInvisible = state.loadingCreditors
+            creditorsRecyclerView.isInvisible = state.loadingCreditors
             creditorsProgressBar.isGone = !state.loadingCreditors
         }
     }
