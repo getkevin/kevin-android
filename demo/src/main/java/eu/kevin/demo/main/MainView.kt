@@ -2,13 +2,11 @@ package eu.kevin.demo.main
 
 import android.content.Context
 import android.text.method.LinkMovementMethod
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
-import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import eu.kevin.common.entities.LoadingState
 import eu.kevin.common.entities.isLoading
@@ -24,7 +22,7 @@ import eu.kevin.demo.helpers.CountryHelper
 import eu.kevin.demo.helpers.PaymentTypeHelper
 import eu.kevin.demo.helpers.SpannableStringHelper
 import eu.kevin.demo.helpers.SpannableStringLink
-import eu.kevin.demo.main.list.CreditorsAdapter
+import eu.kevin.demo.main.adapter.CreditorsAdapter
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 
 class MainView(context: Context) : FrameLayout(context) {

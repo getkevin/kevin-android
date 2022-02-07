@@ -22,7 +22,7 @@ android {
             appIconRound: "@mipmap/ic_launcher_round"
         ]
 
-        resValue 'string', 'config_app_name', 'Kevin demo'
+        resValue 'string', 'config_app_name', 'kevin.Demo'
 
         buildConfigField "String", "KEVIN_API_URL", "\"https://api.getkevin.eu/demo\""
         buildConfigField "String", "KEVIN_MOBILE_DEMO_API", "\"https://mobile-demo.kevin.eu/api/v2/\""

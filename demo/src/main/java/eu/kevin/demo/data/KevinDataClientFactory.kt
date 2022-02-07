@@ -15,7 +15,6 @@ class KevinDataClientFactory(
     timeout,
     logLevel
 ) {
-
     override fun createClient(tokenDelegate: TokenDelegate?): KevinDataClient {
         return KevinDataApiClient(createKtorClient())
     }
