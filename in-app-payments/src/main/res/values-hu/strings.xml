@@ -2,4 +2,22 @@
 <resources>
     <string name="window_payment_confirmation_title">Fizetési visszaigazolás</string>
     <string name="dialog_exit_confirmation_payments_message">Biztosan törölni szeretné ezt a fizetést?</string>
+    <string name="window_card_payment_label">Kártyás fizetés</string>
+    <string name="window_card_payment_cardholder_name_label">Kártyatulajdonos neve</string>
+    <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
+    <string name="window_card_payment_card_number_label">Kártyaszám</string>
+    <string name="window_card_payment_expiry_date_label">Lejárati dátum</string>
+    <string name="window_card_payment_notice">Kevin. nem tárolja az Ön személyes adatait vagy kártyaadatait.</string>
+    <string name="window_card_payment_cvv_tooltip">A CVV egy háromjegyű kód, amely a kártya hátoldalán található</string>
+    <string name="error_no_cardholder_name">A kártyabirtokos nevét meg kell adni</string>
+    <string name="error_invalid_cvv">Adja meg az érvényes CVV-t</string>
+    <string name="error_no_cvv">CVV-t kell megadni</string>
+    <string name="error_invalid_expiry_date">A lejárati dátum érvénytelen</string>
+    <string name="error_no_expiry_date">A lejárati dátumot be kell írni</string>
+    <string name="error_card_expired">A kártya lejárt</string>
+    <string name="error_invalid_card_number">A kártyaszám érvénytelen</string>
+    <string name="error_no_card_number">A kártyaszámot be kell írni</string>
+    <string name="window_card_payment_redirect_title">Folytatja a fizetést banki átutalással?</string>
+    <string name="window_card_payment_redirect_subtitle">Szeretné folytatni a fizetést banki átutalással?</string>
+    <string name="window_card_payment_bank_redirect_subtitle">Észrevettük, hogy fizetési kártyáját %s bocsátotta ki. Szeretné folytatni a fizetést banki átutalással?</string>
 </resources>

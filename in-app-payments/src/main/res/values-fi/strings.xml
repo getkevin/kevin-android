@@ -2,4 +2,22 @@
 <resources>
     <string name="window_payment_confirmation_title">Maksuvahvistus</string>
     <string name="dialog_exit_confirmation_payments_message">Haluatko varmasti peruuttaa tämän maksun?</string>
+    <string name="window_card_payment_label">Korttimaksu</string>
+    <string name="window_card_payment_cardholder_name_label">Kortinhaltijan nimi</string>
+    <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
+    <string name="window_card_payment_card_number_label">Kortin numero</string>
+    <string name="window_card_payment_expiry_date_label">Päättymispäivä</string>
+    <string name="window_card_payment_notice">kevin. ei tallenna henkilökohtaisia ​​tietojasi tai korttitietojasi.</string>
+    <string name="window_card_payment_cvv_tooltip">CVV on kolminumeroinen koodi, joka näkyy korttisi takana</string>
+    <string name="error_no_cardholder_name">Kortinhaltijan nimi on syötettävä</string>
+    <string name="error_invalid_cvv">Anna kelvollinen CVV</string>
+    <string name="error_no_cvv">CVV on syötettävä</string>
+    <string name="error_invalid_expiry_date">Viimeinen voimassaolopäivä on virheellinen</string>
+    <string name="error_no_expiry_date">Viimeinen voimassaolopäivä on syötettävä</string>
+    <string name="error_card_expired">Kortti on vanhentunut</string>
+    <string name="error_invalid_card_number">Kortin numero on virheellinen</string>
+    <string name="error_no_card_number">Kortin numero on syötettävä</string>
+    <string name="window_card_payment_redirect_title">Jatketaanko maksamista pankkisiirrolla?</string>
+    <string name="window_card_payment_redirect_subtitle">Haluatko jatkaa maksua pankkisiirrolla?</string>
+    <string name="window_card_payment_bank_redirect_subtitle">Huomasimme, että maksukorttisi on myöntänyt %s. Haluatko jatkaa maksua pankkisiirrolla?</string>
 </resources>

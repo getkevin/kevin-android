@@ -5,4 +5,5 @@
     <string name="window_card_bank_payment_button">Betaal met kaart</string>
     <string name="main_menu_dark_mode_toggle">Donker thema gebruiken</string>
     <string name="navigate_back_content_description">Navigeer terug</string>
+    <string name="window_hybrid_payment_button">Hybride betaling uitvoeren</string>
 </resources>

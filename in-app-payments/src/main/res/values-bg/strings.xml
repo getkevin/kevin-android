@@ -2,4 +2,22 @@
 <resources>
     <string name="window_payment_confirmation_title">Потвърждение за плащане</string>
     <string name="dialog_exit_confirmation_payments_message">Наистина ли искате да анулирате това плащане?</string>
+    <string name="window_card_payment_label">Плащане с карта</string>
+    <string name="window_card_payment_cardholder_name_label">Име на картодържателя</string>
+    <string name="window_card_payment_cardholder_name_hint">Джон Appleseed</string>
+    <string name="window_card_payment_card_number_label">Номер на карта</string>
+    <string name="window_card_payment_expiry_date_label">Срок на годност</string>
+    <string name="window_card_payment_notice">Кевин. не съхранява никаква ваша лична информация или данни за карта.</string>
+    <string name="window_card_payment_cvv_tooltip">CVV е 3-цифрен код, показан на гърба на вашата карта</string>
+    <string name="error_no_cardholder_name">Трябва да се въведе името на картодържателя</string>
+    <string name="error_invalid_cvv">Въведете валиден CVV</string>
+    <string name="error_no_cvv">CVV трябва да се въведе</string>
+    <string name="error_invalid_expiry_date">Срокът на годност е невалиден</string>
+    <string name="error_no_expiry_date">Трябва да се въведе дата на изтичане</string>
+    <string name="error_card_expired">Картата е изтекла</string>
+    <string name="error_invalid_card_number">Номерът на картата е невалиден</string>
+    <string name="error_no_card_number">Трябва да се въведе номер на картата</string>
+    <string name="window_card_payment_redirect_title">Продължаване на плащането по банков път?</string>
+    <string name="window_card_payment_redirect_subtitle">Искате ли да продължите плащането по банков път?</string>
+    <string name="window_card_payment_bank_redirect_subtitle">Забелязахме, че вашата платежна карта е издадена от %s. Искате ли да продължите плащането по банков път?</string>
 </resources>

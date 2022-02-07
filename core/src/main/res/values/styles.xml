@@ -39,7 +39,7 @@
         <item name="hintEnabled">false</item>
         <item name="boxStrokeWidth">1dp</item>
         <item name="boxBackgroundColor">@android:color/transparent</item>
-        <item name="boxStrokeColor">@color/gray_2</item>
+        <item name="boxStrokeColor">@color/text_input_state_color</item>
         <item name="boxStrokeErrorColor">@color/warning_red</item>
         <item name="errorTextAppearance">@style/Kevin.Text.Error</item>
         <item name="errorIconDrawable">@null</item>
@@ -48,6 +48,7 @@
 
     <style name="Kevin.TextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="android:textAppearance">@style/Kevin.Text.Title2</item>
+        <item name="android:textColor">?kevinPrimaryTextColor</item>
     </style>
 
     <style name="Kevin.Text.Label" parent="@android:style/TextAppearance">

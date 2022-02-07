@@ -2,4 +2,22 @@
 <resources>
     <string name="window_payment_confirmation_title">Подтверждение оплаты</string>
     <string name="dialog_exit_confirmation_payments_message">Вы уверены, что хотите отменить этот платеж?</string>
+    <string name="window_card_payment_label">Оплата картой</string>
+    <string name="window_card_payment_cardholder_name_label">Имя владельца карты</string>
+    <string name="window_card_payment_cardholder_name_hint">Джон Эпплсид</string>
+    <string name="window_card_payment_card_number_label">Номер карты</string>
+    <string name="window_card_payment_expiry_date_label">Срок действия</string>
+    <string name="window_card_payment_notice">Кевин. не хранит вашу личную информацию или данные карты.</string>
+    <string name="window_card_payment_cvv_tooltip">CVV — это трехзначный код, отображаемый на обратной стороне вашей карты.</string>
+    <string name="error_no_cardholder_name">Необходимо ввести имя держателя карты</string>
+    <string name="error_invalid_cvv">Введите действительный CVV</string>
+    <string name="error_no_cvv">CVV должен быть введен</string>
+    <string name="error_invalid_expiry_date">Дата истечения срока действия недействительна</string>
+    <string name="error_no_expiry_date">Необходимо ввести срок годности</string>
+    <string name="error_card_expired">Срок действия карты истек</string>
+    <string name="error_invalid_card_number">Номер карты недействителен</string>
+    <string name="error_no_card_number">Необходимо ввести номер карты</string>
+    <string name="window_card_payment_redirect_title">Продолжить оплату банковским переводом?</string>
+    <string name="window_card_payment_redirect_subtitle">Хотите продолжить оплату банковским переводом?</string>
+    <string name="window_card_payment_bank_redirect_subtitle">Мы заметили, что ваша платежная карта выпущена %s. Хотите продолжить оплату банковским переводом?</string>
 </resources>

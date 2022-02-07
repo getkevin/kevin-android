@@ -5,4 +5,5 @@
     <string name="window_link_account_button">Sąskaitos susiejimas</string>
     <string name="main_menu_dark_mode_toggle">Naudoti tamsią temą</string>
     <string name="navigate_back_content_description">Grįžti atgal</string>
+    <string name="window_hybrid_payment_button">Hibridinis mokėjimas</string>
 </resources>

@@ -2,4 +2,22 @@
 <resources>
     <string name="window_payment_confirmation_title">Zahlungsbestätigung</string>
     <string name="dialog_exit_confirmation_payments_message">Möchten Sie diese Zahlung wirklich stornieren?</string>
+    <string name="window_card_payment_label">Kartenzahlung</string>
+    <string name="window_card_payment_cardholder_name_label">Name des Karteninhabers</string>
+    <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
+    <string name="window_card_payment_card_number_label">Kartennummer</string>
+    <string name="window_card_payment_expiry_date_label">Verfallsdatum</string>
+    <string name="window_card_payment_notice">Kevin. speichert keine Ihrer persönlichen Daten oder Kartendetails.</string>
+    <string name="window_card_payment_cvv_tooltip">CVV ist ein 3-stelliger Code, der auf der Rückseite Ihrer Karte angezeigt wird</string>
+    <string name="error_no_cardholder_name">Der Name des Karteninhabers muss eingegeben werden</string>
+    <string name="error_invalid_cvv">Geben Sie einen gültigen CVV ein</string>
+    <string name="error_no_cvv">CVV muss eingegeben werden</string>
+    <string name="error_invalid_expiry_date">Das Ablaufdatum ist ungültig</string>
+    <string name="error_no_expiry_date">Das Ablaufdatum muss eingegeben werden</string>
+    <string name="error_card_expired">Karte ist abgelaufen</string>
+    <string name="error_invalid_card_number">Kartennummer ist ungültig</string>
+    <string name="error_no_card_number">Kartennummer muss eingegeben werden</string>
+    <string name="window_card_payment_redirect_title">Zahlung per Banküberweisung fortsetzen?</string>
+    <string name="window_card_payment_redirect_subtitle">Möchten Sie die Zahlung per Banküberweisung fortsetzen?</string>
+    <string name="window_card_payment_bank_redirect_subtitle">Wir haben festgestellt, dass Ihre Zahlungskarte von %s ausgestellt wurde. Möchten Sie die Zahlung per Banküberweisung fortsetzen?</string>
 </resources>

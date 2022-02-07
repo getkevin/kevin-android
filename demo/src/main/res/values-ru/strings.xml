@@ -5,4 +5,5 @@
     <string name="window_link_account_button">Связать аккаунт</string>
     <string name="main_menu_dark_mode_toggle">Использовать темную тему</string>
     <string name="navigate_back_content_description">Вернуться назад</string>
+    <string name="window_hybrid_payment_button">Сделать гибридный платеж</string>
 </resources>

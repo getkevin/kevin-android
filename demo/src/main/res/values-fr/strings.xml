@@ -5,4 +5,5 @@
     <string name="window_card_bank_payment_button">Effectuer un paiement par carte</string>
     <string name="main_menu_dark_mode_toggle">Utiliser le thème sombre</string>
     <string name="navigate_back_content_description">Revenir en arrière</string>
+    <string name="window_hybrid_payment_button">Effectuer un paiement hybride</string>
 </resources>
