@@ -48,6 +48,9 @@ class MainView(context: Context) : ConstraintLayout(context) {
         binding.makeCardPaymentButton.setDebounceClickListener {
             callback?.onMakeCardPaymentPressed()
         }
+        binding.makeHybridPaymentButton.setDebounceClickListener {
+            callback?.onMakeHybridPaymentPressed()
+        }
         binding.darkModeSwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)

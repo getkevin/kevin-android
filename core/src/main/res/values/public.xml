@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--    Base themes    -->
     <public name="Theme.Kevin.Base" type="style" />
     <public name="Theme.Kevin.BottomSheet.Base" type="style" />
+
+    <!--    Base component styles    -->
     <public name="Kevin.Toolbar" type="style" />
     <public name="Kevin.Button.Primary" type="style" />
+
+    <!--    Base transitions    -->
     <public name="Kevin.Window.Transition" type="style" />
+
+    <!--    Color attributes    -->
     <public name="kevinPrimaryBackgroundColor" type="attr" />
     <public name="kevinSecondaryBackgroundColor" type="attr" />
     <public name="kevinToolbarColor" type="attr" />
@@ -15,7 +22,17 @@
     <public name="kevinErrorTextColor" type="attr" />
     <public name="kevinPrimaryTextColor" type="attr" />
     <public name="kevinSecondaryTextColor" type="attr" />
+
+    <!--    Component attributes    -->
     <public name="kevinToolbarStyle" type="attr" />
     <public name="kevinPrimaryButtonStyle" type="attr" />
+    <public name="kevinSecondaryButtonStyle" type="attr" />
     <public name="kevinWindowTransitionStyle" type="attr" />
+    <public name="kevinTextInputContainerStyle" type="attr" />
+    <public name="kevinTextInputStyle" type="attr" />
+
+    <!--    Typography attributes    -->
+    <public name="kevinTextHeadline3" type="attr" />
+    <public name="kevinTextSubtitle1" type="attr" />
+    <public name="kevinTextAmount" type="attr" />
 </resources>

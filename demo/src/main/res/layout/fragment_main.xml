@@ -56,6 +56,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/make_bank_payment_button" />
 
+    <Button
+        android:id="@+id/make_hybrid_payment_button"
+        style="@style/Button.Primary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/window_hybrid_payment_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/make_card_payment_button" />
+
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -73,7 +86,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/make_card_payment_button" />
+        app:layout_constraintTop_toBottomOf="@id/make_hybrid_payment_button" />
 
     <ProgressBar
         android:id="@+id/progress_view"

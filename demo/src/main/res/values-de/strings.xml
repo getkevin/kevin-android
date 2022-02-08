@@ -5,4 +5,5 @@
     <string name="main_menu_dark_mode_toggle">Dunkles Design verwenden</string>
     <string name="window_card_bank_payment_button">Kartenzahlung durchführen</string>
     <string name="navigate_back_content_description">Zurück navigieren</string>
+    <string name="window_hybrid_payment_button">Führen Sie Hybridzahlungen durch</string>
 </resources>

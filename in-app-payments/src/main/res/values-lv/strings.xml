@@ -2,4 +2,22 @@
 <resources>
     <string name="window_payment_confirmation_title">Maksājuma apstiprinājums</string>
     <string name="dialog_exit_confirmation_payments_message">Vai tiešām vēlaties atcelt šo maksājumu?</string>
+    <string name="window_card_payment_label">Kartes apmaksa</string>
+    <string name="window_card_payment_cardholder_name_label">Kartes īpašnieka vārds</string>
+    <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
+    <string name="window_card_payment_card_number_label">Kartes numurs</string>
+    <string name="window_card_payment_expiry_date_label">Derīguma termiņš</string>
+    <string name="window_card_payment_notice">kevin. nesaglabā nekādu jūsu personisko informāciju vai kartes informāciju.</string>
+    <string name="window_card_payment_cvv_tooltip">CVV ir 3 ciparu kods, kas redzams kartes aizmugurē</string>
+    <string name="error_no_cardholder_name">Jāievada kartes lietotāja vārds</string>
+    <string name="error_invalid_cvv">Ievadiet derīgu CVV</string>
+    <string name="error_no_cvv">Jāievada CVV</string>
+    <string name="error_invalid_expiry_date">Derīguma termiņš nav derīgs</string>
+    <string name="error_no_expiry_date">Jāievada derīguma termiņš</string>
+    <string name="error_card_expired">Kartei ir beidzies derīguma termiņš</string>
+    <string name="error_invalid_card_number">Kartes numurs nav derīgs</string>
+    <string name="error_no_card_number">Jāievada kartes numurs</string>
+    <string name="window_card_payment_redirect_title">Vai turpināt maksājumu ar bankas pārskaitījumu?</string>
+    <string name="window_card_payment_redirect_subtitle">Vai vēlaties turpināt maksājumu, izmantojot bankas pārskaitījumu?</string>
+    <string name="window_card_payment_bank_redirect_subtitle">Mēs pamanījām, ka jūsu maksājumu karti izsniedz %s. Vai vēlaties turpināt maksājumu, izmantojot bankas pārskaitījumu?</string>
 </resources>

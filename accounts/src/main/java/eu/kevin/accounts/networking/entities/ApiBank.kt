@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
  * @property name bank name
  * @property officialName bank official name
  * @property countryCode country iso code to which bank belongs to
- * @property isSandbox tells if bank is in sandbox enviroment
+ * @property isSandbox tells if bank is in sandbox environment
  * @property imageUri uri to bank logo image
  * @property bic bank identification code
  * @property isBeta tells if bank is in beta stage

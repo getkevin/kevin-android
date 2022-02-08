@@ -2,4 +2,22 @@
 <resources>
     <string name="window_payment_confirmation_title">Betalningsbekräftelse</string>
     <string name="dialog_exit_confirmation_payments_message">Är du säker på att du vill avbryta den här betalningen?</string>
+    <string name="window_card_payment_label">Kortbetalning</string>
+    <string name="window_card_payment_cardholder_name_label">Kortinnehavarens namn</string>
+    <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
+    <string name="window_card_payment_card_number_label">Kortnummer</string>
+    <string name="window_card_payment_expiry_date_label">Utgångsdatum</string>
+    <string name="window_card_payment_notice">kevin. lagrar inte någon av dina personliga uppgifter eller kortuppgifter.</string>
+    <string name="window_card_payment_cvv_tooltip">CVV är en tresiffrig kod som visas på baksidan av ditt kort</string>
+    <string name="error_no_cardholder_name">Kortinnehavarens namn måste anges</string>
+    <string name="error_invalid_cvv">Ange giltig CVV</string>
+    <string name="error_no_cvv">CVV måste anges</string>
+    <string name="error_invalid_expiry_date">Sista utgångsdatum är ogiltigt</string>
+    <string name="error_no_expiry_date">Sista utgångsdatum måste anges</string>
+    <string name="error_card_expired">Kortet har gått ut</string>
+    <string name="error_invalid_card_number">Kortnumret är ogiltigt</string>
+    <string name="error_no_card_number">Kortnummer måste anges</string>
+    <string name="window_card_payment_redirect_title">Fortsätta betalning via banköverföring?</string>
+    <string name="window_card_payment_redirect_subtitle">Vill du fortsätta betalningen via banköverföring?</string>
+    <string name="window_card_payment_bank_redirect_subtitle">Vi har märkt att ditt betalkort är utfärdat av %s. Vill du fortsätta betalningen via banköverföring?</string>
 </resources>

@@ -5,4 +5,5 @@ interface MainViewCallback {
     fun onLinkAccountPressed()
     fun onMakeBankPaymentPressed()
     fun onMakeCardPaymentPressed()
+    fun onMakeHybridPaymentPressed()
 }

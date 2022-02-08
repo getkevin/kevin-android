@@ -5,4 +5,5 @@
     <string name="window_card_bank_payment_button">Tee kaardimakse</string>
     <string name="main_menu_dark_mode_toggle">Kasutage tumedat teemat</string>
     <string name="navigate_back_content_description">Navigeerige tagasi</string>
+    <string name="window_hybrid_payment_button">Tehke hübriidmakse</string>
 </resources>
