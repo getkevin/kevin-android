@@ -3,7 +3,7 @@ package eu.kevin.common.extensions
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 
-fun EditText.setOnDoneClick(callback: () -> Unit) {
+fun EditText.setOnDoneActionListener(callback: () -> Unit) {
     this.setOnEditorActionListener { textView, action, keyEvent ->
         if (action == EditorInfo.IME_ACTION_DONE) {
             callback.invoke()
@@ -14,7 +14,7 @@ fun EditText.setOnDoneClick(callback: () -> Unit) {
     }
 }
 
-fun EditText.setOnNextClick(callback: () -> Unit) {
+fun EditText.setOnNextActionListener(callback: () -> Unit) {
     this.setOnEditorActionListener { textView, action, keyEvent ->
         if (action == EditorInfo.IME_ACTION_NEXT) {
             callback.invoke()

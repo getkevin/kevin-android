@@ -4,10 +4,10 @@
     <string name="dialog_exit_confirmation_payments_message">Sei sicuro di voler annullare questo pagamento?</string>
     <string name="window_card_payment_label">Pagamento con carta</string>
     <string name="window_card_payment_cardholder_name_label">Nome del titolare</string>
-    <string name="window_card_payment_cardholder_name_hint">Giovanni semi di mela</string>
+    <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
     <string name="window_card_payment_card_number_label">Numero di carta</string>
     <string name="window_card_payment_expiry_date_label">Data di scadenza</string>
-    <string name="window_card_payment_notice">Kevin. non sta memorizzando nessuna delle tue informazioni personali o dettagli della carta.</string>
+    <string name="window_card_payment_notice">kevin. non sta memorizzando nessuna delle tue informazioni personali o dettagli della carta.</string>
     <string name="window_card_payment_cvv_tooltip">CVV è un codice a 3 cifre visualizzato sul retro della carta</string>
     <string name="error_no_cardholder_name">È necessario inserire il nome del titolare della carta</string>
     <string name="error_invalid_cvv">Inserisci un CVV valido</string>

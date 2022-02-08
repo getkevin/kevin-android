@@ -21,6 +21,7 @@ import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent.*
 import eu.kevin.inapppayments.cardpayment.inputformatters.CardNumberFormatter
 import eu.kevin.inapppayments.cardpayment.inputformatters.DateFormatter
 import eu.kevin.inapppayments.cardpayment.inputvalidation.ValidationResult
+import eu.kevin.inapppayments.cardpayment.enums.CardPaymentMessage.*
 import eu.kevin.inapppayments.databinding.FragmentCardPaymentBinding
 
 internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentBinding>(context),
@@ -46,7 +47,7 @@ internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentB
                 cardholderNameInput.error = null
                 cardholderNameInput.isErrorEnabled = false
             }
-            cardholderNameInput.editText?.setOnNextClick {
+            cardholderNameInput.editText?.setOnNextActionListener {
                 expiryDateInput.requestFocus()
             }
             cardNumberInput.editText?.addTextChangedListener(CardNumberFormatter())
@@ -57,7 +58,7 @@ internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentB
                     "window.cardDetails.setCardNumber('${it?.toString() ?: ""}');"
                 ) {}
             }
-            cardNumberInput.editText?.setOnNextClick {
+            cardNumberInput.editText?.setOnNextActionListener {
                 cardholderNameInput.requestFocus()
             }
             expiryDateInput.editText?.addTextChangedListener(DateFormatter())
@@ -65,14 +66,14 @@ internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentB
                 expiryDateInput.error = null
                 expiryDateInput.isErrorEnabled = false
             }
-            expiryDateInput.editText?.setOnNextClick {
+            expiryDateInput.editText?.setOnNextActionListener {
                 cvvInput.requestFocus()
             }
             cvvInput.editText?.addTextChangedListener {
                 cvvInput.error = null
                 cvvInput.isErrorEnabled = false
             }
-            cvvInput.editText?.setOnDoneClick {
+            cvvInput.editText?.setOnDoneActionListener {
                 handleContinueClick()
             }
         }
@@ -90,6 +91,20 @@ internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentB
             }
         }
 
+        with(binding.cvvTooltipIcon) {
+            TooltipCompat.setTooltipText(
+                this,
+                context.getString(R.string.window_card_payment_cvv_tooltip)
+            )
+            setDebounceClickListener {
+                performLongClick()
+            }
+        }
+
+        configureWebView()
+    }
+
+    private fun configureWebView() {
         with(binding.webView) {
             applySystemInsetsMargin(bottom = true)
             settings.javaScriptEnabled = true
@@ -98,13 +113,15 @@ internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentB
                 @JavascriptInterface
                 fun postMessage(message: String) {
                     when (message) {
-                        "SOFT_REDIRECT_MODAL" -> {
-                            delegate?.onEvent(SoftRedirect(
-                                binding.cardNumberInput.getInputText().removeWhiteSpaces()
-                            ))
+                        SOFT_REDIRECT_MODAL.value -> {
+                            delegate?.onEvent(
+                                SoftRedirect(
+                                    binding.cardNumberInput.getInputText().removeWhiteSpaces()
+                                )
+                            )
                         }
-                        "HARD_REDIRECT_MODAL" -> delegate?.onEvent(HardRedirect)
-                        "CARD_PAYMENT_SUBMITTING" -> delegate?.onEvent(SubmittingCardData)
+                        HARD_REDIRECT_MODAL.value -> delegate?.onEvent(HardRedirect)
+                        CARD_PAYMENT_SUBMITTING.value -> delegate?.onEvent(SubmittingCardData)
                     }
                 }
             }, "AndroidHandler")
@@ -132,16 +149,6 @@ internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentB
                     binding.webView.evaluateJavascript("window.cardDetails.enableEventMessages();") {}
                     delegate?.onPageFinishedLoading()
                 }
-            }
-        }
-
-        with(binding.cvvTooltipIcon) {
-            TooltipCompat.setTooltipText(
-                this,
-                context.getString(R.string.window_card_payment_cvv_tooltip)
-            )
-            setDebounceClickListener {
-                performLongClick()
             }
         }
     }

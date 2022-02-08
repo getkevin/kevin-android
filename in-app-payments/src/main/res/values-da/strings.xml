@@ -4,11 +4,11 @@
     <string name="dialog_exit_confirmation_payments_message">Er du sikker på, at du vil annullere denne betaling?</string>
     <string name="window_card_payment_label">Kortbetaling</string>
     <string name="window_card_payment_cardholder_name_label">Kortholders navn</string>
-    <string name="window_card_payment_cardholder_name_hint">John Æblefrø</string>
+    <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
     <string name="window_card_payment_card_number_label">Kortnummer</string>
     <string name="window_card_payment_expiry_date_label">Udløbsdato</string>
-    <string name="window_card_payment_notice">kevin. gemmer ikke nogen af ​​dine personlige oplysninger eller kortoplysninger.</string>
-    <string name="window_card_payment_cvv_tooltip">CVV er en 3-cifret kode, der vises på bagsiden af ​​dit kort</string>
+    <string name="window_card_payment_notice">kevin. gemmer ikke nogen af dine personlige oplysninger eller kortoplysninger.</string>
+    <string name="window_card_payment_cvv_tooltip">CVV er en 3-cifret kode, der vises på bagsiden af dit kort</string>
     <string name="error_no_cardholder_name">Kortholders navn skal indtastes</string>
     <string name="error_invalid_cvv">Indtast gyldig CVV</string>
     <string name="error_no_cvv">CVV skal indtastes</string>

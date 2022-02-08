@@ -1,4 +1,4 @@
-package eu.kevin.inapppayments.cardpayment.entities
+package eu.kevin.common.entities
 
 import android.content.Context
 import android.os.Parcelable
@@ -8,7 +8,7 @@ import java.text.NumberFormat
 import java.util.*
 
 @Parcelize
-internal data class Amount(
+data class KevinAmount(
     val amount: Double,
     val currency: Currency
 ) : Parcelable {

@@ -7,7 +7,7 @@
     <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
     <string name="window_card_payment_card_number_label">Kortin numero</string>
     <string name="window_card_payment_expiry_date_label">Päättymispäivä</string>
-    <string name="window_card_payment_notice">kevin. ei tallenna henkilökohtaisia ​​tietojasi tai korttitietojasi.</string>
+    <string name="window_card_payment_notice">kevin. ei tallenna henkilökohtaisia tietojasi tai korttitietojasi.</string>
     <string name="window_card_payment_cvv_tooltip">CVV on kolminumeroinen koodi, joka näkyy korttisi takana</string>
     <string name="error_no_cardholder_name">Kortinhaltijan nimi on syötettävä</string>
     <string name="error_invalid_cvv">Anna kelvollinen CVV</string>

@@ -4,11 +4,11 @@
     <string name="dialog_exit_confirmation_payments_message">Vai tiešām vēlaties atcelt šo maksājumu?</string>
     <string name="window_card_payment_label">Kartes apmaksa</string>
     <string name="window_card_payment_cardholder_name_label">Kartes īpašnieka vārds</string>
-    <string name="window_card_payment_cardholder_name_hint">Džons Ābolsēkls</string>
+    <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
     <string name="window_card_payment_card_number_label">Kartes numurs</string>
     <string name="window_card_payment_expiry_date_label">Derīguma termiņš</string>
-    <string name="window_card_payment_notice">Kevins. nesaglabā nekādu jūsu personisko informāciju vai kartes informāciju.</string>
-    <string name="window_card_payment_cvv_tooltip">CVV ir 3 ciparu kods, kas redzams kartes aizmugurē</string>
+    <string name="window_card_payment_notice">kevin. nesaglabā nekādu jūsu personisko informāciju vai kartes informāciju.</string>
+    <string name="window_card_payment_cvv_tooltip">CVV ir 3 ciparu kods, kas redzams kartes aizmugurē</string>
     <string name="error_no_cardholder_name">Jāievada kartes lietotāja vārds</string>
     <string name="error_invalid_cvv">Ievadiet derīgu CVV</string>
     <string name="error_no_cvv">Jāievada CVV</string>

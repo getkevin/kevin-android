@@ -6,8 +6,8 @@
     <string name="window_card_payment_cardholder_name_label">Imię właściciela karty</string>
     <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
     <string name="window_card_payment_card_number_label">Numer karty</string>
-    <string name="window_card_payment_expiry_date_label">Data wygaśnięcia</string>
-    <string name="window_card_payment_notice">Kevina. nie przechowuje żadnych danych osobowych ani danych karty.</string>
+    <string name="window_card_payment_expiry_date_label">Data ważności</string>
+    <string name="window_card_payment_notice">kevin. nie przechowuje żadnych danych osobowych ani danych karty.</string>
     <string name="window_card_payment_cvv_tooltip">CVV to 3-cyfrowy kod wyświetlany na odwrocie Twojej karty</string>
     <string name="error_no_cardholder_name">Należy wpisać imię i nazwisko posiadacza karty</string>
     <string name="error_invalid_cvv">Wpisz poprawny CVV</string>
@@ -19,5 +19,5 @@
     <string name="error_no_card_number">Należy wpisać numer karty</string>
     <string name="window_card_payment_redirect_title">Kontynuować płatność przelewem bankowym?</string>
     <string name="window_card_payment_redirect_subtitle">Czy chcesz kontynuować płatność przelewem bankowym?</string>
-    <string name="window_card_payment_bank_redirect_subtitle">Zauważyliśmy, że Twoja karta płatnicza została wystawiona przez %s. Czy chcesz kontynuować płatność przelewem bankowym?</string>
+    <string name="window_card_payment_bank_redirect_subtitle">Zauważyliśmy, że Twoja karta płatnicza jest wydana przez %s. Czy chcesz kontynuować płatność przelewem bankowym?</string>
 </resources>

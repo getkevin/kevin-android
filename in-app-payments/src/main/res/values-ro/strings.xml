@@ -7,7 +7,7 @@
     <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
     <string name="window_card_payment_card_number_label">Număr de card</string>
     <string name="window_card_payment_expiry_date_label">Data de expirare</string>
-    <string name="window_card_payment_notice">Kevin. nu stochează niciuna dintre informațiile dvs. personale sau detaliile cardului.</string>
+    <string name="window_card_payment_notice">kevin. nu stochează niciuna dintre informațiile dvs. personale sau detaliile cardului.</string>
     <string name="window_card_payment_cvv_tooltip">CVV este un cod din 3 cifre afișat pe spatele cardului dvs</string>
     <string name="error_no_cardholder_name">Numele titularului cardului trebuie introdus</string>
     <string name="error_invalid_cvv">Introduceți CVV valid</string>

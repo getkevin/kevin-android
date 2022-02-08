@@ -4,7 +4,7 @@
     <string name="dialog_exit_confirmation_payments_message">Weet u zeker dat u deze betaling wilt annuleren?</string>
     <string name="window_card_payment_label">Kaart betaling</string>
     <string name="window_card_payment_cardholder_name_label">Naam pashouder</string>
-    <string name="window_card_payment_cardholder_name_hint">John Appelzaad</string>
+    <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
     <string name="window_card_payment_card_number_label">Kaartnummer</string>
     <string name="window_card_payment_expiry_date_label">Vervaldatum</string>
     <string name="window_card_payment_notice">kevin. slaat geen van uw persoonlijke gegevens of kaartgegevens op.</string>

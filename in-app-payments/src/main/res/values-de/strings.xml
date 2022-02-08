@@ -7,7 +7,7 @@
     <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
     <string name="window_card_payment_card_number_label">Kartennummer</string>
     <string name="window_card_payment_expiry_date_label">Verfallsdatum</string>
-    <string name="window_card_payment_notice">Kevin. speichert keine Ihrer persönlichen Daten oder Kartendetails.</string>
+    <string name="window_card_payment_notice">kevin. speichert keine Ihrer persönlichen Daten oder Kartendetails.</string>
     <string name="window_card_payment_cvv_tooltip">CVV ist ein 3-stelliger Code, der auf der Rückseite Ihrer Karte angezeigt wird</string>
     <string name="error_no_cardholder_name">Der Name des Karteninhabers muss eingegeben werden</string>
     <string name="error_invalid_cvv">Geben Sie einen gültigen CVV ein</string>

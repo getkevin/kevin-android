@@ -7,7 +7,7 @@
     <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
     <string name="window_card_payment_card_number_label">Kártyaszám</string>
     <string name="window_card_payment_expiry_date_label">Lejárati dátum</string>
-    <string name="window_card_payment_notice">Kevin. nem tárolja az Ön személyes adatait vagy kártyaadatait.</string>
+    <string name="window_card_payment_notice">kevin. nem tárolja az Ön személyes adatait vagy kártyaadatait.</string>
     <string name="window_card_payment_cvv_tooltip">A CVV egy háromjegyű kód, amely a kártya hátoldalán található</string>
     <string name="error_no_cardholder_name">A kártyabirtokos nevét meg kell adni</string>
     <string name="error_invalid_cvv">Adja meg az érvényes CVV-t</string>

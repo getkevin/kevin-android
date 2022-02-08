@@ -16,7 +16,7 @@ import eu.kevin.inapppayments.BuildConfig
 import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.*
 import eu.kevin.inapppayments.cardpayment.CardPaymentViewAction.ShowFieldValidations
 import eu.kevin.inapppayments.cardpayment.CardPaymentViewAction.SubmitCardForm
-import eu.kevin.inapppayments.cardpayment.entities.Amount
+import eu.kevin.common.entities.KevinAmount
 import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent
 import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent.*
 import eu.kevin.inapppayments.cardpayment.inputvalidation.CardExpiryDateValidator
@@ -82,7 +82,7 @@ internal class CardPaymentViewModel(
         val paymentInfo = kevinPaymentsClient.getCardPaymentInfo(configuration.paymentId)
 
         val amount = try {
-            Amount(
+            KevinAmount(
                 paymentInfo.amount,
                 Currency.getInstance(paymentInfo.currencyCode)
             )

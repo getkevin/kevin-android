@@ -4,10 +4,10 @@
     <string name="dialog_exit_confirmation_payments_message">Наистина ли искате да анулирате това плащане?</string>
     <string name="window_card_payment_label">Плащане с карта</string>
     <string name="window_card_payment_cardholder_name_label">Име на картодържателя</string>
-    <string name="window_card_payment_cardholder_name_hint">Джон Appleseed</string>
+    <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
     <string name="window_card_payment_card_number_label">Номер на карта</string>
     <string name="window_card_payment_expiry_date_label">Срок на годност</string>
-    <string name="window_card_payment_notice">Кевин. не съхранява никаква ваша лична информация или данни за карта.</string>
+    <string name="window_card_payment_notice">kevin. не съхранява никаква ваша лична информация или данни за карта.</string>
     <string name="window_card_payment_cvv_tooltip">CVV е 3-цифрен код, показан на гърба на вашата карта</string>
     <string name="error_no_cardholder_name">Трябва да се въведе името на картодържателя</string>
     <string name="error_invalid_cvv">Въведете валиден CVV</string>

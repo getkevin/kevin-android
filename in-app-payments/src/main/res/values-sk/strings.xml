@@ -7,7 +7,7 @@
     <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
     <string name="window_card_payment_card_number_label">Číslo karty</string>
     <string name="window_card_payment_expiry_date_label">Dátum spotreby</string>
-    <string name="window_card_payment_notice">Kevin. neuchováva žiadne vaše osobné údaje ani podrobnosti o karte.</string>
+    <string name="window_card_payment_notice">kevin. neuchováva žiadne vaše osobné údaje ani podrobnosti o karte.</string>
     <string name="window_card_payment_cvv_tooltip">CVV je 3-ciferný kód zobrazený na zadnej strane vašej karty</string>
     <string name="error_no_cardholder_name">Je potrebné zadať meno držiteľa karty</string>
     <string name="error_invalid_cvv">Zadajte platný CVV</string>
