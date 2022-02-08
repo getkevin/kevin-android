@@ -5,7 +5,7 @@ import eu.kevin.demo.auth.entities.ApiPayment
 import eu.kevin.demo.auth.entities.InitiateAuthenticationRequest
 import eu.kevin.demo.auth.entities.InitiatePaymentRequest
 
-interface KevinAuthClient : BaseApiClient {
+interface KevinApiClient : BaseApiClient {
     suspend fun getAuthState(request: InitiateAuthenticationRequest): String
     suspend fun initializeBankPayment(request: InitiatePaymentRequest): ApiPayment
     suspend fun initializeLinkedBankPayment(accessToken: String, request: InitiatePaymentRequest): ApiPayment

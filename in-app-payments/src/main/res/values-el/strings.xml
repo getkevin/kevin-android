@@ -2,4 +2,22 @@
 <resources>
     <string name="window_payment_confirmation_title">Επιβεβαίωση πληρωμής</string>
     <string name="dialog_exit_confirmation_payments_message">Είστε βέβαιοι ότι θέλετε να ακυρώσετε αυτήν την πληρωμή;</string>
+    <string name="window_card_payment_label">Πληρωμή με κάρτα</string>
+    <string name="window_card_payment_cardholder_name_label">Ονομα ιδιοκτήτη κάρτας</string>
+    <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
+    <string name="window_card_payment_card_number_label">Αριθμός κάρτας</string>
+    <string name="window_card_payment_expiry_date_label">Ημερομηνία λήξης</string>
+    <string name="window_card_payment_notice">kevin. δεν αποθηκεύει κανένα από τα προσωπικά σας στοιχεία ή στοιχεία της κάρτας σας.</string>
+    <string name="window_card_payment_cvv_tooltip">Το CVV είναι ένας 3ψήφιος κωδικός που εμφανίζεται στο πίσω μέρος της κάρτας σας</string>
+    <string name="error_no_cardholder_name">Πρέπει να εισαχθεί το όνομα κατόχου κάρτας</string>
+    <string name="error_invalid_cvv">Εισαγάγετε έγκυρο βιογραφικό σημείωμα</string>
+    <string name="error_no_cvv">Πρέπει να εισαχθεί το βιογραφικό σημείωμα</string>
+    <string name="error_invalid_expiry_date">Η ημερομηνία λήξης δεν είναι έγκυρη</string>
+    <string name="error_no_expiry_date">Πρέπει να εισαχθεί η ημερομηνία λήξης</string>
+    <string name="error_card_expired">Η κάρτα έχει λήξει</string>
+    <string name="error_invalid_card_number">Ο αριθμός κάρτας δεν είναι έγκυρος</string>
+    <string name="error_no_card_number">Πρέπει να εισαχθεί ο αριθμός της κάρτας</string>
+    <string name="window_card_payment_redirect_title">Συνέχεια πληρωμής μέσω τραπεζικού εμβάσματος;</string>
+    <string name="window_card_payment_redirect_subtitle">Θέλετε να συνεχίσετε την πληρωμή μέσω Τραπεζικής Κατάθεσης;</string>
+    <string name="window_card_payment_bank_redirect_subtitle">Παρατηρήσαμε ότι η κάρτα πληρωμής σας εκδίδεται από %s. Θέλετε να συνεχίσετε την πληρωμή μέσω Τραπεζικής Κατάθεσης;</string>
 </resources>

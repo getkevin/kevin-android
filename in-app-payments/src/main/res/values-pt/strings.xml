@@ -2,4 +2,22 @@
 <resources>
     <string name="window_payment_confirmation_title">Confirmação de pagamento</string>
     <string name="dialog_exit_confirmation_payments_message">Tem certeza que deseja cancelar este pagamento?</string>
+    <string name="window_card_payment_label">Pagamento via cartão</string>
+    <string name="window_card_payment_cardholder_name_label">Nome do Titular</string>
+    <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
+    <string name="window_card_payment_card_number_label">Card number</string>
+    <string name="window_card_payment_expiry_date_label">Número do cartão</string>
+    <string name="window_card_payment_notice">kevin. não está armazenando nenhuma informação pessoal ou detalhes do cartão.</string>
+    <string name="window_card_payment_cvv_tooltip">CVV é um código de 3 dígitos exibido no verso do seu cartão</string>
+    <string name="error_no_cardholder_name">O nome do titular do cartão deve ser inserido</string>
+    <string name="error_invalid_cvv">Insira um CVV válido</string>
+    <string name="error_no_cvv">CVV deve ser inserido</string>
+    <string name="error_invalid_expiry_date">A data de validade é inválida</string>
+    <string name="error_no_expiry_date">A data de validade deve ser inserida</string>
+    <string name="error_card_expired">O cartão expirou</string>
+    <string name="error_invalid_card_number">O número do cartão é inválido</string>
+    <string name="error_no_card_number">O número do cartão deve ser inserido</string>
+    <string name="window_card_payment_redirect_title">Continuar o pagamento por transferência bancária?</string>
+    <string name="window_card_payment_redirect_subtitle">Deseja continuar o pagamento por Transferência Bancária?</string>
+    <string name="window_card_payment_bank_redirect_subtitle">Notamos que seu cartão de pagamento foi emitido por %s. Deseja continuar o pagamento por Transferência Bancária?</string>
 </resources>

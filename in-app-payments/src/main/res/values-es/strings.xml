@@ -2,4 +2,22 @@
 <resources>
     <string name="window_payment_confirmation_title">Confirmación de pago</string>
     <string name="dialog_exit_confirmation_payments_message">Estás seguro de que deseas cancelar este pago?</string>
+    <string name="window_card_payment_label">Pago con tarjeta</string>
+    <string name="window_card_payment_cardholder_name_label">Nombre del titular de la tarjeta</string>
+    <string name="window_card_payment_cardholder_name_hint">Juan Appleseed</string>
+    <string name="window_card_payment_card_number_label">Número de tarjeta</string>
+    <string name="window_card_payment_expiry_date_label">Fecha de caducidad</string>
+    <string name="window_card_payment_notice">kevin. no está almacenando ninguna de su información personal o detalles de la tarjeta.</string>
+    <string name="window_card_payment_cvv_tooltip">CVV es un código de 3 dígitos que se muestra en el reverso de su tarjeta</string>
+    <string name="error_no_cardholder_name">Se debe ingresar el nombre del titular de la tarjeta</string>
+    <string name="error_invalid_cvv">Introduce un CVV válido</string>
+    <string name="error_no_cvv">Se debe ingresar CVV</string>
+    <string name="error_invalid_expiry_date">La fecha de caducidad no es válida</string>
+    <string name="error_no_expiry_date">Se debe ingresar la fecha de caducidad</string>
+    <string name="error_card_expired">la tarjeta esta caducada</string>
+    <string name="error_invalid_card_number">El número de tarjeta no es válido</string>
+    <string name="error_no_card_number">Se debe ingresar el número de tarjeta</string>
+    <string name="window_card_payment_redirect_title">¿Continuar con el pago mediante transferencia bancaria?</string>
+    <string name="window_card_payment_redirect_subtitle">¿Desea continuar con el pago mediante transferencia bancaria?</string>
+    <string name="window_card_payment_bank_redirect_subtitle">Notamos que su tarjeta de pago es emitida por %s. ¿Desea continuar con el pago mediante transferencia bancaria?</string>
 </resources>

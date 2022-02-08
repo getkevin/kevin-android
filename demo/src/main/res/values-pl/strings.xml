@@ -5,4 +5,5 @@
     <string name="window_card_bank_payment_button">Dokonaj płatności kartą</string>
     <string name="main_menu_dark_mode_toggle">Użyj ciemnego motywu</string>
     <string name="navigate_back_content_description">Przejdź wstecz</string>
+    <string name="window_hybrid_payment_button">Dokonaj płatności hybrydowej</string>
 </resources>

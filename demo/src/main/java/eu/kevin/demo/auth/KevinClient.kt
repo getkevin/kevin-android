@@ -7,7 +7,7 @@ import eu.kevin.demo.auth.entities.InitiatePaymentRequest
 import io.ktor.client.*
 import io.ktor.client.request.*
 
-class KevinAuthApiClient(private val httpClient: HttpClient) : KevinAuthClient {
+class KevinClient(private val httpClient: HttpClient) : KevinApiClient {
 
     override suspend fun getAuthState(request: InitiateAuthenticationRequest): String {
         return httpClient.post<ApiAuthState>("auth/initiate/") {

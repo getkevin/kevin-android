@@ -15,13 +15,14 @@ import eu.kevin.common.extensions.setFragmentResultListener
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.core.entities.SessionResult
 import eu.kevin.core.plugin.Kevin
+import eu.kevin.inapppayments.cardpayment.CardPaymentContract
+import eu.kevin.inapppayments.cardpayment.CardPaymentFragmentConfiguration
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationContract
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationFragmentConfiguration
 import eu.kevin.inapppayments.paymentsession.entities.PaymentSessionConfiguration
 import eu.kevin.inapppayments.paymentsession.entities.PaymentSessionData
 import eu.kevin.inapppayments.paymentsession.enums.PaymentSessionFlowItem
-import eu.kevin.inapppayments.paymentsession.enums.PaymentSessionFlowItem.BANK_SELECTION
-import eu.kevin.inapppayments.paymentsession.enums.PaymentSessionFlowItem.PAYMENT_CONFIRMATION
+import eu.kevin.inapppayments.paymentsession.enums.PaymentSessionFlowItem.*
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -119,7 +120,13 @@ internal class PaymentSession(
             }
         }
 
-        flow.add(PAYMENT_CONFIRMATION)
+        if (sessionData.selectedPaymentType == PaymentType.BANK) {
+            flow.add(PAYMENT_CONFIRMATION)
+        }
+
+        if (sessionData.selectedPaymentType == PaymentType.CARD) {
+            flow.add(CARD_PAYMENT)
+        }
 
         flowItems.clear()
         flowItems.addAll(flow)
@@ -153,6 +160,10 @@ internal class PaymentSession(
                 )
                 PaymentConfirmationContract.getFragment(config)
             }
+            CARD_PAYMENT -> {
+                val config = CardPaymentFragmentConfiguration(configuration.paymentId)
+                CardPaymentContract.getFragment(config)
+            }
         }
     }
 
@@ -160,6 +171,17 @@ internal class PaymentSession(
         fragmentManager.setFragmentResultListener(BankSelectionContract, lifecycleOwner) {
             sessionData = sessionData.copy(selectedBank = it)
             navigateToNextWindow()
+        }
+        fragmentManager.setFragmentResultListener(CardPaymentContract, lifecycleOwner) { result ->
+            when (result) {
+                is FragmentResult.Success -> {
+                    sessionListener?.onSessionFinished(
+                        SessionResult.Success(PaymentSessionResult(configuration.paymentId))
+                    )
+                }
+                is FragmentResult.Canceled -> sessionListener?.onSessionFinished(SessionResult.Canceled)
+                is FragmentResult.Failure -> sessionListener?.onSessionFinished(SessionResult.Failure(result.error))
+            }
         }
         fragmentManager.setFragmentResultListener(PaymentConfirmationContract, lifecycleOwner) { result ->
             when (result) {

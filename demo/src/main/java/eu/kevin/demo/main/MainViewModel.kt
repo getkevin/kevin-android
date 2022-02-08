@@ -35,6 +35,7 @@ class MainViewModel constructor(
 ) : ViewModel() {
 
     private val _viewState = MutableStateFlow(MainViewState())
+
     private val _viewAction = Channel<MainViewAction>(Channel.BUFFERED)
 
     private val donationConfiguration = DonationConfiguration()

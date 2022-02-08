@@ -37,7 +37,7 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@color/black</item>
 
-        <item name="kevinToolbarColor">@color/black</item>
+        <item name="kevinToolbarColor">@color/darker_blue</item>
 
         <item name="kevinPrimaryBackgroundColor">@color/black</item>
         <item name="kevinSecondaryBackgroundColor">@color/dark_blue</item>
