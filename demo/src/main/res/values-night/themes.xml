@@ -27,6 +27,8 @@
 
         <item name="selectedOnSecondaryColor">@color/darker_blue</item>
 
+        <item name="bottomSheetDialogTheme">@style/BottomSheetDialog</item>
+
     </style>
 
     <style name="AppTheme" parent="BaseAppTheme" />

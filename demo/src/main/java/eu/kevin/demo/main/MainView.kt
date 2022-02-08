@@ -16,13 +16,13 @@ import eu.kevin.common.helpers.ErrorHelper
 import eu.kevin.common.helpers.SnackbarHelper
 import eu.kevin.demo.R
 import eu.kevin.demo.databinding.FragmentMainBinding
-import eu.kevin.demo.extensions.applySystemInsetsPadding
 import eu.kevin.demo.extensions.setDebounceClickListener
 import eu.kevin.demo.helpers.CountryHelper
 import eu.kevin.demo.helpers.PaymentTypeHelper
 import eu.kevin.demo.helpers.SpannableStringHelper
 import eu.kevin.demo.helpers.SpannableStringLink
 import eu.kevin.demo.main.adapter.CreditorsAdapter
+import eu.kevin.demo.views.NumberTextWatcher
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 
 class MainView(context: Context) : FrameLayout(context) {
@@ -36,7 +36,6 @@ class MainView(context: Context) : FrameLayout(context) {
 
     init {
         with(binding) {
-            root.applySystemInsetsPadding(bottom = true)
             creditorsRecyclerView.adapter = creditorsAdapter
 
             termsTextView.text = SpannableStringHelper.getSpannableWithLinks(
@@ -60,6 +59,14 @@ class MainView(context: Context) : FrameLayout(context) {
                     context.getString(PaymentTypeHelper.getStringRes(it))
                 }
             )
+
+            amountTextField.editText?.addTextChangedListener(
+                NumberTextWatcher(
+                    amountTextField.editText!!,
+                    resources.configuration.locales[0],
+                    2
+                )
+            )
         }
         initListeners()
     }
@@ -73,8 +80,7 @@ class MainView(context: Context) : FrameLayout(context) {
                 showError(ErrorHelper.getMessage(context, state.loadingState.error))
             }
         }
-        with (binding) {
-            proceedButton.isEnabled = state.proceedButtonEnabled
+        with(binding) {
             proceedButton.text =
                 context.getString(R.string.window_main_proceed_button, state.buttonText)
 
@@ -84,9 +90,19 @@ class MainView(context: Context) : FrameLayout(context) {
                     state.selectedCountry
                 )
             )
-            selectedCountryTextView.text = CountryHelper.getCountryName(context, state.selectedCountry)
+            selectedCountryTextView.text =
+                CountryHelper.getCountryName(context, state.selectedCountry)
             creditorsRecyclerView.isInvisible = state.loadingCreditors
             creditorsProgressBar.isGone = !state.loadingCreditors
+            amountTextField.error = state.amountError
+            emailTextField.error = state.emailError
+            termsErrorImageView.isGone = !state.termsError
+            if (state.emailError == null) {
+                emailTextField.isErrorEnabled = false
+            }
+            if (state.amountError == null) {
+                amountTextField.isErrorEnabled = false
+            }
         }
     }
 
@@ -105,7 +121,7 @@ class MainView(context: Context) : FrameLayout(context) {
             }
 
             amountTextField.editText?.addTextChangedListener {
-                callback?.onAmountChanged(it?.toString() ?: "")
+                callback?.onAmountChanged(it?.toString()?.replace(",", "") ?: "")
             }
 
             countrySelectionContainer.setDebounceClickListener {

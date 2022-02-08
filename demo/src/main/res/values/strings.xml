@@ -19,4 +19,7 @@
     <string name="window_main_country_charity_label">Select country and charity</string>
     <string name="window_main_subtitle_label">Pick a charity you want to donate to</string>
     <string name="window_main_title_label">Redirect payment</string>
+    <string name="window_main_email_blank_error">E-mail address is required</string>
+    <string name="window_main_email_invalid_format">E-mail address is invalid</string>
+    <string name="window_main_amount_blank_error">Amount must be greater than zero</string>
 </resources>

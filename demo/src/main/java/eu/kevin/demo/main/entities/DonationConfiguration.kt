@@ -13,12 +13,16 @@ data class DonationConfiguration(
     var paymentType: PaymentType = PaymentType.BANK
 ) {
 
-    fun getAmountText(): String {
+    fun getAmount(): BigDecimal {
         return try {
             BigDecimal(amount)
         } catch (e: Throwable) {
             BigDecimal("0")
-        }.setScale(2, RoundingMode.HALF_EVEN).toString()
+        }
+    }
+
+    fun getAmountText(): String {
+        return getAmount().setScale(2, RoundingMode.HALF_EVEN).toString()
     }
 
     fun canProceed() =

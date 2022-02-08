@@ -30,6 +30,8 @@
 
         <item name="selectedOnSecondaryColor">@color/light_baby_blue</item>
 
+        <item name="bottomSheetDialogTheme">@style/BottomSheetDialog</item>
+
     </style>
 
     <style name="AppTheme" parent="BaseAppTheme" />

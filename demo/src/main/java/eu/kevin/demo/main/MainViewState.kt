@@ -10,5 +10,8 @@ data class MainViewState(
     val creditors: List<CreditorListItem> = emptyList(),
     val proceedButtonEnabled: Boolean = false,
     val buttonText: String = "",
-    val loadingCreditors: Boolean = false
+    val loadingCreditors: Boolean = false,
+    val emailError: String? = null,
+    val amountError: String? = null,
+    val termsError: Boolean = false
 )

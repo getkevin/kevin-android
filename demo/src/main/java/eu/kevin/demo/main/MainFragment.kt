@@ -21,13 +21,14 @@ import android.content.Intent
 import android.net.Uri
 import eu.kevin.demo.countryselection.CountrySelectionContract
 import eu.kevin.common.extensions.setFragmentResultListener
+import eu.kevin.demo.helpers.TextsProvider
 import eu.kevin.demo.main.entities.CreditorListItem
 
 
 class MainFragment : Fragment(), MainViewCallback {
 
     private val viewModel: MainViewModel by viewModels {
-        MainViewModel.Factory(this)
+        MainViewModel.Factory(this, TextsProvider(requireActivity().applicationContext))
     }
 
     private val makePayment = registerForActivityResult(PaymentSessionContract()) { result ->

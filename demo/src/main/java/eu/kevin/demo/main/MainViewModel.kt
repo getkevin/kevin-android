@@ -1,5 +1,6 @@
 package eu.kevin.demo.main
 
+import android.util.Patterns
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -9,9 +10,11 @@ import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.entities.LoadingState
 import eu.kevin.core.networking.exceptions.ApiError
 import eu.kevin.demo.ClientProvider
+import eu.kevin.demo.R
 import eu.kevin.demo.auth.entities.InitiatePaymentRequest
 import eu.kevin.demo.countryselection.CountrySelectionContract
 import eu.kevin.demo.countryselection.CountrySelectionFragmentConfiguration
+import eu.kevin.demo.helpers.TextsProvider
 import eu.kevin.demo.main.entities.CreditorListItem
 import eu.kevin.demo.main.entities.DonationConfiguration
 import eu.kevin.demo.main.entities.toListItems
@@ -24,9 +27,11 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import java.math.BigDecimal
 
 class MainViewModel constructor(
-    private val getCreditorsUseCase: GetCreditorsUseCase
+    private val getCreditorsUseCase: GetCreditorsUseCase,
+    private val textsProvider: TextsProvider
 ) : ViewModel() {
 
     private val _viewState = MutableStateFlow(MainViewState())
@@ -49,16 +54,16 @@ class MainViewModel constructor(
             }
             try {
                 val creditors =
-                    getCreditorsUseCase.getCreditors(countryIso)
+                    getCreditorsUseCase.getCreditors(countryIso).toListItems()
                 _viewState.update {
                     it.copy(
-                        creditors = creditors.toListItems().mapIndexed { index, item ->
+                        creditors = creditors.mapIndexed { index, item ->
                             item.copy(isSelected = index == 0)
                         },
                         loadingCreditors = false
                     )
                 }
-                donationConfiguration.selectedCreditor = null
+                donationConfiguration.selectedCreditor = creditors.firstOrNull()
                 updateButtonState()
             } catch (e: Exception) {
                 _viewState.update {
@@ -123,7 +128,6 @@ class MainViewModel constructor(
     private fun updateButtonState() {
         _viewState.update {
             it.copy(
-                proceedButtonEnabled = donationConfiguration.canProceed(),
                 buttonText = donationConfiguration.getAmountText(),
                 loadingState = LoadingState.Loading(false)
             )
@@ -131,6 +135,34 @@ class MainViewModel constructor(
     }
 
     fun onProceedClick() {
+        var emailError: String? = null
+        if (donationConfiguration.email.isBlank()) {
+            emailError = textsProvider.provideText(R.string.window_main_email_blank_error)
+        } else if (!donationConfiguration.email.isValidEmail()) {
+            emailError = textsProvider.provideText(R.string.window_main_email_invalid_format)
+        }
+
+        var amountError: String? = null
+        if (donationConfiguration.getAmount() <= BigDecimal.ZERO) {
+            amountError = textsProvider.provideText(R.string.window_main_amount_blank_error)
+        }
+
+        val termsError = !donationConfiguration.termsAgreed
+
+        _viewState.update {
+            it.copy(
+                emailError = emailError,
+                amountError = amountError,
+                termsError = termsError
+            )
+        }
+
+        if (emailError == null && amountError == null && !termsError) {
+            initiatePayment()
+        }
+    }
+
+    private fun initiatePayment() {
         viewModelScope.launch(Dispatchers.IO) {
             _viewState.update { it.copy(loadingState = LoadingState.Loading(true)) }
             try {
@@ -163,8 +195,10 @@ class MainViewModel constructor(
         }
     }
 
+    fun CharSequence?.isValidEmail() = !isNullOrEmpty() && Patterns.EMAIL_ADDRESS.matcher(this).matches()
+
     @Suppress("UNCHECKED_CAST")
-    class Factory(owner: SavedStateRegistryOwner) :
+    class Factory(owner: SavedStateRegistryOwner, private val textsProvider: TextsProvider) :
         AbstractSavedStateViewModelFactory(owner, null) {
         override fun <T : ViewModel?> create(
             key: String,
@@ -174,7 +208,8 @@ class MainViewModel constructor(
             return MainViewModel(
                 GetCreditorsUseCase(
                     ClientProvider.kevinDataClient
-                )
+                ),
+                textsProvider = textsProvider
             ) as T
         }
     }
