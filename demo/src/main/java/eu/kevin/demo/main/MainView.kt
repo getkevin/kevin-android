@@ -7,13 +7,14 @@ import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
+import androidx.core.view.updateLayoutParams
 import androidx.core.widget.addTextChangedListener
 import eu.kevin.common.entities.LoadingState
 import eu.kevin.common.entities.isLoading
-import eu.kevin.common.extensions.fadeIn
-import eu.kevin.common.extensions.fadeOut
+import eu.kevin.common.extensions.*
 import eu.kevin.common.helpers.ErrorHelper
 import eu.kevin.common.helpers.SnackbarHelper
+import eu.kevin.common.managers.KeyboardManager
 import eu.kevin.demo.R
 import eu.kevin.demo.databinding.FragmentMainBinding
 import eu.kevin.demo.extensions.setDebounceClickListener
@@ -22,10 +23,11 @@ import eu.kevin.demo.helpers.PaymentTypeHelper
 import eu.kevin.demo.helpers.SpannableStringHelper
 import eu.kevin.demo.helpers.SpannableStringLink
 import eu.kevin.demo.main.adapter.CreditorsAdapter
+import eu.kevin.demo.main.entities.ValidationResult
 import eu.kevin.demo.views.NumberTextWatcher
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 
-class MainView(context: Context) : FrameLayout(context) {
+internal class MainView(context: Context) : FrameLayout(context) {
 
     var callback: MainViewCallback? = null
 
@@ -69,6 +71,15 @@ class MainView(context: Context) : FrameLayout(context) {
             )
         }
         initListeners()
+
+        binding.scrollView.applySystemInsetsPadding(bottom = true)
+        KeyboardManager(binding.root).apply {
+            onKeyboardSizeChanged {
+                binding.root.updateLayoutParams<MarginLayoutParams> {
+                    bottomMargin = it
+                }
+            }
+        }
     }
 
     fun update(state: MainViewState) {
@@ -106,22 +117,42 @@ class MainView(context: Context) : FrameLayout(context) {
         }
     }
 
+    fun showInputFieldValidations(
+        emailValidation: ValidationResult,
+        amountValidation: ValidationResult,
+        termsAccepted: Boolean
+    ) {
+        with(binding) {
+            emailTextField.error = emailValidation.getMessage(context)
+            amountTextField.error = amountValidation.getMessage(context)
+            termsErrorImageView.isGone = termsAccepted
+        }
+    }
+
     private fun initListeners() {
         with(binding) {
             proceedButton.setOnClickListener {
-                callback?.onProceedClick()
+                hideKeyboard()
+                callback?.onProceedClick(
+                    binding.emailTextField.getInputText(),
+                    binding.amountTextField.getInputText(),
+                    binding.termsCheckbox.isChecked
+                )
             }
 
             termsCheckbox.setOnCheckedChangeListener { _, checked ->
-                callback?.onTermsCheckboxChanged(checked)
+                termsErrorImageView.isGone = true
             }
 
             emailTextField.editText?.addTextChangedListener {
-                callback?.onEmailChanged(it?.toString() ?: "")
+                emailTextField.error = null
+                emailTextField.isErrorEnabled = false
             }
 
             amountTextField.editText?.addTextChangedListener {
-                callback?.onAmountChanged(it?.toString()?.replace(",", "") ?: "")
+                callback?.onAmountChanged(it?.toString() ?: "")
+                amountTextField.error = null
+                amountTextField.isErrorEnabled = false
             }
 
             countrySelectionContainer.setDebounceClickListener {

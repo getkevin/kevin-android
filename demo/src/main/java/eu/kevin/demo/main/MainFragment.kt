@@ -1,5 +1,7 @@
 package eu.kevin.demo.main
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,33 +10,33 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import eu.kevin.common.extensions.setFragmentResultListener
 import eu.kevin.core.entities.SessionResult
 import eu.kevin.core.enums.KevinCountry
 import eu.kevin.demo.auth.entities.ApiPayment
-import eu.kevin.demo.data.entities.Creditor
+import eu.kevin.demo.countryselection.CountrySelectionContract
+import eu.kevin.demo.main.entities.CreditorListItem
 import eu.kevin.inapppayments.paymentsession.PaymentSessionContract
 import eu.kevin.inapppayments.paymentsession.entities.PaymentSessionConfiguration
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import android.content.Intent
-import android.net.Uri
-import eu.kevin.demo.countryselection.CountrySelectionContract
-import eu.kevin.common.extensions.setFragmentResultListener
-import eu.kevin.demo.helpers.TextsProvider
-import eu.kevin.demo.main.entities.CreditorListItem
 
 
 class MainFragment : Fragment(), MainViewCallback {
 
     private val viewModel: MainViewModel by viewModels {
-        MainViewModel.Factory(this, TextsProvider(requireActivity().applicationContext))
+        MainViewModel.Factory(this)
     }
 
     private val makePayment = registerForActivityResult(PaymentSessionContract()) { result ->
         when (result) {
             is SessionResult.Success -> {
-                Toast.makeText(requireContext(), "Payment ID: ${result.value.paymentId}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    "Payment ID: ${result.value.paymentId}",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
             is SessionResult.Canceled -> {
                 Toast.makeText(requireContext(), "Payment cancelled", Toast.LENGTH_SHORT).show()
@@ -47,7 +49,11 @@ class MainFragment : Fragment(), MainViewCallback {
 
     private lateinit var contentView: MainView
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         observeChanges()
         listenForCountrySelectedResult()
         return MainView(inflater.context).also {
@@ -66,6 +72,13 @@ class MainFragment : Fragment(), MainViewCallback {
                 when (action) {
                     is MainViewAction.OpenPaymentSession -> {
                         openPaymentSession(action.payment, action.paymentType)
+                    }
+                    is MainViewAction.ShowFieldValidations -> {
+                        contentView.showInputFieldValidations(
+                            action.emailValidationResult,
+                            action.amountValidationResult,
+                            action.termsAccepted
+                        )
                     }
                 }
             }.launchIn(this)
@@ -89,20 +102,16 @@ class MainFragment : Fragment(), MainViewCallback {
 
     // MainViewCallback
 
-    override fun onProceedClick() {
-        viewModel.onProceedClick()
-    }
-
-    override fun onEmailChanged(value: String) {
-        viewModel.onEmailChanged(value)
-    }
-
-    override fun onAmountChanged(value: String) {
-        viewModel.onAmountChanged(value)
-    }
-
-    override fun onTermsCheckboxChanged(checked: Boolean) {
-        viewModel.onTermsCheckBoxChanged(checked)
+    override fun onProceedClick(
+        email: String,
+        amount: String,
+        termsAccepted: Boolean
+    ) {
+        viewModel.onProceedClick(
+            email = email,
+            amount = amount,
+            isTermsAccepted = termsAccepted
+        )
     }
 
     override fun openUrl(url: String) {
@@ -120,5 +129,9 @@ class MainFragment : Fragment(), MainViewCallback {
 
     override fun onSelectCountryClick() {
         viewModel.onSelectCountryClick()
+    }
+
+    override fun onAmountChanged(amount: String) {
+        viewModel.onAmountChanged(amount)
     }
 }
