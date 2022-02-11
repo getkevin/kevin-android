@@ -16,6 +16,7 @@ import eu.kevin.core.enums.KevinCountry
 import eu.kevin.demo.auth.entities.ApiPayment
 import eu.kevin.demo.countryselection.CountrySelectionContract
 import eu.kevin.demo.main.entities.CreditorListItem
+import eu.kevin.demo.main.entities.DonationRequest
 import eu.kevin.inapppayments.paymentsession.PaymentSessionContract
 import eu.kevin.inapppayments.paymentsession.entities.PaymentSessionConfiguration
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
@@ -102,16 +103,10 @@ class MainFragment : Fragment(), MainViewCallback {
 
     // MainViewCallback
 
-    override fun onProceedClick(
-        email: String,
-        amount: String,
-        termsAccepted: Boolean
+    override fun onDonateClick(
+        donationRequest: DonationRequest
     ) {
-        viewModel.onProceedClick(
-            email = email,
-            amount = amount,
-            isTermsAccepted = termsAccepted
-        )
+        viewModel.donate(donationRequest)
     }
 
     override fun openUrl(url: String) {
@@ -119,16 +114,12 @@ class MainFragment : Fragment(), MainViewCallback {
         startActivity(browserIntent)
     }
 
-    override fun onPaymentTypeSelected(position: Int) {
-        viewModel.onPaymentTypeChanged(position)
-    }
-
     override fun onCreditorSelected(creditor: CreditorListItem) {
         viewModel.onCreditorSelected(creditor)
     }
 
     override fun onSelectCountryClick() {
-        viewModel.onSelectCountryClick()
+        viewModel.openCountrySelection()
     }
 
     override fun onAmountChanged(amount: String) {

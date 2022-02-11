@@ -48,13 +48,14 @@ internal class CountrySelectionViewModel constructor(
                         Country(it)
                     }
 
-                val selectedCountry =
-                    supportedCountries.firstOrNull { it.iso == configuration.selectedCountry }
+                val selectedCountry = supportedCountries
+                    .firstOrNull { it.iso == configuration.selectedCountry }
                 if (selectedCountry != null) {
-                    supportedCountries.firstOrNull { it.iso == configuration.selectedCountry }?.isSelected =
-                        true
+                    supportedCountries
+                        .firstOrNull { it.iso == configuration.selectedCountry }?.isSelected = true
                 } else {
-                    supportedCountries.firstOrNull()?.isSelected = true
+                    supportedCountries
+                        .firstOrNull()?.isSelected = true
                 }
 
                 updateState {
@@ -88,7 +89,7 @@ internal class CountrySelectionViewModel constructor(
         ): T {
             return CountrySelectionViewModel(
                 SupportedCountryUseCase(
-                    kevinDataClient = ClientProvider.kevinDataClient
+                    kevinDataClient = ClientProvider.kevinApiClient
                 ),
                 Dispatchers.IO,
                 handle

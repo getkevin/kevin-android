@@ -12,12 +12,18 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.widget.TextViewCompat
 import eu.kevin.common.extensions.dp
 import eu.kevin.common.extensions.getColorFromAttr
 import eu.kevin.common.extensions.setDebounceClickListener
 import eu.kevin.demo.R
 
-class HorizontalSelectionBar : FrameLayout {
+class HorizontalSelectionBar @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyle: Int = 0,
+    defStyleRes: Int = 0
+) : FrameLayout(context, attrs, defStyle, defStyleRes) {
 
     private var textColor = ContextCompat.getColor(context, R.color.gray_01)
     private var selectedItemTextColor =
@@ -38,24 +44,6 @@ class HorizontalSelectionBar : FrameLayout {
         addView(it)
     }
 
-    private var onItemSelectedCallback: (Int) -> Unit = {}
-
-    constructor(context: Context) : this(context, null, 0)
-    constructor(context: Context, attrs: AttributeSet) : this(context, attrs, 0)
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : this(
-        context,
-        attrs,
-        defStyleAttr,
-        0
-    )
-
-    constructor(
-        context: Context,
-        attrs: AttributeSet?,
-        defStyleAttr: Int,
-        defStyleRes: Int
-    ) : super(context, attrs, defStyleAttr, defStyleRes)
-
     fun setItems(items: List<String>) = post {
         itemContainer.removeAllViews()
         itemContainer.weightSum = items.size.toFloat()
@@ -68,6 +56,8 @@ class HorizontalSelectionBar : FrameLayout {
         setCurrentItem(currentItemIndex)
     }
 
+    fun getCurrentItemIndex() = currentItemIndex
+
     private fun setCurrentItem(position: Int) {
         currentItemIndex = position
         itemViews.forEachIndexed { index, textView ->
@@ -77,19 +67,14 @@ class HorizontalSelectionBar : FrameLayout {
                 textView.setTextColor(textColor)
             }
         }
-        onItemSelectedCallback(position)
         animateSlidingViewPosition(position)
-    }
-
-    fun setOnItemSelectedListener(onItemSelected: (Int) -> Unit) {
-        onItemSelectedCallback = onItemSelected
     }
 
     private fun createItem(value: String, index: Int) = TextView(context).also {
         it.layoutParams = LinearLayout.LayoutParams(0, MATCH_PARENT).apply {
             weight = 1f
         }
-        it.setTypeface(null, Typeface.BOLD);
+        TextViewCompat.setTextAppearance(it, R.style.TextAppearance_Kevin_SelectionBar)
         if (index == currentItemIndex) {
             it.setTextColor(selectedItemTextColor)
         } else {

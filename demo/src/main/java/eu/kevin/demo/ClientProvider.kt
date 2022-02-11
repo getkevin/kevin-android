@@ -9,7 +9,7 @@ import eu.kevin.demo.data.KevinDataClientFactory
 import io.ktor.client.features.logging.*
 
 object ClientProvider {
-    val kevinDataClient: KevinDataClient by lazy {
+    val kevinApiClient: KevinDataClient by lazy {
         KevinDataClientFactory(
             baseUrl = KEVIN_API_URL,
             userAgent = "",
@@ -18,7 +18,7 @@ object ClientProvider {
         ).createClient(null)
     }
 
-    val kevinAuthClient: KevinApiClient by lazy {
+    val kevinDemoApiClient: KevinApiClient by lazy {
         KevinApiClientFactory(
             baseUrl = KEVIN_MOBILE_DEMO_API,
             userAgent = "",

@@ -14,8 +14,9 @@ import eu.kevin.demo.countryselection.CountrySelectionContract
 import eu.kevin.demo.countryselection.CountrySelectionFragmentConfiguration
 import eu.kevin.demo.extensions.toRepresentableBigDecimal
 import eu.kevin.demo.main.entities.CreditorListItem
-import eu.kevin.demo.main.entities.DonationConfiguration
-import eu.kevin.demo.main.entities.toListItems
+import eu.kevin.demo.main.entities.DonationRequest
+import eu.kevin.demo.main.entities.InitiateDonationRequest
+import eu.kevin.demo.main.factories.CreditorsListFactory
 import eu.kevin.demo.main.usecases.GetCreditorsUseCase
 import eu.kevin.demo.main.validation.AmountValidator
 import eu.kevin.demo.main.validation.EmailValidator
@@ -33,10 +34,7 @@ internal class MainViewModel constructor(
 ) : ViewModel() {
 
     private val _viewState = MutableStateFlow(MainViewState())
-
     private val _viewAction = Channel<MainViewAction>(Channel.BUFFERED)
-
-    private val donationConfiguration = DonationConfiguration()
 
     val viewState: StateFlow<MainViewState> = _viewState
     val viewAction = _viewAction.receiveAsFlow()
@@ -45,48 +43,16 @@ internal class MainViewModel constructor(
         loadCreditors(_viewState.value.selectedCountry)
     }
 
-    private fun loadCreditors(countryIso: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            _viewState.update {
-                it.copy(loadingCreditors = true)
-            }
-            try {
-                val creditors =
-                    getCreditorsUseCase.getCreditors(countryIso).toListItems()
-                _viewState.update {
-                    it.copy(
-                        creditors = creditors.mapIndexed { index, item ->
-                            item.copy(isSelected = index == 0)
-                        },
-                        loadingCreditors = false
-                    )
-                }
-                donationConfiguration.selectedCreditor = creditors.firstOrNull()
-            } catch (e: Exception) {
-                _viewState.update {
-                    it.copy(
-                        loadingCreditors = false,
-                        loadingState = LoadingState.Failure(e)
-                    )
-                }
-            }
-        }
-    }
-
     fun onCreditorSelected(creditor: CreditorListItem) {
-        donationConfiguration.selectedCreditor = creditor
         _viewState.update {
             it.copy(
                 creditors = it.creditors.map {
-                    it.copy(isSelected = it == donationConfiguration.selectedCreditor)
+                    it.copy(isSelected = it == creditor)
                 },
+                selectedCreditor = creditor,
                 loadingState = LoadingState.Loading(false)
             )
         }
-    }
-
-    fun onPaymentTypeChanged(position: Int) {
-        donationConfiguration.paymentType = PaymentType.values()[position]
     }
 
     fun onCountrySelected(iso: String) {
@@ -99,7 +65,7 @@ internal class MainViewModel constructor(
         loadCreditors(iso)
     }
 
-    fun onSelectCountryClick() {
+    fun openCountrySelection() {
         val config = CountrySelectionFragmentConfiguration(
             _viewState.value.selectedCountry
         )
@@ -109,67 +75,92 @@ internal class MainViewModel constructor(
     fun onAmountChanged(amount: String) {
         _viewState.update {
             it.copy(
-                buttonText = amount.toRepresentableBigDecimal(),
+                buttonText = amount.toRepresentableBigDecimal() ?: "0.00",
                 loadingState = LoadingState.Loading(false)
             )
         }
     }
 
-    fun onProceedClick(
-        email: String,
-        amount: String,
-        isTermsAccepted: Boolean
-    ) {
-        val emailValidationResult = EmailValidator.validate(email)
-        val amountValidationResult = AmountValidator.validate(amount)
+    fun donate(donationRequest: DonationRequest) {
+        val emailValidationResult = EmailValidator.validate(donationRequest.email)
+        val amountValidationResult = AmountValidator.validate(donationRequest.amount)
 
         _viewAction.trySend(
             MainViewAction.ShowFieldValidations(
                 emailValidationResult,
                 amountValidationResult,
-                isTermsAccepted
+                donationRequest.isTermsAccepted
             )
         )
 
-        if (emailValidationResult.isValid() && amountValidationResult.isValid() && isTermsAccepted) {
+        if (emailValidationResult.isValid() && amountValidationResult.isValid() && donationRequest.isTermsAccepted) {
             initiatePayment(
-                email = email,
-                amount = amount.toRepresentableBigDecimal(),
-                iban = donationConfiguration.selectedCreditor?.iban ?: "",
-                creditorName = donationConfiguration.selectedCreditor?.name ?: ""
+                InitiateDonationRequest(
+                    email = donationRequest.email,
+                    amount = donationRequest.amount,
+                    iban = viewState.value.selectedCreditor?.iban ?: "",
+                    creditorName = viewState.value.selectedCreditor?.name ?: "",
+                    paymentType = donationRequest.paymentType
+                )
             )
         }
     }
 
+    private fun loadCreditors(countryIso: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            _viewState.update {
+                it.copy(loadingCreditors = true)
+            }
+            try {
+                val creditors = CreditorsListFactory.getCreditorsList(
+                    creditors = getCreditorsUseCase.getCreditors(countryIso)
+                )
+                _viewState.update {
+                    it.copy(
+                        creditors = creditors.mapIndexed { index, item ->
+                            item.copy(isSelected = index == 0)
+                        },
+                        selectedCreditor = creditors.firstOrNull(),
+                        loadingCreditors = false
+                    )
+                }
+            } catch (e: Exception) {
+                _viewState.update {
+                    it.copy(
+                        loadingCreditors = false,
+                        loadingState = LoadingState.Failure(e)
+                    )
+                }
+            }
+        }
+    }
+
     private fun initiatePayment(
-        email: String,
-        amount: String,
-        iban: String,
-        creditorName: String
+        initiateDonationRequest: InitiateDonationRequest
     ) {
         viewModelScope.launch(Dispatchers.IO) {
             _viewState.update { it.copy(loadingState = LoadingState.Loading(true)) }
             try {
                 val initiatePaymentRequest = InitiatePaymentRequest(
-                    amount = amount,
-                    email = email,
-                    iban = iban,
-                    creditorName = creditorName
+                    amount = initiateDonationRequest.amount,
+                    email = initiateDonationRequest.email,
+                    iban = initiateDonationRequest.iban,
+                    creditorName = initiateDonationRequest.creditorName
                 )
-                val payment = when (donationConfiguration.paymentType) {
+                val payment = when (initiateDonationRequest.paymentType) {
                     PaymentType.BANK ->
-                        ClientProvider.kevinAuthClient.initializeBankPayment(
+                        ClientProvider.kevinDemoApiClient.initializeBankPayment(
                             initiatePaymentRequest
                         )
                     PaymentType.CARD ->
-                        ClientProvider.kevinAuthClient.initializeCardPayment(
+                        ClientProvider.kevinDemoApiClient.initializeCardPayment(
                             initiatePaymentRequest
                         )
                 }
                 _viewAction.send(
                     MainViewAction.OpenPaymentSession(
-                        payment,
-                        donationConfiguration.paymentType
+                        payment = payment,
+                        paymentType = initiateDonationRequest.paymentType
                     )
                 )
                 _viewState.update { it.copy(loadingState = LoadingState.Loading(false)) }
@@ -189,7 +180,7 @@ internal class MainViewModel constructor(
         ): T {
             return MainViewModel(
                 GetCreditorsUseCase(
-                    ClientProvider.kevinDataClient
+                    ClientProvider.kevinApiClient
                 )
             ) as T
         }

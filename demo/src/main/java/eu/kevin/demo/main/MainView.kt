@@ -16,13 +16,14 @@ import eu.kevin.common.helpers.ErrorHelper
 import eu.kevin.common.helpers.SnackbarHelper
 import eu.kevin.common.managers.KeyboardManager
 import eu.kevin.demo.R
+import eu.kevin.demo.countryselection.helpers.CountryHelper
 import eu.kevin.demo.databinding.FragmentMainBinding
 import eu.kevin.demo.extensions.setDebounceClickListener
-import eu.kevin.demo.helpers.CountryHelper
 import eu.kevin.demo.helpers.PaymentTypeHelper
 import eu.kevin.demo.helpers.SpannableStringHelper
 import eu.kevin.demo.helpers.SpannableStringLink
 import eu.kevin.demo.main.adapter.CreditorsAdapter
+import eu.kevin.demo.main.entities.DonationRequest
 import eu.kevin.demo.main.entities.ValidationResult
 import eu.kevin.demo.views.NumberTextWatcher
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
@@ -105,15 +106,6 @@ internal class MainView(context: Context) : FrameLayout(context) {
                 CountryHelper.getCountryName(context, state.selectedCountry)
             creditorsRecyclerView.isInvisible = state.loadingCreditors
             creditorsProgressBar.isGone = !state.loadingCreditors
-            amountTextField.error = state.amountError
-            emailTextField.error = state.emailError
-            termsErrorImageView.isGone = !state.termsError
-            if (state.emailError == null) {
-                emailTextField.isErrorEnabled = false
-            }
-            if (state.amountError == null) {
-                amountTextField.isErrorEnabled = false
-            }
         }
     }
 
@@ -133,10 +125,13 @@ internal class MainView(context: Context) : FrameLayout(context) {
         with(binding) {
             proceedButton.setOnClickListener {
                 hideKeyboard()
-                callback?.onProceedClick(
-                    binding.emailTextField.getInputText(),
-                    binding.amountTextField.getInputText(),
-                    binding.termsCheckbox.isChecked
+                callback?.onDonateClick(
+                    DonationRequest(
+                        email = binding.emailTextField.getInputText(),
+                        amount = binding.amountTextField.getInputText(),
+                        isTermsAccepted = binding.termsCheckbox.isChecked,
+                        paymentType = PaymentType.values()[binding.paymentTypeSelectionBar.getCurrentItemIndex()]
+                    )
                 )
             }
 
@@ -157,10 +152,6 @@ internal class MainView(context: Context) : FrameLayout(context) {
 
             countrySelectionContainer.setDebounceClickListener {
                 callback?.onSelectCountryClick()
-            }
-
-            paymentTypeSelectionBar.setOnItemSelectedListener {
-                callback?.onPaymentTypeSelected(it)
             }
         }
     }

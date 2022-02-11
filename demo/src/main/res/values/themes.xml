@@ -10,7 +10,7 @@
         <item name="colorOnSecondary">@color/white</item>
 
         <item name="android:textColor">@color/dark_blue</item>
-        <item name="fontFamily">@font/poppins</item>
+        <item name="fontFamily">@font/sf_pro_text_regular</item>
         <item name="colorControlHighlight">?rippleOnPrimaryColor</item>
 
         <item name="android:ambientShadowAlpha">0.01</item>
@@ -20,13 +20,15 @@
         <item name="android:navigationBarColor">@color/gray</item>
 
         <!--        Whitelabel styles-->
-        <item name="primaryBackgroundColor">@color/light_background</item>
+        <item name="primaryBackgroundColor">@color/athens_gray</item>
 
         <item name="rippleOnPrimaryColor">@color/blue</item>
 
         <item name="toolbarColor">@color/white</item>
 
         <item name="primaryTextColor">@color/kevin_black</item>
+
+        <item name="secondaryTextColor">@color/tuna_black</item>
 
         <item name="selectedOnSecondaryColor">@color/light_baby_blue</item>
 

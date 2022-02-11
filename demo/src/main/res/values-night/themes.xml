@@ -10,7 +10,7 @@
         <item name="colorOnSecondary">@color/white</item>
 
         <item name="android:textColor">@color/white</item>
-        <item name="fontFamily">@font/poppins</item>
+        <item name="fontFamily">@font/sf_pro_text_regular</item>
         <item name="colorControlHighlight">?rippleOnPrimaryColor</item>
 
         <item name="android:statusBarColor">@android:color/transparent</item>
@@ -24,6 +24,8 @@
         <item name="toolbarColor">@color/black</item>
 
         <item name="primaryTextColor">@color/white</item>
+
+        <item name="secondaryTextColor">@color/gray_01</item>
 
         <item name="selectedOnSecondaryColor">@color/darker_blue</item>
 

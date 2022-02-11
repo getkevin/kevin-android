@@ -1,16 +1,12 @@
 package eu.kevin.demo.main
 
 import eu.kevin.demo.main.entities.CreditorListItem
+import eu.kevin.demo.main.entities.DonationRequest
 
 interface MainViewCallback {
     fun onCreditorSelected(creditor: CreditorListItem)
-    fun onProceedClick(
-        email: String,
-        amount: String,
-        termsAccepted: Boolean
-    )
+    fun onDonateClick(donationRequest: DonationRequest)
     fun openUrl(url: String)
-    fun onPaymentTypeSelected(position: Int)
     fun onSelectCountryClick()
     fun onAmountChanged(amount: String)
 }
