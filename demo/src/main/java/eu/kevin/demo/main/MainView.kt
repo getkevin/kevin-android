@@ -21,6 +21,7 @@ import eu.kevin.demo.countryselection.helpers.CountryHelper
 import eu.kevin.demo.databinding.FragmentMainBinding
 import eu.kevin.demo.extensions.getCurrentLocale
 import eu.kevin.demo.extensions.removeNumberSeparator
+import eu.kevin.demo.extensions.replaceDecimalSeparatorWithDot
 import eu.kevin.demo.extensions.setDebounceClickListener
 import eu.kevin.demo.helpers.PaymentTypeHelper
 import eu.kevin.demo.helpers.SpannableStringHelper
@@ -158,7 +159,8 @@ internal class MainView(context: Context) : FrameLayout(context) {
                         email = binding.emailTextField.getInputText(),
                         amount = binding.amountTextField
                             .getInputText()
-                            .removeNumberSeparator(getCurrentLocale()),
+                            .removeNumberSeparator(getCurrentLocale())
+                            .replaceDecimalSeparatorWithDot(getCurrentLocale()),
                         isTermsAccepted = binding.termsCheckbox.isChecked,
                         paymentType = PaymentType.values()[binding.paymentTypeSelectionBar.getCurrentItemIndex()]
                     )
@@ -177,6 +179,7 @@ internal class MainView(context: Context) : FrameLayout(context) {
             amountTextField.editText?.addTextChangedListener {
                 val text = (it?.toString() ?: "")
                     .removeNumberSeparator(getCurrentLocale())
+                    .replaceDecimalSeparatorWithDot(getCurrentLocale())
 
                 callback?.onAmountChanged(text)
                 amountTextField.error = null

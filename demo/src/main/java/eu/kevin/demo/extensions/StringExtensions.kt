@@ -13,3 +13,9 @@ fun String.removeNumberSeparator(locale: Locale): String {
     val groupingSeparator = symbols.groupingSeparator.toString()
     return this.replace(groupingSeparator, "")
 }
+
+fun String.replaceDecimalSeparatorWithDot(locale: Locale): String {
+    val symbols = DecimalFormatSymbols(locale)
+    val decimalSeparator = symbols.decimalSeparator.toString()
+    return this.replace(decimalSeparator, ".")
+}
