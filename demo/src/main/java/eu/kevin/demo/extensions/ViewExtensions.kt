@@ -2,8 +2,6 @@ package eu.kevin.demo.extensions
 
 import android.os.SystemClock
 import android.view.View
-import android.view.ViewGroup
-import androidx.core.view.*
 import java.util.*
 
 fun View.getCurrentLocale(): Locale {

@@ -1,6 +1,5 @@
 package eu.kevin.demo.extensions
 
-import android.content.res.Resources
 import java.math.RoundingMode
 import java.text.DecimalFormatSymbols
 import java.util.*
