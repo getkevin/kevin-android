@@ -9,6 +9,7 @@ import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.entities.LoadingState
 import eu.kevin.core.networking.exceptions.ApiError
 import eu.kevin.demo.ClientProvider
+import eu.kevin.demo.auth.KevinApiClient
 import eu.kevin.demo.auth.entities.InitiatePaymentRequest
 import eu.kevin.demo.countryselection.CountrySelectionContract
 import eu.kevin.demo.countryselection.CountrySelectionFragmentConfiguration
@@ -28,9 +29,11 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import java.lang.RuntimeException
 
 internal class MainViewModel constructor(
-    private val getCreditorsUseCase: GetCreditorsUseCase
+    private val getCreditorsUseCase: GetCreditorsUseCase,
+    private val kevinApiClient: KevinApiClient
 ) : ViewModel() {
 
     private val _viewState = MutableStateFlow(MainViewState())
@@ -49,7 +52,6 @@ internal class MainViewModel constructor(
                 creditors = it.creditors.map {
                     it.copy(isSelected = it == creditor)
                 },
-                selectedCreditor = creditor,
                 loadingState = LoadingState.Loading(false)
             )
         }
@@ -94,15 +96,21 @@ internal class MainViewModel constructor(
         )
 
         if (emailValidationResult.isValid() && amountValidationResult.isValid() && donationRequest.isTermsAccepted) {
-            initiatePayment(
-                InitiateDonationRequest(
-                    email = donationRequest.email,
-                    amount = donationRequest.amount,
-                    iban = viewState.value.selectedCreditor?.iban ?: "",
-                    creditorName = viewState.value.selectedCreditor?.name ?: "",
-                    paymentType = donationRequest.paymentType
+            val selectedCreditor = viewState.value.creditors.firstOrNull { it.isSelected }
+
+            if (selectedCreditor == null) {
+                _viewState.update { it.copy(loadingState = LoadingState.Failure(RuntimeException())) }
+            } else {
+                initiatePayment(
+                    InitiateDonationRequest(
+                        email = donationRequest.email,
+                        amount = donationRequest.amount,
+                        iban = selectedCreditor.iban,
+                        creditorName = selectedCreditor.name,
+                        paymentType = donationRequest.paymentType
+                    )
                 )
-            )
+            }
         }
     }
 
@@ -120,7 +128,6 @@ internal class MainViewModel constructor(
                         creditors = creditors.mapIndexed { index, item ->
                             item.copy(isSelected = index == 0)
                         },
-                        selectedCreditor = creditors.firstOrNull(),
                         loadingCreditors = false
                     )
                 }
@@ -149,11 +156,11 @@ internal class MainViewModel constructor(
                 )
                 val payment = when (initiateDonationRequest.paymentType) {
                     PaymentType.BANK ->
-                        ClientProvider.kevinDemoApiClient.initializeBankPayment(
+                        kevinApiClient.initializeBankPayment(
                             initiatePaymentRequest
                         )
                     PaymentType.CARD ->
-                        ClientProvider.kevinDemoApiClient.initializeCardPayment(
+                        kevinApiClient.initializeCardPayment(
                             initiatePaymentRequest
                         )
                 }
@@ -181,7 +188,8 @@ internal class MainViewModel constructor(
             return MainViewModel(
                 GetCreditorsUseCase(
                     ClientProvider.kevinApiClient
-                )
+                ),
+                ClientProvider.kevinDemoApiClient
             ) as T
         }
     }

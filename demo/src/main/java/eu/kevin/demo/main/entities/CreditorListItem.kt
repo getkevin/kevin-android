@@ -8,13 +8,3 @@ data class CreditorListItem(
     val iban: String,
     val isSelected: Boolean = false
 )
-
-fun List<Creditor>.toListItems() =
-    map {
-        CreditorListItem(
-            logo = it.logo,
-            name = it.name,
-            iban = it.iban,
-            isSelected = false
-        )
-    }
