@@ -4,39 +4,10 @@ import android.os.SystemClock
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.*
+import java.util.*
 
-fun View.applySystemInsetsPadding(top: Boolean = false, bottom: Boolean = false) {
-    val originalPaddingTop = paddingTop
-    val originalPaddingBottom = paddingBottom
-    ViewCompat.setOnApplyWindowInsetsListener(this) { view, windowInsets ->
-        val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
-        if (top) {
-            view.updatePadding(top = originalPaddingTop + insets.top)
-        }
-        if (bottom) {
-            view.updatePadding(bottom = originalPaddingBottom + insets.bottom)
-        }
-        windowInsets
-    }
-}
-
-fun View.applySystemInsetsMargin(top: Boolean = false, bottom: Boolean = false) {
-    val originalMarginTop = marginTop
-    val originalMarginBottom = marginBottom
-    ViewCompat.setOnApplyWindowInsetsListener(this) { view, windowInsets ->
-        val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
-        if (top) {
-            view.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                topMargin = originalMarginTop + insets.top
-            }
-        }
-        if (bottom) {
-            view.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                bottomMargin = originalMarginBottom + insets.bottom
-            }
-        }
-        windowInsets
-    }
+fun View.getCurrentLocale(): Locale {
+    return this.context.resources.configuration.locales[0]
 }
 
 fun View.setDebounceClickListener(debounceTime: Long = 600L, action: () -> Unit) {

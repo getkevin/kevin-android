@@ -2,7 +2,6 @@ package eu.kevin.demo.views
 
 import android.animation.ObjectAnimator
 import android.content.Context
-import android.graphics.Typeface
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.view.Gravity

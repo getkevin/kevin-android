@@ -23,4 +23,8 @@
     <string name="window_main_email_blank_error">E-mail address is required</string>
     <string name="window_main_email_invalid_format_error">E-mail address is invalid</string>
     <string name="window_main_amount_blank_error">Amount must be greater than zero</string>
+    <string name="dialog_payment_success_title">Payment successful</string>
+    <string name="dialog_payment_success_button">Ok</string>
+    <string name="window_main_no_creditor_selected_error">Charity is not selected</string>
+    <string name="window_main_payment_canceled_error">Payment was canceled</string>
 </resources>

@@ -17,6 +17,8 @@ import eu.kevin.demo.extensions.toRepresentableBigDecimal
 import eu.kevin.demo.main.entities.CreditorListItem
 import eu.kevin.demo.main.entities.DonationRequest
 import eu.kevin.demo.main.entities.InitiateDonationRequest
+import eu.kevin.demo.main.entities.exceptions.CreditorNotSelectedException
+import eu.kevin.demo.main.entities.exceptions.PaymentCancelledException
 import eu.kevin.demo.main.factories.CreditorsListFactory
 import eu.kevin.demo.main.usecases.GetCreditorsUseCase
 import eu.kevin.demo.main.validation.AmountValidator
@@ -29,7 +31,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import java.lang.RuntimeException
 
 internal class MainViewModel constructor(
     private val getCreditorsUseCase: GetCreditorsUseCase,
@@ -99,7 +100,11 @@ internal class MainViewModel constructor(
             val selectedCreditor = viewState.value.creditors.firstOrNull { it.isSelected }
 
             if (selectedCreditor == null) {
-                _viewState.update { it.copy(loadingState = LoadingState.Failure(RuntimeException())) }
+                _viewState.update {
+                    it.copy(
+                        loadingState = LoadingState.Failure(CreditorNotSelectedException())
+                    )
+                }
             } else {
                 initiatePayment(
                     InitiateDonationRequest(
@@ -112,6 +117,25 @@ internal class MainViewModel constructor(
                 )
             }
         }
+    }
+
+    fun onPaymentSuccessful() {
+        _viewState.update {
+            MainViewState(
+                creditors = it.creditors,
+                selectedCountry = it.selectedCountry
+            )
+        }
+        _viewAction.trySend(MainViewAction.ResetFields)
+        _viewAction.trySend(MainViewAction.ShowSuccessDialog)
+    }
+
+    fun onPaymentFailure(error: Throwable) {
+        _viewState.update { it.copy(loadingState = LoadingState.Failure(error)) }
+    }
+
+    fun onPaymentCanceled() {
+        _viewState.update { it.copy(loadingState = LoadingState.Failure(PaymentCancelledException())) }
     }
 
     private fun loadCreditors(countryIso: String) {

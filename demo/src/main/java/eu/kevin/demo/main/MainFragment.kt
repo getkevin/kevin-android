@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -25,7 +24,6 @@ import kotlinx.coroutines.flow.onEach
 
 
 class MainFragment : Fragment(), MainViewCallback {
-
     private val viewModel: MainViewModel by viewModels {
         MainViewModel.Factory(this)
     }
@@ -33,17 +31,13 @@ class MainFragment : Fragment(), MainViewCallback {
     private val makePayment = registerForActivityResult(PaymentSessionContract()) { result ->
         when (result) {
             is SessionResult.Success -> {
-                Toast.makeText(
-                    requireContext(),
-                    "Payment ID: ${result.value.paymentId}",
-                    Toast.LENGTH_SHORT
-                ).show()
+                viewModel.onPaymentSuccessful()
             }
             is SessionResult.Canceled -> {
-                Toast.makeText(requireContext(), "Payment cancelled", Toast.LENGTH_SHORT).show()
+                viewModel.onPaymentCanceled()
             }
             is SessionResult.Failure -> {
-                Toast.makeText(requireContext(), result.error.message, Toast.LENGTH_SHORT).show()
+                viewModel.onPaymentFailure(result.error)
             }
         }
     }
@@ -80,6 +74,12 @@ class MainFragment : Fragment(), MainViewCallback {
                             action.amountValidationResult,
                             action.termsAccepted
                         )
+                    }
+                    is MainViewAction.ShowSuccessDialog -> {
+                        contentView.showSuccessDialog()
+                    }
+                    is MainViewAction.ResetFields -> {
+                        contentView.resetFields()
                     }
                 }
             }.launchIn(this)

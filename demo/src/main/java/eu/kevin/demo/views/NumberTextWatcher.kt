@@ -1,9 +1,8 @@
 package eu.kevin.demo.views
 
 import android.text.Editable
-import android.widget.EditText
 import android.text.TextWatcher
-import java.lang.NumberFormatException
+import android.widget.EditText
 import java.math.RoundingMode
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols

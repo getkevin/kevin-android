@@ -9,6 +9,7 @@ import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.updateLayoutParams
 import androidx.core.widget.addTextChangedListener
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import eu.kevin.common.entities.LoadingState
 import eu.kevin.common.entities.isLoading
 import eu.kevin.common.extensions.*
@@ -18,6 +19,8 @@ import eu.kevin.common.managers.KeyboardManager
 import eu.kevin.demo.R
 import eu.kevin.demo.countryselection.helpers.CountryHelper
 import eu.kevin.demo.databinding.FragmentMainBinding
+import eu.kevin.demo.extensions.getCurrentLocale
+import eu.kevin.demo.extensions.removeNumberSeparator
 import eu.kevin.demo.extensions.setDebounceClickListener
 import eu.kevin.demo.helpers.PaymentTypeHelper
 import eu.kevin.demo.helpers.SpannableStringHelper
@@ -25,6 +28,8 @@ import eu.kevin.demo.helpers.SpannableStringLink
 import eu.kevin.demo.main.adapter.CreditorsAdapter
 import eu.kevin.demo.main.entities.DonationRequest
 import eu.kevin.demo.main.entities.ValidationResult
+import eu.kevin.demo.main.entities.exceptions.CreditorNotSelectedException
+import eu.kevin.demo.main.entities.exceptions.PaymentCancelledException
 import eu.kevin.demo.views.NumberTextWatcher
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 
@@ -66,7 +71,7 @@ internal class MainView(context: Context) : FrameLayout(context) {
             amountTextField.editText?.addTextChangedListener(
                 NumberTextWatcher(
                     amountTextField.editText!!,
-                    resources.configuration.locales[0],
+                    getCurrentLocale(),
                     2
                 )
             )
@@ -89,7 +94,7 @@ internal class MainView(context: Context) : FrameLayout(context) {
             is LoadingState.Loading -> startLoading(state.loadingState.isLoading())
             is LoadingState.FailureWithMessage -> showError(state.loadingState.message)
             is LoadingState.Failure -> {
-                showError(ErrorHelper.getMessage(context, state.loadingState.error))
+                showError(getErrorMessage(state.loadingState.error))
             }
         }
         with(binding) {
@@ -121,6 +126,31 @@ internal class MainView(context: Context) : FrameLayout(context) {
         }
     }
 
+    fun showSuccessDialog() {
+        MaterialAlertDialogBuilder(context)
+            .setTitle(R.string.dialog_payment_success_title)
+            .setPositiveButton(R.string.dialog_payment_success_button) { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
+    }
+
+    fun resetFields() {
+        with(binding) {
+            emailTextField.editText?.setText("")
+            amountTextField.editText?.setText("")
+            termsCheckbox.isChecked = false
+        }
+    }
+
+    private fun getErrorMessage(error: Throwable): String {
+        return when (error) {
+            is CreditorNotSelectedException -> context.getString(R.string.window_main_no_creditor_selected_error)
+            is PaymentCancelledException -> context.getString(R.string.window_main_payment_canceled_error)
+            else -> ErrorHelper.getMessage(context, error)
+        }
+    }
+
     private fun initListeners() {
         with(binding) {
             proceedButton.setOnClickListener {
@@ -128,14 +158,16 @@ internal class MainView(context: Context) : FrameLayout(context) {
                 callback?.onDonateClick(
                     DonationRequest(
                         email = binding.emailTextField.getInputText(),
-                        amount = binding.amountTextField.getInputText(),
+                        amount = binding.amountTextField
+                            .getInputText()
+                            .removeNumberSeparator(getCurrentLocale()),
                         isTermsAccepted = binding.termsCheckbox.isChecked,
                         paymentType = PaymentType.values()[binding.paymentTypeSelectionBar.getCurrentItemIndex()]
                     )
                 )
             }
 
-            termsCheckbox.setOnCheckedChangeListener { _, checked ->
+            termsCheckbox.setOnCheckedChangeListener { _, _ ->
                 termsErrorImageView.isGone = true
             }
 
@@ -145,7 +177,10 @@ internal class MainView(context: Context) : FrameLayout(context) {
             }
 
             amountTextField.editText?.addTextChangedListener {
-                callback?.onAmountChanged(it?.toString() ?: "")
+                val text = (it?.toString() ?: "")
+                    .removeNumberSeparator(getCurrentLocale())
+
+                callback?.onAmountChanged(text)
                 amountTextField.error = null
                 amountTextField.isErrorEnabled = false
             }

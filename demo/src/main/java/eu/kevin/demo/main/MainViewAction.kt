@@ -1,8 +1,8 @@
 package eu.kevin.demo.main
 
-import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 import eu.kevin.demo.auth.entities.ApiPayment
 import eu.kevin.demo.main.entities.ValidationResult
+import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 
 internal sealed class MainViewAction {
     data class OpenPaymentSession(
@@ -15,4 +15,8 @@ internal sealed class MainViewAction {
         val amountValidationResult: ValidationResult,
         val termsAccepted: Boolean
     ) : MainViewAction()
+
+    object ShowSuccessDialog : MainViewAction()
+
+    object ResetFields : MainViewAction()
 }
