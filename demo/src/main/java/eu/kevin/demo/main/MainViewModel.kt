@@ -18,7 +18,6 @@ import eu.kevin.demo.main.entities.CreditorListItem
 import eu.kevin.demo.main.entities.DonationRequest
 import eu.kevin.demo.main.entities.InitiateDonationRequest
 import eu.kevin.demo.main.entities.exceptions.CreditorNotSelectedException
-import eu.kevin.demo.main.entities.exceptions.PaymentCancelledException
 import eu.kevin.demo.main.factories.CreditorsListFactory
 import eu.kevin.demo.main.usecases.GetCreditorsUseCase
 import eu.kevin.demo.main.validation.AmountValidator
@@ -132,10 +131,6 @@ internal class MainViewModel constructor(
 
     fun onPaymentFailure(error: Throwable) {
         _viewState.update { it.copy(loadingState = LoadingState.Failure(error)) }
-    }
-
-    fun onPaymentCanceled() {
-        _viewState.update { it.copy(loadingState = LoadingState.Failure(PaymentCancelledException())) }
     }
 
     private fun loadCreditors(countryIso: String) {

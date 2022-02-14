@@ -29,7 +29,6 @@ import eu.kevin.demo.main.adapter.CreditorsAdapter
 import eu.kevin.demo.main.entities.DonationRequest
 import eu.kevin.demo.main.entities.ValidationResult
 import eu.kevin.demo.main.entities.exceptions.CreditorNotSelectedException
-import eu.kevin.demo.main.entities.exceptions.PaymentCancelledException
 import eu.kevin.demo.views.NumberTextWatcher
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 
@@ -146,7 +145,6 @@ internal class MainView(context: Context) : FrameLayout(context) {
     private fun getErrorMessage(error: Throwable): String {
         return when (error) {
             is CreditorNotSelectedException -> context.getString(R.string.window_main_no_creditor_selected_error)
-            is PaymentCancelledException -> context.getString(R.string.window_main_payment_canceled_error)
             else -> ErrorHelper.getMessage(context, error)
         }
     }

@@ -3,7 +3,6 @@ package eu.kevin.demo.extensions
 import android.os.SystemClock
 import android.view.View
 import eu.kevin.common.extensions.getCurrentLocale
-import java.util.*
 
 fun View.getCurrentLocale() = context.getCurrentLocale()
 

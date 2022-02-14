@@ -33,12 +33,10 @@ class MainFragment : Fragment(), MainViewCallback {
             is SessionResult.Success -> {
                 viewModel.onPaymentSuccessful()
             }
-            is SessionResult.Canceled -> {
-                viewModel.onPaymentCanceled()
-            }
             is SessionResult.Failure -> {
                 viewModel.onPaymentFailure(result.error)
             }
+            is SessionResult.Canceled -> {}
         }
     }
 

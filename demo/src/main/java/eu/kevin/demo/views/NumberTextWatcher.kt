@@ -27,7 +27,7 @@ class NumberTextWatcher(
 
         val patternInt = "#,###"
         integerDecimalFormat = DecimalFormat(patternInt, symbols)
-        val patternDecimal = patternInt + decimalSeparator + replicate('#', numberOfDecimals)
+        val patternDecimal = patternInt + "." + replicate('#', numberOfDecimals)
         decimalFormat = DecimalFormat(patternDecimal, symbols).apply {
             isDecimalSeparatorAlwaysShown = true
             roundingMode = RoundingMode.FLOOR
@@ -35,7 +35,7 @@ class NumberTextWatcher(
     }
 
     override fun afterTextChanged(text: Editable) {
-        val value = text.toString()
+        val value = text.toString().replace(".", decimalSeparator)
         val hasFractionalPart = value.contains(decimalSeparator)
 
         editText.removeTextChangedListener(this)
