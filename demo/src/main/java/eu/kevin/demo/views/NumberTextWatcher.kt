@@ -25,7 +25,7 @@ class NumberTextWatcher(
         groupingSeparator = symbols.groupingSeparator.toString()
         decimalSeparator = symbols.decimalSeparator.toString()
 
-        val patternInt = "#${groupingSeparator}###"
+        val patternInt = "#,###"
         integerDecimalFormat = DecimalFormat(patternInt, symbols)
         val patternDecimal = patternInt + decimalSeparator + replicate('#', numberOfDecimals)
         decimalFormat = DecimalFormat(patternDecimal, symbols).apply {

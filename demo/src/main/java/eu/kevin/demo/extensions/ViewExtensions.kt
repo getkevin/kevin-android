@@ -2,11 +2,10 @@ package eu.kevin.demo.extensions
 
 import android.os.SystemClock
 import android.view.View
+import eu.kevin.common.extensions.getCurrentLocale
 import java.util.*
 
-fun View.getCurrentLocale(): Locale {
-    return this.context.resources.configuration.locales[0]
-}
+fun View.getCurrentLocale() = context.getCurrentLocale()
 
 fun View.setDebounceClickListener(debounceTime: Long = 600L, action: () -> Unit) {
     setOnClickListener(object : View.OnClickListener {
