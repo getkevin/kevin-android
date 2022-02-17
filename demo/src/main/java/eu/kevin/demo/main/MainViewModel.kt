@@ -5,7 +5,6 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.savedstate.SavedStateRegistryOwner
-import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.entities.LoadingState
 import eu.kevin.core.networking.exceptions.ApiError
 import eu.kevin.demo.ClientProvider
@@ -22,6 +21,7 @@ import eu.kevin.demo.main.factories.CreditorsListFactory
 import eu.kevin.demo.main.usecases.GetCreditorsUseCase
 import eu.kevin.demo.main.validation.AmountValidator
 import eu.kevin.demo.main.validation.EmailValidator
+import eu.kevin.demo.routing.DemoRouter
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
@@ -71,7 +71,7 @@ internal class MainViewModel constructor(
         val config = CountrySelectionFragmentConfiguration(
             _viewState.value.selectedCountry
         )
-        GlobalRouter.pushModalFragment(CountrySelectionContract.getFragment(config))
+        DemoRouter.pushModalFragment(CountrySelectionContract.getFragment(config))
     }
 
     fun onAmountChanged(amount: String) {

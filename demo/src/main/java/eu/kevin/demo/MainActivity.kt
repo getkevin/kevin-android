@@ -5,9 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
-import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.extensions.setFragmentResult
 import eu.kevin.demo.main.MainFragment
+import eu.kevin.demo.routing.DemoRouter
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -33,11 +33,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun startListeningForRouteRequests() {
         lifecycleScope.launch {
-            GlobalRouter.addOnPushModalFragmentListener(this) { modalFragment ->
+            DemoRouter.addOnPushModalFragmentListener(this) { modalFragment ->
                 modalFragment.show(supportFragmentManager, modalFragment::class.simpleName)
             }
 
-            GlobalRouter.addOnReturnFragmentResultListener(this) { result ->
+            DemoRouter.addOnReturnFragmentResultListener(this) { result ->
                 supportFragmentManager.setFragmentResult(result.contract, result.data)
             }
         }

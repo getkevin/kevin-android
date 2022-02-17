@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import eu.kevin.demo.databinding.ItemCreditorBinding
 import eu.kevin.demo.main.entities.CreditorListItem
 

@@ -6,11 +6,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.savedstate.SavedStateRegistryOwner
 import eu.kevin.common.architecture.BaseViewModel
-import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.entities.LoadingState
 import eu.kevin.demo.ClientProvider
 import eu.kevin.demo.countryselection.entities.Country
 import eu.kevin.demo.countryselection.usecases.SupportedCountryUseCase
+import eu.kevin.demo.routing.DemoRouter
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -76,7 +76,7 @@ internal class CountrySelectionViewModel constructor(
 
     private fun handleCountrySelection(countryIso: String) {
         val selectedCountry = state.value.supportedCountries.firstOrNull { it.iso == countryIso }
-        GlobalRouter.returnFragmentResult(CountrySelectionContract, selectedCountry!!.iso)
+        DemoRouter.returnFragmentResult(CountrySelectionContract, selectedCountry!!.iso)
     }
 
     @Suppress("UNCHECKED_CAST")
