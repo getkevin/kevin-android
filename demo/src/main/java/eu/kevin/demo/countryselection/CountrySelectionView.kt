@@ -25,8 +25,6 @@ internal class CountrySelectionView(context: Context) : BaseView<FragmentCountry
 
     private val countriesAdapter = CountryListAdapter {
         delegate?.onCountryClicked(it)
-    }.also {
-        it.context = context
     }
 
     init {

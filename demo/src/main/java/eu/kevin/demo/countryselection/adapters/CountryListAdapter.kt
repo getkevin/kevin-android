@@ -15,9 +15,12 @@ internal class CountryListAdapter(
     private val onCountryClicked: (String) -> Unit
 ) : BaseListAdapter<Country, ItemCountryListBinding>(items) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        return ViewHolder(ItemCountryListBinding.inflate(inflater, parent, false))
+    override fun onBindingRequested(
+        inflater: LayoutInflater,
+        parent: ViewGroup,
+        viewType: Int
+    ): ItemCountryListBinding {
+        return ItemCountryListBinding.inflate(inflater, parent, false)
     }
 
     override fun onBindViewHolder(binding: ItemCountryListBinding, item: Country, position: Int) {

@@ -1,22 +1,30 @@
 package eu.kevin.demo.countryselection.adapters
 
 import android.content.Context
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 
-abstract class BaseListAdapter<T, B : ViewBinding>(
+abstract class BaseListAdapter<T, V : ViewBinding>(
     open var items: List<T>
 ) : RecyclerView.Adapter<BaseListAdapter.ViewHolder>() {
 
-    lateinit var context: Context
+    protected lateinit var context: Context
 
     class ViewHolder(val binding: ViewBinding) : RecyclerView.ViewHolder(binding.root)
 
-    abstract fun onBindViewHolder(binding: B, item: T, position: Int)
+    abstract fun onBindViewHolder(binding: V, item: T, position: Int)
+    abstract fun onBindingRequested(inflater: LayoutInflater, parent: ViewGroup, viewType: Int): V
 
-    @Suppress("UNCHECKED_CAST")
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        context = parent.context
+        val inflater = LayoutInflater.from(parent.context)
+        return ViewHolder(onBindingRequested(inflater, parent, viewType))
+    }
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        onBindViewHolder(holder.binding as B, items[position], position)
+        onBindViewHolder(holder.binding as V, items[position], position)
     }
 
     override fun getItemCount() = items.size
