@@ -95,7 +95,11 @@ internal class MainViewModel constructor(
             )
         )
 
-        if (emailValidationResult.isValid() && amountValidationResult.isValid() && donationRequest.isTermsAccepted) {
+        if (
+            emailValidationResult.isValid() &&
+            amountValidationResult.isValid() &&
+            donationRequest.isTermsAccepted
+        ) {
             val selectedCreditor = viewState.value.creditors.firstOrNull { it.isSelected }
 
             if (selectedCreditor == null) {

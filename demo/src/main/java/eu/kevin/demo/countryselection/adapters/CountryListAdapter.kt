@@ -3,7 +3,6 @@ package eu.kevin.demo.countryselection.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import eu.kevin.common.architecture.BaseListAdapter
 import eu.kevin.common.extensions.getColorFromAttr
 import eu.kevin.common.extensions.setDebounceClickListener
 import eu.kevin.demo.R
@@ -22,7 +21,6 @@ internal class CountryListAdapter(
     }
 
     override fun onBindViewHolder(binding: ItemCountryListBinding, item: Country, position: Int) {
-        val context = binding.root.context
         with(binding) {
             root.setDebounceClickListener {
                 onCountryClicked.invoke(item.iso)

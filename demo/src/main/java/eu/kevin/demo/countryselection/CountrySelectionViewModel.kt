@@ -9,14 +9,14 @@ import eu.kevin.common.architecture.BaseViewModel
 import eu.kevin.common.entities.LoadingState
 import eu.kevin.demo.ClientProvider
 import eu.kevin.demo.countryselection.entities.Country
-import eu.kevin.demo.countryselection.usecases.SupportedCountryUseCase
+import eu.kevin.demo.countryselection.usecases.GetSupportedCountriesUseCase
 import eu.kevin.demo.routing.DemoRouter
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 internal class CountrySelectionViewModel constructor(
-    private val countryUseCase: SupportedCountryUseCase,
+    private val getSupportedCountriesUseCase: GetSupportedCountriesUseCase,
     private val ioDispatcher: CoroutineDispatcher,
     savedStateHandle: SavedStateHandle
 ) : BaseViewModel<CountrySelectionState, CountrySelectionIntent>(savedStateHandle) {
@@ -42,11 +42,7 @@ internal class CountrySelectionViewModel constructor(
         }
         viewModelScope.launch(ioDispatcher) {
             try {
-                val supportedCountries = countryUseCase.getSupportedCountries()
-                    .sortedBy { it }
-                    .map {
-                        Country(it)
-                    }
+                val supportedCountries = getSupportedCountriesUseCase.getSupportedCountries()
 
                 val selectedCountry = supportedCountries
                     .firstOrNull { it.iso == configuration.selectedCountry }
@@ -88,7 +84,7 @@ internal class CountrySelectionViewModel constructor(
             handle: SavedStateHandle
         ): T {
             return CountrySelectionViewModel(
-                SupportedCountryUseCase(
+                GetSupportedCountriesUseCase(
                     kevinDataClient = ClientProvider.kevinApiClient
                 ),
                 Dispatchers.IO,

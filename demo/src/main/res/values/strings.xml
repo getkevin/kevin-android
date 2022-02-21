@@ -26,4 +26,5 @@
     <string name="dialog_payment_success_title">Payment successful</string>
     <string name="dialog_payment_success_button">Ok</string>
     <string name="window_main_no_creditor_selected_error">Charity is not selected</string>
+    <string name="window_main_amount_field_currency">EUR</string>
 </resources>

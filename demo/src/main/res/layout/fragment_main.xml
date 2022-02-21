@@ -227,6 +227,17 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <TextView
+                style="@style/TextAppearance.Kevin.Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:text="@string/window_main_amount_field_currency"
+                android:textColor="@color/gray_01"
+                app:layout_constraintBottom_toBottomOf="@id/amount_text_field"
+                app:layout_constraintEnd_toEndOf="@id/amount_text_field"
+                app:layout_constraintTop_toTopOf="@id/amount_text_field" />
+
             <CheckBox
                 android:id="@+id/terms_checkbox"
                 android:layout_width="wrap_content"
