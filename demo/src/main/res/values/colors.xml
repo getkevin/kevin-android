@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="kevin_red">#FF0020</color>
+    <color name="kevin_black">#121212</color>
 
+    <color name="tuna_black">#373C42</color>
     <color name="blue">#5D80FE</color>
     <color name="dark_blue">#0B1E42</color>
     <color name="darker_blue">#2B3F82</color>
@@ -11,9 +13,12 @@
     <color name="black_30">#4D000000</color>
 
     <color name="gray">#BBBBBB</color>
+    <color name="gray_01">#7C8894</color>
     <color name="gray_02">#949AA3</color>
     <color name="gray_03">#DBDEE7</color>
     <color name="gray_04">#F2F2F2</color>
+    <color name="metallic_gray">#90A4AE</color>
+    <color name="athens_gray">#F2F2F7</color>
 
     <color name="white">#FFFFFFFF</color>
     <color name="white_50">#80FFFFFF</color>

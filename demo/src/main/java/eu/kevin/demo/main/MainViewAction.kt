@@ -1,9 +1,22 @@
 package eu.kevin.demo.main
 
-import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 import eu.kevin.demo.auth.entities.ApiPayment
+import eu.kevin.demo.main.entities.ValidationResult
+import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 
-sealed class MainViewAction {
-    data class OpenAccountLinkingSession(val state: String) : MainViewAction()
-    data class OpenPaymentSession(val payment: ApiPayment, val paymentType: PaymentType) : MainViewAction()
+internal sealed class MainViewAction {
+    data class OpenPaymentSession(
+        val payment: ApiPayment,
+        val paymentType: PaymentType
+    ) : MainViewAction()
+
+    data class ShowFieldValidations(
+        val emailValidationResult: ValidationResult,
+        val amountValidationResult: ValidationResult,
+        val termsAccepted: Boolean
+    ) : MainViewAction()
+
+    object ShowSuccessDialog : MainViewAction()
+
+    object ResetFields : MainViewAction()
 }

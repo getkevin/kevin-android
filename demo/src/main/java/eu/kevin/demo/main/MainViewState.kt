@@ -1,5 +1,12 @@
 package eu.kevin.demo.main
 
-sealed class MainViewState {
-    data class Loading(val isLoading: Boolean): MainViewState()
-}
+import eu.kevin.common.entities.LoadingState
+import eu.kevin.demo.main.entities.CreditorListItem
+
+data class MainViewState(
+    val loadingState: LoadingState = LoadingState.Loading(false),
+    val selectedCountry: String = "LT",
+    val creditors: List<CreditorListItem> = emptyList(),
+    val buttonText: String = "0.00",
+    val loadingCreditors: Boolean = false
+)
