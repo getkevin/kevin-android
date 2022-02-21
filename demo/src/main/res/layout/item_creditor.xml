@@ -12,8 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:adjustViewBounds="true"
-        android:maxWidth="90dp"
-        android:maxHeight="42dp"
+        android:padding="8dp"
         tools:src="@drawable/ic_country_flag_it" />
 
 </FrameLayout>
