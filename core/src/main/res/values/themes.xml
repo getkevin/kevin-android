@@ -23,11 +23,11 @@
 
         <item name="kevinColorBackground">@color/kevin_extra_light_blue</item>
         <item name="kevinColorOnBackground">@color/kevin_white</item>
-        <item name="kevinColorSelectedOnBackground">@color/kevin_blue</item>
+        <item name="kevinColorSelectedOnBackground">@color/kevin_gray_5</item>
         <item name="kevinColorRippleOnBackground">@color/kevin_blue</item>
         <item name="kevinColorSurface">@color/kevin_extra_light_blue</item>
         <item name="kevinColorOnSurface">@color/kevin_white</item>
-        <item name="kevinColorSelectedOnSurface">@color/kevin_blue</item>
+        <item name="kevinColorSelectedOnSurface">@color/kevin_gray_5</item>
         <item name="kevinColorRippleOnSurface">@color/kevin_blue</item>
 
         <item name="kevinErrorTextColor">@color/kevin_red</item>
