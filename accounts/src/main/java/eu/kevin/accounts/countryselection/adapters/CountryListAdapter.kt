@@ -8,7 +8,7 @@ import eu.kevin.accounts.countryselection.entities.Country
 import eu.kevin.accounts.countryselection.helpers.CountryHelper
 import eu.kevin.accounts.databinding.ViewCountryListItemBinding
 import eu.kevin.common.architecture.BaseListAdapter
-import eu.kevin.common.extensions.getColorFromAttr
+import eu.kevin.common.extensions.getDrawableCompat
 import eu.kevin.common.extensions.setDebounceClickListener
 
 internal class CountryListAdapter(
@@ -23,13 +23,23 @@ internal class CountryListAdapter(
 
     override fun onBindViewHolder(binding: ViewCountryListItemBinding, item: Country, position: Int) {
         val context = binding.root.context
+        val background = when (position) {
+            0 -> context.getDrawableCompat(R.drawable.country_list_item_background_top)
+            items.size - 1 -> context.getDrawableCompat(R.drawable.country_list_item_background_bottom)
+            else -> context.getDrawableCompat(R.drawable.country_list_item_background_middle)
+        }
+        val foreground = when (position) {
+            0 -> context.getDrawableCompat(R.drawable.country_list_item_ripple_top)
+            items.size - 1 -> context.getDrawableCompat(R.drawable.country_list_item_ripple_bottom)
+            else -> context.getDrawableCompat(R.drawable.country_list_item_ripple_middle)
+        }
         with(binding) {
             root.setDebounceClickListener {
                 onCountryClicked.invoke(item.iso)
             }
-            root.setBackgroundColor(
-                if (item.isSelected) context.getColorFromAttr(R.attr.kevinSelectedOnSecondaryColor) else 0
-            )
+            root.isSelected = item.isSelected
+            root.background = background
+            root.foreground = foreground
             countryTextView.text = item.title
             countryFlagImageView.setImageDrawable(CountryHelper.getCountryFlagDrawable(context, item.iso))
         }

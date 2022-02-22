@@ -14,7 +14,7 @@ class DemoApplication : Application() {
         super.onCreate()
 
         Kevin.setLocale(Locale("en"))
-        Kevin.setTheme(R.style.KevinTheme)
+        Kevin.setTheme(R.style.Theme_Kevin_Base)
         KevinAccountsPlugin.configure(
             KevinAccountsConfiguration.builder()
                 .setCallbackUrl("https://redirect.kevin.eu/authorization.html")

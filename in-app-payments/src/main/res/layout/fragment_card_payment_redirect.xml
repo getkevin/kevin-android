@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?kevinSecondaryBackgroundColor"
+    android:background="?kevinColorSurface"
     tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
     <ImageView
@@ -20,7 +20,7 @@
 
     <TextView
         android:id="@+id/title_view"
-        style="?kevinTextHeadline3"
+        style="?kevinWindowTitleTextStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -32,7 +32,7 @@
 
     <TextView
         android:id="@+id/subtitle_view"
-        style="?kevinTextSubtitle1"
+        style="?kevinWindowSubtitleTextStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"

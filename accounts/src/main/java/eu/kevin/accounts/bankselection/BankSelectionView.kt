@@ -30,7 +30,7 @@ internal class BankSelectionView(context: Context) : BaseView<FragmentBankSelect
 
     init {
         with(binding) {
-            root.setBackgroundColor(context.getColorFromAttr(R.attr.kevinPrimaryBackgroundColor))
+            root.setBackgroundColor(context.getColorFromAttr(R.attr.kevinColorBackground))
             with(banksRecyclerView) {
                 addItemDecoration(GridListItemDecoration())
                 layoutManager = GridLayoutManager(context, 2)

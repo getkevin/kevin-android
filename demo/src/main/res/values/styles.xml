@@ -24,19 +24,19 @@
     <style name="TextAppearance.Kevin.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
         <item name="android:textSize">34sp</item>
         <item name="android:textColor">?primaryTextColor</item>
-        <item name="fontFamily">@font/sf_pro_text_semi_bold</item>
+        <item name="fontFamily">@font/circular_std_bold</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="TextAppearance.Kevin.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
         <item name="android:textSize">17sp</item>
         <item name="android:textColor">?secondaryTextColor</item>
-        <item name="fontFamily">@font/sf_pro_text_semi_bold</item>
+        <item name="fontFamily">@font/circular_std_bold</item>
     </style>
 
     <style name="TextAppearance.Kevin.SelectionBar" parent="TextAppearance.MaterialComponents.Headline2">
         <item name="android:textSize">16sp</item>
-        <item name="android:fontFamily">@font/sf_pro_text_medium</item>
+        <item name="android:fontFamily">@font/circular_std_medium</item>
     </style>
 
     <style name="TextAppearance.Kevin.Title" parent="TextAppearance.MaterialComponents.Subtitle1">
@@ -47,7 +47,7 @@
     <style name="TextAppearance.Kevin.Title2" parent="TextAppearance.MaterialComponents.Subtitle1">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/gray_01</item>
-        <item name="fontFamily">@font/sf_pro_text_regular</item>
+        <item name="fontFamily">@font/circular_std_book</item>
     </style>
 
     <style name="TextAppearance.Kevin.ModalTitle" parent="@android:style/TextAppearance">
@@ -60,7 +60,7 @@
     <style name="TextAppearance.Kevin.Subtitle" parent="TextAppearance.MaterialComponents.Subtitle1">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/gray_02</item>
-        <item name="fontFamily">@font/sf_pro_text_regular</item>
+        <item name="fontFamily">@font/circular_std_book</item>
     </style>
 
     <style name="BottomSheetDialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">

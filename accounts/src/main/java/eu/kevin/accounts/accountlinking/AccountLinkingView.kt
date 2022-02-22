@@ -25,7 +25,7 @@ internal class AccountLinkingView(context: Context) : BaseView<FragmentAccountLi
     private var lastClickPosition: Int = 0
 
     init {
-        binding.root.setBackgroundColor(context.getColorFromAttr(R.attr.kevinPrimaryBackgroundColor))
+        binding.root.setBackgroundColor(context.getColorFromAttr(R.attr.kevinColorBackground))
 
         with(binding.actionBar) {
             setNavigationOnClickListener {

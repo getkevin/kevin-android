@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?kevinPrimaryBackgroundColor"
+    android:background="?kevinColorBackground"
     tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
     <androidx.appcompat.widget.Toolbar
@@ -58,7 +58,7 @@
 
             <TextView
                 android:id="@+id/card_payment_label"
-                style="?kevinTextSubtitle1"
+                style="?kevinWindowSubtitleTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -71,7 +71,7 @@
 
             <TextView
                 android:id="@+id/card_number_label"
-                style="?kevinTextSubtitle1"
+                style="?kevinInputLabelTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -107,7 +107,7 @@
 
             <TextView
                 android:id="@+id/cardholder_name_label"
-                style="?kevinTextSubtitle1"
+                style="?kevinInputLabelTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -142,7 +142,7 @@
 
             <TextView
                 android:id="@+id/expiry_date_label"
-                style="?kevinTextSubtitle1"
+                style="?kevinInputLabelTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="26dp"
@@ -177,7 +177,7 @@
 
             <TextView
                 android:id="@+id/cvv_label"
-                style="?kevinTextSubtitle1"
+                style="?kevinInputLabelTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="26dp"
@@ -237,7 +237,7 @@
 
             <TextView
                 android:id="@+id/notice_view"
-                style="@style/Kevin.Text.Subtitle1"
+                style="?kevinWindowSubtitleTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="14dp"
@@ -280,9 +280,9 @@
 
     <ProgressBar
         android:id="@+id/progress_view"
+        style="?kevinProgressViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:indeterminate="true"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

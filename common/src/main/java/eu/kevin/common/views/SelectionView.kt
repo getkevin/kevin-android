@@ -5,11 +5,11 @@ import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
-import androidx.core.content.ContextCompat
+import androidx.core.widget.TextViewCompat
 import eu.kevin.common.R
 import eu.kevin.common.databinding.ViewSelectionBinding
 
-class SelectionView(
+class SelectionView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null
 ) : FrameLayout(context, attrs) {
@@ -29,6 +29,17 @@ class SelectionView(
     private val binding = ViewSelectionBinding.inflate(LayoutInflater.from(context), this)
 
     init {
-        background = ContextCompat.getDrawable(context, R.drawable.selection_background)
+        val styledAttributes = context.theme.obtainStyledAttributes(
+            attrs,
+            R.styleable.SelectionView,
+            0,
+            0
+        )
+        val backgroundDrawable = styledAttributes.getDrawable(R.styleable.SelectionView_android_background)
+        val textAppearance = styledAttributes.getResourceId(R.styleable.SelectionView_android_textAppearance, R.style.Kevin_Text_Title1)
+        background = backgroundDrawable
+        TextViewCompat.setTextAppearance(binding.titleView, textAppearance)
+
+        styledAttributes.recycle()
     }
 }

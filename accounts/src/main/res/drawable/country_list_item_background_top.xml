@@ -2,14 +2,14 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_selected="true">
         <shape android:shape="rectangle">
-            <solid android:color="?kevinSelectedOnSecondaryColor" />
-            <corners android:radius="10dp" />
+            <solid android:color="?kevinColorSelectedOnSurface" />
+            <corners android:topLeftRadius="10dp" android:topRightRadius="10dp" />
         </shape>
     </item>
     <item android:state_selected="false">
         <shape android:shape="rectangle">
-            <solid android:color="?kevinSecondaryBackgroundColor" />
-            <corners android:radius="10dp" />
+            <solid android:color="?kevinColorOnSurface" />
+            <corners android:topLeftRadius="10dp" android:topRightRadius="10dp" />
         </shape>
     </item>
 </selector>
