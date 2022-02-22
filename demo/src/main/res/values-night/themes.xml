@@ -16,43 +16,66 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@color/black</item>
 
+        <item name="bottomSheetDialogTheme">@style/BottomSheetTheme</item>
+
         <!--        Whitelabel styles-->
         <item name="primaryBackgroundColor">@color/black</item>
-
-        <item name="rippleOnPrimaryColor">@color/darker_blue</item>
-
+        <item name="secondaryBackgroundColor">@color/gray_0</item>
+        <item name="selectedOnSecondaryColor">@color/blue</item>
+        <item name="rippleOnPrimaryColor">@color/blue</item>
         <item name="toolbarColor">@color/black</item>
-
         <item name="primaryTextColor">@color/white</item>
-
-        <item name="secondaryTextColor">@color/gray_01</item>
-
-        <item name="selectedOnSecondaryColor">@color/darker_blue</item>
-
-        <item name="bottomSheetDialogTheme">@style/BottomSheetDialog</item>
-
+        <item name="secondaryTextColor">@color/gray_1</item>
     </style>
 
     <style name="AppTheme" parent="BaseAppTheme" />
 
-<!--    <style name="KevinTheme" parent="BaseKevinTheme">-->
-<!--        <item name="android:statusBarColor">@android:color/transparent</item>-->
-<!--        <item name="android:navigationBarColor">@color/black</item>-->
+    <style name="BaseKevinTheme" parent="Theme.Kevin.Base">
+        <item name="bottomSheetDialogTheme">@style/BottomSheetTheme</item>
 
-<!--        <item name="kevinToolbarColor">@color/darker_blue</item>-->
+        <item name="kevinColorToolbar">@color/black</item>
+        <item name="kevinColorBackground">@color/black</item>
+        <item name="kevinColorOnBackground">@color/gray_0</item>
+        <item name="kevinColorSelectedOnBackground">@color/blue</item>
+        <item name="kevinColorRippleOnBackground">@color/blue</item>
+        <item name="kevinColorSurface">@color/black</item>
+        <item name="kevinColorOnSurface">@color/gray_0</item>
+        <item name="kevinColorSelectedOnSurface">@color/blue</item>
+        <item name="kevinColorRippleOnSurface">@color/blue</item>
+        <item name="kevinColorTextError">@color/warning_red</item>
+        <item name="kevinColorTextPrimary">@color/white</item>
+        <item name="kevinColorTextSecondary">@color/gray_1</item>
 
-<!--        <item name="kevinPrimaryBackgroundColor">@color/black</item>-->
-<!--        <item name="kevinSecondaryBackgroundColor">@color/dark_blue</item>-->
+        <item name="kevinWindowTitleTextStyle">@style/Kevin.Text.Headline3</item>
+        <item name="kevinWindowSubtitleTextStyle">@style/Kevin.Text.Subtitle1</item>
+        <item name="kevinModalTitleTextStyle">@style/Kevin.Text.ModalTitle</item>
+        <item name="kevinInputLabelTextStyle">@style/Kevin.Text.Subtitle1</item>
+        <item name="kevinHeaderTextStyle">@style/Kevin.Text.Caption1</item>
+        <item name="kevinItemTitleTextStyle">@style/Kevin.Text.Title1</item>
+        <item name="kevinTextAmount">@style/Kevin.Text.Amount</item>
 
-<!--        <item name="kevinSelectedOnPrimaryColor">@color/dark_blue</item>-->
-<!--        <item name="kevinSelectedOnSecondaryColor">@color/darker_blue</item>-->
+        <item name="kevinPrimaryButtonStyle">@style/Button.Primary</item>
+        <item name="kevinSecondaryButtonStyle">@style/Button.Secondary</item>
+        <item name="kevinToolbarStyle">@style/Toolbar</item>
+        <item name="kevinTextInputContainerStyle">@style/TextInput.Layout</item>
+        <item name="kevinTextInputStyle">@style/TextInput</item>
+        <item name="kevinWindowTransitionStyle">@style/Kevin.Window.Transition</item>
+        <item name="kevinSelectionViewStyle">@style/Kevin.SelectionView</item>
+        <item name="kevinProgressViewStyle">@style/Kevin.ProgressView</item>
+    </style>
 
-<!--        <item name="kevinRippleOnPrimaryColor">@color/darker_blue</item>-->
-<!--        <item name="kevinRippleOnSecondaryColor">@color/darker_blue</item>-->
+    <style name="KevinTheme" parent="BaseKevinTheme" />
 
-<!--        <item name="kevinErrorTextColor">@color/kevin_red</item>-->
-<!--        <item name="kevinPrimaryTextColor">@color/white</item>-->
-<!--        <item name="kevinSecondaryTextColor">@color/gray_02</item>-->
-<!--    </style>-->
+    <style name="BottomSheetTheme.Base.21" parent="Theme.MaterialComponents.DayNight.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetDialog</item>
+        <item name="snackbarStyle">@style/SnackbarBottomSheet</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:navigationBarColor">@color/kevin_black_30</item>
+        <item name="elevationOverlayEnabled">false</item>
+        <item name="enableEdgeToEdge">true</item>
+        <item name="paddingBottomSystemWindowInsets">false</item>
+    </style>
+
+    <style name="BottomSheetTheme" parent="BottomSheetTheme.Base.21" />
 
 </resources>

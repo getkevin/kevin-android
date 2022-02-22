@@ -20,7 +20,6 @@
         <item name="android:statusBarColor">@color/kevin_black_30</item>
 
         <item name="kevinColorToolbar">@color/kevin_black</item>
-
         <item name="kevinColorBackground">@color/kevin_black</item>
         <item name="kevinColorOnBackground">@color/kevin_gray_0</item>
         <item name="kevinColorSelectedOnBackground">@color/kevin_blue</item>
@@ -29,7 +28,6 @@
         <item name="kevinColorOnSurface">@color/kevin_gray_0</item>
         <item name="kevinColorSelectedOnSurface">@color/kevin_blue</item>
         <item name="kevinColorRippleOnSurface">@color/kevin_blue</item>
-
         <item name="kevinColorTextError">@color/kevin_warning_red</item>
         <item name="kevinColorTextPrimary">@color/kevin_white</item>
         <item name="kevinColorTextSecondary">@color/kevin_gray_1</item>
