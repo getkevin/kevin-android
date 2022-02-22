@@ -9,10 +9,10 @@
     <attr name="kevinColorOnSurface" format="color|reference" />
     <attr name="kevinColorSelectedOnSurface" format="color|reference" />
     <attr name="kevinColorRippleOnSurface" format="color|reference" />
-    <attr name="kevinErrorTextColor" format="color|reference" />
-    <attr name="kevinPrimaryTextColor" format="color|reference" />
-    <attr name="kevinSecondaryTextColor" format="color|reference" />
-    <attr name="kevinToolbarColor" format="color|reference" />
+    <attr name="kevinColorTextError" format="color|reference" />
+    <attr name="kevinColorTextPrimary" format="color|reference" />
+    <attr name="kevinColorTextSecondary" format="color|reference" />
+    <attr name="kevinColorToolbar" format="color|reference" />
 
     <!--    Component attributes    -->
     <attr name="kevinToolbarStyle" format="reference" />

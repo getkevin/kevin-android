@@ -19,7 +19,7 @@
         <item name="android:navigationBarColor">@color/kevin_black_30</item>
         <item name="android:statusBarColor">@color/kevin_black_30</item>
 
-        <item name="kevinToolbarColor">@color/kevin_extra_light_blue</item>
+        <item name="kevinColorToolbar">@color/kevin_extra_light_blue</item>
 
         <item name="kevinColorBackground">@color/kevin_extra_light_blue</item>
         <item name="kevinColorOnBackground">@color/kevin_white</item>
@@ -30,9 +30,9 @@
         <item name="kevinColorSelectedOnSurface">@color/kevin_gray_5</item>
         <item name="kevinColorRippleOnSurface">@color/kevin_blue</item>
 
-        <item name="kevinErrorTextColor">@color/kevin_red</item>
-        <item name="kevinPrimaryTextColor">@color/kevin_black</item>
-        <item name="kevinSecondaryTextColor">@color/kevin_gray_1</item>
+        <item name="kevinColorTextError">@color/kevin_warning_red</item>
+        <item name="kevinColorTextPrimary">@color/kevin_black</item>
+        <item name="kevinColorTextSecondary">@color/kevin_gray_1</item>
 
         <item name="kevinWindowTitleTextStyle">@style/Kevin.Text.Headline3</item>
         <item name="kevinWindowSubtitleTextStyle">@style/Kevin.Text.Subtitle1</item>

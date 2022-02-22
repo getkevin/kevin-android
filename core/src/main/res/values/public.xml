@@ -4,24 +4,31 @@
     <public name="Theme.Kevin.Base" type="style" />
     <public name="Theme.Kevin.BottomSheet.Base" type="style" />
 
-    <!--    Base component styles    -->
+    <!--    Component styles    -->
     <public name="Kevin.Toolbar" type="style" />
     <public name="Kevin.Button.Primary" type="style" />
+    <public name="Kevin.Button.Secondary" type="style" />
+    <public name="Kevin.SelectionView" type="style" />
+    <public name="Kevin.ProgressView" type="style" />
+    <public name="Kevin.TextInput.Layout" type="style" />
+    <public name="Kevin.TextInput" type="style" />
 
     <!--    Base transitions    -->
     <public name="Kevin.Window.Transition" type="style" />
 
     <!--    Color attributes    -->
-    <public name="kevinPrimaryBackgroundColor" type="attr" />
-    <public name="kevinSecondaryBackgroundColor" type="attr" />
-    <public name="kevinToolbarColor" type="attr" />
-    <public name="kevinSelectedOnPrimaryColor" type="attr" />
-    <public name="kevinSelectedOnSecondaryColor" type="attr" />
-    <public name="kevinRippleOnPrimaryColor" type="attr" />
-    <public name="kevinRippleOnSecondaryColor" type="attr" />
-    <public name="kevinErrorTextColor" type="attr" />
-    <public name="kevinPrimaryTextColor" type="attr" />
-    <public name="kevinSecondaryTextColor" type="attr" />
+    <public name="kevinColorBackground" type="attr" />
+    <public name="kevinColorOnBackground" type="attr" />
+    <public name="kevinColorSelectedOnBackground" type="attr" />
+    <public name="kevinColorRippleOnBackground" type="attr" />
+    <public name="kevinColorSurface" type="attr" />
+    <public name="kevinColorOnSurface" type="attr" />
+    <public name="kevinColorSelectedOnSurface" type="attr" />
+    <public name="kevinColorRippleOnSurface" type="attr" />
+    <public name="kevinColorTextError" type="attr" />
+    <public name="kevinColorTextPrimary" type="attr" />
+    <public name="kevinColorTextSecondary" type="attr" />
+    <public name="kevinColorToolbar" type="attr" />
 
     <!--    Component attributes    -->
     <public name="kevinToolbarStyle" type="attr" />
@@ -30,9 +37,15 @@
     <public name="kevinWindowTransitionStyle" type="attr" />
     <public name="kevinTextInputContainerStyle" type="attr" />
     <public name="kevinTextInputStyle" type="attr" />
+    <public name="kevinSelectionViewStyle" type="attr" />
+    <public name="kevinProgressViewStyle" type="attr" />
 
     <!--    Typography attributes    -->
-    <public name="kevinTextHeadline3" type="attr" />
-    <public name="kevinTextSubtitle1" type="attr" />
+    <public name="kevinWindowTitleTextStyle" type="attr" />
+    <public name="kevinWindowSubtitleTextStyle" type="attr" />
+    <public name="kevinModalTitleTextStyle" type="attr" />
+    <public name="kevinInputLabelTextStyle" type="attr" />
+    <public name="kevinHeaderTextStyle" type="attr" />
+    <public name="kevinItemTitleTextStyle" type="attr" />
     <public name="kevinTextAmount" type="attr" />
 </resources>

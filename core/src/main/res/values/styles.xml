@@ -5,9 +5,9 @@
     <style name="Kevin.Toolbar" parent="Widget.MaterialComponents.Toolbar">
         <item name="navigationIcon">@drawable/ic_arrow_back</item>
         <item name="navigationIconTint">@color/kevin_blue</item>
-        <item name="android:background">?kevinToolbarColor</item>
+        <item name="android:background">?kevinColorToolbar</item>
         <item name="titleTextAppearance">@style/Kevin.Text.Headline3</item>
-        <item name="titleTextColor">?kevinPrimaryTextColor</item>
+        <item name="titleTextColor">?kevinColorTextPrimary</item>
     </style>
 
     <style name="Kevin.Button.Primary" parent="Widget.MaterialComponents.Button">
@@ -50,7 +50,7 @@
         <item name="boxStrokeWidth">1dp</item>
         <item name="boxBackgroundColor">?kevinColorOnBackground</item>
         <item name="boxStrokeColor">@color/text_input_state_color</item>
-        <item name="boxStrokeErrorColor">@color/kevin_warning_red</item>
+        <item name="boxStrokeErrorColor">?kevinColorTextError</item>
         <item name="errorTextAppearance">@style/Kevin.Text.Error</item>
         <item name="errorIconDrawable">@null</item>
         <item name="endIconMode">clear_text</item>
@@ -58,14 +58,14 @@
 
     <style name="Kevin.TextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="android:textAppearance">@style/Kevin.Text.Title2</item>
-        <item name="android:textColor">?kevinPrimaryTextColor</item>
+        <item name="android:textColor">?kevinColorTextPrimary</item>
     </style>
 
     <!--  Text styles  -->
     <style name="Kevin.Text.Headline3" parent="@android:style/TextAppearance">
         <item name="android:textSize">22sp</item>
         <item name="fontFamily">@font/circular_std_book</item>
-        <item name="android:textColor">?kevinPrimaryTextColor</item>
+        <item name="android:textColor">?kevinColorTextPrimary</item>
         <item name="android:gravity">center</item>
         <item name="android:textStyle">normal</item>
     </style>
@@ -73,7 +73,7 @@
     <style name="Kevin.Text.Title1" parent="@android:style/TextAppearance">
         <item name="android:textSize">16sp</item>
         <item name="fontFamily">@font/circular_std_medium</item>
-        <item name="android:textColor">?kevinPrimaryTextColor</item>
+        <item name="android:textColor">?kevinColorTextPrimary</item>
         <item name="android:gravity">start</item>
         <item name="android:textStyle">normal</item>
     </style>
@@ -81,7 +81,7 @@
     <style name="Kevin.Text.Title2" parent="@android:style/TextAppearance">
         <item name="android:textSize">16sp</item>
         <item name="fontFamily">@font/circular_std_book</item>
-        <item name="android:textColor">?kevinPrimaryTextColor</item>
+        <item name="android:textColor">?kevinColorTextPrimary</item>
         <item name="android:gravity">start</item>
         <item name="android:textStyle">normal</item>
     </style>
@@ -89,7 +89,7 @@
     <style name="Kevin.Text.Subtitle1" parent="@android:style/TextAppearance">
         <item name="android:textSize">14sp</item>
         <item name="fontFamily">@font/circular_std_book</item>
-        <item name="android:textColor">?kevinSecondaryTextColor</item>
+        <item name="android:textColor">?kevinColorTextSecondary</item>
         <item name="android:gravity">center</item>
         <item name="android:textStyle">normal</item>
     </style>
@@ -97,7 +97,7 @@
     <style name="Kevin.Text.Caption1" parent="@android:style/TextAppearance">
         <item name="android:textSize">14sp</item>
         <item name="fontFamily">@font/circular_std_medium</item>
-        <item name="android:textColor">?kevinSecondaryTextColor</item>
+        <item name="android:textColor">?kevinColorTextSecondary</item>
         <item name="android:gravity">start</item>
         <item name="android:textStyle">normal</item>
         <item name="textAllCaps">true</item>
@@ -106,7 +106,7 @@
     <style name="Kevin.Text.Error" parent="@android:style/TextAppearance">
         <item name="android:textSize">13sp</item>
         <item name="fontFamily">@font/circular_std_book</item>
-        <item name="android:textColor">@color/kevin_warning_red</item>
+        <item name="android:textColor">?kevinColorTextError</item>
         <item name="android:gravity">start</item>
         <item name="android:textStyle">normal</item>
     </style>
@@ -114,7 +114,7 @@
     <style name="Kevin.Text.Amount" parent="@android:style/TextAppearance">
         <item name="android:textSize">23sp</item>
         <item name="fontFamily">@font/circular_std_bold</item>
-        <item name="android:textColor">?kevinPrimaryTextColor</item>
+        <item name="android:textColor">?kevinColorTextPrimary</item>
         <item name="android:gravity">start</item>
         <item name="android:textStyle">normal</item>
     </style>
