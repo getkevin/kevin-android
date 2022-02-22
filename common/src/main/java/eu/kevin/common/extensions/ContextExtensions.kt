@@ -1,6 +1,7 @@
 package eu.kevin.common.extensions
 
 import android.content.Context
+import android.content.res.Configuration
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.util.TypedValue
@@ -38,6 +39,15 @@ fun Context.getCurrentLocale(): Locale {
         resources.configuration.locales.get(0)
     } else {
         resources.configuration.locale
+    }
+}
+
+fun Context.isDarkMode(): Boolean {
+    return when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+        Configuration.UI_MODE_NIGHT_YES -> true
+        Configuration.UI_MODE_NIGHT_NO -> false
+        Configuration.UI_MODE_NIGHT_UNDEFINED -> false
+        else -> false
     }
 }
 
