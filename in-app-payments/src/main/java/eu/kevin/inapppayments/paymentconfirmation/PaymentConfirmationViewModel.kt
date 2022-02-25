@@ -36,14 +36,21 @@ internal class PaymentConfirmationViewModel(
                     } else {
                         BuildConfig.KEVIN_BANK_PAYMENT_AUTHENTICATED_URL
                     }
-                    baseAuthenticatedPaymentUrl.format(configuration.paymentId)
+                    baseAuthenticatedPaymentUrl.format(
+                        configuration.paymentId,
+                        getKevinPluginLanguage()
+                    )
                 } else {
                     val basePaymentUrl = if (Kevin.isSandbox()) {
                         BuildConfig.KEVIN_SANDBOX_BANK_PAYMENT_URL
                     } else {
                         BuildConfig.KEVIN_BANK_PAYMENT_URL
                     }
-                    basePaymentUrl.format(configuration.paymentId, configuration.selectedBank!!)
+                    basePaymentUrl.format(
+                        configuration.paymentId,
+                        configuration.selectedBank!!,
+                        getKevinPluginLanguage()
+                    )
                 }
             }
             else -> {
@@ -70,6 +77,10 @@ internal class PaymentConfirmationViewModel(
         } else {
             GlobalRouter.returnFragmentResult(PaymentConfirmationContract, FragmentResult.Canceled)
         }
+    }
+
+    private fun getKevinPluginLanguage(): String {
+        return Kevin.getLocale()?.language?.lowercase() ?: "en"
     }
 
     @Suppress("UNCHECKED_CAST")
