@@ -13,7 +13,7 @@ internal class PaymentConfirmationFragment : BaseFragment<PaymentConfirmationSta
     PaymentConfirmationViewDelegate {
 
     override val viewModel: PaymentConfirmationViewModel by viewModels {
-        PaymentConfirmationViewModel.Factory(owner = this)
+        PaymentConfirmationViewModel.Factory(this)
     }
 
     var configuration: PaymentConfirmationFragmentConfiguration? by savedState()

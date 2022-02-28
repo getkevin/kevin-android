@@ -17,6 +17,7 @@ import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
+import java.util.*
 
 @ExperimentalCoroutinesApi
 class PaymentConfirmationViewModelTest : BaseViewModelTest() {
@@ -51,7 +52,7 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
             viewModel.state.toList(states)
         }
 
-        viewModel.intents.trySend(PaymentConfirmationIntent.Initialize(config))
+        viewModel.intents.trySend(PaymentConfirmationIntent.Initialize(config, Locale.ENGLISH))
 
         Assert.assertEquals(states.size, 2)
         Assert.assertEquals(states[0].url, "")
@@ -75,7 +76,7 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
             viewModel.state.toList(states)
         }
 
-        viewModel.intents.trySend(PaymentConfirmationIntent.Initialize(config))
+        viewModel.intents.trySend(PaymentConfirmationIntent.Initialize(config, Locale.ENGLISH))
 
         Assert.assertEquals(states.size, 2)
         Assert.assertEquals(states[0].url, "")
