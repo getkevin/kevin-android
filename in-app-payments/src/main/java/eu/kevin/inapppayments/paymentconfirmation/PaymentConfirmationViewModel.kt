@@ -15,21 +15,26 @@ import eu.kevin.inapppayments.paymentsession.enums.PaymentType.BANK
 import java.util.*
 
 internal class PaymentConfirmationViewModel(
-    savedStateHandle: SavedStateHandle,
-    private val deviceLocale: Locale
+    savedStateHandle: SavedStateHandle
 ) : BaseViewModel<PaymentConfirmationState, PaymentConfirmationIntent>(savedStateHandle) {
 
     override fun getInitialData() = PaymentConfirmationState()
 
     override suspend fun handleIntent(intent: PaymentConfirmationIntent) {
         when (intent) {
-            is Initialize -> initialize(intent.configuration)
+            is Initialize -> initialize(
+                configuration = intent.configuration,
+                defaultLocale = intent.defaultLocale
+            )
             is HandleBackClicked -> GlobalRouter.popCurrentFragment()
             is HandlePaymentCompleted -> handlePaymentCompleted(intent.uri)
         }
     }
 
-    private suspend fun initialize(configuration: PaymentConfirmationFragmentConfiguration) {
+    private suspend fun initialize(
+        configuration: PaymentConfirmationFragmentConfiguration,
+        defaultLocale: Locale
+    ) {
         val url = when (configuration.paymentType) {
             BANK -> {
                 if (configuration.skipAuthentication) {
@@ -40,7 +45,7 @@ internal class PaymentConfirmationViewModel(
                     }
                     baseAuthenticatedPaymentUrl.format(
                         configuration.paymentId,
-                        getKevinPluginLanguage()
+                        getKevinPluginLanguage(defaultLocale)
                     )
                 } else {
                     val basePaymentUrl = if (Kevin.isSandbox()) {
@@ -51,7 +56,7 @@ internal class PaymentConfirmationViewModel(
                     basePaymentUrl.format(
                         configuration.paymentId,
                         configuration.selectedBank!!,
-                        getKevinPluginLanguage()
+                        getKevinPluginLanguage(defaultLocale)
                     )
                 }
             }
@@ -84,14 +89,13 @@ internal class PaymentConfirmationViewModel(
         }
     }
 
-    private fun getKevinPluginLanguage(): String {
-        return Kevin.getLocale()?.language ?: deviceLocale.language
+    private fun getKevinPluginLanguage(defaultLocale: Locale): String {
+        return Kevin.getLocale()?.language ?: defaultLocale.language
     }
 
     @Suppress("UNCHECKED_CAST")
     class Factory(
-        owner: SavedStateRegistryOwner,
-        private val deviceLocale: Locale
+        owner: SavedStateRegistryOwner
     ) : AbstractSavedStateViewModelFactory(owner, null) {
         override fun <T : ViewModel?> create(
             key: String,
@@ -99,8 +103,7 @@ internal class PaymentConfirmationViewModel(
             handle: SavedStateHandle
         ): T {
             return PaymentConfirmationViewModel(
-                handle,
-                deviceLocale
+                handle
             ) as T
         }
     }

@@ -13,10 +13,7 @@ internal class PaymentConfirmationFragment : BaseFragment<PaymentConfirmationSta
     PaymentConfirmationViewDelegate {
 
     override val viewModel: PaymentConfirmationViewModel by viewModels {
-        PaymentConfirmationViewModel.Factory(
-            owner = this,
-            deviceLocale = resources.getCurrentLocale()
-        )
+        PaymentConfirmationViewModel.Factory(owner = this)
     }
 
     var configuration: PaymentConfirmationFragmentConfiguration? by savedState()
@@ -32,7 +29,12 @@ internal class PaymentConfirmationFragment : BaseFragment<PaymentConfirmationSta
 
     override fun onAttached() {
         super.onAttached()
-        viewModel.intents.trySend(Initialize(configuration!!))
+        viewModel.intents.trySend(
+            Initialize(
+                configuration = configuration!!,
+                defaultLocale = requireContext().getCurrentLocale()
+            )
+        )
     }
 
     override fun onBackPressed(): Boolean {
