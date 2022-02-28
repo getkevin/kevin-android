@@ -11,7 +11,11 @@ import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.core.plugin.Kevin
 import eu.kevin.inapppayments.BuildConfig
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.*
+import eu.kevin.inapppayments.paymentconfirmation.entities.PaymentConfirmationFrameColorsConfiguration
+import eu.kevin.inapppayments.paymentconfirmation.helpers.appendQueryParameter
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType.BANK
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import java.util.*
 
 internal class PaymentConfirmationViewModel(
@@ -23,13 +27,16 @@ internal class PaymentConfirmationViewModel(
 
     override suspend fun handleIntent(intent: PaymentConfirmationIntent) {
         when (intent) {
-            is Initialize -> initialize(intent.configuration)
+            is Initialize -> initialize(intent.configuration, intent.kevinFrameColorsConfiguration)
             is HandleBackClicked -> GlobalRouter.popCurrentFragment()
             is HandlePaymentCompleted -> handlePaymentCompleted(intent.uri)
         }
     }
 
-    private suspend fun initialize(configuration: PaymentConfirmationFragmentConfiguration) {
+    private suspend fun initialize(
+        configuration: PaymentConfirmationFragmentConfiguration,
+        paymentConfirmationFrameColorsConfiguration: PaymentConfirmationFrameColorsConfiguration
+    ) {
         val url = when (configuration.paymentType) {
             BANK -> {
                 if (configuration.skipAuthentication) {
@@ -38,9 +45,9 @@ internal class PaymentConfirmationViewModel(
                     } else {
                         BuildConfig.KEVIN_BANK_PAYMENT_AUTHENTICATED_URL
                     }
-                    baseAuthenticatedPaymentUrl.format(
-                        configuration.paymentId,
-                        getKevinPluginLanguage()
+                    appendRequiredQueryParameters(
+                        baseAuthenticatedPaymentUrl.format(configuration.paymentId),
+                        paymentConfirmationFrameColorsConfiguration
                     )
                 } else {
                     val basePaymentUrl = if (Kevin.isSandbox()) {
@@ -48,10 +55,12 @@ internal class PaymentConfirmationViewModel(
                     } else {
                         BuildConfig.KEVIN_BANK_PAYMENT_URL
                     }
-                    basePaymentUrl.format(
-                        configuration.paymentId,
-                        configuration.selectedBank!!,
-                        getKevinPluginLanguage()
+                    appendRequiredQueryParameters(
+                        basePaymentUrl.format(
+                            configuration.paymentId,
+                            configuration.selectedBank!!
+                        ),
+                        paymentConfirmationFrameColorsConfiguration
                     )
                 }
             }
@@ -61,7 +70,10 @@ internal class PaymentConfirmationViewModel(
                 } else {
                     BuildConfig.KEVIN_CARD_PAYMENT_URL
                 }
-                baseCardPaymentUrl.format(configuration.paymentId)
+                appendRequiredQueryParameters(
+                    baseCardPaymentUrl.format(configuration.paymentId),
+                    paymentConfirmationFrameColorsConfiguration
+                )
             }
         }
         updateState {
@@ -82,6 +94,18 @@ internal class PaymentConfirmationViewModel(
         } else {
             GlobalRouter.returnFragmentResult(PaymentConfirmationContract, FragmentResult.Canceled)
         }
+    }
+
+    private fun appendRequiredQueryParameters(
+        url: String,
+        paymentConfirmationFrameColorsConfiguration: PaymentConfirmationFrameColorsConfiguration
+    ): String {
+        return url
+            .appendQueryParameter("lang", getKevinPluginLanguage())
+            .appendQueryParameter(
+                "cs",
+                Json.encodeToString(paymentConfirmationFrameColorsConfiguration)
+            )
     }
 
     private fun getKevinPluginLanguage(): String {

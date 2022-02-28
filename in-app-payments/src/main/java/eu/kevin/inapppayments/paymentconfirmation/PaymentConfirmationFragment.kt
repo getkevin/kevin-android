@@ -3,13 +3,20 @@ package eu.kevin.inapppayments.paymentconfirmation
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import eu.kevin.common.architecture.BaseFragment
 import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.common.extensions.getColorFromAttr
 import eu.kevin.common.extensions.getCurrentLocale
+import eu.kevin.common.extensions.isDarkMode
+import eu.kevin.common.extensions.toHexColor
+import eu.kevin.inapppayments.R
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.*
+import eu.kevin.inapppayments.paymentconfirmation.entities.PaymentConfirmationFrameColorsConfiguration
 
-internal class PaymentConfirmationFragment : BaseFragment<PaymentConfirmationState, PaymentConfirmationIntent, PaymentConfirmationViewModel>(),
+internal class PaymentConfirmationFragment :
+    BaseFragment<PaymentConfirmationState, PaymentConfirmationIntent, PaymentConfirmationViewModel>(),
     PaymentConfirmationViewDelegate {
 
     override val viewModel: PaymentConfirmationViewModel by viewModels {
@@ -32,7 +39,12 @@ internal class PaymentConfirmationFragment : BaseFragment<PaymentConfirmationSta
 
     override fun onAttached() {
         super.onAttached()
-        viewModel.intents.trySend(Initialize(configuration!!))
+        viewModel.intents.trySend(
+            Initialize(
+                configuration!!,
+                getKevinFrameColorsConfigurationFromTheme()
+            )
+        )
     }
 
     override fun onBackPressed(): Boolean {
@@ -41,6 +53,18 @@ internal class PaymentConfirmationFragment : BaseFragment<PaymentConfirmationSta
         }
         return true
     }
+
+    private fun getKevinFrameColorsConfigurationFromTheme() =
+        with(requireContext()) {
+            PaymentConfirmationFrameColorsConfiguration(
+                backgroundColor = getColorFromAttr(R.attr.kevinPrimaryBackgroundColor).toHexColor(),
+                baseColor = getColorFromAttr(R.attr.kevinPrimaryBackgroundColor).toHexColor(),
+                headingsColor = getColorFromAttr(R.attr.kevinPrimaryTextColor).toHexColor(),
+                fontColor = getColorFromAttr(R.attr.kevinPrimaryTextColor).toHexColor(),
+                bankIconColor = if (isDarkMode()) "white" else "default",
+                defaultButtonColor = ContextCompat.getColor(this, R.color.kevin_blue).toHexColor()
+            )
+        }
 
     // PaymentConfirmationViewDelegate
 
@@ -58,6 +82,7 @@ internal class PaymentConfirmationFragment : BaseFragment<PaymentConfirmationSta
         try {
             val intent = Intent(Intent.ACTION_VIEW, uri)
             startActivity(intent)
-        } catch (ignored: Exception) {}
+        } catch (ignored: Exception) {
+        }
     }
 }

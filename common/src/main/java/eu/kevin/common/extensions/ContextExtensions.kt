@@ -1,6 +1,7 @@
 package eu.kevin.common.extensions
 
 import android.content.Context
+import android.content.res.Configuration
 import android.content.res.Resources
 import android.graphics.drawable.Drawable
 import android.os.Build
@@ -48,6 +49,10 @@ fun Resources.getCurrentLocale(): Locale {
     } else {
         configuration.locale
     }
+}
+
+fun Context.isDarkMode(): Boolean {
+    return (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
 }
 
 fun Context.dp(value: Int): Int = (value * resources.displayMetrics.density).toInt()
