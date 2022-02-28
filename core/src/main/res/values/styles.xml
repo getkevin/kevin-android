@@ -63,7 +63,7 @@
     <!--  Text styles  -->
     <style name="Kevin.Text.Headline3" parent="@android:style/TextAppearance">
         <item name="android:textSize">22sp</item>
-        <item name="fontFamily">@font/circular_std_book</item>
+        <item name="fontFamily">@font/circular_std_medium</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:gravity">center</item>
         <item name="android:textStyle">normal</item>
