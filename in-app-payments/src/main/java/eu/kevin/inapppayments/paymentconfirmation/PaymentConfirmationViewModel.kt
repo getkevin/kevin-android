@@ -50,8 +50,8 @@ internal class PaymentConfirmationViewModel(
                         BuildConfig.KEVIN_BANK_PAYMENT_AUTHENTICATED_URL
                     }
                     appendRequiredQueryParameters(
-                        baseAuthenticatedPaymentUrl.format(configuration.paymentId),
-                        paymentConfirmationFrameColorsConfiguration,
+                        url = baseAuthenticatedPaymentUrl.format(configuration.paymentId),
+                        paymentConfirmationFrameColorsConfiguration = paymentConfirmationFrameColorsConfiguration,
                         deviceLocale = defaultLocale
                     )
                 } else {
@@ -61,11 +61,11 @@ internal class PaymentConfirmationViewModel(
                         BuildConfig.KEVIN_BANK_PAYMENT_URL
                     }
                     appendRequiredQueryParameters(
-                        basePaymentUrl.format(
+                        url = basePaymentUrl.format(
                             configuration.paymentId,
                             configuration.selectedBank!!
                         ),
-                        paymentConfirmationFrameColorsConfiguration,
+                        paymentConfirmationFrameColorsConfiguration = paymentConfirmationFrameColorsConfiguration,
                         deviceLocale = defaultLocale
                     )
                 }
@@ -77,8 +77,8 @@ internal class PaymentConfirmationViewModel(
                     BuildConfig.KEVIN_CARD_PAYMENT_URL
                 }
                 appendRequiredQueryParameters(
-                    baseCardPaymentUrl.format(configuration.paymentId),
-                    paymentConfirmationFrameColorsConfiguration,
+                    url = baseCardPaymentUrl.format(configuration.paymentId),
+                    paymentConfirmationFrameColorsConfiguration = paymentConfirmationFrameColorsConfiguration,
                     deviceLocale = defaultLocale
                 )
             }
@@ -109,15 +109,15 @@ internal class PaymentConfirmationViewModel(
         deviceLocale: Locale
     ): String {
         return url
-            .appendQueryParameter("lang", getKevinPluginLanguage(deviceLocale))
+            .appendQueryParameter("lang", getActiveLocaleCode(deviceLocale))
             .appendQueryParameter(
                 "cs",
                 Json.encodeToString(paymentConfirmationFrameColorsConfiguration)
             )
     }
 
-    private fun getKevinPluginLanguage(deviceLocale: Locale): String {
-        return Kevin.getLocale()?.language ?: deviceLocale.language
+    private fun getActiveLocaleCode(defaultLocale: Locale): String {
+        return Kevin.getLocale()?.language ?: defaultLocale.language
     }
 
     @Suppress("UNCHECKED_CAST")

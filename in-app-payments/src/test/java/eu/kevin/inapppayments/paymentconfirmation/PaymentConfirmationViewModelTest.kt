@@ -39,7 +39,7 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
         val expectedRedirectUrl = BuildConfig.KEVIN_BANK_PAYMENT_URL.format(
             paymentId,
             selectedBank,
-            "en"
+            Locale.ENGLISH.language
         )
         val config = PaymentConfirmationFragmentConfiguration(
             paymentId,
