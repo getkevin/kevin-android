@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="64dp"
     android:layout_marginTop="16dp"
-    android:background="@drawable/bank_list_item_background"
-    android:foreground="@drawable/bank_list_item_ripple">
+    android:background="@drawable/bank_list_item_background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

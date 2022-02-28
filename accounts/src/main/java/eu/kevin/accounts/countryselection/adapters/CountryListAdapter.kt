@@ -28,18 +28,12 @@ internal class CountryListAdapter(
             items.size - 1 -> context.getDrawableCompat(R.drawable.country_list_item_background_bottom)
             else -> context.getDrawableCompat(R.drawable.country_list_item_background_middle)
         }
-        val foreground = when (position) {
-            0 -> context.getDrawableCompat(R.drawable.country_list_item_ripple_top)
-            items.size - 1 -> context.getDrawableCompat(R.drawable.country_list_item_ripple_bottom)
-            else -> context.getDrawableCompat(R.drawable.country_list_item_ripple_middle)
-        }
         with(binding) {
             root.setDebounceClickListener {
                 onCountryClicked.invoke(item.iso)
             }
             root.isSelected = item.isSelected
             root.background = background
-            root.foreground = foreground
             countryTextView.text = item.title
             countryFlagImageView.setImageDrawable(CountryHelper.getCountryFlagDrawable(context, item.iso))
         }

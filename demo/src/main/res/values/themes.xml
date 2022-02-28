@@ -37,18 +37,18 @@
     <style name="BaseKevinTheme" parent="Theme.Kevin.Base">
         <item name="bottomSheetDialogTheme">@style/BottomSheetTheme</item>
 
-        <item name="kevinColorToolbar">@color/extra_light_blue</item>
-        <item name="kevinColorBackground">@color/extra_light_blue</item>
-        <item name="kevinColorOnBackground">@color/white</item>
-        <item name="kevinColorSelectedOnBackground">@color/gray_5</item>
-        <item name="kevinColorRippleOnBackground">@color/blue</item>
-        <item name="kevinColorSurface">@color/extra_light_blue</item>
-        <item name="kevinColorOnSurface">@color/white</item>
-        <item name="kevinColorSelectedOnSurface">@color/gray_5</item>
-        <item name="kevinColorRippleOnSurface">@color/blue</item>
-        <item name="kevinColorTextError">@color/warning_red</item>
-        <item name="kevinColorTextPrimary">@color/black</item>
-        <item name="kevinColorTextSecondary">@color/gray_1</item>
+<!--        <item name="kevinColorToolbar">@color/extra_light_blue</item>-->
+<!--        <item name="kevinColorBackground">@color/extra_light_blue</item>-->
+<!--        <item name="kevinColorOnBackground">@color/white</item>-->
+<!--        <item name="kevinColorSelectedOnBackground">@color/gray_5</item>-->
+<!--        <item name="kevinColorRippleOnBackground">@color/blue</item>-->
+<!--        <item name="kevinColorSurface">@color/extra_light_blue</item>-->
+<!--        <item name="kevinColorOnSurface">@color/white</item>-->
+<!--        <item name="kevinColorSelectedOnSurface">@color/gray_5</item>-->
+<!--        <item name="kevinColorRippleOnSurface">@color/blue</item>-->
+<!--        <item name="kevinColorTextError">@color/warning_red</item>-->
+<!--        <item name="kevinColorTextPrimary">@color/black</item>-->
+<!--        <item name="kevinColorTextSecondary">@color/gray_1</item>-->
 
         <item name="kevinWindowTitleTextStyle">@style/Kevin.Text.Headline3</item>
         <item name="kevinWindowSubtitleTextStyle">@style/Kevin.Text.Subtitle1</item>

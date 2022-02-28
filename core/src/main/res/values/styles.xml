@@ -5,9 +5,9 @@
     <style name="Kevin.Toolbar" parent="Widget.MaterialComponents.Toolbar">
         <item name="navigationIcon">@drawable/ic_arrow_back</item>
         <item name="navigationIconTint">@color/kevin_blue</item>
-        <item name="android:background">?kevinColorToolbar</item>
+        <item name="android:background">?android:colorBackground</item>
         <item name="titleTextAppearance">@style/Kevin.Text.Headline3</item>
-        <item name="titleTextColor">?kevinColorTextPrimary</item>
+        <item name="titleTextColor">?android:attr/textColorPrimary</item>
     </style>
 
     <style name="Kevin.Button.Primary" parent="Widget.MaterialComponents.Button">
@@ -30,7 +30,6 @@
 
     <style name="Kevin.SelectionView" parent="android:Widget">
         <item name="android:background">@drawable/selection_view_background</item>
-        <item name="android:foreground">@drawable/selection_view_ripple</item>
         <item name="android:textAppearance">@style/Kevin.Text.Title1</item>
     </style>
 
@@ -48,9 +47,9 @@
         <item name="boxCornerRadiusTopStart">8dp</item>
         <item name="hintEnabled">false</item>
         <item name="boxStrokeWidth">1dp</item>
-        <item name="boxBackgroundColor">?kevinColorOnBackground</item>
+        <item name="boxBackgroundColor">?colorSurface</item>
         <item name="boxStrokeColor">@color/text_input_state_color</item>
-        <item name="boxStrokeErrorColor">?kevinColorTextError</item>
+        <item name="boxStrokeErrorColor">?colorError</item>
         <item name="errorTextAppearance">@style/Kevin.Text.Error</item>
         <item name="errorIconDrawable">@null</item>
         <item name="endIconMode">clear_text</item>
@@ -58,14 +57,14 @@
 
     <style name="Kevin.TextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="android:textAppearance">@style/Kevin.Text.Title2</item>
-        <item name="android:textColor">?kevinColorTextPrimary</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
     </style>
 
     <!--  Text styles  -->
     <style name="Kevin.Text.Headline3" parent="@android:style/TextAppearance">
         <item name="android:textSize">22sp</item>
         <item name="fontFamily">@font/circular_std_book</item>
-        <item name="android:textColor">?kevinColorTextPrimary</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:gravity">center</item>
         <item name="android:textStyle">normal</item>
     </style>
@@ -73,7 +72,7 @@
     <style name="Kevin.Text.Title1" parent="@android:style/TextAppearance">
         <item name="android:textSize">16sp</item>
         <item name="fontFamily">@font/circular_std_medium</item>
-        <item name="android:textColor">?kevinColorTextPrimary</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:gravity">start</item>
         <item name="android:textStyle">normal</item>
     </style>
@@ -81,7 +80,7 @@
     <style name="Kevin.Text.Title2" parent="@android:style/TextAppearance">
         <item name="android:textSize">16sp</item>
         <item name="fontFamily">@font/circular_std_book</item>
-        <item name="android:textColor">?kevinColorTextPrimary</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:gravity">start</item>
         <item name="android:textStyle">normal</item>
     </style>
@@ -89,7 +88,7 @@
     <style name="Kevin.Text.Subtitle1" parent="@android:style/TextAppearance">
         <item name="android:textSize">14sp</item>
         <item name="fontFamily">@font/circular_std_book</item>
-        <item name="android:textColor">?kevinColorTextSecondary</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
         <item name="android:gravity">center</item>
         <item name="android:textStyle">normal</item>
     </style>
@@ -97,7 +96,7 @@
     <style name="Kevin.Text.Caption1" parent="@android:style/TextAppearance">
         <item name="android:textSize">14sp</item>
         <item name="fontFamily">@font/circular_std_medium</item>
-        <item name="android:textColor">?kevinColorTextSecondary</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
         <item name="android:gravity">start</item>
         <item name="android:textStyle">normal</item>
         <item name="textAllCaps">true</item>
@@ -106,7 +105,7 @@
     <style name="Kevin.Text.Error" parent="@android:style/TextAppearance">
         <item name="android:textSize">13sp</item>
         <item name="fontFamily">@font/circular_std_book</item>
-        <item name="android:textColor">?kevinColorTextError</item>
+        <item name="android:textColor">?colorError</item>
         <item name="android:gravity">start</item>
         <item name="android:textStyle">normal</item>
     </style>
@@ -114,7 +113,7 @@
     <style name="Kevin.Text.Amount" parent="@android:style/TextAppearance">
         <item name="android:textSize">23sp</item>
         <item name="fontFamily">@font/circular_std_bold</item>
-        <item name="android:textColor">?kevinColorTextPrimary</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:gravity">start</item>
         <item name="android:textStyle">normal</item>
     </style>
@@ -136,11 +135,6 @@
         <item name="android:activityOpenExitAnimation">@anim/fade_out</item>
         <item name="android:activityCloseEnterAnimation">@anim/fade_in</item>
         <item name="android:activityCloseExitAnimation">@anim/slide_out</item>
-    </style>
-
-    <style name="Kevin.BottomSheet.Style" parent="Widget.MaterialComponents.BottomSheet">
-        <item name="shapeAppearanceOverlay">@style/Kevin.BottomSheet.Style.ShapeOverlay</item>
-        <item name="backgroundTint">?kevinColorSurface</item>
     </style>
 
     <style name="Kevin.BottomSheet.Style.ShapeOverlay">

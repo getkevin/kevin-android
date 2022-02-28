@@ -16,20 +16,6 @@
     <!--    Base transitions    -->
     <public name="Kevin.Window.Transition" type="style" />
 
-    <!--    Color attributes    -->
-    <public name="kevinColorBackground" type="attr" />
-    <public name="kevinColorOnBackground" type="attr" />
-    <public name="kevinColorSelectedOnBackground" type="attr" />
-    <public name="kevinColorRippleOnBackground" type="attr" />
-    <public name="kevinColorSurface" type="attr" />
-    <public name="kevinColorOnSurface" type="attr" />
-    <public name="kevinColorSelectedOnSurface" type="attr" />
-    <public name="kevinColorRippleOnSurface" type="attr" />
-    <public name="kevinColorTextError" type="attr" />
-    <public name="kevinColorTextPrimary" type="attr" />
-    <public name="kevinColorTextSecondary" type="attr" />
-    <public name="kevinColorToolbar" type="attr" />
-
     <!--    Component attributes    -->
     <public name="kevinToolbarStyle" type="attr" />
     <public name="kevinPrimaryButtonStyle" type="attr" />

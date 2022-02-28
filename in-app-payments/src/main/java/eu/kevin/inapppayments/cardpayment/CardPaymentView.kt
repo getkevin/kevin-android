@@ -33,7 +33,6 @@ internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentB
     private var previousStateUrl: String? = null
 
     init {
-        binding.root.setBackgroundColor(context.getColorFromAttr(R.attr.kevinColorBackground))
         with(binding.actionBar) {
             setNavigationOnClickListener {
                 delegate?.onBackClicked()

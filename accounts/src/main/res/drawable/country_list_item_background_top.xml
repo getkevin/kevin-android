@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true">
-        <shape android:shape="rectangle">
-            <solid android:color="?kevinColorSelectedOnSurface" />
-            <corners android:topLeftRadius="10dp" android:topRightRadius="10dp" />
-        </shape>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="?colorControlHighlight">
+    <item>
+        <selector>
+            <item android:state_selected="true">
+                <shape android:shape="rectangle">
+                    <solid android:color="?colorControlActivated" />
+                    <corners android:topLeftRadius="10dp" android:topRightRadius="10dp" />
+                </shape>
+            </item>
+            <item>
+                <shape android:shape="rectangle">
+                    <solid android:color="?colorSurface" />
+                    <corners android:topLeftRadius="10dp" android:topRightRadius="10dp" />
+                </shape>
+            </item>
+        </selector>
     </item>
-    <item android:state_selected="false">
-        <shape android:shape="rectangle">
-            <solid android:color="?kevinColorOnSurface" />
-            <corners android:topLeftRadius="10dp" android:topRightRadius="10dp" />
-        </shape>
-    </item>
-</selector>
+</ripple>

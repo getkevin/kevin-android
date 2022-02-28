@@ -33,18 +33,18 @@
     <style name="BaseKevinTheme" parent="Theme.Kevin.Base">
         <item name="bottomSheetDialogTheme">@style/BottomSheetTheme</item>
 
-        <item name="kevinColorToolbar">@color/black</item>
-        <item name="kevinColorBackground">@color/black</item>
-        <item name="kevinColorOnBackground">@color/gray_0</item>
-        <item name="kevinColorSelectedOnBackground">@color/blue</item>
-        <item name="kevinColorRippleOnBackground">@color/blue</item>
-        <item name="kevinColorSurface">@color/black</item>
-        <item name="kevinColorOnSurface">@color/gray_0</item>
-        <item name="kevinColorSelectedOnSurface">@color/blue</item>
-        <item name="kevinColorRippleOnSurface">@color/blue</item>
-        <item name="kevinColorTextError">@color/warning_red</item>
-        <item name="kevinColorTextPrimary">@color/white</item>
-        <item name="kevinColorTextSecondary">@color/gray_1</item>
+<!--        <item name="kevinColorToolbar">@color/black</item>-->
+<!--        <item name="kevinColorBackground">@color/black</item>-->
+<!--        <item name="kevinColorOnBackground">@color/gray_0</item>-->
+<!--        <item name="kevinColorSelectedOnBackground">@color/blue</item>-->
+<!--        <item name="kevinColorRippleOnBackground">@color/blue</item>-->
+<!--        <item name="kevinColorSurface">@color/black</item>-->
+<!--        <item name="kevinColorOnSurface">@color/gray_0</item>-->
+<!--        <item name="kevinColorSelectedOnSurface">@color/blue</item>-->
+<!--        <item name="kevinColorRippleOnSurface">@color/blue</item>-->
+<!--        <item name="kevinColorTextError">@color/warning_red</item>-->
+<!--        <item name="kevinColorTextPrimary">@color/white</item>-->
+<!--        <item name="kevinColorTextSecondary">@color/gray_1</item>-->
 
         <item name="kevinWindowTitleTextStyle">@style/Kevin.Text.Headline3</item>
         <item name="kevinWindowSubtitleTextStyle">@style/Kevin.Text.Subtitle1</item>
