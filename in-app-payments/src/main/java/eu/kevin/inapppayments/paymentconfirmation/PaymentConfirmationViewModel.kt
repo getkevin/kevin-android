@@ -45,7 +45,7 @@ internal class PaymentConfirmationViewModel(
                     }
                     baseAuthenticatedPaymentUrl.format(
                         configuration.paymentId,
-                        getKevinPluginLanguage(defaultLocale)
+                        getActiveLocaleCode(defaultLocale)
                     )
                 } else {
                     val basePaymentUrl = if (Kevin.isSandbox()) {
@@ -56,7 +56,7 @@ internal class PaymentConfirmationViewModel(
                     basePaymentUrl.format(
                         configuration.paymentId,
                         configuration.selectedBank!!,
-                        getKevinPluginLanguage(defaultLocale)
+                        getActiveLocaleCode(defaultLocale)
                     )
                 }
             }
@@ -89,7 +89,7 @@ internal class PaymentConfirmationViewModel(
         }
     }
 
-    private fun getKevinPluginLanguage(defaultLocale: Locale): String {
+    private fun getActiveLocaleCode(defaultLocale: Locale): String {
         return Kevin.getLocale()?.language ?: defaultLocale.language
     }
 
