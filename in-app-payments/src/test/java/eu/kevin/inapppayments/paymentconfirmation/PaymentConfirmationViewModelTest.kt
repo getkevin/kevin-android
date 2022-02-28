@@ -4,6 +4,7 @@ import android.net.Uri
 import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.inapppayments.BuildConfig
+import eu.kevin.inapppayments.paymentconfirmation.entities.PaymentConfirmationFrameColorsConfiguration
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 import eu.kevin.testcore.base.BaseViewModelTest
 import io.mockk.every
@@ -17,6 +18,7 @@ import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
+import java.util.*
 
 @ExperimentalCoroutinesApi
 class PaymentConfirmationViewModelTest : BaseViewModelTest() {
@@ -46,12 +48,21 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
             skipAuthentication = false
         )
 
+        val paymentConfirmationFrameColorsConfiguration =
+            PaymentConfirmationFrameColorsConfiguration("", "", "", "", "", "")
+
         val states = mutableListOf<PaymentConfirmationState>()
         val job = launch {
             viewModel.state.toList(states)
         }
 
-        viewModel.intents.trySend(PaymentConfirmationIntent.Initialize(config))
+        viewModel.intents.trySend(
+            PaymentConfirmationIntent.Initialize(
+                config,
+                paymentConfirmationFrameColorsConfiguration,
+                Locale.ENGLISH
+            )
+        )
 
         Assert.assertEquals(states.size, 2)
         Assert.assertEquals(states[0].url, "")
@@ -70,12 +81,21 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
             skipAuthentication = false
         )
 
+        val paymentConfirmationFrameColorsConfiguration =
+            PaymentConfirmationFrameColorsConfiguration("", "", "", "", "", "")
+
         val states = mutableListOf<PaymentConfirmationState>()
         val job = launch {
             viewModel.state.toList(states)
         }
 
-        viewModel.intents.trySend(PaymentConfirmationIntent.Initialize(config))
+        viewModel.intents.trySend(
+            PaymentConfirmationIntent.Initialize(
+                config,
+                paymentConfirmationFrameColorsConfiguration,
+                Locale.ENGLISH
+            )
+        )
 
         Assert.assertEquals(states.size, 2)
         Assert.assertEquals(states[0].url, "")

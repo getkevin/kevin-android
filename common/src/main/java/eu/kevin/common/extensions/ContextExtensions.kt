@@ -2,7 +2,6 @@ package eu.kevin.common.extensions
 
 import android.content.Context
 import android.content.res.Configuration
-import android.content.res.Resources
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.util.TypedValue
@@ -40,14 +39,6 @@ fun Context.getCurrentLocale(): Locale {
         resources.configuration.locales.get(0)
     } else {
         resources.configuration.locale
-    }
-}
-
-fun Resources.getCurrentLocale(): Locale {
-    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-        configuration.locales.get(0)
-    } else {
-        configuration.locale
     }
 }
 

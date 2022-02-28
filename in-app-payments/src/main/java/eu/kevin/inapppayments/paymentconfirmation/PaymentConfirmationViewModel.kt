@@ -19,15 +19,18 @@ import kotlinx.serialization.json.Json
 import java.util.*
 
 internal class PaymentConfirmationViewModel(
-    savedStateHandle: SavedStateHandle,
-    private val deviceLocale: Locale
+    savedStateHandle: SavedStateHandle
 ) : BaseViewModel<PaymentConfirmationState, PaymentConfirmationIntent>(savedStateHandle) {
 
     override fun getInitialData() = PaymentConfirmationState()
 
     override suspend fun handleIntent(intent: PaymentConfirmationIntent) {
         when (intent) {
-            is Initialize -> initialize(intent.configuration, intent.kevinFrameColorsConfiguration)
+            is Initialize -> initialize(
+                configuration = intent.configuration,
+                defaultLocale = intent.defaultLocale,
+                paymentConfirmationFrameColorsConfiguration = intent.kevinFrameColorsConfiguration
+            )
             is HandleBackClicked -> GlobalRouter.popCurrentFragment()
             is HandlePaymentCompleted -> handlePaymentCompleted(intent.uri)
         }
@@ -35,7 +38,8 @@ internal class PaymentConfirmationViewModel(
 
     private suspend fun initialize(
         configuration: PaymentConfirmationFragmentConfiguration,
-        paymentConfirmationFrameColorsConfiguration: PaymentConfirmationFrameColorsConfiguration
+        paymentConfirmationFrameColorsConfiguration: PaymentConfirmationFrameColorsConfiguration,
+        defaultLocale: Locale
     ) {
         val url = when (configuration.paymentType) {
             BANK -> {
@@ -47,7 +51,8 @@ internal class PaymentConfirmationViewModel(
                     }
                     appendRequiredQueryParameters(
                         baseAuthenticatedPaymentUrl.format(configuration.paymentId),
-                        paymentConfirmationFrameColorsConfiguration
+                        paymentConfirmationFrameColorsConfiguration,
+                        deviceLocale = defaultLocale
                     )
                 } else {
                     val basePaymentUrl = if (Kevin.isSandbox()) {
@@ -60,7 +65,8 @@ internal class PaymentConfirmationViewModel(
                             configuration.paymentId,
                             configuration.selectedBank!!
                         ),
-                        paymentConfirmationFrameColorsConfiguration
+                        paymentConfirmationFrameColorsConfiguration,
+                        deviceLocale = defaultLocale
                     )
                 }
             }
@@ -72,7 +78,8 @@ internal class PaymentConfirmationViewModel(
                 }
                 appendRequiredQueryParameters(
                     baseCardPaymentUrl.format(configuration.paymentId),
-                    paymentConfirmationFrameColorsConfiguration
+                    paymentConfirmationFrameColorsConfiguration,
+                    deviceLocale = defaultLocale
                 )
             }
         }
@@ -98,24 +105,24 @@ internal class PaymentConfirmationViewModel(
 
     private fun appendRequiredQueryParameters(
         url: String,
-        paymentConfirmationFrameColorsConfiguration: PaymentConfirmationFrameColorsConfiguration
+        paymentConfirmationFrameColorsConfiguration: PaymentConfirmationFrameColorsConfiguration,
+        deviceLocale: Locale
     ): String {
         return url
-            .appendQueryParameter("lang", getKevinPluginLanguage())
+            .appendQueryParameter("lang", getKevinPluginLanguage(deviceLocale))
             .appendQueryParameter(
                 "cs",
                 Json.encodeToString(paymentConfirmationFrameColorsConfiguration)
             )
     }
 
-    private fun getKevinPluginLanguage(): String {
+    private fun getKevinPluginLanguage(deviceLocale: Locale): String {
         return Kevin.getLocale()?.language ?: deviceLocale.language
     }
 
     @Suppress("UNCHECKED_CAST")
     class Factory(
-        owner: SavedStateRegistryOwner,
-        private val deviceLocale: Locale
+        owner: SavedStateRegistryOwner
     ) : AbstractSavedStateViewModelFactory(owner, null) {
         override fun <T : ViewModel?> create(
             key: String,
@@ -123,8 +130,7 @@ internal class PaymentConfirmationViewModel(
             handle: SavedStateHandle
         ): T {
             return PaymentConfirmationViewModel(
-                handle,
-                deviceLocale
+                handle
             ) as T
         }
     }

@@ -20,10 +20,7 @@ internal class PaymentConfirmationFragment :
     PaymentConfirmationViewDelegate {
 
     override val viewModel: PaymentConfirmationViewModel by viewModels {
-        PaymentConfirmationViewModel.Factory(
-            owner = this,
-            deviceLocale = resources.getCurrentLocale()
-        )
+        PaymentConfirmationViewModel.Factory(this)
     }
 
     var configuration: PaymentConfirmationFragmentConfiguration? by savedState()
@@ -41,8 +38,9 @@ internal class PaymentConfirmationFragment :
         super.onAttached()
         viewModel.intents.trySend(
             Initialize(
-                configuration!!,
-                getKevinFrameColorsConfigurationFromTheme()
+                configuration = configuration!!,
+                defaultLocale = requireContext().getCurrentLocale(),
+                kevinFrameColorsConfiguration = getKevinFrameColorsConfigurationFromTheme()
             )
         )
     }
