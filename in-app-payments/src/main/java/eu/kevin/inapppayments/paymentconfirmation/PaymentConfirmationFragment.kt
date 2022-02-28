@@ -6,13 +6,17 @@ import android.net.Uri
 import androidx.fragment.app.viewModels
 import eu.kevin.common.architecture.BaseFragment
 import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.common.extensions.getCurrentLocale
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.*
 
 internal class PaymentConfirmationFragment : BaseFragment<PaymentConfirmationState, PaymentConfirmationIntent, PaymentConfirmationViewModel>(),
     PaymentConfirmationViewDelegate {
 
     override val viewModel: PaymentConfirmationViewModel by viewModels {
-        PaymentConfirmationViewModel.Factory(this)
+        PaymentConfirmationViewModel.Factory(
+            owner = this,
+            deviceLocale = resources.getCurrentLocale()
+        )
     }
 
     var configuration: PaymentConfirmationFragmentConfiguration? by savedState()

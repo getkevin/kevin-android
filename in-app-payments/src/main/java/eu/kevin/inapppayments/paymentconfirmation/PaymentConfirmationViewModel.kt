@@ -12,9 +12,11 @@ import eu.kevin.core.plugin.Kevin
 import eu.kevin.inapppayments.BuildConfig
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.*
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType.BANK
+import java.util.*
 
 internal class PaymentConfirmationViewModel(
-    savedStateHandle: SavedStateHandle
+    savedStateHandle: SavedStateHandle,
+    private val deviceLocale: Locale
 ) : BaseViewModel<PaymentConfirmationState, PaymentConfirmationIntent>(savedStateHandle) {
 
     override fun getInitialData() = PaymentConfirmationState()
@@ -73,25 +75,32 @@ internal class PaymentConfirmationViewModel(
             val result = PaymentConfirmationResult(
                 uri.getQueryParameter("paymentId") ?: ""
             )
-            GlobalRouter.returnFragmentResult(PaymentConfirmationContract, FragmentResult.Success(result))
+            GlobalRouter.returnFragmentResult(
+                PaymentConfirmationContract,
+                FragmentResult.Success(result)
+            )
         } else {
             GlobalRouter.returnFragmentResult(PaymentConfirmationContract, FragmentResult.Canceled)
         }
     }
 
     private fun getKevinPluginLanguage(): String {
-        return Kevin.getLocale()?.language?.lowercase() ?: "en"
+        return Kevin.getLocale()?.language ?: deviceLocale.language
     }
 
     @Suppress("UNCHECKED_CAST")
-    class Factory(owner: SavedStateRegistryOwner) : AbstractSavedStateViewModelFactory(owner, null) {
+    class Factory(
+        owner: SavedStateRegistryOwner,
+        private val deviceLocale: Locale
+    ) : AbstractSavedStateViewModelFactory(owner, null) {
         override fun <T : ViewModel?> create(
             key: String,
             modelClass: Class<T>,
             handle: SavedStateHandle
         ): T {
             return PaymentConfirmationViewModel(
-                handle
+                handle,
+                deviceLocale
             ) as T
         }
     }
