@@ -6,6 +6,7 @@
         <item name="navigationIcon">@drawable/ic_toolbar_arrow_back</item>
         <item name="android:background">?toolbarColor</item>
         <item name="titleTextColor">?primaryTextColor</item>
+        <item name="titleTextAppearance">@style/TextAppearance.Headline3</item>
     </style>
 
     <style name="Button.Primary" parent="Kevin.Button.Primary">

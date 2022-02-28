@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="99dp"
     android:layout_height="51dp"
-    android:layout_marginEnd="16dp"
+    android:layout_marginHorizontal="8dp"
     android:background="@drawable/creditor_background"
     android:foreground="@drawable/creditor_ripple">
 
