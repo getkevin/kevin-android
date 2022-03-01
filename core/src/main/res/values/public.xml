@@ -10,6 +10,9 @@
     <public name="Kevin.Button.Secondary" type="style" />
     <public name="Kevin.SelectionView" type="style" />
     <public name="Kevin.ProgressView" type="style" />
+    <public name="Kevin.Header" type="style" />
+    <public name="Kevin.List.BankContainer" type="style" />
+    <public name="Kevin.List.CountryContainer" type="style" />
     <public name="Kevin.TextInput.Layout" type="style" />
     <public name="Kevin.TextInput" type="style" />
 
@@ -25,6 +28,9 @@
     <public name="kevinTextInputStyle" type="attr" />
     <public name="kevinSelectionViewStyle" type="attr" />
     <public name="kevinProgressViewStyle" type="attr" />
+    <public name="kevinHeaderStyle" type="attr" />
+    <public name="kevinBankListItemContainerStyle" type="attr" />
+    <public name="kevinCountryListItemContainerStyle" type="attr" />
 
     <!--    Typography attributes    -->
     <public name="kevinWindowTitleTextStyle" type="attr" />
@@ -34,4 +40,10 @@
     <public name="kevinHeaderTextStyle" type="attr" />
     <public name="kevinItemTitleTextStyle" type="attr" />
     <public name="kevinTextAmount" type="attr" />
+
+    <!--    Dimension attributes    -->
+    <public name="kevinMarginStart" type="attr" />
+    <public name="kevinMarginEnd" type="attr" />
+    <public name="kevinBankListItemCornerRadius" type="attr" />
+    <public name="kevinCountryListCornerRadius" type="attr" />
 </resources>

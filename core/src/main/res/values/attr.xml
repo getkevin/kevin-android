@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--    Color attributes    -->
+    <attr name="kevinSheetHandleColor" format="color|reference" />
+
     <!--    Component attributes    -->
     <attr name="kevinToolbarStyle" format="reference" />
     <attr name="kevinPrimaryButtonStyle" format="reference" />
@@ -9,6 +12,9 @@
     <attr name="kevinTextInputStyle" format="reference" />
     <attr name="kevinSelectionViewStyle" format="reference" />
     <attr name="kevinProgressViewStyle" format="reference" />
+    <attr name="kevinHeaderStyle" format="reference" />
+    <attr name="kevinBankListItemContainerStyle" format="reference" />
+    <attr name="kevinCountryListItemContainerStyle" format="reference" />
 
     <!--    Typography attributes    -->
     <attr name="kevinWindowTitleTextStyle" format="reference" />
@@ -18,6 +24,12 @@
     <attr name="kevinHeaderTextStyle" format="reference" />
     <attr name="kevinItemTitleTextStyle" format="reference" />
     <attr name="kevinTextAmount" format="reference" />
+
+    <!--    Dimension attributes    -->
+    <attr name="kevinMarginStart" format="dimension" />
+    <attr name="kevinMarginEnd" format="dimension" />
+    <attr name="kevinBankListItemCornerRadius" format="dimension" />
+    <attr name="kevinCountryListCornerRadius" format="dimension" />
 
     <declare-styleable name="SelectionView">
         <attr name="android:background" format="reference|color" />

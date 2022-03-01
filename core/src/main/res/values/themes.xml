@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <style name="Theme.Kevin.Base.21" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/kevin_blue</item>
         <item name="colorPrimaryVariant">@color/kevin_dark_blue</item>
@@ -32,6 +31,8 @@
         <item name="android:navigationBarColor">@color/kevin_black_30</item>
         <item name="android:statusBarColor">@color/kevin_black_30</item>
 
+        <item name="kevinSheetHandleColor">@color/kevin_gray_2</item>
+
         <item name="kevinWindowTitleTextStyle">@style/Kevin.Text.Headline3</item>
         <item name="kevinWindowSubtitleTextStyle">@style/Kevin.Text.Subtitle1</item>
         <item name="kevinModalTitleTextStyle">@style/Kevin.Text.ModalTitle</item>
@@ -39,6 +40,9 @@
         <item name="kevinHeaderTextStyle">@style/Kevin.Text.Caption1</item>
         <item name="kevinItemTitleTextStyle">@style/Kevin.Text.Title1</item>
         <item name="kevinTextAmount">@style/Kevin.Text.Amount</item>
+        <item name="kevinHeaderStyle">@style/Kevin.Header</item>
+        <item name="kevinBankListItemContainerStyle">@style/Kevin.List.BankContainer</item>
+        <item name="kevinCountryListItemContainerStyle">@style/Kevin.List.CountryContainer</item>
 
         <item name="kevinPrimaryButtonStyle">@style/Kevin.Button.Primary</item>
         <item name="kevinSecondaryButtonStyle">@style/Kevin.Button.Secondary</item>
@@ -48,6 +52,11 @@
         <item name="kevinWindowTransitionStyle">@style/Kevin.Window.Transition</item>
         <item name="kevinSelectionViewStyle">@style/Kevin.SelectionView</item>
         <item name="kevinProgressViewStyle">@style/Kevin.ProgressView</item>
+
+        <item name="kevinMarginStart">16dp</item>
+        <item name="kevinMarginEnd">16dp</item>
+        <item name="kevinBankListItemCornerRadius">10dp</item>
+        <item name="kevinCountryListCornerRadius">10dp</item>
     </style>
 
     <style name="Theme.Kevin.Base" parent="Theme.Kevin.Base.21" />

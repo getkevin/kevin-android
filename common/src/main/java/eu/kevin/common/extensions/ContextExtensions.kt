@@ -8,6 +8,7 @@ import android.util.TypedValue
 import androidx.annotation.*
 import androidx.core.content.ContextCompat
 import java.util.*
+import kotlin.math.roundToInt
 
 @ColorInt
 fun Context.getColorFromAttr(@AttrRes attribute: Int): Int {
@@ -22,6 +23,13 @@ fun Context.getStyleFromAttr(@AttrRes attribute: Int): Int {
     return TypedValue().let {
         theme.resolveAttribute(attribute, it, true)
         it.data
+    }
+}
+
+fun Context.getDimensionFromAttr(@AttrRes attribute: Int): Int {
+    return TypedValue().let {
+        theme.resolveAttribute(attribute, it, false)
+        it.getDimension(resources.displayMetrics).roundToInt()
     }
 }
 

@@ -34,10 +34,9 @@
 
             <TextView
                 android:id="@+id/country_selection_label"
-                style="?kevinHeaderTextStyle"
+                style="?kevinHeaderStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
                 android:paddingVertical="14dp"
                 android:text="@string/window_bank_selection_select_country_label"
@@ -52,7 +51,6 @@
                 style="?kevinSelectionViewStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="12dp"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -62,10 +60,9 @@
 
             <TextView
                 android:id="@+id/bank_selection_label"
-                style="?kevinHeaderTextStyle"
+                style="?kevinHeaderStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
                 android:paddingVertical="14dp"
                 android:text="@string/window_bank_selection_select_bank_label"
@@ -85,6 +82,8 @@
                 tools:itemCount="5"
                 tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 tools:listitem="@layout/view_bank_list_item"
+                tools:paddingEnd="?kevinMarginEnd"
+                tools:paddingStart="?kevinMarginStart"
                 tools:spanCount="2" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -105,11 +104,11 @@
     <Button
         android:id="@+id/continue_button"
         style="?kevinPrimaryButtonStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
+        android:layout_marginStart="?attr/kevinMarginStart"
+        android:layout_marginEnd="?attr/kevinMarginEnd"
         android:layout_marginBottom="16dp"
         android:text="@string/Continue"
+        app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

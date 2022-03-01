@@ -3,7 +3,8 @@ package eu.kevin.common.views
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import eu.kevin.common.extensions.dp
+import eu.kevin.common.R
+import eu.kevin.common.extensions.getDimensionFromAttr
 
 class GridListItemDecoration : RecyclerView.ItemDecoration() {
 
@@ -16,11 +17,11 @@ class GridListItemDecoration : RecyclerView.ItemDecoration() {
         val context = view.context
         val position = parent.getChildAdapterPosition(view)
         if (position % 2 == 0) {
-            outRect.left = context.dp(16)
-            outRect.right = context.dp(8)
+            outRect.left = context.getDimensionFromAttr(R.attr.kevinMarginStart)
+            outRect.right = context.getDimensionFromAttr(R.attr.kevinMarginEnd) / 2
         } else {
-            outRect.left = context.dp(8)
-            outRect.right = context.dp(16)
+            outRect.left = context.getDimensionFromAttr(R.attr.kevinMarginStart) / 2
+            outRect.right = context.getDimensionFromAttr(R.attr.kevinMarginEnd)
         }
     }
 }
