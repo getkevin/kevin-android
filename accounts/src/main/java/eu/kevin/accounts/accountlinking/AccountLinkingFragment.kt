@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import eu.kevin.accounts.accountlinking.AccountLinkingIntent.*
 import eu.kevin.common.architecture.BaseFragment
 import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.common.extensions.getCurrentLocale
 
 internal class AccountLinkingFragment : BaseFragment<AccountLinkingState, AccountLinkingIntent, AccountLinkingViewModel>(),
     AccountLinkingViewDelegate {
@@ -27,7 +28,12 @@ internal class AccountLinkingFragment : BaseFragment<AccountLinkingState, Accoun
     }
 
     override fun onAttached() {
-        viewModel.intents.trySend(Initialize(configuration!!))
+        viewModel.intents.trySend(
+            Initialize(
+                configuration = configuration!!,
+                defaultLocale = requireContext().getCurrentLocale()
+            )
+        )
     }
 
     override fun onBackPressed(): Boolean {

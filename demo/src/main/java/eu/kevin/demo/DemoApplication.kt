@@ -15,7 +15,7 @@ class DemoApplication : Application() {
 
         // set SDK's locale
         // device's default locale will be used if not set
-        Kevin.setLocale(Locale("en"))
+        Kevin.setLocale(Locale("lt"))
         Kevin.setTheme(R.style.KevinTheme)
         KevinAccountsPlugin.configure(
             KevinAccountsConfiguration.builder()

@@ -11,6 +11,7 @@ import eu.kevin.common.architecture.BaseViewModel
 import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.core.plugin.Kevin
+import java.util.*
 
 internal class AccountLinkingViewModel(
     savedStateHandle: SavedStateHandle
@@ -20,13 +21,19 @@ internal class AccountLinkingViewModel(
 
     override suspend fun handleIntent(intent: AccountLinkingIntent) {
         when (intent) {
-            is Initialize -> initialize(intent.configuration)
+            is Initialize -> initialize(
+                configuration = intent.configuration,
+                defaultLocale = intent.defaultLocale
+            )
             is HandleBackClicked -> GlobalRouter.popCurrentFragment()
             is HandleAuthorization -> handleAuthorizationReceived(intent.uri)
         }
     }
 
-    private suspend fun initialize(configuration: AccountLinkingFragmentConfiguration) {
+    private suspend fun initialize(
+        configuration: AccountLinkingFragmentConfiguration,
+        defaultLocale: Locale
+    ) {
         val baseLinkAccountUrl = if (Kevin.isSandbox()) {
             BuildConfig.KEVIN_SANDBOX_LINK_ACCOUNT_URL
         } else {
@@ -36,10 +43,15 @@ internal class AccountLinkingViewModel(
             it.copy(
                 bankRedirectUrl = baseLinkAccountUrl.format(
                     configuration.state,
-                    configuration.selectedBankId
+                    configuration.selectedBankId,
+                    getActiveLocaleCode(defaultLocale)
                 )
             )
         }
+    }
+
+    private fun getActiveLocaleCode(defaultLocale: Locale): String {
+        return Kevin.getLocale()?.language ?: defaultLocale.language
     }
 
     private fun handleAuthorizationReceived(uri: Uri) {

@@ -66,7 +66,10 @@ internal class PaymentConfirmationViewModel(
                 } else {
                     BuildConfig.KEVIN_CARD_PAYMENT_URL
                 }
-                baseCardPaymentUrl.format(configuration.paymentId)
+                baseCardPaymentUrl.format(
+                    configuration.paymentId,
+                    getActiveLocaleCode(defaultLocale)
+                )
             }
         }
         updateState {
