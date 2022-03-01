@@ -13,6 +13,7 @@ import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
+import java.util.*
 
 @ExperimentalCoroutinesApi
 class AccountLinkingViewModelTest : BaseViewModelTest() {
@@ -32,7 +33,8 @@ class AccountLinkingViewModelTest : BaseViewModelTest() {
         val selectedBank = "SWEDBANK_LT"
         val expectedRedirectUrl = BuildConfig.KEVIN_LINK_ACCOUNT_URL.format(
             state,
-            selectedBank
+            selectedBank,
+            Locale.ENGLISH.language
         )
         val config = AccountLinkingFragmentConfiguration(state, selectedBank)
 
@@ -41,7 +43,7 @@ class AccountLinkingViewModelTest : BaseViewModelTest() {
             viewModel.state.toList(states)
         }
 
-        viewModel.intents.trySend(AccountLinkingIntent.Initialize(config))
+        viewModel.intents.trySend(AccountLinkingIntent.Initialize(config, Locale.ENGLISH))
 
         assertEquals(states.size, 2)
         assertEquals(states[0].bankRedirectUrl, "")
