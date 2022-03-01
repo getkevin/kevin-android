@@ -15,8 +15,7 @@ import eu.kevin.inapppayments.R
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.*
 import eu.kevin.common.entities.KevinWebFrameColorsConfiguration
 
-internal class PaymentConfirmationFragment :
-    BaseFragment<PaymentConfirmationState, PaymentConfirmationIntent, PaymentConfirmationViewModel>(),
+internal class PaymentConfirmationFragment : BaseFragment<PaymentConfirmationState, PaymentConfirmationIntent, PaymentConfirmationViewModel>(),
     PaymentConfirmationViewDelegate {
 
     override val viewModel: PaymentConfirmationViewModel by viewModels {
@@ -80,7 +79,6 @@ internal class PaymentConfirmationFragment :
         try {
             val intent = Intent(Intent.ACTION_VIEW, uri)
             startActivity(intent)
-        } catch (ignored: Exception) {
-        }
+        } catch (ignored: Exception) {}
     }
 }
