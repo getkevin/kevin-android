@@ -46,4 +46,7 @@
     <public name="kevinMarginEnd" type="attr" />
     <public name="kevinBankListItemCornerRadius" type="attr" />
     <public name="kevinCountryListCornerRadius" type="attr" />
+
+    <!--    Other attributes    -->
+    <public name="kevinOverrideCountryBackground" type="attr" />
 </resources>

@@ -2,6 +2,7 @@
 <resources>
 
     <style name="Theme.Kevin.Base.21" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
         <item name="colorPrimary">@color/kevin_blue</item>
         <item name="colorPrimaryVariant">@color/kevin_dark_blue</item>
         <item name="colorOnPrimary">@color/kevin_white</item>
@@ -41,9 +42,6 @@
         <item name="kevinHeaderTextStyle">@style/Kevin.Text.Caption1</item>
         <item name="kevinItemTitleTextStyle">@style/Kevin.Text.Title1</item>
         <item name="kevinTextAmount">@style/Kevin.Text.Amount</item>
-        <item name="kevinHeaderStyle">@style/Kevin.Header</item>
-        <item name="kevinBankListItemContainerStyle">@style/Kevin.List.BankContainer</item>
-        <item name="kevinCountryListItemContainerStyle">@style/Kevin.List.CountryContainer</item>
 
         <item name="kevinPrimaryButtonStyle">@style/Kevin.Button.Primary</item>
         <item name="kevinSecondaryButtonStyle">@style/Kevin.Button.Secondary</item>
@@ -53,11 +51,16 @@
         <item name="kevinWindowTransitionStyle">@style/Kevin.Window.Transition</item>
         <item name="kevinSelectionViewStyle">@style/Kevin.SelectionView</item>
         <item name="kevinProgressViewStyle">@style/Kevin.ProgressView</item>
+        <item name="kevinHeaderStyle">@style/Kevin.Header</item>
+        <item name="kevinBankListItemContainerStyle">@style/Kevin.List.BankContainer</item>
+        <item name="kevinCountryListItemContainerStyle">@style/Kevin.List.CountryContainer</item>
 
         <item name="kevinMarginStart">16dp</item>
         <item name="kevinMarginEnd">16dp</item>
         <item name="kevinBankListItemCornerRadius">10dp</item>
         <item name="kevinCountryListCornerRadius">10dp</item>
+
+        <item name="kevinOverrideCountryBackground">false</item>
     </style>
 
     <style name="Theme.Kevin.Base" parent="Theme.Kevin.Base.21" />
@@ -80,13 +83,12 @@
         <item name="colorControlHighlight">@color/kevin_blue</item>
         <item name="colorControlActivated">@color/kevin_blue</item>
 
+        <item name="elevationOverlayEnabled">false</item>
         <item name="bottomSheetStyle">@style/Kevin.BottomSheet.Style</item>
         <item name="snackbarStyle">@style/Kevin.BottomSheet.Snackbar</item>
-        <item name="android:colorBackground">@color/kevin_black</item>
         <item name="android:windowIsFloating">false</item>
         <item name="android:navigationBarColor">@color/kevin_black_30</item>
         <item name="enableEdgeToEdge">true</item>
-        <item name="elevationOverlayEnabled">false</item>
         <item name="paddingBottomSystemWindowInsets">false</item>
     </style>
 

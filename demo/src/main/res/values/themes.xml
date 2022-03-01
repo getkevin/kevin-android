@@ -60,27 +60,33 @@
 
         <item name="bottomSheetDialogTheme">@style/BottomSheetTheme</item>
 
-        <item name="kevinWindowTitleTextStyle">@style/Kevin.Text.Headline3</item>
-        <item name="kevinWindowSubtitleTextStyle">@style/Kevin.Text.Subtitle1</item>
-        <item name="kevinModalTitleTextStyle">@style/Kevin.Text.ModalTitle</item>
-        <item name="kevinInputLabelTextStyle">@style/Kevin.Text.Subtitle1</item>
+        <item name="kevinSheetHandleColor">@color/gray_2</item>
+
+        <item name="kevinWindowTitleTextStyle">@style/TextAppearance.Headline3</item>
+        <item name="kevinWindowSubtitleTextStyle">@style/TextAppearance.Subtitle1</item>
+        <item name="kevinModalTitleTextStyle">@style/TextAppearance.ModalTitle</item>
+        <item name="kevinInputLabelTextStyle">@style/TextAppearance.Subtitle1</item>
         <item name="kevinHeaderTextStyle">@style/Kevin.Text.Caption1</item>
-        <item name="kevinItemTitleTextStyle">@style/Kevin.Text.Title1</item>
+        <item name="kevinItemTitleTextStyle">@style/TextAppearance.Title1</item>
         <item name="kevinTextAmount">@style/Kevin.Text.Amount</item>
 
-        <item name="kevinPrimaryButtonStyle">@style/Button.Primary</item>
-        <item name="kevinSecondaryButtonStyle">@style/Button.Secondary</item>
+        <item name="kevinPrimaryButtonStyle">@style/Button.Primary.Kevin</item>
+        <item name="kevinSecondaryButtonStyle">@style/Button.Secondary.Kevin</item>
         <item name="kevinToolbarStyle">@style/Toolbar</item>
-        <item name="kevinTextInputContainerStyle">@style/TextInput.Layout</item>
+        <item name="kevinTextInputContainerStyle">@style/TextInput.Layout.Kevin</item>
         <item name="kevinTextInputStyle">@style/TextInput</item>
-        <item name="kevinWindowTransitionStyle">@style/Kevin.Window.Transition</item>
-        <item name="kevinSelectionViewStyle">@style/Kevin.SelectionView</item>
+        <item name="kevinSelectionViewStyle">@style/SelectionView</item>
         <item name="kevinProgressViewStyle">@style/Kevin.ProgressView</item>
+        <item name="kevinHeaderStyle">@style/Kevin.Header</item>
+        <item name="kevinBankListItemContainerStyle">@style/Kevin.List.BankContainer</item>
+        <item name="kevinCountryListItemContainerStyle">@style/KevinCountryContainer</item>
 
         <item name="kevinMarginStart">16dp</item>
         <item name="kevinMarginEnd">16dp</item>
         <item name="kevinBankListItemCornerRadius">10dp</item>
         <item name="kevinCountryListCornerRadius">10dp</item>
+
+        <item name="kevinOverrideCountryBackground">false</item>
     </style>
 
     <style name="KevinTheme" parent="BaseKevinTheme" />

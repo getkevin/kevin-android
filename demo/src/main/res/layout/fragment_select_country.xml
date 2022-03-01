@@ -18,7 +18,7 @@
 
     <TextView
         android:id="@+id/countries_title_view"
-        style="@style/TextAppearance.Headline3"
+        style="@style/TextAppearance.ModalTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"

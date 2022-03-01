@@ -31,6 +31,9 @@
     <attr name="kevinBankListItemCornerRadius" format="dimension" />
     <attr name="kevinCountryListCornerRadius" format="dimension" />
 
+    <!--    Other attributes    -->
+    <attr name="kevinOverrideCountryBackground" format="boolean" />
+
     <declare-styleable name="SelectionView">
         <attr name="android:background" format="reference|color" />
         <attr name="android:textAppearance" format="reference" />

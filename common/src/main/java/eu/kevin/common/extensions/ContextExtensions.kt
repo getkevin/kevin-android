@@ -33,6 +33,13 @@ fun Context.getDimensionFromAttr(@AttrRes attribute: Int): Int {
     }
 }
 
+fun Context.getBooleanFromAttr(@AttrRes attribute: Int): Boolean {
+    return TypedValue().let {
+        theme.resolveAttribute(attribute, it, false)
+        it.data != 0
+    }
+}
+
 @ColorInt
 fun Context.getColorCompat(@ColorRes res: Int): Int {
     return ContextCompat.getColor(this, res)

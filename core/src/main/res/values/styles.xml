@@ -4,7 +4,6 @@
     <!--  Component styles  -->
     <style name="Kevin.Toolbar" parent="Widget.MaterialComponents.Toolbar">
         <item name="navigationIcon">@drawable/ic_arrow_back</item>
-        <item name="navigationIconTint">@color/kevin_blue</item>
         <item name="android:background">?android:colorBackground</item>
         <item name="titleTextAppearance">@style/Kevin.Text.Headline3</item>
         <item name="titleTextColor">?android:attr/textColorPrimary</item>
@@ -35,8 +34,8 @@
     <style name="Kevin.SelectionView" parent="android:Widget">
         <item name="android:background">@drawable/selection_view_background</item>
         <item name="android:textAppearance">@style/Kevin.Text.Title1</item>
-        <item name="android:layout_marginStart">16dp</item>
-        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_marginStart">?kevinMarginStart</item>
+        <item name="android:layout_marginEnd">?kevinMarginEnd</item>
     </style>
 
     <style name="Kevin.ProgressView" parent="Widget.AppCompat.ProgressBar">
@@ -46,9 +45,10 @@
     </style>
 
     <style name="Kevin.Header" parent="android:Widget">
-        <item name="android:layout_marginStart">16dp</item>
-        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_marginStart">?kevinMarginStart</item>
+        <item name="android:layout_marginEnd">?kevinMarginEnd</item>
         <item name="android:textAppearance">?kevinHeaderTextStyle</item>
+        <item name="android:textColor">@color/kevin_gray_1</item>
     </style>
 
     <style name="Kevin.List.BankContainer" parent="android:Widget">
@@ -56,14 +56,13 @@
     </style>
 
     <style name="Kevin.List.CountryContainer" parent="android:Widget">
-        <item name="android:background">@drawable/bank_list_item_background</item>
-        <item name="android:layout_marginStart">16dp</item>
-        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_marginStart">?kevinMarginStart</item>
+        <item name="android:layout_marginEnd">?kevinMarginEnd</item>
     </style>
 
     <style name="Kevin.TextInput.Layout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="android:layout_marginStart">16dp</item>
-        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_marginStart">?kevinMarginStart</item>
+        <item name="android:layout_marginEnd">?kevinMarginEnd</item>
         <item name="minHeight">48dp</item>
         <item name="boxCornerRadiusBottomEnd">8dp</item>
         <item name="boxCornerRadiusBottomStart">8dp</item>
