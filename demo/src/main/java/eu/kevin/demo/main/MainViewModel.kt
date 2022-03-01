@@ -183,7 +183,7 @@ internal class MainViewModel constructor(
                             initiatePaymentRequest
                         )
                     PaymentType.CARD ->
-                        kevinApiClient.initializeHybridPayment(
+                        kevinApiClient.initializeCardPayment(
                             initiatePaymentRequest
                         )
                 }

@@ -31,20 +31,30 @@
     <style name="AppTheme" parent="BaseAppTheme" />
 
     <style name="BaseKevinTheme" parent="Theme.Kevin.Base">
-        <item name="bottomSheetDialogTheme">@style/BottomSheetTheme</item>
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryVariant">@color/dark_blue</item>
+        <item name="colorOnPrimary">@color/white</item>
 
-<!--        <item name="kevinColorToolbar">@color/black</item>-->
-<!--        <item name="kevinColorBackground">@color/black</item>-->
-<!--        <item name="kevinColorOnBackground">@color/gray_0</item>-->
-<!--        <item name="kevinColorSelectedOnBackground">@color/blue</item>-->
-<!--        <item name="kevinColorRippleOnBackground">@color/blue</item>-->
-<!--        <item name="kevinColorSurface">@color/black</item>-->
-<!--        <item name="kevinColorOnSurface">@color/gray_0</item>-->
-<!--        <item name="kevinColorSelectedOnSurface">@color/blue</item>-->
-<!--        <item name="kevinColorRippleOnSurface">@color/blue</item>-->
-<!--        <item name="kevinColorTextError">@color/warning_red</item>-->
-<!--        <item name="kevinColorTextPrimary">@color/white</item>-->
-<!--        <item name="kevinColorTextSecondary">@color/gray_1</item>-->
+        <item name="colorSecondary">@color/blue</item>
+        <item name="colorSecondaryVariant">@color/dark_blue</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        <item name="colorError">@color/warning_red</item>
+        <item name="colorOnError">@color/white</item>
+
+        <item name="colorSurface">@color/gray_0</item>
+        <item name="colorOnSurface">@color/white</item>
+
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/gray_1</item>
+
+        <item name="android:colorBackground">@color/black</item>
+        <item name="colorOnBackground">@color/white</item>
+
+        <item name="colorControlHighlight">@color/blue</item>
+        <item name="colorControlActivated">@color/blue</item>
+
+        <item name="bottomSheetDialogTheme">@style/BottomSheetTheme</item>
 
         <item name="kevinWindowTitleTextStyle">@style/Kevin.Text.Headline3</item>
         <item name="kevinWindowSubtitleTextStyle">@style/Kevin.Text.Subtitle1</item>
@@ -62,15 +72,37 @@
         <item name="kevinWindowTransitionStyle">@style/Kevin.Window.Transition</item>
         <item name="kevinSelectionViewStyle">@style/Kevin.SelectionView</item>
         <item name="kevinProgressViewStyle">@style/Kevin.ProgressView</item>
+
+        <item name="kevinMarginStart">16dp</item>
+        <item name="kevinMarginEnd">16dp</item>
+        <item name="kevinBankListItemCornerRadius">10dp</item>
+        <item name="kevinCountryListCornerRadius">10dp</item>
     </style>
 
     <style name="KevinTheme" parent="BaseKevinTheme" />
 
     <style name="BottomSheetTheme.Base.21" parent="Theme.MaterialComponents.DayNight.BottomSheetDialog">
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryVariant">@color/dark_blue</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <item name="colorSecondary">@color/blue</item>
+        <item name="colorSecondaryVariant">@color/dark_blue</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        <item name="colorError">@color/warning_red</item>
+        <item name="colorOnError">@color/white</item>
+
+        <item name="colorSurface">@color/gray_0</item>
+        <item name="colorOnSurface">@color/white</item>
+
+        <item name="colorControlHighlight">@color/blue</item>
+        <item name="colorControlActivated">@color/blue</item>
+
         <item name="bottomSheetStyle">@style/BottomSheetDialog</item>
         <item name="snackbarStyle">@style/SnackbarBottomSheet</item>
         <item name="android:windowIsFloating">false</item>
-        <item name="android:navigationBarColor">@color/kevin_black_30</item>
+        <item name="android:navigationBarColor">@color/black_30</item>
         <item name="elevationOverlayEnabled">false</item>
         <item name="enableEdgeToEdge">true</item>
         <item name="paddingBottomSystemWindowInsets">false</item>
