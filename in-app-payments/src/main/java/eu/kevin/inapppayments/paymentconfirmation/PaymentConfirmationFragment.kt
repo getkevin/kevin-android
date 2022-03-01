@@ -13,7 +13,7 @@ import eu.kevin.common.extensions.isDarkMode
 import eu.kevin.common.extensions.toHexColor
 import eu.kevin.inapppayments.R
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.*
-import eu.kevin.inapppayments.paymentconfirmation.entities.PaymentConfirmationFrameColorsConfiguration
+import eu.kevin.common.entities.KevinWebFrameColorsConfiguration
 
 internal class PaymentConfirmationFragment :
     BaseFragment<PaymentConfirmationState, PaymentConfirmationIntent, PaymentConfirmationViewModel>(),
@@ -40,7 +40,7 @@ internal class PaymentConfirmationFragment :
             Initialize(
                 configuration = configuration!!,
                 defaultLocale = requireContext().getCurrentLocale(),
-                kevinFrameColorsConfiguration = getKevinFrameColorsConfigurationFromTheme()
+                kevinWebFrameColorsConfiguration = getKevinWebFrameColorsConfigurationFromTheme()
             )
         )
     }
@@ -52,9 +52,9 @@ internal class PaymentConfirmationFragment :
         return true
     }
 
-    private fun getKevinFrameColorsConfigurationFromTheme() =
+    private fun getKevinWebFrameColorsConfigurationFromTheme() =
         with(requireContext()) {
-            PaymentConfirmationFrameColorsConfiguration(
+            KevinWebFrameColorsConfiguration(
                 backgroundColor = getColorFromAttr(R.attr.kevinPrimaryBackgroundColor).toHexColor(),
                 baseColor = getColorFromAttr(R.attr.kevinPrimaryBackgroundColor).toHexColor(),
                 headingsColor = getColorFromAttr(R.attr.kevinPrimaryTextColor).toHexColor(),

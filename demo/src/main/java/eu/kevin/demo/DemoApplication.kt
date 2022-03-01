@@ -13,8 +13,8 @@ class DemoApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        // Here you can set the SDK's locale
-        // Default device's locale will be used if not set
+        // set SDK's locale
+        // device's default locale will be used if not set
         Kevin.setLocale(Locale("en"))
         Kevin.setTheme(R.style.KevinTheme)
         KevinAccountsPlugin.configure(

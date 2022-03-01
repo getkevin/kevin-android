@@ -1,10 +1,10 @@
-package eu.kevin.inapppayments.paymentconfirmation.entities
+package eu.kevin.common.entities
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class PaymentConfirmationFrameColorsConfiguration(
+data class KevinWebFrameColorsConfiguration(
     @SerialName("bc")
     val backgroundColor: String,
     @SerialName("bsc")

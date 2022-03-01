@@ -4,7 +4,7 @@ import android.net.Uri
 import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.inapppayments.BuildConfig
-import eu.kevin.inapppayments.paymentconfirmation.entities.PaymentConfirmationFrameColorsConfiguration
+import eu.kevin.common.entities.KevinWebFrameColorsConfiguration
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 import eu.kevin.testcore.base.BaseViewModelTest
 import io.mockk.every
@@ -49,7 +49,7 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
         )
 
         val paymentConfirmationFrameColorsConfiguration =
-            PaymentConfirmationFrameColorsConfiguration("", "", "", "", "", "")
+            KevinWebFrameColorsConfiguration("", "", "", "", "", "")
 
         val states = mutableListOf<PaymentConfirmationState>()
         val job = launch {
@@ -82,7 +82,7 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
         )
 
         val paymentConfirmationFrameColorsConfiguration =
-            PaymentConfirmationFrameColorsConfiguration("", "", "", "", "", "")
+            KevinWebFrameColorsConfiguration("", "", "", "", "", "")
 
         val states = mutableListOf<PaymentConfirmationState>()
         val job = launch {

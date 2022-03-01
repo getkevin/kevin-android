@@ -3,6 +3,7 @@ package eu.kevin.accounts.accountlinking
 import android.net.Uri
 import eu.kevin.accounts.BuildConfig
 import eu.kevin.common.architecture.routing.GlobalRouter
+import eu.kevin.common.entities.KevinWebFrameColorsConfiguration
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.testcore.base.BaseViewModelTest
 import io.mockk.*
@@ -13,6 +14,7 @@ import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
+import java.util.*
 
 @ExperimentalCoroutinesApi
 class AccountLinkingViewModelTest : BaseViewModelTest() {
@@ -32,16 +34,26 @@ class AccountLinkingViewModelTest : BaseViewModelTest() {
         val selectedBank = "SWEDBANK_LT"
         val expectedRedirectUrl = BuildConfig.KEVIN_LINK_ACCOUNT_URL.format(
             state,
-            selectedBank
+            selectedBank,
+            Locale.ENGLISH.language
         )
         val config = AccountLinkingFragmentConfiguration(state, selectedBank)
+
+        val paymentConfirmationFrameColorsConfiguration =
+            KevinWebFrameColorsConfiguration("", "", "", "", "", "")
 
         val states = mutableListOf<AccountLinkingState>()
         val job = launch {
             viewModel.state.toList(states)
         }
 
-        viewModel.intents.trySend(AccountLinkingIntent.Initialize(config))
+        viewModel.intents.trySend(
+            AccountLinkingIntent.Initialize(
+                config,
+                paymentConfirmationFrameColorsConfiguration,
+                Locale.ENGLISH
+            )
+        )
 
         assertEquals(states.size, 2)
         assertEquals(states[0].bankRedirectUrl, "")

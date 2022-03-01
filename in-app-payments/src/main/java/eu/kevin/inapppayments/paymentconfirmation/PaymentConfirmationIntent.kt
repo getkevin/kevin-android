@@ -2,13 +2,13 @@ package eu.kevin.inapppayments.paymentconfirmation
 
 import android.net.Uri
 import eu.kevin.common.architecture.interfaces.IIntent
-import eu.kevin.inapppayments.paymentconfirmation.entities.PaymentConfirmationFrameColorsConfiguration
+import eu.kevin.common.entities.KevinWebFrameColorsConfiguration
 import java.util.*
 
 internal sealed class PaymentConfirmationIntent : IIntent {
     data class Initialize(
         val configuration: PaymentConfirmationFragmentConfiguration,
-        val kevinFrameColorsConfiguration: PaymentConfirmationFrameColorsConfiguration,
+        val kevinWebFrameColorsConfiguration: KevinWebFrameColorsConfiguration,
         val defaultLocale: Locale
     ) : PaymentConfirmationIntent()
     object HandleBackClicked : PaymentConfirmationIntent()

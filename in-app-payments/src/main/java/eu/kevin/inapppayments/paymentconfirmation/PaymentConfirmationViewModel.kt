@@ -11,8 +11,8 @@ import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.core.plugin.Kevin
 import eu.kevin.inapppayments.BuildConfig
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.*
-import eu.kevin.inapppayments.paymentconfirmation.entities.PaymentConfirmationFrameColorsConfiguration
-import eu.kevin.inapppayments.paymentconfirmation.helpers.appendQueryParameter
+import eu.kevin.common.entities.KevinWebFrameColorsConfiguration
+import eu.kevin.common.extensions.appendQueryParameter
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType.BANK
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -29,7 +29,7 @@ internal class PaymentConfirmationViewModel(
             is Initialize -> initialize(
                 configuration = intent.configuration,
                 defaultLocale = intent.defaultLocale,
-                paymentConfirmationFrameColorsConfiguration = intent.kevinFrameColorsConfiguration
+                kevinWebFrameColorsConfiguration = intent.kevinWebFrameColorsConfiguration
             )
             is HandleBackClicked -> GlobalRouter.popCurrentFragment()
             is HandlePaymentCompleted -> handlePaymentCompleted(intent.uri)
@@ -38,7 +38,7 @@ internal class PaymentConfirmationViewModel(
 
     private suspend fun initialize(
         configuration: PaymentConfirmationFragmentConfiguration,
-        paymentConfirmationFrameColorsConfiguration: PaymentConfirmationFrameColorsConfiguration,
+        kevinWebFrameColorsConfiguration: KevinWebFrameColorsConfiguration,
         defaultLocale: Locale
     ) {
         val url = when (configuration.paymentType) {
@@ -49,9 +49,9 @@ internal class PaymentConfirmationViewModel(
                     } else {
                         BuildConfig.KEVIN_BANK_PAYMENT_AUTHENTICATED_URL
                     }
-                    appendRequiredQueryParameters(
+                    appendQueryParametersToUrl(
                         url = baseAuthenticatedPaymentUrl.format(configuration.paymentId),
-                        paymentConfirmationFrameColorsConfiguration = paymentConfirmationFrameColorsConfiguration,
+                        kevinWebFrameColorsConfiguration = kevinWebFrameColorsConfiguration,
                         deviceLocale = defaultLocale
                     )
                 } else {
@@ -60,12 +60,12 @@ internal class PaymentConfirmationViewModel(
                     } else {
                         BuildConfig.KEVIN_BANK_PAYMENT_URL
                     }
-                    appendRequiredQueryParameters(
+                    appendQueryParametersToUrl(
                         url = basePaymentUrl.format(
                             configuration.paymentId,
                             configuration.selectedBank!!
                         ),
-                        paymentConfirmationFrameColorsConfiguration = paymentConfirmationFrameColorsConfiguration,
+                        kevinWebFrameColorsConfiguration = kevinWebFrameColorsConfiguration,
                         deviceLocale = defaultLocale
                     )
                 }
@@ -76,9 +76,9 @@ internal class PaymentConfirmationViewModel(
                 } else {
                     BuildConfig.KEVIN_CARD_PAYMENT_URL
                 }
-                appendRequiredQueryParameters(
+                appendQueryParametersToUrl(
                     url = baseCardPaymentUrl.format(configuration.paymentId),
-                    paymentConfirmationFrameColorsConfiguration = paymentConfirmationFrameColorsConfiguration,
+                    kevinWebFrameColorsConfiguration = kevinWebFrameColorsConfiguration,
                     deviceLocale = defaultLocale
                 )
             }
@@ -103,16 +103,19 @@ internal class PaymentConfirmationViewModel(
         }
     }
 
-    private fun appendRequiredQueryParameters(
+    private fun appendQueryParametersToUrl(
         url: String,
-        paymentConfirmationFrameColorsConfiguration: PaymentConfirmationFrameColorsConfiguration,
+        kevinWebFrameColorsConfiguration: KevinWebFrameColorsConfiguration,
         deviceLocale: Locale
     ): String {
         return url
-            .appendQueryParameter("lang", getActiveLocaleCode(deviceLocale))
             .appendQueryParameter(
-                "cs",
-                Json.encodeToString(paymentConfirmationFrameColorsConfiguration)
+                key = "lang",
+                value = getActiveLocaleCode(deviceLocale)
+            )
+            .appendQueryParameter(
+                key = "cs",
+                value = Json.encodeToString(kevinWebFrameColorsConfiguration)
             )
     }
 

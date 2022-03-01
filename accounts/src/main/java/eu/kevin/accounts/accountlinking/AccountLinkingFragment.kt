@@ -3,10 +3,17 @@ package eu.kevin.accounts.accountlinking
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import eu.kevin.accounts.R
 import eu.kevin.accounts.accountlinking.AccountLinkingIntent.*
 import eu.kevin.common.architecture.BaseFragment
 import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.common.entities.KevinWebFrameColorsConfiguration
+import eu.kevin.common.extensions.getColorFromAttr
+import eu.kevin.common.extensions.getCurrentLocale
+import eu.kevin.common.extensions.isDarkMode
+import eu.kevin.common.extensions.toHexColor
 
 internal class AccountLinkingFragment : BaseFragment<AccountLinkingState, AccountLinkingIntent, AccountLinkingViewModel>(),
     AccountLinkingViewDelegate {
@@ -27,7 +34,13 @@ internal class AccountLinkingFragment : BaseFragment<AccountLinkingState, Accoun
     }
 
     override fun onAttached() {
-        viewModel.intents.trySend(Initialize(configuration!!))
+        viewModel.intents.trySend(
+            Initialize(
+                configuration = configuration!!,
+                defaultLocale = requireContext().getCurrentLocale(),
+                kevinWebFrameColorsConfiguration = getKevinWebFrameColorsConfigurationFromTheme()
+            )
+        )
     }
 
     override fun onBackPressed(): Boolean {
@@ -36,6 +49,18 @@ internal class AccountLinkingFragment : BaseFragment<AccountLinkingState, Accoun
         }
         return true
     }
+
+    private fun getKevinWebFrameColorsConfigurationFromTheme() =
+        with(requireContext()) {
+            KevinWebFrameColorsConfiguration(
+                backgroundColor = getColorFromAttr(R.attr.kevinPrimaryBackgroundColor).toHexColor(),
+                baseColor = getColorFromAttr(R.attr.kevinPrimaryBackgroundColor).toHexColor(),
+                headingsColor = getColorFromAttr(R.attr.kevinPrimaryTextColor).toHexColor(),
+                fontColor = getColorFromAttr(R.attr.kevinPrimaryTextColor).toHexColor(),
+                bankIconColor = if (isDarkMode()) "white" else "default",
+                defaultButtonColor = ContextCompat.getColor(this, R.color.kevin_blue).toHexColor()
+            )
+        }
 
     // AccountLinkingViewDelegate
 
