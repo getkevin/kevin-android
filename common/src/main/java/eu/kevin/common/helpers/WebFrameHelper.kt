@@ -1,6 +1,7 @@
 package eu.kevin.common.helpers
 
 import android.content.Context
+import androidx.core.content.ContextCompat
 import eu.kevin.common.R
 import eu.kevin.common.entities.KevinWebFrameColorsConfiguration
 import eu.kevin.common.extensions.getColorFromAttr
@@ -30,7 +31,7 @@ object WebFrameHelper {
                 headingsColor = getColorFromAttr(R.attr.kevinPrimaryTextColor).toHexColor(),
                 fontColor = getColorFromAttr(R.attr.kevinPrimaryTextColor).toHexColor(),
                 bankIconColor = if (isDarkMode()) "white" else "default",
-                defaultButtonColor = androidx.core.content.ContextCompat.getColor(this, R.color.kevin_blue).toHexColor()
+                defaultButtonColor = ContextCompat.getColor(this, R.color.kevin_blue).toHexColor()
             )
         }
     }
@@ -43,7 +44,7 @@ object WebFrameHelper {
         return if (this.isNotEmpty()) {
             "$this&$key=$value"
         } else {
-            "$this$key=$value"
+            "$key=$value"
         }
     }
 }

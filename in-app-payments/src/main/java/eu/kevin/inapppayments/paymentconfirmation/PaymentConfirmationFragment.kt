@@ -10,8 +10,7 @@ import eu.kevin.common.extensions.getCurrentLocale
 import eu.kevin.common.helpers.WebFrameHelper
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.*
 
-internal class PaymentConfirmationFragment :
-    BaseFragment<PaymentConfirmationState, PaymentConfirmationIntent, PaymentConfirmationViewModel>(),
+internal class PaymentConfirmationFragment : BaseFragment<PaymentConfirmationState, PaymentConfirmationIntent, PaymentConfirmationViewModel>(),
     PaymentConfirmationViewDelegate {
 
     override val viewModel: PaymentConfirmationViewModel by viewModels {
