@@ -8,8 +8,7 @@ import java.util.*
 internal sealed class PaymentConfirmationIntent : IIntent {
     data class Initialize(
         val configuration: PaymentConfirmationFragmentConfiguration,
-        val kevinWebFrameColorsConfiguration: KevinWebFrameColorsConfiguration,
-        val defaultLocale: Locale
+        val webFrameQueryParameters: String
     ) : PaymentConfirmationIntent()
     object HandleBackClicked : PaymentConfirmationIntent()
     data class HandlePaymentCompleted(val uri: Uri) : PaymentConfirmationIntent()

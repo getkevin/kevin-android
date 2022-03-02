@@ -50,8 +50,7 @@ class AccountLinkingViewModelTest : BaseViewModelTest() {
         viewModel.intents.trySend(
             AccountLinkingIntent.Initialize(
                 config,
-                paymentConfirmationFrameColorsConfiguration,
-                Locale.ENGLISH
+                ""
             )
         )
 

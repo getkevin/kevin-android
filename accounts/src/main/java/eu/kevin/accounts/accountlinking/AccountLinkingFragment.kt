@@ -14,6 +14,7 @@ import eu.kevin.common.extensions.getColorFromAttr
 import eu.kevin.common.extensions.getCurrentLocale
 import eu.kevin.common.extensions.isDarkMode
 import eu.kevin.common.extensions.toHexColor
+import eu.kevin.common.helpers.WebFrameHelper
 
 internal class AccountLinkingFragment : BaseFragment<AccountLinkingState, AccountLinkingIntent, AccountLinkingViewModel>(),
     AccountLinkingViewDelegate {
@@ -37,8 +38,11 @@ internal class AccountLinkingFragment : BaseFragment<AccountLinkingState, Accoun
         viewModel.intents.trySend(
             Initialize(
                 configuration = configuration!!,
-                defaultLocale = requireContext().getCurrentLocale(),
-                kevinWebFrameColorsConfiguration = getKevinWebFrameColorsConfigurationFromTheme()
+                webFrameQueryParameters = WebFrameHelper
+                    .getStyleAndLanguageQueryParameters(
+                        context = requireContext(),
+                        deviceLocale = requireContext().getCurrentLocale()
+                    )
             )
         )
     }
@@ -48,19 +52,6 @@ internal class AccountLinkingFragment : BaseFragment<AccountLinkingState, Accoun
             viewModel.intents.trySend(HandleBackClicked)
         }
         return true
-    }
-
-    private fun getKevinWebFrameColorsConfigurationFromTheme() : KevinWebFrameColorsConfiguration {
-        with(requireContext()) {
-            return KevinWebFrameColorsConfiguration(
-                backgroundColor = getColorFromAttr(R.attr.kevinPrimaryBackgroundColor).toHexColor(),
-                baseColor = getColorFromAttr(R.attr.kevinPrimaryBackgroundColor).toHexColor(),
-                headingsColor = getColorFromAttr(R.attr.kevinPrimaryTextColor).toHexColor(),
-                fontColor = getColorFromAttr(R.attr.kevinPrimaryTextColor).toHexColor(),
-                bankIconColor = if (isDarkMode()) "white" else "default",
-                defaultButtonColor = ContextCompat.getColor(this, R.color.kevin_blue).toHexColor()
-            )
-        }
     }
 
     // AccountLinkingViewDelegate

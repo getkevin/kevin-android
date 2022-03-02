@@ -59,8 +59,7 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
         viewModel.intents.trySend(
             PaymentConfirmationIntent.Initialize(
                 config,
-                paymentConfirmationFrameColorsConfiguration,
-                Locale.ENGLISH
+                ""
             )
         )
 
@@ -92,8 +91,7 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
         viewModel.intents.trySend(
             PaymentConfirmationIntent.Initialize(
                 config,
-                paymentConfirmationFrameColorsConfiguration,
-                Locale.ENGLISH
+                ""
             )
         )
 

@@ -6,14 +6,14 @@ fun String.removeWhiteSpaces(): String {
     return this.replace(" ", "")
 }
 
-fun String.appendQueryParameter(key: String, value: String): String {
+fun String.appendQuery(query: String): String {
     val oldUri = URI(this)
 
     var newQuery: String? = oldUri.query
     if (newQuery == null) {
-        newQuery = "$key=$value"
+        newQuery = query
     } else {
-        newQuery += "&$key=$value"
+        newQuery += "&$query"
     }
 
     return URI(
