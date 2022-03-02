@@ -55,6 +55,7 @@ internal class PaymentConfirmationView(context: Context) : BaseView<FragmentPaym
         }
 
         with(binding.confirmationWebView) {
+            setBackgroundColor(context.getColorFromAttr(R.attr.kevinPrimaryBackgroundColor))
             applySystemInsetsMargin(bottom = true)
             settings.javaScriptEnabled = true
             settings.domStorageEnabled = true

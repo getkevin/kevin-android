@@ -56,6 +56,7 @@ internal class AccountLinkingView(context: Context) : BaseView<FragmentAccountLi
         }
 
         with(binding.accountLinkWebView) {
+            setBackgroundColor(context.getColorFromAttr(R.attr.kevinPrimaryBackgroundColor))
             applySystemInsetsMargin(bottom = true)
             settings.javaScriptEnabled = true
             settings.domStorageEnabled = true
