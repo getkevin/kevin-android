@@ -51,9 +51,9 @@ internal class PaymentConfirmationFragment : BaseFragment<PaymentConfirmationSta
         return true
     }
 
-    private fun getKevinWebFrameColorsConfigurationFromTheme() =
+    private fun getKevinWebFrameColorsConfigurationFromTheme() : KevinWebFrameColorsConfiguration {
         with(requireContext()) {
-            KevinWebFrameColorsConfiguration(
+            return KevinWebFrameColorsConfiguration(
                 backgroundColor = getColorFromAttr(R.attr.kevinPrimaryBackgroundColor).toHexColor(),
                 baseColor = getColorFromAttr(R.attr.kevinPrimaryBackgroundColor).toHexColor(),
                 headingsColor = getColorFromAttr(R.attr.kevinPrimaryTextColor).toHexColor(),
@@ -62,6 +62,7 @@ internal class PaymentConfirmationFragment : BaseFragment<PaymentConfirmationSta
                 defaultButtonColor = ContextCompat.getColor(this, R.color.kevin_blue).toHexColor()
             )
         }
+    }
 
     // PaymentConfirmationViewDelegate
 
