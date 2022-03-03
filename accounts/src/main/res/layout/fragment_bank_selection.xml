@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?kevinPrimaryBackgroundColor"
     tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
     <androidx.appcompat.widget.Toolbar
@@ -35,11 +34,11 @@
 
             <TextView
                 android:id="@+id/country_selection_label"
-                style="@style/Kevin.Text.Label"
+                style="?kevinHeaderStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
+                android:paddingVertical="14dp"
                 android:text="@string/window_bank_selection_select_country_label"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -49,11 +48,10 @@
 
             <eu.kevin.common.views.SelectionView
                 android:id="@+id/country_selection_view"
+                style="?kevinSelectionViewStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="12dp"
-                android:foreground="@drawable/ripple_on_primary_rounded"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -62,11 +60,11 @@
 
             <TextView
                 android:id="@+id/bank_selection_label"
-                style="@style/Kevin.Text.Label"
+                style="?kevinHeaderStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
+                android:paddingVertical="14dp"
                 android:text="@string/window_bank_selection_select_bank_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -84,6 +82,8 @@
                 tools:itemCount="5"
                 tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 tools:listitem="@layout/view_bank_list_item"
+                tools:paddingEnd="?kevinMarginEnd"
+                tools:paddingStart="?kevinMarginStart"
                 tools:spanCount="2" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -92,9 +92,9 @@
 
     <ProgressBar
         android:id="@+id/progress_view"
+        style="?kevinProgressViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:indeterminate="true"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -104,11 +104,11 @@
     <Button
         android:id="@+id/continue_button"
         style="?kevinPrimaryButtonStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
+        android:layout_marginStart="?attr/kevinMarginStart"
+        android:layout_marginEnd="?attr/kevinMarginEnd"
         android:layout_marginBottom="16dp"
         android:text="@string/Continue"
+        app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -3,7 +3,7 @@ package eu.kevin.demo.countryselection.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import eu.kevin.common.extensions.getColorFromAttr
+import eu.kevin.common.extensions.getDrawableCompat
 import eu.kevin.common.extensions.setDebounceClickListener
 import eu.kevin.demo.R
 import eu.kevin.demo.countryselection.entities.Country
@@ -24,13 +24,23 @@ internal class CountryListAdapter(
     }
 
     override fun onBindViewHolder(binding: ItemCountryListBinding, item: Country, position: Int) {
+        val background = when (position) {
+            0 -> context.getDrawableCompat(R.drawable.country_selection_background_top)
+            items.size - 1 -> context.getDrawableCompat(R.drawable.country_selection_background_bottom)
+            else -> context.getDrawableCompat(R.drawable.country_selection_background_middle)
+        }
+        val foreground = when (position) {
+            0 -> context.getDrawableCompat(R.drawable.country_selection_ripple_top)
+            items.size - 1 -> context.getDrawableCompat(R.drawable.country_selection_ripple_bottom)
+            else -> context.getDrawableCompat(R.drawable.country_selection_ripple_middle)
+        }
         with(binding) {
             root.setDebounceClickListener {
                 onCountryClicked.invoke(item.iso)
             }
-            root.setBackgroundColor(
-                if (item.isSelected) context.getColorFromAttr(R.attr.selectedOnSecondaryColor) else 0
-            )
+            root.isSelected = item.isSelected
+            root.background = background
+            root.foreground = foreground
             countryTextView.text = item.title
             countryFlagImageView.setImageDrawable(CountryHelper.getCountryFlagDrawable(context, item.iso))
         }

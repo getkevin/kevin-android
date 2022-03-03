@@ -8,7 +8,8 @@ import eu.kevin.accounts.countryselection.entities.Country
 import eu.kevin.accounts.countryselection.helpers.CountryHelper
 import eu.kevin.accounts.databinding.ViewCountryListItemBinding
 import eu.kevin.common.architecture.BaseListAdapter
-import eu.kevin.common.extensions.getColorFromAttr
+import eu.kevin.common.extensions.getBooleanFromAttr
+import eu.kevin.common.extensions.getDrawableCompat
 import eu.kevin.common.extensions.setDebounceClickListener
 
 internal class CountryListAdapter(
@@ -27,11 +28,18 @@ internal class CountryListAdapter(
             root.setDebounceClickListener {
                 onCountryClicked.invoke(item.iso)
             }
-            root.setBackgroundColor(
-                if (item.isSelected) context.getColorFromAttr(R.attr.kevinSelectedOnSecondaryColor) else 0
-            )
+            root.isSelected = item.isSelected
             countryTextView.text = item.title
             countryFlagImageView.setImageDrawable(CountryHelper.getCountryFlagDrawable(context, item.iso))
+
+            if (!context.getBooleanFromAttr(R.attr.kevinOverrideCountryBackground)) {
+                val background = when (position) {
+                    0 -> context.getDrawableCompat(R.drawable.country_list_item_background_top)
+                    items.size - 1 -> context.getDrawableCompat(R.drawable.country_list_item_background_bottom)
+                    else -> context.getDrawableCompat(R.drawable.country_list_item_background_middle)
+                }
+                root.background = background
+            }
         }
     }
 

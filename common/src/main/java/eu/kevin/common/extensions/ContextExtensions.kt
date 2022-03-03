@@ -8,6 +8,7 @@ import android.util.TypedValue
 import androidx.annotation.*
 import androidx.core.content.ContextCompat
 import java.util.*
+import kotlin.math.roundToInt
 
 @ColorInt
 fun Context.getColorFromAttr(@AttrRes attribute: Int): Int {
@@ -22,6 +23,20 @@ fun Context.getStyleFromAttr(@AttrRes attribute: Int): Int {
     return TypedValue().let {
         theme.resolveAttribute(attribute, it, true)
         it.data
+    }
+}
+
+fun Context.getDimensionFromAttr(@AttrRes attribute: Int): Int {
+    return TypedValue().let {
+        theme.resolveAttribute(attribute, it, false)
+        it.getDimension(resources.displayMetrics).roundToInt()
+    }
+}
+
+fun Context.getBooleanFromAttr(@AttrRes attribute: Int): Boolean {
+    return TypedValue().let {
+        theme.resolveAttribute(attribute, it, false)
+        it.data != 0
     }
 }
 
@@ -43,7 +58,12 @@ fun Context.getCurrentLocale(): Locale {
 }
 
 fun Context.isDarkMode(): Boolean {
-    return (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
+    return when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+        Configuration.UI_MODE_NIGHT_YES -> true
+        Configuration.UI_MODE_NIGHT_NO -> false
+        Configuration.UI_MODE_NIGHT_UNDEFINED -> false
+        else -> false
+    }
 }
 
 fun Context.dp(value: Int): Int = (value * resources.displayMetrics.density).toInt()

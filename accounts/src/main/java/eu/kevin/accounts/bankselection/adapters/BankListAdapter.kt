@@ -10,6 +10,7 @@ import coil.request.ImageRequest
 import eu.kevin.accounts.bankselection.entities.BankListItem
 import eu.kevin.accounts.databinding.ViewBankListItemBinding
 import eu.kevin.common.architecture.BaseListAdapter
+import eu.kevin.common.extensions.isDarkMode
 import eu.kevin.common.extensions.setDebounceClickListener
 
 internal class BankListAdapter(
@@ -41,9 +42,19 @@ internal class BankListAdapter(
     }
 
     private fun loadBankImage(binding: ViewBankListItemBinding, logoUrl: String) {
+        val url = if (binding.root.context.isDarkMode()) {
+            try {
+                val urlParts = logoUrl.split("images/")
+                "${urlParts[0]}images/white/${urlParts[1]}"
+            } catch (e: Exception) {
+                logoUrl
+            }
+        } else {
+            logoUrl
+        }
         with(binding) {
             val imageRequest = ImageRequest.Builder(root.context)
-                .data(logoUrl)
+                .data(url)
                 .target(
                     onSuccess = {
                         bankImageView.setImageDrawable(it)

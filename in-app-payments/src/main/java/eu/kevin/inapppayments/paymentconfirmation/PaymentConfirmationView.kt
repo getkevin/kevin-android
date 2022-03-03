@@ -25,7 +25,6 @@ internal class PaymentConfirmationView(context: Context) : BaseView<FragmentPaym
     private var lastClickPosition: Int = 0
 
     init {
-        binding.root.setBackgroundColor(context.getColorFromAttr(R.attr.kevinPrimaryBackgroundColor))
         with(binding.actionBar) {
             setNavigationOnClickListener {
                 delegate?.onBackClicked()
@@ -55,7 +54,7 @@ internal class PaymentConfirmationView(context: Context) : BaseView<FragmentPaym
         }
 
         with(binding.confirmationWebView) {
-            setBackgroundColor(context.getColorFromAttr(R.attr.kevinPrimaryBackgroundColor))
+            setBackgroundColor(context.getColorFromAttr(android.R.attr.colorBackground))
             applySystemInsetsMargin(bottom = true)
             settings.javaScriptEnabled = true
             settings.domStorageEnabled = true

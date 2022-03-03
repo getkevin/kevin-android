@@ -3,8 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="99dp"
     android:layout_height="51dp"
-    android:layout_marginEnd="16dp"
-    android:background="@drawable/bg_creditor">
+    android:layout_marginHorizontal="8dp"
+    android:background="@drawable/creditor_background"
+    android:foreground="@drawable/creditor_ripple">
 
     <ImageView
         android:id="@+id/creditor_logo_image_view"

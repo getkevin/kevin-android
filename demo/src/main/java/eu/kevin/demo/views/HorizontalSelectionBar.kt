@@ -24,7 +24,7 @@ class HorizontalSelectionBar @JvmOverloads constructor(
     defStyleRes: Int = 0
 ) : FrameLayout(context, attrs, defStyle, defStyleRes) {
 
-    private var textColor = ContextCompat.getColor(context, R.color.gray_01)
+    private var textColor = ContextCompat.getColor(context, R.color.gray_1)
     private var selectedItemTextColor =
         context.getColorFromAttr(R.attr.primaryTextColor)
 

@@ -23,10 +23,10 @@ object WebFrameHelper {
     private fun getKevinWebFrameColorsConfigurationFromTheme(context: Context) : KevinWebFrameColorsConfiguration {
         with(context) {
             return KevinWebFrameColorsConfiguration(
-                backgroundColor = getColorFromAttr(R.attr.kevinPrimaryBackgroundColor).toHexColor(),
-                baseColor = getColorFromAttr(R.attr.kevinPrimaryBackgroundColor).toHexColor(),
-                headingsColor = getColorFromAttr(R.attr.kevinPrimaryTextColor).toHexColor(),
-                fontColor = getColorFromAttr(R.attr.kevinPrimaryTextColor).toHexColor(),
+                backgroundColor = getColorFromAttr(android.R.attr.colorBackground).toHexColor(),
+                baseColor = getColorFromAttr(android.R.attr.colorBackground).toHexColor(),
+                headingsColor = getColorFromAttr(android.R.attr.textColorPrimary).toHexColor(),
+                fontColor = getColorFromAttr(android.R.attr.textColorPrimary).toHexColor(),
                 bankIconColor = if (isDarkMode()) "white" else "default",
                 defaultButtonColor = ContextCompat.getColor(this, R.color.kevin_blue).toHexColor()
             )

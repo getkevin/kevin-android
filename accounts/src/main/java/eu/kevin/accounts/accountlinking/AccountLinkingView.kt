@@ -25,8 +25,6 @@ internal class AccountLinkingView(context: Context) : BaseView<FragmentAccountLi
     private var lastClickPosition: Int = 0
 
     init {
-        binding.root.setBackgroundColor(context.getColorFromAttr(R.attr.kevinPrimaryBackgroundColor))
-
         with(binding.actionBar) {
             setNavigationOnClickListener {
                 delegate?.onBackClicked()
@@ -56,7 +54,7 @@ internal class AccountLinkingView(context: Context) : BaseView<FragmentAccountLi
         }
 
         with(binding.accountLinkWebView) {
-            setBackgroundColor(context.getColorFromAttr(R.attr.kevinPrimaryBackgroundColor))
+            setBackgroundColor(context.getColorFromAttr(android.R.attr.colorBackground))
             applySystemInsetsMargin(bottom = true)
             settings.javaScriptEnabled = true
             settings.domStorageEnabled = true

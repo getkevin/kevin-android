@@ -1,80 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--  Component styles  -->
     <style name="Toolbar" parent="Widget.MaterialComponents.Toolbar">
-        <item name="android:height">?attr/actionBarSize</item>
-        <item name="android:minHeight">?attr/actionBarSize</item>
-        <item name="android:maxHeight">?attr/actionBarSize</item>
         <item name="navigationIcon">@drawable/ic_toolbar_arrow_back</item>
         <item name="android:background">?toolbarColor</item>
         <item name="titleTextColor">?primaryTextColor</item>
+        <item name="titleTextAppearance">@style/TextAppearance.Headline3</item>
     </style>
 
     <style name="Button.Primary" parent="Widget.MaterialComponents.Button">
-        <item name="android:minWidth">150dp</item>
-        <item name="android:minHeight">64dp</item>
-        <item name="android:maxHeight">64dp</item>
-        <item name="android:textAllCaps">false</item>
+        <item name="android:minHeight">58dp</item>
         <item name="cornerRadius">8dp</item>
-        <item name="android:textSize">17sp</item>
+        <item name="android:textAppearance">@style/TextAppearance.Button</item>
+        <item name="android:textAllCaps">false</item>
         <item name="android:textColor">@color/white</item>
         <item name="backgroundTint">@color/blue</item>
     </style>
 
-    <style name="TextAppearance.Kevin.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
+    <style name="Button.Secondary" parent="Widget.MaterialComponents.Button">
+        <item name="android:minHeight">58dp</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.Button</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="backgroundTint">@color/gray_5</item>
+    </style>
+
+    <style name="TextInput.Layout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="minHeight">48dp</item>
+        <item name="boxCornerRadiusBottomEnd">8dp</item>
+        <item name="boxCornerRadiusBottomStart">8dp</item>
+        <item name="boxCornerRadiusTopEnd">8dp</item>
+        <item name="boxCornerRadiusTopStart">8dp</item>
+        <item name="hintEnabled">false</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxBackgroundColor">?secondaryBackgroundColor</item>
+        <item name="boxStrokeColor">@color/text_input_color</item>
+        <item name="boxStrokeErrorColor">@color/warning_red</item>
+        <item name="errorTextAppearance">@style/TextAppearance.Error</item>
+        <item name="errorIconDrawable">@null</item>
+        <item name="endIconMode">clear_text</item>
+    </style>
+
+    <style name="TextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:textAppearance">@style/TextAppearance.Title2</item>
+        <item name="android:textColor">?primaryTextColor</item>
+    </style>
+
+    <!--  Text styles  -->
+    <style name="TextAppearance.Headline1" parent="@android:style/TextAppearance">
         <item name="android:textSize">34sp</item>
         <item name="android:textColor">?primaryTextColor</item>
-        <item name="fontFamily">@font/sf_pro_text_semi_bold</item>
+        <item name="fontFamily">@font/circular_std_bold</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="TextAppearance.Kevin.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
-        <item name="android:textSize">17sp</item>
-        <item name="android:textColor">?secondaryTextColor</item>
-        <item name="fontFamily">@font/sf_pro_text_semi_bold</item>
-    </style>
-
-    <style name="TextAppearance.Kevin.SelectionBar" parent="TextAppearance.MaterialComponents.Headline2">
-        <item name="android:textSize">16sp</item>
-        <item name="android:fontFamily">@font/sf_pro_text_medium</item>
-    </style>
-
-    <style name="TextAppearance.Kevin.Title" parent="TextAppearance.MaterialComponents.Subtitle1">
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">?primaryTextColor</item>
-    </style>
-
-    <style name="TextAppearance.Kevin.Title2" parent="TextAppearance.MaterialComponents.Subtitle1">
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/gray_01</item>
-        <item name="fontFamily">@font/sf_pro_text_regular</item>
-    </style>
-
-    <style name="TextAppearance.Kevin.ModalTitle" parent="@android:style/TextAppearance">
-        <item name="android:textSize">16sp</item>
+    <style name="TextAppearance.Headline3" parent="@android:style/TextAppearance">
+        <item name="android:textSize">22sp</item>
+        <item name="fontFamily">@font/circular_std_medium</item>
         <item name="android:textColor">?primaryTextColor</item>
         <item name="android:gravity">center</item>
         <item name="android:textStyle">normal</item>
     </style>
 
-    <style name="TextAppearance.Kevin.Subtitle" parent="TextAppearance.MaterialComponents.Subtitle1">
+    <style name="TextAppearance.Kevin.SelectionBar" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/circular_std_medium</item>
+    </style>
+
+    <style name="TextAppearance.Title1" parent="@android:style/TextAppearance">
+        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">@font/circular_std_medium</item>
+        <item name="android:textColor">?primaryTextColor</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TextAppearance.Title2" parent="@android:style/TextAppearance">
+        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">@font/circular_std_book</item>
+        <item name="android:textColor">?primaryTextColor</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TextAppearance.ModalTitle" parent="@android:style/TextAppearance">
+        <item name="android:textSize">22sp</item>
+        <item name="fontFamily">@font/circular_std_medium</item>
+        <item name="android:textColor">?primaryTextColor</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TextAppearance.Subtitle1" parent="@android:style/TextAppearance">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/gray_02</item>
-        <item name="fontFamily">@font/sf_pro_text_regular</item>
+        <item name="fontFamily">@font/circular_std_book</item>
+        <item name="android:textColor">?secondaryTextColor</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textStyle">normal</item>
     </style>
 
-    <style name="BottomSheetDialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
-        <item name="bottomSheetStyle">@style/BottomSheet</item>
+    <style name="TextAppearance.Caption2" parent="@android:style/TextAppearance">
+        <item name="android:textSize">12sp</item>
+        <item name="fontFamily">@font/circular_std_book</item>
+        <item name="android:textColor">?primaryTextColor</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textStyle">normal</item>
     </style>
 
-    <style name="BottomSheet" parent="Widget.MaterialComponents.BottomSheet">
+    <style name="TextAppearance.Button" parent="@android:style/TextAppearance">
+        <item name="android:textSize">17sp</item>
+        <item name="fontFamily">@font/circular_std_medium</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TextAppearance.Error" parent="@android:style/TextAppearance">
+        <item name="android:textSize">13sp</item>
+        <item name="fontFamily">@font/circular_std_book</item>
+        <item name="android:textColor">@color/warning_red</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <!--  Other styles  -->
+    <style name="BottomSheetDialog" parent="Widget.MaterialComponents.BottomSheet">
         <item name="shapeAppearanceOverlay">@style/RoundedCornersBottomSheetDialog</item>
+        <item name="backgroundTint">?primaryBackgroundColor</item>
     </style>
 
     <style name="RoundedCornersBottomSheetDialog" parent="">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopRight">16dp</item>
-        <item name="cornerSizeTopLeft">16dp</item>
+        <item name="cornerSizeTopRight">11dp</item>
+        <item name="cornerSizeTopLeft">11dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
+
+    <style name="SnackbarBottomSheet" parent="Widget.MaterialComponents.Snackbar">
+        <item name="elevation">22dp</item>
+    </style>
+
+    <!--  Kevin styles  -->
+
+    <style name="Button.Primary.Kevin" parent="Button.Primary">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Button.Secondary.Kevin" parent="Button.Primary">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="SelectionView" parent="Kevin.SelectionView">
+        <item name="android:textAppearance">@style/TextAppearance.Title1</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+    </style>
+
+    <style name="KevinCountryContainer" parent="Kevin.List.CountryContainer">
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+    </style>
+
+    <style name="TextInput.Layout.Kevin" parent="TextInput.Layout">
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
     </style>
 
 </resources>
