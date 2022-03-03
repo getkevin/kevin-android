@@ -17,11 +17,11 @@ import eu.kevin.common.extensions.*
 import eu.kevin.common.managers.KeyboardManager
 import eu.kevin.inapppayments.KevinPaymentsPlugin
 import eu.kevin.inapppayments.R
+import eu.kevin.inapppayments.cardpayment.enums.CardPaymentMessage.*
 import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent.*
 import eu.kevin.inapppayments.cardpayment.inputformatters.CardNumberFormatter
 import eu.kevin.inapppayments.cardpayment.inputformatters.DateFormatter
 import eu.kevin.inapppayments.cardpayment.inputvalidation.ValidationResult
-import eu.kevin.inapppayments.cardpayment.enums.CardPaymentMessage.*
 import eu.kevin.inapppayments.databinding.FragmentCardPaymentBinding
 
 internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentBinding>(context),
@@ -33,7 +33,6 @@ internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentB
     private var previousStateUrl: String? = null
 
     init {
-        binding.root.setBackgroundColor(context.getColorFromAttr(R.attr.kevinPrimaryBackgroundColor))
         with(binding.actionBar) {
             setNavigationOnClickListener {
                 delegate?.onBackClicked()

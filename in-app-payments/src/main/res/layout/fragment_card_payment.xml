@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?kevinPrimaryBackgroundColor"
     tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
     <androidx.appcompat.widget.Toolbar
@@ -58,7 +57,7 @@
 
             <TextView
                 android:id="@+id/card_payment_label"
-                style="?kevinTextSubtitle1"
+                style="?kevinWindowSubtitleTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -71,15 +70,14 @@
 
             <TextView
                 android:id="@+id/card_number_label"
-                style="?kevinTextSubtitle1"
+                style="?kevinInputLabelTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="36dp"
                 android:gravity="start"
                 android:text="@string/window_card_payment_card_number_label"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/card_number_input"
+                app:layout_constraintStart_toStartOf="@id/card_number_input"
                 app:layout_constraintTop_toBottomOf="@id/card_payment_label" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -87,7 +85,6 @@
                 style="?kevinTextInputContainerStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -107,15 +104,14 @@
 
             <TextView
                 android:id="@+id/cardholder_name_label"
-                style="?kevinTextSubtitle1"
+                style="?kevinInputLabelTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="26dp"
                 android:gravity="start"
                 android:text="@string/window_card_payment_cardholder_name_label"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/cardholder_name_input"
+                app:layout_constraintStart_toStartOf="@id/cardholder_name_input"
                 app:layout_constraintTop_toBottomOf="@id/card_number_input" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -123,7 +119,6 @@
                 style="?kevinTextInputContainerStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -142,7 +137,7 @@
 
             <TextView
                 android:id="@+id/expiry_date_label"
-                style="?kevinTextSubtitle1"
+                style="?kevinInputLabelTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="26dp"
@@ -157,8 +152,8 @@
                 style="?kevinTextInputContainerStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toStartOf="@id/cvv_input"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/expiry_date_label">
@@ -177,7 +172,7 @@
 
             <TextView
                 android:id="@+id/cvv_label"
-                style="?kevinTextSubtitle1"
+                style="?kevinInputLabelTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="26dp"
@@ -206,7 +201,7 @@
                 style="?kevinTextInputContainerStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/expiry_date_input"
@@ -228,7 +223,7 @@
                 android:id="@+id/notice_icon"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="?kevinMarginStart"
                 android:contentDescription="@null"
                 android:src="@drawable/ic_report_warning"
                 app:layout_constraintBottom_toBottomOf="@id/notice_view"
@@ -237,12 +232,12 @@
 
             <TextView
                 android:id="@+id/notice_view"
-                style="@style/Kevin.Text.Subtitle1"
+                style="?kevinWindowSubtitleTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="?kevinMarginEnd"
                 android:gravity="start"
                 android:text="@string/window_card_payment_notice"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -252,11 +247,11 @@
             <Button
                 android:id="@+id/continue_button"
                 style="?kevinPrimaryButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
                 android:layout_marginVertical="16dp"
+                android:layout_marginStart="?kevinMarginStart"
+                android:layout_marginEnd="?kevinMarginEnd"
                 android:text="@string/Continue"
+                app:layout_constrainedWidth="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -280,9 +275,9 @@
 
     <ProgressBar
         android:id="@+id/progress_view"
+        style="?kevinProgressViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:indeterminate="true"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

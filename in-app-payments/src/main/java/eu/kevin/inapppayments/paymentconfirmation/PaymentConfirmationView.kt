@@ -9,10 +9,12 @@ import androidx.core.view.updateLayoutParams
 import androidx.webkit.WebViewClientCompat
 import eu.kevin.common.architecture.BaseView
 import eu.kevin.common.architecture.interfaces.IView
-import eu.kevin.common.extensions.*
+import eu.kevin.common.extensions.applySystemInsetsMargin
+import eu.kevin.common.extensions.applySystemInsetsPadding
+import eu.kevin.common.extensions.dp
+import eu.kevin.common.extensions.hideKeyboard
 import eu.kevin.common.managers.KeyboardManager
 import eu.kevin.inapppayments.KevinPaymentsPlugin
-import eu.kevin.inapppayments.R
 import eu.kevin.inapppayments.databinding.FragmentPaymentConfirmationBinding
 
 internal class PaymentConfirmationView(context: Context) : BaseView<FragmentPaymentConfirmationBinding>(context),
@@ -25,7 +27,6 @@ internal class PaymentConfirmationView(context: Context) : BaseView<FragmentPaym
     private var lastClickPosition: Int = 0
 
     init {
-        binding.root.setBackgroundColor(context.getColorFromAttr(R.attr.kevinPrimaryBackgroundColor))
         with(binding.actionBar) {
             setNavigationOnClickListener {
                 delegate?.onBackClicked()

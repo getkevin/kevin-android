@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="?colorControlHighlight">
+    <item>
+        <selector>
+            <item android:state_selected="true">
+                <shape android:shape="rectangle">
+                    <solid android:color="?colorControlActivated" />
+                    <corners
+                        android:topLeftRadius="?kevinCountryListCornerRadius"
+                        android:topRightRadius="?kevinCountryListCornerRadius" />
+                </shape>
+            </item>
+            <item>
+                <shape android:shape="rectangle">
+                    <solid android:color="?colorSurface" />
+                    <corners
+                        android:topLeftRadius="?kevinCountryListCornerRadius"
+                        android:topRightRadius="?kevinCountryListCornerRadius" />
+                </shape>
+            </item>
+        </selector>
+    </item>
+</ripple>

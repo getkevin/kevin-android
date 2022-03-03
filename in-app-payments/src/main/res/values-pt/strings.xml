@@ -5,8 +5,8 @@
     <string name="window_card_payment_label">Pagamento via cartão</string>
     <string name="window_card_payment_cardholder_name_label">Nome do Titular</string>
     <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
-    <string name="window_card_payment_card_number_label">Card number</string>
-    <string name="window_card_payment_expiry_date_label">Número do cartão</string>
+    <string name="window_card_payment_card_number_label">Número do cartão</string>
+    <string name="window_card_payment_expiry_date_label">Data de validade</string>
     <string name="window_card_payment_notice">kevin. não está armazenando nenhuma informação pessoal ou detalhes do cartão.</string>
     <string name="window_card_payment_cvv_tooltip">CVV é um código de 3 dígitos exibido no verso do seu cartão</string>
     <string name="error_no_cardholder_name">O nome do titular do cartão deve ser inserido</string>

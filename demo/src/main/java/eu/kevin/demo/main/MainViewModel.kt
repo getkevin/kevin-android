@@ -84,7 +84,7 @@ internal class MainViewModel constructor(
     }
 
     fun donate(donationRequest: DonationRequest) {
-        val emailValidationResult = EmailValidator.validate(donationRequest.email)
+        val emailValidationResult = EmailValidator.validate(donationRequest.email.trim())
         val amountValidationResult = AmountValidator.validate(donationRequest.amount)
 
         _viewAction.trySend(
@@ -111,7 +111,7 @@ internal class MainViewModel constructor(
             } else {
                 initiatePayment(
                     InitiateDonationRequest(
-                        email = donationRequest.email,
+                        email = donationRequest.email.trim(),
                         amount = donationRequest.amount,
                         iban = selectedCreditor.iban,
                         creditorName = selectedCreditor.name,

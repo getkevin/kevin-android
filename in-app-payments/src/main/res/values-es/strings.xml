@@ -14,7 +14,7 @@
     <string name="error_no_cvv">Se debe ingresar CVV</string>
     <string name="error_invalid_expiry_date">La fecha de caducidad no es válida</string>
     <string name="error_no_expiry_date">Se debe ingresar la fecha de caducidad</string>
-    <string name="error_card_expired">la tarjeta esta caducada</string>
+    <string name="error_card_expired">La tarjeta esta caducada</string>
     <string name="error_invalid_card_number">El número de tarjeta no es válido</string>
     <string name="error_no_card_number">Se debe ingresar el número de tarjeta</string>
     <string name="window_card_payment_redirect_title">¿Continuar con el pago mediante transferencia bancaria?</string>

@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="64dp"
-    android:background="@drawable/selection_background"
+    android:layout_height="match_parent"
     tools:parentTag="android.widget.FrameLayout">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,14 +20,13 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_arrow_back" />
+            tools:src="@drawable/ic_arrow" />
 
         <TextView
             android:id="@+id/title_view"
-            style="@style/Kevin.Text.Title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="26dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/arrow_view"
@@ -40,7 +38,6 @@
             android:id="@+id/arrow_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="12dp"
             android:layout_marginEnd="16dp"
             android:contentDescription="@null"
             android:src="@drawable/ic_arrow"

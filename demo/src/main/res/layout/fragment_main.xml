@@ -19,7 +19,7 @@
 
             <TextView
                 android:id="@+id/title_text_view"
-                style="@style/TextAppearance.Kevin.Headline1"
+                style="@style/TextAppearance.Headline1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -31,11 +31,12 @@
 
             <TextView
                 android:id="@+id/subtitle_text_view"
-                style="@style/TextAppearance.Kevin.Title2"
+                style="@style/TextAppearance.Title2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:text="@string/window_main_subtitle_label"
+                android:textColor="?secondaryTextColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title_text_view" />
@@ -52,12 +53,14 @@
 
             <TextView
                 android:id="@+id/country_charity_label_text_view"
-                style="@style/TextAppearance.Kevin.Headline2"
+                style="@style/TextAppearance.Button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="30dp"
+                android:gravity="start"
                 android:text="@string/window_main_country_charity_label"
+                android:textColor="?primaryTextColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/payment_type_selection_bar" />
@@ -68,7 +71,8 @@
                 android:layout_height="54dp"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/bg_country_selection"
+                android:background="@drawable/country_selection_background"
+                android:foreground="@drawable/country_selection_ripple"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/country_charity_label_text_view">
@@ -86,23 +90,21 @@
 
                 <TextView
                     android:id="@+id/country_text_view"
-                    style="@style/TextAppearance.Kevin.Title2"
+                    style="@style/TextAppearance.Title1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="@string/window_main_country_label"
-                    android:textColor="@color/kevin_black"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/country_flag_image_view"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/selected_country_text_view"
-                    style="@style/TextAppearance.Kevin.Title2"
+                    style="@style/TextAppearance.Title1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
-                    android:textColor="@color/kevin_black"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/chevron"
                     app:layout_constraintTop_toTopOf="parent"
@@ -148,19 +150,21 @@
 
             <TextView
                 android:id="@+id/details_label_text_view"
-                style="@style/TextAppearance.Kevin.Headline2"
+                style="@style/TextAppearance.Button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="32dp"
+                android:gravity="start"
                 android:text="@string/window_main_details_lable"
+                android:textColor="?primaryTextColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/creditors_recycler_view" />
 
             <TextView
-                android:id="@+id/emnail_field_label_text_field"
-                style="@style/TextAppearance.Kevin.Subtitle"
+                android:id="@+id/email_field_label_text_field"
+                style="@style/TextAppearance.Subtitle1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -171,30 +175,28 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/email_text_field"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/TextInput.Layout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="4dp"
-                app:boxStrokeErrorColor="@color/kevin_red"
-                app:errorIconTint="@color/kevin_red"
-                app:errorTextColor="@color/kevin_red"
+                app:errorEnabled="false"
                 app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/emnail_field_label_text_field">
+                app:layout_constraintTop_toBottomOf="@+id/email_field_label_text_field">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    style="@style/TextInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
-                    android:padding="8dp" />
+                    android:inputType="textEmailAddress" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/amount_label_text_view"
-                style="@style/TextAppearance.Kevin.Subtitle"
+                style="@style/TextAppearance.Subtitle1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -205,35 +207,32 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/amount_text_field"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/TextInput.Layout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="4dp"
-                app:boxStrokeErrorColor="@color/kevin_red"
-                app:errorIconTint="@color/kevin_red"
-                app:errorTextColor="@color/kevin_red"
+                app:endIconMode="none"
                 app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/amount_label_text_view">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    style="@style/TextInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
-                    android:maxLength="10"
-                    android:padding="8dp" />
+                    android:maxLength="10" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                style="@style/TextAppearance.Kevin.Subtitle"
+                style="@style/TextAppearance.Subtitle1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="12dp"
                 android:text="@string/window_main_amount_field_currency"
-                android:textColor="@color/gray_01"
                 app:layout_constraintBottom_toBottomOf="@id/amount_text_field"
                 app:layout_constraintEnd_toEndOf="@id/amount_text_field"
                 app:layout_constraintTop_toTopOf="@id/amount_text_field" />
@@ -253,6 +252,7 @@
 
             <TextView
                 android:id="@+id/terms_text_view"
+                style="@style/TextAppearance.Caption2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
@@ -286,6 +286,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/terms_checkbox"
+                app:layout_constraintVertical_bias="1"
                 tools:text="Donate . 0.01 EUR" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
