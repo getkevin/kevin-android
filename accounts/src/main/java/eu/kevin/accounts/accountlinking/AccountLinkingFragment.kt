@@ -33,8 +33,7 @@ internal class AccountLinkingFragment : BaseFragment<AccountLinkingState, Accoun
             Initialize(
                 configuration = configuration!!,
                 webFrameQueryParameters = WebFrameHelper.getStyleAndLanguageQueryParameters(
-                    context = requireContext(),
-                    deviceLocale = requireContext().getCurrentLocale()
+                    context = requireContext()
                 )
             )
         )

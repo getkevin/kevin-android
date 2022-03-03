@@ -5,21 +5,18 @@ import androidx.core.content.ContextCompat
 import eu.kevin.common.R
 import eu.kevin.common.entities.KevinWebFrameColorsConfiguration
 import eu.kevin.common.extensions.getColorFromAttr
+import eu.kevin.common.extensions.getCurrentLocale
 import eu.kevin.common.extensions.isDarkMode
 import eu.kevin.common.extensions.toHexColor
 import eu.kevin.core.plugin.Kevin
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import java.util.*
 
 object WebFrameHelper {
 
-    fun getStyleAndLanguageQueryParameters(
-        context: Context,
-        deviceLocale: Locale
-    ): String {
+    fun getStyleAndLanguageQueryParameters(context: Context): String {
         return ""
-            .appendQueryParameter("lang", getActiveLocaleCode(deviceLocale))
+            .appendQueryParameter("lang", getActiveLocaleCode(context))
             .appendQueryParameter("cs", Json.encodeToString(getKevinWebFrameColorsConfigurationFromTheme(context)))
     }
 
@@ -36,8 +33,8 @@ object WebFrameHelper {
         }
     }
 
-    private fun getActiveLocaleCode(defaultLocale: Locale): String {
-        return Kevin.getLocale()?.language ?: defaultLocale.language
+    private fun getActiveLocaleCode(context: Context): String {
+        return Kevin.getLocale()?.language ?: context.getCurrentLocale().language
     }
 
     private fun String.appendQueryParameter(key: String, value: String): String {

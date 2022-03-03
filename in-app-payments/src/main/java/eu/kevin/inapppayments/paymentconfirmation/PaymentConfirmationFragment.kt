@@ -34,8 +34,7 @@ internal class PaymentConfirmationFragment : BaseFragment<PaymentConfirmationSta
             Initialize(
                 configuration = configuration!!,
                 webFrameQueryParameters = WebFrameHelper.getStyleAndLanguageQueryParameters(
-                    context = requireContext(),
-                    deviceLocale = requireContext().getCurrentLocale()
+                    context = requireContext()
                 )
             )
         )
