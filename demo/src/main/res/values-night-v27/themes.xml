@@ -7,7 +7,7 @@
         <item name="android:windowLightNavigationBar">false</item>
     </style>
 
-    <style name="BaseKevinTheme" parent="Theme.Kevin.Base">
+    <style name="KevinTheme" parent="BaseKevinTheme" >
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowLightNavigationBar">false</item>
