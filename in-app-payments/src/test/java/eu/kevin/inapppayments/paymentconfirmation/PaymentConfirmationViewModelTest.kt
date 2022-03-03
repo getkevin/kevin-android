@@ -4,6 +4,7 @@ import android.net.Uri
 import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.inapppayments.BuildConfig
+import eu.kevin.common.entities.KevinWebFrameColorsConfiguration
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 import eu.kevin.testcore.base.BaseViewModelTest
 import io.mockk.every
@@ -47,12 +48,20 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
             skipAuthentication = false
         )
 
+        val paymentConfirmationFrameColorsConfiguration =
+            KevinWebFrameColorsConfiguration("", "", "", "", "", "")
+
         val states = mutableListOf<PaymentConfirmationState>()
         val job = launch {
             viewModel.state.toList(states)
         }
 
-        viewModel.intents.trySend(PaymentConfirmationIntent.Initialize(config, Locale.ENGLISH))
+        viewModel.intents.trySend(
+            PaymentConfirmationIntent.Initialize(
+                config,
+                ""
+            )
+        )
 
         Assert.assertEquals(states.size, 2)
         Assert.assertEquals(states[0].url, "")
@@ -71,12 +80,20 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
             skipAuthentication = false
         )
 
+        val paymentConfirmationFrameColorsConfiguration =
+            KevinWebFrameColorsConfiguration("", "", "", "", "", "")
+
         val states = mutableListOf<PaymentConfirmationState>()
         val job = launch {
             viewModel.state.toList(states)
         }
 
-        viewModel.intents.trySend(PaymentConfirmationIntent.Initialize(config, Locale.ENGLISH))
+        viewModel.intents.trySend(
+            PaymentConfirmationIntent.Initialize(
+                config,
+                ""
+            )
+        )
 
         Assert.assertEquals(states.size, 2)
         Assert.assertEquals(states[0].url, "")

@@ -8,6 +8,7 @@ import eu.kevin.accounts.accountlinking.AccountLinkingIntent.*
 import eu.kevin.common.architecture.BaseFragment
 import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.extensions.getCurrentLocale
+import eu.kevin.common.helpers.WebFrameHelper
 
 internal class AccountLinkingFragment : BaseFragment<AccountLinkingState, AccountLinkingIntent, AccountLinkingViewModel>(),
     AccountLinkingViewDelegate {
@@ -31,7 +32,9 @@ internal class AccountLinkingFragment : BaseFragment<AccountLinkingState, Accoun
         viewModel.intents.trySend(
             Initialize(
                 configuration = configuration!!,
-                defaultLocale = requireContext().getCurrentLocale()
+                webFrameQueryParameters = WebFrameHelper.getStyleAndLanguageQueryParameters(
+                    context = requireContext()
+                )
             )
         )
     }
@@ -59,6 +62,7 @@ internal class AccountLinkingFragment : BaseFragment<AccountLinkingState, Accoun
         try {
             val intent = Intent(Intent.ACTION_VIEW, uri)
             startActivity(intent)
-        } catch (ignored: Exception) {}
+        } catch (ignored: Exception) {
+        }
     }
 }

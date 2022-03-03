@@ -11,8 +11,8 @@ import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.core.plugin.Kevin
 import eu.kevin.inapppayments.BuildConfig
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.*
+import eu.kevin.common.extensions.appendQuery
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType.BANK
-import java.util.*
 
 internal class PaymentConfirmationViewModel(
     savedStateHandle: SavedStateHandle
@@ -24,7 +24,7 @@ internal class PaymentConfirmationViewModel(
         when (intent) {
             is Initialize -> initialize(
                 configuration = intent.configuration,
-                defaultLocale = intent.defaultLocale
+                webFrameQueryParameters = intent.webFrameQueryParameters
             )
             is HandleBackClicked -> GlobalRouter.popCurrentFragment()
             is HandlePaymentCompleted -> handlePaymentCompleted(intent.uri)
@@ -33,7 +33,7 @@ internal class PaymentConfirmationViewModel(
 
     private suspend fun initialize(
         configuration: PaymentConfirmationFragmentConfiguration,
-        defaultLocale: Locale
+        webFrameQueryParameters: String
     ) {
         val url = when (configuration.paymentType) {
             BANK -> {
@@ -43,10 +43,8 @@ internal class PaymentConfirmationViewModel(
                     } else {
                         BuildConfig.KEVIN_BANK_PAYMENT_AUTHENTICATED_URL
                     }
-                    baseAuthenticatedPaymentUrl.format(
-                        configuration.paymentId,
-                        getActiveLocaleCode(defaultLocale)
-                    )
+                    baseAuthenticatedPaymentUrl.format(configuration.paymentId)
+                        .appendQuery(webFrameQueryParameters)
                 } else {
                     val basePaymentUrl = if (Kevin.isSandbox()) {
                         BuildConfig.KEVIN_SANDBOX_BANK_PAYMENT_URL
@@ -55,9 +53,8 @@ internal class PaymentConfirmationViewModel(
                     }
                     basePaymentUrl.format(
                         configuration.paymentId,
-                        configuration.selectedBank!!,
-                        getActiveLocaleCode(defaultLocale)
-                    )
+                        configuration.selectedBank!!
+                    ).appendQuery(webFrameQueryParameters)
                 }
             }
             else -> {
@@ -66,10 +63,8 @@ internal class PaymentConfirmationViewModel(
                 } else {
                     BuildConfig.KEVIN_CARD_PAYMENT_URL
                 }
-                baseCardPaymentUrl.format(
-                    configuration.paymentId,
-                    getActiveLocaleCode(defaultLocale)
-                )
+                baseCardPaymentUrl.format(configuration.paymentId)
+                    .appendQuery(webFrameQueryParameters)
             }
         }
         updateState {
@@ -92,9 +87,6 @@ internal class PaymentConfirmationViewModel(
         }
     }
 
-    private fun getActiveLocaleCode(defaultLocale: Locale): String {
-        return Kevin.getLocale()?.language ?: defaultLocale.language
-    }
 
     @Suppress("UNCHECKED_CAST")
     class Factory(

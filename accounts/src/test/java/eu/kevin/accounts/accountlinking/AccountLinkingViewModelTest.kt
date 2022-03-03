@@ -3,6 +3,7 @@ package eu.kevin.accounts.accountlinking
 import android.net.Uri
 import eu.kevin.accounts.BuildConfig
 import eu.kevin.common.architecture.routing.GlobalRouter
+import eu.kevin.common.entities.KevinWebFrameColorsConfiguration
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.testcore.base.BaseViewModelTest
 import io.mockk.*
@@ -38,12 +39,20 @@ class AccountLinkingViewModelTest : BaseViewModelTest() {
         )
         val config = AccountLinkingFragmentConfiguration(state, selectedBank)
 
+        val paymentConfirmationFrameColorsConfiguration =
+            KevinWebFrameColorsConfiguration("", "", "", "", "", "")
+
         val states = mutableListOf<AccountLinkingState>()
         val job = launch {
             viewModel.state.toList(states)
         }
 
-        viewModel.intents.trySend(AccountLinkingIntent.Initialize(config, Locale.ENGLISH))
+        viewModel.intents.trySend(
+            AccountLinkingIntent.Initialize(
+                config,
+                ""
+            )
+        )
 
         assertEquals(states.size, 2)
         assertEquals(states[0].bankRedirectUrl, "")
