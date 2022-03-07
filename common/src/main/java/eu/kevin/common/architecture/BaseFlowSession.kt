@@ -1,10 +1,8 @@
 package eu.kevin.common.architecture
 
 import android.os.Bundle
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.OnLifecycleEvent
 import androidx.savedstate.SavedStateRegistry
 import androidx.savedstate.SavedStateRegistryOwner
 import eu.kevin.common.providers.SavedStateProvider
@@ -17,9 +15,9 @@ abstract class BaseFlowSession(
     private val savable = Bundle()
 
     init {
-        lifecycleOwner.lifecycle.addObserver(object : LifecycleObserver {
-            @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-            private fun onCreate() {
+        lifecycleOwner.lifecycle.addObserver(object : DefaultLifecycleObserver {
+            override fun onCreate(owner: LifecycleOwner) {
+                super.onCreate(owner)
                 savedStateRegistry.consumeRestoredStateForKey("session_state")?.let { state ->
                     savable.putAll(state)
                 }

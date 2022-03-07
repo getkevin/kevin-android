@@ -2,7 +2,9 @@ package eu.kevin.inapppayments.paymentsession
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.*
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.lifecycleScope
 import androidx.savedstate.SavedStateRegistryOwner
 import eu.kevin.accounts.BuildConfig
 import eu.kevin.accounts.bankselection.BankSelectionContract
@@ -34,7 +36,7 @@ internal class PaymentSession(
     private val configuration: PaymentSessionConfiguration,
     private val lifecycleOwner: LifecycleOwner,
     registryOwner: SavedStateRegistryOwner
-) : BaseFlowSession(lifecycleOwner, registryOwner), LifecycleObserver {
+) : BaseFlowSession(lifecycleOwner, registryOwner), DefaultLifecycleObserver {
 
     private val backStackListener = FragmentManager.OnBackStackChangedListener {
         currentFlowIndex = fragmentManager.backStackEntryCount - 1
@@ -59,8 +61,8 @@ internal class PaymentSession(
         listenForFragmentResults()
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-    private fun onDestroy() {
+    override fun onDestroy(owner: LifecycleOwner) {
+        super.onDestroy(owner)
         sessionListener = null
     }
 
@@ -191,6 +193,7 @@ internal class PaymentSession(
                     )
                 }
                 is FragmentResult.Canceled -> sessionListener?.onSessionFinished(SessionResult.Canceled)
+                is FragmentResult.Failure -> sessionListener?.onSessionFinished(SessionResult.Failure(result.error))
             }
         }
     }

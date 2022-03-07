@@ -42,6 +42,7 @@ internal class CountrySelectionView(context: Context) : BaseView<FragmentCountry
             is LoadingState.Failure -> {
                 showError(ErrorHelper.getMessage(context, state.loadingState.error))
             }
+            null -> showLoading(false)
         }
         val countries = state.supportedCountries.map {
             Country(

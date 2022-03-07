@@ -9,6 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsAnimationCompat
 import androidx.core.view.WindowInsetsCompat
 
+@Suppress("DEPRECATION")
 class KeyboardManager(private val rootView: View) {
 
     private var onKeyboardSizeChanged: (Int) -> Unit = {}
