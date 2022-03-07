@@ -11,11 +11,11 @@ ext {
 apply from: "${rootProject.projectDir}/maven/publish-module.gradle"
 
 android {
-    compileSdkVersion 31
+    compileSdk 31
 
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 31
+        minSdk 21
+        targetSdk 31
 
         consumerProguardFiles "proguard-rules.pro"
         resConfigs("en", "lt", "ru", "bg", "ro", "hu", "el", "et", "pt", "pl", "lv", "sk", "cs", "fi", "sv", "no", "da", "de", "nl", "fr", "es", "it", "sl")
@@ -33,7 +33,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
