@@ -15,7 +15,7 @@ object ClientProvider {
             userAgent = "",
             timeout = 120000,
             logLevel = LogLevel.INFO
-        ).createClient(null)
+        ).createClient()
     }
 
     val kevinDemoApiClient: KevinApiClient by lazy {
@@ -24,6 +24,6 @@ object ClientProvider {
             userAgent = "",
             timeout = 120000,
             logLevel = LogLevel.INFO
-        ).createClient(null)
+        ).createClient()
     }
 }

@@ -1,7 +1,6 @@
 package eu.kevin.inapppayments.networking
 
 import eu.kevin.core.networking.BaseApiFactory
-import eu.kevin.core.networking.TokenDelegate
 import io.ktor.client.features.logging.*
 
 /**
@@ -26,7 +25,7 @@ class KevinPaymentsClientFactory(
     /**
      * @return [KevinPaymentsClient] with provided configuration
      */
-    override fun createClient(tokenDelegate: TokenDelegate?): KevinPaymentsClient {
+    override fun createClient(): KevinPaymentsClient {
         return KevinPaymentsApiClient(createKtorClient())
     }
 }

@@ -51,7 +51,7 @@ internal class PaymentSession(
         userAgent = "",
         timeout = BuildConfig.HTTP_CLIENT_TIMEOUT,
         logLevel = BuildConfig.HTTP_LOGGING_LEVEL
-    ).createClient(null)
+    ).createClient()
 
     init {
         lifecycleOwner.lifecycle.addObserver(this)

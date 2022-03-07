@@ -1,7 +1,6 @@
 package eu.kevin.accounts.networking
 
 import eu.kevin.core.networking.BaseApiFactory
-import eu.kevin.core.networking.TokenDelegate
 import io.ktor.client.features.logging.*
 
 /**
@@ -26,7 +25,7 @@ class KevinAccountsClientFactory(
     /**
      * @return [KevinAccountsClient] with provided configuration
      */
-    override fun createClient(tokenDelegate: TokenDelegate?): KevinAccountsClient {
+    override fun createClient(): KevinAccountsClient {
         return KevinAccountsApiClient(createKtorClient())
     }
 }
