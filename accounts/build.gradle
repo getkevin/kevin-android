@@ -38,6 +38,13 @@ android {
         }
     }
 
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
+
     buildFeatures {
         viewBinding true
     }
