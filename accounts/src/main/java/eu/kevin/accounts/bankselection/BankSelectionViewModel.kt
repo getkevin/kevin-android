@@ -18,16 +18,16 @@ import eu.kevin.accounts.countryselection.usecases.SupportedCountryUseCase
 import eu.kevin.accounts.networking.AccountsClientProvider
 import eu.kevin.common.architecture.BaseViewModel
 import eu.kevin.common.architecture.routing.GlobalRouter
+import eu.kevin.common.dispatchers.CoroutineDispatchers
+import eu.kevin.common.dispatchers.DefaultCoroutineDispatchers
 import eu.kevin.common.entities.LoadingState
 import eu.kevin.common.entities.isLoading
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 internal class BankSelectionViewModel constructor(
     private val countryUseCase: SupportedCountryUseCase,
     private val banksManager: BankManagerInterface,
-    private val ioDispatcher: CoroutineDispatcher,
+    private val dispatchers: CoroutineDispatchers,
     savedStateHandle: SavedStateHandle
 ) : BaseViewModel<BankSelectionState, BankSelectionIntent>(savedStateHandle) {
 
@@ -71,7 +71,7 @@ internal class BankSelectionViewModel constructor(
                 loadingState = LoadingState.Loading(true)
             )
         }
-        viewModelScope.launch(ioDispatcher) {
+        viewModelScope.launch(dispatchers.io) {
             try {
                 var disableCountrySelection = configuration.isCountrySelectionDisabled
                 val supportedCountries = countryUseCase.getSupportedCountries(configuration.authState, configuration.countryFilter)
@@ -129,7 +129,7 @@ internal class BankSelectionViewModel constructor(
                 loadingState = LoadingState.Loading(true)
             )
         }
-        viewModelScope.launch(ioDispatcher) {
+        viewModelScope.launch(dispatchers.io) {
             try {
                 val apiBanks = banksManager.getSupportedBanks(selectedCountry, configuration.authState)
                 banks = apiBanks.map {
@@ -187,7 +187,7 @@ internal class BankSelectionViewModel constructor(
                 KevinBankManager(
                     kevinAccountsClient = AccountsClientProvider.kevinAccountsClient
                 ),
-                Dispatchers.IO,
+                DefaultCoroutineDispatchers,
                 handle
             ) as T
         }

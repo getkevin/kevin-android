@@ -1,7 +1,6 @@
 package eu.kevin.demo.data
 
 import eu.kevin.core.networking.BaseApiFactory
-import eu.kevin.core.networking.TokenDelegate
 import io.ktor.client.features.logging.*
 
 class KevinDataClientFactory(
@@ -15,7 +14,7 @@ class KevinDataClientFactory(
     timeout,
     logLevel
 ) {
-    override fun createClient(tokenDelegate: TokenDelegate?): KevinDataClient {
+    override fun createClient(): KevinDataClient {
         return KevinDataApiClient(createKtorClient())
     }
 }

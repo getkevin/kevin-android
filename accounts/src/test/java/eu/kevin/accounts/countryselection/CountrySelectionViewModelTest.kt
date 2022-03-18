@@ -6,6 +6,7 @@ import eu.kevin.accounts.countryselection.usecases.SupportedCountryUseCase
 import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.entities.LoadingState
 import eu.kevin.testcore.base.BaseViewModelTest
+import eu.kevin.testcore.dispatchers.TestCoroutineDispatchers
 import eu.kevin.testcore.extensions.updateInternalState
 import io.mockk.every
 import io.mockk.mockkObject
@@ -13,10 +14,11 @@ import io.mockk.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.runTest
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
-import org.junit.Assert.*
 
 @ExperimentalCoroutinesApi
 class CountrySelectionViewModelTest : BaseViewModelTest() {
@@ -28,14 +30,14 @@ class CountrySelectionViewModelTest : BaseViewModelTest() {
         super.setUp()
         viewModel = CountrySelectionViewModel(
             SupportedCountryUseCase(CountriesTestManager()),
-            testCoroutineDispatcher,
+            TestCoroutineDispatchers,
             savedStateHandle
         )
         every { savedStateHandle.get<Any>(any()) } returns null
     }
 
     @Test
-    fun `test handleIntent() Initialize without preselected country`() = mainCoroutineRule.runBlockingTest {
+    fun `test handleIntent() Initialize without preselected country`() = testCoroutineScope.runTest {
         val config = CountrySelectionFragmentConfiguration(
             null,
             emptyList(),
@@ -49,15 +51,15 @@ class CountrySelectionViewModelTest : BaseViewModelTest() {
 
         viewModel.intents.trySend(CountrySelectionIntent.Initialize(config))
 
-        assertEquals(states.size, 3)
-        assertEquals(states[1].loadingState, LoadingState.Loading(true))
-        assertEquals(states[2].loadingState, LoadingState.Loading(false))
+        assertEquals(3, states.size)
+        assertEquals(LoadingState.Loading(true), states[1].loadingState)
+        assertEquals(LoadingState.Loading(false), states[2].loadingState)
         assertTrue(states[2].supportedCountries.isNotEmpty())
         job.cancel()
     }
 
     @Test
-    fun `test handleIntent() Initialize with preselected country`() = mainCoroutineRule.runBlockingTest {
+    fun `test handleIntent() Initialize with preselected country`() = testCoroutineScope.runTest {
         val selectedCountryIso = "lt"
         val config = CountrySelectionFragmentConfiguration(
             selectedCountryIso,
@@ -72,16 +74,16 @@ class CountrySelectionViewModelTest : BaseViewModelTest() {
 
         viewModel.intents.trySend(CountrySelectionIntent.Initialize(config))
 
-        assertEquals(states.size, 3)
-        assertEquals(states[1].loadingState, LoadingState.Loading(true))
-        assertEquals(states[2].loadingState, LoadingState.Loading(false))
+        assertEquals(3, states.size)
+        assertEquals(LoadingState.Loading(true), states[1].loadingState)
+        assertEquals(LoadingState.Loading(false), states[2].loadingState)
         assertTrue(states[2].supportedCountries.isNotEmpty())
         assertTrue(states[2].supportedCountries.firstOrNull { it.isSelected }?.iso == selectedCountryIso)
         job.cancel()
     }
 
     @Test
-    fun `test handleIntent() HandleCountrySelection`() = mainCoroutineRule.runBlockingTest {
+    fun `test handleIntent() HandleCountrySelection`() = testCoroutineScope.runTest {
         viewModel.updateInternalState(
             CountrySelectionState(
                 CountriesTestManager().getSupportedCountries("").map {

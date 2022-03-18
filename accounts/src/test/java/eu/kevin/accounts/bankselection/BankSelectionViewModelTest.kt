@@ -9,12 +9,16 @@ import eu.kevin.accounts.countryselection.usecases.SupportedCountryUseCase
 import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.entities.LoadingState
 import eu.kevin.testcore.base.BaseViewModelTest
+import eu.kevin.testcore.dispatchers.TestCoroutineDispatchers
 import eu.kevin.testcore.extensions.updateInternalState
-import io.mockk.*
+import io.mockk.every
+import io.mockk.mockkConstructor
+import io.mockk.mockkObject
+import io.mockk.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -30,14 +34,14 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
         viewModel = BankSelectionViewModel(
             SupportedCountryUseCase(CountriesTestManager()),
             BankTestManager(),
-            testCoroutineDispatcher,
+            TestCoroutineDispatchers,
             savedStateHandle
         )
         every { savedStateHandle.get<Any>(any()) } returns null
     }
 
     @Test
-    fun `test handleIntent() Initialize without preselected bank`() = mainCoroutineRule.runBlockingTest {
+    fun `test handleIntent() Initialize without preselected bank`() = testCoroutineScope.runTest {
         val selectedCountry = "lt"
         val config = BankSelectionFragmentConfiguration(
             selectedCountry,
@@ -54,16 +58,16 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
 
         viewModel.intents.trySend(BankSelectionIntent.Initialize(config))
 
-        Assert.assertEquals(states.size, 3)
-        Assert.assertEquals(states[1].loadingState, LoadingState.Loading(true))
-        Assert.assertEquals(states[2].loadingState, LoadingState.Loading(false))
+        Assert.assertEquals(3, states.size)
+        Assert.assertEquals(LoadingState.Loading(true), states[1].loadingState)
+        Assert.assertEquals(LoadingState.Loading(false), states[2].loadingState)
         Assert.assertTrue(states[2].bankListItems.isNotEmpty())
-        Assert.assertEquals(states[2].isCountrySelectionDisabled, false)
+        Assert.assertEquals(false, states[2].isCountrySelectionDisabled)
         job.cancel()
     }
 
     @Test
-    fun `test handleIntent() Initialize with preselected bank`() = mainCoroutineRule.runBlockingTest {
+    fun `test handleIntent() Initialize with preselected bank`() = testCoroutineScope.runTest {
         val preselectedBank = "SWEDBANK_LT"
         val selectedCountry = "lt"
         val config = BankSelectionFragmentConfiguration(
@@ -81,17 +85,17 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
 
         viewModel.intents.trySend(BankSelectionIntent.Initialize(config))
 
-        Assert.assertEquals(states.size, 3)
-        Assert.assertEquals(states[1].loadingState, LoadingState.Loading(true))
-        Assert.assertEquals(states[2].loadingState, LoadingState.Loading(false))
+        Assert.assertEquals(3, states.size)
+        Assert.assertEquals(LoadingState.Loading(true), states[1].loadingState)
+        Assert.assertEquals(LoadingState.Loading(false), states[2].loadingState)
         Assert.assertTrue(states[2].bankListItems.isNotEmpty())
         Assert.assertTrue(states[2].bankListItems.firstOrNull { it.isSelected }?.bankId == preselectedBank)
-        Assert.assertEquals(states[2].isCountrySelectionDisabled, false)
+        Assert.assertEquals(false, states[2].isCountrySelectionDisabled)
         job.cancel()
     }
 
     @Test
-    fun `test handleIntent() Initialize with preselected bank and incorrect country`() = mainCoroutineRule.runBlockingTest {
+    fun `test handleIntent() Initialize with preselected bank and incorrect country`() = testCoroutineScope.runTest {
         val preselectedBank = "SWEDBANK_LT"
         val selectedCountry = "lv"
         val config = BankSelectionFragmentConfiguration(
@@ -109,17 +113,17 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
 
         viewModel.intents.trySend(BankSelectionIntent.Initialize(config))
 
-        Assert.assertEquals(states.size, 3)
-        Assert.assertEquals(states[1].loadingState, LoadingState.Loading(true))
-        Assert.assertEquals(states[2].loadingState, LoadingState.Loading(false))
+        Assert.assertEquals(3, states.size)
+        Assert.assertEquals(LoadingState.Loading(true), states[1].loadingState)
+        Assert.assertEquals(LoadingState.Loading(false), states[2].loadingState)
         Assert.assertTrue(states[2].bankListItems.isNotEmpty())
         Assert.assertTrue(states[2].bankListItems.firstOrNull { it.isSelected }?.bankId != preselectedBank)
-        Assert.assertEquals(states[2].isCountrySelectionDisabled, false)
+        Assert.assertEquals(false, states[2].isCountrySelectionDisabled)
         job.cancel()
     }
 
     @Test
-    fun `test handleIntent() HandleBackClicked while loading`() = mainCoroutineRule.runBlockingTest {
+    fun `test handleIntent() HandleBackClicked while loading`() = testCoroutineScope.runTest {
         viewModel.updateInternalState(BankSelectionState(loadingState = LoadingState.Loading(true)))
         mockkObject(GlobalRouter)
         viewModel.intents.trySend(BankSelectionIntent.HandleBackClicked)
@@ -127,7 +131,7 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
     }
 
     @Test
-    fun `test handleIntent() HandleBackClicked while not loading`() = mainCoroutineRule.runBlockingTest {
+    fun `test handleIntent() HandleBackClicked while not loading`() = testCoroutineScope.runTest {
         viewModel.updateInternalState(BankSelectionState(loadingState = LoadingState.Loading(false)))
         mockkObject(GlobalRouter)
         viewModel.intents.trySend(BankSelectionIntent.HandleBackClicked)
@@ -135,7 +139,7 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
     }
 
     @Test
-    fun `test handleIntent() HandleBankSelection()`() = mainCoroutineRule.runBlockingTest {
+    fun `test handleIntent() HandleBankSelection()`() = testCoroutineScope.runTest {
         val preselectedBank = "SWEDBANK_LT"
         viewModel.updateInternalState(BankSelectionState(
             bankListItems = BankListItemFactory.getBankList(BankTestManager().getSupportedBanks("lt", ""), null)
@@ -153,7 +157,7 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
     }
 
     @Test
-    fun `test handleIntent() handleCountrySelectionClick()`() = mainCoroutineRule.runBlockingTest {
+    fun `test handleIntent() handleCountrySelectionClick()`() = testCoroutineScope.runTest {
         val selectedCountry = "lt"
         val config = BankSelectionFragmentConfiguration(
             selectedCountry,
@@ -173,7 +177,7 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
     }
 
     @Test
-    fun `test handleIntent() handleCountrySelected`() = mainCoroutineRule.runBlockingTest {
+    fun `test handleIntent() handleCountrySelected`() = testCoroutineScope.runTest {
         val selectedCountry = "lv"
         val config = BankSelectionFragmentConfiguration(
             null,
@@ -190,16 +194,16 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
 
         viewModel.intents.trySend(BankSelectionIntent.HandleCountrySelected(selectedCountry, config))
 
-        Assert.assertEquals(states.size, 3)
-        Assert.assertEquals(states[1].loadingState, LoadingState.Loading(true))
-        Assert.assertEquals(states[2].loadingState, LoadingState.Loading(false))
+        Assert.assertEquals(3, states.size)
+        Assert.assertEquals(LoadingState.Loading(true), states[1].loadingState)
+        Assert.assertEquals(LoadingState.Loading(false), states[2].loadingState)
         Assert.assertTrue(states[2].bankListItems.isNotEmpty())
-        Assert.assertEquals(states[2].selectedCountry, selectedCountry)
+        Assert.assertEquals(selectedCountry, states[2].selectedCountry)
         job.cancel()
     }
 
     @Test
-    fun `test handleIntent() handleContinueClicked`() = mainCoroutineRule.runBlockingTest {
+    fun `test handleIntent() handleContinueClicked`() = testCoroutineScope.runTest {
         mockkObject(GlobalRouter)
         val config = BankSelectionFragmentConfiguration(
             "lt",

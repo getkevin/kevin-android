@@ -15,3 +15,5 @@
     public <methods>;
     private <methods>;
 }
+
+-dontwarn org.slf4j.impl.StaticLoggerBinder

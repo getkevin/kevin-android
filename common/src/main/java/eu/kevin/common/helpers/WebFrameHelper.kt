@@ -9,11 +9,13 @@ import eu.kevin.common.extensions.getCurrentLocale
 import eu.kevin.common.extensions.isDarkMode
 import eu.kevin.common.extensions.toHexColor
 import eu.kevin.core.plugin.Kevin
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 object WebFrameHelper {
 
+    @OptIn(ExperimentalSerializationApi::class)
     fun getStyleAndLanguageQueryParameters(context: Context): String {
         return ""
             .appendQueryParameter("lang", getActiveLocaleCode(context))

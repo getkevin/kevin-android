@@ -22,7 +22,7 @@ abstract class BaseApiFactory<T : BaseApiClient>(
     private val timeout: Int? = null,
     private val logLevel: LogLevel = LogLevel.NONE
 ) {
-    abstract fun createClient(tokenDelegate: TokenDelegate?): T
+    abstract fun createClient(): T
 
     protected fun createKtorClient(): HttpClient {
         return HttpClient(Android) {

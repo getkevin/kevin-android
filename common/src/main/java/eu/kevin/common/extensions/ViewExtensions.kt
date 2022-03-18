@@ -58,7 +58,7 @@ fun View.showKeyboard() {
             windowInsetsController?.show(WindowInsetsCompat.Type.ime())
         } else {
             val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT,0)
+            imm.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
         }
     }
 }

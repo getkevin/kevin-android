@@ -8,9 +8,6 @@ sealed class LoadingState : Parcelable {
     data class Loading(val isLoading: Boolean) : LoadingState()
 
     @Parcelize
-    object Success: LoadingState()
-
-    @Parcelize
     data class Failure(val error: Throwable) : LoadingState()
 
     @Parcelize

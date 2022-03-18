@@ -13,14 +13,14 @@ import eu.kevin.accounts.countryselection.usecases.SupportedCountryUseCase
 import eu.kevin.accounts.networking.AccountsClientProvider
 import eu.kevin.common.architecture.BaseViewModel
 import eu.kevin.common.architecture.routing.GlobalRouter
+import eu.kevin.common.dispatchers.CoroutineDispatchers
+import eu.kevin.common.dispatchers.DefaultCoroutineDispatchers
 import eu.kevin.common.entities.LoadingState
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 internal class CountrySelectionViewModel constructor(
     private val countryUseCase: SupportedCountryUseCase,
-    private val ioDispatcher: CoroutineDispatcher,
+    private val dispatchers: CoroutineDispatchers,
     savedStateHandle: SavedStateHandle
 ) : BaseViewModel<CountrySelectionState, CountrySelectionIntent>(savedStateHandle) {
 
@@ -43,7 +43,7 @@ internal class CountrySelectionViewModel constructor(
                 loadingState = LoadingState.Loading(true)
             )
         }
-        viewModelScope.launch(ioDispatcher) {
+        viewModelScope.launch(dispatchers.io) {
             try {
                 val supportedCountries = countryUseCase.getSupportedCountries(configuration.authState, configuration.countryFilter)
                     .sortedBy { it }
@@ -92,7 +92,7 @@ internal class CountrySelectionViewModel constructor(
                         kevinAccountsClient = AccountsClientProvider.kevinAccountsClient
                     )
                 ),
-                Dispatchers.IO,
+                DefaultCoroutineDispatchers,
                 handle
             ) as T
         }

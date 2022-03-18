@@ -22,7 +22,6 @@ import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
-
 class MainFragment : Fragment(), MainViewCallback {
     private val viewModel: MainViewModel by viewModels {
         MainViewModel.Factory(this)

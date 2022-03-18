@@ -2,9 +2,9 @@ package eu.kevin.inapppayments.paymentconfirmation
 
 import android.net.Uri
 import eu.kevin.common.architecture.routing.GlobalRouter
+import eu.kevin.common.extensions.appendQuery
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.inapppayments.BuildConfig
-import eu.kevin.common.entities.KevinWebFrameColorsConfiguration
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 import eu.kevin.testcore.base.BaseViewModelTest
 import io.mockk.every
@@ -14,11 +14,10 @@ import io.mockk.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
-import java.util.*
 
 @ExperimentalCoroutinesApi
 class PaymentConfirmationViewModelTest : BaseViewModelTest() {
@@ -33,14 +32,14 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
     }
 
     @Test
-    fun `test handleIntent() Initialize with bank payment`() = mainCoroutineRule.runBlockingTest {
+    fun `test handleIntent() Initialize with bank payment`() = testCoroutineScope.runTest {
+        val urlQuery = ""
         val paymentId = "1234567"
         val selectedBank = "SWEDBANK_LT"
         val expectedRedirectUrl = BuildConfig.KEVIN_BANK_PAYMENT_URL.format(
             paymentId,
-            selectedBank,
-            Locale.ENGLISH.language
-        )
+            selectedBank
+        ).appendQuery(urlQuery)
         val config = PaymentConfirmationFragmentConfiguration(
             paymentId,
             PaymentType.BANK,
@@ -48,9 +47,6 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
             skipAuthentication = false
         )
 
-        val paymentConfirmationFrameColorsConfiguration =
-            KevinWebFrameColorsConfiguration("", "", "", "", "", "")
-
         val states = mutableListOf<PaymentConfirmationState>()
         val job = launch {
             viewModel.state.toList(states)
@@ -59,20 +55,21 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
         viewModel.intents.trySend(
             PaymentConfirmationIntent.Initialize(
                 config,
-                ""
+                urlQuery
             )
         )
 
-        Assert.assertEquals(states.size, 2)
-        Assert.assertEquals(states[0].url, "")
-        Assert.assertEquals(states[1].url, expectedRedirectUrl)
+        Assert.assertEquals(2, states.size)
+        Assert.assertEquals("", states[0].url)
+        Assert.assertEquals(expectedRedirectUrl, states[1].url)
         job.cancel()
     }
 
     @Test
-    fun `test handleIntent() Initialize with card payment`() = mainCoroutineRule.runBlockingTest {
+    fun `test handleIntent() Initialize with card payment`() = testCoroutineScope.runTest {
+        val urlQuery = ""
         val paymentId = "1234567"
-        val expectedRedirectUrl = BuildConfig.KEVIN_CARD_PAYMENT_URL.format(paymentId)
+        val expectedRedirectUrl = BuildConfig.KEVIN_CARD_PAYMENT_URL.format(paymentId).appendQuery(urlQuery)
         val config = PaymentConfirmationFragmentConfiguration(
             paymentId,
             PaymentType.CARD,
@@ -80,9 +77,6 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
             skipAuthentication = false
         )
 
-        val paymentConfirmationFrameColorsConfiguration =
-            KevinWebFrameColorsConfiguration("", "", "", "", "", "")
-
         val states = mutableListOf<PaymentConfirmationState>()
         val job = launch {
             viewModel.state.toList(states)
@@ -95,21 +89,21 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
             )
         )
 
-        Assert.assertEquals(states.size, 2)
-        Assert.assertEquals(states[0].url, "")
-        Assert.assertEquals(states[1].url, expectedRedirectUrl)
+        Assert.assertEquals(2, states.size)
+        Assert.assertEquals("", states[0].url)
+        Assert.assertEquals(expectedRedirectUrl, states[1].url)
         job.cancel()
     }
 
     @Test
-    fun `test handleIntent() HandleBackClicked`() = mainCoroutineRule.runBlockingTest {
+    fun `test handleIntent() HandleBackClicked`() = testCoroutineScope.runTest {
         mockkObject(GlobalRouter)
         viewModel.intents.trySend(PaymentConfirmationIntent.HandleBackClicked)
         verify(exactly = 1) { GlobalRouter.popCurrentFragment() }
     }
 
     @Test
-    fun `test handleIntent() handlePaymentCompleted success`() = mainCoroutineRule.runBlockingTest {
+    fun `test handleIntent() handlePaymentCompleted success`() = testCoroutineScope.runTest {
         val paymentId = "1234567"
         val expectedResult = PaymentConfirmationResult(paymentId)
         val mockUri = mockkClass(Uri::class)
@@ -128,7 +122,7 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
     }
 
     @Test
-    fun `test handleIntent() handlePaymentCompleted failure`() = mainCoroutineRule.runBlockingTest {
+    fun `test handleIntent() handlePaymentCompleted failure`() = testCoroutineScope.runTest {
         val mockUri = mockkClass(Uri::class)
         every { mockUri.getQueryParameter(any()) } returns ""
         mockkObject(GlobalRouter)

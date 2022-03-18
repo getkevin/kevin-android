@@ -3,18 +3,21 @@ package eu.kevin.accounts.accountlinking
 import android.net.Uri
 import eu.kevin.accounts.BuildConfig
 import eu.kevin.common.architecture.routing.GlobalRouter
-import eu.kevin.common.entities.KevinWebFrameColorsConfiguration
+import eu.kevin.common.extensions.appendQuery
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.testcore.base.BaseViewModelTest
-import io.mockk.*
+import io.mockk.every
+import io.mockk.mockkClass
+import io.mockk.mockkObject
+import io.mockk.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.test.runBlockingTest
-import org.junit.Assert.*
+import kotlinx.coroutines.test.runTest
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
-import java.util.*
 
 @ExperimentalCoroutinesApi
 class AccountLinkingViewModelTest : BaseViewModelTest() {
@@ -29,18 +32,15 @@ class AccountLinkingViewModelTest : BaseViewModelTest() {
     }
 
     @Test
-    fun `test handleIntent() Initialize`() = mainCoroutineRule.runBlockingTest {
+    fun `test handleIntent() Initialize`() = testCoroutineScope.runTest {
+        val urlQuery = ""
         val state = "state"
         val selectedBank = "SWEDBANK_LT"
         val expectedRedirectUrl = BuildConfig.KEVIN_LINK_ACCOUNT_URL.format(
             state,
-            selectedBank,
-            Locale.ENGLISH.language
-        )
+            selectedBank
+        ).appendQuery(urlQuery)
         val config = AccountLinkingFragmentConfiguration(state, selectedBank)
-
-        val paymentConfirmationFrameColorsConfiguration =
-            KevinWebFrameColorsConfiguration("", "", "", "", "", "")
 
         val states = mutableListOf<AccountLinkingState>()
         val job = launch {
@@ -50,25 +50,25 @@ class AccountLinkingViewModelTest : BaseViewModelTest() {
         viewModel.intents.trySend(
             AccountLinkingIntent.Initialize(
                 config,
-                ""
+                urlQuery
             )
         )
 
-        assertEquals(states.size, 2)
-        assertEquals(states[0].bankRedirectUrl, "")
-        assertEquals(states[1].bankRedirectUrl, expectedRedirectUrl)
+        assertEquals(2, states.size)
+        assertEquals("", states[0].bankRedirectUrl)
+        assertEquals(expectedRedirectUrl, states[1].bankRedirectUrl)
         job.cancel()
     }
 
     @Test
-    fun `test handleIntent() HandleBackClicked`() = mainCoroutineRule.runBlockingTest {
+    fun `test handleIntent() HandleBackClicked`() = testCoroutineScope.runTest {
         mockkObject(GlobalRouter)
         viewModel.intents.trySend(AccountLinkingIntent.HandleBackClicked)
         verify(exactly = 1) { GlobalRouter.popCurrentFragment() }
     }
 
     @Test
-    fun `test handleIntent() handleAuthorizationReceived success`() = mainCoroutineRule.runBlockingTest {
+    fun `test handleIntent() handleAuthorizationReceived success`() = testCoroutineScope.runTest {
         val requestId = "1234567"
         val code = "7654321"
         val expectedResult = AccountLinkingFragmentResult(requestId, code)
@@ -89,7 +89,7 @@ class AccountLinkingViewModelTest : BaseViewModelTest() {
     }
 
     @Test
-    fun `test handleIntent() handleAuthorizationReceived failure`() = mainCoroutineRule.runBlockingTest {
+    fun `test handleIntent() handleAuthorizationReceived failure`() = testCoroutineScope.runTest {
         val mockUri = mockkClass(Uri::class)
         every { mockUri.getQueryParameter(any()) } returns ""
         mockkObject(GlobalRouter)

@@ -2,7 +2,9 @@ package eu.kevin.accounts.accountsession
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.*
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.lifecycleScope
 import androidx.savedstate.SavedStateRegistryOwner
 import eu.kevin.accounts.accountlinking.AccountLinkingContract
 import eu.kevin.accounts.accountlinking.AccountLinkingFragmentConfiguration
@@ -30,7 +32,7 @@ internal class AccountSession(
     private val configuration: AccountSessionConfiguration,
     private val lifecycleOwner: LifecycleOwner,
     registryOwner: SavedStateRegistryOwner
-) : BaseFlowSession(lifecycleOwner, registryOwner), LifecycleObserver {
+) : BaseFlowSession(lifecycleOwner, registryOwner), DefaultLifecycleObserver {
 
     private var sessionListener: AccountSessionListener? = null
 
@@ -49,8 +51,8 @@ internal class AccountSession(
         initFragmentResultListeners()
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-    private fun onDestroy() {
+    override fun onDestroy(owner: LifecycleOwner) {
+        super.onDestroy(owner)
         sessionListener = null
     }
 
@@ -155,6 +157,7 @@ internal class AccountSession(
                         )
                     }
                     is FragmentResult.Canceled -> sessionListener?.onSessionFinished(SessionResult.Canceled)
+                    is FragmentResult.Failure -> sessionListener?.onSessionFinished(SessionResult.Failure(result.error))
                 }
             }
         }
