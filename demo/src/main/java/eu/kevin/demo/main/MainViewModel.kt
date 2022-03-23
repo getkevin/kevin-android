@@ -5,12 +5,10 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.savedstate.SavedStateRegistryOwner
-import eu.kevin.accounts.accountsession.enums.AccountLinkingType
 import eu.kevin.common.entities.LoadingState
 import eu.kevin.core.networking.exceptions.ApiError
 import eu.kevin.demo.ClientProvider
 import eu.kevin.demo.auth.KevinApiClient
-import eu.kevin.demo.auth.entities.ApiPayment
 import eu.kevin.demo.auth.entities.InitiatePaymentRequest
 import eu.kevin.demo.countryselection.CountrySelectionContract
 import eu.kevin.demo.countryselection.CountrySelectionFragmentConfiguration
