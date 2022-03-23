@@ -31,20 +31,6 @@ class MainFragment : Fragment(), MainViewCallback {
         MainViewModel.Factory(this)
     }
 
-    private val linkAccount = registerForActivityResult(AccountSessionContract()) { result ->
-        when (result) {
-            is SessionResult.Success -> {
-                Toast.makeText(requireContext(), "Account authorization code: ${result.value.authorizationCode}", Toast.LENGTH_SHORT).show()
-            }
-            is SessionResult.Canceled -> {
-                Toast.makeText(requireContext(), "Account linking cancelled", Toast.LENGTH_SHORT).show()
-            }
-            is SessionResult.Failure -> {
-                Toast.makeText(requireContext(), result.error.message, Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
-
     private val makePayment = registerForActivityResult(PaymentSessionContract()) { result ->
         when (result) {
             is SessionResult.Success -> {
@@ -83,9 +69,6 @@ class MainFragment : Fragment(), MainViewCallback {
                     is MainViewAction.OpenPaymentSession -> {
                         openPaymentSession(action.payment, action.paymentType)
                     }
-                    is MainViewAction.OpenAccountLinkingSession -> {
-                        openAccountLinkingSession(action.payment.id, action.accountLinkingType)
-                    }
                     is MainViewAction.ShowFieldValidations -> {
                         contentView.showInputFieldValidations(
                             action.emailValidationResult,
@@ -102,13 +85,6 @@ class MainFragment : Fragment(), MainViewCallback {
                 }
             }.launchIn(this)
         }
-    }
-
-    private fun openAccountLinkingSession(state: String, accountLinkingType: AccountLinkingType) {
-        val config = AccountSessionConfiguration.Builder(state)
-            .setPaymentType(accountLinkingType)
-            .build()
-        linkAccount.launch(config)
     }
 
     private fun listenForCountrySelectedResult() {

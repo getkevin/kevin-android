@@ -46,7 +46,6 @@ internal class MainViewModel constructor(
 
     init {
         loadCreditors(_viewState.value.selectedCountry)
-        initializeAccountLinking()
     }
 
     fun onCreditorSelected(creditor: CreditorListItem) {
@@ -121,19 +120,6 @@ internal class MainViewModel constructor(
                         paymentType = donationRequest.paymentType
                     )
                 )
-            }
-        }
-    }
-
-    fun initializeAccountLinking() {
-        viewModelScope.launch(Dispatchers.IO) {
-            _viewState.update { it.copy(loadingState = LoadingState.Loading(true)) }
-            try {
-                val state = kevinApiClient.getCardAuthState()
-                _viewAction.send(MainViewAction.OpenAccountLinkingSession(ApiPayment(state), AccountLinkingType.CARD))
-                _viewState.update { it.copy(loadingState = LoadingState.Loading(false)) }
-            } catch (ignored: Exception) {
-                _viewState.update { it.copy(loadingState = LoadingState.Loading(false)) }
             }
         }
     }
