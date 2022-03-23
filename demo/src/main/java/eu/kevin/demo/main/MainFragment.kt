@@ -6,9 +6,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import eu.kevin.accounts.accountsession.AccountSessionContract
+import eu.kevin.accounts.accountsession.entities.AccountSessionConfiguration
+import eu.kevin.accounts.accountsession.enums.AccountLinkingType
 import eu.kevin.common.extensions.setFragmentResultListener
 import eu.kevin.core.entities.SessionResult
 import eu.kevin.core.enums.KevinCountry
@@ -25,6 +29,20 @@ import kotlinx.coroutines.flow.onEach
 class MainFragment : Fragment(), MainViewCallback {
     private val viewModel: MainViewModel by viewModels {
         MainViewModel.Factory(this)
+    }
+
+    private val linkAccount = registerForActivityResult(AccountSessionContract()) { result ->
+        when (result) {
+            is SessionResult.Success -> {
+                Toast.makeText(requireContext(), "Account authorization code: ${result.value.authorizationCode}", Toast.LENGTH_SHORT).show()
+            }
+            is SessionResult.Canceled -> {
+                Toast.makeText(requireContext(), "Account linking cancelled", Toast.LENGTH_SHORT).show()
+            }
+            is SessionResult.Failure -> {
+                Toast.makeText(requireContext(), result.error.message, Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private val makePayment = registerForActivityResult(PaymentSessionContract()) { result ->
@@ -65,6 +83,9 @@ class MainFragment : Fragment(), MainViewCallback {
                     is MainViewAction.OpenPaymentSession -> {
                         openPaymentSession(action.payment, action.paymentType)
                     }
+                    is MainViewAction.OpenAccountLinkingSession -> {
+                        openAccountLinkingSession(action.payment.id, action.accountLinkingType)
+                    }
                     is MainViewAction.ShowFieldValidations -> {
                         contentView.showInputFieldValidations(
                             action.emailValidationResult,
@@ -81,6 +102,13 @@ class MainFragment : Fragment(), MainViewCallback {
                 }
             }.launchIn(this)
         }
+    }
+
+    private fun openAccountLinkingSession(state: String, accountLinkingType: AccountLinkingType) {
+        val config = AccountSessionConfiguration.Builder(state)
+            .setPaymentType(accountLinkingType)
+            .build()
+        linkAccount.launch(config)
     }
 
     private fun listenForCountrySelectedResult() {

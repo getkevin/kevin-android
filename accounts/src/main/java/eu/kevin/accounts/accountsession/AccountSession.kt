@@ -13,6 +13,7 @@ import eu.kevin.accounts.accountsession.entities.AccountSessionData
 import eu.kevin.accounts.accountsession.enums.AccountSessionFlowItem
 import eu.kevin.accounts.accountsession.enums.AccountSessionFlowItem.BANK_SELECTION
 import eu.kevin.accounts.accountsession.enums.AccountSessionFlowItem.LINK_ACCOUNT_WEB_VIEW
+import eu.kevin.accounts.accountsession.enums.AccountLinkingType
 import eu.kevin.accounts.bankselection.BankSelectionContract
 import eu.kevin.accounts.bankselection.BankSelectionFragmentConfiguration
 import eu.kevin.accounts.bankselection.entities.Bank
@@ -59,7 +60,7 @@ internal class AccountSession(
     fun beginFlow(listener: AccountSessionListener?) {
         sessionListener = listener
 
-        if (configuration.preselectedBank != null) {
+        if (configuration.accountLinkingType == AccountLinkingType.BANK && configuration.preselectedBank != null) {
             sessionListener?.showLoading(true)
             lifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
                 val selectedBank = getSelectedBank()
@@ -77,7 +78,8 @@ internal class AccountSession(
         if (currentFlowIndex == -1) {
             sessionData = sessionData.copy(
                 selectedCountry = configuration.preselectedCountry?.iso,
-                selectedBank = selectedBank
+                selectedBank = selectedBank,
+                selectedAccountLinkingType = configuration.accountLinkingType
             )
         }
         updateFlowItems()
@@ -102,10 +104,15 @@ internal class AccountSession(
 
     private fun updateFlowItems() {
         val flow = mutableListOf<AccountSessionFlowItem>()
-        if (!configuration.skipBankSelection || sessionData.selectedBank == null) {
-            flow.add(BANK_SELECTION)
+
+        if (sessionData.selectedAccountLinkingType == AccountLinkingType.BANK) {
+            if (!configuration.skipBankSelection || sessionData.selectedBank == null) {
+                flow.add(BANK_SELECTION)
+            }
         }
+
         flow.add(LINK_ACCOUNT_WEB_VIEW)
+
         flowItems.clear()
         flowItems.addAll(flow)
     }
@@ -132,7 +139,8 @@ internal class AccountSession(
             LINK_ACCOUNT_WEB_VIEW -> {
                 val config = AccountLinkingFragmentConfiguration(
                     configuration.state,
-                    sessionData.selectedBank?.id!!
+                    sessionData.selectedBank?.id,
+                    sessionData.selectedAccountLinkingType!!
                 )
                 AccountLinkingContract.getFragment(config)
             }
@@ -152,7 +160,8 @@ internal class AccountSession(
                         sessionListener?.onSessionFinished(
                             SessionResult.Success(AccountSessionResult(
                                 sessionData.authorization!!,
-                                sessionData.selectedBank!!
+                                sessionData.selectedBank,
+                                sessionData.selectedAccountLinkingType!!
                             ))
                         )
                     }

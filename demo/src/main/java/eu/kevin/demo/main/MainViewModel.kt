@@ -5,10 +5,12 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.savedstate.SavedStateRegistryOwner
+import eu.kevin.accounts.accountsession.enums.AccountLinkingType
 import eu.kevin.common.entities.LoadingState
 import eu.kevin.core.networking.exceptions.ApiError
 import eu.kevin.demo.ClientProvider
 import eu.kevin.demo.auth.KevinApiClient
+import eu.kevin.demo.auth.entities.ApiPayment
 import eu.kevin.demo.auth.entities.InitiatePaymentRequest
 import eu.kevin.demo.countryselection.CountrySelectionContract
 import eu.kevin.demo.countryselection.CountrySelectionFragmentConfiguration
@@ -44,6 +46,7 @@ internal class MainViewModel constructor(
 
     init {
         loadCreditors(_viewState.value.selectedCountry)
+        initializeAccountLinking()
     }
 
     fun onCreditorSelected(creditor: CreditorListItem) {
@@ -118,6 +121,19 @@ internal class MainViewModel constructor(
                         paymentType = donationRequest.paymentType
                     )
                 )
+            }
+        }
+    }
+
+    fun initializeAccountLinking() {
+        viewModelScope.launch(Dispatchers.IO) {
+            _viewState.update { it.copy(loadingState = LoadingState.Loading(true)) }
+            try {
+                val state = kevinApiClient.getCardAuthState()
+                _viewAction.send(MainViewAction.OpenAccountLinkingSession(ApiPayment(state), AccountLinkingType.CARD))
+                _viewState.update { it.copy(loadingState = LoadingState.Loading(false)) }
+            } catch (ignored: Exception) {
+                _viewState.update { it.copy(loadingState = LoadingState.Loading(false)) }
             }
         }
     }

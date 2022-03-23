@@ -7,12 +7,12 @@ import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
 import eu.kevin.accounts.BuildConfig
 import eu.kevin.accounts.accountlinking.AccountLinkingIntent.*
+import eu.kevin.accounts.accountsession.enums.AccountLinkingType
 import eu.kevin.common.architecture.BaseViewModel
 import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.extensions.appendQuery
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.core.plugin.Kevin
-import java.util.*
 
 internal class AccountLinkingViewModel(
     savedStateHandle: SavedStateHandle
@@ -35,25 +35,34 @@ internal class AccountLinkingViewModel(
         configuration: AccountLinkingFragmentConfiguration,
         webFrameQueryParameters: String
     ) {
-        val baseLinkAccountUrl = if (Kevin.isSandbox()) {
-            BuildConfig.KEVIN_SANDBOX_LINK_ACCOUNT_URL
-        } else {
-            BuildConfig.KEVIN_LINK_ACCOUNT_URL
+        val url = when (configuration.selectedAccountLinkingType) {
+            AccountLinkingType.BANK -> {
+                val baseLinkAccountUrl = if (Kevin.isSandbox()) {
+                    BuildConfig.KEVIN_SANDBOX_LINK_ACCOUNT_URL
+                } else {
+                    BuildConfig.KEVIN_LINK_ACCOUNT_URL
+                }
+                baseLinkAccountUrl.format(
+                    configuration.state,
+                    configuration.selectedBankId
+                ).appendQuery(webFrameQueryParameters)
+            }
+            else -> {
+                val baseCardPaymentUrl = if (Kevin.isSandbox()) {
+                    BuildConfig.KEVIN_SANDBOX_LINK_CARD_URL
+                } else {
+                    BuildConfig.KEVIN_LINK_CARD_URL
+                }
+                baseCardPaymentUrl.format(configuration.state)
+                    .appendQuery(webFrameQueryParameters)
+            }
         }
-        val url = baseLinkAccountUrl.format(
-            configuration.state,
-            configuration.selectedBankId
-        ).appendQuery(webFrameQueryParameters)
 
         updateState {
             it.copy(
                 bankRedirectUrl = url
             )
         }
-    }
-
-    private fun getActiveLocaleCode(defaultLocale: Locale): String {
-        return Kevin.getLocale()?.language ?: defaultLocale.language
     }
 
     private fun handleAuthorizationReceived(uri: Uri) {

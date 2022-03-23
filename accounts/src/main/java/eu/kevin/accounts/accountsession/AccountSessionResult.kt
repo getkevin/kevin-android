@@ -1,6 +1,7 @@
 package eu.kevin.accounts.accountsession
 
 import android.os.Parcelable
+import eu.kevin.accounts.accountsession.enums.AccountLinkingType
 import eu.kevin.accounts.bankselection.entities.Bank
 import kotlinx.parcelize.Parcelize
 
@@ -12,5 +13,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class AccountSessionResult(
     val authorizationCode: String,
-    val bank: Bank
+    val bank: Bank?,
+    val accountLinkingType: AccountLinkingType
 ) : Parcelable

@@ -1,6 +1,7 @@
 package eu.kevin.accounts.accountsession.entities
 
 import android.os.Parcelable
+import eu.kevin.accounts.accountsession.enums.AccountLinkingType
 import eu.kevin.core.enums.KevinCountry
 import kotlinx.parcelize.Parcelize
 
@@ -14,7 +15,8 @@ data class AccountSessionConfiguration internal constructor(
     val disableCountrySelection: Boolean,
     val countryFilter: List<KevinCountry>,
     val preselectedBank: String?,
-    val skipBankSelection: Boolean
+    val skipBankSelection: Boolean,
+    val accountLinkingType: AccountLinkingType
 ) : Parcelable {
 
     init {
@@ -44,6 +46,17 @@ data class AccountSessionConfiguration internal constructor(
         private var countryFilter: List<KevinCountry> = emptyList()
         private var preselectedBank: String? = null
         private var skipBankSelection: Boolean = false
+        private var accountLinkingType: AccountLinkingType = AccountLinkingType.BANK
+
+        /**
+         * @param accountLinkingType [AccountLinkingType] that will be used to perform the linking
+         *
+         * Default [AccountLinkingType.BANK]
+         */
+        fun setPaymentType(accountLinkingType: AccountLinkingType): Builder {
+            this.accountLinkingType = accountLinkingType
+            return this
+        }
 
         /**
          * @param country [KevinCountry] that will be used during initial
@@ -117,7 +130,8 @@ data class AccountSessionConfiguration internal constructor(
                 disableCountrySelection,
                 countryFilter,
                 preselectedBank,
-                skipBankSelection
+                skipBankSelection,
+                accountLinkingType
             )
         }
     }
