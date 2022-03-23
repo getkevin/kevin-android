@@ -60,7 +60,8 @@ internal class AccountLinkingViewModel(
 
         updateState {
             it.copy(
-                bankRedirectUrl = url
+                bankRedirectUrl = url,
+                accountLinkingType = configuration.selectedAccountLinkingType
             )
         }
     }
