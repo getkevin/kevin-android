@@ -10,5 +10,5 @@ internal data class AccountSessionData(
     val selectedCountry: String? = null,
     val selectedBank: Bank? = null,
     val authorization: String? = null,
-    val selectedAccountLinkingType: AccountLinkingType? = null
+    val linkingType: AccountLinkingType? = null
 ) : Parcelable

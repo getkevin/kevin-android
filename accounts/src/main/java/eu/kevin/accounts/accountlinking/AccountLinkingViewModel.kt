@@ -35,7 +35,7 @@ internal class AccountLinkingViewModel(
         configuration: AccountLinkingFragmentConfiguration,
         webFrameQueryParameters: String
     ) {
-        val url = when (configuration.selectedAccountLinkingType) {
+        val url = when (configuration.linkingType) {
             AccountLinkingType.BANK -> {
                 val baseLinkAccountUrl = if (Kevin.isSandbox()) {
                     BuildConfig.KEVIN_SANDBOX_LINK_ACCOUNT_URL
@@ -61,7 +61,7 @@ internal class AccountLinkingViewModel(
         updateState {
             it.copy(
                 bankRedirectUrl = url,
-                accountLinkingType = configuration.selectedAccountLinkingType
+                accountLinkingType = configuration.linkingType
             )
         }
     }

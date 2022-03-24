@@ -2,6 +2,7 @@ package eu.kevin.accounts.accountlinking
 
 import android.net.Uri
 import eu.kevin.accounts.BuildConfig
+import eu.kevin.accounts.accountsession.enums.AccountLinkingType
 import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.extensions.appendQuery
 import eu.kevin.common.fragment.FragmentResult
@@ -40,7 +41,7 @@ class AccountLinkingViewModelTest : BaseViewModelTest() {
             state,
             selectedBank
         ).appendQuery(urlQuery)
-        val config = AccountLinkingFragmentConfiguration(state, selectedBank)
+        val config = AccountLinkingFragmentConfiguration(state, selectedBank, AccountLinkingType.BANK)
 
         val states = mutableListOf<AccountLinkingState>()
         val job = launch {

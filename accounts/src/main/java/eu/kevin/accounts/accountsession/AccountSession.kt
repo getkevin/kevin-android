@@ -79,7 +79,7 @@ internal class AccountSession(
             sessionData = sessionData.copy(
                 selectedCountry = configuration.preselectedCountry?.iso,
                 selectedBank = selectedBank,
-                selectedAccountLinkingType = configuration.accountLinkingType
+                linkingType = configuration.accountLinkingType
             )
         }
         updateFlowItems()
@@ -105,7 +105,7 @@ internal class AccountSession(
     private fun updateFlowItems() {
         val flow = mutableListOf<AccountSessionFlowItem>()
 
-        if (sessionData.selectedAccountLinkingType == AccountLinkingType.BANK) {
+        if (sessionData.linkingType == AccountLinkingType.BANK) {
             if (!configuration.skipBankSelection || sessionData.selectedBank == null) {
                 flow.add(BANK_SELECTION)
             }
@@ -140,7 +140,7 @@ internal class AccountSession(
                 val config = AccountLinkingFragmentConfiguration(
                     configuration.state,
                     sessionData.selectedBank?.id,
-                    sessionData.selectedAccountLinkingType!!
+                    sessionData.linkingType!!
                 )
                 AccountLinkingContract.getFragment(config)
             }
@@ -161,7 +161,7 @@ internal class AccountSession(
                             SessionResult.Success(AccountSessionResult(
                                 sessionData.authorization!!,
                                 sessionData.selectedBank,
-                                sessionData.selectedAccountLinkingType!!
+                                sessionData.linkingType!!
                             ))
                         )
                     }

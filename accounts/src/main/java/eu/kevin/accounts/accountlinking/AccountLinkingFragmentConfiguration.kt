@@ -7,6 +7,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class AccountLinkingFragmentConfiguration(
     val state: String,
-    val selectedBankId: String?,
-    val selectedAccountLinkingType: AccountLinkingType
+    val selectedBankId: String? = null,
+    val linkingType: AccountLinkingType
 ) : Parcelable
