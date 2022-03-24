@@ -10,10 +10,10 @@ import eu.kevin.accounts.accountlinking.AccountLinkingContract
 import eu.kevin.accounts.accountlinking.AccountLinkingFragmentConfiguration
 import eu.kevin.accounts.accountsession.entities.AccountSessionConfiguration
 import eu.kevin.accounts.accountsession.entities.AccountSessionData
+import eu.kevin.accounts.accountsession.enums.AccountLinkingType
 import eu.kevin.accounts.accountsession.enums.AccountSessionFlowItem
 import eu.kevin.accounts.accountsession.enums.AccountSessionFlowItem.BANK_SELECTION
 import eu.kevin.accounts.accountsession.enums.AccountSessionFlowItem.LINK_ACCOUNT_WEB_VIEW
-import eu.kevin.accounts.accountsession.enums.AccountLinkingType
 import eu.kevin.accounts.bankselection.BankSelectionContract
 import eu.kevin.accounts.bankselection.BankSelectionFragmentConfiguration
 import eu.kevin.accounts.bankselection.entities.Bank
@@ -90,7 +90,10 @@ internal class AccountSession(
 
     private suspend fun getSelectedBank(): Bank? {
         return try {
-            val apiBanks = accountsClient.getSupportedBanks(configuration.state, configuration.preselectedCountry?.iso)
+            val apiBanks = accountsClient.getSupportedBanks(
+                configuration.state,
+                configuration.preselectedCountry?.iso
+            )
             apiBanks.data.firstOrNull { it.id == configuration.preselectedBank }?.let {
                 Bank(it.id, it.name, it.officialName, it.imageUri, it.bic)
             }
@@ -105,16 +108,19 @@ internal class AccountSession(
     private fun updateFlowItems() {
         val flow = mutableListOf<AccountSessionFlowItem>()
 
-        if (sessionData.linkingType == AccountLinkingType.BANK) {
-            if (!configuration.skipBankSelection || sessionData.selectedBank == null) {
-                flow.add(BANK_SELECTION)
-            }
+        if (flowShouldIncludeBankSelection()) {
+            flow.add(BANK_SELECTION)
         }
 
         flow.add(LINK_ACCOUNT_WEB_VIEW)
 
         flowItems.clear()
         flowItems.addAll(flow)
+    }
+
+    private fun flowShouldIncludeBankSelection(): Boolean {
+        return sessionData.linkingType == AccountLinkingType.BANK
+                && (!configuration.skipBankSelection || sessionData.selectedBank == null)
     }
 
     private fun navigateToNextWindow() {
@@ -158,15 +164,21 @@ internal class AccountSession(
                     is FragmentResult.Success -> {
                         sessionData = sessionData.copy(authorization = result.value.authCode)
                         sessionListener?.onSessionFinished(
-                            SessionResult.Success(AccountSessionResult(
-                                sessionData.authorization!!,
-                                sessionData.selectedBank,
-                                sessionData.linkingType!!
-                            ))
+                            SessionResult.Success(
+                                AccountSessionResult(
+                                    sessionData.authorization!!,
+                                    sessionData.selectedBank,
+                                    sessionData.linkingType!!
+                                )
+                            )
                         )
                     }
                     is FragmentResult.Canceled -> sessionListener?.onSessionFinished(SessionResult.Canceled)
-                    is FragmentResult.Failure -> sessionListener?.onSessionFinished(SessionResult.Failure(result.error))
+                    is FragmentResult.Failure -> sessionListener?.onSessionFinished(
+                        SessionResult.Failure(
+                            result.error
+                        )
+                    )
                 }
             }
         }

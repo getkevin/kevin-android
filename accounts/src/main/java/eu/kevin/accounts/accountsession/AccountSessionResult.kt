@@ -9,10 +9,11 @@ import kotlinx.parcelize.Parcelize
  * Data class representing data after successful account linking
  * @property authorizationCode a code which can be used to fetch linked bank tokens
  * @property bank linked bank object
+ * @property linkingType linked type
  */
 @Parcelize
 data class AccountSessionResult(
     val authorizationCode: String,
     val bank: Bank?,
-    val accountLinkingType: AccountLinkingType
+    val linkingType: AccountLinkingType
 ) : Parcelable
