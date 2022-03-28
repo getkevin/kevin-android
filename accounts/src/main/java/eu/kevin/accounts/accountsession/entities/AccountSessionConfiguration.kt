@@ -49,7 +49,7 @@ data class AccountSessionConfiguration internal constructor(
         private var accountLinkingType: AccountLinkingType = AccountLinkingType.BANK
 
         /**
-         * @param accountLinkingType [AccountLinkingType] that will be used to perform the linking
+         * @param linkingType [AccountLinkingType] that will be used to perform the linking
          *
          * Default [AccountLinkingType.BANK]
          */
