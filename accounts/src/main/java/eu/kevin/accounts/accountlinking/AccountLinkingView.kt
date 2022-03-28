@@ -9,6 +9,7 @@ import androidx.core.view.updateLayoutParams
 import androidx.webkit.WebViewClientCompat
 import eu.kevin.accounts.KevinAccountsPlugin
 import eu.kevin.accounts.R
+import eu.kevin.accounts.accountsession.enums.AccountLinkingType
 import eu.kevin.accounts.databinding.FragmentAccountLinkingBinding
 import eu.kevin.common.architecture.BaseView
 import eu.kevin.common.architecture.interfaces.IView
@@ -87,6 +88,11 @@ internal class AccountLinkingView(context: Context) : BaseView<FragmentAccountLi
     override fun render(state: AccountLinkingState) = with(binding) {
         if (state.bankRedirectUrl.isNotBlank()) {
             accountLinkWebView.loadUrl(state.bankRedirectUrl)
+        }
+        if (state.accountLinkingType == AccountLinkingType.BANK) {
+            binding.actionBar.title = context.getString(R.string.window_account_linking_title)
+        } else {
+            binding.actionBar.title = context.getString(R.string.window_account_linking_card_title)
         }
     }
 

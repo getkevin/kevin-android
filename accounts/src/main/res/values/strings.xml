@@ -32,6 +32,7 @@
     <string name="country_name_is">Iceland</string>
     <string name="country_name_li">Liechtenstein</string>
     <string name="window_account_linking_title">Account linking</string>
+    <string name="window_account_linking_card_title">Card linking</string>
     <string name="window_country_selection_title">Select country</string>
     <string name="window_bank_selection_title">Bank selection</string>
     <string name="window_bank_selection_select_country_label">Select country</string>

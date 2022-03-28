@@ -15,6 +15,10 @@ class KevinClient(private val httpClient: HttpClient) : KevinApiClient {
         }.state
     }
 
+    override suspend fun getCardAuthState(): String {
+        return httpClient.post<ApiAuthState>("auth/initiate/card/").state
+    }
+
     override suspend fun initializeBankPayment(
         request: InitiatePaymentRequest
     ): ApiPayment {
