@@ -53,7 +53,7 @@ data class AccountSessionConfiguration internal constructor(
          *
          * Default [AccountLinkingType.BANK]
          */
-        fun setPaymentType(linkingType: AccountLinkingType): Builder {
+        fun setLinkingType(linkingType: AccountLinkingType): Builder {
             this.accountLinkingType = accountLinkingType
             return this
         }
