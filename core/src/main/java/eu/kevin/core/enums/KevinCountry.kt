@@ -31,8 +31,6 @@ enum class KevinCountry(val iso: String) {
     SLOVAKIA("sk");
 
     companion object {
-        fun parse(iso: String?): KevinCountry? {
-            return values().firstOrNull { it.iso.equals(iso, ignoreCase = true) }
-        }
+        fun parse(iso: String?) = values().firstOrNull { it.iso.equals(iso, ignoreCase = true) }
     }
 }
