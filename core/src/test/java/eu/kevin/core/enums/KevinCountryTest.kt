@@ -14,6 +14,11 @@ class KevinCountryTest : BaseUnitTest() {
   }
 
   @Test
+  fun `test parse() with empty input`() {
+    Assert.assertNull(KevinCountry.parse(""))
+  }
+
+  @Test
   fun `test parse() with unknown input`() {
     Assert.assertNull(KevinCountry.parse("xxx"))
   }
