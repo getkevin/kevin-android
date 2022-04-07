@@ -46,10 +46,10 @@ android {
 }
 
 dependencies {
-    testImplementation project(':testcore')
-    testImplementation "junit:junit:$junit_version"
-
     implementation "io.ktor:ktor-client-android:$ktor_version"
     implementation "io.ktor:ktor-client-serialization:$ktor_version"
     implementation "io.ktor:ktor-client-logging:$ktor_version"
+
+    testImplementation project(':testcore')
+    testImplementation "junit:junit:$junit_version"
 }
