@@ -32,7 +32,7 @@ enum class KevinCountry(val iso: String) {
 
     companion object {
         fun parse(iso: String?): KevinCountry? {
-            return values().firstOrNull { it.iso.lowercase() == iso }
+            return values().firstOrNull { it.iso.equals(iso, ignoreCase = true) }
         }
     }
 }
