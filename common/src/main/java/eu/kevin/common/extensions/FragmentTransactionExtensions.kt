@@ -1,9 +1,11 @@
 package eu.kevin.common.extensions
 
+import android.annotation.SuppressLint
 import android.content.Context
 import androidx.annotation.StyleRes
 import androidx.fragment.app.FragmentTransaction
 
+@SuppressLint("ResourceType")
 fun FragmentTransaction.setAnimationsFromStyle(@StyleRes style: Int, context: Context) {
     val attrs = intArrayOf(
         android.R.attr.activityOpenEnterAnimation,
