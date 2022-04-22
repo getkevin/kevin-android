@@ -19,12 +19,12 @@ class DemoApplication : Application() {
         Kevin.setTheme(R.style.KevinTheme)
         KevinAccountsPlugin.configure(
             KevinAccountsConfiguration.builder()
-                .setCallbackUrl("https://redirect.kevin.eu/authorization.html")
+                .setCallbackUrl("kevin://redirect.authorization")
                 .build()
         )
         KevinPaymentsPlugin.configure(
             KevinPaymentsConfiguration.builder()
-                .setCallbackUrl("https://redirect.kevin.eu/payment.html")
+                .setCallbackUrl("kevin://redirect.payment")
                 .build()
         )
     }

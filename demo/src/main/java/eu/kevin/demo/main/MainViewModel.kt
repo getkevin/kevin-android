@@ -175,7 +175,8 @@ internal class MainViewModel constructor(
                     amount = initiateDonationRequest.amount,
                     email = initiateDonationRequest.email,
                     iban = initiateDonationRequest.iban,
-                    creditorName = initiateDonationRequest.creditorName
+                    creditorName = initiateDonationRequest.creditorName,
+                    redirectUrl = "kevin://redirect.payment"
                 )
                 val payment = when (initiateDonationRequest.paymentType) {
                     PaymentType.BANK ->

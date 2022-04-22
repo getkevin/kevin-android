@@ -12,7 +12,6 @@ import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.extensions.*
 import eu.kevin.common.managers.KeyboardManager
 import eu.kevin.inapppayments.KevinPaymentsPlugin
-import eu.kevin.inapppayments.R
 import eu.kevin.inapppayments.databinding.FragmentPaymentConfirmationBinding
 
 internal class PaymentConfirmationView(context: Context) : BaseView<FragmentPaymentConfirmationBinding>(context),
@@ -68,7 +67,7 @@ internal class PaymentConfirmationView(context: Context) : BaseView<FragmentPaym
                         delegate?.onPaymentCompleted(request.url)
                         true
                     } else if (url.startsWith("http://") || url.startsWith("https://")) {
-                        false
+                        delegate?.openAppIfAvailable(request.url) ?: false
                     } else {
                         delegate?.handleUri(request.url)
                         true

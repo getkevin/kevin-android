@@ -1,5 +1,6 @@
 package eu.kevin.inapppayments.paymentsession
 
+import android.net.Uri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.DefaultLifecycleObserver
@@ -12,6 +13,7 @@ import eu.kevin.accounts.bankselection.BankSelectionFragmentConfiguration
 import eu.kevin.accounts.bankselection.entities.Bank
 import eu.kevin.accounts.networking.KevinAccountsClientFactory
 import eu.kevin.common.architecture.BaseFlowSession
+import eu.kevin.common.architecture.interfaces.DeepLinkHandler
 import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.extensions.setFragmentResultListener
 import eu.kevin.common.fragment.FragmentResult
@@ -63,6 +65,13 @@ internal class PaymentSession(
     override fun onDestroy(owner: LifecycleOwner) {
         super.onDestroy(owner)
         sessionListener = null
+    }
+
+    override fun handleDeepLink(uri: Uri) {
+        val deepLinkHandler = fragmentManager.fragments.firstOrNull {
+            it is DeepLinkHandler
+        } as? DeepLinkHandler
+        deepLinkHandler?.handleDeepLink(uri)
     }
 
     fun beginFlow(listener: PaymentSessionListener) {

@@ -7,5 +7,6 @@ data class InitiatePaymentRequest(
     val amount: String,
     val email: String,
     val iban: String,
-    val creditorName: String
+    val creditorName: String,
+    val redirectUrl: String
 )

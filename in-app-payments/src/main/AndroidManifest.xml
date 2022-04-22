@@ -3,7 +3,10 @@
     package="eu.kevin.inapppayments">
 
     <application>
-        <activity android:name="eu.kevin.inapppayments.paymentsession.PaymentSessionActivity" />
+        <activity
+            android:name="eu.kevin.inapppayments.paymentsession.PaymentSessionActivity"
+            android:exported="true"
+            android:launchMode="singleInstance" />
     </application>
 
 </manifest>

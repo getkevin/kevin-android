@@ -63,6 +63,18 @@ class AccountSessionActivity : BaseFragmentActivity(), AccountSessionListener {
         }
     }
 
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        intent?.data?.let {
+            accountLinkingSession.handleDeepLink(it)
+        }
+    }
+
+    override fun returnActivityResult(result: SessionResult<*>) {
+        setResult(Activity.RESULT_OK, Intent().putExtra(AccountSessionContract.RESULT_KEY, result))
+        finish()
+    }
+
     private fun showExitConfirmation() {
         MaterialAlertDialogBuilder(this)
             .setCancelable(false)
@@ -75,11 +87,6 @@ class AccountSessionActivity : BaseFragmentActivity(), AccountSessionListener {
                 dialog.dismiss()
             }
             .show()
-    }
-
-    override fun returnActivityResult(result: SessionResult<*>) {
-        setResult(Activity.RESULT_OK, Intent().putExtra(AccountSessionContract.RESULT_KEY, result))
-        finish()
     }
 
     private fun startListeningForRouteRequests() {

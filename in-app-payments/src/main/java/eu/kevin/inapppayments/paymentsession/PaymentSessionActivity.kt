@@ -9,8 +9,8 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import eu.kevin.common.architecture.BaseFragmentActivity
 import eu.kevin.common.architecture.routing.GlobalRouter
-import eu.kevin.core.entities.SessionResult
 import eu.kevin.common.extensions.setFragmentResult
+import eu.kevin.core.entities.SessionResult
 import eu.kevin.core.plugin.Kevin
 import eu.kevin.core.plugin.KevinException
 import eu.kevin.inapppayments.KevinPaymentsPlugin
@@ -48,6 +48,13 @@ class PaymentSessionActivity : BaseFragmentActivity(), PaymentSessionListener {
         startListeningForRouteRequests()
     }
 
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        intent?.data?.let {
+            paymentSession.handleDeepLink(it)
+        }
+    }
+
     override fun onStart() {
         super.onStart()
         paymentSession.beginFlow(this)
@@ -63,6 +70,11 @@ class PaymentSessionActivity : BaseFragmentActivity(), PaymentSessionListener {
         }
     }
 
+    override fun returnActivityResult(result: SessionResult<*>) {
+        setResult(Activity.RESULT_OK, Intent().putExtra(PaymentSessionContract.RESULT_KEY, result))
+        finish()
+    }
+
     private fun showExitConfirmation() {
         MaterialAlertDialogBuilder(this)
             .setCancelable(false)
@@ -75,11 +87,6 @@ class PaymentSessionActivity : BaseFragmentActivity(), PaymentSessionListener {
                 dialog.dismiss()
             }
             .show()
-    }
-
-    override fun returnActivityResult(result: SessionResult<*>) {
-        setResult(Activity.RESULT_OK, Intent().putExtra(PaymentSessionContract.RESULT_KEY, result))
-        finish()
     }
 
     private fun startListeningForRouteRequests() {
