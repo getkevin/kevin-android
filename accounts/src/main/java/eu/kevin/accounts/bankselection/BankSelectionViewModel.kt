@@ -9,8 +9,8 @@ import eu.kevin.accounts.bankselection.BankSelectionIntent.*
 import eu.kevin.accounts.bankselection.entities.Bank
 import eu.kevin.accounts.bankselection.exceptions.BankNotSelectedException
 import eu.kevin.accounts.bankselection.factories.BankListItemFactory
-import eu.kevin.accounts.bankselection.managers.BankManagerInterface
 import eu.kevin.accounts.bankselection.managers.KevinBankManager
+import eu.kevin.accounts.bankselection.usecases.GetSupportedBanksUseCase
 import eu.kevin.accounts.countryselection.CountrySelectionContract
 import eu.kevin.accounts.countryselection.CountrySelectionFragmentConfiguration
 import eu.kevin.accounts.countryselection.managers.KevinCountriesManager
@@ -26,7 +26,7 @@ import kotlinx.coroutines.launch
 
 internal class BankSelectionViewModel constructor(
     private val countryUseCase: SupportedCountryUseCase,
-    private val banksManager: BankManagerInterface,
+    private val banksUseCase: GetSupportedBanksUseCase,
     private val dispatchers: CoroutineDispatchers,
     savedStateHandle: SavedStateHandle
 ) : BaseViewModel<BankSelectionState, BankSelectionIntent>(savedStateHandle) {
@@ -80,7 +80,11 @@ internal class BankSelectionViewModel constructor(
                     disableCountrySelection = false
                     selectedCountry = supportedCountries.first()
                 }
-                val apiBanks = banksManager.getSupportedBanks(selectedCountry, configuration.authState)
+                val apiBanks = banksUseCase.getSupportedBanks(
+                    selectedCountry,
+                    configuration.authState,
+                    configuration.bankFilter
+                )
 
                 banks = apiBanks.map {
                     Bank(it.id, it.name, it.officialName, it.imageUri, it.bic)
@@ -131,7 +135,11 @@ internal class BankSelectionViewModel constructor(
         }
         viewModelScope.launch(dispatchers.io) {
             try {
-                val apiBanks = banksManager.getSupportedBanks(selectedCountry, configuration.authState)
+                val apiBanks = banksUseCase.getSupportedBanks(
+                    selectedCountry,
+                    configuration.authState,
+                    configuration.bankFilter
+                )
                 banks = apiBanks.map {
                     Bank(it.id, it.name, it.officialName, it.imageUri, it.bic)
                 }
@@ -180,12 +188,10 @@ internal class BankSelectionViewModel constructor(
         ): T {
             return BankSelectionViewModel(
                 SupportedCountryUseCase(
-                    KevinCountriesManager(
-                        kevinAccountsClient = AccountsClientProvider.kevinAccountsClient
-                    )
+                    KevinCountriesManager(AccountsClientProvider.kevinAccountsClient)
                 ),
-                KevinBankManager(
-                    kevinAccountsClient = AccountsClientProvider.kevinAccountsClient
+                GetSupportedBanksUseCase(
+                    KevinBankManager(AccountsClientProvider.kevinAccountsClient)
                 ),
                 DefaultCoroutineDispatchers,
                 handle

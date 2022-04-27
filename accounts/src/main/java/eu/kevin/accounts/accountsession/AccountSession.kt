@@ -137,6 +137,7 @@ internal class AccountSession(
                     sessionData.selectedCountry,
                     configuration.disableCountrySelection,
                     configuration.countryFilter,
+                    configuration.bankFilter,
                     sessionData.selectedBank?.id,
                     configuration.state
                 )
