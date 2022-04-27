@@ -15,6 +15,7 @@ data class PaymentSessionConfiguration(
     val preselectedCountry: KevinCountry?,
     val disableCountrySelection: Boolean,
     val countryFilter: List<KevinCountry>,
+    val bankFilter: List<String>,
     val preselectedBank: String?,
     val skipBankSelection: Boolean,
     val skipAuthentication: Boolean
@@ -47,6 +48,7 @@ data class PaymentSessionConfiguration(
         private var preselectedCountry: KevinCountry? = null
         private var disableCountrySelection: Boolean = false
         private var countryFilter: List<KevinCountry> = emptyList()
+        private var bankFilter: List<String> = emptyList()
         private var preselectedBank: String? = null
         private var skipBankSelection: Boolean = false
         private var skipAuthentication: Boolean = false
@@ -99,6 +101,18 @@ data class PaymentSessionConfiguration(
         }
 
         /**
+         * @param banks list of bank ids that will be shown during bank selection. If this
+         * list contains bank ids, only those that are in this list and are supported will be shown
+         * in bank selection. If list is empty, all supported banks will be shown.
+         *
+         * Default 'emptyList()'
+         */
+        fun setBankFilter(banks: List<String>): Builder {
+            this.bankFilter = banks.map { it.lowercase() }
+            return this
+        }
+
+        /**
          * @param bank bankId that will be used during initial PaymentSession setup.
          * If bankId is provided, it will be preselected in bank selection window.
          * In order for bank to be preselected, correct country iso code of that bank has to be
@@ -147,6 +161,7 @@ data class PaymentSessionConfiguration(
                 preselectedCountry,
                 disableCountrySelection,
                 countryFilter,
+                bankFilter,
                 preselectedBank,
                 skipBankSelection,
                 skipAuthentication
