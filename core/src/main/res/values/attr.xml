@@ -33,6 +33,7 @@
 
     <!--    Other attributes    -->
     <attr name="kevinOverrideCountryBackground" format="boolean" />
+    <attr name="kevinUseLightBankIcons" format="boolean" />
 
     <declare-styleable name="SelectionView">
         <attr name="android:background" format="reference|color" />
