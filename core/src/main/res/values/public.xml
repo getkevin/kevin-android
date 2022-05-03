@@ -49,4 +49,5 @@
 
     <!--    Other attributes    -->
     <public name="kevinOverrideCountryBackground" type="attr" />
+    <public name="kevinUseLightBankIcons" type="attr" />
 </resources>

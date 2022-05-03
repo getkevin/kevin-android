@@ -4,9 +4,9 @@ import android.content.Context
 import androidx.core.content.ContextCompat
 import eu.kevin.common.R
 import eu.kevin.common.entities.KevinWebFrameColorsConfiguration
+import eu.kevin.common.extensions.getBooleanFromAttr
 import eu.kevin.common.extensions.getColorFromAttr
 import eu.kevin.common.extensions.getCurrentLocale
-import eu.kevin.common.extensions.isDarkMode
 import eu.kevin.common.extensions.toHexColor
 import eu.kevin.core.plugin.Kevin
 import kotlinx.serialization.ExperimentalSerializationApi
@@ -24,12 +24,13 @@ object WebFrameHelper {
 
     private fun getKevinWebFrameColorsConfigurationFromTheme(context: Context) : KevinWebFrameColorsConfiguration {
         with(context) {
+            val useLightIcons = getBooleanFromAttr(R.attr.kevinUseLightBankIcons)
             return KevinWebFrameColorsConfiguration(
                 backgroundColor = getColorFromAttr(android.R.attr.colorBackground).toHexColor(),
                 baseColor = getColorFromAttr(android.R.attr.colorBackground).toHexColor(),
                 headingsColor = getColorFromAttr(android.R.attr.textColorPrimary).toHexColor(),
                 fontColor = getColorFromAttr(android.R.attr.textColorPrimary).toHexColor(),
-                bankIconColor = if (isDarkMode()) "white" else "default",
+                bankIconColor = if (useLightIcons) "white" else "default",
                 defaultButtonColor = ContextCompat.getColor(this, R.color.kevin_blue).toHexColor()
             )
         }

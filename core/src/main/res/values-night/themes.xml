@@ -61,6 +61,7 @@
         <item name="kevinCountryListCornerRadius">10dp</item>
 
         <item name="kevinOverrideCountryBackground">false</item>
+        <item name="kevinUseLightBankIcons">true</item>
     </style>
 
     <style name="Theme.Kevin.Base" parent="Theme.Kevin.Base.21" />
