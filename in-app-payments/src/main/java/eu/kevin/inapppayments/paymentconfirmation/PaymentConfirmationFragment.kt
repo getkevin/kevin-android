@@ -5,13 +5,15 @@ import android.content.Intent
 import android.net.Uri
 import androidx.fragment.app.viewModels
 import eu.kevin.common.architecture.BaseFragment
+import eu.kevin.common.architecture.interfaces.DeepLinkHandler
 import eu.kevin.common.architecture.interfaces.IView
-import eu.kevin.common.extensions.getCurrentLocale
+import eu.kevin.common.helpers.IntentHandlerHelper
 import eu.kevin.common.helpers.WebFrameHelper
+import eu.kevin.core.plugin.Kevin
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.*
 
 internal class PaymentConfirmationFragment : BaseFragment<PaymentConfirmationState, PaymentConfirmationIntent, PaymentConfirmationViewModel>(),
-    PaymentConfirmationViewDelegate {
+    PaymentConfirmationViewDelegate, DeepLinkHandler {
 
     override val viewModel: PaymentConfirmationViewModel by viewModels {
         PaymentConfirmationViewModel.Factory(this)
@@ -47,6 +49,10 @@ internal class PaymentConfirmationFragment : BaseFragment<PaymentConfirmationSta
         return true
     }
 
+    override fun handleDeepLink(uri: Uri) {
+        viewModel.intents.trySend(HandlePaymentCompleted(uri))
+    }
+
     // PaymentConfirmationViewDelegate
 
     override fun onBackClicked() {
@@ -64,6 +70,17 @@ internal class PaymentConfirmationFragment : BaseFragment<PaymentConfirmationSta
             val intent = Intent(Intent.ACTION_VIEW, uri)
             startActivity(intent)
         } catch (ignored: Exception) {
+        }
+    }
+
+    override fun openAppIfAvailable(uri: Uri): Boolean {
+        if (!Kevin.isDeepLinkingEnabled()) return false
+        val intent = IntentHandlerHelper.getIntentForUri(requireContext(), uri) ?: return false
+        return try {
+            startActivity(intent)
+            true
+        } catch (ignored: Exception) {
+            false
         }
     }
 }

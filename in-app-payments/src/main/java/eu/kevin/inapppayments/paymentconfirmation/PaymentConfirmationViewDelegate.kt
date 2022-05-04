@@ -6,4 +6,5 @@ internal interface PaymentConfirmationViewDelegate {
     fun onBackClicked()
     fun onPaymentCompleted(uri: Uri)
     fun handleUri(uri: Uri)
+    fun openAppIfAvailable(uri: Uri): Boolean
 }

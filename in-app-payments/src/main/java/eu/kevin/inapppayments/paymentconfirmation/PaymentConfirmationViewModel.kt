@@ -7,11 +7,12 @@ import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
 import eu.kevin.common.architecture.BaseViewModel
 import eu.kevin.common.architecture.routing.GlobalRouter
+import eu.kevin.common.extensions.appendQuery
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.core.plugin.Kevin
 import eu.kevin.inapppayments.BuildConfig
+import eu.kevin.inapppayments.KevinPaymentsPlugin
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.*
-import eu.kevin.common.extensions.appendQuery
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType.BANK
 
 internal class PaymentConfirmationViewModel(
@@ -73,6 +74,8 @@ internal class PaymentConfirmationViewModel(
     }
 
     private fun handlePaymentCompleted(uri: Uri) {
+        if (!uri.toString().startsWith(KevinPaymentsPlugin.getCallbackUrl())) return
+
         val status = uri.getQueryParameter("statusGroup")
         if (status == "completed") {
             val result = PaymentConfirmationResult(
@@ -86,7 +89,6 @@ internal class PaymentConfirmationViewModel(
             GlobalRouter.returnFragmentResult(PaymentConfirmationContract, FragmentResult.Canceled)
         }
     }
-
 
     @Suppress("UNCHECKED_CAST")
     class Factory(

@@ -9,6 +9,7 @@ object Kevin {
     private var locale: Locale? = null
     private var theme: Int = R.style.Theme_Kevin_Base
     private var isSandbox: Boolean = false
+    private var isDeepLinkingEnabled: Boolean = true
 
     fun setLocale(locale: Locale?) {
         synchronized(this) {
@@ -28,6 +29,12 @@ object Kevin {
         }
     }
 
+    fun setDeepLinkingEnabled(enabled: Boolean) {
+        synchronized(this) {
+            this.isDeepLinkingEnabled = enabled
+        }
+    }
+
     fun getLocale(): Locale? {
         return locale
     }
@@ -39,5 +46,9 @@ object Kevin {
 
     fun isSandbox(): Boolean {
         return isSandbox
+    }
+
+    fun isDeepLinkingEnabled(): Boolean {
+        return isDeepLinkingEnabled
     }
 }

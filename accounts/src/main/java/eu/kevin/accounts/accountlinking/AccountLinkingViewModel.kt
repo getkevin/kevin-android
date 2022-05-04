@@ -6,6 +6,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
 import eu.kevin.accounts.BuildConfig
+import eu.kevin.accounts.KevinAccountsPlugin
 import eu.kevin.accounts.accountlinking.AccountLinkingIntent.*
 import eu.kevin.accounts.accountsession.enums.AccountLinkingType
 import eu.kevin.common.architecture.BaseViewModel
@@ -67,6 +68,8 @@ internal class AccountLinkingViewModel(
     }
 
     private fun handleAuthorizationReceived(uri: Uri) {
+        if (!uri.toString().startsWith(KevinAccountsPlugin.getCallbackUrl())) return
+
         val status = uri.getQueryParameter("status")
         if (status == "success") {
             val result = AccountLinkingFragmentResult(

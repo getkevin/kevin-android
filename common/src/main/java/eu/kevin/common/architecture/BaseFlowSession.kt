@@ -1,5 +1,6 @@
 package eu.kevin.common.architecture
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
@@ -27,6 +28,8 @@ abstract class BaseFlowSession(
             savable
         }
     }
+
+    abstract fun handleDeepLink(uri: Uri)
 
     protected fun <T> savedState() = SavedStateProvider.Nullable<T>(savable)
     protected fun <T> savedState(defaultValue: T) = SavedStateProvider.NotNull(savable, defaultValue)

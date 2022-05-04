@@ -69,7 +69,7 @@ internal class AccountLinkingView(context: Context) : BaseView<FragmentAccountLi
                         delegate?.onAuthorizationReceived(request.url)
                         true
                     } else if (url.startsWith("http://") || url.startsWith("https://")) {
-                        false
+                        delegate?.openAppIfAvailable(request.url) ?: false
                     } else {
                         delegate?.handleUri(request.url)
                         true

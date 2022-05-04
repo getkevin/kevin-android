@@ -17,14 +17,15 @@ class DemoApplication : Application() {
         // device's default locale will be used if not set
         Kevin.setLocale(Locale("en"))
         Kevin.setTheme(R.style.KevinTheme)
+        Kevin.setDeepLinkingEnabled(true)
         KevinAccountsPlugin.configure(
             KevinAccountsConfiguration.builder()
-                .setCallbackUrl("https://redirect.kevin.eu/authorization.html")
+                .setCallbackUrl("kevin://redirect.authorization")
                 .build()
         )
         KevinPaymentsPlugin.configure(
             KevinPaymentsConfiguration.builder()
-                .setCallbackUrl("https://redirect.kevin.eu/payment.html")
+                .setCallbackUrl("kevin://redirect.payment")
                 .build()
         )
     }

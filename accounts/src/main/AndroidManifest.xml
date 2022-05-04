@@ -3,7 +3,10 @@
     package="eu.kevin.accounts">
 
     <application>
-        <activity android:name="eu.kevin.accounts.accountsession.AccountSessionActivity" />
+        <activity
+            android:name="eu.kevin.accounts.accountsession.AccountSessionActivity"
+            android:exported="true"
+            android:launchMode="singleInstance" />
     </application>
 
 </manifest>
