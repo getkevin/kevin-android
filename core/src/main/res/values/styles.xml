@@ -71,7 +71,7 @@
         <item name="hintEnabled">false</item>
         <item name="boxStrokeWidth">1dp</item>
         <item name="boxBackgroundColor">?colorSurface</item>
-        <item name="boxStrokeColor">@color/text_input_state_color</item>
+        <item name="boxStrokeColor">@color/kevin_text_input_state_color</item>
         <item name="boxStrokeErrorColor">?colorError</item>
         <item name="errorTextAppearance">@style/Kevin.Text.Error</item>
         <item name="errorIconDrawable">@null</item>
@@ -86,7 +86,7 @@
     <!--  Text styles  -->
     <style name="Kevin.Text.Headline3" parent="@android:style/TextAppearance">
         <item name="android:textSize">22sp</item>
-        <item name="fontFamily">@font/circular_std_medium</item>
+        <item name="fontFamily">@font/kevin_circular_std_medium</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:gravity">center</item>
         <item name="android:textStyle">normal</item>
@@ -94,7 +94,7 @@
 
     <style name="Kevin.Text.Title1" parent="@android:style/TextAppearance">
         <item name="android:textSize">16sp</item>
-        <item name="fontFamily">@font/circular_std_medium</item>
+        <item name="fontFamily">@font/kevin_circular_std_medium</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:gravity">start</item>
         <item name="android:textStyle">normal</item>
@@ -102,7 +102,7 @@
 
     <style name="Kevin.Text.Title2" parent="@android:style/TextAppearance">
         <item name="android:textSize">16sp</item>
-        <item name="fontFamily">@font/circular_std_book</item>
+        <item name="fontFamily">@font/kevin_circular_std_book</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:gravity">start</item>
         <item name="android:textStyle">normal</item>
@@ -110,7 +110,7 @@
 
     <style name="Kevin.Text.Subtitle1" parent="@android:style/TextAppearance">
         <item name="android:textSize">14sp</item>
-        <item name="fontFamily">@font/circular_std_book</item>
+        <item name="fontFamily">@font/kevin_circular_std_book</item>
         <item name="android:textColor">?android:attr/textColorSecondary</item>
         <item name="android:gravity">center</item>
         <item name="android:textStyle">normal</item>
@@ -118,7 +118,7 @@
 
     <style name="Kevin.Text.Caption1" parent="@android:style/TextAppearance">
         <item name="android:textSize">14sp</item>
-        <item name="fontFamily">@font/circular_std_medium</item>
+        <item name="fontFamily">@font/kevin_circular_std_medium</item>
         <item name="android:textColor">?android:attr/textColorSecondary</item>
         <item name="android:gravity">start</item>
         <item name="android:textStyle">normal</item>
@@ -127,7 +127,7 @@
 
     <style name="Kevin.Text.Error" parent="@android:style/TextAppearance">
         <item name="android:textSize">13sp</item>
-        <item name="fontFamily">@font/circular_std_book</item>
+        <item name="fontFamily">@font/kevin_circular_std_book</item>
         <item name="android:textColor">?colorError</item>
         <item name="android:gravity">start</item>
         <item name="android:textStyle">normal</item>
@@ -135,7 +135,7 @@
 
     <style name="Kevin.Text.Amount" parent="@android:style/TextAppearance">
         <item name="android:textSize">23sp</item>
-        <item name="fontFamily">@font/circular_std_bold</item>
+        <item name="fontFamily">@font/kevin_circular_std_bold</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:gravity">start</item>
         <item name="android:textStyle">normal</item>
@@ -143,7 +143,7 @@
 
     <style name="Kevin.Text.Button" parent="@android:style/TextAppearance">
         <item name="android:textSize">17sp</item>
-        <item name="fontFamily">@font/circular_std_medium</item>
+        <item name="fontFamily">@font/kevin_circular_std_medium</item>
         <item name="android:gravity">center</item>
         <item name="android:textStyle">normal</item>
     </style>
@@ -154,10 +154,10 @@
 
     <!--  Other styles  -->
     <style name="Kevin.Window.Transition" parent="@android:style/Animation.Activity">
-        <item name="android:activityOpenEnterAnimation">@anim/slide_in</item>
-        <item name="android:activityOpenExitAnimation">@anim/fade_out</item>
-        <item name="android:activityCloseEnterAnimation">@anim/fade_in</item>
-        <item name="android:activityCloseExitAnimation">@anim/slide_out</item>
+        <item name="android:activityOpenEnterAnimation">@anim/kevin_slide_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/kevin_fade_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/kevin_fade_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/kevin_slide_out</item>
     </style>
 
     <style name="Kevin.BottomSheet.Style.ShapeOverlay">
