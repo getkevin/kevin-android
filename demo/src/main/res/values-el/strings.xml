@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="window_link_account_button">Σύνδεση λογαριασμού</string>
-    <string name="window_make_bank_payment_button">Κάντε τραπεζική πληρωμή</string>
-    <string name="window_card_bank_payment_button">Κάντε πληρωμή με κάρτα</string>
-    <string name="main_menu_dark_mode_toggle">Χρησιμοποιήστε σκούρο θέμα</string>
-    <string name="navigate_back_content_description">Πλοηγηθείτε πίσω</string>
-    <string name="window_hybrid_payment_button">Πραγματοποιήστε υβριδική πληρωμή</string>
+    <string name="window_main_terms_privacy_policy">Έχω διαβάσει και συμφωνώ με τους Όρους και Προϋποθέσεις και την Πολιτική Απορρήτου</string>
+    <string name="window_main_terms_privacy_policy_clickable_terms">Όρους και Προϋποθέσεις</string>
+    <string name="window_main_terms_privacy_policy_clickable_policy">Πολιτική Απορρήτου</string>
+    <string name="window_main_proceed_button">Κάντε δωρεά • %s Ευρώ</string>
+    <string name="window_main_bank_payment">Πληρωμή μέσω τραπέζης</string>
+    <string name="window_main_card_payment">Πληρωμή με κάρτα</string>
+    <string name="window_main_details_lable">Εισαγάγετε λεπτομέρειες</string>
+    <string name="window_main_email_label">Διεύθυνση ηλεκτρονικού ταχυδρομείου</string>
+    <string name="window_main_amount_label">Ποσό πληρωμής</string>
+    <string name="window_main_country_label">Χώρα</string>
+    <string name="window_main_country_charity_label">Επιλέξτε χώρα και φιλανθρωπική οργάνωση</string>
+    <string name="window_main_subtitle_label">Επιλέξτε μια φιλανθρωπική οργάνωση στην οποία θέλετε να κάνετε δωρεά</string>
+    <string name="window_main_title_label">Ανακατεύθυνση πληρωμής</string>
+    <string name="window_main_email_blank_error">Απαιτείται διεύθυνση ηλεκτρονικού ταχυδρομείου</string>
+    <string name="window_main_email_invalid_format_error">Η διεύθυνση ηλεκτρονικού ταχυδρομείου δεν είναι έγκυρη</string>
+    <string name="window_main_amount_blank_error">Το ποσό πρέπει να είναι μεγαλύτερο από το μηδέν</string>
+    <string name="dialog_payment_success_title">Επιτυχής πληρωμή</string>
+    <string name="dialog_payment_success_button">OK</string>
+    <string name="window_main_no_creditor_selected_error">Δεν έχει επιλεγεί φιλανθρωπική οργάνωση</string>
+    <string name="window_main_amount_field_currency">Ευρώ</string>
 </resources>

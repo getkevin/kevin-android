@@ -15,7 +15,7 @@
     <string name="country_name_lt">Lituania</string>
     <string name="country_name_lu">Lussemburgo</string>
     <string name="country_name_lv">Lettonia</string>
-    <string name="country_name_nl">Olanda</string>
+    <string name="country_name_nl">Paesi Bassi</string>
     <string name="country_name_no">Norvegia</string>
     <string name="country_name_pl">Polonia</string>
     <string name="country_name_pt">Portogallo</string>
@@ -31,11 +31,12 @@
     <string name="country_name_gr">Grecia</string>
     <string name="country_name_is">Islanda</string>
     <string name="country_name_li">Liechtenstein</string>
-    <string name="window_account_linking_title">Collegamento dell\'account</string>
-    <string name="window_country_selection_title">Seleziona il paese</string>
-    <string name="window_bank_selection_select_country_label">Seleziona il paese</string>
+    <string name="window_account_linking_title">Collegamento conto</string>
+    <string name="window_account_linking_card_title">Collegamento carta</string>
+    <string name="window_country_selection_title">Seleziona Paese</string>
     <string name="window_bank_selection_title">Selezione banca</string>
+    <string name="window_bank_selection_select_country_label">Seleziona Paese</string>
     <string name="window_bank_selection_select_bank_label">Seleziona banca</string>
-    <string name="error_bank_not_selected">La banca deve essere selezionata</string>
-    <string name="dialog_exit_confirmation_accounts_message">Sei sicuro di voler interrompere il collegamento dell\'account?</string>
+    <string name="error_bank_not_selected">Deve essere selezionata la banca</string>
+    <string name="dialog_exit_confirmation_accounts_message">Sei sicuro di voler interrompere il collegamento del conto?</string>
 </resources>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="country_name_at">Rakousko</string>
-    <string name="dialog_exit_confirmation_accounts_message">Opravdu chcete zrušit propojení účtů?</string>
     <string name="country_name_be">Belgie</string>
     <string name="country_name_bg">Bulharsko</string>
     <string name="country_name_cz">Česká republika</string>
@@ -16,7 +15,7 @@
     <string name="country_name_lt">Litva</string>
     <string name="country_name_lu">Lucembursko</string>
     <string name="country_name_lv">Lotyšsko</string>
-    <string name="country_name_nl">Holandsko</string>
+    <string name="country_name_nl">Nizozemsko</string>
     <string name="country_name_no">Norsko</string>
     <string name="country_name_pl">Polsko</string>
     <string name="country_name_pt">Portugalsko</string>
@@ -30,12 +29,14 @@
     <string name="country_name_cy">Kypr</string>
     <string name="country_name_hr">Chorvatsko</string>
     <string name="country_name_gr">Řecko</string>
-    <string name="country_name_li">Lichtenštejnsko</string>
     <string name="country_name_is">Island</string>
+    <string name="country_name_li">Lichtenštejnsko</string>
     <string name="window_account_linking_title">Propojení účtů</string>
+    <string name="window_account_linking_card_title">Propojení karet</string>
     <string name="window_country_selection_title">Vyberte zemi</string>
     <string name="window_bank_selection_title">Výběr banky</string>
     <string name="window_bank_selection_select_country_label">Vyberte zemi</string>
     <string name="window_bank_selection_select_bank_label">Vyberte banku</string>
-    <string name="error_bank_not_selected">Je třeba vybrat banku</string>
+    <string name="error_bank_not_selected">Musí být vybrána banka</string>
+    <string name="dialog_exit_confirmation_accounts_message">Opravdu chcete zrušit propojení účtů?</string>
 </resources>

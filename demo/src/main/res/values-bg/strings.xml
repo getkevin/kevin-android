@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="window_link_account_button">Свържете акаунта</string>
-    <string name="window_make_bank_payment_button">Направете банково плащане</string>
-    <string name="window_card_bank_payment_button">Направете плащане с карта</string>
-    <string name="main_menu_dark_mode_toggle">Използвайте тъмна тема</string>
-    <string name="navigate_back_content_description">Навигирайте обратно</string>
-    <string name="window_hybrid_payment_button">Направете хибридно плащане</string>
+    <string name="window_main_terms_privacy_policy">Прочел съм и се съгласявам с Общите условия и Политиката за поверителност</string>
+    <string name="window_main_terms_privacy_policy_clickable_terms">Общите условия</string>
+    <string name="window_main_terms_privacy_policy_clickable_policy">Политиката за поверителност</string>
+    <string name="window_main_proceed_button">Дарете %s Евро</string>
+    <string name="window_main_bank_payment">Банково плащане</string>
+    <string name="window_main_card_payment">Картово плащане</string>
+    <string name="window_main_details_lable">Въведете данни</string>
+    <string name="window_main_email_label">Имейл</string>
+    <string name="window_main_amount_label">Сума за плащане</string>
+    <string name="window_main_country_label">Държава</string>
+    <string name="window_main_country_charity_label">Изберете държава и благотворителна кауза</string>
+    <string name="window_main_subtitle_label">Изберете благотворителна кауза, на която искате да дарите</string>
+    <string name="window_main_title_label">Пренасочване на плащане</string>
+    <string name="window_main_email_blank_error">Изисква се имейл адрес</string>
+    <string name="window_main_email_invalid_format_error">Имейлът е невалиден</string>
+    <string name="window_main_amount_blank_error">Сумата трябва да бъде по-голяма от нула</string>
+    <string name="dialog_payment_success_title">Плащането е успешно</string>
+    <string name="dialog_payment_success_button">Добре</string>
+    <string name="window_main_no_creditor_selected_error">Не е избрана благотворителна кауза</string>
+    <string name="window_main_amount_field_currency">ЕВРО</string>
 </resources>

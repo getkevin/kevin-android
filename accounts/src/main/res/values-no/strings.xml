@@ -3,7 +3,7 @@
     <string name="country_name_at">Østerrike</string>
     <string name="country_name_be">Belgia</string>
     <string name="country_name_bg">Bulgaria</string>
-    <string name="country_name_cz">Tsjekkisk Republikk</string>
+    <string name="country_name_cz">Tsjekkia</string>
     <string name="country_name_de">Tyskland</string>
     <string name="country_name_dk">Danmark</string>
     <string name="country_name_ee">Estland</string>
@@ -13,7 +13,7 @@
     <string name="country_name_gb">Storbritannia</string>
     <string name="country_name_it">Italia</string>
     <string name="country_name_lt">Litauen</string>
-    <string name="country_name_lu">Luxembourg</string>
+    <string name="country_name_lu">Luxemburg</string>
     <string name="country_name_lv">Latvia</string>
     <string name="country_name_nl">Nederland</string>
     <string name="country_name_no">Norge</string>
@@ -28,14 +28,15 @@
     <string name="country_name_mt">Malta</string>
     <string name="country_name_cy">Kypros</string>
     <string name="country_name_hr">Kroatia</string>
-    <string name="country_name_gr">Hellas</string>
+    <string name="country_name_gr">Grekenland</string>
     <string name="country_name_is">Island</string>
     <string name="country_name_li">Liechtenstein</string>
-    <string name="window_account_linking_title">Kontotilknytning</string>
+    <string name="window_account_linking_title">Kontolenking</string>
+    <string name="window_account_linking_card_title">Kortlenking</string>
     <string name="window_country_selection_title">Velg land</string>
-    <string name="window_bank_selection_select_country_label">Velg land</string>
     <string name="window_bank_selection_title">Bankvalg</string>
+    <string name="window_bank_selection_select_country_label">Velg land</string>
     <string name="window_bank_selection_select_bank_label">Velg bank</string>
     <string name="error_bank_not_selected">Bank må velges</string>
-    <string name="dialog_exit_confirmation_accounts_message">Er du sikker på at du vil avbryte kontotilknytning?</string>
+    <string name="dialog_exit_confirmation_accounts_message">Er du sikker på at du vil avbryte kontolenking?</string>
 </resources>

@@ -4,8 +4,8 @@
     <string name="country_name_be">Belgija</string>
     <string name="country_name_bg">Bolgarija</string>
     <string name="country_name_cz">Češka</string>
-    <string name="country_name_dk">Danska</string>
     <string name="country_name_de">Nemčija</string>
+    <string name="country_name_dk">Danska</string>
     <string name="country_name_ee">Estonija</string>
     <string name="country_name_es">Španija</string>
     <string name="country_name_fi">Finska</string>
@@ -30,12 +30,13 @@
     <string name="country_name_hr">Hrvaška</string>
     <string name="country_name_gr">Grčija</string>
     <string name="country_name_is">Islandija</string>
-    <string name="country_name_li">Liechtenstein</string>
-    <string name="window_account_linking_title">Povezovanje računa</string>
-    <string name="window_country_selection_title">Izberi državo</string>
-    <string name="window_bank_selection_select_country_label">Izberi državo</string>
+    <string name="country_name_li">Lihtenštajn</string>
+    <string name="window_account_linking_title">Povezovanje z računom</string>
+    <string name="window_account_linking_card_title">Povezovanje s kartico</string>
+    <string name="window_country_selection_title">Izberite državo</string>
     <string name="window_bank_selection_title">Izbira banke</string>
+    <string name="window_bank_selection_select_country_label">Izberite državo</string>
     <string name="window_bank_selection_select_bank_label">Izberite banko</string>
-    <string name="error_bank_not_selected">Banko je treba izbrati</string>
-    <string name="dialog_exit_confirmation_accounts_message">Ali ste prepričani, da želite prekiniti povezavo računa?</string>
+    <string name="error_bank_not_selected">Izbrati je treba banko</string>
+    <string name="dialog_exit_confirmation_accounts_message">Res želite prekiniti povezovanje z računom?</string>
 </resources>

@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="window_link_account_button">Link account</string>
-    <string name="window_make_bank_payment_button">Make bank payment</string>
-    <string name="window_card_bank_payment_button">Make card payment</string>
-    <string name="main_menu_dark_mode_toggle">Use dark theme</string>
-    <string name="navigate_back_content_description">Navigate back</string>
-    <string name="window_hybrid_payment_button">Make hybrid payment</string>
+    <string name="window_main_terms_privacy_policy">I have read and agree with Terms &amp; Conditions and Privacy Policy</string>
+    <string name="window_main_terms_privacy_policy_clickable_terms">Terms &amp; Conditions</string>
+    <string name="window_main_terms_privacy_policy_clickable_policy">Privacy Policy</string>
+    <string name="privacy_policy_url" translatable="false">https://www.kevin.eu/docs/EN/privacy-policy/</string>
+    <string name="terms_url" translatable="false">https://www.kevin.eu/docs/EN/terms-and-conditions/</string>
+    <string name="window_main_proceed_button">Donate • %s EUR</string>
+    <string name="window_main_bank_payment">Bank payment</string>
+    <string name="window_main_card_payment">Card payment</string>
+    <string name="window_main_details_lable">Enter details</string>
+    <string name="window_main_email_label">E-mail</string>
+    <string name="window_main_amount_label">Payment amount</string>
+    <string name="window_main_country_label">Country</string>
+    <string name="window_main_country_charity_label">Select country and charity</string>
+    <string name="window_main_subtitle_label">Pick a charity you want to donate to</string>
+    <string name="window_main_title_label">Redirect payment</string>
+    <string name="window_main_email_blank_error">E-mail address is required</string>
+    <string name="window_main_email_invalid_format_error">E-mail address is invalid</string>
+    <string name="window_main_amount_blank_error">Amount must be greater than zero</string>
+    <string name="dialog_payment_success_title">Payment successful</string>
+    <string name="dialog_payment_success_button">Ok</string>
+    <string name="window_main_no_creditor_selected_error">Charity is not selected</string>
+    <string name="window_main_amount_field_currency">EUR</string>
 </resources>

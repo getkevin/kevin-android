@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="window_link_account_button">Länka konto</string>
-    <string name="window_make_bank_payment_button">Gör bankbetalning</string>
-    <string name="window_card_bank_payment_button">Gör kortbetalning</string>
-    <string name="main_menu_dark_mode_toggle">Använd mörkt tema</string>
-    <string name="navigate_back_content_description">Navigera tillbaka</string>
-    <string name="window_hybrid_payment_button">Gör hybridbetalning</string>
+    <string name="window_main_terms_privacy_policy">Jag har läst och godkänner Villkor och Integritetspolicy</string>
+    <string name="window_main_terms_privacy_policy_clickable_terms">Villkor</string>
+    <string name="window_main_terms_privacy_policy_clickable_policy">Integritetspolicy</string>
+    <string name="window_main_proceed_button">Skänk • %s EUR</string>
+    <string name="window_main_bank_payment">Bankbetalning</string>
+    <string name="window_main_card_payment">Kortbetalning</string>
+    <string name="window_main_details_lable">Fyll i uppgifter</string>
+    <string name="window_main_email_label">E-postadress</string>
+    <string name="window_main_amount_label">Belopp att betala</string>
+    <string name="window_main_country_label">Land</string>
+    <string name="window_main_country_charity_label">Välj land och välgörenhet</string>
+    <string name="window_main_subtitle_label">Välj en välgörenhet som du vill skänka till</string>
+    <string name="window_main_title_label">Dirigera om betalningen</string>
+    <string name="window_main_email_blank_error">E-postadress krävs</string>
+    <string name="window_main_email_invalid_format_error">E-postadressen är ogiltig</string>
+    <string name="window_main_amount_blank_error">Beloppet måste vara större än noll</string>
+    <string name="dialog_payment_success_title">Betalningen genomfördes</string>
+    <string name="dialog_payment_success_button">OK</string>
+    <string name="window_main_no_creditor_selected_error">Välgörenhet har inte valts</string>
+    <string name="window_main_amount_field_currency">EUR</string>
 </resources>

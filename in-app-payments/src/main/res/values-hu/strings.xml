@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="window_payment_confirmation_title">Fizetési visszaigazolás</string>
-    <string name="dialog_exit_confirmation_payments_message">Biztosan törölni szeretné ezt a fizetést?</string>
+    <string name="window_payment_confirmation_title">Fizetés megerősítése</string>
+    <string name="dialog_exit_confirmation_payments_message">Biztosan vissza akarja vonni ezt a fizetést?</string>
     <string name="window_card_payment_label">Kártyás fizetés</string>
     <string name="window_card_payment_cardholder_name_label">Kártyatulajdonos neve</string>
     <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
     <string name="window_card_payment_card_number_label">Kártyaszám</string>
-    <string name="window_card_payment_expiry_date_label">Lejárati dátum</string>
-    <string name="window_card_payment_notice">kevin. nem tárolja az Ön személyes adatait vagy kártyaadatait.</string>
-    <string name="window_card_payment_cvv_tooltip">A CVV egy háromjegyű kód, amely a kártya hátoldalán található</string>
-    <string name="error_no_cardholder_name">A kártyabirtokos nevét meg kell adni</string>
-    <string name="error_invalid_cvv">Adja meg az érvényes CVV-t</string>
-    <string name="error_no_cvv">CVV-t kell megadni</string>
-    <string name="error_invalid_expiry_date">A lejárati dátum érvénytelen</string>
-    <string name="error_no_expiry_date">A lejárati dátumot be kell írni</string>
+    <string name="window_card_payment_expiry_date_label">Lejárat dátuma</string>
+    <string name="window_card_payment_notice">A kevin. nem tárolja el semmilyen személyes információját vagy kártyaadatát.</string>
+    <string name="window_card_payment_cvv_tooltip">A CVV egy három számjegyű kód, ami a kártya hátsó részén jelenik meg</string>
+    <string name="error_no_cardholder_name">Meg kell adni a kártyatulajdonos nevét</string>
+    <string name="error_invalid_cvv">Adjon meg egy érvényes CVV számot</string>
+    <string name="error_no_cvv">Meg kell adni a CVV számot</string>
+    <string name="error_invalid_expiry_date">A lejárat dátuma érvénytelen</string>
+    <string name="error_no_expiry_date">Meg kell adni a lejárat dátumát</string>
     <string name="error_card_expired">A kártya lejárt</string>
     <string name="error_invalid_card_number">A kártyaszám érvénytelen</string>
-    <string name="error_no_card_number">A kártyaszámot be kell írni</string>
+    <string name="error_no_card_number">Meg kell adni a kártyaszámot</string>
     <string name="window_card_payment_redirect_title">Folytatja a fizetést banki átutalással?</string>
-    <string name="window_card_payment_redirect_subtitle">Szeretné folytatni a fizetést banki átutalással?</string>
-    <string name="window_card_payment_bank_redirect_subtitle">Észrevettük, hogy fizetési kártyáját %s bocsátotta ki. Szeretné folytatni a fizetést banki átutalással?</string>
+    <string name="window_card_payment_redirect_subtitle">Szeretné banki átutalással folytatni?</string>
+    <string name="window_card_payment_bank_redirect_subtitle">Észrevettük, hogy kártyáját %s bocsátotta ki. Szeretné banki átutalással folytatni?</string>
 </resources>

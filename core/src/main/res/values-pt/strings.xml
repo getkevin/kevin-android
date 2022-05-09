@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Continue">Prosseguir</string>
+    <string name="Continue">Continuar</string>
     <string name="error_unknown">Ocorreu um erro desconhecido</string>
     <string name="error_no_internet">Sem conexão de internet</string>
     <string name="yes">Sim</string>
     <string name="no">Não</string>
     <string name="dialog_exit_confirmation_title">Aviso!</string>
-    <string name="navigate_back_content_description">Navegar de volta</string>
+    <string name="navigate_back_content_description">Voltar</string>
 </resources>

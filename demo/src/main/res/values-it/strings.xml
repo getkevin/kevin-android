@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="window_link_account_button">Collega account</string>
-    <string name="window_make_bank_payment_button">Effettua il pagamento in banca</string>
-    <string name="window_card_bank_payment_button">Effettua il pagamento con carta</string>
-    <string name="main_menu_dark_mode_toggle">Usa il tema scuro</string>
-    <string name="navigate_back_content_description">Torna indietro</string>
-    <string name="window_hybrid_payment_button">Effettua il pagamento ibrido</string>
+    <string name="window_main_terms_privacy_policy">Ho letto e accetto i Termini e condizioni e l\'Informativa sulla Privacy</string>
+    <string name="window_main_terms_privacy_policy_clickable_terms">Termini e condizioni</string>
+    <string name="window_main_terms_privacy_policy_clickable_policy">Informativa sulla Privacy</string>
+    <string name="window_main_proceed_button">Dona • %s EUR</string>
+    <string name="window_main_bank_payment">Pagamento tramite banca</string>
+    <string name="window_main_card_payment">Pagamento con carta</string>
+    <string name="window_main_details_lable">Inserisci i dettagli</string>
+    <string name="window_main_email_label">E-mail</string>
+    <string name="window_main_amount_label">Importo pagamento</string>
+    <string name="window_main_country_label">Paese</string>
+    <string name="window_main_country_charity_label">Seleziona Paese e ente di beneficenza</string>
+    <string name="window_main_subtitle_label">Seleziona un ente di beneficenza a cui vuoi donare</string>
+    <string name="window_main_title_label">Reindirizza il pagamento</string>
+    <string name="window_main_email_blank_error">È richiesto l\'indirizzo e-mail</string>
+    <string name="window_main_email_invalid_format_error">L\'indirizzo e-mail non è valido</string>
+    <string name="window_main_amount_blank_error">L\'importo deve essere superiore a zero</string>
+    <string name="dialog_payment_success_title">Pagamento effettuato con successo</string>
+    <string name="dialog_payment_success_button">OK</string>
+    <string name="window_main_no_creditor_selected_error">L\'ente di beneficenza non è selezionato</string>
+    <string name="window_main_amount_field_currency">EUR</string>
 </resources>

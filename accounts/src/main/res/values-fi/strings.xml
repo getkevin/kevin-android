@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="country_name_at">Itävalta</string>
-    <string name="error_bank_not_selected">Pankki on valittava</string>
     <string name="country_name_be">Belgia</string>
     <string name="country_name_bg">Bulgaria</string>
-    <string name="country_name_cz">Tšekin tasavalta</string>
+    <string name="country_name_cz">Tšekki</string>
     <string name="country_name_de">Saksa</string>
     <string name="country_name_dk">Tanska</string>
     <string name="country_name_ee">Viro</string>
@@ -32,10 +31,12 @@
     <string name="country_name_gr">Kreikka</string>
     <string name="country_name_is">Islanti</string>
     <string name="country_name_li">Liechtenstein</string>
-    <string name="window_account_linking_title">Tilin linkittäminen</string>
+    <string name="window_account_linking_title">Tilin yhdistäminen</string>
+    <string name="window_account_linking_card_title">Maksukortin yhdistäminen</string>
     <string name="window_country_selection_title">Valitse maa</string>
-    <string name="window_bank_selection_select_country_label">Valitse maa</string>
     <string name="window_bank_selection_title">Pankin valinta</string>
+    <string name="window_bank_selection_select_country_label">Valitse maa</string>
     <string name="window_bank_selection_select_bank_label">Valitse pankki</string>
-    <string name="dialog_exit_confirmation_accounts_message">Haluatko varmasti keskeyttää tilin linkityksen?</string>
+    <string name="error_bank_not_selected">Pankin valintaa ei voi ohittaa</string>
+    <string name="dialog_exit_confirmation_accounts_message">Oletko varma, että haluat peruuttaa tilin yhdistämisen?</string>
 </resources>

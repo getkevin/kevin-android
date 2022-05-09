@@ -2,9 +2,9 @@
 <resources>
     <string name="Continue">Pokračovat</string>
     <string name="error_unknown">Došlo k neznámé chybě</string>
-    <string name="error_no_internet">Žádné internetové připojení</string>
+    <string name="error_no_internet">Bez připojení k internetu</string>
     <string name="yes">Ano</string>
     <string name="no">Ne</string>
-    <string name="navigate_back_content_description">Přejít zpět</string>
     <string name="dialog_exit_confirmation_title">Varování!</string>
+    <string name="navigate_back_content_description">Přejít zpět</string>
 </resources>

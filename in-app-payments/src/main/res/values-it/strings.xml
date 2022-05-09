@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="window_payment_confirmation_title">Conferma di pagamento</string>
+    <string name="window_payment_confirmation_title">Conferma del pagamento</string>
     <string name="dialog_exit_confirmation_payments_message">Sei sicuro di voler annullare questo pagamento?</string>
-    <string name="window_card_payment_label">Pagamento con carta</string>
-    <string name="window_card_payment_cardholder_name_label">Nome del titolare</string>
+    <string name="window_card_payment_label">Pagamento tramite carta</string>
+    <string name="window_card_payment_cardholder_name_label">Nome del titolare della carta</string>
     <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
-    <string name="window_card_payment_card_number_label">Numero di carta</string>
+    <string name="window_card_payment_card_number_label">Numero della carta</string>
     <string name="window_card_payment_expiry_date_label">Data di scadenza</string>
-    <string name="window_card_payment_notice">kevin. non sta memorizzando nessuna delle tue informazioni personali o dettagli della carta.</string>
-    <string name="window_card_payment_cvv_tooltip">CVV è un codice a 3 cifre visualizzato sul retro della carta</string>
-    <string name="error_no_cardholder_name">È necessario inserire il nome del titolare della carta</string>
+    <string name="window_card_payment_notice">kevin. non memorizza le tue informazioni personali o i dettagli della tua carta.</string>
+    <string name="window_card_payment_cvv_tooltip">Il CVV è un codice a 3 cifre che si trova sul retro della carta</string>
+    <string name="error_no_cardholder_name">Deve essere inserito il nome del titolare della carta</string>
     <string name="error_invalid_cvv">Inserisci un CVV valido</string>
-    <string name="error_no_cvv">È necessario inserire il CVV</string>
+    <string name="error_no_cvv">Deve essere inserito il CVV</string>
     <string name="error_invalid_expiry_date">La data di scadenza non è valida</string>
-    <string name="error_no_expiry_date">È necessario inserire la data di scadenza</string>
+    <string name="error_no_expiry_date"> Deve essere inserita la data di scadenza</string>
     <string name="error_card_expired">La carta è scaduta</string>
     <string name="error_invalid_card_number">Il numero della carta non è valido</string>
-    <string name="error_no_card_number">È necessario inserire il numero della carta</string>
+    <string name="error_no_card_number"> Deve essere inserito il numero della carta</string>
     <string name="window_card_payment_redirect_title">Continuare il pagamento tramite bonifico bancario?</string>
-    <string name="window_card_payment_redirect_subtitle">Vuoi continuare il pagamento tramite Bonifico Bancario?</string>
-    <string name="window_card_payment_bank_redirect_subtitle">Abbiamo notato che la tua carta di pagamento è stata emessa da %s. Vuoi continuare il pagamento tramite Bonifico Bancario?</string>
+    <string name="window_card_payment_redirect_subtitle">Vuoi continuare il pagamento tramite bonifico bancario?</string>
+    <string name="window_card_payment_bank_redirect_subtitle">Abbiamo notato che la tua carta di pagamento è emessa da %s. Vuoi continuare il pagamento tramite bonifico bancario?</string>
 </resources>

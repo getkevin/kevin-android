@@ -3,7 +3,7 @@
     <string name="country_name_at">Ausztria</string>
     <string name="country_name_be">Belgium</string>
     <string name="country_name_bg">Bulgária</string>
-    <string name="country_name_cz">Csehország</string>
+    <string name="country_name_cz">Cseh Köztársaság</string>
     <string name="country_name_de">Németország</string>
     <string name="country_name_dk">Dánia</string>
     <string name="country_name_ee">Észtország</string>
@@ -28,14 +28,15 @@
     <string name="country_name_mt">Málta</string>
     <string name="country_name_cy">Ciprus</string>
     <string name="country_name_hr">Horvátország</string>
-    <string name="window_account_linking_title">Fiók összekapcsolása</string>
-    <string name="window_country_selection_title">Válassz országot</string>
-    <string name="window_bank_selection_title">Bankválasztás</string>
-    <string name="window_bank_selection_select_country_label">Válassz országot</string>
-    <string name="window_bank_selection_select_bank_label">Válassza ki a bankot</string>
-    <string name="error_bank_not_selected">Bankot kell választani</string>
-    <string name="dialog_exit_confirmation_accounts_message">Biztosan megszakítja a fiókok összekapcsolását?</string>
     <string name="country_name_gr">Görögország</string>
     <string name="country_name_is">Izland</string>
     <string name="country_name_li">Liechtenstein</string>
+    <string name="window_account_linking_title">Fiók összekapcsolása</string>
+    <string name="window_account_linking_card_title">Kártya összekapcsolása</string>
+    <string name="window_country_selection_title">Ország kiválasztása</string>
+    <string name="window_bank_selection_title">Bank kiválasztása</string>
+    <string name="window_bank_selection_select_country_label">Ország kiválasztása</string>
+    <string name="window_bank_selection_select_bank_label">Bank kiválasztása</string>
+    <string name="error_bank_not_selected">Ki kell választani a bankot</string>
+    <string name="dialog_exit_confirmation_accounts_message">Biztosan meg akarja szakítani a fiók összekapcsolását?</string>
 </resources>

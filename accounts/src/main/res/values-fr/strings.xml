@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="country_name_at">L\'Autriche</string>
-    <string name="country_name_be">La Belgique</string>
+    <string name="country_name_at">Autriche</string>
+    <string name="country_name_be">Belgique</string>
     <string name="country_name_bg">Bulgarie</string>
-    <string name="country_name_cz">République Tchèque</string>
+    <string name="country_name_cz">Tchéquie</string>
     <string name="country_name_de">Allemagne</string>
     <string name="country_name_dk">Danemark</string>
     <string name="country_name_ee">Estonie</string>
     <string name="country_name_es">Espagne</string>
     <string name="country_name_fi">Finlande</string>
+    <string name="country_name_fr">France</string>
     <string name="country_name_gb">Royaume-Uni</string>
-    <string name="country_name_fr">La France</string>
     <string name="country_name_it">Italie</string>
     <string name="country_name_lt">Lituanie</string>
     <string name="country_name_lu">Luxembourg</string>
@@ -18,7 +18,7 @@
     <string name="country_name_nl">Pays-Bas</string>
     <string name="country_name_no">Norvège</string>
     <string name="country_name_pl">Pologne</string>
-    <string name="country_name_pt">Le Portugal</string>
+    <string name="country_name_pt">Portugal</string>
     <string name="country_name_ro">Roumanie</string>
     <string name="country_name_se">Suède</string>
     <string name="country_name_hu">Hongrie</string>
@@ -31,11 +31,12 @@
     <string name="country_name_gr">Grèce</string>
     <string name="country_name_is">Islande</string>
     <string name="country_name_li">Liechtenstein</string>
-    <string name="window_account_linking_title">Liaison de compte</string>
-    <string name="window_country_selection_title">Choisissez le pays</string>
-    <string name="window_bank_selection_select_country_label">Choisissez le pays</string>
-    <string name="window_bank_selection_title">Sélection de banque</string>
+    <string name="window_account_linking_title">Lier des comptes</string>
+    <string name="window_account_linking_card_title">Lier des cartes</string>
+    <string name="window_country_selection_title">Sélectionnez le pays</string>
+    <string name="window_bank_selection_title">Sélection de la banque</string>
+    <string name="window_bank_selection_select_country_label">Sélectionnez le pays</string>
     <string name="window_bank_selection_select_bank_label">Sélectionnez la banque</string>
     <string name="error_bank_not_selected">La banque doit être sélectionnée</string>
-    <string name="dialog_exit_confirmation_accounts_message">Voulez-vous vraiment annuler l\'association de compte?</string>
+    <string name="dialog_exit_confirmation_accounts_message">Êtes-vous sûr de vouloir annuler la liaison des comptes ?</string>
 </resources>

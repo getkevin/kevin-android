@@ -3,7 +3,7 @@
     <string name="country_name_at">Austria</string>
     <string name="country_name_be">Belgia</string>
     <string name="country_name_bg">Bulgaaria</string>
-    <string name="country_name_cz">Tšehhi</string>
+    <string name="country_name_cz">Tšehhi Vabariik</string>
     <string name="country_name_de">Saksamaa</string>
     <string name="country_name_dk">Taani</string>
     <string name="country_name_ee">Eesti</string>
@@ -28,14 +28,15 @@
     <string name="country_name_mt">Malta</string>
     <string name="country_name_cy">Küpros</string>
     <string name="country_name_hr">Horvaatia</string>
-    <string name="window_account_linking_title">Konto linkimine</string>
-    <string name="window_country_selection_title">Vali riik</string>
-    <string name="window_bank_selection_title">Panga valik</string>
-    <string name="window_bank_selection_select_country_label">Vali riik</string>
-    <string name="window_bank_selection_select_bank_label">Valige pank</string>
-    <string name="error_bank_not_selected">Pank tuleb valida</string>
-    <string name="dialog_exit_confirmation_accounts_message">Kas olete kindel, et soovite konto linkimise katkestada?</string>
     <string name="country_name_gr">Kreeka</string>
     <string name="country_name_is">Island</string>
     <string name="country_name_li">Liechtenstein</string>
+    <string name="window_account_linking_title">Konto linkimine</string>
+    <string name="window_account_linking_card_title">Kaardi linkimine</string>
+    <string name="window_country_selection_title">Valige riik</string>
+    <string name="window_bank_selection_title">Panga valik</string>
+    <string name="window_bank_selection_select_country_label">Valige riik</string>
+    <string name="window_bank_selection_select_bank_label">Valige pank</string>
+    <string name="error_bank_not_selected">Panga valimine on kohustuslik</string>
+    <string name="dialog_exit_confirmation_accounts_message">Kas olete kindel, et soovite konto linkimise katkestada?</string>
 </resources>

@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="window_link_account_button">Povežite račun</string>
-    <string name="window_make_bank_payment_button">Izvedite bančno plačilo</string>
-    <string name="window_card_bank_payment_button">Izvedite plačilo s kartico</string>
-    <string name="main_menu_dark_mode_toggle">Uporabite temno temo</string>
-    <string name="navigate_back_content_description">Pomaknite se nazaj</string>
-    <string name="window_hybrid_payment_button">Izvedite hibridno plačilo</string>
+    <string name="window_main_terms_privacy_policy">Prebral/-a sem in se strinjam s pogoji in izjavo o varovanju osebnih podatkov.</string>
+    <string name="window_main_terms_privacy_policy_clickable_terms">pogoji</string>
+    <string name="window_main_terms_privacy_policy_clickable_policy">izjavo o varovanju osebnih podatkov</string>
+    <string name="window_main_proceed_button">Donacija v višini • %s EUR</string>
+    <string name="window_main_bank_payment">Bančno plačilo</string>
+    <string name="window_main_card_payment">Plačilo s kartico</string>
+    <string name="window_main_details_lable">Vnos podatkov</string>
+    <string name="window_main_email_label">E-naslov</string>
+    <string name="window_main_amount_label">Znesek plačila</string>
+    <string name="window_main_country_label">Država</string>
+    <string name="window_main_country_charity_label">Izberite državo in dobrodelno organizacijo</string>
+    <string name="window_main_subtitle_label">Izberite dobrodelno organizacijo, kateri želite donirati</string>
+    <string name="window_main_title_label">Preusmeritev plačila</string>
+    <string name="window_main_email_blank_error">E-naslov je obvezen</string>
+    <string name="window_main_email_invalid_format_error">E-naslov ni veljaven</string>
+    <string name="window_main_amount_blank_error">Znesek mora biti višji od nič</string>
+    <string name="dialog_payment_success_title">Plačilo uspešno</string>
+    <string name="dialog_payment_success_button">V redu</string>
+    <string name="window_main_no_creditor_selected_error">Dobrodelna organizacija ni izbrana</string>
+    <string name="window_main_amount_field_currency">EUR</string>
 </resources>
