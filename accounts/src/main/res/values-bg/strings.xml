@@ -15,7 +15,7 @@
     <string name="country_name_lt">Литва</string>
     <string name="country_name_lu">Люксембург</string>
     <string name="country_name_lv">Латвия</string>
-    <string name="country_name_nl">Холандия</string>
+    <string name="country_name_nl">Нидерландия</string>
     <string name="country_name_no">Норвегия</string>
     <string name="country_name_pl">Полша</string>
     <string name="country_name_pt">Португалия</string>
@@ -27,15 +27,16 @@
     <string name="country_name_sk">Словакия</string>
     <string name="country_name_mt">Малта</string>
     <string name="country_name_cy">Кипър</string>
-    <string name="country_name_hr">Хърватия</string>
-    <string name="window_account_linking_title">Свързване на акаунти</string>
+    <string name="country_name_hr">Хърватска</string>
+    <string name="country_name_gr">Гърция</string>
+    <string name="country_name_is">Исландия</string>
+    <string name="country_name_li">Лихтенщайн</string>
+    <string name="window_account_linking_title">Свързване на профил</string>
+    <string name="window_account_linking_card_title">Свързване на карта</string>
     <string name="window_country_selection_title">Изберете държава</string>
     <string name="window_bank_selection_title">Избор на банка</string>
     <string name="window_bank_selection_select_country_label">Изберете държава</string>
     <string name="window_bank_selection_select_bank_label">Изберете банка</string>
-    <string name="error_bank_not_selected">Банката трябва да бъде избрана</string>
-    <string name="dialog_exit_confirmation_accounts_message">Наистина ли искате да прекратите свързването на акаунти?</string>
-    <string name="country_name_gr">Гърция</string>
-    <string name="country_name_is">Исландия</string>
-    <string name="country_name_li">Лихтенщайн</string>
+    <string name="error_bank_not_selected">Трябва да бъде избрана банка</string>
+    <string name="dialog_exit_confirmation_accounts_message">Сигурни ли сте, че искате да прекратите свързването на профила?</string>
 </resources>

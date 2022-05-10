@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="window_payment_confirmation_title">Confirmarea platii</string>
-    <string name="dialog_exit_confirmation_payments_message">Sigur doriți să anulați această plată?</string>
-    <string name="window_card_payment_label">Plata cu cardul</string>
-    <string name="window_card_payment_cardholder_name_label">Nume Deținător Card</string>
-    <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
-    <string name="window_card_payment_card_number_label">Număr de card</string>
+    <string name="window_payment_confirmation_title">Confirmarea plății</string>
+    <string name="dialog_exit_confirmation_payments_message">Sunteți sigur că doriți să anulați această plată?</string>
+    <string name="window_card_payment_label">Plată cu cardul</string>
+    <string name="window_card_payment_cardholder_name_label">Numele titularului de card</string>
+    <string name="window_card_payment_cardholder_name_hint">Ion Popescu</string>
+    <string name="window_card_payment_card_number_label">Numărul cardului</string>
     <string name="window_card_payment_expiry_date_label">Data de expirare</string>
-    <string name="window_card_payment_notice">kevin. nu stochează niciuna dintre informațiile dvs. personale sau detaliile cardului.</string>
-    <string name="window_card_payment_cvv_tooltip">CVV este un cod din 3 cifre afișat pe spatele cardului dvs</string>
-    <string name="error_no_cardholder_name">Numele titularului cardului trebuie introdus</string>
-    <string name="error_invalid_cvv">Introduceți CVV valid</string>
-    <string name="error_no_cvv">CVV trebuie introdus</string>
-    <string name="error_invalid_expiry_date">Data de expirare este nevalidă</string>
-    <string name="error_no_expiry_date">Trebuie introdusă data de expirare</string>
-    <string name="error_card_expired">Cardul este expirat</string>
-    <string name="error_invalid_card_number">Numărul cardului este nevalid</string>
-    <string name="error_no_card_number">Trebuie introdus numărul cardului</string>
-    <string name="window_card_payment_redirect_title">Continuați plata prin transfer bancar?</string>
-    <string name="window_card_payment_redirect_subtitle">Doriți să continuați plata prin transfer bancar?</string>
-    <string name="window_card_payment_bank_redirect_subtitle">Am observat că cardul dvs. de plată este emis de %s. Doriți să continuați plata prin transfer bancar?</string>
+    <string name="window_card_payment_notice">kevin. nu păstrează informațiile dvs. personale sau datele cardului.</string>
+    <string name="window_card_payment_cvv_tooltip">CVV este un cod de 3 cifre pe care-l puteți găsi pe reversul cardului dvs.</string>
+    <string name="error_no_cardholder_name">Completarea numelui titularului este obligatorie</string>
+    <string name="error_invalid_cvv">Introduceți un cod CVV valid</string>
+    <string name="error_no_cvv">Completarea codului CVV este obligatorie</string>
+    <string name="error_invalid_expiry_date">Data de expirare nu este validă</string>
+    <string name="error_no_expiry_date">Completarea datei de expirare este obligatorie</string>
+    <string name="error_card_expired">Cardul a expirat</string>
+    <string name="error_invalid_card_number">Numărul cardului nu este valid</string>
+    <string name="error_no_card_number">Completarea numărului cardului este obligatorie</string>
+    <string name="window_card_payment_redirect_title">Continuați cu plata prin transfer bancar?</string>
+    <string name="window_card_payment_redirect_subtitle">Doriți să continuați efectuarea plății prin transfer bancar?</string>
+    <string name="window_card_payment_bank_redirect_subtitle">Am observat că ați folosit un card emis de %s. Doriți să continuați efectuarea plății prin transfer bancar?</string>
 </resources>

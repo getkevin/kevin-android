@@ -6,7 +6,11 @@
     <string name="window_card_payment_cardholder_name_label">Cardholder name</string>
     <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
     <string name="window_card_payment_card_number_label">Card number</string>
+    <string name="window_card_payment_card_number_hint" translatable="false">1234 5678 9012 3456</string>
     <string name="window_card_payment_expiry_date_label">Expiry date</string>
+    <string name="window_card_payment_expiry_date_hint" translatable="false">MM/YY</string>
+    <string name="window_card_payment_cvv_label" translatable="false">CVV / CVC </string>
+    <string name="window_card_payment_cvv_hint" translatable="false">123</string>
     <string name="window_card_payment_notice">kevin. is not storing any of your personal info or card details.</string>
     <string name="window_card_payment_cvv_tooltip">CVV is a 3 digit code displayed on the back of your card</string>
     <string name="error_no_cardholder_name">Cardholder name must be entered</string>

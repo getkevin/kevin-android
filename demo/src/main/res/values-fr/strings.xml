@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="window_link_account_button">Lien de compte</string>
-    <string name="window_make_bank_payment_button">Effectuer un paiement bancaire</string>
-    <string name="window_card_bank_payment_button">Effectuer un paiement par carte</string>
-    <string name="main_menu_dark_mode_toggle">Utiliser le thème sombre</string>
-    <string name="navigate_back_content_description">Revenir en arrière</string>
-    <string name="window_hybrid_payment_button">Effectuer un paiement hybride</string>
+    <string name="window_main_terms_privacy_policy">J\'ai lu et j\'accepte les conditions générales et la politique de confidentialité</string>
+    <string name="window_main_terms_privacy_policy_clickable_terms">conditions générales</string>
+    <string name="window_main_terms_privacy_policy_clickable_policy">politique de confidentialité</string>
+    <string name="window_main_proceed_button">Faire un don • %s EUR</string>
+    <string name="window_main_bank_payment">
+Paiement bancaire</string>
+    <string name="window_main_card_payment">Paiement par carte</string>
+    <string name="window_main_details_lable">Saisissez les détails</string>
+    <string name="window_main_email_label">E-mail</string>
+    <string name="window_main_amount_label">Montant du paiement</string>
+    <string name="window_main_country_label">Pays</string>
+    <string name="window_main_country_charity_label">Sélectionnez le pays et l\'association caritative</string>
+    <string name="window_main_subtitle_label">Choisissez l\'association caritative à laquelle vous souhaitez faire un don</string>
+    <string name="window_main_title_label">Rediriger le paiement</string>
+    <string name="window_main_email_blank_error">L\'adresse e-mail est obligatoire</string>
+    <string name="window_main_email_invalid_format_error">L\'adresse e-mail n\'est pas valide</string>
+    <string name="window_main_amount_blank_error">Le montant doit être supérieur à zéro</string>
+    <string name="dialog_payment_success_title">Paiement réussi</string>
+    <string name="dialog_payment_success_button">D\'accord</string>
+    <string name="window_main_no_creditor_selected_error">L\'association caritative n\'est pas sélectionnée</string>
+    <string name="window_main_amount_field_currency">EUR</string>
 </resources>

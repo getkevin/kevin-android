@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="window_link_account_button">Link da conta</string>
-    <string name="window_make_bank_payment_button">Faça o pagamento bancário</string>
-    <string name="window_card_bank_payment_button">Faça o pagamento com cartão</string>
-    <string name="navigate_back_content_description">Navegar de volta</string>
-    <string name="main_menu_dark_mode_toggle">Use tema escuro</string>
-    <string name="window_hybrid_payment_button">Faça o pagamento híbrido</string>
+    <string name="window_main_terms_privacy_policy">Li e aceito os Termos e Condições e a Política de Privacidade</string>
+    <string name="window_main_terms_privacy_policy_clickable_terms">Termos e Condições</string>
+    <string name="window_main_terms_privacy_policy_clickable_policy">Política de Privacidade</string>
+    <string name="window_main_proceed_button">Doar • %s EUR</string>
+    <string name="window_main_bank_payment">Pagamento bancário</string>
+    <string name="window_main_card_payment">Pagamento por cartão</string>
+    <string name="window_main_details_lable">Introduza os dados</string>
+    <string name="window_main_email_label">E-mail</string>
+    <string name="window_main_amount_label">Quantia do pagamento</string>
+    <string name="window_main_country_label">País</string>
+    <string name="window_main_country_charity_label">Selecione o país e a caridade</string>
+    <string name="window_main_subtitle_label">Escolha uma caridade para fazer a doação</string>
+    <string name="window_main_title_label">Redirecionar pagamento</string>
+    <string name="window_main_email_blank_error">É necessário um endereço de email</string>
+    <string name="window_main_email_invalid_format_error">O endereço de email é inválido</string>
+    <string name="window_main_amount_blank_error">A quantia precisa de ser acima de zero</string>
+    <string name="dialog_payment_success_title">Pagamento bem-sucedido</string>
+    <string name="dialog_payment_success_button">Ok</string>
+    <string name="window_main_no_creditor_selected_error">Caridade não selecionada</string>
+    <string name="window_main_amount_field_currency">EUR</string>
 </resources>

@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="window_link_account_button">Prepojiť účet</string>
-    <string name="window_make_bank_payment_button">Uskutočnite platbu bankou</string>
-    <string name="window_card_bank_payment_button">Vykonajte platbu kartou</string>
-    <string name="main_menu_dark_mode_toggle">Použite tmavý motív</string>
-    <string name="navigate_back_content_description">Prejsť späť</string>
-    <string name="window_hybrid_payment_button">Uskutočnite hybridnú platbu</string>
+    <string name="window_main_terms_privacy_policy">Prečítal som si a súhlasím s obchodnými podmienkami a zásadami ochrany osobných údajov</string>
+    <string name="window_main_terms_privacy_policy_clickable_terms">obchodnými podmienkami</string>
+    <string name="window_main_terms_privacy_policy_clickable_policy">zásadami ochrany osobných údajov</string>
+    <string name="window_main_proceed_button">Darovať • %s EUR</string>
+    <string name="window_main_bank_payment">Banková platba</string>
+    <string name="window_main_card_payment">Platba kartou</string>
+    <string name="window_main_details_lable">Zadajte podrobnosti</string>
+    <string name="window_main_email_label">E-mail</string>
+    <string name="window_main_amount_label">Suma na úhradu</string>
+    <string name="window_main_country_label">Krajina</string>
+    <string name="window_main_country_charity_label">Vyberte krajinu a charitu</string>
+    <string name="window_main_subtitle_label">Vyberte si charitu, ktorej chcete prispieť</string>
+    <string name="window_main_title_label">Presmerovať platbu</string>
+    <string name="window_main_email_blank_error">E-mailová adresa je povinná</string>
+    <string name="window_main_email_invalid_format_error">E-mailová adresa je neplatná</string>
+    <string name="window_main_amount_blank_error">Suma musí byť vyššia ako nula</string>
+    <string name="dialog_payment_success_title">Platba úspešná</string>
+    <string name="dialog_payment_success_button">Ok</string>
+    <string name="window_main_no_creditor_selected_error">Nie je vybratá charita</string>
+    <string name="window_main_amount_field_currency">EUR</string>
 </resources>

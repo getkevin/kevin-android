@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Continue">Jatkaa</string>
+    <string name="Continue">Jatka</string>
     <string name="error_unknown">Tapahtui tuntematon virhe</string>
-    <string name="error_no_internet">Ei Internet-yhteyttä</string>
-    <string name="yes">Joo</string>
-    <string name="no">Ei</string>
-    <string name="navigate_back_content_description">Varoitus!</string>
+    <string name="error_no_internet">Ei verkkoyhteyttä</string>
+    <string name="yes">Kyllä</string>
+    <string name="no">En</string>
     <string name="dialog_exit_confirmation_title">Varoitus!</string>
+    <string name="navigate_back_content_description">Siirry takaisin</string>
 </resources>

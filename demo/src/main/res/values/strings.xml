@@ -1,10 +1,4 @@
 <resources>
-    <string name="window_link_account_button">Link account</string>
-    <string name="window_make_bank_payment_button">Make bank payment</string>
-    <string name="window_card_bank_payment_button">Make card payment</string>
-    <string name="window_hybrid_payment_button">Make hybrid payment</string>
-    <string name="main_menu_dark_mode_toggle">Use dark theme</string>
-    <string name="navigate_back_content_description">Navigate back</string>
     <string name="window_main_terms_privacy_policy">I have read and agree with Terms &amp; Conditions and Privacy Policy</string>
     <string name="window_main_terms_privacy_policy_clickable_terms">Terms &amp; Conditions</string>
     <string name="window_main_terms_privacy_policy_clickable_policy">Privacy Policy</string>

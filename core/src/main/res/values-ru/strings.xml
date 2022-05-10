@@ -2,9 +2,9 @@
 <resources>
     <string name="Continue">Продолжить</string>
     <string name="error_unknown">Произошла неизвестная ошибка</string>
-    <string name="error_no_internet">Подключение к интернету отсутствует</string>
+    <string name="error_no_internet">Нет подключения к Интернету</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
     <string name="dialog_exit_confirmation_title">Предупреждение!</string>
-    <string name="navigate_back_content_description">Вернуться назад</string>
+    <string name="navigate_back_content_description">Перейти назад</string>
 </resources>

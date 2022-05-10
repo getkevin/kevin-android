@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="country_name_at">Österrike</string>
-    <string name="dialog_exit_confirmation_accounts_message">Är du säker på att du vill avbryta kontolänkningen?</string>
     <string name="country_name_be">Belgien</string>
     <string name="country_name_bg">Bulgarien</string>
     <string name="country_name_cz">Tjeckien</string>
@@ -31,11 +30,13 @@
     <string name="country_name_hr">Kroatien</string>
     <string name="country_name_gr">Grekland</string>
     <string name="country_name_is">Island</string>
-    <string name="country_name_li">Liechtenstein</string>
-    <string name="window_account_linking_title">Kontolänkning</string>
+    <string name="country_name_li">Lichtenstein</string>
+    <string name="window_account_linking_title">Kontokoppling</string>
+    <string name="window_account_linking_card_title">Kortkoppling</string>
     <string name="window_country_selection_title">Välj land</string>
     <string name="window_bank_selection_title">Bankval</string>
     <string name="window_bank_selection_select_country_label">Välj land</string>
     <string name="window_bank_selection_select_bank_label">Välj bank</string>
     <string name="error_bank_not_selected">Bank måste väljas</string>
+    <string name="dialog_exit_confirmation_accounts_message">Är du säker på att du vill avbryta kontokopplingen?</string>
 </resources>

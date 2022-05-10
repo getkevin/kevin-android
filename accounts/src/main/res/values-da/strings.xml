@@ -10,7 +10,7 @@
     <string name="country_name_es">Spanien</string>
     <string name="country_name_fi">Finland</string>
     <string name="country_name_fr">Frankrig</string>
-    <string name="country_name_gb">Det Forenede Kongerige</string>
+    <string name="country_name_gb">Storbrittanien</string>
     <string name="country_name_it">Italien</string>
     <string name="country_name_lt">Litauen</string>
     <string name="country_name_lu">Luxembourg</string>
@@ -31,11 +31,12 @@
     <string name="country_name_gr">Grækenland</string>
     <string name="country_name_is">Island</string>
     <string name="country_name_li">Liechtenstein</string>
-    <string name="window_account_linking_title">Kontotilknytning</string>
+    <string name="window_account_linking_title">Kontoforbindelse</string>
+    <string name="window_account_linking_card_title">Kortforbindelse</string>
     <string name="window_country_selection_title">Vælg land</string>
     <string name="window_bank_selection_title">Bankvalg</string>
     <string name="window_bank_selection_select_country_label">Vælg land</string>
     <string name="window_bank_selection_select_bank_label">Vælg bank</string>
     <string name="error_bank_not_selected">Bank skal vælges</string>
-    <string name="dialog_exit_confirmation_accounts_message">Er du sikker på, at du vil afbryde kontotilknytning?</string>
+    <string name="dialog_exit_confirmation_accounts_message">Er du sikker på, at du vil stoppe med kontoforbindelse?</string>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="country_name_at">Austria</string>
+    <string name="country_name_at">Austrija</string>
     <string name="country_name_be">Beļģija</string>
     <string name="country_name_bg">Bulgārija</string>
     <string name="country_name_cz">Čehija</string>
@@ -28,14 +28,15 @@
     <string name="country_name_mt">Malta</string>
     <string name="country_name_cy">Kipra</string>
     <string name="country_name_hr">Horvātija</string>
-    <string name="window_account_linking_title">Bankas konta piesaistīšana</string>
-    <string name="window_country_selection_title">Izvēlēties valsti</string>
-    <string name="window_bank_selection_title">Bankas izvēle</string>
-    <string name="window_bank_selection_select_country_label">Izvēlēties valsti</string>
-    <string name="window_bank_selection_select_bank_label">Izvēlēties banku</string>
-    <string name="error_bank_not_selected">Bankai ir jābūt izvēlētai</string>
-    <string name="dialog_exit_confirmation_accounts_message">Vai tiešām vēlaties pārtraukt konta saistīšanu?</string>
     <string name="country_name_gr">Grieķija</string>
     <string name="country_name_is">Islande</string>
     <string name="country_name_li">Lihtenšteina</string>
+    <string name="window_account_linking_title">Doties uz kontu</string>
+    <string name="window_account_linking_card_title">Pievienot karti</string>
+    <string name="window_country_selection_title">Izvēlieties valsti</string>
+    <string name="window_bank_selection_title">Izvēlieties banku</string>
+    <string name="window_bank_selection_select_country_label">Izvēlieties valsti</string>
+    <string name="window_bank_selection_select_bank_label">Izvēlēties banku</string>
+    <string name="error_bank_not_selected">Jāizvēlas banka</string>
+    <string name="dialog_exit_confirmation_accounts_message">Vai vairs nevēlaties doties uz kontu?</string>
 </resources>

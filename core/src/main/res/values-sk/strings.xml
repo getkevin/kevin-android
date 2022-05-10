@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Continue">Ďalej</string>
-    <string name="error_unknown">Vyskytla sa neznáma chyba</string>
+    <string name="Continue">Pokračovať</string>
+    <string name="error_unknown">Došlo k neznámej chybe</string>
     <string name="error_no_internet">Žiadne internetové pripojenie</string>
     <string name="yes">Áno</string>
     <string name="no">Nie</string>
-    <string name="dialog_exit_confirmation_title">Výstraha!</string>
-    <string name="navigate_back_content_description">Prejsť späť</string>
+    <string name="dialog_exit_confirmation_title">Upozornenie!</string>
+    <string name="navigate_back_content_description">Prejsť naspäť</string>
 </resources>

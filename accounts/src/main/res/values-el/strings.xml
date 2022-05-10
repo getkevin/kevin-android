@@ -27,15 +27,16 @@
     <string name="country_name_sk">Σλοβακία</string>
     <string name="country_name_mt">Μάλτα</string>
     <string name="country_name_cy">Κύπρος</string>
-    <string name="country_name_hr">την Κροατία</string>
-    <string name="window_account_linking_title">Σύνδεση λογαριασμού</string>
-    <string name="window_country_selection_title">Επιλέξτε χώρα</string>
-    <string name="window_bank_selection_title">Επιλογή τράπεζας</string>
-    <string name="window_bank_selection_select_country_label">Επιλέξτε χώρα</string>
-    <string name="window_bank_selection_select_bank_label">Επιλέξτε τράπεζα</string>
-    <string name="error_bank_not_selected">Πρέπει να επιλεγεί τράπεζα</string>
-    <string name="dialog_exit_confirmation_accounts_message">Είστε βέβαιοι ότι θέλετε να ακυρώσετε τη σύνδεση λογαριασμού;</string>
+    <string name="country_name_hr">Κροατία</string>
     <string name="country_name_gr">Ελλάδα</string>
     <string name="country_name_is">Ισλανδία</string>
     <string name="country_name_li">Λιχτενστάιν</string>
+    <string name="window_account_linking_title">Σύνδεση λογαριασμού</string>
+    <string name="window_account_linking_card_title">Σύνδεση κάρτας</string>
+    <string name="window_country_selection_title">Επιλέξτε χώρα</string>
+    <string name="window_bank_selection_title">Επιλογή τράπεζας</string>
+    <string name="window_bank_selection_select_country_label">Επιλογή χώρας</string>
+    <string name="window_bank_selection_select_bank_label">Επιλέξτε τράπεζα</string>
+    <string name="error_bank_not_selected">Πρέπει να επιλεγεί μια τράπεζα</string>
+    <string name="dialog_exit_confirmation_accounts_message">Επιθυμείτε σίγουρα να ακυρώσετε τη σύνδεση λογαριασμού;</string>
 </resources>

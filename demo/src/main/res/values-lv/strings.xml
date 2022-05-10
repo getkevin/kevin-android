@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="window_link_account_button">Saistīt kontu</string>
-    <string name="navigate_back_content_description">Naviģēt atpakaļ</string>
-    <string name="window_make_bank_payment_button">Veikt bankas maksājumu</string>
-    <string name="window_card_bank_payment_button">Veikt maksājumu ar karti</string>
-    <string name="main_menu_dark_mode_toggle">zmantot tumšu dizaina tēmu</string>
-    <string name="window_hybrid_payment_button">Veiciet hibrīda maksājumu</string>
+    <string name="window_main_terms_privacy_policy">Esmu izlasījis un piekrītu Noteikumiem un nosacījumiem, kā arī Privātuma politikai</string>
+    <string name="window_main_terms_privacy_policy_clickable_terms">Noteikumiem un nosacījumiem</string>
+    <string name="window_main_terms_privacy_policy_clickable_policy">Privātuma politikai</string>
+    <string name="window_main_proceed_button">Ziedod %s EUR</string>
+    <string name="window_main_bank_payment">Maksājums ar bankas pārskaitījumu</string>
+    <string name="window_main_card_payment">Maksājums ar karti</string>
+    <string name="window_main_details_lable">Ievadiet nepieciešamo informāciju</string>
+    <string name="window_main_email_label">E-pasta adrese</string>
+    <string name="window_main_amount_label">Maksājuma summa</string>
+    <string name="window_main_country_label">Valsts</string>
+    <string name="window_main_country_charity_label">Izvēlieties valsti un ziedojuma saņēmēju</string>
+    <string name="window_main_subtitle_label">Izvēlieties ziedojuma saņēmēju</string>
+    <string name="window_main_title_label">Novirzīt maksājumu</string>
+    <string name="window_main_email_blank_error">Jānorāda e-pasta adrese</string>
+    <string name="window_main_email_invalid_format_error">Nederīga e-pasta adrese</string>
+    <string name="window_main_amount_blank_error">Summai jābūt lielākai par nulli</string>
+    <string name="dialog_payment_success_title">Maksājums veiksmīgs</string>
+    <string name="dialog_payment_success_button">Labi</string>
+    <string name="window_main_no_creditor_selected_error">Ziedojuma saņēmējs nav izvēlēts</string>
+    <string name="window_main_amount_field_currency">EUR</string>
 </resources>

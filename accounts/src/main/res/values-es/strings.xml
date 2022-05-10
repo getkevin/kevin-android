@@ -19,7 +19,7 @@
     <string name="country_name_no">Noruega</string>
     <string name="country_name_pl">Polonia</string>
     <string name="country_name_pt">Portugal</string>
-    <string name="country_name_ro">Rumania</string>
+    <string name="country_name_ro">Rumanía</string>
     <string name="country_name_se">Suecia</string>
     <string name="country_name_hu">Hungría</string>
     <string name="country_name_ie">Irlanda</string>
@@ -32,10 +32,11 @@
     <string name="country_name_is">Islandia</string>
     <string name="country_name_li">Liechtenstein</string>
     <string name="window_account_linking_title">Vinculación de cuenta</string>
-    <string name="window_country_selection_title">Seleccionar país</string>
-    <string name="window_bank_selection_title">Selección de banco</string>
-    <string name="window_bank_selection_select_country_label">Seleccionar país</string>
-    <string name="window_bank_selection_select_bank_label">Seleccionar banco</string>
-    <string name="error_bank_not_selected">El banco debe ser seleccionado</string>
-    <string name="dialog_exit_confirmation_accounts_message">Estás seguro de que deseas cancelar el enlace de la cuenta?</string>
+    <string name="window_account_linking_card_title">Vinculación de tarjeta</string>
+    <string name="window_country_selection_title">Seleccione su país</string>
+    <string name="window_bank_selection_title">Seleccione su banco</string>
+    <string name="window_bank_selection_select_country_label">Seleccione su país</string>
+    <string name="window_bank_selection_select_bank_label">Seleccione su banco</string>
+    <string name="error_bank_not_selected">Se tiene que seleccionar un banco</string>
+    <string name="dialog_exit_confirmation_accounts_message">¿Seguro que quiere abortar la vinculación de cuenta?</string>
 </resources>

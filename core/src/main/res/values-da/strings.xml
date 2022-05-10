@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Continue">Blive ved</string>
-    <string name="error_unknown">Der opstod en ukendt fejl</string>
+    <string name="Continue">Fortsæt</string>
+    <string name="error_unknown">En ukendt fejl opstod</string>
     <string name="error_no_internet">Ingen internetforbindelse</string>
     <string name="yes">Ja</string>
-    <string name="no">Ingen</string>
+    <string name="no">Nej</string>
     <string name="dialog_exit_confirmation_title">Advarsel!</string>
-    <string name="navigate_back_content_description">Naviger tilbage</string>
+    <string name="navigate_back_content_description">Gå tilbage</string>
 </resources>
