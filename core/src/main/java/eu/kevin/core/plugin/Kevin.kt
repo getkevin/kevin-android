@@ -9,7 +9,7 @@ object Kevin {
     private var locale: Locale? = null
     private var theme: Int = R.style.Theme_Kevin_Base
     private var isSandbox: Boolean = false
-    private var isDeepLinkingEnabled: Boolean = true
+    private var isDeepLinkingEnabled: Boolean = false
 
     fun setLocale(locale: Locale?) {
         synchronized(this) {
