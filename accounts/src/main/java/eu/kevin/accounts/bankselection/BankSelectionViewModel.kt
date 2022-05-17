@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.savedstate.SavedStateRegistryOwner
 import eu.kevin.accounts.bankselection.BankSelectionIntent.*
 import eu.kevin.accounts.bankselection.entities.Bank
+import eu.kevin.accounts.bankselection.entities.SupportedBanksFilter
 import eu.kevin.accounts.bankselection.exceptions.BankNotSelectedException
 import eu.kevin.accounts.bankselection.factories.BankListItemFactory
 import eu.kevin.accounts.bankselection.managers.KevinBankManager
@@ -83,8 +84,10 @@ internal class BankSelectionViewModel constructor(
                 val apiBanks = banksUseCase.getSupportedBanks(
                     selectedCountry,
                     configuration.authState,
-                    configuration.bankFilter,
-                    configuration.showAccountLinkingNotSupportedBanks
+                    SupportedBanksFilter(
+                        banks = configuration.bankFilter,
+                        isAccountLinkingSupported = !configuration.showAccountLinkingNotSupportedBanks
+                    )
                 )
 
                 banks = apiBanks.map {
@@ -139,8 +142,10 @@ internal class BankSelectionViewModel constructor(
                 val apiBanks = banksUseCase.getSupportedBanks(
                     selectedCountry,
                     configuration.authState,
-                    configuration.bankFilter,
-                    configuration.showAccountLinkingNotSupportedBanks
+                    SupportedBanksFilter(
+                        banks = configuration.bankFilter,
+                        isAccountLinkingSupported = !configuration.showAccountLinkingNotSupportedBanks
+                    )
                 )
                 banks = apiBanks.map {
                     Bank(it.id, it.name, it.officialName, it.imageUri, it.bic)
