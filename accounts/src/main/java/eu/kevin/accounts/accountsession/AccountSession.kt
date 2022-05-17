@@ -149,7 +149,7 @@ internal class AccountSession(
                     configuration.bankFilter,
                     sessionData.selectedBank?.id,
                     configuration.state,
-                    false
+                    showAccountLinkingNotSupportedBanks = false
                 )
                 BankSelectionContract.getFragment(config)
             }

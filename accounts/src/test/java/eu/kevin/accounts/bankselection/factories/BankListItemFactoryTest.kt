@@ -14,11 +14,11 @@ class BankListItemFactoryTest : BaseUnitTest() {
     fun `test getBankList without selected bank id`() {
         val listItems = BankListItemFactory.getBankList(
             listOf(
-                ApiBank("SWEDBANK_LT", "Swedbank", "Swedbank AB", "LT", false, "", "HABALT22", false),
-                ApiBank("SEB_LT", "SEB", "AB SEB bankas", "LT", false, "", "CBVILT2X", false),
-                ApiBank("LUMINOR_LT", "Luminor", "Luminor Bank AS", "LT", false, "", "AGBLLT2X", false),
-                ApiBank("CITADELE_LT", "Citadele", "Citadele Bank", "LT", false, "", "INDULT2X", false),
-                ApiBank("MEDBANK_LT", "Medicinos Bankas", "UAB Medicinos bankas", "LT", false, "", "MDBALT22", false)
+                ApiBank("SWEDBANK_LT", "Swedbank", "Swedbank AB", "LT", false, "", "HABALT22", false, true),
+                ApiBank("SEB_LT", "SEB", "AB SEB bankas", "LT", false, "", "CBVILT2X", false, true),
+                ApiBank("LUMINOR_LT", "Luminor", "Luminor Bank AS", "LT", false, "", "AGBLLT2X", false, true),
+                ApiBank("CITADELE_LT", "Citadele", "Citadele Bank", "LT", false, "", "INDULT2X", false, true),
+                ApiBank("MEDBANK_LT", "Medicinos Bankas", "UAB Medicinos bankas", "LT", false, "", "MDBALT22", false, true)
             ),
             null
         )
@@ -31,11 +31,11 @@ class BankListItemFactoryTest : BaseUnitTest() {
         val selectedBankId = "LUMINOR_LT"
         val listItems = BankListItemFactory.getBankList(
             listOf(
-                ApiBank("SWEDBANK_LT", "Swedbank", "Swedbank AB", "LT", false, "", "HABALT22", false),
-                ApiBank("SEB_LT", "SEB", "AB SEB bankas", "LT", false, "", "CBVILT2X", false),
-                ApiBank("LUMINOR_LT", "Luminor", "Luminor Bank AS", "LT", false, "", "AGBLLT2X", false),
-                ApiBank("CITADELE_LT", "Citadele", "Citadele Bank", "LT", false, "", "INDULT2X", false),
-                ApiBank("MEDBANK_LT", "Medicinos Bankas", "UAB Medicinos bankas", "LT", false, "", "MDBALT22", false)
+                ApiBank("SWEDBANK_LT", "Swedbank", "Swedbank AB", "LT", false, "", "HABALT22", false, true),
+                ApiBank("SEB_LT", "SEB", "AB SEB bankas", "LT", false, "", "CBVILT2X", false, true),
+                ApiBank("LUMINOR_LT", "Luminor", "Luminor Bank AS", "LT", false, "", "AGBLLT2X", false, true),
+                ApiBank("CITADELE_LT", "Citadele", "Citadele Bank", "LT", false, "", "INDULT2X", false, true),
+                ApiBank("MEDBANK_LT", "Medicinos Bankas", "UAB Medicinos bankas", "LT", false, "", "MDBALT22", false, true)
             ),
             selectedBankId
         )
@@ -48,11 +48,11 @@ class BankListItemFactoryTest : BaseUnitTest() {
         val nonExistentBankId = "BANK_ID"
         val listItems = BankListItemFactory.getBankList(
             listOf(
-                ApiBank("SWEDBANK_LT", "Swedbank", "Swedbank AB", "LT", false, "", "HABALT22", false),
-                ApiBank("SEB_LT", "SEB", "AB SEB bankas", "LT", false, "", "CBVILT2X", false),
-                ApiBank("LUMINOR_LT", "Luminor", "Luminor Bank AS", "LT", false, "", "AGBLLT2X", false),
-                ApiBank("CITADELE_LT", "Citadele", "Citadele Bank", "LT", false, "", "INDULT2X", false),
-                ApiBank("MEDBANK_LT", "Medicinos Bankas", "UAB Medicinos bankas", "LT", false, "", "MDBALT22", false)
+                ApiBank("SWEDBANK_LT", "Swedbank", "Swedbank AB", "LT", false, "", "HABALT22", false, true),
+                ApiBank("SEB_LT", "SEB", "AB SEB bankas", "LT", false, "", "CBVILT2X", false, true),
+                ApiBank("LUMINOR_LT", "Luminor", "Luminor Bank AS", "LT", false, "", "AGBLLT2X", false, true),
+                ApiBank("CITADELE_LT", "Citadele", "Citadele Bank", "LT", false, "", "INDULT2X", false, true),
+                ApiBank("MEDBANK_LT", "Medicinos Bankas", "UAB Medicinos bankas", "LT", false, "", "MDBALT22", false, true)
             ),
             nonExistentBankId
         )
