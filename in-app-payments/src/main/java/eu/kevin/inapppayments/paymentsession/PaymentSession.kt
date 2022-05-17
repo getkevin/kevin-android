@@ -152,7 +152,8 @@ internal class PaymentSession(
                     configuration.countryFilter,
                     configuration.bankFilter,
                     sessionData.selectedBank?.id,
-                    configuration.paymentId
+                    configuration.paymentId,
+                    true
                 )
                 BankSelectionContract.getFragment(config)
             }

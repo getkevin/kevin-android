@@ -148,7 +148,8 @@ internal class AccountSession(
                     configuration.countryFilter,
                     configuration.bankFilter,
                     sessionData.selectedBank?.id,
-                    configuration.state
+                    configuration.state,
+                    false
                 )
                 BankSelectionContract.getFragment(config)
             }

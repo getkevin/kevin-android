@@ -83,7 +83,8 @@ internal class BankSelectionViewModel constructor(
                 val apiBanks = banksUseCase.getSupportedBanks(
                     selectedCountry,
                     configuration.authState,
-                    configuration.bankFilter
+                    configuration.bankFilter,
+                    configuration.showAccountLinkingNotSupportedBanks
                 )
 
                 banks = apiBanks.map {
@@ -138,7 +139,8 @@ internal class BankSelectionViewModel constructor(
                 val apiBanks = banksUseCase.getSupportedBanks(
                     selectedCountry,
                     configuration.authState,
-                    configuration.bankFilter
+                    configuration.bankFilter,
+                    configuration.showAccountLinkingNotSupportedBanks
                 )
                 banks = apiBanks.map {
                     Bank(it.id, it.name, it.officialName, it.imageUri, it.bic)
