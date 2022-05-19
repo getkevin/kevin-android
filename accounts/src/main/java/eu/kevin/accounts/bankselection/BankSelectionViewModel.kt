@@ -126,7 +126,8 @@ internal class BankSelectionViewModel constructor(
         val config = CountrySelectionFragmentConfiguration(
             state.value.selectedCountry,
             configuration.countryFilter,
-            configuration.authState
+            configuration.authState,
+            isAccountLinking = !configuration.showAccountLinkingNotSupportedBanks
         )
         GlobalRouter.pushModalFragment(CountrySelectionContract.getFragment(config))
     }

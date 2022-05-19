@@ -20,7 +20,7 @@ abstract class BaseApiFactory<T : BaseApiClient>(
     private val baseUrl: String,
     private val userAgent: String,
     private val timeout: Int? = null,
-    private val logLevel: LogLevel = LogLevel.NONE
+    private val logLevel: LogLevel = LogLevel.ALL
 ) {
     abstract fun createClient(): T
 

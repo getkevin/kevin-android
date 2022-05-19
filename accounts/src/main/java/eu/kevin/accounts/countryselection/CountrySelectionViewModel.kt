@@ -5,6 +5,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.savedstate.SavedStateRegistryOwner
+import eu.kevin.accounts.bankselection.managers.KevinBankManager
+import eu.kevin.accounts.bankselection.usecases.GetSupportedBanksUseCase
 import eu.kevin.accounts.countryselection.CountrySelectionIntent.HandleCountrySelection
 import eu.kevin.accounts.countryselection.CountrySelectionIntent.Initialize
 import eu.kevin.accounts.countryselection.entities.Country
@@ -16,10 +18,14 @@ import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.dispatchers.CoroutineDispatchers
 import eu.kevin.common.dispatchers.DefaultCoroutineDispatchers
 import eu.kevin.common.entities.LoadingState
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.supervisorScope
 
 internal class CountrySelectionViewModel constructor(
     private val countryUseCase: SupportedCountryUseCase,
+    private val banksUseCase: GetSupportedBanksUseCase,
     private val dispatchers: CoroutineDispatchers,
     savedStateHandle: SavedStateHandle
 ) : BaseViewModel<CountrySelectionState, CountrySelectionIntent>(savedStateHandle) {
@@ -45,18 +51,34 @@ internal class CountrySelectionViewModel constructor(
         }
         viewModelScope.launch(dispatchers.io) {
             try {
-                val supportedCountries = countryUseCase.getSupportedCountries(configuration.authState, configuration.countryFilter)
+                val supportedCountries = countryUseCase.getSupportedCountries(
+                    configuration.authState,
+                    configuration.countryFilter
+                )
                     .sortedBy { it }
                     .map {
                         Country(it)
                     }
 
-                val selectedCountry = supportedCountries.firstOrNull { it.iso == configuration.selectedCountry }
+                val selectedCountry =
+                    supportedCountries.firstOrNull { it.iso == configuration.selectedCountry }
                 if (selectedCountry != null) {
-                    supportedCountries.firstOrNull { it.iso == configuration.selectedCountry }?.isSelected = true
+                    supportedCountries.firstOrNull { it.iso == configuration.selectedCountry }?.isSelected =
+                        true
                 } else {
                     supportedCountries.firstOrNull()?.isSelected = true
                 }
+
+                //supervisorScope {
+//                    supportedCountries.map { country ->
+//                        //async {
+//                            val countryBanks =
+//                                banksUseCase.getSupportedBanks(country.iso, configuration.authState)
+//                            supportedCountries.find { it.iso == country.iso }?.isActive =
+//                                countryBanks.any { it.isAccountLinkingSupported }
+//                        //}
+//                    }
+                //}//.awaitAll()
 
                 updateState {
                     it.copy(
@@ -80,7 +102,8 @@ internal class CountrySelectionViewModel constructor(
     }
 
     @Suppress("UNCHECKED_CAST")
-    class Factory(owner: SavedStateRegistryOwner) : AbstractSavedStateViewModelFactory(owner, null) {
+    class Factory(owner: SavedStateRegistryOwner) :
+        AbstractSavedStateViewModelFactory(owner, null) {
         override fun <T : ViewModel?> create(
             key: String,
             modelClass: Class<T>,
@@ -89,6 +112,11 @@ internal class CountrySelectionViewModel constructor(
             return CountrySelectionViewModel(
                 SupportedCountryUseCase(
                     KevinCountriesManager(
+                        kevinAccountsClient = AccountsClientProvider.kevinAccountsClient
+                    )
+                ),
+                GetSupportedBanksUseCase(
+                    KevinBankManager(
                         kevinAccountsClient = AccountsClientProvider.kevinAccountsClient
                     )
                 ),

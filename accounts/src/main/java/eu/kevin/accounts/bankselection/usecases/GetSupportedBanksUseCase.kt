@@ -10,7 +10,7 @@ internal class GetSupportedBanksUseCase(
     suspend fun getSupportedBanks(
         country: String,
         authState: String,
-        supportedBanksFilter: SupportedBanksFilter
+        supportedBanksFilter: SupportedBanksFilter = SupportedBanksFilter()
     ): List<ApiBank> {
         val apiBanks = bankManager.getSupportedBanks(country, authState)
         val filteredByName = if (supportedBanksFilter.banks.isNotEmpty()) {

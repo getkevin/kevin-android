@@ -14,7 +14,7 @@ class KevinAccountsClientFactory(
     baseUrl: String,
     userAgent: String,
     timeout: Int? = null,
-    logLevel: LogLevel = LogLevel.NONE,
+    logLevel: LogLevel = LogLevel.BODY,
 ) : BaseApiFactory<KevinAccountsClient>(
     baseUrl,
     userAgent,

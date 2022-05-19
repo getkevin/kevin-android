@@ -8,5 +8,6 @@ import kotlinx.parcelize.Parcelize
 class CountrySelectionFragmentConfiguration(
     val selectedCountry: String?,
     val countryFilter: List<KevinCountry>,
-    val authState: String
+    val authState: String,
+    val isAccountLinking: Boolean
 ) : Parcelable

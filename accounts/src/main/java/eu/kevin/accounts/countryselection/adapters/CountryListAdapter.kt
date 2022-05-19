@@ -29,6 +29,7 @@ internal class CountryListAdapter(
                 onCountryClicked.invoke(item.iso)
             }
             root.isSelected = item.isSelected
+            root.isEnabled = false
             countryTextView.text = item.title
             countryFlagImageView.setImageDrawable(CountryHelper.getCountryFlagDrawable(context, item.iso))
 
