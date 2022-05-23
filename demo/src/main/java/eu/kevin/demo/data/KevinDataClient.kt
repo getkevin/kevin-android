@@ -5,6 +5,6 @@ import eu.kevin.demo.data.entities.GetCountriesResponse
 import eu.kevin.demo.data.entities.GetCreditorsResponse
 
 interface KevinDataClient : BaseApiClient {
-    suspend fun getSupportedCountries() : GetCountriesResponse
+    suspend fun getSupportedCountries(): GetCountriesResponse
     suspend fun getCreditorsByCountry(countryCode: String): GetCreditorsResponse
 }

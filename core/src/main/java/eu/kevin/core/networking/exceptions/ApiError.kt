@@ -35,10 +35,10 @@ class ApiError : Exception {
 
     fun isNoInternet(): Boolean {
         if (
-               cause is UnknownHostException
-            || cause is SocketTimeoutException
-            || cause is SocketException
-            || cause is SSLException
+            cause is UnknownHostException ||
+            cause is SocketTimeoutException ||
+            cause is SocketException ||
+            cause is SSLException
         ) {
             return true
         }

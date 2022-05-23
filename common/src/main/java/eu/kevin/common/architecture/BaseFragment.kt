@@ -19,8 +19,10 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlin.coroutines.CoroutineContext
 
-abstract class BaseFragment<S : IState, I : IIntent, M : BaseViewModel<S, I>> : Fragment(),
-    CoroutineScope, Navigable {
+abstract class BaseFragment<S : IState, I : IIntent, M : BaseViewModel<S, I>> :
+    Fragment(),
+    CoroutineScope,
+    Navigable {
 
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main + job

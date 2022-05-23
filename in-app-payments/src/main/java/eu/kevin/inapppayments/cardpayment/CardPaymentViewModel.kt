@@ -7,18 +7,27 @@ import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
 import eu.kevin.common.architecture.BaseViewModel
 import eu.kevin.common.architecture.routing.GlobalRouter
+import eu.kevin.common.entities.KevinAmount
 import eu.kevin.common.entities.LoadingState
 import eu.kevin.common.entities.isLoading
 import eu.kevin.common.extensions.removeWhiteSpaces
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.core.plugin.Kevin
 import eu.kevin.inapppayments.BuildConfig
-import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.*
+import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandleBackClicked
+import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandleCardPaymentEvent
+import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandleOnContinueClicked
+import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandlePageFinishedLoading
+import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandlePageStartLoading
+import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandlePaymentResult
+import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandleUserSoftRedirect
+import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.Initialize
 import eu.kevin.inapppayments.cardpayment.CardPaymentViewAction.ShowFieldValidations
 import eu.kevin.inapppayments.cardpayment.CardPaymentViewAction.SubmitCardForm
-import eu.kevin.common.entities.KevinAmount
 import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent
-import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent.*
+import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent.HardRedirect
+import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent.SoftRedirect
+import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent.SubmittingCardData
 import eu.kevin.inapppayments.cardpayment.inputvalidation.CardExpiryDateValidator
 import eu.kevin.inapppayments.cardpayment.inputvalidation.CardNumberValidator
 import eu.kevin.inapppayments.cardpayment.inputvalidation.CardholderNameValidator
@@ -115,10 +124,10 @@ internal class CardPaymentViewModel(
             )
         )
         if (
-            cardholderNameValidation.isValid()
-            && cardNumberValidation.isValid()
-            && expiryDateValidation.isValid()
-            && cvvValidation.isValid()
+            cardholderNameValidation.isValid() &&
+            cardNumberValidation.isValid() &&
+            expiryDateValidation.isValid() &&
+            cvvValidation.isValid()
         ) {
             updateState {
                 it.copy(

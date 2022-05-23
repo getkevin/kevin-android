@@ -4,8 +4,9 @@ import eu.kevin.demo.auth.entities.ApiAuthState
 import eu.kevin.demo.auth.entities.ApiPayment
 import eu.kevin.demo.auth.entities.InitiateAuthenticationRequest
 import eu.kevin.demo.auth.entities.InitiatePaymentRequest
-import io.ktor.client.*
-import io.ktor.client.request.*
+import io.ktor.client.HttpClient
+import io.ktor.client.request.header
+import io.ktor.client.request.post
 
 class KevinClient(private val httpClient: HttpClient) : KevinApiClient {
 

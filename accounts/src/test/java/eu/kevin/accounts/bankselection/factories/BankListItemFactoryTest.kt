@@ -3,11 +3,11 @@ package eu.kevin.accounts.bankselection.factories
 import eu.kevin.accounts.networking.entities.ApiBank
 import eu.kevin.testcore.base.BaseUnitTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Test
-import org.junit.Assert.*
 
 @ExperimentalCoroutinesApi
-
 class BankListItemFactoryTest : BaseUnitTest() {
 
     @Test

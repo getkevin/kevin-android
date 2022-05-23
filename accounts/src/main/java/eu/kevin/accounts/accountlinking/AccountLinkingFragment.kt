@@ -4,7 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.fragment.app.viewModels
-import eu.kevin.accounts.accountlinking.AccountLinkingIntent.*
+import eu.kevin.accounts.accountlinking.AccountLinkingIntent.HandleAuthorization
+import eu.kevin.accounts.accountlinking.AccountLinkingIntent.HandleBackClicked
+import eu.kevin.accounts.accountlinking.AccountLinkingIntent.Initialize
 import eu.kevin.common.architecture.BaseFragment
 import eu.kevin.common.architecture.interfaces.DeepLinkHandler
 import eu.kevin.common.architecture.interfaces.IView
@@ -12,8 +14,10 @@ import eu.kevin.common.helpers.IntentHandlerHelper
 import eu.kevin.common.helpers.WebFrameHelper
 import eu.kevin.core.plugin.Kevin
 
-internal class AccountLinkingFragment : BaseFragment<AccountLinkingState, AccountLinkingIntent, AccountLinkingViewModel>(),
-    AccountLinkingViewDelegate, DeepLinkHandler {
+internal class AccountLinkingFragment :
+    BaseFragment<AccountLinkingState, AccountLinkingIntent, AccountLinkingViewModel>(),
+    AccountLinkingViewDelegate,
+    DeepLinkHandler {
 
     var configuration: AccountLinkingFragmentConfiguration? by savedState()
 

@@ -19,8 +19,10 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlin.coroutines.CoroutineContext
 
-abstract class BaseModalFragment<S : IState, I : IIntent, M : BaseViewModel<S, I>> : BottomSheetDialogFragment(),
-    CoroutineScope, Navigable {
+abstract class BaseModalFragment<S : IState, I : IIntent, M : BaseViewModel<S, I>> :
+    BottomSheetDialogFragment(),
+    CoroutineScope,
+    Navigable {
 
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main + job

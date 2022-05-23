@@ -12,7 +12,9 @@ import eu.kevin.core.entities.SessionResult
  * This contract takes in [AccountSessionConfiguration] and returns [AccountSessionResult] on success
  * This contract will also produce different results, you can see them in [SessionResult]
  */
-class AccountSessionContract : ActivityResultContract<AccountSessionConfiguration, SessionResult<AccountSessionResult>>() {
+class AccountSessionContract :
+    ActivityResultContract<AccountSessionConfiguration, SessionResult<AccountSessionResult>>() {
+
     override fun createIntent(context: Context, config: AccountSessionConfiguration): Intent {
         val intent = Intent(context, AccountSessionActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP

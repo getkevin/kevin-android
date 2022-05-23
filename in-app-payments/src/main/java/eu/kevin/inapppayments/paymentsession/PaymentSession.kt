@@ -50,7 +50,11 @@ internal class PaymentSession(
     private var sessionData by savedState(PaymentSessionData())
 
     private val accountsClient = KevinAccountsClientFactory(
-        baseUrl = if (Kevin.isSandbox()) BuildConfig.KEVIN_SANDBOX_ACCOUNTS_API_URL else BuildConfig.KEVIN_ACCOUNTS_API_URL,
+        baseUrl = if (Kevin.isSandbox()) {
+            BuildConfig.KEVIN_SANDBOX_ACCOUNTS_API_URL
+        } else {
+            BuildConfig.KEVIN_ACCOUNTS_API_URL
+        },
         userAgent = "",
         timeout = BuildConfig.HTTP_CLIENT_TIMEOUT,
         logLevel = BuildConfig.HTTP_LOGGING_LEVEL
@@ -95,7 +99,10 @@ internal class PaymentSession(
 
     private suspend fun getSelectedBank(): Bank? {
         return try {
-            val apiBanks = accountsClient.getSupportedBanks(configuration.paymentId, configuration.preselectedCountry?.iso)
+            val apiBanks = accountsClient.getSupportedBanks(
+                configuration.paymentId,
+                configuration.preselectedCountry?.iso
+            )
             apiBanks.data.firstOrNull { it.id == configuration.preselectedBank }?.let {
                 Bank(it.id, it.name, it.officialName, it.imageUri, it.bic)
             }

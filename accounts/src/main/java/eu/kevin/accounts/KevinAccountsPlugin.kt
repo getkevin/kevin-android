@@ -2,7 +2,7 @@ package eu.kevin.accounts
 
 import eu.kevin.core.plugin.KevinPlugin
 
-object KevinAccountsPlugin: KevinPlugin {
+object KevinAccountsPlugin : KevinPlugin {
 
     private const val KEVIN_ACCOUNTS_PLUGIN_KEY = "kevinAccountsPluginKey"
     private lateinit var configuration: KevinAccountsConfiguration

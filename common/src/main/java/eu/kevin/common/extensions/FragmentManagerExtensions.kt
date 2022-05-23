@@ -7,7 +7,11 @@ import androidx.lifecycle.LifecycleOwner
 import eu.kevin.common.fragment.FragmentResultContract
 import java.io.Serializable
 
-fun <T>FragmentManager.setFragmentResultListener(contract: FragmentResultContract<T>, lifecycleOwner: LifecycleOwner, callback: (T) -> Unit) {
+fun <T> FragmentManager.setFragmentResultListener(
+    contract: FragmentResultContract<T>,
+    lifecycleOwner: LifecycleOwner,
+    callback: (T) -> Unit
+) {
     setFragmentResultListener(contract.requestKey, lifecycleOwner) { _, bundle ->
         callback.invoke(contract.parseResult(bundle))
     }

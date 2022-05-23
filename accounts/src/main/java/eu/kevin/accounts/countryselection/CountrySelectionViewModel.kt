@@ -45,7 +45,10 @@ internal class CountrySelectionViewModel constructor(
         }
         viewModelScope.launch(dispatchers.io) {
             try {
-                val supportedCountries = countryUseCase.getSupportedCountries(configuration.authState, configuration.countryFilter)
+                val supportedCountries = countryUseCase.getSupportedCountries(
+                    configuration.authState,
+                    configuration.countryFilter
+                )
                     .sortedBy { it }
                     .map {
                         Country(it)

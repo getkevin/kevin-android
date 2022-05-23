@@ -7,7 +7,9 @@ import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
 import eu.kevin.accounts.BuildConfig
 import eu.kevin.accounts.KevinAccountsPlugin
-import eu.kevin.accounts.accountlinking.AccountLinkingIntent.*
+import eu.kevin.accounts.accountlinking.AccountLinkingIntent.HandleAuthorization
+import eu.kevin.accounts.accountlinking.AccountLinkingIntent.HandleBackClicked
+import eu.kevin.accounts.accountlinking.AccountLinkingIntent.Initialize
 import eu.kevin.accounts.accountsession.enums.AccountLinkingType
 import eu.kevin.common.architecture.BaseViewModel
 import eu.kevin.common.architecture.routing.GlobalRouter

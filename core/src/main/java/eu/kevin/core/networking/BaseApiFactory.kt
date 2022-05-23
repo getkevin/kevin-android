@@ -3,15 +3,24 @@ package eu.kevin.core.networking
 import eu.kevin.core.networking.exceptions.ApiError
 import eu.kevin.core.networking.exceptions.ErrorResponse
 import eu.kevin.core.networking.serializers.DateSerializer
-import io.ktor.client.*
-import io.ktor.client.engine.android.*
-import io.ktor.client.features.*
-import io.ktor.client.features.json.*
-import io.ktor.client.features.json.serializer.*
-import io.ktor.client.features.logging.*
-import io.ktor.client.request.*
-import io.ktor.client.statement.*
-import io.ktor.http.*
+import io.ktor.client.HttpClient
+import io.ktor.client.engine.android.Android
+import io.ktor.client.features.ClientRequestException
+import io.ktor.client.features.HttpResponseValidator
+import io.ktor.client.features.HttpTimeout
+import io.ktor.client.features.defaultRequest
+import io.ktor.client.features.json.JsonFeature
+import io.ktor.client.features.json.serializer.KotlinxSerializer
+import io.ktor.client.features.logging.ANDROID
+import io.ktor.client.features.logging.LogLevel
+import io.ktor.client.features.logging.Logger
+import io.ktor.client.features.logging.Logging
+import io.ktor.client.request.header
+import io.ktor.client.statement.readText
+import io.ktor.http.ContentType
+import io.ktor.http.HttpHeaders
+import io.ktor.http.URLBuilder
+import io.ktor.http.takeFrom
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.modules.SerializersModule
 import java.util.*
@@ -34,9 +43,11 @@ abstract class BaseApiFactory<T : BaseApiClient>(
             }
 
             defaultRequest {
-                url.takeFrom(URLBuilder().takeFrom(baseUrl).apply {
-                    encodedPath += url.encodedPath
-                })
+                url.takeFrom(
+                    URLBuilder().takeFrom(baseUrl).apply {
+                        encodedPath += url.encodedPath
+                    }
+                )
                 header(HttpHeaders.ContentType, ContentType.Application.Json)
                 header(HttpHeaders.UserAgent, userAgent)
             }
@@ -85,9 +96,19 @@ abstract class BaseApiFactory<T : BaseApiClient>(
                     val error = Json {
                         ignoreUnknownKeys = true
                     }.decodeFromString(ErrorResponse.serializer(), errorString).error
-                    ApiError(error.name, error.description, error.code, requestError.response.status.value, requestError)
+                    ApiError(
+                        error.name,
+                        error.description,
+                        error.code,
+                        requestError.response.status.value,
+                        requestError
+                    )
                 } catch (e: Exception) {
-                    ApiError(description = requestError.message, statusCode = requestError.response.status.value, cause = e)
+                    ApiError(
+                        description = requestError.message,
+                        statusCode = requestError.response.status.value,
+                        cause = e
+                    )
                 }
             }
             else -> {

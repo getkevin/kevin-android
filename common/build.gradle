@@ -1,8 +1,11 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-parcelize'
-apply plugin: 'kotlinx-serialization'
+plugins {
+    id "com.android.library"
+    id "kotlin-android"
+    id "kotlin-kapt"
+    id "kotlin-parcelize"
+    id "kotlinx-serialization"
+    id "org.jmailen.kotlinter"
+}
 
 ext {
     PUBLISH_ARTIFACT_ID = "common"
@@ -47,6 +50,11 @@ android {
     lintOptions {
         checkReleaseBuilds false
         abortOnError false
+    }
+
+    kotlinter {
+        ignoreFailures = false
+        experimentalRules = true
     }
 }
 

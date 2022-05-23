@@ -17,7 +17,10 @@ fun String.appendQuery(query: String): String {
     }
 
     return URI(
-        oldUri.scheme, oldUri.authority,
-        oldUri.path, newQuery, oldUri.fragment
+        oldUri.scheme,
+        oldUri.authority,
+        oldUri.path,
+        newQuery,
+        oldUri.fragment
     ).toString()
 }

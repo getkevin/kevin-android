@@ -19,7 +19,7 @@ class BankTestManager : BankManagerInterface {
             ApiBank("LUMINOR_LV", "Luminor", "Luminor Bank AS", "LV", false, "", "RIKOLV2X", false),
             ApiBank("CITADELE_LV", "Citadele", "AS Citadele banka", "LV", false, "", "PARXLV22", false),
             ApiBank("INDUSTRA_LV", "Industra", "AS Industra Bank", "LV", false, "", "MULTLV2X", false),
-            ApiBank("SIGNETBANK_LV", "Signet", "Signet Bank AS", "LV", false, "", "LLBBLV2X", false),
+            ApiBank("SIGNETBANK_LV", "Signet", "Signet Bank AS", "LV", false, "", "LLBBLV2X", false)
         )
         return banks.filter { it.countryCode.lowercase() == country.lowercase() }
     }
