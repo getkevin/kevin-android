@@ -8,7 +8,6 @@ import androidx.savedstate.SavedStateRegistryOwner
 import eu.kevin.common.architecture.BaseViewModel
 import eu.kevin.common.entities.LoadingState
 import eu.kevin.demo.ClientProvider
-import eu.kevin.demo.countryselection.entities.Country
 import eu.kevin.demo.countryselection.usecases.GetSupportedCountriesUseCase
 import eu.kevin.demo.routing.DemoRouter
 import kotlinx.coroutines.CoroutineDispatcher

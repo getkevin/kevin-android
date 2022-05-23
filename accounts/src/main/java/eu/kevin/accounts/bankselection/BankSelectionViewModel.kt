@@ -5,7 +5,12 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.savedstate.SavedStateRegistryOwner
-import eu.kevin.accounts.bankselection.BankSelectionIntent.*
+import eu.kevin.accounts.bankselection.BankSelectionIntent.HandleBackClicked
+import eu.kevin.accounts.bankselection.BankSelectionIntent.HandleBankSelection
+import eu.kevin.accounts.bankselection.BankSelectionIntent.HandleContinueClicked
+import eu.kevin.accounts.bankselection.BankSelectionIntent.HandleCountrySelected
+import eu.kevin.accounts.bankselection.BankSelectionIntent.HandleCountrySelectionClick
+import eu.kevin.accounts.bankselection.BankSelectionIntent.Initialize
 import eu.kevin.accounts.bankselection.entities.Bank
 import eu.kevin.accounts.bankselection.entities.SupportedBanksFilter
 import eu.kevin.accounts.bankselection.exceptions.BankNotSelectedException
@@ -75,7 +80,10 @@ internal class BankSelectionViewModel constructor(
         viewModelScope.launch(dispatchers.io) {
             try {
                 var disableCountrySelection = configuration.isCountrySelectionDisabled
-                val supportedCountries = countryUseCase.getSupportedCountries(configuration.authState, configuration.countryFilter)
+                val supportedCountries = countryUseCase.getSupportedCountries(
+                    configuration.authState,
+                    configuration.countryFilter
+                )
                 var selectedCountry = supportedCountries.firstOrNull { it == configuration.selectedCountry }
                 if (selectedCountry == null) {
                     disableCountrySelection = false
@@ -99,7 +107,7 @@ internal class BankSelectionViewModel constructor(
                         selectedCountry = selectedCountry,
                         isCountrySelectionDisabled = disableCountrySelection,
                         loadingState = LoadingState.Loading(false),
-                        bankListItems = BankListItemFactory.getBankList(apiBanks, configuration.selectedBankId),
+                        bankListItems = BankListItemFactory.getBankList(apiBanks, configuration.selectedBankId)
                     )
                 }
             } catch (e: Exception) {
@@ -132,7 +140,10 @@ internal class BankSelectionViewModel constructor(
         GlobalRouter.pushModalFragment(CountrySelectionContract.getFragment(config))
     }
 
-    private suspend fun handleCountrySelected(selectedCountry: String, configuration: BankSelectionFragmentConfiguration) {
+    private suspend fun handleCountrySelected(
+        selectedCountry: String,
+        configuration: BankSelectionFragmentConfiguration
+    ) {
         updateState {
             it.copy(
                 loadingState = LoadingState.Loading(true)
@@ -156,7 +167,7 @@ internal class BankSelectionViewModel constructor(
                     it.copy(
                         selectedCountry = selectedCountry,
                         loadingState = LoadingState.Loading(false),
-                        bankListItems = BankListItemFactory.getBankList(apiBanks),
+                        bankListItems = BankListItemFactory.getBankList(apiBanks)
                     )
                 }
             } catch (e: Exception) {

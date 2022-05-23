@@ -9,7 +9,9 @@ internal object AmountValidator {
     fun validate(amount: String): ValidationResult {
         val bigDecimal = amount.toBigDecimalOrNull()
         return when {
-            bigDecimal == null || bigDecimal <= BigDecimal.ZERO -> ValidationResult.Invalid(R.string.window_main_amount_blank_error)
+            bigDecimal == null || bigDecimal <= BigDecimal.ZERO -> {
+                ValidationResult.Invalid(R.string.window_main_amount_blank_error)
+            }
             else -> ValidationResult.Valid
         }
     }

@@ -89,7 +89,8 @@ class CountrySelectionViewModelTest : BaseViewModelTest() {
                 CountriesTestManager().getSupportedCountries("").map {
                     Country(it)
                 }
-            ))
+            )
+        )
         val selectedCountryIso = "lt"
         mockkObject(GlobalRouter)
         viewModel.intents.trySend(CountrySelectionIntent.HandleCountrySelection(selectedCountryIso))

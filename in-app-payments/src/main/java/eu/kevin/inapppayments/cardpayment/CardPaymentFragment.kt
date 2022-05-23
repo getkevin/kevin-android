@@ -7,14 +7,24 @@ import androidx.lifecycle.lifecycleScope
 import eu.kevin.common.architecture.BaseFragment
 import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.extensions.setFragmentResultListener
-import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.*
-import eu.kevin.inapppayments.cardpayment.CardPaymentViewAction.*
+import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandleBackClicked
+import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandleCardPaymentEvent
+import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandleOnContinueClicked
+import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandlePageFinishedLoading
+import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandlePageStartLoading
+import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandlePaymentResult
+import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandleUserSoftRedirect
+import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.Initialize
+import eu.kevin.inapppayments.cardpayment.CardPaymentViewAction.ShowFieldValidations
+import eu.kevin.inapppayments.cardpayment.CardPaymentViewAction.SubmitCardForm
+import eu.kevin.inapppayments.cardpayment.CardPaymentViewAction.SubmitUserRedirect
 import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent
 import eu.kevin.inapppayments.cardpaymentredirect.CardPaymentRedirectContract
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
-internal class CardPaymentFragment : BaseFragment<CardPaymentState, CardPaymentIntent, CardPaymentViewModel>(),
+internal class CardPaymentFragment :
+    BaseFragment<CardPaymentState, CardPaymentIntent, CardPaymentViewModel>(),
     CardPaymentViewDelegate {
 
     override val viewModel: CardPaymentViewModel by viewModels {

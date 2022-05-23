@@ -10,4 +10,4 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class PaymentSessionResult(
     val paymentId: String
-): Parcelable
+) : Parcelable

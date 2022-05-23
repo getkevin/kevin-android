@@ -1,13 +1,13 @@
 package eu.kevin.demo.auth
 
 import eu.kevin.core.networking.BaseApiFactory
-import io.ktor.client.features.logging.*
+import io.ktor.client.features.logging.LogLevel
 
 class KevinApiClientFactory(
     baseUrl: String,
     userAgent: String,
     timeout: Int? = null,
-    logLevel: LogLevel,
+    logLevel: LogLevel
 ) : BaseApiFactory<KevinApiClient>(
     baseUrl,
     userAgent,

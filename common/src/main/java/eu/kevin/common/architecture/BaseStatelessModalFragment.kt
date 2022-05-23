@@ -14,8 +14,10 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlin.coroutines.CoroutineContext
 
-abstract class BaseStatelessModalFragment : BottomSheetDialogFragment(),
-    CoroutineScope, Navigable {
+abstract class BaseStatelessModalFragment :
+    BottomSheetDialogFragment(),
+    CoroutineScope,
+    Navigable {
 
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main + job

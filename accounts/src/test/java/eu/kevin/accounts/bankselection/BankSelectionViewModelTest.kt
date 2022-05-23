@@ -148,9 +148,11 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
     @Test
     fun `test handleIntent() HandleBankSelection()`() = testCoroutineScope.runTest {
         val preselectedBank = "SWEDBANK_LT"
-        viewModel.updateInternalState(BankSelectionState(
-            bankListItems = BankListItemFactory.getBankList(BankTestManager().getSupportedBanks("lt", ""), null)
-        ))
+        viewModel.updateInternalState(
+            BankSelectionState(
+                bankListItems = BankListItemFactory.getBankList(BankTestManager().getSupportedBanks("lt", ""), null)
+            )
+        )
         val states = mutableListOf<BankSelectionState>()
         val job = launch {
             viewModel.state.toList(states)
@@ -177,9 +179,11 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
         )
         mockkConstructor(Bundle::class)
         every { anyConstructed<Bundle>().putParcelable(any(), any()) } returns Unit
-        viewModel.updateInternalState(BankSelectionState(
-            selectedCountry = selectedCountry
-        ))
+        viewModel.updateInternalState(
+            BankSelectionState(
+                selectedCountry = selectedCountry
+            )
+        )
         mockkObject(GlobalRouter)
         viewModel.intents.trySend(BankSelectionIntent.HandleCountrySelectionClick(config))
         verify(exactly = 1) { GlobalRouter.pushModalFragment(any()) }

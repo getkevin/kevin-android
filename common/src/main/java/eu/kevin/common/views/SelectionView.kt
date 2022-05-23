@@ -36,7 +36,10 @@ class SelectionView @JvmOverloads constructor(
             0
         )
         val backgroundDrawable = styledAttributes.getDrawable(R.styleable.SelectionView_android_background)
-        val textAppearance = styledAttributes.getResourceId(R.styleable.SelectionView_android_textAppearance, R.style.Kevin_Text_Title1)
+        val textAppearance = styledAttributes.getResourceId(
+            R.styleable.SelectionView_android_textAppearance,
+            R.style.Kevin_Text_Title1
+        )
         background = backgroundDrawable
         TextViewCompat.setTextAppearance(binding.titleView, textAppearance)
 

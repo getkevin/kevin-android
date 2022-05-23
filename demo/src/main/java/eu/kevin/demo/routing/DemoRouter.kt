@@ -6,7 +6,6 @@ import eu.kevin.common.fragment.FragmentResultContract
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
@@ -19,7 +18,7 @@ object DemoRouter {
     fun pushModalFragment(fragment: BottomSheetDialogFragment) {
         mainModalRouterChannel.trySend(fragment)
     }
-    fun <T>returnFragmentResult(contract: FragmentResultContract<T>, result: T) {
+    fun <T> returnFragmentResult(contract: FragmentResultContract<T>, result: T) {
         fragmentResultChannel.trySend(RouterFragmentResultWrapper(contract, result))
     }
 

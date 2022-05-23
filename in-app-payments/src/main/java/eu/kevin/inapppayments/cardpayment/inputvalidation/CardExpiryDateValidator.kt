@@ -12,7 +12,9 @@ internal object CardExpiryDateValidator {
     fun validate(expiryDate: String): ValidationResult {
         return when {
             expiryDate.isBlank() -> ValidationResult.Invalid(R.string.error_no_expiry_date)
-            !expiryDatePattern.matcher(expiryDate).matches() -> ValidationResult.Invalid(R.string.error_invalid_expiry_date)
+            !expiryDatePattern.matcher(expiryDate).matches() -> {
+                ValidationResult.Invalid(R.string.error_invalid_expiry_date)
+            }
             !checkIfNotExpired(expiryDate) -> ValidationResult.Invalid(R.string.error_card_expired)
             else -> ValidationResult.Valid
         }
@@ -24,7 +26,7 @@ internal object CardExpiryDateValidator {
         val expirationDate = Calendar.getInstance().apply {
             time = SimpleDateFormat("MM/yy").parse(expiryDate)!!
         }
-        return expirationDate.get(Calendar.MONTH) >= currentTime.get(Calendar.MONTH)
-            && expirationDate.get(Calendar.YEAR) >= currentTime.get(Calendar.YEAR)
+        return expirationDate.get(Calendar.MONTH) >= currentTime.get(Calendar.MONTH) &&
+            expirationDate.get(Calendar.YEAR) >= currentTime.get(Calendar.YEAR)
     }
 }

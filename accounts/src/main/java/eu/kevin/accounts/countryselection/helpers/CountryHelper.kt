@@ -9,7 +9,8 @@ internal object CountryHelper {
 
     fun getCountryFlagDrawable(context: Context, countryIso: String): Drawable {
         val resourceId = context.resources.getIdentifier(
-            "ic_country_flag_${countryIso.lowercase()}", "drawable",
+            "ic_country_flag_${countryIso.lowercase()}",
+            "drawable",
             context.packageName
         )
         if (resourceId == 0) {
@@ -20,7 +21,8 @@ internal object CountryHelper {
 
     fun getCountryName(context: Context, countryIso: String): String {
         val resourceId = context.resources.getIdentifier(
-            "country_name_${countryIso.lowercase()}", "string",
+            "country_name_${countryIso.lowercase()}",
+            "string",
             context.packageName
         )
         if (resourceId == 0) {

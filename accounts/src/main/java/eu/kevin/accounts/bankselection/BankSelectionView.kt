@@ -1,7 +1,6 @@
 package eu.kevin.accounts.bankselection
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.transition.TransitionManager
@@ -14,12 +13,17 @@ import eu.kevin.common.architecture.BaseView
 import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.entities.LoadingState
 import eu.kevin.common.entities.isLoading
-import eu.kevin.common.extensions.*
+import eu.kevin.common.extensions.applySystemInsetsMargin
+import eu.kevin.common.extensions.applySystemInsetsPadding
+import eu.kevin.common.extensions.fadeIn
+import eu.kevin.common.extensions.fadeOut
+import eu.kevin.common.extensions.setDebounceClickListener
 import eu.kevin.common.helpers.ErrorHelper
 import eu.kevin.common.helpers.SnackbarHelper
 import eu.kevin.common.views.GridListItemDecoration
 
-internal class BankSelectionView(context: Context) : BaseView<FragmentBankSelectionBinding>(context),
+internal class BankSelectionView(context: Context) :
+    BaseView<FragmentBankSelectionBinding>(context),
     IView<BankSelectionState> {
 
     override val binding = FragmentBankSelectionBinding.inflate(LayoutInflater.from(context), this)

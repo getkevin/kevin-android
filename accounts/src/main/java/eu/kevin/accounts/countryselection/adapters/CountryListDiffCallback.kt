@@ -3,7 +3,10 @@ package eu.kevin.accounts.countryselection.adapters
 import androidx.recyclerview.widget.DiffUtil
 import eu.kevin.accounts.countryselection.entities.Country
 
-internal class CountryListDiffCallback(private val oldList: List<Country>, private val newList: List<Country>): DiffUtil.Callback() {
+internal class CountryListDiffCallback(
+    private val oldList: List<Country>,
+    private val newList: List<Country>
+) : DiffUtil.Callback() {
 
     override fun getOldListSize() = oldList.size
     override fun getNewListSize() = newList.size

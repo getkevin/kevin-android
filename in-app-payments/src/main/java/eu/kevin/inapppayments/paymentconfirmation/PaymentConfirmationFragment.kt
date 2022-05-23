@@ -10,10 +10,14 @@ import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.helpers.IntentHandlerHelper
 import eu.kevin.common.helpers.WebFrameHelper
 import eu.kevin.core.plugin.Kevin
-import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.*
+import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.HandleBackClicked
+import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.HandlePaymentCompleted
+import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.Initialize
 
-internal class PaymentConfirmationFragment : BaseFragment<PaymentConfirmationState, PaymentConfirmationIntent, PaymentConfirmationViewModel>(),
-    PaymentConfirmationViewDelegate, DeepLinkHandler {
+internal class PaymentConfirmationFragment :
+    BaseFragment<PaymentConfirmationState, PaymentConfirmationIntent, PaymentConfirmationViewModel>(),
+    PaymentConfirmationViewDelegate,
+    DeepLinkHandler {
 
     override val viewModel: PaymentConfirmationViewModel by viewModels {
         PaymentConfirmationViewModel.Factory(this)

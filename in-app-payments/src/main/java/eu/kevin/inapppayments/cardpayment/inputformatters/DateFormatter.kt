@@ -12,7 +12,7 @@ internal class DateFormatter : TextWatcher {
     override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
     override fun afterTextChanged(s: Editable) {
         if (s.toString() != current) {
-            val userInput = s.toString().replace(nonDigits,"")
+            val userInput = s.toString().replace(nonDigits, "")
             if (userInput.length <= 4) {
                 current = userInput.chunked(2).joinToString("/")
                 s.filters = arrayOfNulls<InputFilter>(0)
