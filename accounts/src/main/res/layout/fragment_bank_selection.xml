@@ -86,6 +86,58 @@
                 tools:paddingStart="?kevinMarginStart"
                 tools:spanCount="2" />
 
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/banks_list_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:constraint_referenced_ids="banks_recycler_view, bank_selection_label" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/empty_state_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:constraint_referenced_ids="empty_state_icon, empty_state_title, empty_state_subtitle" />
+
+            <ImageView
+                android:id="@+id/empty_state_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="72dp"
+                android:background="@drawable/warning_icon_background"
+                android:padding="8dp"
+                android:src="@drawable/ic_error_outline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/country_selection_view" />
+
+            <TextView
+                android:id="@+id/empty_state_title"
+                style="?kevinWindowTitleTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/empty_state_icon"
+                tools:text="Account linking in Estonia not supported" />
+
+            <TextView
+                android:id="@+id/empty_state_subtitle"
+                style="?kevinWindowSubtitleTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/empty_state_title"
+                tools:text="Currently, Estonia does not support account linking yet. Stay tuned for future updates" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>

@@ -22,6 +22,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
+import java.util.concurrent.ConcurrentHashMap
 
 internal class CountrySelectionViewModel constructor(
     private val countryUseCase: SupportedCountryUseCase,
@@ -69,16 +70,16 @@ internal class CountrySelectionViewModel constructor(
                     supportedCountries.firstOrNull()?.isSelected = true
                 }
 
-                //supervisorScope {
-//                    supportedCountries.map { country ->
-//                        //async {
-//                            val countryBanks =
-//                                banksUseCase.getSupportedBanks(country.iso, configuration.authState)
-//                            supportedCountries.find { it.iso == country.iso }?.isActive =
-//                                countryBanks.any { it.isAccountLinkingSupported }
-//                        //}
-//                    }
-                //}//.awaitAll()
+                supervisorScope {
+                    supportedCountries.map { country ->
+                        async {
+                            val countryBanks =
+                                banksUseCase.getSupportedBanks(country.iso, configuration.authState)
+                            supportedCountries.find { it.iso == country.iso }?.isActive =
+                                countryBanks.any { it.isAccountLinkingSupported }
+                        }
+                    }
+                }.awaitAll()
 
                 updateState {
                     it.copy(

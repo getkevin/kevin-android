@@ -1,6 +1,7 @@
 package eu.kevin.accounts.bankselection
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.transition.TransitionManager
@@ -12,6 +13,7 @@ import eu.kevin.accounts.databinding.FragmentBankSelectionBinding
 import eu.kevin.common.architecture.BaseView
 import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.entities.LoadingState
+import eu.kevin.common.entities.isLoading
 import eu.kevin.common.extensions.*
 import eu.kevin.common.helpers.ErrorHelper
 import eu.kevin.common.helpers.SnackbarHelper
@@ -55,6 +57,8 @@ internal class BankSelectionView(context: Context) : BaseView<FragmentBankSelect
         banksAdapter.updateItems(state.bankListItems)
         countrySelectionView.image = CountryHelper.getCountryFlagDrawable(context, state.selectedCountry)
         countrySelectionView.title = CountryHelper.getCountryName(context, state.selectedCountry)
+        emptyStateTitle.text = context.getString(R.string.window_bank_selection_empty_state_title).format(CountryHelper.getCountryName(context, state.selectedCountry))
+        emptyStateSubtitle.text = context.getString(R.string.window_bank_selection_empty_state_subtitle).format(CountryHelper.getCountryName(context, state.selectedCountry))
         showCountrySelection(!state.isCountrySelectionDisabled)
         when (state.loadingState) {
             is LoadingState.Loading -> startLoading(state.loadingState.isLoading)
@@ -62,6 +66,7 @@ internal class BankSelectionView(context: Context) : BaseView<FragmentBankSelect
             is LoadingState.Failure -> showFailure(state.loadingState.error)
             null -> startLoading(false)
         }
+        showEmptyState(!state.loadingState.isLoading() && state.bankListItems.isEmpty())
     }
 
     private fun showCountrySelection(show: Boolean) {
@@ -76,8 +81,10 @@ internal class BankSelectionView(context: Context) : BaseView<FragmentBankSelect
     private fun startLoading(isLoading: Boolean) {
         with(binding) {
             if (isLoading) {
+                bankSelectionLabel.fadeOut()
                 progressView.fadeIn()
             } else {
+                bankSelectionLabel.fadeIn()
                 progressView.fadeOut()
             }
         }
@@ -95,5 +102,15 @@ internal class BankSelectionView(context: Context) : BaseView<FragmentBankSelect
     private fun showErrorMessage(message: String) {
         binding.progressView.fadeOut()
         SnackbarHelper.showError(this, message)
+    }
+
+    private fun showEmptyState(visible: Boolean) {
+        if (visible) {
+            binding.emptyStateGroup.fadeIn()
+            binding.banksListGroup.visibility = GONE
+        } else {
+            binding.emptyStateGroup.visibility = GONE
+            binding.banksListGroup.fadeIn()
+        }
     }
 }

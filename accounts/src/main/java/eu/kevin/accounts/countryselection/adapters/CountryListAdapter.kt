@@ -1,6 +1,7 @@
 package eu.kevin.accounts.countryselection.adapters
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import eu.kevin.accounts.R
@@ -29,7 +30,6 @@ internal class CountryListAdapter(
                 onCountryClicked.invoke(item.iso)
             }
             root.isSelected = item.isSelected
-            root.isEnabled = false
             countryTextView.text = item.title
             countryFlagImageView.setImageDrawable(CountryHelper.getCountryFlagDrawable(context, item.iso))
 
@@ -40,6 +40,15 @@ internal class CountryListAdapter(
                     else -> context.getDrawableCompat(R.drawable.country_list_item_background_middle)
                 }
                 root.background = background
+            }
+
+            if (!item.isActive) {
+                binding.countryNotAvailableTextView.visibility = View.VISIBLE
+                val alpha = 0.4f
+                root.background.alpha = (255 * alpha).toInt()
+                binding.countryFlagImageView.alpha = alpha
+                binding.countryTextView.alpha = alpha
+                binding.countryNotAvailableTextView.alpha = alpha
             }
         }
     }

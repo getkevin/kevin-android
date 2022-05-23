@@ -39,4 +39,7 @@
     <string name="window_bank_selection_select_bank_label">Select bank</string>
     <string name="error_bank_not_selected">Bank has to be selected</string>
     <string name="dialog_exit_confirmation_accounts_message">Are you sure you want to abort account linking?</string>
+    <string name="window_country_selection_not_available_label">Not available</string>
+    <string name="window_bank_selection_empty_state_title">Account linking in %s is not supported</string>
+    <string name="window_bank_selection_empty_state_subtitle">Currently, %s does not support account linking. Stay tuned for future updates</string>
 </resources>
