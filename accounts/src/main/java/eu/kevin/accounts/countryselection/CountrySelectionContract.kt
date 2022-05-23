@@ -4,7 +4,7 @@ import android.os.Bundle
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import eu.kevin.common.fragment.FragmentResultContract
 
-object CountrySelectionContract: FragmentResultContract<String>() {
+object CountrySelectionContract : FragmentResultContract<String>() {
     override val requestKey = "country_selection_request_key"
     override val resultKey = "country_selection_result_key"
 

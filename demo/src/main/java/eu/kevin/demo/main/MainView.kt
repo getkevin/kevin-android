@@ -12,7 +12,11 @@ import androidx.core.widget.addTextChangedListener
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import eu.kevin.common.entities.LoadingState
 import eu.kevin.common.entities.isLoading
-import eu.kevin.common.extensions.*
+import eu.kevin.common.extensions.applySystemInsetsPadding
+import eu.kevin.common.extensions.fadeIn
+import eu.kevin.common.extensions.fadeOut
+import eu.kevin.common.extensions.getInputText
+import eu.kevin.common.extensions.hideKeyboard
 import eu.kevin.common.helpers.ErrorHelper
 import eu.kevin.common.helpers.SnackbarHelper
 import eu.kevin.common.managers.KeyboardManager

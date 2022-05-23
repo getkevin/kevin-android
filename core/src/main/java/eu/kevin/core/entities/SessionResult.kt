@@ -24,7 +24,7 @@ sealed class SessionResult<out T : Parcelable> : Parcelable {
      * This will be returned when session was finished by user before the final step
      */
     @Parcelize
-    object Canceled: SessionResult<Nothing>()
+    object Canceled : SessionResult<Nothing>()
 
     /**
      * Class representing failure state of session contract

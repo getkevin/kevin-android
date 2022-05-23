@@ -5,7 +5,8 @@ import android.view.View
 import eu.kevin.common.architecture.BaseStatelessModalFragment
 import eu.kevin.common.architecture.routing.GlobalRouter
 
-internal class CardPaymentRedirectFragment : BaseStatelessModalFragment(),
+internal class CardPaymentRedirectFragment :
+    BaseStatelessModalFragment(),
     CardPaymentRedirectViewDelegate {
 
     private lateinit var contentView: CardPaymentRedirectView

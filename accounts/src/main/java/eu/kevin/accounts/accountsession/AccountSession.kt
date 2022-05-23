@@ -128,8 +128,8 @@ internal class AccountSession(
     }
 
     private fun flowShouldIncludeBankSelection(): Boolean {
-        return sessionData.linkingType == AccountLinkingType.BANK
-                && (!configuration.skipBankSelection || sessionData.selectedBank == null)
+        return sessionData.linkingType == AccountLinkingType.BANK &&
+            (!configuration.skipBankSelection || sessionData.selectedBank == null)
     }
 
     private fun navigateToNextWindow() {

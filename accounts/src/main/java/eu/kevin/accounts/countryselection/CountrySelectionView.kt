@@ -17,7 +17,9 @@ import eu.kevin.common.extensions.fadeOut
 import eu.kevin.common.helpers.ErrorHelper
 import eu.kevin.common.helpers.SnackbarHelper
 
-internal class CountrySelectionView(context: Context) : BaseView<FragmentCountrySelectionBinding>(context), IView<CountrySelectionState> {
+internal class CountrySelectionView(context: Context) :
+    BaseView<FragmentCountrySelectionBinding>(context),
+    IView<CountrySelectionState> {
 
     override val binding = FragmentCountrySelectionBinding.inflate(LayoutInflater.from(context), this)
 

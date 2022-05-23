@@ -7,10 +7,10 @@ import kotlinx.parcelize.Parcelize
 
 internal sealed class ValidationResult(@StringRes private val messageRes: Int) : Parcelable {
     @Parcelize
-    object Valid: ValidationResult(0)
+    object Valid : ValidationResult(0)
 
     @Parcelize
-    data class Invalid(@StringRes val errorRes: Int): ValidationResult(errorRes)
+    data class Invalid(@StringRes val errorRes: Int) : ValidationResult(errorRes)
 
     fun isInvalid(): Boolean {
         return this !is Valid

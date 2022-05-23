@@ -2,7 +2,7 @@ package eu.kevin.inapppayments
 
 import eu.kevin.core.plugin.KevinPlugin
 
-object KevinPaymentsPlugin: KevinPlugin {
+object KevinPaymentsPlugin : KevinPlugin {
 
     private const val KEVIN_PAYMENTS_PLUGIN_KEY = "kevinPaymentsPluginKey"
     private lateinit var configuration: KevinPaymentsConfiguration

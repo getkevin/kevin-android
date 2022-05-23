@@ -17,7 +17,9 @@ import eu.kevin.demo.countryselection.entities.Country
 import eu.kevin.demo.countryselection.helpers.CountryHelper
 import eu.kevin.demo.databinding.FragmentSelectCountryBinding
 
-internal class CountrySelectionView(context: Context) : BaseView<FragmentSelectCountryBinding>(context), IView<CountrySelectionState> {
+internal class CountrySelectionView(context: Context) :
+    BaseView<FragmentSelectCountryBinding>(context),
+    IView<CountrySelectionState> {
 
     override val binding = FragmentSelectCountryBinding.inflate(LayoutInflater.from(context), this)
 

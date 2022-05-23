@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.common.fragment.FragmentResultContract
 
-object PaymentConfirmationContract: FragmentResultContract<FragmentResult<PaymentConfirmationResult>>() {
+object PaymentConfirmationContract : FragmentResultContract<FragmentResult<PaymentConfirmationResult>>() {
     override val requestKey = "payment_confirmation_request_key"
     override val resultKey = "payment_confirmation_result_key"
 

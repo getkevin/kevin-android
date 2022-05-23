@@ -2,8 +2,8 @@ package eu.kevin.inapppayments.cardpayment
 
 import android.os.Parcelable
 import eu.kevin.common.architecture.interfaces.IState
-import eu.kevin.common.entities.LoadingState
 import eu.kevin.common.entities.KevinAmount
+import eu.kevin.common.entities.LoadingState
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

@@ -8,6 +8,6 @@ import kotlinx.serialization.Serializable
  * @param T type of data
  */
 @Serializable
-data class KevinResponse<T> (
+data class KevinResponse<T>(
     val data: List<T>
 )

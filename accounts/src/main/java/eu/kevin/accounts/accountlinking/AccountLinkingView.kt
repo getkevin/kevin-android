@@ -13,10 +13,15 @@ import eu.kevin.accounts.accountsession.enums.AccountLinkingType
 import eu.kevin.accounts.databinding.FragmentAccountLinkingBinding
 import eu.kevin.common.architecture.BaseView
 import eu.kevin.common.architecture.interfaces.IView
-import eu.kevin.common.extensions.*
+import eu.kevin.common.extensions.applySystemInsetsMargin
+import eu.kevin.common.extensions.applySystemInsetsPadding
+import eu.kevin.common.extensions.dp
+import eu.kevin.common.extensions.getColorFromAttr
+import eu.kevin.common.extensions.hideKeyboard
 import eu.kevin.common.managers.KeyboardManager
 
-internal class AccountLinkingView(context: Context) : BaseView<FragmentAccountLinkingBinding>(context),
+internal class AccountLinkingView(context: Context) :
+    BaseView<FragmentAccountLinkingBinding>(context),
     IView<AccountLinkingState> {
 
     override val binding = FragmentAccountLinkingBinding.inflate(LayoutInflater.from(context), this)

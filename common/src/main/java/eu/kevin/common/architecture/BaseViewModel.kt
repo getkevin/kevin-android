@@ -7,7 +7,10 @@ import eu.kevin.common.architecture.interfaces.IIntent
 import eu.kevin.common.architecture.interfaces.IModel
 import eu.kevin.common.architecture.interfaces.IState
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.consumeAsFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 abstract class BaseViewModel<S : IState, I : IIntent>(

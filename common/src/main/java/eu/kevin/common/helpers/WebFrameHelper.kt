@@ -22,7 +22,7 @@ object WebFrameHelper {
             .appendQueryParameter("cs", Json.encodeToString(getKevinWebFrameColorsConfigurationFromTheme(context)))
     }
 
-    private fun getKevinWebFrameColorsConfigurationFromTheme(context: Context) : KevinWebFrameColorsConfiguration {
+    private fun getKevinWebFrameColorsConfigurationFromTheme(context: Context): KevinWebFrameColorsConfiguration {
         with(context) {
             val useLightIcons = getBooleanFromAttr(R.attr.kevinUseLightBankIcons)
             return KevinWebFrameColorsConfiguration(

@@ -12,7 +12,9 @@ import eu.kevin.inapppayments.paymentsession.entities.PaymentSessionConfiguratio
  * This contract takes in [PaymentSessionConfiguration] and returns [PaymentSessionResult] on success
  * This contract will also produce different results, you can see them in [SessionResult]
  */
-class PaymentSessionContract : ActivityResultContract<PaymentSessionConfiguration, SessionResult<PaymentSessionResult>>() {
+class PaymentSessionContract :
+    ActivityResultContract<PaymentSessionConfiguration, SessionResult<PaymentSessionResult>>() {
+
     override fun createIntent(context: Context, config: PaymentSessionConfiguration): Intent {
         val intent = Intent(context, PaymentSessionActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP

@@ -2,13 +2,19 @@ package eu.kevin.accounts.bankselection
 
 import android.content.Context
 import androidx.fragment.app.viewModels
-import eu.kevin.accounts.bankselection.BankSelectionIntent.*
+import eu.kevin.accounts.bankselection.BankSelectionIntent.HandleBackClicked
+import eu.kevin.accounts.bankselection.BankSelectionIntent.HandleBankSelection
+import eu.kevin.accounts.bankselection.BankSelectionIntent.HandleContinueClicked
+import eu.kevin.accounts.bankselection.BankSelectionIntent.HandleCountrySelected
+import eu.kevin.accounts.bankselection.BankSelectionIntent.HandleCountrySelectionClick
+import eu.kevin.accounts.bankselection.BankSelectionIntent.Initialize
 import eu.kevin.accounts.countryselection.CountrySelectionContract
 import eu.kevin.common.architecture.BaseFragment
 import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.extensions.setFragmentResultListener
 
-internal class BankSelectionFragment : BaseFragment<BankSelectionState, BankSelectionIntent, BankSelectionViewModel>(),
+internal class BankSelectionFragment :
+    BaseFragment<BankSelectionState, BankSelectionIntent, BankSelectionViewModel>(),
     BankSelectionViewDelegate {
 
     var configuration: BankSelectionFragmentConfiguration? by savedState()

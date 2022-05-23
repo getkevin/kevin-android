@@ -2,10 +2,11 @@ package eu.kevin.demo.data
 
 import eu.kevin.demo.data.entities.GetCountriesResponse
 import eu.kevin.demo.data.entities.GetCreditorsResponse
-import io.ktor.client.*
-import io.ktor.client.request.*
+import io.ktor.client.HttpClient
+import io.ktor.client.request.get
+import io.ktor.client.request.parameter
 
-class KevinDataApiClient (private val httpClient: HttpClient) : KevinDataClient {
+class KevinDataApiClient(private val httpClient: HttpClient) : KevinDataClient {
 
     override suspend fun getSupportedCountries(): GetCountriesResponse {
         return httpClient.get("countries")

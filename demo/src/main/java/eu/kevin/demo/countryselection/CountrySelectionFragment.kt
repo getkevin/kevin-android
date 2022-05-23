@@ -4,7 +4,8 @@ import androidx.fragment.app.viewModels
 import eu.kevin.common.architecture.BaseModalFragment
 import eu.kevin.common.architecture.interfaces.IView
 
-internal class CountrySelectionFragment : BaseModalFragment<CountrySelectionState, CountrySelectionIntent, CountrySelectionViewModel>(),
+internal class CountrySelectionFragment :
+    BaseModalFragment<CountrySelectionState, CountrySelectionIntent, CountrySelectionViewModel>(),
     CountrySelectionViewDelegate {
 
     var configuration: CountrySelectionFragmentConfiguration? by savedState()

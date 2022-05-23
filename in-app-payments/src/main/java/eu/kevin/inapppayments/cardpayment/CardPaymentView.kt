@@ -1,5 +1,6 @@
 package eu.kevin.inapppayments.cardpayment
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.view.LayoutInflater
@@ -13,18 +14,32 @@ import androidx.webkit.WebViewClientCompat
 import eu.kevin.common.architecture.BaseView
 import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.entities.LoadingState
-import eu.kevin.common.extensions.*
+import eu.kevin.common.extensions.applySystemInsetsMargin
+import eu.kevin.common.extensions.applySystemInsetsPadding
+import eu.kevin.common.extensions.fadeIn
+import eu.kevin.common.extensions.fadeOut
+import eu.kevin.common.extensions.getInputText
+import eu.kevin.common.extensions.hideKeyboard
+import eu.kevin.common.extensions.removeWhiteSpaces
+import eu.kevin.common.extensions.setDebounceClickListener
+import eu.kevin.common.extensions.setOnDoneActionListener
+import eu.kevin.common.extensions.setOnNextActionListener
 import eu.kevin.common.managers.KeyboardManager
 import eu.kevin.inapppayments.KevinPaymentsPlugin
 import eu.kevin.inapppayments.R
-import eu.kevin.inapppayments.cardpayment.enums.CardPaymentMessage.*
-import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent.*
+import eu.kevin.inapppayments.cardpayment.enums.CardPaymentMessage.CARD_PAYMENT_SUBMITTING
+import eu.kevin.inapppayments.cardpayment.enums.CardPaymentMessage.HARD_REDIRECT_MODAL
+import eu.kevin.inapppayments.cardpayment.enums.CardPaymentMessage.SOFT_REDIRECT_MODAL
+import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent.HardRedirect
+import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent.SoftRedirect
+import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent.SubmittingCardData
 import eu.kevin.inapppayments.cardpayment.inputformatters.CardNumberFormatter
 import eu.kevin.inapppayments.cardpayment.inputformatters.DateFormatter
 import eu.kevin.inapppayments.cardpayment.inputvalidation.ValidationResult
 import eu.kevin.inapppayments.databinding.FragmentCardPaymentBinding
 
-internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentBinding>(context),
+internal class CardPaymentView(context: Context) :
+    BaseView<FragmentCardPaymentBinding>(context),
     IView<CardPaymentState> {
 
     override val binding = FragmentCardPaymentBinding.inflate(LayoutInflater.from(context), this)
@@ -103,27 +118,31 @@ internal class CardPaymentView(context: Context) : BaseView<FragmentCardPaymentB
         configureWebView()
     }
 
+    @SuppressLint("JavascriptInterface")
     private fun configureWebView() {
         with(binding.webView) {
             applySystemInsetsMargin(bottom = true)
             settings.javaScriptEnabled = true
             settings.domStorageEnabled = true
-            addJavascriptInterface(object {
-                @JavascriptInterface
-                fun postMessage(message: String) {
-                    when (message) {
-                        SOFT_REDIRECT_MODAL.value -> {
-                            delegate?.onEvent(
-                                SoftRedirect(
-                                    binding.cardNumberInput.getInputText().removeWhiteSpaces()
+            addJavascriptInterface(
+                object {
+                    @JavascriptInterface
+                    fun postMessage(message: String) {
+                        when (message) {
+                            SOFT_REDIRECT_MODAL.value -> {
+                                delegate?.onEvent(
+                                    SoftRedirect(
+                                        binding.cardNumberInput.getInputText().removeWhiteSpaces()
+                                    )
                                 )
-                            )
+                            }
+                            HARD_REDIRECT_MODAL.value -> delegate?.onEvent(HardRedirect)
+                            CARD_PAYMENT_SUBMITTING.value -> delegate?.onEvent(SubmittingCardData)
                         }
-                        HARD_REDIRECT_MODAL.value -> delegate?.onEvent(HardRedirect)
-                        CARD_PAYMENT_SUBMITTING.value -> delegate?.onEvent(SubmittingCardData)
                     }
-                }
-            }, "AndroidHandler")
+                },
+                "AndroidHandler"
+            )
             webViewClient = object : WebViewClientCompat() {
                 override fun shouldOverrideUrlLoading(
                     view: WebView,

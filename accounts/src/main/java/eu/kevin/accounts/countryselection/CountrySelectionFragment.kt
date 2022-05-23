@@ -2,11 +2,13 @@ package eu.kevin.accounts.countryselection
 
 import android.content.Context
 import androidx.fragment.app.viewModels
-import eu.kevin.accounts.countryselection.CountrySelectionIntent.*
+import eu.kevin.accounts.countryselection.CountrySelectionIntent.HandleCountrySelection
+import eu.kevin.accounts.countryselection.CountrySelectionIntent.Initialize
 import eu.kevin.common.architecture.BaseModalFragment
 import eu.kevin.common.architecture.interfaces.IView
 
-internal class CountrySelectionFragment : BaseModalFragment<CountrySelectionState, CountrySelectionIntent, CountrySelectionViewModel>(),
+internal class CountrySelectionFragment :
+    BaseModalFragment<CountrySelectionState, CountrySelectionIntent, CountrySelectionViewModel>(),
     CountrySelectionViewDelegate {
 
     var configuration: CountrySelectionFragmentConfiguration? by savedState()

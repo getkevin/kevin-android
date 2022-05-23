@@ -10,7 +10,7 @@ sealed class FragmentResult<out T : Parcelable> : Parcelable {
     ) : FragmentResult<T>()
 
     @Parcelize
-    object Canceled: FragmentResult<Nothing>()
+    object Canceled : FragmentResult<Nothing>()
 
     @Parcelize
     data class Failure(
