@@ -21,9 +21,9 @@ import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
 import io.ktor.http.URLBuilder
 import io.ktor.http.takeFrom
-import java.util.*
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.modules.SerializersModule
+import java.util.*
 
 abstract class BaseApiFactory<T : BaseApiClient>(
     private val baseUrl: String,

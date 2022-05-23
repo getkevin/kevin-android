@@ -36,10 +36,10 @@ import eu.kevin.inapppayments.cardpaymentredirect.CardPaymentRedirectContract
 import eu.kevin.inapppayments.cardpaymentredirect.CardPaymentRedirectFragmentConfiguration
 import eu.kevin.inapppayments.networking.KevinPaymentsClient
 import eu.kevin.inapppayments.networking.KevinPaymentsClientProvider
-import java.util.*
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.receiveAsFlow
+import java.util.*
 
 internal class CardPaymentViewModel(
     savedStateHandle: SavedStateHandle,
