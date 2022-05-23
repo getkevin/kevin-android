@@ -22,7 +22,6 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
-import java.util.concurrent.ConcurrentHashMap
 
 internal class CountrySelectionViewModel constructor(
     private val countryUseCase: SupportedCountryUseCase,

@@ -61,8 +61,12 @@ internal class BankSelectionView(context: Context) :
         banksAdapter.updateItems(state.bankListItems)
         countrySelectionView.image = CountryHelper.getCountryFlagDrawable(context, state.selectedCountry)
         countrySelectionView.title = CountryHelper.getCountryName(context, state.selectedCountry)
-        emptyStateTitle.text = context.getString(R.string.window_bank_selection_empty_state_title).format(CountryHelper.getCountryName(context, state.selectedCountry))
-        emptyStateSubtitle.text = context.getString(R.string.window_bank_selection_empty_state_subtitle).format(CountryHelper.getCountryName(context, state.selectedCountry))
+        emptyStateTitle.text = context.getString(
+            R.string.window_bank_selection_empty_state_title
+        ).format(CountryHelper.getCountryName(context, state.selectedCountry))
+        emptyStateSubtitle.text = context.getString(
+            R.string.window_bank_selection_empty_state_subtitle
+        ).format(CountryHelper.getCountryName(context, state.selectedCountry))
         showCountrySelection(!state.isCountrySelectionDisabled)
         when (state.loadingState) {
             is LoadingState.Loading -> startLoading(state.loadingState.isLoading)

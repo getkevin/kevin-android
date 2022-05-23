@@ -18,7 +18,10 @@ class BankListItemFactoryTest : BaseUnitTest() {
                 ApiBank("SEB_LT", "SEB", "AB SEB bankas", "LT", false, "", "CBVILT2X", false, true),
                 ApiBank("LUMINOR_LT", "Luminor", "Luminor Bank AS", "LT", false, "", "AGBLLT2X", false, true),
                 ApiBank("CITADELE_LT", "Citadele", "Citadele Bank", "LT", false, "", "INDULT2X", false, true),
-                ApiBank("MEDBANK_LT", "Medicinos Bankas", "UAB Medicinos bankas", "LT", false, "", "MDBALT22", false, true)
+                ApiBank(
+                    "MEDBANK_LT", "Medicinos Bankas", "UAB Medicinos bankas",
+                    "LT", false, "", "MDBALT22", false, true
+                )
             ),
             null
         )
@@ -35,7 +38,10 @@ class BankListItemFactoryTest : BaseUnitTest() {
                 ApiBank("SEB_LT", "SEB", "AB SEB bankas", "LT", false, "", "CBVILT2X", false, true),
                 ApiBank("LUMINOR_LT", "Luminor", "Luminor Bank AS", "LT", false, "", "AGBLLT2X", false, true),
                 ApiBank("CITADELE_LT", "Citadele", "Citadele Bank", "LT", false, "", "INDULT2X", false, true),
-                ApiBank("MEDBANK_LT", "Medicinos Bankas", "UAB Medicinos bankas", "LT", false, "", "MDBALT22", false, true)
+                ApiBank(
+                    "MEDBANK_LT", "Medicinos Bankas", "UAB Medicinos bankas", "LT",
+                    false, "", "MDBALT22", false, true
+                )
             ),
             selectedBankId
         )
@@ -52,7 +58,10 @@ class BankListItemFactoryTest : BaseUnitTest() {
                 ApiBank("SEB_LT", "SEB", "AB SEB bankas", "LT", false, "", "CBVILT2X", false, true),
                 ApiBank("LUMINOR_LT", "Luminor", "Luminor Bank AS", "LT", false, "", "AGBLLT2X", false, true),
                 ApiBank("CITADELE_LT", "Citadele", "Citadele Bank", "LT", false, "", "INDULT2X", false, true),
-                ApiBank("MEDBANK_LT", "Medicinos Bankas", "UAB Medicinos bankas", "LT", false, "", "MDBALT22", false, true)
+                ApiBank(
+                    "MEDBANK_LT", "Medicinos Bankas", "UAB Medicinos bankas",
+                    "LT", false, "", "MDBALT22", false, true
+                )
             ),
             nonExistentBankId
         )
