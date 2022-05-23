@@ -51,6 +51,11 @@ android {
         checkReleaseBuilds false
         abortOnError false
     }
+
+    kotlinter {
+        ignoreFailures = false
+        experimentalRules = true
+    }
 }
 
 dependencies {
