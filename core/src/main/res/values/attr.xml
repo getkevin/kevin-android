@@ -24,6 +24,7 @@
     <attr name="kevinHeaderTextStyle" format="reference" />
     <attr name="kevinItemTitleTextStyle" format="reference" />
     <attr name="kevinTextAmount" format="reference" />
+    <attr name="kevinTermsAndConditionsTextStyle" format="reference" />
 
     <!--    Dimension attributes    -->
     <attr name="kevinMarginStart" format="dimension" />

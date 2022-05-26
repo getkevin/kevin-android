@@ -10,7 +10,7 @@
     </style>
 
     <style name="Kevin.Button.Primary" parent="Widget.MaterialComponents.Button">
-        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:minHeight">58dp</item>
         <item name="cornerRadius">8dp</item>
@@ -137,6 +137,14 @@
         <item name="android:textSize">23sp</item>
         <item name="fontFamily">@font/kevin_circular_std_bold</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="Kevin.Text.TermsAndConditions" parent="@android:style/TextAppearance">
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/kevin_circular_std_book</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
         <item name="android:gravity">start</item>
         <item name="android:textStyle">normal</item>
     </style>
