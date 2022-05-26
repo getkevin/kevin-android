@@ -59,7 +59,7 @@ internal class BankSelectionView(context: Context) :
 
             termsText.text = SpannableStringHelper.getSpannableWithLinks(
                 context.getString(R.string.window_bank_selection_terms_and_conditions_text),
-                context.getColorFromAttr(R.attr.colorSecondary),
+                context.getColorFromAttr(R.attr.colorPrimary),
                 SpannableStringLink(context.getString(R.string.window_bank_selection_terms_clickable_text)) {
                     delegate?.onTermsAndConditionsClicked()
                 },
