@@ -39,4 +39,7 @@
     <string name="window_bank_selection_select_bank_label">Vælg bank</string>
     <string name="error_bank_not_selected">Bank skal vælges</string>
     <string name="dialog_exit_confirmation_accounts_message">Er du sikker på, at du vil stoppe med kontoforbindelse?</string>
+    <string name="window_bank_selection_terms_and_conditions_text">Ved at trykke på Fortsæt læser og accepterer jeg vilkår og betingelser og privatlivspolitik</string>
+    <string name="window_bank_selection_terms_clickable_text">vilkår og betingelser</string>
+    <string name="window_bank_selection_privacy_clickable_text">privatlivspolitik</string>
 </resources>

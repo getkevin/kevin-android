@@ -39,4 +39,7 @@
     <string name="window_bank_selection_select_bank_label">Bank kiválasztása</string>
     <string name="error_bank_not_selected">Ki kell választani a bankot</string>
     <string name="dialog_exit_confirmation_accounts_message">Biztosan meg akarja szakítani a fiók összekapcsolását?</string>
+    <string name="window_bank_selection_privacy_clickable_text">Adatvédelmi szabályzatot</string>
+    <string name="window_bank_selection_terms_clickable_text">Általános Szerződési Feltételeket</string>
+    <string name="window_bank_selection_terms_and_conditions_text">A Folytatás gomb megnyomásával elolvasom és elfogadom az Általános Szerződési Feltételeket és az Adatvédelmi szabályzatot</string>
 </resources>

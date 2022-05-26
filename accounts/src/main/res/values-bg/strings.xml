@@ -39,4 +39,7 @@
     <string name="window_bank_selection_select_bank_label">Изберете банка</string>
     <string name="error_bank_not_selected">Трябва да бъде избрана банка</string>
     <string name="dialog_exit_confirmation_accounts_message">Сигурни ли сте, че искате да прекратите свързването на профила?</string>
+    <string name="window_bank_selection_terms_and_conditions_text">С натискането на Продължи чета и се съгласявам с Общите условия и Политиката за поверителност</string>
+    <string name="window_bank_selection_terms_clickable_text">Общите условия</string>
+    <string name="window_bank_selection_privacy_clickable_text">Политиката за поверителност</string>
 </resources>

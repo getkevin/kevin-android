@@ -39,4 +39,7 @@
     <string name="window_bank_selection_select_bank_label">Vyberte banku</string>
     <string name="error_bank_not_selected">Musí být vybrána banka</string>
     <string name="dialog_exit_confirmation_accounts_message">Opravdu chcete zrušit propojení účtů?</string>
+    <string name="window_bank_selection_privacy_clickable_text">Zásadami ochrany osobních údajů</string>
+    <string name="window_bank_selection_terms_clickable_text">Podmínkami</string>
+    <string name="window_bank_selection_terms_and_conditions_text">Stisknutím tlačítka Pokračovat čtu a souhlasím s Podmínkami a Zásadami ochrany osobních údajů</string>
 </resources>

@@ -39,4 +39,7 @@
     <string name="window_bank_selection_select_bank_label">Wybierz bank</string>
     <string name="error_bank_not_selected">Należy wybrać bank</string>
     <string name="dialog_exit_confirmation_accounts_message">Czy na pewno chcesz przerwać łączenie konta?</string>
+    <string name="window_bank_selection_terms_and_conditions_text">Naciskając Kontynuuj, przeczytałem i zgadzam się z Regulaminem i Polityką Prywatności</string>
+    <string name="window_bank_selection_terms_clickable_text">Regulaminem</string>
+    <string name="window_bank_selection_privacy_clickable_text">Polityką Prywatności</string>
 </resources>

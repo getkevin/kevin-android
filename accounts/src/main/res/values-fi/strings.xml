@@ -39,4 +39,7 @@
     <string name="window_bank_selection_select_bank_label">Valitse pankki</string>
     <string name="error_bank_not_selected">Pankin valintaa ei voi ohittaa</string>
     <string name="dialog_exit_confirmation_accounts_message">Oletko varma, että haluat peruuttaa tilin yhdistämisen?</string>
+    <string name="window_bank_selection_privacy_clickable_text">tietosuojakäytännön</string>
+    <string name="window_bank_selection_terms_clickable_text">käyttöehdot</string>
+    <string name="window_bank_selection_terms_and_conditions_text">Painamalla Jatka, luen ja hyväksyn käyttöehdot ja tietosuojakäytännön</string>
 </resources>

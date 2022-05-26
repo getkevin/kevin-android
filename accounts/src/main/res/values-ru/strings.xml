@@ -39,4 +39,7 @@
     <string name="window_bank_selection_select_bank_label">Выбрать банк</string>
     <string name="error_bank_not_selected">Банк должен быть выбран</string>
     <string name="dialog_exit_confirmation_accounts_message">Вы уверены, что хотите прервать привязку аккаунта?</string>
+    <string name="window_bank_selection_privacy_clickable_text">Политика конфиденциальности</string>
+    <string name="window_bank_selection_terms_clickable_text">Условия и условия</string>
+    <string name="window_bank_selection_terms_and_conditions_text">Нажимая «Продолжить», я прочитал и согласен с Условиями использования и Политикой конфиденциальности.</string>
 </resources>

@@ -39,4 +39,7 @@
     <string name="window_bank_selection_select_bank_label">Sélectionnez la banque</string>
     <string name="error_bank_not_selected">La banque doit être sélectionnée</string>
     <string name="dialog_exit_confirmation_accounts_message">Êtes-vous sûr de vouloir annuler la liaison des comptes ?</string>
+    <string name="window_bank_selection_terms_and_conditions_text">En appuyant sur Continuer, j\'ai lu et j\'accepte les termes et conditions et la politique de confidentialité</string>
+    <string name="window_bank_selection_terms_clickable_text">termes et conditions</string>
+    <string name="window_bank_selection_privacy_clickable_text">politique de confidentialité</string>
 </resources>
