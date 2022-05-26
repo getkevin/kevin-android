@@ -39,4 +39,7 @@
     <string name="window_bank_selection_select_bank_label">Selecteer bank</string>
     <string name="error_bank_not_selected">Bank moet worden geselecteerd</string>
     <string name="dialog_exit_confirmation_accounts_message">Weet u zeker dat u het koppelen van uw rekening wilt afbreken?</string>
+    <string name="window_bank_selection_privacy_clickable_text">privacybeleid</string>
+    <string name="window_bank_selection_terms_clickable_text">voorwaarden</string>
+    <string name="window_bank_selection_terms_and_conditions_text">Door op Doorgaan te drukken, lees ik en ga ik akkoord met de algemene voorwaarden en het privacybeleid</string>
 </resources>

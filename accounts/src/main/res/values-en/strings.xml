@@ -38,4 +38,8 @@
     <string name="country_name_gr">Greece</string>
     <string name="country_name_is">Iceland</string>
     <string name="country_name_li">Liechtenstein</string>
+    <string name="window_account_linking_card_title">Card linking</string>
+    <string name="window_bank_selection_terms_and_conditions_text">By pressing Continue, I read and agree with Terms &amp; Conditions and Privacy Policy</string>
+    <string name="window_bank_selection_terms_clickable_text">Terms &amp; Conditions</string>
+    <string name="window_bank_selection_privacy_clickable_text">Privacy Policy</string>
 </resources>

@@ -40,6 +40,7 @@
     <public name="kevinHeaderTextStyle" type="attr" />
     <public name="kevinItemTitleTextStyle" type="attr" />
     <public name="kevinTextAmount" type="attr" />
+    <public name="kevinTermsAndConditionsTextStyle" type="attr" />
 
     <!--    Dimension attributes    -->
     <public name="kevinMarginStart" type="attr" />
