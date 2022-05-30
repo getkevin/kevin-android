@@ -94,7 +94,7 @@ internal class BankSelectionViewModel constructor(
                     configuration.authState,
                     SupportedBanksFilter(
                         banks = configuration.bankFilter,
-                        isAccountLinkingSupported = !configuration.showAccountLinkingNotSupportedBanks
+                        isAccountLinking = configuration.isAccountLinking
                     )
                 )
 
@@ -135,7 +135,7 @@ internal class BankSelectionViewModel constructor(
             state.value.selectedCountry,
             configuration.countryFilter,
             configuration.authState,
-            isAccountLinking = !configuration.showAccountLinkingNotSupportedBanks
+            isAccountLinking = configuration.isAccountLinking
         )
         GlobalRouter.pushModalFragment(CountrySelectionContract.getFragment(config))
     }
@@ -156,7 +156,7 @@ internal class BankSelectionViewModel constructor(
                     configuration.authState,
                     SupportedBanksFilter(
                         banks = configuration.bankFilter,
-                        isAccountLinkingSupported = !configuration.showAccountLinkingNotSupportedBanks
+                        isAccountLinking = configuration.isAccountLinking
                     )
                 )
                 banks = apiBanks.map {

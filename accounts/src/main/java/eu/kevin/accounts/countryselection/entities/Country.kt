@@ -8,5 +8,5 @@ internal data class Country(
     val iso: String,
     val title: String? = null,
     var isSelected: Boolean = false,
-    var isActive: Boolean = false
+    var isActive: Boolean = true
 ) : Parcelable

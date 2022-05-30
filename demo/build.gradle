@@ -28,8 +28,8 @@ android {
         resValue 'string', 'config_app_name', 'kevin.Demo'
 
         buildConfigField "String", "KEVIN_API_URL", "\"https://api.getkevin.eu/demo\""
-        buildConfigField "String", "KEVIN_MOBILE_DEMO_API", "\"https://mobile-demo.kevin.eu/api/v3\""
-        buildConfigField "io.ktor.client.features.logging.LogLevel", "HTTP_LOGGING_LEVEL", "io.ktor.client.features.logging.LogLevel.ALL"
+        buildConfigField "String", "KEVIN_MOBILE_DEMO_API", "\"https://mobile-demo.kevin.eu/api/v1\""
+        buildConfigField "io.ktor.client.features.logging.LogLevel", "HTTP_LOGGING_LEVEL", "io.ktor.client.features.logging.LogLevel.NONE"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

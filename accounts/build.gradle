@@ -33,7 +33,7 @@ android {
         buildConfigField "String", "KEVIN_SANDBOX_LINK_CARD_URL", "\"https://psd2-sandbox.kevin.eu/card-details/%s\""
 
         buildConfigField "int", "HTTP_CLIENT_TIMEOUT", "120000"
-        buildConfigField "io.ktor.client.features.logging.LogLevel", "HTTP_LOGGING_LEVEL", "io.ktor.client.features.logging.LogLevel.ALL"
+        buildConfigField "io.ktor.client.features.logging.LogLevel", "HTTP_LOGGING_LEVEL", "io.ktor.client.features.logging.LogLevel.NONE"
     }
 
     buildTypes {

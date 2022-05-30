@@ -21,7 +21,6 @@ import eu.kevin.common.entities.LoadingState
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.supervisorScope
 
 internal class CountrySelectionViewModel constructor(
     private val countryUseCase: SupportedCountryUseCase,
@@ -69,7 +68,7 @@ internal class CountrySelectionViewModel constructor(
                     supportedCountries.firstOrNull()?.isSelected = true
                 }
 
-                supervisorScope {
+                if (configuration.isAccountLinking) {
                     supportedCountries.map { country ->
                         async {
                             val countryBanks =
@@ -77,8 +76,8 @@ internal class CountrySelectionViewModel constructor(
                             supportedCountries.find { it.iso == country.iso }?.isActive =
                                 countryBanks.any { it.isAccountLinkingSupported }
                         }
-                    }
-                }.awaitAll()
+                    }.awaitAll()
+                }
 
                 updateState {
                     it.copy(

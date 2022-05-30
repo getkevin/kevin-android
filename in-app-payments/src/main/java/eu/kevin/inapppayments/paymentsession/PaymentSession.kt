@@ -160,7 +160,7 @@ internal class PaymentSession(
                     configuration.bankFilter,
                     sessionData.selectedBank?.id,
                     configuration.paymentId,
-                    showAccountLinkingNotSupportedBanks = true
+                    isAccountLinking = false
                 )
                 BankSelectionContract.getFragment(config)
             }
