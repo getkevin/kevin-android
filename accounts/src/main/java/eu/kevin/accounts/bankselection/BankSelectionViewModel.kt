@@ -144,9 +144,11 @@ internal class BankSelectionViewModel constructor(
         selectedCountry: String,
         configuration: BankSelectionFragmentConfiguration
     ) {
+        val oldBanks = state.value.bankListItems
         updateState {
             it.copy(
-                loadingState = LoadingState.Loading(true)
+                loadingState = LoadingState.Loading(true),
+                bankListItems = emptyList()
             )
         }
         viewModelScope.launch(dispatchers.io) {
@@ -173,7 +175,8 @@ internal class BankSelectionViewModel constructor(
             } catch (e: Exception) {
                 updateState {
                     it.copy(
-                        loadingState = LoadingState.Failure(e)
+                        loadingState = LoadingState.Failure(e),
+                        bankListItems = oldBanks
                     )
                 }
             }

@@ -104,10 +104,8 @@ internal class BankSelectionView(context: Context) :
     private fun startLoading(isLoading: Boolean) {
         with(binding) {
             if (isLoading) {
-                bankSelectionLabel.fadeOut()
                 progressView.fadeIn()
             } else {
-                bankSelectionLabel.fadeIn()
                 progressView.fadeOut()
             }
         }
@@ -129,9 +127,11 @@ internal class BankSelectionView(context: Context) :
 
     private fun showEmptyState(visible: Boolean) {
         if (visible) {
+            binding.bankSelectionLabel.visibility = GONE
             binding.emptyStateGroup.fadeIn()
             binding.banksListGroup.visibility = GONE
         } else {
+            binding.bankSelectionLabel.fadeIn()
             binding.emptyStateGroup.visibility = GONE
             binding.banksListGroup.fadeIn()
         }
