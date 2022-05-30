@@ -128,12 +128,12 @@ internal class BankSelectionView(context: Context) :
     private fun showEmptyState(visible: Boolean) {
         if (visible) {
             binding.bankSelectionLabel.visibility = GONE
-            binding.emptyStateGroup.fadeIn()
-            binding.banksListGroup.visibility = GONE
+            binding.emptyStateGroup.visibility = VISIBLE
+            binding.banksRecyclerView.visibility = GONE
         } else {
-            binding.bankSelectionLabel.fadeIn()
+            binding.bankSelectionLabel.visibility = VISIBLE
             binding.emptyStateGroup.visibility = GONE
-            binding.banksListGroup.fadeIn()
+            binding.banksRecyclerView.visibility = VISIBLE
         }
     }
 }
