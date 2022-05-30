@@ -62,8 +62,7 @@ internal class CountrySelectionViewModel constructor(
                 val selectedCountry =
                     supportedCountries.firstOrNull { it.iso == configuration.selectedCountry }
                 if (selectedCountry != null) {
-                    supportedCountries.firstOrNull { it.iso == configuration.selectedCountry }?.isSelected =
-                        true
+                    supportedCountries.firstOrNull { it.iso == configuration.selectedCountry }?.isSelected = true
                 } else {
                     supportedCountries.firstOrNull()?.isSelected = true
                 }
