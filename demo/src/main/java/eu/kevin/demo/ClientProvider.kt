@@ -14,7 +14,7 @@ object ClientProvider {
             baseUrl = KEVIN_API_URL,
             userAgent = "",
             timeout = 120000,
-            logLevel = LogLevel.NONE
+            logLevel = BuildConfig.HTTP_LOGGING_LEVEL
         ).createClient()
     }
 
@@ -23,7 +23,7 @@ object ClientProvider {
             baseUrl = KEVIN_MOBILE_DEMO_API,
             userAgent = "",
             timeout = 120000,
-            logLevel = LogLevel.NONE
+            logLevel = BuildConfig.HTTP_LOGGING_LEVEL
         ).createClient()
     }
 }
