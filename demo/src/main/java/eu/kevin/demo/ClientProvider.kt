@@ -6,7 +6,6 @@ import eu.kevin.demo.auth.KevinApiClient
 import eu.kevin.demo.auth.KevinApiClientFactory
 import eu.kevin.demo.data.KevinDataClient
 import eu.kevin.demo.data.KevinDataClientFactory
-import io.ktor.client.features.logging.LogLevel
 
 object ClientProvider {
     val kevinApiClient: KevinDataClient by lazy {
