@@ -21,6 +21,7 @@ fun View.dp(value: Int): Int = context.dp(value)
 fun View.pxToDp(px: Int): Float = context.pxToDp(px)
 
 fun View.fadeOut(duration: Long = 200L, onFinished: () -> Unit = {}) {
+    animate().cancel()
     if (visibility == GONE) return
     animate().apply {
         this.duration = duration
@@ -35,6 +36,7 @@ fun View.fadeOut(duration: Long = 200L, onFinished: () -> Unit = {}) {
 }
 
 fun View.fadeIn(duration: Long = 200L) {
+    animate().cancel()
     if (visibility == VISIBLE) return
     this.alpha = 0f
     animate().apply {
