@@ -39,4 +39,7 @@
     <string name="window_bank_selection_select_bank_label">Valige pank</string>
     <string name="error_bank_not_selected">Panga valimine on kohustuslik</string>
     <string name="dialog_exit_confirmation_accounts_message">Kas olete kindel, et soovite konto linkimise katkestada?</string>
+    <string name="window_bank_selection_terms_and_conditions_text">Vajutades nuppu Jätka, loen läbi tingimused ja privaatsuspoliitika ning nõustun nendega</string>
+    <string name="window_bank_selection_terms_clickable_text">tingimused</string>
+    <string name="window_bank_selection_privacy_clickable_text">privaatsuspoliitika</string>
 </resources>

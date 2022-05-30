@@ -42,6 +42,8 @@
         <item name="kevinHeaderTextStyle">@style/Kevin.Text.Caption1</item>
         <item name="kevinItemTitleTextStyle">@style/Kevin.Text.Title1</item>
         <item name="kevinTextAmount">@style/Kevin.Text.Amount</item>
+        <item name="kevinTermsAndConditionsTextStyle">@style/Kevin.Text.TermsAndConditions</item>
+        <item name="kevinEmptyStateSubtitleTextStyle">@style/Kevin.Text.EmptyStateSubtitle</item>
 
         <item name="kevinPrimaryButtonStyle">@style/Kevin.Button.Primary</item>
         <item name="kevinSecondaryButtonStyle">@style/Kevin.Button.Secondary</item>

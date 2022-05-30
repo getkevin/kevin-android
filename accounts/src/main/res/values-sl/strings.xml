@@ -39,4 +39,7 @@
     <string name="window_bank_selection_select_bank_label">Izberite banko</string>
     <string name="error_bank_not_selected">Izbrati je treba banko</string>
     <string name="dialog_exit_confirmation_accounts_message">Res želite prekiniti povezovanje z računom?</string>
+    <string name="window_bank_selection_privacy_clickable_text">politiko zasebnosti</string>
+    <string name="window_bank_selection_terms_clickable_text">pogoji</string>
+    <string name="window_bank_selection_terms_and_conditions_text">S pritiskom na Nadaljuj preberem in se strinjam z določili in pogoji ter politiko zasebnosti</string>
 </resources>

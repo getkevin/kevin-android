@@ -16,131 +16,149 @@
         app:layout_constraintTop_toTopOf="parent"
         app:title="@string/window_bank_selection_title" />
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/scroll_view"
+    <TextView
+        android:id="@+id/country_selection_label"
+        style="?kevinHeaderStyle"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:clipToPadding="false"
-        android:paddingBottom="96dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:paddingVertical="14dp"
+        android:text="@string/window_bank_selection_select_country_label"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/action_bar">
+        app:layout_constraintTop_toBottomOf="@id/action_bar"
+        tools:visibility="visible" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/content_root"
+    <eu.kevin.common.views.SelectionView
+        android:id="@+id/country_selection_view"
+        style="?kevinSelectionViewStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/country_selection_label"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/bank_selection_label"
+        style="?kevinHeaderStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:paddingVertical="14dp"
+        android:text="@string/window_bank_selection_select_bank_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/country_selection_view"
+        app:layout_goneMarginTop="24dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/banks_recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:paddingBottom="16dp"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintBottom_toTopOf="@id/bottom_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bank_selection_label"
+        app:layout_constraintVertical_bias="0"
+        tools:itemCount="5"
+        tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        tools:listitem="@layout/view_bank_list_item"
+        tools:paddingEnd="?kevinMarginEnd"
+        tools:paddingStart="?kevinMarginStart"
+        tools:spanCount="2" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/banks_list_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="banks_recycler_view, bank_selection_label" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/empty_state_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="empty_state_icon, empty_state_title, empty_state_subtitle" />
+
+    <ImageView
+        android:id="@+id/empty_state_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:background="@drawable/warning_icon_background"
+        android:padding="8dp"
+        android:src="@drawable/ic_error_outline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/country_selection_view" />
+
+    <TextView
+        android:id="@+id/empty_state_title"
+        style="?kevinWindowTitleTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="?kevinMarginStart"
+        android:layout_marginEnd="?kevinMarginEnd"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/empty_state_icon"
+        tools:text="Account linking in Estonia not supported" />
+
+    <TextView
+        android:id="@+id/empty_state_subtitle"
+        style="?kevinEmptyStateSubtitleTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="?kevinMarginStart"
+        android:layout_marginEnd="?kevinMarginEnd"
+        android:layout_marginTop="16dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/empty_state_title"
+        tools:text="Currently, Estonia does not support account linking yet. Stay tuned for future updates" />
+
+    <LinearLayout
+        android:id="@+id/bottom_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?colorSurface"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/terms_text"
+            style="?kevinTermsAndConditionsTextStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:layout_marginStart="?attr/kevinMarginStart"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="?attr/kevinMarginEnd"
+            android:text="@string/window_bank_selection_terms_and_conditions_text" />
 
-            <TextView
-                android:id="@+id/country_selection_label"
-                style="?kevinHeaderStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:paddingVertical="14dp"
-                android:text="@string/window_bank_selection_select_country_label"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:visibility="visible" />
+        <Button
+            android:id="@+id/continue_button"
+            style="?kevinPrimaryButtonStyle"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="?attr/kevinMarginStart"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="?attr/kevinMarginEnd"
+            android:layout_marginBottom="16dp"
+            android:text="@string/Continue" />
 
-            <eu.kevin.common.views.SelectionView
-                android:id="@+id/country_selection_view"
-                style="?kevinSelectionViewStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/country_selection_label"
-                tools:visibility="visible" />
-
-            <TextView
-                android:id="@+id/bank_selection_label"
-                style="?kevinHeaderStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:paddingVertical="14dp"
-                android:text="@string/window_bank_selection_select_bank_label"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/country_selection_view"
-                app:layout_goneMarginTop="24dp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/banks_recycler_view"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:overScrollMode="never"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/bank_selection_label"
-                tools:itemCount="5"
-                tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                tools:listitem="@layout/view_bank_list_item"
-                tools:paddingEnd="?kevinMarginEnd"
-                tools:paddingStart="?kevinMarginStart"
-                tools:spanCount="2" />
-
-            <androidx.constraintlayout.widget.Group
-                android:id="@+id/banks_list_group"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                app:constraint_referenced_ids="banks_recycler_view, bank_selection_label" />
-
-            <androidx.constraintlayout.widget.Group
-                android:id="@+id/empty_state_group"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                app:constraint_referenced_ids="empty_state_icon, empty_state_title, empty_state_subtitle" />
-
-            <ImageView
-                android:id="@+id/empty_state_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="72dp"
-                android:background="@drawable/warning_icon_background"
-                android:padding="8dp"
-                android:src="@drawable/ic_error_outline"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/country_selection_view" />
-
-            <TextView
-                android:id="@+id/empty_state_title"
-                style="?kevinWindowTitleTextStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/empty_state_icon"
-                tools:text="Account linking in Estonia not supported" />
-
-            <TextView
-                android:id="@+id/empty_state_subtitle"
-                style="?kevinWindowSubtitleTextStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
-                android:textAlignment="center"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/empty_state_title"
-                tools:text="Currently, Estonia does not support account linking yet. Stay tuned for future updates" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/progress_view"
@@ -152,17 +170,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/action_bar" />
-
-    <Button
-        android:id="@+id/continue_button"
-        style="?kevinPrimaryButtonStyle"
-        android:layout_marginStart="?attr/kevinMarginStart"
-        android:layout_marginEnd="?attr/kevinMarginEnd"
-        android:layout_marginBottom="16dp"
-        android:text="@string/Continue"
-        app:layout_constrainedWidth="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </merge>

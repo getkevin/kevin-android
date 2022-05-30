@@ -31,6 +31,7 @@ internal class AccountLinkingView(context: Context) :
     private var lastClickPosition: Int = 0
 
     init {
+        setBackgroundColor(context.getColorFromAttr(android.R.attr.colorBackground))
         with(binding.actionBar) {
             setNavigationOnClickListener {
                 delegate?.onBackClicked()

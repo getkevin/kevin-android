@@ -39,4 +39,7 @@
     <string name="window_bank_selection_select_bank_label">Bank auswählen</string>
     <string name="error_bank_not_selected">Eine Bank muss ausgewählt werden</string>
     <string name="dialog_exit_confirmation_accounts_message">Sind Sie sicher, dass Sie die Verknüpfung abbrechen möchten?</string>
+    <string name="window_bank_selection_privacy_clickable_text">Datenschutzrichtlinie</string>
+    <string name="window_bank_selection_terms_clickable_text">Geschäftsbedingungen</string>
+    <string name="window_bank_selection_terms_and_conditions_text">Indem ich auf Weiter klicke, habe ich die Allgemeinen Geschäftsbedingungen und die Datenschutzrichtlinie gelesen und stimme ihnen zu</string>
 </resources>

@@ -39,4 +39,7 @@
     <string name="window_bank_selection_select_bank_label">Välj bank</string>
     <string name="error_bank_not_selected">Bank måste väljas</string>
     <string name="dialog_exit_confirmation_accounts_message">Är du säker på att du vill avbryta kontokopplingen?</string>
+    <string name="window_bank_selection_privacy_clickable_text">Integritetspolicyn</string>
+    <string name="window_bank_selection_terms_clickable_text">Villkoren</string>
+    <string name="window_bank_selection_terms_and_conditions_text">Genom att trycka på Fortsätt läser jag och godkänner Villkoren och Integritetspolicyn</string>
 </resources>

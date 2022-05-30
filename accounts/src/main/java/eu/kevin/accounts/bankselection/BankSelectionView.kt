@@ -1,6 +1,7 @@
 package eu.kevin.accounts.bankselection
 
 import android.content.Context
+import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.transition.TransitionManager
@@ -17,9 +18,12 @@ import eu.kevin.common.extensions.applySystemInsetsMargin
 import eu.kevin.common.extensions.applySystemInsetsPadding
 import eu.kevin.common.extensions.fadeIn
 import eu.kevin.common.extensions.fadeOut
+import eu.kevin.common.extensions.getColorFromAttr
 import eu.kevin.common.extensions.setDebounceClickListener
 import eu.kevin.common.helpers.ErrorHelper
 import eu.kevin.common.helpers.SnackbarHelper
+import eu.kevin.common.helpers.SpannableStringHelper
+import eu.kevin.common.helpers.SpannableStringLink
 import eu.kevin.common.views.GridListItemDecoration
 
 internal class BankSelectionView(context: Context) :
@@ -41,7 +45,6 @@ internal class BankSelectionView(context: Context) :
                 layoutManager = GridLayoutManager(context, 2)
                 adapter = banksAdapter
             }
-            scrollView.applySystemInsetsPadding(bottom = true)
             continueButton.setDebounceClickListener {
                 delegate?.onContinueClicked()
             }
@@ -54,6 +57,18 @@ internal class BankSelectionView(context: Context) :
             countrySelectionView.setDebounceClickListener {
                 delegate?.onSelectCountryClicked()
             }
+
+            termsText.text = SpannableStringHelper.getSpannableWithLinks(
+                context.getString(R.string.window_bank_selection_terms_and_conditions_text),
+                context.getColorFromAttr(R.attr.colorPrimary),
+                SpannableStringLink(context.getString(R.string.window_bank_selection_terms_clickable_text)) {
+                    delegate?.onTermsAndConditionsClicked()
+                },
+                SpannableStringLink(context.getString(R.string.window_bank_selection_privacy_clickable_text)) {
+                    delegate?.onPrivacyPolicyClicked()
+                }
+            )
+            termsText.movementMethod = LinkMovementMethod()
         }
     }
 
@@ -80,7 +95,7 @@ internal class BankSelectionView(context: Context) :
     private fun showCountrySelection(show: Boolean) {
         val visibility = if (show) VISIBLE else GONE
         with(binding) {
-            TransitionManager.beginDelayedTransition(contentRoot)
+            TransitionManager.beginDelayedTransition(this@BankSelectionView)
             countrySelectionLabel.visibility = visibility
             countrySelectionView.visibility = visibility
         }

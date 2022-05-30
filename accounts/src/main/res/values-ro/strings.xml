@@ -39,4 +39,7 @@
     <string name="window_bank_selection_select_bank_label">Selectați banca</string>
     <string name="error_bank_not_selected">Nu a fost selectată banca</string>
     <string name="dialog_exit_confirmation_accounts_message">Sunteți sigur că doriți să întrerupeți conectarea băncii?</string>
+    <string name="window_bank_selection_terms_and_conditions_text">Apăsând pe Continuare, citesc și sunt de acord cu Termenii și condițiile și cu Politica de confidențialitate</string>
+    <string name="window_bank_selection_terms_clickable_text">Termenii și condițiile</string>
+    <string name="window_bank_selection_privacy_clickable_text">Politica de confidențialitate</string>
 </resources>

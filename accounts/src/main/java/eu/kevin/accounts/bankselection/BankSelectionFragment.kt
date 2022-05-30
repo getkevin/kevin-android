@@ -1,7 +1,10 @@
 package eu.kevin.accounts.bankselection
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import androidx.fragment.app.viewModels
+import eu.kevin.accounts.R
 import eu.kevin.accounts.bankselection.BankSelectionIntent.HandleBackClicked
 import eu.kevin.accounts.bankselection.BankSelectionIntent.HandleBankSelection
 import eu.kevin.accounts.bankselection.BankSelectionIntent.HandleContinueClicked
@@ -57,5 +60,21 @@ internal class BankSelectionFragment :
 
     override fun onContinueClicked() {
         viewModel.intents.trySend(HandleContinueClicked)
+    }
+
+    override fun onTermsAndConditionsClicked() {
+        val browserIntent = Intent(
+            Intent.ACTION_VIEW,
+            Uri.parse(getString(R.string.window_bank_selection_terms_and_conditions_url))
+        )
+        startActivity(browserIntent)
+    }
+
+    override fun onPrivacyPolicyClicked() {
+        val browserIntent = Intent(
+            Intent.ACTION_VIEW,
+            Uri.parse(getString(R.string.window_bank_selection_privacy_policy_url))
+        )
+        startActivity(browserIntent)
     }
 }
