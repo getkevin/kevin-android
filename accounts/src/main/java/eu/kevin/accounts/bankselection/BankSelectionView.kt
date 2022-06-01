@@ -13,6 +13,7 @@ import eu.kevin.accounts.databinding.FragmentBankSelectionBinding
 import eu.kevin.common.architecture.BaseView
 import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.entities.LoadingState
+import eu.kevin.common.entities.isLoading
 import eu.kevin.common.extensions.applySystemInsetsMargin
 import eu.kevin.common.extensions.applySystemInsetsPadding
 import eu.kevin.common.extensions.fadeIn
@@ -75,6 +76,12 @@ internal class BankSelectionView(context: Context) :
         banksAdapter.updateItems(state.bankListItems)
         countrySelectionView.image = CountryHelper.getCountryFlagDrawable(context, state.selectedCountry)
         countrySelectionView.title = CountryHelper.getCountryName(context, state.selectedCountry)
+        emptyStateTitle.text = context.getString(
+            R.string.window_bank_selection_empty_state_title
+        ).format(CountryHelper.getCountryName(context, state.selectedCountry))
+        emptyStateSubtitle.text = context.getString(
+            R.string.window_bank_selection_empty_state_subtitle
+        ).format(CountryHelper.getCountryName(context, state.selectedCountry))
         showCountrySelection(!state.isCountrySelectionDisabled)
         when (state.loadingState) {
             is LoadingState.Loading -> startLoading(state.loadingState.isLoading)
@@ -82,6 +89,7 @@ internal class BankSelectionView(context: Context) :
             is LoadingState.Failure -> showFailure(state.loadingState.error)
             null -> startLoading(false)
         }
+        showEmptyState(!state.loadingState.isLoading() && state.bankListItems.isEmpty())
     }
 
     private fun showCountrySelection(show: Boolean) {
@@ -115,5 +123,17 @@ internal class BankSelectionView(context: Context) :
     private fun showErrorMessage(message: String) {
         binding.progressView.fadeOut()
         SnackbarHelper.showError(this, message)
+    }
+
+    private fun showEmptyState(visible: Boolean) {
+        if (visible) {
+            binding.bankSelectionLabel.visibility = GONE
+            binding.emptyStateGroup.visibility = VISIBLE
+            binding.banksRecyclerView.visibility = GONE
+        } else {
+            binding.bankSelectionLabel.visibility = VISIBLE
+            binding.emptyStateGroup.visibility = GONE
+            binding.banksRecyclerView.visibility = VISIBLE
+        }
     }
 }

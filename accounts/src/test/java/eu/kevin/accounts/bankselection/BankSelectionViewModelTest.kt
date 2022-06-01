@@ -4,6 +4,7 @@ import android.os.Bundle
 import eu.kevin.accounts.bankselection.entities.Bank
 import eu.kevin.accounts.bankselection.factories.BankListItemFactory
 import eu.kevin.accounts.bankselection.managers.BankTestManager
+import eu.kevin.accounts.bankselection.usecases.GetSupportedBanksUseCase
 import eu.kevin.accounts.countryselection.managers.CountriesTestManager
 import eu.kevin.accounts.countryselection.usecases.SupportedCountryUseCase
 import eu.kevin.common.architecture.routing.GlobalRouter
@@ -33,7 +34,7 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
         super.setUp()
         viewModel = BankSelectionViewModel(
             SupportedCountryUseCase(CountriesTestManager()),
-            BankTestManager(),
+            GetSupportedBanksUseCase(BankTestManager()),
             TestCoroutineDispatchers,
             savedStateHandle
         )
@@ -47,8 +48,10 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
             selectedCountry,
             false,
             emptyList(),
-            null,
-            ""
+            emptyList(),
+            "",
+            "",
+            true
         )
 
         val states = mutableListOf<BankSelectionState>()
@@ -74,8 +77,10 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
             selectedCountry,
             false,
             emptyList(),
+            emptyList(),
             preselectedBank,
-            ""
+            "",
+            true
         )
 
         val states = mutableListOf<BankSelectionState>()
@@ -102,8 +107,10 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
             selectedCountry,
             false,
             emptyList(),
+            emptyList(),
             preselectedBank,
-            ""
+            "",
+            true
         )
 
         val states = mutableListOf<BankSelectionState>()
@@ -165,8 +172,10 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
             selectedCountry,
             false,
             emptyList(),
+            emptyList(),
             null,
-            ""
+            "",
+            true
         )
         mockkConstructor(Bundle::class)
         every { anyConstructed<Bundle>().putParcelable(any(), any()) } returns Unit
@@ -187,8 +196,10 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
             null,
             false,
             emptyList(),
+            emptyList(),
             null,
-            ""
+            "",
+            true
         )
 
         val states = mutableListOf<BankSelectionState>()
@@ -213,8 +224,10 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
             "lt",
             false,
             emptyList(),
+            emptyList(),
             "SWEDBANK_LT",
-            ""
+            "",
+            true
         )
         viewModel.intents.trySend(BankSelectionIntent.Initialize(config))
         viewModel.intents.trySend(BankSelectionIntent.HandleContinueClicked)
