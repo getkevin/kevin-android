@@ -5,8 +5,6 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.savedstate.SavedStateRegistryOwner
-import eu.kevin.accounts.bankselection.managers.KevinBankManager
-import eu.kevin.accounts.bankselection.usecases.GetSupportedBanksUseCase
 import eu.kevin.accounts.countryselection.CountrySelectionIntent.HandleCountrySelection
 import eu.kevin.accounts.countryselection.CountrySelectionIntent.Initialize
 import eu.kevin.accounts.countryselection.entities.Country
