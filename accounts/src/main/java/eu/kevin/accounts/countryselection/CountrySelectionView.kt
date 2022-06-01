@@ -50,8 +50,7 @@ internal class CountrySelectionView(context: Context) :
             Country(
                 it.iso,
                 CountryHelper.getCountryName(context, it.iso),
-                it.isSelected,
-                isActive = it.isActive
+                it.isSelected
             )
         }.sortedBy { it.title }
         countriesAdapter.updateItems(countries)

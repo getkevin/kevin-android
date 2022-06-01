@@ -7,6 +7,5 @@ import kotlinx.parcelize.Parcelize
 internal data class Country(
     val iso: String,
     val title: String? = null,
-    var isSelected: Boolean = false,
-    var isActive: Boolean = true
+    var isSelected: Boolean = false
 ) : Parcelable

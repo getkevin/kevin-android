@@ -1,7 +1,6 @@
 package eu.kevin.accounts.countryselection.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import eu.kevin.accounts.R
@@ -41,19 +40,6 @@ internal class CountryListAdapter(
                 }
                 root.background = background
             }
-
-            val alpha: Float
-            if (!item.isActive) {
-                binding.countryNotAvailableTextView.visibility = View.VISIBLE
-                alpha = 0.4f
-            } else {
-                binding.countryNotAvailableTextView.visibility = View.GONE
-                alpha = 1f
-            }
-            root.background.alpha = (255 * alpha).toInt()
-            binding.countryFlagImageView.alpha = alpha
-            binding.countryTextView.alpha = alpha
-            binding.countryNotAvailableTextView.alpha = alpha
         }
     }
 

@@ -18,13 +18,10 @@ import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.dispatchers.CoroutineDispatchers
 import eu.kevin.common.dispatchers.DefaultCoroutineDispatchers
 import eu.kevin.common.entities.LoadingState
-import kotlinx.coroutines.async
-import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 
 internal class CountrySelectionViewModel constructor(
     private val countryUseCase: SupportedCountryUseCase,
-    private val banksUseCase: GetSupportedBanksUseCase,
     private val dispatchers: CoroutineDispatchers,
     savedStateHandle: SavedStateHandle
 ) : BaseViewModel<CountrySelectionState, CountrySelectionIntent>(savedStateHandle) {
@@ -67,17 +64,6 @@ internal class CountrySelectionViewModel constructor(
                     supportedCountries.firstOrNull()?.isSelected = true
                 }
 
-                if (configuration.isAccountLinking) {
-                    supportedCountries.map { country ->
-                        async {
-                            val countryBanks =
-                                banksUseCase.getSupportedBanks(country.iso, configuration.authState)
-                            supportedCountries.find { it.iso == country.iso }?.isActive =
-                                countryBanks.any { it.isAccountLinkingSupported }
-                        }
-                    }.awaitAll()
-                }
-
                 updateState {
                     it.copy(
                         loadingState = LoadingState.Loading(false),
@@ -110,11 +96,6 @@ internal class CountrySelectionViewModel constructor(
             return CountrySelectionViewModel(
                 SupportedCountryUseCase(
                     KevinCountriesManager(
-                        kevinAccountsClient = AccountsClientProvider.kevinAccountsClient
-                    )
-                ),
-                GetSupportedBanksUseCase(
-                    KevinBankManager(
                         kevinAccountsClient = AccountsClientProvider.kevinAccountsClient
                     )
                 ),

@@ -26,26 +26,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        app:layout_constraintBottom_toTopOf="@id/country_not_available_text_view"
-        app:layout_constraintEnd_toStartOf="@id/arrow_view"
-        app:layout_constraintStart_toEndOf="@id/country_flag_image_view"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        tool:text="Test country title" />
-
-    <TextView
-        android:id="@+id/country_not_available_text_view"
-        style="?kevinWindowSubtitleTextStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="4dp"
-        android:text="@string/window_country_selection_not_available_label"
-        android:visibility="gone"
+        android:layout_marginVertical="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/arrow_view"
         app:layout_constraintStart_toEndOf="@id/country_flag_image_view"
-        app:layout_constraintTop_toBottomOf="@id/country_text_view" />
+        app:layout_constraintTop_toTopOf="parent"
+        tool:text="Test country title" />
 
     <ImageView
         android:id="@+id/arrow_view"
