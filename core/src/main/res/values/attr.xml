@@ -2,6 +2,7 @@
 <resources>
     <!--    Color attributes    -->
     <attr name="kevinSheetHandleColor" format="color|reference" />
+    <attr name="colorWarningBackground" format="color|reference" />
 
     <!--    Component attributes    -->
     <attr name="kevinToolbarStyle" format="reference" />
@@ -25,6 +26,7 @@
     <attr name="kevinItemTitleTextStyle" format="reference" />
     <attr name="kevinTextAmount" format="reference" />
     <attr name="kevinTermsAndConditionsTextStyle" format="reference" />
+    <attr name="kevinEmptyStateSubtitleTextStyle" format="reference" />
 
     <!--    Dimension attributes    -->
     <attr name="kevinMarginStart" format="dimension" />

@@ -3,7 +3,7 @@
 
     <!--  Component styles  -->
     <style name="Toolbar" parent="Widget.MaterialComponents.Toolbar">
-        <item name="navigationIcon">@drawable/ic_toolbar_arrow_back</item>
+        <item name="navigationIcon">@drawable/kevin_ic_toolbar_arrow_back</item>
         <item name="android:background">?toolbarColor</item>
         <item name="titleTextColor">?primaryTextColor</item>
         <item name="titleTextAppearance">@style/TextAppearance.Headline3</item>
@@ -36,7 +36,7 @@
         <item name="hintEnabled">false</item>
         <item name="boxStrokeWidth">1dp</item>
         <item name="boxBackgroundColor">?secondaryBackgroundColor</item>
-        <item name="boxStrokeColor">@color/text_input_color</item>
+        <item name="boxStrokeColor">@color/kevin_text_input_color</item>
         <item name="boxStrokeErrorColor">@color/warning_red</item>
         <item name="errorTextAppearance">@style/TextAppearance.Error</item>
         <item name="errorIconDrawable">@null</item>

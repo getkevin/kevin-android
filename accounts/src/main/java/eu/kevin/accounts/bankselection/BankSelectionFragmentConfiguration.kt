@@ -11,5 +11,6 @@ data class BankSelectionFragmentConfiguration(
     val countryFilter: List<KevinCountry>,
     val bankFilter: List<String>,
     val selectedBankId: String?,
-    val authState: String
+    val authState: String,
+    val isAccountLinking: Boolean
 ) : Parcelable

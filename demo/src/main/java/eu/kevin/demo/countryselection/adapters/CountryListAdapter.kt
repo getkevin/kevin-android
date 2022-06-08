@@ -25,14 +25,14 @@ internal class CountryListAdapter(
 
     override fun onBindViewHolder(binding: KevinItemCountryListBinding, item: Country, position: Int) {
         val background = when (position) {
-            0 -> context.getDrawableCompat(R.drawable.country_selection_background_top)
-            items.size - 1 -> context.getDrawableCompat(R.drawable.country_selection_background_bottom)
-            else -> context.getDrawableCompat(R.drawable.country_selection_background_middle)
+            0 -> context.getDrawableCompat(R.drawable.kevin_country_selection_background_top)
+            items.size - 1 -> context.getDrawableCompat(R.drawable.kevin_country_selection_background_bottom)
+            else -> context.getDrawableCompat(R.drawable.kevin_country_selection_background_middle)
         }
         val foreground = when (position) {
-            0 -> context.getDrawableCompat(R.drawable.country_selection_ripple_top)
-            items.size - 1 -> context.getDrawableCompat(R.drawable.country_selection_ripple_bottom)
-            else -> context.getDrawableCompat(R.drawable.country_selection_ripple_middle)
+            0 -> context.getDrawableCompat(R.drawable.kevin_country_selection_ripple_top)
+            items.size - 1 -> context.getDrawableCompat(R.drawable.kevin_country_selection_ripple_bottom)
+            else -> context.getDrawableCompat(R.drawable.kevin_country_selection_ripple_middle)
         }
         with(binding) {
             root.setDebounceClickListener {

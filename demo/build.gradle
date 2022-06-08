@@ -28,7 +28,7 @@ android {
         resValue 'string', 'config_app_name', 'kevin.Demo'
 
         buildConfigField "String", "KEVIN_API_URL", "\"https://api.getkevin.eu/demo\""
-        buildConfigField "String", "KEVIN_MOBILE_DEMO_API", "\"https://mobile-demo.kevin.eu/api/v3/\""
+        buildConfigField "String", "KEVIN_MOBILE_DEMO_API", "\"https://mobile-demo.kevin.eu/api/v1\""
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -44,6 +44,10 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
+            buildConfigField "io.ktor.client.features.logging.LogLevel", "HTTP_LOGGING_LEVEL", "io.ktor.client.features.logging.LogLevel.NONE"
+        }
+        debug {
+            buildConfigField "io.ktor.client.features.logging.LogLevel", "HTTP_LOGGING_LEVEL", "io.ktor.client.features.logging.LogLevel.ALL"
         }
     }
 

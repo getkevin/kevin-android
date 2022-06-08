@@ -12,6 +12,7 @@ import kotlinx.serialization.Serializable
  * @property imageUri uri to bank logo image
  * @property bic bank identification code
  * @property isBeta tells if bank is in beta stage
+ * @property isAccountLinkingSupported tells if this bank can be used for account linking
  */
 @Serializable
 data class ApiBank(
@@ -22,5 +23,6 @@ data class ApiBank(
     val isSandbox: Boolean,
     val imageUri: String,
     val bic: String? = null,
-    val isBeta: Boolean
+    val isBeta: Boolean,
+    val isAccountLinkingSupported: Boolean
 )

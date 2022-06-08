@@ -54,7 +54,8 @@ internal class CountrySelectionViewModel constructor(
                         Country(it)
                     }
 
-                val selectedCountry = supportedCountries.firstOrNull { it.iso == configuration.selectedCountry }
+                val selectedCountry =
+                    supportedCountries.firstOrNull { it.iso == configuration.selectedCountry }
                 if (selectedCountry != null) {
                     supportedCountries.firstOrNull { it.iso == configuration.selectedCountry }?.isSelected = true
                 } else {
@@ -83,7 +84,8 @@ internal class CountrySelectionViewModel constructor(
     }
 
     @Suppress("UNCHECKED_CAST")
-    class Factory(owner: SavedStateRegistryOwner) : AbstractSavedStateViewModelFactory(owner, null) {
+    class Factory(owner: SavedStateRegistryOwner) :
+        AbstractSavedStateViewModelFactory(owner, null) {
         override fun <T : ViewModel?> create(
             key: String,
             modelClass: Class<T>,

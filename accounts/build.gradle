@@ -33,13 +33,17 @@ android {
         buildConfigField "String", "KEVIN_SANDBOX_LINK_CARD_URL", "\"https://psd2-sandbox.kevin.eu/card-details/%s\""
 
         buildConfigField "int", "HTTP_CLIENT_TIMEOUT", "120000"
-        buildConfigField "io.ktor.client.features.logging.LogLevel", "HTTP_LOGGING_LEVEL", "io.ktor.client.features.logging.LogLevel.NONE"
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField "io.ktor.client.features.logging.LogLevel", "HTTP_LOGGING_LEVEL", "io.ktor.client.features.logging.LogLevel.NONE"
+        }
+        debug {
+            buildConfigField "io.ktor.client.features.logging.LogLevel", "HTTP_LOGGING_LEVEL", "io.ktor.client.features.logging.LogLevel.ALL"
         }
     }
 

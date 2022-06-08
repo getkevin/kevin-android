@@ -6,7 +6,6 @@ import eu.kevin.demo.auth.KevinApiClient
 import eu.kevin.demo.auth.KevinApiClientFactory
 import eu.kevin.demo.data.KevinDataClient
 import eu.kevin.demo.data.KevinDataClientFactory
-import io.ktor.client.features.logging.LogLevel
 
 object ClientProvider {
     val kevinApiClient: KevinDataClient by lazy {
@@ -14,7 +13,7 @@ object ClientProvider {
             baseUrl = KEVIN_API_URL,
             userAgent = "",
             timeout = 120000,
-            logLevel = LogLevel.NONE
+            logLevel = BuildConfig.HTTP_LOGGING_LEVEL
         ).createClient()
     }
 
@@ -23,7 +22,7 @@ object ClientProvider {
             baseUrl = KEVIN_MOBILE_DEMO_API,
             userAgent = "",
             timeout = 120000,
-            logLevel = LogLevel.NONE
+            logLevel = BuildConfig.HTTP_LOGGING_LEVEL
         ).createClient()
     }
 }
