@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="window_main_terms_privacy_policy">Olen tingimusi ja privaatsuspoliitikat lugenud ja nõustun nendega</string>
-    <string name="window_main_terms_privacy_policy_clickable_terms">tingimusi</string>
-    <string name="window_main_terms_privacy_policy_clickable_policy">privaatsuspoliitikat</string>
-    <string name="window_main_proceed_button">Anneta %s eurot</string>
-    <string name="window_main_bank_payment">Pangaülekanne</string>
-    <string name="window_main_card_payment">Kaardimakse</string>
-    <string name="window_main_details_lable">Sisestage üksikasjad</string>
-    <string name="window_main_email_label">E-post</string>
-    <string name="window_main_amount_label">Makse summa</string>
-    <string name="window_main_country_label">Riik</string>
-    <string name="window_main_country_charity_label">Valige riik ja heategevusorganisatsioon</string>
-    <string name="window_main_subtitle_label">Valige heategevusorganisatsioon, millele soovite annetada</string>
-    <string name="window_main_title_label">Suuna makse ümber</string>
-    <string name="window_main_email_blank_error">E-posti aadress on kohustuslik</string>
-    <string name="window_main_email_invalid_format_error">Kehtetu e-posti aadress</string>
-    <string name="window_main_amount_blank_error">Summa peab olema suurem kui null</string>
-    <string name="dialog_payment_success_title">Makse õnnestus</string>
-    <string name="dialog_payment_success_button">OK</string>
-    <string name="window_main_no_creditor_selected_error">Heategevust pole valitud</string>
-    <string name="window_main_amount_field_currency">EUR</string>
+    <string name="kevin_window_main_terms_privacy_policy">Olen tingimusi ja privaatsuspoliitikat lugenud ja nõustun nendega</string>
+    <string name="kevin_window_main_terms_privacy_policy_clickable_terms">tingimusi</string>
+    <string name="kevin_window_main_terms_privacy_policy_clickable_policy">privaatsuspoliitikat</string>
+    <string name="kevin_window_main_proceed_button">Anneta %s eurot</string>
+    <string name="kevin_window_main_bank_payment">Pangaülekanne</string>
+    <string name="kevin_window_main_card_payment">Kaardimakse</string>
+    <string name="kevin_window_main_details_lable">Sisestage üksikasjad</string>
+    <string name="kevin_window_main_email_label">E-post</string>
+    <string name="kevin_window_main_amount_label">Makse summa</string>
+    <string name="kevin_window_main_country_label">Riik</string>
+    <string name="kevin_window_main_country_charity_label">Valige riik ja heategevusorganisatsioon</string>
+    <string name="kevin_window_main_subtitle_label">Valige heategevusorganisatsioon, millele soovite annetada</string>
+    <string name="kevin_window_main_title_label">Suuna makse ümber</string>
+    <string name="kevin_window_main_email_blank_error">E-posti aadress on kohustuslik</string>
+    <string name="kevin_window_main_email_invalid_format_error">Kehtetu e-posti aadress</string>
+    <string name="kevin_window_main_amount_blank_error">Summa peab olema suurem kui null</string>
+    <string name="kevin_dialog_payment_success_title">Makse õnnestus</string>
+    <string name="kevin_dialog_payment_success_button">OK</string>
+    <string name="kevin_window_main_no_creditor_selected_error">Heategevust pole valitud</string>
+    <string name="kevin_window_main_amount_field_currency">EUR</string>
 </resources>

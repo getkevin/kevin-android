@@ -10,7 +10,7 @@ internal object AmountValidator {
         val bigDecimal = amount.toBigDecimalOrNull()
         return when {
             bigDecimal == null || bigDecimal <= BigDecimal.ZERO -> {
-                ValidationResult.Invalid(R.string.window_main_amount_blank_error)
+                ValidationResult.Invalid(R.string.kevin_window_main_amount_blank_error)
             }
             else -> ValidationResult.Valid
         }

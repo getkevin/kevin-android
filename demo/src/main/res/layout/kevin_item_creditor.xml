@@ -14,6 +14,6 @@
         android:layout_gravity="center"
         android:adjustViewBounds="true"
         android:padding="8dp"
-        tools:src="@drawable/ic_country_flag_it" />
+        tools:src="@drawable/kevin_ic_country_flag_it" />
 
 </FrameLayout>

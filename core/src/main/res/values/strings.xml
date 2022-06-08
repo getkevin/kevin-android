@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Continue">Continue</string>
-    <string name="error_unknown">Unknown error occurred</string>
-    <string name="error_no_internet">No internet connection</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
-    <string name="dialog_exit_confirmation_title">Warning!</string>
-    <string name="navigate_back_content_description">Navigate back</string>
+    <string name="kevin_continue">Continue</string>
+    <string name="kevin_error_unknown">Unknown error occurred</string>
+    <string name="kevin_error_no_internet">No internet connection</string>
+    <string name="kevin_yes">Yes</string>
+    <string name="kevin_no">No</string>
+    <string name="kevin_dialog_exit_confirmation_title">Warning!</string>
+    <string name="kevin_navigate_back_content_description">Navigate back</string>
 </resources>

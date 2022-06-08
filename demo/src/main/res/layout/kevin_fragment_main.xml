@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="63dp"
-                android:text="@string/window_main_title_label"
+                android:text="@string/kevin_window_main_title_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -35,7 +35,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:text="@string/window_main_subtitle_label"
+                android:text="@string/kevin_window_main_subtitle_label"
                 android:textColor="?secondaryTextColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +59,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="30dp"
                 android:gravity="start"
-                android:text="@string/window_main_country_charity_label"
+                android:text="@string/kevin_window_main_country_charity_label"
                 android:textColor="?primaryTextColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +83,7 @@
                     android:layout_height="30dp"
                     android:layout_marginStart="16dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_country_flag_lt"
+                    android:src="@drawable/kevin_ic_country_flag_lt"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -94,7 +94,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="@string/window_main_country_label"
+                    android:text="@string/kevin_window_main_country_label"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/country_flag_image_view"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -135,7 +135,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/country_selection_container"
-                tools:listitem="@layout/item_creditor" />
+                tools:listitem="@layout/kevin_item_creditor" />
 
             <ProgressBar
                 android:id="@+id/creditors_progress_bar"
@@ -156,7 +156,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="32dp"
                 android:gravity="start"
-                android:text="@string/window_main_details_lable"
+                android:text="@string/kevin_window_main_details_lable"
                 android:textColor="?primaryTextColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -169,7 +169,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
-                android:text="@string/window_main_email_label"
+                android:text="@string/kevin_window_main_email_label"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/details_label_text_view" />
 
@@ -201,7 +201,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="26dp"
-                android:text="@string/window_main_amount_label"
+                android:text="@string/kevin_window_main_amount_label"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/email_text_field" />
 
@@ -232,7 +232,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="12dp"
-                android:text="@string/window_main_amount_field_currency"
+                android:text="@string/kevin_window_main_amount_field_currency"
                 app:layout_constraintBottom_toBottomOf="@id/amount_text_field"
                 app:layout_constraintEnd_toEndOf="@id/amount_text_field"
                 app:layout_constraintTop_toTopOf="@id/amount_text_field" />

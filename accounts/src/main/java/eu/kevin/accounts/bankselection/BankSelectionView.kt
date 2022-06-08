@@ -9,7 +9,7 @@ import eu.kevin.accounts.R
 import eu.kevin.accounts.bankselection.adapters.BankListAdapter
 import eu.kevin.accounts.bankselection.exceptions.BankNotSelectedException
 import eu.kevin.accounts.countryselection.helpers.CountryHelper
-import eu.kevin.accounts.databinding.FragmentBankSelectionBinding
+import eu.kevin.accounts.databinding.KevinFragmentBankSelectionBinding
 import eu.kevin.common.architecture.BaseView
 import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.entities.LoadingState
@@ -26,10 +26,10 @@ import eu.kevin.common.helpers.SpannableStringLink
 import eu.kevin.common.views.GridListItemDecoration
 
 internal class BankSelectionView(context: Context) :
-    BaseView<FragmentBankSelectionBinding>(context),
+    BaseView<KevinFragmentBankSelectionBinding>(context),
     IView<BankSelectionState> {
 
-    override val binding = FragmentBankSelectionBinding.inflate(LayoutInflater.from(context), this)
+    override val binding = KevinFragmentBankSelectionBinding.inflate(LayoutInflater.from(context), this)
 
     var delegate: BankSelectionViewDelegate? = null
 
@@ -52,18 +52,18 @@ internal class BankSelectionView(context: Context) :
                 delegate?.onBackClicked()
             }
             actionBar.applySystemInsetsPadding(top = true)
-            actionBar.setNavigationContentDescription(R.string.navigate_back_content_description)
+            actionBar.setNavigationContentDescription(R.string.kevin_navigate_back_content_description)
             countrySelectionView.setDebounceClickListener {
                 delegate?.onSelectCountryClicked()
             }
 
             termsText.text = SpannableStringHelper.getSpannableWithLinks(
-                context.getString(R.string.window_bank_selection_terms_and_conditions_text),
+                context.getString(R.string.kevin_window_bank_selection_terms_and_conditions_text),
                 context.getColorFromAttr(R.attr.colorPrimary),
-                SpannableStringLink(context.getString(R.string.window_bank_selection_terms_clickable_text)) {
+                SpannableStringLink(context.getString(R.string.kevin_window_bank_selection_terms_clickable_text)) {
                     delegate?.onTermsAndConditionsClicked()
                 },
-                SpannableStringLink(context.getString(R.string.window_bank_selection_privacy_clickable_text)) {
+                SpannableStringLink(context.getString(R.string.kevin_window_bank_selection_privacy_clickable_text)) {
                     delegate?.onPrivacyPolicyClicked()
                 }
             )
@@ -106,7 +106,7 @@ internal class BankSelectionView(context: Context) :
     private fun showFailure(error: Throwable) {
         when (error) {
             is BankNotSelectedException -> {
-                showErrorMessage(context.getString(R.string.error_bank_not_selected))
+                showErrorMessage(context.getString(R.string.kevin_error_bank_not_selected))
             }
             else -> showErrorMessage(ErrorHelper.getMessage(context, error))
         }

@@ -21,7 +21,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tool:src="@drawable/ic_country_flag_lt" />
+            tool:src="@drawable/kevin_ic_country_flag_lt" />
 
         <TextView
             android:id="@+id/country_text_view"
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:contentDescription="@null"
-            android:src="@drawable/ic_arrow"
+            android:src="@drawable/kevin_ic_arrow"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

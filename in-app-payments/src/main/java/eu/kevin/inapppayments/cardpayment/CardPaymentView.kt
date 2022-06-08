@@ -36,13 +36,13 @@ import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent.SubmittingCard
 import eu.kevin.inapppayments.cardpayment.inputformatters.CardNumberFormatter
 import eu.kevin.inapppayments.cardpayment.inputformatters.DateFormatter
 import eu.kevin.inapppayments.cardpayment.inputvalidation.ValidationResult
-import eu.kevin.inapppayments.databinding.FragmentCardPaymentBinding
+import eu.kevin.inapppayments.databinding.KevinFragmentCardPaymentBinding
 
 internal class CardPaymentView(context: Context) :
-    BaseView<FragmentCardPaymentBinding>(context),
+    BaseView<KevinFragmentCardPaymentBinding>(context),
     IView<CardPaymentState> {
 
-    override val binding = FragmentCardPaymentBinding.inflate(LayoutInflater.from(context), this)
+    override val binding = KevinFragmentCardPaymentBinding.inflate(LayoutInflater.from(context), this)
 
     var delegate: CardPaymentViewDelegate? = null
     private var previousStateUrl: String? = null
@@ -52,7 +52,7 @@ internal class CardPaymentView(context: Context) :
             setNavigationOnClickListener {
                 delegate?.onBackClicked()
             }
-            setNavigationContentDescription(eu.kevin.accounts.R.string.navigate_back_content_description)
+            setNavigationContentDescription(eu.kevin.accounts.R.string.kevin_navigate_back_content_description)
             applySystemInsetsPadding(top = true)
         }
 
@@ -108,7 +108,7 @@ internal class CardPaymentView(context: Context) :
         with(binding.cvvTooltipIcon) {
             TooltipCompat.setTooltipText(
                 this,
-                context.getString(R.string.window_card_payment_cvv_tooltip)
+                context.getString(R.string.kevin_window_card_payment_cvv_tooltip)
             )
             setDebounceClickListener {
                 performLongClick()

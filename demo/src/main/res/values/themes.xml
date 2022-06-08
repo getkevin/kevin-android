@@ -10,7 +10,7 @@
         <item name="colorOnSecondary">@color/white</item>
 
         <item name="android:textColor">@color/dark_blue</item>
-        <item name="fontFamily">@font/circular_std_book</item>
+        <item name="fontFamily">@font/kevin_circular_std_book</item>
         <item name="colorControlHighlight">?rippleOnPrimaryColor</item>
 
         <item name="android:ambientShadowAlpha">0.01</item>

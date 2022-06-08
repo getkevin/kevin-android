@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="window_main_terms_privacy_policy">Olen lukenut ja hyväksynyt käyttöehdot ja yksityisyyskäytännön</string>
-    <string name="window_main_terms_privacy_policy_clickable_terms">käyttöehdot</string>
-    <string name="window_main_terms_privacy_policy_clickable_policy">yksityisyyskäytännön</string>
-    <string name="window_main_proceed_button">Lahjoita • %s EUR</string>
-    <string name="window_main_bank_payment">Pankkimaksu</string>
-    <string name="window_main_card_payment">Korttimaksu</string>
-    <string name="window_main_details_lable">Syötä tiedot</string>
-    <string name="window_main_email_label">Sähköpostiosoite</string>
-    <string name="window_main_amount_label">Maksun summa</string>
-    <string name="window_main_country_label">Maa</string>
-    <string name="window_main_country_charity_label">Valitse maa ja hyväntekeväisyysjärjestö</string>
-    <string name="window_main_subtitle_label">Valitse hyväntekeväisyysjärjestö, jolle haluat tehdä lahjoituksen</string>
-    <string name="window_main_title_label">Maksun uudelleenohjaus</string>
-    <string name="window_main_email_blank_error">Sähköpostiosoite on pakollinen tieto</string>
-    <string name="window_main_email_invalid_format_error">Sähköpostiosoite on virheellinen</string>
-    <string name="window_main_amount_blank_error">Summan tulee olla suurempi kuin nolla</string>
-    <string name="dialog_payment_success_title">Maksusuoritus onnistui</string>
-    <string name="dialog_payment_success_button">OK</string>
-    <string name="window_main_no_creditor_selected_error">Ei valittua hyväntekeväisyysjärjestöä</string>
-    <string name="window_main_amount_field_currency">EUR</string>
+    <string name="kevin_window_main_terms_privacy_policy">Olen lukenut ja hyväksynyt käyttöehdot ja yksityisyyskäytännön</string>
+    <string name="kevin_window_main_terms_privacy_policy_clickable_terms">käyttöehdot</string>
+    <string name="kevin_window_main_terms_privacy_policy_clickable_policy">yksityisyyskäytännön</string>
+    <string name="kevin_window_main_proceed_button">Lahjoita • %s EUR</string>
+    <string name="kevin_window_main_bank_payment">Pankkimaksu</string>
+    <string name="kevin_window_main_card_payment">Korttimaksu</string>
+    <string name="kevin_window_main_details_lable">Syötä tiedot</string>
+    <string name="kevin_window_main_email_label">Sähköpostiosoite</string>
+    <string name="kevin_window_main_amount_label">Maksun summa</string>
+    <string name="kevin_window_main_country_label">Maa</string>
+    <string name="kevin_window_main_country_charity_label">Valitse maa ja hyväntekeväisyysjärjestö</string>
+    <string name="kevin_window_main_subtitle_label">Valitse hyväntekeväisyysjärjestö, jolle haluat tehdä lahjoituksen</string>
+    <string name="kevin_window_main_title_label">Maksun uudelleenohjaus</string>
+    <string name="kevin_window_main_email_blank_error">Sähköpostiosoite on pakollinen tieto</string>
+    <string name="kevin_window_main_email_invalid_format_error">Sähköpostiosoite on virheellinen</string>
+    <string name="kevin_window_main_amount_blank_error">Summan tulee olla suurempi kuin nolla</string>
+    <string name="kevin_dialog_payment_success_title">Maksusuoritus onnistui</string>
+    <string name="kevin_dialog_payment_success_button">OK</string>
+    <string name="kevin_window_main_no_creditor_selected_error">Ei valittua hyväntekeväisyysjärjestöä</string>
+    <string name="kevin_window_main_amount_field_currency">EUR</string>
 </resources>

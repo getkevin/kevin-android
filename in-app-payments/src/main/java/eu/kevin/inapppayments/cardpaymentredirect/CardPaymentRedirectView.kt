@@ -6,10 +6,10 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import eu.kevin.common.extensions.applySystemInsetsMargin
 import eu.kevin.common.extensions.setDebounceClickListener
 import eu.kevin.inapppayments.R
-import eu.kevin.inapppayments.databinding.FragmentCardPaymentRedirectBinding
+import eu.kevin.inapppayments.databinding.KevinFragmentCardPaymentRedirectBinding
 
 internal class CardPaymentRedirectView(context: Context) : ConstraintLayout(context) {
-    private val binding = FragmentCardPaymentRedirectBinding.inflate(LayoutInflater.from(context), this)
+    private val binding = KevinFragmentCardPaymentRedirectBinding.inflate(LayoutInflater.from(context), this)
 
     var delegate: CardPaymentRedirectViewDelegate? = null
 
@@ -30,9 +30,9 @@ internal class CardPaymentRedirectView(context: Context) : ConstraintLayout(cont
 
     fun setupMessage(bankName: String?) {
         binding.subtitleView.text = if (bankName != null) {
-            context.getString(R.string.window_card_payment_bank_redirect_subtitle).format(bankName)
+            context.getString(R.string.kevin_window_card_payment_bank_redirect_subtitle).format(bankName)
         } else {
-            context.getString(R.string.window_card_payment_redirect_subtitle)
+            context.getString(R.string.kevin_window_card_payment_redirect_subtitle)
         }
     }
 }

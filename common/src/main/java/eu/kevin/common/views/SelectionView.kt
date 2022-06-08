@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.core.widget.TextViewCompat
 import eu.kevin.common.R
-import eu.kevin.common.databinding.ViewSelectionBinding
+import eu.kevin.common.databinding.KevinViewSelectionBinding
 
 class SelectionView @JvmOverloads constructor(
     context: Context,
@@ -26,7 +26,7 @@ class SelectionView @JvmOverloads constructor(
             binding.imageView.setImageDrawable(value)
         }
 
-    private val binding = ViewSelectionBinding.inflate(LayoutInflater.from(context), this)
+    private val binding = KevinViewSelectionBinding.inflate(LayoutInflater.from(context), this)
 
     init {
         val styledAttributes = context.theme.obtainStyledAttributes(

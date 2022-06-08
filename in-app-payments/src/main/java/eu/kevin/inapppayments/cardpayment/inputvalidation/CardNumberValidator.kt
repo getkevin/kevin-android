@@ -5,8 +5,8 @@ import eu.kevin.inapppayments.R
 internal object CardNumberValidator {
     fun validate(cardNumber: String): ValidationResult {
         return when {
-            cardNumber.isBlank() -> ValidationResult.Invalid(R.string.error_no_card_number)
-            !isValidCardNumber(cardNumber) -> ValidationResult.Invalid(R.string.error_invalid_card_number)
+            cardNumber.isBlank() -> ValidationResult.Invalid(R.string.kevin_error_no_card_number)
+            !isValidCardNumber(cardNumber) -> ValidationResult.Invalid(R.string.kevin_error_invalid_card_number)
             else -> ValidationResult.Valid
         }
     }

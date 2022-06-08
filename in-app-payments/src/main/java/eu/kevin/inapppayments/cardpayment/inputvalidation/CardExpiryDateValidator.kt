@@ -11,11 +11,11 @@ internal object CardExpiryDateValidator {
 
     fun validate(expiryDate: String): ValidationResult {
         return when {
-            expiryDate.isBlank() -> ValidationResult.Invalid(R.string.error_no_expiry_date)
+            expiryDate.isBlank() -> ValidationResult.Invalid(R.string.kevin_error_no_expiry_date)
             !expiryDatePattern.matcher(expiryDate).matches() -> {
-                ValidationResult.Invalid(R.string.error_invalid_expiry_date)
+                ValidationResult.Invalid(R.string.kevin_error_invalid_expiry_date)
             }
-            !checkIfNotExpired(expiryDate) -> ValidationResult.Invalid(R.string.error_card_expired)
+            !checkIfNotExpired(expiryDate) -> ValidationResult.Invalid(R.string.kevin_error_card_expired)
             else -> ValidationResult.Valid
         }
     }

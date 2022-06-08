@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="@string/window_bank_selection_title" />
+        app:title="@string/kevin_window_bank_selection_title" />
 
     <TextView
         android:id="@+id/country_selection_label"
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:paddingVertical="14dp"
-        android:text="@string/window_bank_selection_select_country_label"
+        android:text="@string/kevin_window_bank_selection_select_country_label"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:paddingVertical="14dp"
-        android:text="@string/window_bank_selection_select_bank_label"
+        android:text="@string/kevin_window_bank_selection_select_bank_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/country_selection_view"
@@ -70,7 +70,7 @@
         app:layout_constraintVertical_bias="0"
         tools:itemCount="5"
         tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        tools:listitem="@layout/view_bank_list_item"
+        tools:listitem="@layout/kevin_view_bank_list_item"
         tools:paddingEnd="?kevinMarginEnd"
         tools:paddingStart="?kevinMarginStart"
         tools:spanCount="2" />
@@ -93,7 +93,7 @@
             android:layout_marginStart="?attr/kevinMarginStart"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="?attr/kevinMarginEnd"
-            android:text="@string/window_bank_selection_terms_and_conditions_text" />
+            android:text="@string/kevin_window_bank_selection_terms_and_conditions_text" />
 
         <Button
             android:id="@+id/continue_button"
@@ -103,7 +103,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="?attr/kevinMarginEnd"
             android:layout_marginBottom="16dp"
-            android:text="@string/Continue" />
+            android:text="@string/kevin_continue" />
 
     </LinearLayout>
 

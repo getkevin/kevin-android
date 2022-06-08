@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.kevin_activity_main)
         startListeningForRouteRequests()
         if (supportFragmentManager.backStackEntryCount == 0) {
             supportFragmentManager.commit {

@@ -14,7 +14,7 @@ internal object CountryHelper {
             context.packageName
         )
         if (resourceId == 0) {
-            return ContextCompat.getDrawable(context, R.drawable.ic_country_flag_eu)!!
+            return ContextCompat.getDrawable(context, R.drawable.kevin_ic_country_flag_eu)!!
         }
         return ContextCompat.getDrawable(context, resourceId)!!
     }

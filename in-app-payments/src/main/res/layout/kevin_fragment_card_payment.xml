@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="@string/window_payment_confirmation_title" />
+        app:title="@string/kevin_window_payment_confirmation_title" />
 
     <ScrollView
         android:id="@+id/scroll_view"
@@ -38,7 +38,7 @@
                 android:layout_height="56dp"
                 android:layout_marginTop="24dp"
                 android:contentDescription="@null"
-                android:src="@drawable/ic_payment_card"
+                android:src="@drawable/kevin_ic_payment_card"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="9dp"
-                android:text="@string/window_card_payment_label"
+                android:text="@string/kevin_window_card_payment_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/amount_view"
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="36dp"
                 android:gravity="start"
-                android:text="@string/window_card_payment_card_number_label"
+                android:text="@string/kevin_window_card_payment_card_number_label"
                 app:layout_constraintEnd_toEndOf="@id/card_number_input"
                 app:layout_constraintStart_toStartOf="@id/card_number_input"
                 app:layout_constraintTop_toBottomOf="@id/card_payment_label" />
@@ -94,7 +94,7 @@
                     style="?kevinTextInputStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/window_card_payment_card_number_hint"
+                    android:hint="@string/kevin_window_card_payment_card_number_hint"
                     android:imeOptions="actionNext"
                     android:inputType="number"
                     android:maxLength="23"
@@ -109,7 +109,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="26dp"
                 android:gravity="start"
-                android:text="@string/window_card_payment_cardholder_name_label"
+                android:text="@string/kevin_window_card_payment_cardholder_name_label"
                 app:layout_constraintEnd_toEndOf="@id/cardholder_name_input"
                 app:layout_constraintStart_toStartOf="@id/cardholder_name_input"
                 app:layout_constraintTop_toBottomOf="@id/card_number_input" />
@@ -128,7 +128,7 @@
                     style="?kevinTextInputStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/window_card_payment_cardholder_name_hint"
+                    android:hint="@string/kevin_window_card_payment_cardholder_name_hint"
                     android:imeOptions="actionNext"
                     android:inputType="textPersonName|textCapWords"
                     android:maxLines="1" />
@@ -142,7 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="26dp"
                 android:gravity="start"
-                android:text="@string/window_card_payment_expiry_date_label"
+                android:text="@string/kevin_window_card_payment_expiry_date_label"
                 app:layout_constraintEnd_toEndOf="@id/expiry_date_input"
                 app:layout_constraintStart_toStartOf="@id/expiry_date_input"
                 app:layout_constraintTop_toBottomOf="@id/cardholder_name_input" />
@@ -162,7 +162,7 @@
                     style="?kevinTextInputStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/window_card_payment_expiry_date_hint"
+                    android:hint="@string/kevin_window_card_payment_expiry_date_hint"
                     android:imeOptions="actionNext"
                     android:inputType="number"
                     android:maxLength="5"
@@ -177,7 +177,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="26dp"
                 android:gravity="start"
-                android:text="@string/window_card_payment_cvv_label"
+                android:text="@string/kevin_window_card_payment_cvv_label"
                 app:layout_constrainedWidth="true"
                 app:layout_constraintStart_toStartOf="@id/cvv_input"
                 app:layout_constraintTop_toBottomOf="@id/cardholder_name_input" />
@@ -189,7 +189,7 @@
                 android:layout_marginStart="8dp"
                 android:contentDescription="@null"
                 android:hapticFeedbackEnabled="false"
-                android:src="@drawable/ic_question_mark"
+                android:src="@drawable/kevin_ic_question_mark"
                 app:layout_constraintBottom_toBottomOf="@id/cvv_label"
                 app:layout_constraintEnd_toEndOf="@id/cvv_input"
                 app:layout_constraintHorizontal_bias="0"
@@ -211,7 +211,7 @@
                     style="?kevinTextInputStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/window_card_payment_cvv_hint"
+                    android:hint="@string/kevin_window_card_payment_cvv_hint"
                     android:imeOptions="actionDone"
                     android:inputType="number"
                     android:maxLength="3"
@@ -225,7 +225,7 @@
                 android:layout_height="20dp"
                 android:layout_marginStart="?kevinMarginStart"
                 android:contentDescription="@null"
-                android:src="@drawable/ic_report_warning"
+                android:src="@drawable/kevin_ic_report_warning"
                 app:layout_constraintBottom_toBottomOf="@id/notice_view"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/notice_view" />
@@ -239,7 +239,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="?kevinMarginEnd"
                 android:gravity="start"
-                android:text="@string/window_card_payment_notice"
+                android:text="@string/kevin_window_card_payment_notice"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/notice_icon"
                 app:layout_constraintTop_toBottomOf="@id/expiry_date_input" />
@@ -250,7 +250,7 @@
                 android:layout_marginVertical="16dp"
                 android:layout_marginStart="?kevinMarginStart"
                 android:layout_marginEnd="?kevinMarginEnd"
-                android:text="@string/Continue"
+                android:text="@string/kevin_continue"
                 app:layout_constrainedWidth="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

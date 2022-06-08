@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import eu.kevin.accounts.countryselection.adapters.CountryListAdapter
 import eu.kevin.accounts.countryselection.entities.Country
 import eu.kevin.accounts.countryselection.helpers.CountryHelper
-import eu.kevin.accounts.databinding.FragmentCountrySelectionBinding
+import eu.kevin.accounts.databinding.KevinFragmentCountrySelectionBinding
 import eu.kevin.common.architecture.BaseView
 import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.entities.LoadingState
@@ -18,10 +18,10 @@ import eu.kevin.common.helpers.ErrorHelper
 import eu.kevin.common.helpers.SnackbarHelper
 
 internal class CountrySelectionView(context: Context) :
-    BaseView<FragmentCountrySelectionBinding>(context),
+    BaseView<KevinFragmentCountrySelectionBinding>(context),
     IView<CountrySelectionState> {
 
-    override val binding = FragmentCountrySelectionBinding.inflate(LayoutInflater.from(context), this)
+    override val binding = KevinFragmentCountrySelectionBinding.inflate(LayoutInflater.from(context), this)
 
     var delegate: CountrySelectionViewDelegate? = null
 

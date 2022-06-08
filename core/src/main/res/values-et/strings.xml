@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Continue">Jätka</string>
-    <string name="error_unknown">Tekkis tundmatu viga</string>
-    <string name="error_no_internet">Internetiühendus puudub</string>
-    <string name="yes">Jah</string>
-    <string name="no">Ei</string>
-    <string name="dialog_exit_confirmation_title">Hoiatus!</string>
-    <string name="navigate_back_content_description">Navigeerige tagasi</string>
+    <string name="kevin_continue">Jätka</string>
+    <string name="kevin_error_unknown">Tekkis tundmatu viga</string>
+    <string name="kevin_error_no_internet">Internetiühendus puudub</string>
+    <string name="kevin_yes">Jah</string>
+    <string name="kevin_no">Ei</string>
+    <string name="kevin_dialog_exit_confirmation_title">Hoiatus!</string>
+    <string name="kevin_navigate_back_content_description">Navigeerige tagasi</string>
 </resources>

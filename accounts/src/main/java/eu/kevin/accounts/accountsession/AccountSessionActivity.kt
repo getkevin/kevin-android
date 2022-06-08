@@ -11,7 +11,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import eu.kevin.accounts.KevinAccountsPlugin
 import eu.kevin.accounts.R
 import eu.kevin.accounts.accountsession.entities.AccountSessionConfiguration
-import eu.kevin.accounts.databinding.ActivityAccountLinkingBinding
+import eu.kevin.accounts.databinding.KevinActivityAccountLinkingBinding
 import eu.kevin.common.architecture.BaseFragmentActivity
 import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.extensions.setFragmentResult
@@ -25,7 +25,7 @@ class AccountSessionActivity : BaseFragmentActivity(), AccountSessionListener {
     private var accountSessionConfiguration: AccountSessionConfiguration? = null
 
     private lateinit var accountLinkingSession: AccountSession
-    private lateinit var binding: ActivityAccountLinkingBinding
+    private lateinit var binding: KevinActivityAccountLinkingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         if (!KevinAccountsPlugin.isConfigured()) {
@@ -34,7 +34,7 @@ class AccountSessionActivity : BaseFragmentActivity(), AccountSessionListener {
         setTheme(Kevin.getTheme())
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
-        binding = ActivityAccountLinkingBinding.inflate(layoutInflater)
+        binding = KevinActivityAccountLinkingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         accountSessionConfiguration = intent?.extras?.getParcelable(AccountSessionContract.CONFIGURATION_KEY)
@@ -78,12 +78,12 @@ class AccountSessionActivity : BaseFragmentActivity(), AccountSessionListener {
     private fun showExitConfirmation() {
         MaterialAlertDialogBuilder(this)
             .setCancelable(false)
-            .setTitle(R.string.dialog_exit_confirmation_title)
-            .setMessage(R.string.dialog_exit_confirmation_accounts_message)
-            .setPositiveButton(R.string.yes) { _, _ ->
+            .setTitle(R.string.kevin_dialog_exit_confirmation_title)
+            .setMessage(R.string.kevin_dialog_exit_confirmation_accounts_message)
+            .setPositiveButton(R.string.kevin_yes) { _, _ ->
                 returnActivityResult(SessionResult.Canceled)
             }
-            .setNegativeButton(R.string.no) { dialog, _ ->
+            .setNegativeButton(R.string.kevin_no) { dialog, _ ->
                 dialog.dismiss()
             }
             .show()

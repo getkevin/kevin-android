@@ -16,13 +16,13 @@ import eu.kevin.common.extensions.getColorFromAttr
 import eu.kevin.common.extensions.hideKeyboard
 import eu.kevin.common.managers.KeyboardManager
 import eu.kevin.inapppayments.KevinPaymentsPlugin
-import eu.kevin.inapppayments.databinding.FragmentPaymentConfirmationBinding
+import eu.kevin.inapppayments.databinding.KevinFragmentPaymentConfirmationBinding
 
 internal class PaymentConfirmationView(context: Context) :
-    BaseView<FragmentPaymentConfirmationBinding>(context),
+    BaseView<KevinFragmentPaymentConfirmationBinding>(context),
     IView<PaymentConfirmationState> {
 
-    override val binding = FragmentPaymentConfirmationBinding.inflate(LayoutInflater.from(context), this)
+    override val binding = KevinFragmentPaymentConfirmationBinding.inflate(LayoutInflater.from(context), this)
 
     var delegate: PaymentConfirmationViewDelegate? = null
 
@@ -34,7 +34,7 @@ internal class PaymentConfirmationView(context: Context) :
             setNavigationOnClickListener {
                 delegate?.onBackClicked()
             }
-            setNavigationContentDescription(eu.kevin.accounts.R.string.navigate_back_content_description)
+            setNavigationContentDescription(eu.kevin.accounts.R.string.kevin_navigate_back_content_description)
             applySystemInsetsPadding(top = true)
         }
 

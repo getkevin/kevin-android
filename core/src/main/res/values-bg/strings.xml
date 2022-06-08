@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Continue">Продължи</string>
-    <string name="error_unknown">Възникна непозната грешка</string>
-    <string name="error_no_internet">Няма връзка с интернет</string>
-    <string name="yes">Да</string>
-    <string name="no">Не</string>
-    <string name="dialog_exit_confirmation_title">Предупреждение!</string>
-    <string name="navigate_back_content_description">Върни се назад</string>
+    <string name="kevin_continue">Продължи</string>
+    <string name="kevin_error_unknown">Възникна непозната грешка</string>
+    <string name="kevin_error_no_internet">Няма връзка с интернет</string>
+    <string name="kevin_yes">Да</string>
+    <string name="kevin_no">Не</string>
+    <string name="kevin_dialog_exit_confirmation_title">Предупреждение!</string>
+    <string name="kevin_navigate_back_content_description">Върни се назад</string>
 </resources>

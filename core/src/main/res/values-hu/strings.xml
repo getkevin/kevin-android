@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Continue">Folytatás</string>
-    <string name="error_unknown">Ismeretlen hiba történt</string>
-    <string name="error_no_internet">Nincs Internet-kapcsolat</string>
-    <string name="yes">Igen</string>
-    <string name="no">Nem</string>
-    <string name="dialog_exit_confirmation_title">Vigyázat!</string>
-    <string name="navigate_back_content_description">Visszalépés</string>
+    <string name="kevin_continue">Folytatás</string>
+    <string name="kevin_error_unknown">Ismeretlen hiba történt</string>
+    <string name="kevin_error_no_internet">Nincs Internet-kapcsolat</string>
+    <string name="kevin_yes">Igen</string>
+    <string name="kevin_no">Nem</string>
+    <string name="kevin_dialog_exit_confirmation_title">Vigyázat!</string>
+    <string name="kevin_navigate_back_content_description">Visszalépés</string>
 </resources>

@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="window_main_terms_privacy_policy">Я прочитал Условия и Политику конфиденциальности и согласен с ними</string>
-    <string name="window_main_terms_privacy_policy_clickable_terms">Условия</string>
-    <string name="window_main_terms_privacy_policy_clickable_policy">Политику конфиденциальности</string>
-    <string name="window_main_proceed_button">Пожертвовать • %s евро</string>
-    <string name="window_main_bank_payment">Банковский платеж</string>
-    <string name="window_main_card_payment">Оплата картой</string>
-    <string name="window_main_details_lable">Введите данные</string>
-    <string name="window_main_email_label">Электронная почта</string>
-    <string name="window_main_amount_label">Сумма платежа</string>
-    <string name="window_main_country_label">Страна</string>
-    <string name="window_main_country_charity_label">Выберите страну и благотворительную организацию</string>
-    <string name="window_main_subtitle_label">Выберите благотворительную организацию, в которую вы хотите сделать пожертвование</string>
-    <string name="window_main_title_label">Перенаправить платеж</string>
-    <string name="window_main_email_blank_error">Требуется указать адрес электронной почты</string>
-    <string name="window_main_email_invalid_format_error">Неверный адрес электронной почты</string>
-    <string name="window_main_amount_blank_error">Сумма должна быть больше нуля</string>
-    <string name="dialog_payment_success_title">Платеж прошел успешно</string>
-    <string name="dialog_payment_success_button">ОК</string>
-    <string name="window_main_no_creditor_selected_error">Благотворительная организация не выбрана</string>
-    <string name="window_main_amount_field_currency">Евро</string>
+    <string name="kevin_window_main_terms_privacy_policy">Я прочитал Условия и Политику конфиденциальности и согласен с ними</string>
+    <string name="kevin_window_main_terms_privacy_policy_clickable_terms">Условия</string>
+    <string name="kevin_window_main_terms_privacy_policy_clickable_policy">Политику конфиденциальности</string>
+    <string name="kevin_window_main_proceed_button">Пожертвовать • %s евро</string>
+    <string name="kevin_window_main_bank_payment">Банковский платеж</string>
+    <string name="kevin_window_main_card_payment">Оплата картой</string>
+    <string name="kevin_window_main_details_lable">Введите данные</string>
+    <string name="kevin_window_main_email_label">Электронная почта</string>
+    <string name="kevin_window_main_amount_label">Сумма платежа</string>
+    <string name="kevin_window_main_country_label">Страна</string>
+    <string name="kevin_window_main_country_charity_label">Выберите страну и благотворительную организацию</string>
+    <string name="kevin_window_main_subtitle_label">Выберите благотворительную организацию, в которую вы хотите сделать пожертвование</string>
+    <string name="kevin_window_main_title_label">Перенаправить платеж</string>
+    <string name="kevin_window_main_email_blank_error">Требуется указать адрес электронной почты</string>
+    <string name="kevin_window_main_email_invalid_format_error">Неверный адрес электронной почты</string>
+    <string name="kevin_window_main_amount_blank_error">Сумма должна быть больше нуля</string>
+    <string name="kevin_dialog_payment_success_title">Платеж прошел успешно</string>
+    <string name="kevin_dialog_payment_success_button">ОК</string>
+    <string name="kevin_window_main_no_creditor_selected_error">Благотворительная организация не выбрана</string>
+    <string name="kevin_window_main_amount_field_currency">Евро</string>
 </resources>

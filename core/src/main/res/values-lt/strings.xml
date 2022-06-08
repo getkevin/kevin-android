@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Continue">Tęsti</string>
-    <string name="error_unknown">Įvyko nežinoma klaida</string>
-    <string name="error_no_internet">Nėra interneto ryšio</string>
-    <string name="yes">Taip</string>
-    <string name="no">Ne</string>
-    <string name="dialog_exit_confirmation_title">Įspėjimas!</string>
-    <string name="navigate_back_content_description">Grįžti atgal</string>
+    <string name="kevin_continue">Tęsti</string>
+    <string name="kevin_error_unknown">Įvyko nežinoma klaida</string>
+    <string name="kevin_error_no_internet">Nėra interneto ryšio</string>
+    <string name="kevin_yes">Taip</string>
+    <string name="kevin_no">Ne</string>
+    <string name="kevin_dialog_exit_confirmation_title">Įspėjimas!</string>
+    <string name="kevin_navigate_back_content_description">Grįžti atgal</string>
 </resources>
