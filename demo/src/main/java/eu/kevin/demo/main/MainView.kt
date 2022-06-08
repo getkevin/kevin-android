@@ -53,12 +53,20 @@ internal class MainView(context: Context) : FrameLayout(context) {
             termsTextView.text = SpannableStringHelper.getSpannableWithLinks(
                 context.getString(R.string.kevin_window_main_terms_privacy_policy),
                 ContextCompat.getColor(context, R.color.blue),
-                SpannableStringLink(context.getString(R.string.kevin_window_main_terms_privacy_policy_clickable_terms)) {
+                SpannableStringLink(
+                    context.getString(
+                        R.string.kevin_window_main_terms_privacy_policy_clickable_terms
+                    )
+                ) {
                     callback?.openUrl(
                         context.getString(R.string.kevin_terms_url)
                     )
                 },
-                SpannableStringLink(context.getString(R.string.kevin_window_main_terms_privacy_policy_clickable_policy)) {
+                SpannableStringLink(
+                    context.getString(
+                        R.string.kevin_window_main_terms_privacy_policy_clickable_policy
+                    )
+                ) {
                     callback?.openUrl(
                         context.getString(R.string.kevin_privacy_policy_url)
                     )
