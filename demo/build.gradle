@@ -81,6 +81,8 @@ android {
         exclude("META-INF/*.kotlin_module")
         pickFirst("META-INF/kotlinx-coroutines-io.kotlin_module")
     }
+
+    resourcePrefix 'kevin_'
 }
 
 dependencies {
