@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Continue">Doorgaan</string>
-    <string name="error_unknown">Er is een onbekende fout opgetreden</string>
-    <string name="error_no_internet">Geen internetverbinding</string>
-    <string name="yes">Ja</string>
-    <string name="no">Nee</string>
-    <string name="dialog_exit_confirmation_title">Waarschuwing!</string>
-    <string name="navigate_back_content_description">Teruggaan</string>
+    <string name="kevin_continue">Doorgaan</string>
+    <string name="kevin_error_unknown">Er is een onbekende fout opgetreden</string>
+    <string name="kevin_error_no_internet">Geen internetverbinding</string>
+    <string name="kevin_yes">Ja</string>
+    <string name="kevin_no">Nee</string>
+    <string name="kevin_dialog_exit_confirmation_title">Waarschuwing!</string>
+    <string name="kevin_navigate_back_content_description">Teruggaan</string>
 </resources>

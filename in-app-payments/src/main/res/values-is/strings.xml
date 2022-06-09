@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="window_payment_confirmation_title">Staðfesting greiðslu</string>
-    <string name="dialog_exit_confirmation_payments_message">Vilt þú örugglega hætta við þessa greiðslu?</string>
-    <string name="window_card_payment_label">Kortagreiðsla</string>
-    <string name="window_card_payment_cardholder_name_label">Nafn eiganda kortsins</string>
-    <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
-    <string name="window_card_payment_card_number_label">Kortanúmer</string>
-    <string name="window_card_payment_expiry_date_label">Gildistími</string>
-    <string name="window_card_payment_notice">kevin. geymir engar persónu- eða kortaupplýsingar</string>
-    <string name="window_card_payment_cvv_tooltip">CVV er 3 tölustafir á bakhliðinni á kortinu</string>
-    <string name="error_no_cardholder_name">Gefa þarf upp nafn eiganda kortsins</string>
-    <string name="error_invalid_cvv">Gefðu upp gilt CVV</string>
-    <string name="error_no_cvv">Gefa þarf upp CVV</string>
-    <string name="error_invalid_expiry_date">Gildistími er ógildur</string>
-    <string name="error_no_expiry_date">Gefa þarf upp gildistíma</string>
-    <string name="error_card_expired">Kortið er útrunnið</string>
-    <string name="error_invalid_card_number">Kortanúmerið er ógilt</string>
-    <string name="error_no_card_number">Gefa þarf upp kortanúmer</string>
-    <string name="window_card_payment_redirect_title">Halda áfram að greiða með bankafærslu?</string>
-    <string name="window_card_payment_redirect_subtitle">Viltu halda áfram að greiða með bankafærslu?</string>
-    <string name="window_card_payment_bank_redirect_subtitle">Við höfum tekið eftir því að greiðslukortið þitt er gefið út af %s. Viltu halda áfram að greiða með bankafærslu?</string>
+    <string name="kevin_window_payment_confirmation_title">Staðfesting greiðslu</string>
+    <string name="kevin_dialog_exit_confirmation_payments_message">Vilt þú örugglega hætta við þessa greiðslu?</string>
+    <string name="kevin_window_card_payment_label">Kortagreiðsla</string>
+    <string name="kevin_window_card_payment_cardholder_name_label">Nafn eiganda kortsins</string>
+    <string name="kevin_window_card_payment_cardholder_name_hint">John Appleseed</string>
+    <string name="kevin_window_card_payment_card_number_label">Kortanúmer</string>
+    <string name="kevin_window_card_payment_expiry_date_label">Gildistími</string>
+    <string name="kevin_window_card_payment_notice">kevin. geymir engar persónu- eða kortaupplýsingar</string>
+    <string name="kevin_window_card_payment_cvv_tooltip">CVV er 3 tölustafir á bakhliðinni á kortinu</string>
+    <string name="kevin_error_no_cardholder_name">Gefa þarf upp nafn eiganda kortsins</string>
+    <string name="kevin_error_invalid_cvv">Gefðu upp gilt CVV</string>
+    <string name="kevin_error_no_cvv">Gefa þarf upp CVV</string>
+    <string name="kevin_error_invalid_expiry_date">Gildistími er ógildur</string>
+    <string name="kevin_error_no_expiry_date">Gefa þarf upp gildistíma</string>
+    <string name="kevin_error_card_expired">Kortið er útrunnið</string>
+    <string name="kevin_error_invalid_card_number">Kortanúmerið er ógilt</string>
+    <string name="kevin_error_no_card_number">Gefa þarf upp kortanúmer</string>
+    <string name="kevin_window_card_payment_redirect_title">Halda áfram að greiða með bankafærslu?</string>
+    <string name="kevin_window_card_payment_redirect_subtitle">Viltu halda áfram að greiða með bankafærslu?</string>
+    <string name="kevin_window_card_payment_bank_redirect_subtitle">Við höfum tekið eftir því að greiðslukortið þitt er gefið út af %s. Viltu halda áfram að greiða með bankafærslu?</string>
 </resources>

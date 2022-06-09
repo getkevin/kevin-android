@@ -15,13 +15,13 @@ import eu.kevin.common.helpers.SnackbarHelper
 import eu.kevin.demo.countryselection.adapters.CountryListAdapter
 import eu.kevin.demo.countryselection.entities.Country
 import eu.kevin.demo.countryselection.helpers.CountryHelper
-import eu.kevin.demo.databinding.FragmentSelectCountryBinding
+import eu.kevin.demo.databinding.KevinFragmentSelectCountryBinding
 
 internal class CountrySelectionView(context: Context) :
-    BaseView<FragmentSelectCountryBinding>(context),
+    BaseView<KevinFragmentSelectCountryBinding>(context),
     IView<CountrySelectionState> {
 
-    override val binding = FragmentSelectCountryBinding.inflate(LayoutInflater.from(context), this)
+    override val binding = KevinFragmentSelectCountryBinding.inflate(LayoutInflater.from(context), this)
 
     var delegate: CountrySelectionViewDelegate? = null
 

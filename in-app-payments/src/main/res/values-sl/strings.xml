@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="window_payment_confirmation_title">Potrditev plačila</string>
-    <string name="dialog_exit_confirmation_payments_message">Res želite preklicati to plačilo?</string>
-    <string name="window_card_payment_label">Plačilo s kartico</string>
-    <string name="window_card_payment_cardholder_name_label">Ime imetnika kartice</string>
-    <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
-    <string name="window_card_payment_card_number_label">Številka kartice</string>
-    <string name="window_card_payment_expiry_date_label">Datum poteka veljavnosti</string>
-    <string name="window_card_payment_notice">kevin. ne shranjuje vaših osebnih podatkov ali podatkov o kartici.</string>
-    <string name="window_card_payment_cvv_tooltip">Varnostna koda CVV je trištevilčna koda, navedena na zadnji strani kartice</string>
-    <string name="error_no_cardholder_name">Vnesite ime imetnika kartice</string>
-    <string name="error_invalid_cvv">Vnesite veljavno varnostno kodo CVV</string>
-    <string name="error_no_cvv">Vnesite varnostno kodo CVV</string>
-    <string name="error_invalid_expiry_date">Datum poteka veljavnosti ni veljaven</string>
-    <string name="error_no_expiry_date">Vnesite datum poteka veljavnosti</string>
-    <string name="error_card_expired">Kartica je potekla</string>
-    <string name="error_invalid_card_number">Številka kartice ni veljavna</string>
-    <string name="error_no_card_number">Vnesite številko kartice</string>
-    <string name="window_card_payment_redirect_title">Nadaljevanje plačila z bančnim nakazilom?</string>
-    <string name="window_card_payment_redirect_subtitle">Želite nadaljevati s plačilom z bančnim nakazilom?</string>
-    <string name="window_card_payment_bank_redirect_subtitle">Opazili smo, da je bila vaša plačilna kartica izdana pri %s. Želite nadaljevati s plačilom z bančnim nakazilom?</string>
+    <string name="kevin_window_payment_confirmation_title">Potrditev plačila</string>
+    <string name="kevin_dialog_exit_confirmation_payments_message">Res želite preklicati to plačilo?</string>
+    <string name="kevin_window_card_payment_label">Plačilo s kartico</string>
+    <string name="kevin_window_card_payment_cardholder_name_label">Ime imetnika kartice</string>
+    <string name="kevin_window_card_payment_cardholder_name_hint">John Appleseed</string>
+    <string name="kevin_window_card_payment_card_number_label">Številka kartice</string>
+    <string name="kevin_window_card_payment_expiry_date_label">Datum poteka veljavnosti</string>
+    <string name="kevin_window_card_payment_notice">kevin. ne shranjuje vaših osebnih podatkov ali podatkov o kartici.</string>
+    <string name="kevin_window_card_payment_cvv_tooltip">Varnostna koda CVV je trištevilčna koda, navedena na zadnji strani kartice</string>
+    <string name="kevin_error_no_cardholder_name">Vnesite ime imetnika kartice</string>
+    <string name="kevin_error_invalid_cvv">Vnesite veljavno varnostno kodo CVV</string>
+    <string name="kevin_error_no_cvv">Vnesite varnostno kodo CVV</string>
+    <string name="kevin_error_invalid_expiry_date">Datum poteka veljavnosti ni veljaven</string>
+    <string name="kevin_error_no_expiry_date">Vnesite datum poteka veljavnosti</string>
+    <string name="kevin_error_card_expired">Kartica je potekla</string>
+    <string name="kevin_error_invalid_card_number">Številka kartice ni veljavna</string>
+    <string name="kevin_error_no_card_number">Vnesite številko kartice</string>
+    <string name="kevin_window_card_payment_redirect_title">Nadaljevanje plačila z bančnim nakazilom?</string>
+    <string name="kevin_window_card_payment_redirect_subtitle">Želite nadaljevati s plačilom z bančnim nakazilom?</string>
+    <string name="kevin_window_card_payment_bank_redirect_subtitle">Opazili smo, da je bila vaša plačilna kartica izdana pri %s. Želite nadaljevati s plačilom z bančnim nakazilom?</string>
 </resources>

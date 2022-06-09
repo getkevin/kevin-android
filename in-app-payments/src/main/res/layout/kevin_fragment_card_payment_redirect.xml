@@ -11,7 +11,7 @@
         android:layout_width="40dp"
         android:layout_height="6dp"
         android:layout_marginTop="6dp"
-        android:background="@drawable/modal_window_handle"
+        android:background="@drawable/kevin_modal_window_handle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,7 +22,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
         android:contentDescription="@null"
-        android:src="@drawable/ic_bank"
+        android:src="@drawable/kevin_ic_bank"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/window_handle" />
@@ -35,7 +35,7 @@
         android:layout_marginStart="?attr/kevinMarginStart"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="?attr/kevinMarginEnd"
-        android:text="@string/window_card_payment_redirect_title"
+        android:text="@string/kevin_window_card_payment_redirect_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bank_icon" />
@@ -48,7 +48,7 @@
         android:layout_marginStart="?attr/kevinMarginStart"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="?attr/kevinMarginEnd"
-        android:text="@string/window_card_payment_redirect_subtitle"
+        android:text="@string/kevin_window_card_payment_redirect_subtitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title_view" />
@@ -62,7 +62,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="6dp"
         android:layout_marginBottom="20dp"
-        android:text="@string/no"
+        android:text="@string/kevin_no"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/yes_button"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +78,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="?attr/kevinMarginEnd"
         android:layout_marginBottom="20dp"
-        android:text="@string/yes"
+        android:text="@string/kevin_yes"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/no_button"

@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="window_main_terms_privacy_policy">Jeg har lest og samtykker til vilkårene og betingelsene samt personvernerklæringen</string>
-    <string name="window_main_terms_privacy_policy_clickable_terms">vilkårene og betingelsene</string>
-    <string name="window_main_terms_privacy_policy_clickable_policy">personvernerklæringen</string>
-    <string name="window_main_proceed_button">Doner • %s EUR</string>
-    <string name="window_main_bank_payment">Bankbetaling</string>
-    <string name="window_main_card_payment">Kortbetaling</string>
-    <string name="window_main_details_lable">Legg inn opplysninger</string>
-    <string name="window_main_email_label">E-post</string>
-    <string name="window_main_amount_label">Betalingsbeløp</string>
-    <string name="window_main_country_label">Land</string>
-    <string name="window_main_country_charity_label">Velg land og veldedighet</string>
-    <string name="window_main_subtitle_label">Velg en veldedighet du ønsker å donere til</string>
-    <string name="window_main_title_label">Omdiriger betaling</string>
-    <string name="window_main_email_blank_error">E-postadresse er påkrevd</string>
-    <string name="window_main_email_invalid_format_error">E-postadressen er ugyldig</string>
-    <string name="window_main_amount_blank_error">Beløpet må være større enn null</string>
-    <string name="dialog_payment_success_title">Betalingen var vellykket</string>
-    <string name="dialog_payment_success_button">OK</string>
-    <string name="window_main_no_creditor_selected_error">Veldedighet er ikke valgt</string>
-    <string name="window_main_amount_field_currency">EUR</string>
+    <string name="kevin_window_main_terms_privacy_policy">Jeg har lest og samtykker til vilkårene og betingelsene samt personvernerklæringen</string>
+    <string name="kevin_window_main_terms_privacy_policy_clickable_terms">vilkårene og betingelsene</string>
+    <string name="kevin_window_main_terms_privacy_policy_clickable_policy">personvernerklæringen</string>
+    <string name="kevin_window_main_proceed_button">Doner • %s EUR</string>
+    <string name="kevin_window_main_bank_payment">Bankbetaling</string>
+    <string name="kevin_window_main_card_payment">Kortbetaling</string>
+    <string name="kevin_window_main_details_lable">Legg inn opplysninger</string>
+    <string name="kevin_window_main_email_label">E-post</string>
+    <string name="kevin_window_main_amount_label">Betalingsbeløp</string>
+    <string name="kevin_window_main_country_label">Land</string>
+    <string name="kevin_window_main_country_charity_label">Velg land og veldedighet</string>
+    <string name="kevin_window_main_subtitle_label">Velg en veldedighet du ønsker å donere til</string>
+    <string name="kevin_window_main_title_label">Omdiriger betaling</string>
+    <string name="kevin_window_main_email_blank_error">E-postadresse er påkrevd</string>
+    <string name="kevin_window_main_email_invalid_format_error">E-postadressen er ugyldig</string>
+    <string name="kevin_window_main_amount_blank_error">Beløpet må være større enn null</string>
+    <string name="kevin_dialog_payment_success_title">Betalingen var vellykket</string>
+    <string name="kevin_dialog_payment_success_button">OK</string>
+    <string name="kevin_window_main_no_creditor_selected_error">Veldedighet er ikke valgt</string>
+    <string name="kevin_window_main_amount_field_currency">EUR</string>
 </resources>

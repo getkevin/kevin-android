@@ -7,11 +7,11 @@
     tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
     <View
-        android:id="@+id/window_handle"
+        android:id="@+id/kevin_window_handle"
         android:layout_width="40dp"
         android:layout_height="6dp"
         android:layout_marginTop="6dp"
-        android:background="@drawable/handle"
+        android:background="@drawable/kevin_handle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,10 +23,10 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
-        android:text="@string/window_country_selection_title"
+        android:text="@string/kevin_window_country_selection_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/window_handle" />
+        app:layout_constraintTop_toBottomOf="@id/kevin_window_handle" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/countries_recycler_view"
@@ -40,7 +40,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/countries_title_view"
-        tools:listitem="@layout/view_country_list_item" />
+        tools:listitem="@layout/kevin_view_country_list_item" />
 
     <ProgressBar
         android:id="@+id/progress_view"

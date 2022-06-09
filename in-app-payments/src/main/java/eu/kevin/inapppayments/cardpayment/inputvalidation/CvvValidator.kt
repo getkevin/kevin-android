@@ -8,8 +8,8 @@ internal object CvvValidator {
 
     fun validate(cvv: String): ValidationResult {
         return when {
-            cvv.isBlank() -> ValidationResult.Invalid(R.string.error_no_cvv)
-            !cvvPattern.matcher(cvv).matches() -> ValidationResult.Invalid(R.string.error_invalid_cvv)
+            cvv.isBlank() -> ValidationResult.Invalid(R.string.kevin_error_no_cvv)
+            !cvvPattern.matcher(cvv).matches() -> ValidationResult.Invalid(R.string.kevin_error_invalid_cvv)
             else -> ValidationResult.Valid
         }
     }

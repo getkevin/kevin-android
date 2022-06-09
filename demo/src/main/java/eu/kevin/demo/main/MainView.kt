@@ -22,7 +22,7 @@ import eu.kevin.common.helpers.SnackbarHelper
 import eu.kevin.common.managers.KeyboardManager
 import eu.kevin.demo.R
 import eu.kevin.demo.countryselection.helpers.CountryHelper
-import eu.kevin.demo.databinding.FragmentMainBinding
+import eu.kevin.demo.databinding.KevinFragmentMainBinding
 import eu.kevin.demo.extensions.getCurrentLocale
 import eu.kevin.demo.extensions.removeNumberSeparator
 import eu.kevin.demo.extensions.replaceDecimalSeparatorWithDot
@@ -41,7 +41,7 @@ internal class MainView(context: Context) : FrameLayout(context) {
 
     var callback: MainViewCallback? = null
 
-    private val binding = FragmentMainBinding.inflate(LayoutInflater.from(context), this)
+    private val binding = KevinFragmentMainBinding.inflate(LayoutInflater.from(context), this)
     private val creditorsAdapter = CreditorsAdapter {
         callback?.onCreditorSelected(it)
     }
@@ -51,16 +51,24 @@ internal class MainView(context: Context) : FrameLayout(context) {
             creditorsRecyclerView.adapter = creditorsAdapter
 
             termsTextView.text = SpannableStringHelper.getSpannableWithLinks(
-                context.getString(R.string.window_main_terms_privacy_policy),
+                context.getString(R.string.kevin_window_main_terms_privacy_policy),
                 ContextCompat.getColor(context, R.color.blue),
-                SpannableStringLink(context.getString(R.string.window_main_terms_privacy_policy_clickable_terms)) {
+                SpannableStringLink(
+                    context.getString(
+                        R.string.kevin_window_main_terms_privacy_policy_clickable_terms
+                    )
+                ) {
                     callback?.openUrl(
-                        context.getString(R.string.terms_url)
+                        context.getString(R.string.kevin_terms_url)
                     )
                 },
-                SpannableStringLink(context.getString(R.string.window_main_terms_privacy_policy_clickable_policy)) {
+                SpannableStringLink(
+                    context.getString(
+                        R.string.kevin_window_main_terms_privacy_policy_clickable_policy
+                    )
+                ) {
                     callback?.openUrl(
-                        context.getString(R.string.privacy_policy_url)
+                        context.getString(R.string.kevin_privacy_policy_url)
                     )
                 }
             )
@@ -103,7 +111,7 @@ internal class MainView(context: Context) : FrameLayout(context) {
         }
         with(binding) {
             proceedButton.text =
-                context.getString(R.string.window_main_proceed_button, state.buttonText)
+                context.getString(R.string.kevin_window_main_proceed_button, state.buttonText)
 
             countryFlagImageView.setImageDrawable(
                 CountryHelper.getCountryFlagDrawable(
@@ -132,8 +140,8 @@ internal class MainView(context: Context) : FrameLayout(context) {
 
     fun showSuccessDialog() {
         MaterialAlertDialogBuilder(context)
-            .setTitle(R.string.dialog_payment_success_title)
-            .setPositiveButton(R.string.dialog_payment_success_button) { dialog, _ ->
+            .setTitle(R.string.kevin_dialog_payment_success_title)
+            .setPositiveButton(R.string.kevin_dialog_payment_success_button) { dialog, _ ->
                 dialog.dismiss()
             }
             .show()
@@ -149,7 +157,7 @@ internal class MainView(context: Context) : FrameLayout(context) {
 
     private fun getErrorMessage(error: Throwable): String {
         return when (error) {
-            is CreditorNotSelectedException -> context.getString(R.string.window_main_no_creditor_selected_error)
+            is CreditorNotSelectedException -> context.getString(R.string.kevin_window_main_no_creditor_selected_error)
             else -> ErrorHelper.getMessage(context, error)
         }
     }

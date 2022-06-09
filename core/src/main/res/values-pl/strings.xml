@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Continue">Kontynuuj</string>
-    <string name="error_unknown">Wystąpił nieznany błąd</string>
-    <string name="error_no_internet">Brak połączenia z internetem</string>
-    <string name="yes">Tak</string>
-    <string name="no">Nie</string>
-    <string name="dialog_exit_confirmation_title">Ostrzeżenie!</string>
-    <string name="navigate_back_content_description">Wróć</string>
+    <string name="kevin_continue">Kontynuuj</string>
+    <string name="kevin_error_unknown">Wystąpił nieznany błąd</string>
+    <string name="kevin_error_no_internet">Brak połączenia z internetem</string>
+    <string name="kevin_yes">Tak</string>
+    <string name="kevin_no">Nie</string>
+    <string name="kevin_dialog_exit_confirmation_title">Ostrzeżenie!</string>
+    <string name="kevin_navigate_back_content_description">Wróć</string>
 </resources>

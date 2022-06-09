@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="window_main_terms_privacy_policy">Am citit și accept Termenii și condițiile și Politica de confidențialitate</string>
-    <string name="window_main_terms_privacy_policy_clickable_terms">Termenii și condițiile</string>
-    <string name="window_main_terms_privacy_policy_clickable_policy">Politica de confidențialitate</string>
-    <string name="window_main_proceed_button">Donează • %s EUR</string>
-    <string name="window_main_bank_payment">Plată prin bancă</string>
-    <string name="window_main_card_payment">Plată cu cardul</string>
-    <string name="window_main_details_lable">Introduceți datele</string>
-    <string name="window_main_email_label">E-mail</string>
-    <string name="window_main_amount_label">Suma de plătit</string>
-    <string name="window_main_country_label">Țara</string>
-    <string name="window_main_country_charity_label">Selectați țara și organizația de caritate</string>
-    <string name="window_main_subtitle_label">Alegeți o organizație de caritate către care doriți să faceți o donație</string>
-    <string name="window_main_title_label">Redirecționarea plății</string>
-    <string name="window_main_email_blank_error">Completarea adresei de e-mail este obligatorie</string>
-    <string name="window_main_email_invalid_format_error">Adresa de e-mail nu este validă</string>
-    <string name="window_main_amount_blank_error">Suma trebuie să fie mai mare decât zero</string>
-    <string name="dialog_payment_success_title">Plata a decurs cu succes</string>
-    <string name="dialog_payment_success_button">OK</string>
-    <string name="window_main_no_creditor_selected_error">Nu a fost selectată organizația de caritate</string>
-    <string name="window_main_amount_field_currency">EUR</string>
+    <string name="kevin_window_main_terms_privacy_policy">Am citit și accept Termenii și condițiile și Politica de confidențialitate</string>
+    <string name="kevin_window_main_terms_privacy_policy_clickable_terms">Termenii și condițiile</string>
+    <string name="kevin_window_main_terms_privacy_policy_clickable_policy">Politica de confidențialitate</string>
+    <string name="kevin_window_main_proceed_button">Donează • %s EUR</string>
+    <string name="kevin_window_main_bank_payment">Plată prin bancă</string>
+    <string name="kevin_window_main_card_payment">Plată cu cardul</string>
+    <string name="kevin_window_main_details_lable">Introduceți datele</string>
+    <string name="kevin_window_main_email_label">E-mail</string>
+    <string name="kevin_window_main_amount_label">Suma de plătit</string>
+    <string name="kevin_window_main_country_label">Țara</string>
+    <string name="kevin_window_main_country_charity_label">Selectați țara și organizația de caritate</string>
+    <string name="kevin_window_main_subtitle_label">Alegeți o organizație de caritate către care doriți să faceți o donație</string>
+    <string name="kevin_window_main_title_label">Redirecționarea plății</string>
+    <string name="kevin_window_main_email_blank_error">Completarea adresei de e-mail este obligatorie</string>
+    <string name="kevin_window_main_email_invalid_format_error">Adresa de e-mail nu este validă</string>
+    <string name="kevin_window_main_amount_blank_error">Suma trebuie să fie mai mare decât zero</string>
+    <string name="kevin_dialog_payment_success_title">Plata a decurs cu succes</string>
+    <string name="kevin_dialog_payment_success_button">OK</string>
+    <string name="kevin_window_main_no_creditor_selected_error">Nu a fost selectată organizația de caritate</string>
+    <string name="kevin_window_main_amount_field_currency">EUR</string>
 </resources>

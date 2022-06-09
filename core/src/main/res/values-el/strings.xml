@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Continue">Συνέχεια</string>
-    <string name="error_unknown">Προέκυψε άγνωστο σφάλμα</string>
-    <string name="error_no_internet">Δεν υπάρχει σύνδεση στο Διαδίκτυο</string>
-    <string name="yes">Ναι</string>
-    <string name="no">Όχι</string>
-    <string name="dialog_exit_confirmation_title">Προειδοποίηση! </string>
-    <string name="navigate_back_content_description">Πλοήγηση πίσω</string>
+    <string name="kevin_continue">Συνέχεια</string>
+    <string name="kevin_error_unknown">Προέκυψε άγνωστο σφάλμα</string>
+    <string name="kevin_error_no_internet">Δεν υπάρχει σύνδεση στο Διαδίκτυο</string>
+    <string name="kevin_yes">Ναι</string>
+    <string name="kevin_no">Όχι</string>
+    <string name="kevin_dialog_exit_confirmation_title">Προειδοποίηση! </string>
+    <string name="kevin_navigate_back_content_description">Πλοήγηση πίσω</string>
 </resources>

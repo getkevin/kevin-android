@@ -15,7 +15,7 @@ import eu.kevin.core.plugin.Kevin
 import eu.kevin.core.plugin.KevinException
 import eu.kevin.inapppayments.KevinPaymentsPlugin
 import eu.kevin.inapppayments.R
-import eu.kevin.inapppayments.databinding.ActivityPaymentSessionBinding
+import eu.kevin.inapppayments.databinding.KevinActivityPaymentSessionBinding
 import eu.kevin.inapppayments.paymentsession.entities.PaymentSessionConfiguration
 import kotlinx.coroutines.launch
 
@@ -24,7 +24,7 @@ class PaymentSessionActivity : BaseFragmentActivity(), PaymentSessionListener {
     private var paymentSessionConfiguration: PaymentSessionConfiguration? = null
 
     private lateinit var paymentSession: PaymentSession
-    private lateinit var binding: ActivityPaymentSessionBinding
+    private lateinit var binding: KevinActivityPaymentSessionBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         if (!KevinPaymentsPlugin.isConfigured()) {
@@ -33,7 +33,7 @@ class PaymentSessionActivity : BaseFragmentActivity(), PaymentSessionListener {
         setTheme(Kevin.getTheme())
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
-        binding = ActivityPaymentSessionBinding.inflate(layoutInflater)
+        binding = KevinActivityPaymentSessionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         paymentSessionConfiguration = intent?.extras?.getParcelable(PaymentSessionContract.CONFIGURATION_KEY)
@@ -78,12 +78,12 @@ class PaymentSessionActivity : BaseFragmentActivity(), PaymentSessionListener {
     private fun showExitConfirmation() {
         MaterialAlertDialogBuilder(this)
             .setCancelable(false)
-            .setTitle(eu.kevin.accounts.R.string.dialog_exit_confirmation_title)
-            .setMessage(R.string.dialog_exit_confirmation_payments_message)
-            .setPositiveButton(eu.kevin.accounts.R.string.yes) { _, _ ->
+            .setTitle(eu.kevin.accounts.R.string.kevin_dialog_exit_confirmation_title)
+            .setMessage(R.string.kevin_dialog_exit_confirmation_payments_message)
+            .setPositiveButton(eu.kevin.accounts.R.string.kevin_yes) { _, _ ->
                 returnActivityResult(SessionResult.Canceled)
             }
-            .setNegativeButton(eu.kevin.accounts.R.string.no) { dialog, _ ->
+            .setNegativeButton(eu.kevin.accounts.R.string.kevin_no) { dialog, _ ->
                 dialog.dismiss()
             }
             .show()

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Continue">Nadaljevanje</string>
-    <string name="error_unknown">Prišlo je do neznane napake</string>
-    <string name="error_no_internet">Brez internetne povezave</string>
-    <string name="yes">Da</string>
-    <string name="no">Ne</string>
-    <string name="dialog_exit_confirmation_title">Opozorilo!</string>
-    <string name="navigate_back_content_description">Navigacija nazaj</string>
+    <string name="kevin_continue">Nadaljevanje</string>
+    <string name="kevin_error_unknown">Prišlo je do neznane napake</string>
+    <string name="kevin_error_no_internet">Brez internetne povezave</string>
+    <string name="kevin_yes">Da</string>
+    <string name="kevin_no">Ne</string>
+    <string name="kevin_dialog_exit_confirmation_title">Opozorilo!</string>
+    <string name="kevin_navigate_back_content_description">Navigacija nazaj</string>
 </resources>

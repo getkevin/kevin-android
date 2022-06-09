@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="window_payment_confirmation_title">Potvrdenie platby</string>
-    <string name="dialog_exit_confirmation_payments_message">Naozaj chcete zrušiť túto platbu?</string>
-    <string name="window_card_payment_label">Platba kartou</string>
-    <string name="window_card_payment_cardholder_name_label">Meno držiteľa karty</string>
-    <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
-    <string name="window_card_payment_card_number_label">Číslo karty</string>
-    <string name="window_card_payment_expiry_date_label">Dátum expirácie</string>
-    <string name="window_card_payment_notice">kevin. neuchováva žiadne vaše osobné údaje ani podrobnosti o karte.</string>
-    <string name="window_card_payment_cvv_tooltip">CVV je 3-ciferný kód zobrazený na zadnej strane vašej karty</string>
-    <string name="error_no_cardholder_name">Je potrebné zadať meno držiteľa karty</string>
-    <string name="error_invalid_cvv">Zadajte platný kód CVV</string>
-    <string name="error_no_cvv">Kód CVV musí byť zadaný</string>
-    <string name="error_invalid_expiry_date">Dátum expirácie je neplatný</string>
-    <string name="error_no_expiry_date">Dátum expirácie musí byť zadaný</string>
-    <string name="error_card_expired">Platnosť karty vypršala</string>
-    <string name="error_invalid_card_number">Číslo karty je neplatné</string>
-    <string name="error_no_card_number">Číslo karty musí byť zadané</string>
-    <string name="window_card_payment_redirect_title">Pokračovať v platbe bankovým prevodom?</string>
-    <string name="window_card_payment_redirect_subtitle">Chcete pokračovať v platbe bankovým prevodom?</string>
-    <string name="window_card_payment_bank_redirect_subtitle">Všimli sme si, že vašu platobnú kartu vydal %s. Chcete pokračovať v platbe bankovým prevodom?</string>
+    <string name="kevin_window_payment_confirmation_title">Potvrdenie platby</string>
+    <string name="kevin_dialog_exit_confirmation_payments_message">Naozaj chcete zrušiť túto platbu?</string>
+    <string name="kevin_window_card_payment_label">Platba kartou</string>
+    <string name="kevin_window_card_payment_cardholder_name_label">Meno držiteľa karty</string>
+    <string name="kevin_window_card_payment_cardholder_name_hint">John Appleseed</string>
+    <string name="kevin_window_card_payment_card_number_label">Číslo karty</string>
+    <string name="kevin_window_card_payment_expiry_date_label">Dátum expirácie</string>
+    <string name="kevin_window_card_payment_notice">kevin. neuchováva žiadne vaše osobné údaje ani podrobnosti o karte.</string>
+    <string name="kevin_window_card_payment_cvv_tooltip">CVV je 3-ciferný kód zobrazený na zadnej strane vašej karty</string>
+    <string name="kevin_error_no_cardholder_name">Je potrebné zadať meno držiteľa karty</string>
+    <string name="kevin_error_invalid_cvv">Zadajte platný kód CVV</string>
+    <string name="kevin_error_no_cvv">Kód CVV musí byť zadaný</string>
+    <string name="kevin_error_invalid_expiry_date">Dátum expirácie je neplatný</string>
+    <string name="kevin_error_no_expiry_date">Dátum expirácie musí byť zadaný</string>
+    <string name="kevin_error_card_expired">Platnosť karty vypršala</string>
+    <string name="kevin_error_invalid_card_number">Číslo karty je neplatné</string>
+    <string name="kevin_error_no_card_number">Číslo karty musí byť zadané</string>
+    <string name="kevin_window_card_payment_redirect_title">Pokračovať v platbe bankovým prevodom?</string>
+    <string name="kevin_window_card_payment_redirect_subtitle">Chcete pokračovať v platbe bankovým prevodom?</string>
+    <string name="kevin_window_card_payment_bank_redirect_subtitle">Všimli sme si, že vašu platobnú kartu vydal %s. Chcete pokračovať v platbe bankovým prevodom?</string>
 </resources>

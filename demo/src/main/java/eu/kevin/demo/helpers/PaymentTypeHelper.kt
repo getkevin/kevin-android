@@ -7,8 +7,8 @@ object PaymentTypeHelper {
 
     fun getStringRes(paymentType: PaymentType): Int {
         return when (paymentType) {
-            PaymentType.BANK -> R.string.window_main_bank_payment
-            PaymentType.CARD -> R.string.window_main_card_payment
+            PaymentType.BANK -> R.string.kevin_window_main_bank_payment
+            PaymentType.CARD -> R.string.kevin_window_main_card_payment
         }
     }
 }

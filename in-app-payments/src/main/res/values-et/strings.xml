@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="window_payment_confirmation_title">Maksekinnitus</string>
-    <string name="dialog_exit_confirmation_payments_message">Kas olete kindel, et soovite selle makse tühistada?</string>
-    <string name="window_card_payment_label">Kaardimakse</string>
-    <string name="window_card_payment_cardholder_name_label">Kaardiomaniku nimi</string>
-    <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
-    <string name="window_card_payment_card_number_label">Kaardi number</string>
-    <string name="window_card_payment_expiry_date_label">Aegumiskuupäev</string>
-    <string name="window_card_payment_notice">kevin. ei salvesta teie isiku- ega kaardiandmeid.</string>
-    <string name="window_card_payment_cvv_tooltip">CVV on 3-kohaline kood teie kaardi tagaküljel</string>
-    <string name="error_no_cardholder_name">Kaardiomaniku nime sisestamine on kohustuslik</string>
-    <string name="error_invalid_cvv">Sisestage kehtiv CVV</string>
-    <string name="error_no_cvv">CVV sisestamine on kohustuslik</string>
-    <string name="error_invalid_expiry_date">Aegumiskuupäev on kehtetu</string>
-    <string name="error_no_expiry_date">Aegumiskuupäev sisestamine on kohustuslik</string>
-    <string name="error_card_expired">Kaart on aegunud</string>
-    <string name="error_invalid_card_number">Kaardi number on kehtetu</string>
-    <string name="error_no_card_number">Kaardi numbri sisestamine on kohustuslik</string>
-    <string name="window_card_payment_redirect_title">Kas jätkata pangaülekandega maksmist?</string>
-    <string name="window_card_payment_redirect_subtitle">Kas soovite jätkata pangaülekandega maksmist?</string>
-    <string name="window_card_payment_bank_redirect_subtitle">Märkasime, et teie maksekaardi on väljastanud %s. Kas soovite jätkata pangaülekandega maksmist?</string>
+    <string name="kevin_window_payment_confirmation_title">Maksekinnitus</string>
+    <string name="kevin_dialog_exit_confirmation_payments_message">Kas olete kindel, et soovite selle makse tühistada?</string>
+    <string name="kevin_window_card_payment_label">Kaardimakse</string>
+    <string name="kevin_window_card_payment_cardholder_name_label">Kaardiomaniku nimi</string>
+    <string name="kevin_window_card_payment_cardholder_name_hint">John Appleseed</string>
+    <string name="kevin_window_card_payment_card_number_label">Kaardi number</string>
+    <string name="kevin_window_card_payment_expiry_date_label">Aegumiskuupäev</string>
+    <string name="kevin_window_card_payment_notice">kevin. ei salvesta teie isiku- ega kaardiandmeid.</string>
+    <string name="kevin_window_card_payment_cvv_tooltip">CVV on 3-kohaline kood teie kaardi tagaküljel</string>
+    <string name="kevin_error_no_cardholder_name">Kaardiomaniku nime sisestamine on kohustuslik</string>
+    <string name="kevin_error_invalid_cvv">Sisestage kehtiv CVV</string>
+    <string name="kevin_error_no_cvv">CVV sisestamine on kohustuslik</string>
+    <string name="kevin_error_invalid_expiry_date">Aegumiskuupäev on kehtetu</string>
+    <string name="kevin_error_no_expiry_date">Aegumiskuupäev sisestamine on kohustuslik</string>
+    <string name="kevin_error_card_expired">Kaart on aegunud</string>
+    <string name="kevin_error_invalid_card_number">Kaardi number on kehtetu</string>
+    <string name="kevin_error_no_card_number">Kaardi numbri sisestamine on kohustuslik</string>
+    <string name="kevin_window_card_payment_redirect_title">Kas jätkata pangaülekandega maksmist?</string>
+    <string name="kevin_window_card_payment_redirect_subtitle">Kas soovite jätkata pangaülekandega maksmist?</string>
+    <string name="kevin_window_card_payment_bank_redirect_subtitle">Märkasime, et teie maksekaardi on väljastanud %s. Kas soovite jätkata pangaülekandega maksmist?</string>
 </resources>

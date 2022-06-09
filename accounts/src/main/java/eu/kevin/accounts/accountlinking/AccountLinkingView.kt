@@ -10,7 +10,7 @@ import androidx.webkit.WebViewClientCompat
 import eu.kevin.accounts.KevinAccountsPlugin
 import eu.kevin.accounts.R
 import eu.kevin.accounts.accountsession.enums.AccountLinkingType
-import eu.kevin.accounts.databinding.FragmentAccountLinkingBinding
+import eu.kevin.accounts.databinding.KevinFragmentAccountLinkingBinding
 import eu.kevin.common.architecture.BaseView
 import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.extensions.applySystemInsetsMargin
@@ -21,10 +21,10 @@ import eu.kevin.common.extensions.hideKeyboard
 import eu.kevin.common.managers.KeyboardManager
 
 internal class AccountLinkingView(context: Context) :
-    BaseView<FragmentAccountLinkingBinding>(context),
+    BaseView<KevinFragmentAccountLinkingBinding>(context),
     IView<AccountLinkingState> {
 
-    override val binding = FragmentAccountLinkingBinding.inflate(LayoutInflater.from(context), this)
+    override val binding = KevinFragmentAccountLinkingBinding.inflate(LayoutInflater.from(context), this)
 
     var delegate: AccountLinkingViewDelegate? = null
 
@@ -36,7 +36,7 @@ internal class AccountLinkingView(context: Context) :
             setNavigationOnClickListener {
                 delegate?.onBackClicked()
             }
-            setNavigationContentDescription(R.string.navigate_back_content_description)
+            setNavigationContentDescription(R.string.kevin_navigate_back_content_description)
             applySystemInsetsPadding(top = true)
         }
 
@@ -96,9 +96,9 @@ internal class AccountLinkingView(context: Context) :
             accountLinkWebView.loadUrl(state.bankRedirectUrl)
         }
         if (state.accountLinkingType == AccountLinkingType.BANK) {
-            binding.actionBar.title = context.getString(R.string.window_account_linking_title)
+            binding.actionBar.title = context.getString(R.string.kevin_window_account_linking_title)
         } else {
-            binding.actionBar.title = context.getString(R.string.window_account_linking_card_title)
+            binding.actionBar.title = context.getString(R.string.kevin_window_account_linking_card_title)
         }
     }
 

@@ -65,7 +65,7 @@ internal class BankSelectionFragment :
     override fun onTermsAndConditionsClicked() {
         val browserIntent = Intent(
             Intent.ACTION_VIEW,
-            Uri.parse(getString(R.string.window_bank_selection_terms_and_conditions_url))
+            Uri.parse(getString(R.string.kevin_window_bank_selection_terms_and_conditions_url))
         )
         startActivity(browserIntent)
     }
@@ -73,7 +73,7 @@ internal class BankSelectionFragment :
     override fun onPrivacyPolicyClicked() {
         val browserIntent = Intent(
             Intent.ACTION_VIEW,
-            Uri.parse(getString(R.string.window_bank_selection_privacy_policy_url))
+            Uri.parse(getString(R.string.kevin_window_bank_selection_privacy_policy_url))
         )
         startActivity(browserIntent)
     }

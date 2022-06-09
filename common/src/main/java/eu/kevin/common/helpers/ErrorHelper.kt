@@ -10,14 +10,14 @@ object ErrorHelper {
         return when {
             error is ApiError -> getApiErrorMessage(context, error)
             error.localizedMessage != null -> error.localizedMessage!!
-            else -> context.getString(R.string.error_unknown)
+            else -> context.getString(R.string.kevin_error_unknown)
         }
     }
 
     private fun getApiErrorMessage(context: Context, error: ApiError): String {
         return when {
-            error.isNoInternet() -> context.getString(R.string.error_no_internet)
-            else -> context.getString(R.string.error_unknown)
+            error.isNoInternet() -> context.getString(R.string.kevin_error_no_internet)
+            else -> context.getString(R.string.kevin_error_unknown)
         }
     }
 }

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import coil.ImageLoader
 import coil.request.ImageRequest
 import eu.kevin.accounts.bankselection.entities.BankListItem
-import eu.kevin.accounts.databinding.ViewBankListItemBinding
+import eu.kevin.accounts.databinding.KevinViewBankListItemBinding
 import eu.kevin.common.R
 import eu.kevin.common.architecture.BaseListAdapter
 import eu.kevin.common.extensions.getBooleanFromAttr
@@ -17,14 +17,14 @@ import eu.kevin.common.extensions.setDebounceClickListener
 internal class BankListAdapter(
     override var items: List<BankListItem> = emptyList(),
     private val onBankClicked: (String) -> Unit
-) : BaseListAdapter<BankListItem, ViewBankListItemBinding>(items) {
+) : BaseListAdapter<BankListItem, KevinViewBankListItemBinding>(items) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return ViewHolder(ViewBankListItemBinding.inflate(inflater, parent, false))
+        return ViewHolder(KevinViewBankListItemBinding.inflate(inflater, parent, false))
     }
 
-    override fun onBindViewHolder(binding: ViewBankListItemBinding, item: BankListItem, position: Int) {
+    override fun onBindViewHolder(binding: KevinViewBankListItemBinding, item: BankListItem, position: Int) {
         with(binding) {
             root.setDebounceClickListener {
                 onBankClicked.invoke(item.bankId)
@@ -42,7 +42,7 @@ internal class BankListAdapter(
         diffResult.dispatchUpdatesTo(this)
     }
 
-    private fun loadBankImage(binding: ViewBankListItemBinding, logoUrl: String) {
+    private fun loadBankImage(binding: KevinViewBankListItemBinding, logoUrl: String) {
         val url = if (binding.root.context.getBooleanFromAttr(R.attr.kevinUseLightBankIcons)) {
             try {
                 val urlParts = logoUrl.split("images/")

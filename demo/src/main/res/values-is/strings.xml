@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="window_main_terms_privacy_policy">Ég hef lesið og samþykki skilmála &amp; skilyrði og persónuverndarstefnu</string>
-    <string name="window_main_terms_privacy_policy_clickable_terms">skilmála &amp; skilyrði</string>
-    <string name="window_main_terms_privacy_policy_clickable_policy">persónuverndarstefnu</string>
-    <string name="window_main_proceed_button">Gefa • %s EUR</string>
-    <string name="window_main_bank_payment">Bankagreiðsla</string>
-    <string name="window_main_card_payment">Kortagreiðsla</string>
-    <string name="window_main_details_lable">Sláðu inn atriðum</string>
-    <string name="window_main_email_label">Netfang</string>
-    <string name="window_main_amount_label">Upphæð greiðslu</string>
-    <string name="window_main_country_label">Land</string>
-    <string name="window_main_country_charity_label">Veldu land og góðgerðarstarfsemi</string>
-    <string name="window_main_subtitle_label">Veldu góðgerðarstarfsemi sem þú vilt styðja</string>
-    <string name="window_main_title_label">Endurbeina greiðslu</string>
-    <string name="window_main_email_blank_error">Netfang er nauðsynlegt</string>
-    <string name="window_main_email_invalid_format_error">Netfang er ógilt</string>
-    <string name="window_main_amount_blank_error">Upphæðin verður að vera hærri en núll</string>
-    <string name="dialog_payment_success_title">Greiðsla tókst</string>
-    <string name="dialog_payment_success_button">Í lagi</string>
-    <string name="window_main_no_creditor_selected_error">Góðgerðarstarfsemi er ekki valin</string>
-    <string name="window_main_amount_field_currency">EUR</string>
+    <string name="kevin_window_main_terms_privacy_policy">Ég hef lesið og samþykki skilmála &amp; skilyrði og persónuverndarstefnu</string>
+    <string name="kevin_window_main_terms_privacy_policy_clickable_terms">skilmála &amp; skilyrði</string>
+    <string name="kevin_window_main_terms_privacy_policy_clickable_policy">persónuverndarstefnu</string>
+    <string name="kevin_window_main_proceed_button">Gefa • %s EUR</string>
+    <string name="kevin_window_main_bank_payment">Bankagreiðsla</string>
+    <string name="kevin_window_main_card_payment">Kortagreiðsla</string>
+    <string name="kevin_window_main_details_lable">Sláðu inn atriðum</string>
+    <string name="kevin_window_main_email_label">Netfang</string>
+    <string name="kevin_window_main_amount_label">Upphæð greiðslu</string>
+    <string name="kevin_window_main_country_label">Land</string>
+    <string name="kevin_window_main_country_charity_label">Veldu land og góðgerðarstarfsemi</string>
+    <string name="kevin_window_main_subtitle_label">Veldu góðgerðarstarfsemi sem þú vilt styðja</string>
+    <string name="kevin_window_main_title_label">Endurbeina greiðslu</string>
+    <string name="kevin_window_main_email_blank_error">Netfang er nauðsynlegt</string>
+    <string name="kevin_window_main_email_invalid_format_error">Netfang er ógilt</string>
+    <string name="kevin_window_main_amount_blank_error">Upphæðin verður að vera hærri en núll</string>
+    <string name="kevin_dialog_payment_success_title">Greiðsla tókst</string>
+    <string name="kevin_dialog_payment_success_button">Í lagi</string>
+    <string name="kevin_window_main_no_creditor_selected_error">Góðgerðarstarfsemi er ekki valin</string>
+    <string name="kevin_window_main_amount_field_currency">EUR</string>
 </resources>

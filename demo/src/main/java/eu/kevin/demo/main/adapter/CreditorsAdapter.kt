@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import eu.kevin.demo.databinding.ItemCreditorBinding
+import eu.kevin.demo.databinding.KevinItemCreditorBinding
 import eu.kevin.demo.main.entities.CreditorListItem
 
 class CreditorsAdapter(
@@ -13,11 +13,11 @@ class CreditorsAdapter(
     private val onItemSelected: (CreditorListItem) -> Unit
 ) : RecyclerView.Adapter<CreditorsAdapter.ViewHolder>() {
 
-    inner class ViewHolder(val binding: ItemCreditorBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ViewHolder(val binding: KevinItemCreditorBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
-            ItemCreditorBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            KevinItemCreditorBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 

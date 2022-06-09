@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Continue">Fortsätt</string>
-    <string name="error_unknown">Okänt fel uppstod</string>
-    <string name="error_no_internet">Ingen internetanslutning</string>
-    <string name="yes">Ja</string>
-    <string name="no">Nej</string>
-    <string name="dialog_exit_confirmation_title">Varning!</string>
-    <string name="navigate_back_content_description">Gå tillbaka</string>
+    <string name="kevin_continue">Fortsätt</string>
+    <string name="kevin_error_unknown">Okänt fel uppstod</string>
+    <string name="kevin_error_no_internet">Ingen internetanslutning</string>
+    <string name="kevin_yes">Ja</string>
+    <string name="kevin_no">Nej</string>
+    <string name="kevin_dialog_exit_confirmation_title">Varning!</string>
+    <string name="kevin_navigate_back_content_description">Gå tillbaka</string>
 </resources>

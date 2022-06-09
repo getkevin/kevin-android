@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Continue">Turpināt</string>
-    <string name="error_unknown">Radusies nezināma kļūda</string>
-    <string name="error_no_internet">Nav interneta savienojuma</string>
-    <string name="yes">Jā</string>
-    <string name="no">Nē</string>
-    <string name="dialog_exit_confirmation_title">Brīdinājums!</string>
-    <string name="navigate_back_content_description">Doties atpakaļ</string>
+    <string name="kevin_continue">Turpināt</string>
+    <string name="kevin_error_unknown">Radusies nezināma kļūda</string>
+    <string name="kevin_error_no_internet">Nav interneta savienojuma</string>
+    <string name="kevin_yes">Jā</string>
+    <string name="kevin_no">Nē</string>
+    <string name="kevin_dialog_exit_confirmation_title">Brīdinājums!</string>
+    <string name="kevin_navigate_back_content_description">Doties atpakaļ</string>
 </resources>

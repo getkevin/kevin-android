@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="window_payment_confirmation_title">Confirmation du paiement</string>
-    <string name="dialog_exit_confirmation_payments_message">Êtes-vous sûr de vouloir annuler ce paiement ?</string>
-    <string name="window_card_payment_label">Paiement par carte</string>
-    <string name="window_card_payment_cardholder_name_label">Nom du titulaire de la carte</string>
-    <string name="window_card_payment_cardholder_name_hint">John Appleseed</string>
-    <string name="window_card_payment_card_number_label">Numéro de la carte</string>
-    <string name="window_card_payment_expiry_date_label">Date d\'expiration</string>
-    <string name="window_card_payment_notice">kevin. ne stocke aucune de vos données personnelles ou des détails de votre carte.</string>
-    <string name="window_card_payment_cvv_tooltip">Le CVV est un code à trois chiffres situé au dos de votre carte.</string>
-    <string name="error_no_cardholder_name">Le nom du titulaire de la carte doit être saisi</string>
-    <string name="error_invalid_cvv">Saisissez un CVV valide</string>
-    <string name="error_no_cvv">Le CVV doit être saisi</string>
-    <string name="error_invalid_expiry_date">La date d\'expiration n\'est pas valide</string>
-    <string name="error_no_expiry_date">La date d\'expiration doit être saisie</string>
-    <string name="error_card_expired">La carte est expirée</string>
-    <string name="error_invalid_card_number">Le numéro de la carte n\'est pas valide</string>
-    <string name="error_no_card_number">Le numéro de la carte doit être saisi</string>
-    <string name="window_card_payment_redirect_title">Poursuivre le paiement par virement bancaire ?</string>
-    <string name="window_card_payment_redirect_subtitle">Souhaitez-vous poursuivre le paiement par virement bancaire ?</string>
-    <string name="window_card_payment_bank_redirect_subtitle">Nous avons remarqué que votre carte de paiement est émise par %s. Souhaitez-vous poursuivre le paiement par virement bancaire ?</string>
+    <string name="kevin_window_payment_confirmation_title">Confirmation du paiement</string>
+    <string name="kevin_dialog_exit_confirmation_payments_message">Êtes-vous sûr de vouloir annuler ce paiement ?</string>
+    <string name="kevin_window_card_payment_label">Paiement par carte</string>
+    <string name="kevin_window_card_payment_cardholder_name_label">Nom du titulaire de la carte</string>
+    <string name="kevin_window_card_payment_cardholder_name_hint">John Appleseed</string>
+    <string name="kevin_window_card_payment_card_number_label">Numéro de la carte</string>
+    <string name="kevin_window_card_payment_expiry_date_label">Date d\'expiration</string>
+    <string name="kevin_window_card_payment_notice">kevin. ne stocke aucune de vos données personnelles ou des détails de votre carte.</string>
+    <string name="kevin_window_card_payment_cvv_tooltip">Le CVV est un code à trois chiffres situé au dos de votre carte.</string>
+    <string name="kevin_error_no_cardholder_name">Le nom du titulaire de la carte doit être saisi</string>
+    <string name="kevin_error_invalid_cvv">Saisissez un CVV valide</string>
+    <string name="kevin_error_no_cvv">Le CVV doit être saisi</string>
+    <string name="kevin_error_invalid_expiry_date">La date d\'expiration n\'est pas valide</string>
+    <string name="kevin_error_no_expiry_date">La date d\'expiration doit être saisie</string>
+    <string name="kevin_error_card_expired">La carte est expirée</string>
+    <string name="kevin_error_invalid_card_number">Le numéro de la carte n\'est pas valide</string>
+    <string name="kevin_error_no_card_number">Le numéro de la carte doit être saisi</string>
+    <string name="kevin_window_card_payment_redirect_title">Poursuivre le paiement par virement bancaire ?</string>
+    <string name="kevin_window_card_payment_redirect_subtitle">Souhaitez-vous poursuivre le paiement par virement bancaire ?</string>
+    <string name="kevin_window_card_payment_bank_redirect_subtitle">Nous avons remarqué que votre carte de paiement est émise par %s. Souhaitez-vous poursuivre le paiement par virement bancaire ?</string>
 </resources>

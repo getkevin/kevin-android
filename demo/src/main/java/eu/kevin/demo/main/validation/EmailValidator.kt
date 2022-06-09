@@ -8,8 +8,8 @@ internal object EmailValidator {
 
     fun validate(email: String): ValidationResult {
         return when {
-            email.isBlank() -> ValidationResult.Invalid(R.string.window_main_email_blank_error)
-            !email.isValidEmail() -> ValidationResult.Invalid(R.string.window_main_email_invalid_format_error)
+            email.isBlank() -> ValidationResult.Invalid(R.string.kevin_window_main_email_blank_error)
+            !email.isValidEmail() -> ValidationResult.Invalid(R.string.kevin_window_main_email_invalid_format_error)
             else -> ValidationResult.Valid
         }
     }

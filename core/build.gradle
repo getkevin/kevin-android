@@ -56,6 +56,8 @@ android {
         ignoreFailures = false
         experimentalRules = true
     }
+
+    resourcePrefix 'kevin_'
 }
 
 dependencies {

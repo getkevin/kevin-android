@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="@string/window_payment_confirmation_title" />
+        app:title="@string/kevin_window_payment_confirmation_title" />
 
     <WebView
         android:id="@+id/confirmation_web_view"

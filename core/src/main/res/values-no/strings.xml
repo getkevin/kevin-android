@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Continue">Fortsett</string>
-    <string name="error_unknown">Det oppstod en ukjent feil</string>
-    <string name="error_no_internet">Ingen internettforbindelse</string>
-    <string name="yes">Ja</string>
-    <string name="no">Nei</string>
-    <string name="dialog_exit_confirmation_title">Advarsel!</string>
-    <string name="navigate_back_content_description">Naviger tilbake</string>
+    <string name="kevin_continue">Fortsett</string>
+    <string name="kevin_error_unknown">Det oppstod en ukjent feil</string>
+    <string name="kevin_error_no_internet">Ingen internettforbindelse</string>
+    <string name="kevin_yes">Ja</string>
+    <string name="kevin_no">Nei</string>
+    <string name="kevin_dialog_exit_confirmation_title">Advarsel!</string>
+    <string name="kevin_navigate_back_content_description">Naviger tilbake</string>
 </resources>
