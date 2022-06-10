@@ -1,7 +1,7 @@
-package eu.kevin.demo.main.factories
+package eu.kevin.demo.payment.factories
 
 import eu.kevin.demo.data.entities.Creditor
-import eu.kevin.demo.main.entities.CreditorListItem
+import eu.kevin.demo.payment.entities.CreditorListItem
 
 internal object CreditorsListFactory {
 

@@ -3,25 +3,43 @@ package eu.kevin.demo
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
-import androidx.fragment.app.commit
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import eu.kevin.common.extensions.setFragmentResult
-import eu.kevin.demo.main.MainFragment
+import eu.kevin.demo.accountlinking.AccountLinkingFragment
+import eu.kevin.demo.databinding.KevinActivityMainBinding
+import eu.kevin.demo.payment.PaymentFragment
 import eu.kevin.demo.routing.DemoRouter
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: KevinActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
-        setContentView(R.layout.kevin_activity_main)
+        binding = KevinActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         startListeningForRouteRequests()
-        if (supportFragmentManager.backStackEntryCount == 0) {
-            supportFragmentManager.commit {
-                replace(R.id.mainRouterContainer, MainFragment(), MainFragment::class.simpleName)
-                addToBackStack(MainFragment::class.simpleName)
+
+        val accountLinkingFragment = AccountLinkingFragment()
+        val paymentFragment = PaymentFragment()
+
+        binding.bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.account_linking -> setCurrentFragment(accountLinkingFragment)
+                R.id.payment -> setCurrentFragment(paymentFragment)
             }
+            true
+        }
+        binding.bottomNavigationView.selectedItemId = R.id.account_linking
+    }
+
+    private fun setCurrentFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.flFragment, fragment)
+            commit()
         }
     }
 

@@ -1,8 +1,8 @@
-package eu.kevin.demo.main.validation
+package eu.kevin.demo.payment.validation
 
 import android.util.Patterns
 import eu.kevin.demo.R
-import eu.kevin.demo.main.entities.ValidationResult
+import eu.kevin.demo.payment.entities.ValidationResult
 
 internal object EmailValidator {
 

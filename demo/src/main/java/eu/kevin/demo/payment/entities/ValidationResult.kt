@@ -1,4 +1,4 @@
-package eu.kevin.demo.main.entities
+package eu.kevin.demo.payment.entities
 
 import android.content.Context
 import android.os.Parcelable

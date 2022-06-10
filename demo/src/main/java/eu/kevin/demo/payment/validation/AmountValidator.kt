@@ -1,7 +1,7 @@
-package eu.kevin.demo.main.validation
+package eu.kevin.demo.payment.validation
 
 import eu.kevin.demo.R
-import eu.kevin.demo.main.entities.ValidationResult
+import eu.kevin.demo.payment.entities.ValidationResult
 import java.math.BigDecimal
 
 internal object AmountValidator {

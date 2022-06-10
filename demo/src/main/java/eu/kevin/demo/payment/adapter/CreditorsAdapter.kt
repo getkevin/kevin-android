@@ -1,4 +1,4 @@
-package eu.kevin.demo.main.adapter
+package eu.kevin.demo.payment.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import eu.kevin.demo.databinding.KevinItemCreditorBinding
-import eu.kevin.demo.main.entities.CreditorListItem
+import eu.kevin.demo.payment.entities.CreditorListItem
 
 class CreditorsAdapter(
     private var creditorsList: List<CreditorListItem> = emptyList(),

@@ -1,4 +1,4 @@
-package eu.kevin.demo.main.usecases
+package eu.kevin.demo.payment.usecases
 
 import eu.kevin.demo.data.KevinDataClient
 import eu.kevin.demo.data.entities.Creditor
