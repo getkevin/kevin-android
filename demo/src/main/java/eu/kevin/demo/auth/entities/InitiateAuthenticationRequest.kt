@@ -4,5 +4,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class InitiateAuthenticationRequest(
-    val scopes: List<String>
+    val scopes: List<String>,
+    val redirectUrl: String
 )

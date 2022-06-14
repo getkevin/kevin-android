@@ -1,6 +1,8 @@
 package eu.kevin.demo.routing
 
+import androidx.fragment.app.Fragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.architecture.routing.RouterFragmentResultWrapper
 import eu.kevin.common.fragment.FragmentResultContract
 import kotlinx.coroutines.CoroutineScope
@@ -14,12 +16,18 @@ object DemoRouter {
 
     private val mainModalRouterChannel = Channel<BottomSheetDialogFragment>(capacity = 1)
     private val fragmentResultChannel = Channel<RouterFragmentResultWrapper>(capacity = 1)
+    private val popFragmentChannel = Channel<Fragment?>(capacity = 1)
 
     fun pushModalFragment(fragment: BottomSheetDialogFragment) {
         mainModalRouterChannel.trySend(fragment)
     }
+
     fun <T> returnFragmentResult(contract: FragmentResultContract<T>, result: T) {
         fragmentResultChannel.trySend(RouterFragmentResultWrapper(contract, result))
+    }
+
+    fun popCurrentFragment() {
+        popFragmentChannel.trySend(null)
     }
 
     fun addOnPushModalFragmentListener(scope: CoroutineScope, action: (BottomSheetDialogFragment) -> Unit) {
