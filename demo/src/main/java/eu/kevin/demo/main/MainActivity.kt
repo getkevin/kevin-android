@@ -50,9 +50,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        if (supportFragmentManager.backStackEntryCount == 1) {
+        if (binding.mainFragmentContainer.currentItem == 0) {
             finish()
-        } else super.onBackPressed()
+        } else {
+            binding.bottomNavigationView.selectedItemId = R.id.account_linking
+        }
     }
 
     private fun startListeningForRouteRequests() {

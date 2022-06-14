@@ -27,7 +27,6 @@ import eu.kevin.demo.extensions.getCurrentLocale
 import eu.kevin.demo.extensions.removeNumberSeparator
 import eu.kevin.demo.extensions.replaceDecimalSeparatorWithDot
 import eu.kevin.demo.extensions.setDebounceClickListener
-import eu.kevin.demo.helpers.PaymentTypeHelper
 import eu.kevin.demo.helpers.SpannableStringHelper
 import eu.kevin.demo.helpers.SpannableStringLink
 import eu.kevin.demo.screens.payment.adapter.CreditorsAdapter
@@ -35,7 +34,6 @@ import eu.kevin.demo.screens.payment.entities.DonationRequest
 import eu.kevin.demo.screens.payment.entities.ValidationResult
 import eu.kevin.demo.screens.payment.entities.exceptions.CreditorNotSelectedException
 import eu.kevin.demo.views.NumberTextWatcher
-import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 
 internal class PaymentView(context: Context) : FrameLayout(context) {
 
@@ -48,6 +46,7 @@ internal class PaymentView(context: Context) : FrameLayout(context) {
 
     init {
         with(binding) {
+            root.applySystemInsetsPadding(bottom = true)
             creditorsRecyclerView.adapter = creditorsAdapter
 
             termsTextView.text = SpannableStringHelper.getSpannableWithLinks(
