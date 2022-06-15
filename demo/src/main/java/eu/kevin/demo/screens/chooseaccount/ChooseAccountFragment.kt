@@ -6,8 +6,8 @@ import eu.kevin.common.architecture.BaseModalFragment
 import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.demo.screens.chooseaccount.ChooseAccountIntent.OnAccountChosen
 
-internal class ChooseAccountFragment
-    : BaseModalFragment<ChooseAccountState, ChooseAccountIntent, ChooseAccountViewModel>(), ChooseAccountViewCallback {
+internal class ChooseAccountFragment :
+    BaseModalFragment<ChooseAccountState, ChooseAccountIntent, ChooseAccountViewModel>(), ChooseAccountViewCallback {
 
     override val viewModel by viewModels<ChooseAccountViewModel> {
         ChooseAccountViewModel.Factory(

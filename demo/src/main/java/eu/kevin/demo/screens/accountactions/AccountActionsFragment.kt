@@ -6,8 +6,8 @@ import eu.kevin.common.architecture.BaseModalFragment
 import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.demo.screens.accountactions.AccountActionsIntent.HandleRemoveAccount
 
-internal class AccountActionsFragment
-    : BaseModalFragment<AccountActionsState, AccountActionsIntent, AccountActionsViewModel>(), AccountActionsCallback {
+internal class AccountActionsFragment :
+    BaseModalFragment<AccountActionsState, AccountActionsIntent, AccountActionsViewModel>(), AccountActionsCallback {
 
     var configuration: AccountActionsFragmentConfiguration? by savedState()
 

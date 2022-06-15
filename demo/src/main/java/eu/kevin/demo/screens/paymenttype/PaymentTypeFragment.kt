@@ -8,7 +8,8 @@ import eu.kevin.demo.screens.paymenttype.PaymentTypeIntent.Initialize
 import eu.kevin.demo.screens.paymenttype.PaymentTypeIntent.OnPaymentTypeChosen
 import eu.kevin.demo.screens.paymenttype.enums.DemoPaymentType
 
-internal class PaymentTypeFragment : BaseModalFragment<PaymentTypeState, PaymentTypeIntent, PaymentTypeViewModel>(),
+internal class PaymentTypeFragment :
+    BaseModalFragment<PaymentTypeState, PaymentTypeIntent, PaymentTypeViewModel>(),
     PaymentTypeViewCallback {
 
     var configuration: PaymentTypeFragmentConfiguration? by savedState()

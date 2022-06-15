@@ -46,12 +46,13 @@ internal class MainActivity : AppCompatActivity() {
                 windowInsets
             }
 
-            KeyboardManager(mainFragmentContainer, excludeNavBarInsets = false).onKeyboardSizeChanged { keyboardHeight ->
-                val bottomInset = keyboardHeight - binding.bottomNavigationView.height
-                mainFragmentContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                    bottomMargin = if (bottomInset < 0) 0 else bottomInset
+            KeyboardManager(mainFragmentContainer, excludeNavBarInsets = false)
+                .onKeyboardSizeChanged { keyboardHeight ->
+                    val bottomInset = keyboardHeight - binding.bottomNavigationView.height
+                    mainFragmentContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                        bottomMargin = if (bottomInset < 0) 0 else bottomInset
+                    }
                 }
-            }
         }
     }
 

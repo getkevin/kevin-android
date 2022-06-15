@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
-import androidx.core.view.updateLayoutParams
 import androidx.webkit.WebViewClientCompat
 import eu.kevin.accounts.KevinAccountsPlugin
 import eu.kevin.accounts.R
@@ -15,10 +14,8 @@ import eu.kevin.common.architecture.BaseView
 import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.extensions.applySystemInsetsMargin
 import eu.kevin.common.extensions.applySystemInsetsPadding
-import eu.kevin.common.extensions.dp
 import eu.kevin.common.extensions.getColorFromAttr
 import eu.kevin.common.extensions.hideKeyboard
-import eu.kevin.common.managers.KeyboardManager
 
 internal class AccountLinkingView(context: Context) :
     BaseView<KevinFragmentAccountLinkingBinding>(context),
