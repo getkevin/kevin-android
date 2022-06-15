@@ -5,7 +5,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import eu.kevin.common.fragment.FragmentResultContract
 import eu.kevin.demo.screens.paymenttype.enums.DemoPaymentType
 
-object PaymentTypeContract : FragmentResultContract<DemoPaymentType>() {
+internal object PaymentTypeContract : FragmentResultContract<DemoPaymentType>() {
     override val requestKey = "payment_type_request_key"
     override val resultKey = "payment_type_result_key"
 

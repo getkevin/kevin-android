@@ -1,5 +1,5 @@
 package eu.kevin.demo.screens.chooseaccount
 
-interface ChooseAccountViewCallback {
+internal interface ChooseAccountViewCallback {
     fun onAccountChosen(id: Long)
 }

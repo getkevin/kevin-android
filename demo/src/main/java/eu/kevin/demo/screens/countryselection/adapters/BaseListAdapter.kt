@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 
-abstract class BaseListAdapter<T, V : ViewBinding>(
+internal abstract class BaseListAdapter<T, V : ViewBinding>(
     open var items: List<T>
 ) : RecyclerView.Adapter<BaseListAdapter.ViewHolder>() {
 

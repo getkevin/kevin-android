@@ -1,37 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<?xml version="1.0" encoding="utf-8"?><!--<androidx.core.widget.NestedScrollView -->
+<!--    android:id="@+id/nestedScrollView"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:background="?primaryBackgroundColor">-->
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/extra_light_blue">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/main_fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?primaryBackgroundColor"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/main_fragment_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?primaryBackgroundColor"
-            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.core.widget.NestedScrollView>
+        android:background="@color/blue"
+        android:paddingBottom="56dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
+        android:background="@color/warning_red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/kevin_bottom_nav_menu" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</FrameLayout>
+
+    <!--</androidx.core.widget.NestedScrollView>-->

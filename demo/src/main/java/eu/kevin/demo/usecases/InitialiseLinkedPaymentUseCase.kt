@@ -6,7 +6,7 @@ import eu.kevin.demo.auth.entities.ApiPayment
 import eu.kevin.demo.auth.entities.InitiatePaymentRequest
 import eu.kevin.demo.data.database.LinkedAccountsDao
 
-class InitialiseLinkedPaymentUseCase(
+internal class InitialiseLinkedPaymentUseCase(
     private val kevinApiClient: KevinApiClient,
     private val getAccessTokenForAccountUseCase: GetAccessTokenForAccountUseCase,
     private val refreshAccessTokenUseCase: RefreshAccessTokenUseCase,

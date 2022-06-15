@@ -9,10 +9,10 @@ import androidx.savedstate.SavedStateRegistryOwner
 import eu.kevin.accounts.KevinAccountsPlugin
 import eu.kevin.accounts.accountsession.AccountSessionResult
 import eu.kevin.core.entities.SessionResult
-import eu.kevin.demo.data.ClientProvider
 import eu.kevin.demo.auth.KevinApiClient
 import eu.kevin.demo.auth.entities.InitiateAuthenticationRequest
 import eu.kevin.demo.auth.enums.AuthenticationScope
+import eu.kevin.demo.data.ClientProvider
 import eu.kevin.demo.data.database.DatabaseProvider
 import eu.kevin.demo.data.database.LinkedAccountsDao
 import eu.kevin.demo.data.database.entities.LinkedAccount
@@ -32,7 +32,7 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class AccountLinkingViewModel (
+internal class AccountLinkingViewModel(
     private val kevinApiClient: KevinApiClient,
     private val linkedAccountsDao: LinkedAccountsDao,
     private val accessTokenPreferences: AccountAccessTokenPreferences

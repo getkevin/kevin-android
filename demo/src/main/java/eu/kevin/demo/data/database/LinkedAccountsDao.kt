@@ -1,7 +1,6 @@
 package eu.kevin.demo.data.database
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -9,7 +8,7 @@ import eu.kevin.demo.data.database.entities.LinkedAccount
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface LinkedAccountsDao {
+internal interface LinkedAccountsDao {
 
     @Query("SELECT * FROM LinkedAccount")
     fun getLinkedAccountsFlow(): Flow<List<LinkedAccount>>

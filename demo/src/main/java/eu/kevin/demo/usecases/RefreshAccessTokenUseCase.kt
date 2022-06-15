@@ -5,7 +5,7 @@ import eu.kevin.demo.auth.entities.RefreshAccessTokenRequest
 import eu.kevin.demo.preferences.AccessToken
 import eu.kevin.demo.preferences.AccountAccessTokenPreferences
 
-class RefreshAccessTokenUseCase constructor(
+internal class RefreshAccessTokenUseCase constructor(
     private val kevinAuthClient: KevinApiClient,
     private val accountAccessTokenPreferences: AccountAccessTokenPreferences
 ) {

@@ -3,7 +3,7 @@ package eu.kevin.demo.data.database
 import android.content.Context
 import androidx.room.Room
 
-object DatabaseProvider {
+internal object DatabaseProvider {
     private lateinit var database: DemoDatabase
 
     fun getDatabase(context: Context): DemoDatabase {

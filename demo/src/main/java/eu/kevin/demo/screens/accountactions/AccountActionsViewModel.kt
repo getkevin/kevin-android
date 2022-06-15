@@ -10,6 +10,7 @@ import eu.kevin.common.architecture.BaseViewModel
 import eu.kevin.demo.data.database.DatabaseProvider
 import eu.kevin.demo.data.database.LinkedAccountsDao
 import eu.kevin.demo.routing.DemoRouter
+import eu.kevin.demo.screens.accountactions.AccountActionsIntent.HandleRemoveAccount
 import eu.kevin.demo.screens.accountactions.entities.AccountAction
 import eu.kevin.demo.screens.accountactions.enums.AccountActionType
 import kotlinx.coroutines.launch
@@ -25,7 +26,7 @@ internal class AccountActionsViewModel(
 
     override suspend fun handleIntent(intent: AccountActionsIntent) {
         when (intent) {
-            is AccountActionsIntent.HandleRemoveAccount -> DemoRouter.returnFragmentResult(
+            is HandleRemoveAccount -> DemoRouter.returnFragmentResult(
                 AccountActionsContract,
                 AccountAction(
                     id = id!!,

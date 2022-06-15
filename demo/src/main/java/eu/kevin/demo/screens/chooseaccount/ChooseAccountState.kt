@@ -6,6 +6,6 @@ import eu.kevin.demo.data.database.entities.LinkedAccount
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class ChooseAccountState(
+internal data class ChooseAccountState(
     val accounts: List<LinkedAccount> = emptyList()
-): IState, Parcelable
+) : IState, Parcelable

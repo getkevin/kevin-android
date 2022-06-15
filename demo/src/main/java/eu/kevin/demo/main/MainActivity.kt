@@ -1,13 +1,14 @@
 package eu.kevin.demo.main
 
 import android.os.Bundle
-import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.View
+import android.view.animation.TranslateAnimation
 import androidx.appcompat.app.AppCompatActivity
-import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.core.view.ViewCompat.animate
 import androidx.core.view.WindowCompat
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
-import com.google.android.material.behavior.HideBottomViewOnScrollBehavior
+import dev.chrisbanes.insetter.Insetter
+import dev.chrisbanes.insetter.applyInsetter
 import eu.kevin.common.extensions.setFragmentResult
 import eu.kevin.common.managers.KeyboardManager
 import eu.kevin.demo.R
@@ -16,7 +17,7 @@ import eu.kevin.demo.routing.DemoRouter
 import kotlinx.coroutines.launch
 
 
-class MainActivity : AppCompatActivity() {
+internal class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: KevinActivityMainBinding
 
@@ -38,12 +39,23 @@ class MainActivity : AppCompatActivity() {
                 }
                 true
             }
-            bottomNavigationView.selectedItemId = R.id.account_linking
+            bottomNavigationView.selectedItemId = R.id.payment
 
-            KeyboardManager(root).onKeyboardVisibilityChanged {
-                if (it == 0) {
-                    val behavior = (bottomNavigationView.layoutParams as CoordinatorLayout.LayoutParams).behavior as HideBottomViewOnScrollBehavior
-                    behavior.slideUp(bottomNavigationView)
+            KeyboardManager(root).apply {
+                onKeyboardVisibilityChanged {
+                    if (it > 0) {
+                        mainFragmentContainer.setPadding(0, 0, 0, 0)
+                    }
+                }
+            }
+            mainFragmentContainer.applyInsetter {
+                type(ime = true, navigationBars = true) {
+                    margin()
+                }
+            }
+            bottomNavigationView.applyInsetter {
+                type(navigationBars = true) {
+                    padding()
                 }
             }
         }

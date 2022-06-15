@@ -6,9 +6,9 @@ import eu.kevin.accounts.KevinAccountsPlugin
 import eu.kevin.core.plugin.Kevin
 import eu.kevin.inapppayments.KevinPaymentsConfiguration
 import eu.kevin.inapppayments.KevinPaymentsPlugin
-import java.util.*
+import java.util.Locale
 
-class DemoApplication : Application() {
+internal class DemoApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()

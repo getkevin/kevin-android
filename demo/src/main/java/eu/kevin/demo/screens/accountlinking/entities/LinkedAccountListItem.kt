@@ -1,6 +1,6 @@
 package eu.kevin.demo.screens.accountlinking.entities
 
-data class LinkedAccountListItem(
+internal data class LinkedAccountListItem(
     val bankName: String,
     val logoUrl: String
 )

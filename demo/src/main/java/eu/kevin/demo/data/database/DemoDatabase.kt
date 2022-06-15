@@ -5,6 +5,6 @@ import androidx.room.RoomDatabase
 import eu.kevin.demo.data.database.entities.LinkedAccount
 
 @Database(entities = [LinkedAccount::class], version = 1)
-abstract class DemoDatabase : RoomDatabase() {
+internal abstract class DemoDatabase : RoomDatabase() {
     abstract fun linkedAccountsDao(): LinkedAccountsDao
 }

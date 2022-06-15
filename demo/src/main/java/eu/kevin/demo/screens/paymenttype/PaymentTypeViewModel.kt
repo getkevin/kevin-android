@@ -6,8 +6,10 @@ import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
 import eu.kevin.common.architecture.BaseViewModel
 import eu.kevin.demo.routing.DemoRouter
+import eu.kevin.demo.screens.paymenttype.PaymentTypeIntent.Initialize
+import eu.kevin.demo.screens.paymenttype.PaymentTypeIntent.OnPaymentTypeChosen
 
-class PaymentTypeViewModel(
+internal class PaymentTypeViewModel(
     savedStateHandle: SavedStateHandle
 ) : BaseViewModel<PaymentTypeState, PaymentTypeIntent>(savedStateHandle) {
 
@@ -15,10 +17,10 @@ class PaymentTypeViewModel(
 
     override suspend fun handleIntent(intent: PaymentTypeIntent) {
         when (intent) {
-            is PaymentTypeIntent.OnPaymentTypeChosen -> {
+            is OnPaymentTypeChosen -> {
                 DemoRouter.returnFragmentResult(PaymentTypeContract, intent.demoPaymentType)
             }
-            is PaymentTypeIntent.Initialize -> {
+            is Initialize -> {
                 updateState {
                     it.copy(showLinkedAccountOption = intent.paymentTypeFragmentConfiguration.linkedPaymentAvailable)
                 }

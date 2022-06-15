@@ -3,7 +3,7 @@ package eu.kevin.demo.preferences
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class AccessToken(
+internal data class AccessToken(
     val tokenType: String,
     val accessToken: String,
     val accessTokenExpiresAt: Long,

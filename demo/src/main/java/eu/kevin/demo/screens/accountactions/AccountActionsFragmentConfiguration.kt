@@ -4,6 +4,6 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-class AccountActionsFragmentConfiguration (
+internal class AccountActionsFragmentConfiguration(
     val id: Long
 ) : Parcelable

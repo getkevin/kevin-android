@@ -5,15 +5,11 @@ import android.view.LayoutInflater
 import androidx.recyclerview.widget.LinearLayoutManager
 import eu.kevin.common.architecture.BaseView
 import eu.kevin.common.architecture.interfaces.IView
-import eu.kevin.common.entities.LoadingState
-import eu.kevin.common.entities.isLoading
 import eu.kevin.common.extensions.applySystemInsetsPadding
-import eu.kevin.common.helpers.ErrorHelper
 import eu.kevin.demo.databinding.KevinFragmentChooseAccountBinding
 import eu.kevin.demo.screens.chooseaccount.adapters.AccountsListAdapter
-import eu.kevin.demo.screens.paymenttype.PaymentTypeState
 
-class ChooseAccountView(context: Context) :
+internal class ChooseAccountView(context: Context) :
     BaseView<KevinFragmentChooseAccountBinding>(context),
     IView<ChooseAccountState> {
 

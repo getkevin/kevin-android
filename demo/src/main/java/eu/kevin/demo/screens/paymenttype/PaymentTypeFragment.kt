@@ -4,9 +4,11 @@ import android.content.Context
 import androidx.fragment.app.viewModels
 import eu.kevin.common.architecture.BaseModalFragment
 import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.demo.screens.paymenttype.PaymentTypeIntent.Initialize
+import eu.kevin.demo.screens.paymenttype.PaymentTypeIntent.OnPaymentTypeChosen
 import eu.kevin.demo.screens.paymenttype.enums.DemoPaymentType
 
-class PaymentTypeFragment : BaseModalFragment<PaymentTypeState, PaymentTypeIntent, PaymentTypeViewModel>(),
+internal class PaymentTypeFragment : BaseModalFragment<PaymentTypeState, PaymentTypeIntent, PaymentTypeViewModel>(),
     PaymentTypeViewCallback {
 
     var configuration: PaymentTypeFragmentConfiguration? by savedState()
@@ -23,21 +25,21 @@ class PaymentTypeFragment : BaseModalFragment<PaymentTypeState, PaymentTypeInten
 
     override fun onAttached() {
         super.onAttached()
-        viewModel.intents.trySend(PaymentTypeIntent.Initialize(configuration!!))
+        viewModel.intents.trySend(Initialize(configuration!!))
     }
 
     override fun onBankPaymentSelected() {
         dismiss()
-        viewModel.intents.trySend(PaymentTypeIntent.OnPaymentTypeChosen(DemoPaymentType.BANK))
+        viewModel.intents.trySend(OnPaymentTypeChosen(DemoPaymentType.BANK))
     }
 
     override fun onLinkedPaymentSelected() {
         dismiss()
-        viewModel.intents.trySend(PaymentTypeIntent.OnPaymentTypeChosen(DemoPaymentType.LINKED))
+        viewModel.intents.trySend(OnPaymentTypeChosen(DemoPaymentType.LINKED))
     }
 
     override fun onCardPaymentSelected() {
         dismiss()
-        viewModel.intents.trySend(PaymentTypeIntent.OnPaymentTypeChosen(DemoPaymentType.CARD))
+        viewModel.intents.trySend(OnPaymentTypeChosen(DemoPaymentType.CARD))
     }
 }

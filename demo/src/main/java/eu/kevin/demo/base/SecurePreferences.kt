@@ -11,7 +11,7 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
-abstract class SecurePreferences(
+internal abstract class SecurePreferences(
     context: Context,
     storeName: String
 ) {

@@ -7,7 +7,7 @@ import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.extensions.applySystemInsetsPadding
 import eu.kevin.demo.databinding.KevinFragmentAccountActionsBinding
 
-class AccountActionsView (context: Context) :
+internal class AccountActionsView(context: Context) :
     BaseView<KevinFragmentAccountActionsBinding>(context),
     IView<AccountActionsState> {
 

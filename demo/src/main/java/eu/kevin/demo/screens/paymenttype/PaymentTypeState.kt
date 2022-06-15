@@ -5,6 +5,6 @@ import eu.kevin.common.architecture.interfaces.IState
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class PaymentTypeState(
+internal data class PaymentTypeState(
     val showLinkedAccountOption: Boolean = false
 ) : IState, Parcelable

@@ -6,7 +6,7 @@ import eu.kevin.demo.BuildConfig.KEVIN_MOBILE_DEMO_API
 import eu.kevin.demo.auth.KevinApiClient
 import eu.kevin.demo.auth.KevinApiClientFactory
 
-object ClientProvider {
+internal object ClientProvider {
     val kevinApiClient: KevinDataClient by lazy {
         KevinDataClientFactory(
             baseUrl = KEVIN_API_URL,

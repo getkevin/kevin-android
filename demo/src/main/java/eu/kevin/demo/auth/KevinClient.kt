@@ -12,7 +12,7 @@ import io.ktor.client.request.header
 import io.ktor.client.request.parameter
 import io.ktor.client.request.post
 
-class KevinClient(private val httpClient: HttpClient) : KevinApiClient {
+internal class KevinClient(private val httpClient: HttpClient) : KevinApiClient {
 
     override suspend fun getAccessToken(authorizationCode: String): ApiAccessToken {
         return httpClient.get("auth/tokens/") {

@@ -8,8 +8,10 @@ import androidx.savedstate.SavedStateRegistryOwner
 import eu.kevin.common.architecture.BaseViewModel
 import eu.kevin.common.entities.LoadingState
 import eu.kevin.demo.data.ClientProvider
-import eu.kevin.demo.screens.countryselection.usecases.GetSupportedCountriesUseCase
 import eu.kevin.demo.routing.DemoRouter
+import eu.kevin.demo.screens.countryselection.CountrySelectionIntent.HandleCountrySelection
+import eu.kevin.demo.screens.countryselection.CountrySelectionIntent.Initialize
+import eu.kevin.demo.screens.countryselection.usecases.GetSupportedCountriesUseCase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -24,8 +26,8 @@ internal class CountrySelectionViewModel constructor(
 
     override suspend fun handleIntent(intent: CountrySelectionIntent) {
         when (intent) {
-            is CountrySelectionIntent.Initialize -> initialize(intent.configuration)
-            is CountrySelectionIntent.HandleCountrySelection -> handleCountrySelection(intent.iso)
+            is Initialize -> initialize(intent.configuration)
+            is HandleCountrySelection -> handleCountrySelection(intent.iso)
         }
     }
 

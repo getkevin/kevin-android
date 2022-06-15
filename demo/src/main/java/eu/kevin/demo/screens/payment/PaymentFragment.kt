@@ -11,21 +11,16 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import eu.kevin.common.extensions.setFragmentResultListener
 import eu.kevin.core.entities.SessionResult
-import eu.kevin.core.enums.KevinCountry
-import eu.kevin.demo.auth.entities.ApiPayment
 import eu.kevin.demo.screens.chooseaccount.ChooseAccountContract
 import eu.kevin.demo.screens.countryselection.CountrySelectionContract
 import eu.kevin.demo.screens.payment.entities.CreditorListItem
 import eu.kevin.demo.screens.payment.entities.DonationRequest
 import eu.kevin.demo.screens.paymenttype.PaymentTypeContract
-import eu.kevin.demo.screens.paymenttype.enums.DemoPaymentType
 import eu.kevin.inapppayments.paymentsession.PaymentSessionContract
-import eu.kevin.inapppayments.paymentsession.entities.PaymentSessionConfiguration
-import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
-class PaymentFragment : Fragment(), PaymentViewCallback {
+internal class PaymentFragment : Fragment(), PaymentViewCallback {
     private val viewModel: PaymentViewModel by activityViewModels {
         PaymentViewModel.Factory(
             requireContext(),

@@ -21,7 +21,6 @@ import eu.kevin.common.helpers.ErrorHelper
 import eu.kevin.common.helpers.SnackbarHelper
 import eu.kevin.common.managers.KeyboardManager
 import eu.kevin.demo.R
-import eu.kevin.demo.screens.countryselection.helpers.CountryHelper
 import eu.kevin.demo.databinding.KevinFragmentPaymentBinding
 import eu.kevin.demo.extensions.getCurrentLocale
 import eu.kevin.demo.extensions.removeNumberSeparator
@@ -29,6 +28,7 @@ import eu.kevin.demo.extensions.replaceDecimalSeparatorWithDot
 import eu.kevin.demo.extensions.setDebounceClickListener
 import eu.kevin.demo.helpers.SpannableStringHelper
 import eu.kevin.demo.helpers.SpannableStringLink
+import eu.kevin.demo.screens.countryselection.helpers.CountryHelper
 import eu.kevin.demo.screens.payment.adapter.CreditorsAdapter
 import eu.kevin.demo.screens.payment.entities.DonationRequest
 import eu.kevin.demo.screens.payment.entities.ValidationResult
@@ -46,7 +46,6 @@ internal class PaymentView(context: Context) : FrameLayout(context) {
 
     init {
         with(binding) {
-            root.applySystemInsetsPadding(bottom = true)
             creditorsRecyclerView.adapter = creditorsAdapter
 
             termsTextView.text = SpannableStringHelper.getSpannableWithLinks(
@@ -82,13 +81,6 @@ internal class PaymentView(context: Context) : FrameLayout(context) {
             )
         }
         initListeners()
-        KeyboardManager(binding.root).apply {
-            onKeyboardSizeChanged {
-                binding.root.updateLayoutParams<MarginLayoutParams> {
-                    bottomMargin = it
-                }
-            }
-        }
     }
 
     fun update(state: PaymentViewState) {

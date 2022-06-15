@@ -7,7 +7,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Entity
 @Parcelize
-data class LinkedAccount(
+internal data class LinkedAccount(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
     val bankName: String,

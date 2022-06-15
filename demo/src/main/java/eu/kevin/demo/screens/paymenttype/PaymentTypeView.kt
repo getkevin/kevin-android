@@ -8,7 +8,7 @@ import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.extensions.applySystemInsetsPadding
 import eu.kevin.demo.databinding.KevinFragmentPaymentTypeBinding
 
-class PaymentTypeView (context: Context) :
+internal class PaymentTypeView(context: Context) :
     BaseView<KevinFragmentPaymentTypeBinding>(context),
     IView<PaymentTypeState> {
 

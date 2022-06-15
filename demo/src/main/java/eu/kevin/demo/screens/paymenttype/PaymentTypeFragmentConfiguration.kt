@@ -4,6 +4,6 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-class PaymentTypeFragmentConfiguration(
+internal class PaymentTypeFragmentConfiguration(
     val linkedPaymentAvailable: Boolean
 ) : Parcelable

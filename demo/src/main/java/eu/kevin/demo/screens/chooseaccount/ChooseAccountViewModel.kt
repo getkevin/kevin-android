@@ -10,12 +10,13 @@ import eu.kevin.common.architecture.BaseViewModel
 import eu.kevin.demo.data.database.DatabaseProvider
 import eu.kevin.demo.data.database.LinkedAccountsDao
 import eu.kevin.demo.routing.DemoRouter
+import eu.kevin.demo.screens.chooseaccount.ChooseAccountIntent.OnAccountChosen
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
-class ChooseAccountViewModel(
+internal class ChooseAccountViewModel(
     private val linkedAccountsDao: LinkedAccountsDao,
     savedStateHandle: SavedStateHandle
 ) : BaseViewModel<ChooseAccountState, ChooseAccountIntent>(savedStateHandle) {
@@ -36,7 +37,7 @@ class ChooseAccountViewModel(
 
     override suspend fun handleIntent(intent: ChooseAccountIntent) {
         when (intent) {
-            is ChooseAccountIntent.OnAccountChosen -> {
+            is OnAccountChosen -> {
                 DemoRouter.returnFragmentResult(ChooseAccountContract, intent.id)
             }
         }

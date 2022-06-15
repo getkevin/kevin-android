@@ -6,7 +6,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import eu.kevin.demo.screens.accountlinking.AccountLinkingFragment
 import eu.kevin.demo.screens.payment.PaymentFragment
 
-class TabAdapter(activity: FragmentActivity) : FragmentStateAdapter(activity) {
+internal class TabAdapter(activity: FragmentActivity) : FragmentStateAdapter(activity) {
 
     override fun getItemCount() = 2
 

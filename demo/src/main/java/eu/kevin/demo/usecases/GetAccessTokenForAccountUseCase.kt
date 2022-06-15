@@ -3,7 +3,7 @@ package eu.kevin.demo.usecases
 import eu.kevin.demo.preferences.AccessToken
 import eu.kevin.demo.preferences.AccountAccessTokenPreferences
 
-class GetAccessTokenForAccountUseCase(
+internal class GetAccessTokenForAccountUseCase(
     private val refreshAccessTokenUseCase: RefreshAccessTokenUseCase,
     private val accountAccessTokenPreferences: AccountAccessTokenPreferences
 ) {

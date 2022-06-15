@@ -47,19 +47,6 @@ internal class AccountLinkingView(context: Context) :
             false
         }
 
-        KeyboardManager(binding.root).apply {
-            onKeyboardSizeChanged {
-                binding.root.updateLayoutParams<MarginLayoutParams> {
-                    bottomMargin = it
-                }
-            }
-            onKeyboardVisibilityChanged {
-                if (lastClickPosition < it) {
-                    binding.accountLinkWebView.scrollBy(0, (it - lastClickPosition) + dp(64))
-                }
-            }
-        }
-
         with(binding.accountLinkWebView) {
             setBackgroundColor(context.getColorFromAttr(android.R.attr.colorBackground))
             applySystemInsetsMargin(bottom = true)

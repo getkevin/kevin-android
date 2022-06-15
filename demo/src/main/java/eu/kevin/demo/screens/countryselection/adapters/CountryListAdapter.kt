@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.DiffUtil
 import eu.kevin.common.extensions.getDrawableCompat
 import eu.kevin.common.extensions.setDebounceClickListener
 import eu.kevin.demo.R
+import eu.kevin.demo.databinding.KevinItemCountryListBinding
 import eu.kevin.demo.screens.countryselection.entities.Country
 import eu.kevin.demo.screens.countryselection.helpers.CountryHelper
-import eu.kevin.demo.databinding.KevinItemCountryListBinding
 
 internal class CountryListAdapter(
     override var items: List<Country> = emptyList(),

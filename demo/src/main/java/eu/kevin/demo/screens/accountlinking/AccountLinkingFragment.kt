@@ -12,11 +12,10 @@ import eu.kevin.accounts.accountsession.entities.AccountSessionConfiguration
 import eu.kevin.common.extensions.setFragmentResultListener
 import eu.kevin.core.enums.KevinCountry
 import eu.kevin.demo.screens.accountactions.AccountActionsContract
-import eu.kevin.demo.screens.countryselection.CountrySelectionContract
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
-class AccountLinkingFragment : Fragment(), AccountLinkingViewCallback {
+internal class AccountLinkingFragment : Fragment(), AccountLinkingViewCallback {
 
     private val viewModel: AccountLinkingViewModel by activityViewModels {
         AccountLinkingViewModel.Factory(

@@ -8,7 +8,7 @@ import coil.load
 import eu.kevin.demo.databinding.KevinItemCreditorBinding
 import eu.kevin.demo.screens.payment.entities.CreditorListItem
 
-class CreditorsAdapter(
+internal class CreditorsAdapter(
     private var creditorsList: List<CreditorListItem> = emptyList(),
     private val onItemSelected: (CreditorListItem) -> Unit
 ) : RecyclerView.Adapter<CreditorsAdapter.ViewHolder>() {

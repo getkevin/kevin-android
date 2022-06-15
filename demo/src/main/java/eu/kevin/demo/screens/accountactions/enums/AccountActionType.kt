@@ -1,5 +1,5 @@
 package eu.kevin.demo.screens.accountactions.enums
 
-enum class AccountActionType {
+internal enum class AccountActionType {
     REMOVE
 }

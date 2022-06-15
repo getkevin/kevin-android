@@ -3,7 +3,7 @@ package eu.kevin.demo.screens.payment.usecases
 import eu.kevin.demo.data.KevinDataClient
 import eu.kevin.demo.data.entities.Creditor
 
-class GetCreditorsUseCase constructor(
+internal class GetCreditorsUseCase constructor(
     private val kevinDataClient: KevinDataClient
 ) {
     suspend fun getCreditors(countryIso: String): List<Creditor> {

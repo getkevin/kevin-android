@@ -4,8 +4,11 @@ import android.content.Context
 import androidx.fragment.app.viewModels
 import eu.kevin.common.architecture.BaseModalFragment
 import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.demo.screens.chooseaccount.ChooseAccountIntent.OnAccountChosen
 
-class ChooseAccountFragment : BaseModalFragment<ChooseAccountState, ChooseAccountIntent, ChooseAccountViewModel>(), ChooseAccountViewCallback {
+internal class ChooseAccountFragment
+    : BaseModalFragment<ChooseAccountState, ChooseAccountIntent, ChooseAccountViewModel>(), ChooseAccountViewCallback {
+
     override val viewModel by viewModels<ChooseAccountViewModel> {
         ChooseAccountViewModel.Factory(
             requireContext(),
@@ -21,6 +24,6 @@ class ChooseAccountFragment : BaseModalFragment<ChooseAccountState, ChooseAccoun
 
     override fun onAccountChosen(id: Long) {
         dismiss()
-        viewModel.intents.trySend(ChooseAccountIntent.OnAccountChosen(id))
+        viewModel.intents.trySend(OnAccountChosen(id))
     }
 }

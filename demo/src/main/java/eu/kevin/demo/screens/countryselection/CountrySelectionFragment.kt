@@ -1,8 +1,11 @@
 package eu.kevin.demo.screens.countryselection
+
 import android.content.Context
 import androidx.fragment.app.viewModels
 import eu.kevin.common.architecture.BaseModalFragment
 import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.demo.screens.countryselection.CountrySelectionIntent.HandleCountrySelection
+import eu.kevin.demo.screens.countryselection.CountrySelectionIntent.Initialize
 
 internal class CountrySelectionFragment :
     BaseModalFragment<CountrySelectionState, CountrySelectionIntent, CountrySelectionViewModel>(),
@@ -21,13 +24,13 @@ internal class CountrySelectionFragment :
     }
 
     override fun onAttached() {
-        viewModel.intents.trySend(CountrySelectionIntent.Initialize(configuration!!))
+        viewModel.intents.trySend(Initialize(configuration!!))
     }
 
     // CountriesViewDelegate
 
     override fun onCountryClicked(iso: String) {
-        viewModel.intents.trySend(CountrySelectionIntent.HandleCountrySelection(iso))
+        viewModel.intents.trySend(HandleCountrySelection(iso))
         dismiss()
     }
 }

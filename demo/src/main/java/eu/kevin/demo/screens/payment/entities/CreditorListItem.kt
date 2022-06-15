@@ -1,6 +1,6 @@
 package eu.kevin.demo.screens.payment.entities
 
-data class CreditorListItem(
+internal data class CreditorListItem(
     val logo: String,
     val name: String,
     val iban: String,

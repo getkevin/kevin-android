@@ -7,8 +7,8 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import eu.kevin.demo.R
-import eu.kevin.demo.screens.accountlinking.adapters.LinkedAccountsListAdapter
 import eu.kevin.demo.databinding.KevinFragmentLinkAccountBinding
+import eu.kevin.demo.screens.accountlinking.adapters.LinkedAccountsListAdapter
 import eu.kevin.demo.views.DividerItemDecoration
 
 internal class AccountLinkingView(context: Context) : FrameLayout(context) {

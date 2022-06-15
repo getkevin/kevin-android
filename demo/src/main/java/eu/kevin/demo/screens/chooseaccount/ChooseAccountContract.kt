@@ -4,7 +4,7 @@ import android.os.Bundle
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import eu.kevin.common.fragment.FragmentResultContract
 
-object ChooseAccountContract : FragmentResultContract<Long>() {
+internal object ChooseAccountContract : FragmentResultContract<Long>() {
     override val requestKey = "choose_account_request_key"
     override val resultKey = "choose_account_result_key"
 

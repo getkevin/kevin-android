@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.fragment.app.viewModels
 import eu.kevin.common.architecture.BaseModalFragment
 import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.demo.screens.accountactions.AccountActionsIntent.HandleRemoveAccount
 
 internal class AccountActionsFragment
     : BaseModalFragment<AccountActionsState, AccountActionsIntent, AccountActionsViewModel>(), AccountActionsCallback {
@@ -28,7 +29,7 @@ internal class AccountActionsFragment
     }
 
     override fun onRemoveAccountClick() {
-        viewModel.intents.trySend(AccountActionsIntent.HandleRemoveAccount(configuration!!.id))
+        viewModel.intents.trySend(HandleRemoveAccount(configuration!!.id))
         dismiss()
     }
 }

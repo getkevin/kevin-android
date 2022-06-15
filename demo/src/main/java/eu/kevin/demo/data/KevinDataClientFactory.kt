@@ -3,7 +3,7 @@ package eu.kevin.demo.data
 import eu.kevin.core.networking.BaseApiFactory
 import io.ktor.client.features.logging.LogLevel
 
-class KevinDataClientFactory(
+internal class KevinDataClientFactory(
     baseUrl: String,
     userAgent: String,
     timeout: Int? = null,

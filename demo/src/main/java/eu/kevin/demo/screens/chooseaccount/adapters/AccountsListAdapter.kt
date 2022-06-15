@@ -10,7 +10,7 @@ import eu.kevin.demo.data.database.entities.LinkedAccount
 import eu.kevin.demo.databinding.KevinItemChooseLinkedAccountBinding
 import eu.kevin.demo.screens.countryselection.adapters.BaseListAdapter
 
-class AccountsListAdapter(
+internal class AccountsListAdapter(
     override var items: List<LinkedAccount> = emptyList(),
     private val onItemClick: (Long) -> Unit
 ) : BaseListAdapter<LinkedAccount, KevinItemChooseLinkedAccountBinding>(items) {
@@ -27,7 +27,9 @@ class AccountsListAdapter(
         val background = when {
             items.size == 1 -> context.getDrawableCompat(R.drawable.kevin_linked_accounts_list_item_background_single)
             position == 0 -> context.getDrawableCompat(R.drawable.kevin_linked_accounts_list_item_background_top)
-            position == items.size - 1 -> context.getDrawableCompat(R.drawable.kevin_linked_accounts_list_item_background_bottom)
+            position == items.size - 1 -> context.getDrawableCompat(
+                R.drawable.kevin_linked_accounts_list_item_background_bottom
+            )
             else -> context.getDrawableCompat(R.drawable.kevin_linked_accounts_list_item_background_middle)
         }
         val foreground = when {

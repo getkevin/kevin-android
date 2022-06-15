@@ -3,7 +3,7 @@ package eu.kevin.demo.helpers
 import eu.kevin.demo.R
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 
-object PaymentTypeHelper {
+internal object PaymentTypeHelper {
 
     fun getStringRes(paymentType: PaymentType): Int {
         return when (paymentType) {

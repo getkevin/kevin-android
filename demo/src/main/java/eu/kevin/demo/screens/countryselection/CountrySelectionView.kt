@@ -12,10 +12,10 @@ import eu.kevin.common.extensions.fadeIn
 import eu.kevin.common.extensions.fadeOut
 import eu.kevin.common.helpers.ErrorHelper
 import eu.kevin.common.helpers.SnackbarHelper
+import eu.kevin.demo.databinding.KevinFragmentSelectCountryBinding
 import eu.kevin.demo.screens.countryselection.adapters.CountryListAdapter
 import eu.kevin.demo.screens.countryselection.entities.Country
 import eu.kevin.demo.screens.countryselection.helpers.CountryHelper
-import eu.kevin.demo.databinding.KevinFragmentSelectCountryBinding
 
 internal class CountrySelectionView(context: Context) :
     BaseView<KevinFragmentSelectCountryBinding>(context),
