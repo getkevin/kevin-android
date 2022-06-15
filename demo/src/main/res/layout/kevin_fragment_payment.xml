@@ -48,8 +48,7 @@
                 android:layout_height="54dp"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/kevin_country_selection_background"
-                android:foreground="@drawable/kevin_country_selection_ripple"
+                android:background="@drawable/kevin_bg_clickable_row"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/country_country_label_text_view">

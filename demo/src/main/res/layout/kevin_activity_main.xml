@@ -1,16 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?><!--<androidx.core.widget.NestedScrollView -->
-<!--    android:id="@+id/nestedScrollView"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    android:background="?primaryBackgroundColor">-->
-
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_container"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/extra_light_blue">
+    android:layout_height="match_parent">
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/main_fragment_container"
@@ -33,5 +27,3 @@
         app:menu="@menu/kevin_bottom_nav_menu" />
 
 </LinearLayout>
-
-    <!--</androidx.core.widget.NestedScrollView>-->

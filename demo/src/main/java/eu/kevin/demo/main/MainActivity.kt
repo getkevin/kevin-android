@@ -38,7 +38,7 @@ internal class MainActivity : AppCompatActivity() {
                 }
                 true
             }
-            bottomNavigationView.selectedItemId = R.id.payment
+            bottomNavigationView.selectedItemId = R.id.account_linking
 
             ViewCompat.setOnApplyWindowInsetsListener(bottomNavigationView) { view, windowInsets ->
                 val navBarInsets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())

@@ -25,25 +25,18 @@ internal class AccountsListAdapter(
 
     override fun onBindViewHolder(binding: KevinItemChooseLinkedAccountBinding, item: LinkedAccount, position: Int) {
         val background = when {
-            items.size == 1 -> context.getDrawableCompat(R.drawable.kevin_linked_accounts_list_item_background_single)
-            position == 0 -> context.getDrawableCompat(R.drawable.kevin_linked_accounts_list_item_background_top)
+            items.size == 1 -> context.getDrawableCompat(R.drawable.kevin_bg_clickable_row)
+            position == 0 -> context.getDrawableCompat(R.drawable.kevin_bg_clickable_top)
             position == items.size - 1 -> context.getDrawableCompat(
-                R.drawable.kevin_linked_accounts_list_item_background_bottom
+                R.drawable.kevin_bg_clickable_bottom
             )
-            else -> context.getDrawableCompat(R.drawable.kevin_linked_accounts_list_item_background_middle)
-        }
-        val foreground = when {
-            items.size == 1 -> context.getDrawableCompat(R.drawable.kevin_country_selection_ripple_single)
-            position == 0 -> context.getDrawableCompat(R.drawable.kevin_country_selection_ripple_top)
-            position == items.size - 1 -> context.getDrawableCompat(R.drawable.kevin_country_selection_ripple_bottom)
-            else -> context.getDrawableCompat(R.drawable.kevin_country_selection_ripple_middle)
+            else -> context.getDrawableCompat(R.drawable.kevin_bg_clickable_middle)
         }
         with(binding) {
             root.setDebounceClickListener {
                 onItemClick(item.id)
             }
             root.background = background
-            root.foreground = foreground
             bankNameTextView.text = item.bankName
             bankIconImage.load(item.logoUrl)
         }

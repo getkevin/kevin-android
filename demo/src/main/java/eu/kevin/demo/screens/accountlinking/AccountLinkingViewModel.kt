@@ -99,6 +99,14 @@ internal class AccountLinkingViewModel(
         }
     }
 
+    fun openMenu(id: Long) {
+        DemoRouter.pushModalFragment(
+            AccountActionsContract.getFragment(
+                AccountActionsFragmentConfiguration(id)
+            )
+        )
+    }
+
     private fun onAccountLinked(accountSessionResult: AccountSessionResult) {
         viewModelScope.launch(Dispatchers.IO) {
             linkedAccountsDao.delete(accountSessionResult.bank!!.id)
@@ -122,14 +130,6 @@ internal class AccountLinkingViewModel(
                 }
             }
         }
-    }
-
-    fun openMenu(id: Long) {
-        DemoRouter.pushModalFragment(
-            AccountActionsContract.getFragment(
-                AccountActionsFragmentConfiguration(id)
-            )
-        )
     }
 
     @Suppress("UNCHECKED_CAST")
