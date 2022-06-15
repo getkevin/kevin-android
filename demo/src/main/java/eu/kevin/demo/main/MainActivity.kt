@@ -1,21 +1,20 @@
 package eu.kevin.demo.main
 
 import android.os.Bundle
-import android.view.View
-import android.view.animation.TranslateAnimation
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
-import androidx.core.view.isVisible
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
+import androidx.core.view.updatePadding
 import androidx.lifecycle.lifecycleScope
-import dev.chrisbanes.insetter.Insetter
-import dev.chrisbanes.insetter.applyInsetter
 import eu.kevin.common.extensions.setFragmentResult
 import eu.kevin.common.managers.KeyboardManager
 import eu.kevin.demo.R
 import eu.kevin.demo.databinding.KevinActivityMainBinding
 import eu.kevin.demo.routing.DemoRouter
 import kotlinx.coroutines.launch
-
 
 internal class MainActivity : AppCompatActivity() {
 
@@ -41,21 +40,16 @@ internal class MainActivity : AppCompatActivity() {
             }
             bottomNavigationView.selectedItemId = R.id.payment
 
-            KeyboardManager(root).apply {
-                onKeyboardVisibilityChanged {
-                    if (it > 0) {
-                        mainFragmentContainer.setPadding(0, 0, 0, 0)
-                    }
-                }
+            ViewCompat.setOnApplyWindowInsetsListener(bottomNavigationView) { view, windowInsets ->
+                val navBarInsets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+                view.updatePadding(bottom = navBarInsets.bottom)
+                windowInsets
             }
-            mainFragmentContainer.applyInsetter {
-                type(ime = true, navigationBars = true) {
-                    margin()
-                }
-            }
-            bottomNavigationView.applyInsetter {
-                type(navigationBars = true) {
-                    padding()
+
+            KeyboardManager(mainFragmentContainer, excludeNavBarInsets = false).onKeyboardSizeChanged { keyboardHeight ->
+                val bottomInset = keyboardHeight - binding.bottomNavigationView.height
+                mainFragmentContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                    bottomMargin = if (bottomInset < 0) 0 else bottomInset
                 }
             }
         }
