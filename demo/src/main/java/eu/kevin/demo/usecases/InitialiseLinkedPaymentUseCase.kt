@@ -12,7 +12,6 @@ internal class InitialiseLinkedPaymentUseCase(
     private val refreshAccessTokenUseCase: RefreshAccessTokenUseCase,
     private val linkedAccountsDao: LinkedAccountsDao
 ) {
-
     suspend fun initialiseLinkedPayment(
         initiatePaymentRequest: InitiatePaymentRequest,
         accountId: Long

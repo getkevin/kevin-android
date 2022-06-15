@@ -2,21 +2,18 @@ package eu.kevin.demo.views
 
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
-import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
-internal class DividerItemDecoration(private val mDivider: Drawable) : RecyclerView.ItemDecoration() {
+internal class DividerItemDecoration(private val dividerDrawable: Drawable) : RecyclerView.ItemDecoration() {
     override fun onDrawOver(canvas: Canvas, parent: RecyclerView, state: RecyclerView.State) {
-        val dividerLeft: Int = parent.paddingLeft
-        val dividerRight: Int = parent.width - parent.paddingRight
-        val childCount: Int = parent.childCount
-        for (i in 0..childCount - 2) {
-            val child: View = parent.getChildAt(i)
-            val params: RecyclerView.LayoutParams = child.layoutParams as RecyclerView.LayoutParams
-            val dividerTop: Int = child.bottom + params.bottomMargin
-            val dividerBottom = dividerTop + mDivider.intrinsicHeight
-            mDivider.setBounds(dividerLeft, dividerTop, dividerRight, dividerBottom)
-            mDivider.draw(canvas)
+        val dividerLeft = parent.paddingLeft
+        val dividerRight = parent.width - parent.paddingRight
+        for (i in 0..parent.childCount - 2) {
+            val child = parent.getChildAt(i)
+            val dividerTop = child.bottom + (child.layoutParams as RecyclerView.LayoutParams).bottomMargin
+            val dividerBottom = dividerTop + dividerDrawable.intrinsicHeight
+            dividerDrawable.setBounds(dividerLeft, dividerTop, dividerRight, dividerBottom)
+            dividerDrawable.draw(canvas)
         }
     }
 }
