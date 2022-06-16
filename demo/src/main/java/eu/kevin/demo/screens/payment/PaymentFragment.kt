@@ -25,7 +25,8 @@ import eu.kevin.inapppayments.paymentsession.PaymentSessionContract
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
-internal class PaymentFragment : BaseFragment<PaymentViewState, PaymentIntent, PaymentViewModel>(),
+internal class PaymentFragment :
+    BaseFragment<PaymentViewState, PaymentIntent, PaymentViewModel>(),
     PaymentViewCallback {
     override val viewModel: PaymentViewModel by activityViewModels {
         PaymentViewModel.Factory(
