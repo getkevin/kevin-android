@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginHorizontal="16dp"
-            android:text="Remove"
+            android:text="@string/kevin_window_account_actions_remove"
             android:textColor="@color/warning_red" />
 
     </LinearLayout>

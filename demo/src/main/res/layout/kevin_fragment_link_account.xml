@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="32dp"
-            android:text="Link your first bank account"
+            android:text="@string/kevin_window_link_account_empty_state_title"
             android:textAlignment="center" />
 
         <TextView
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
-            android:text="The one app for your money. Add bank accounts. Track your spendings. Control your budget. And so much more..."
+            android:text="@string/kevin_window_link_account_empty_state_subtitle"
             android:textAlignment="center"
             android:textColor="?secondaryTextColor" />
 
@@ -51,7 +51,7 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="16dp"
-            android:text="Link Bank Account" />
+            android:text="@string/kevin_window_link_account_empty_state_link_button" />
 
     </LinearLayout>
 
@@ -62,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="52dp"
-        android:text="Account linking"
+        android:text="@string/kevin_window_link_account_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -92,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginHorizontal="16dp"
-            android:text="Link new account"
+            android:text="@string/kevin_window_link_account_link_new_button"
             android:textColor="@color/blue" />
 
     </LinearLayout>
@@ -104,7 +104,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="24dp"
-        android:text="Linked accounts"
+        android:text="@string/kevin_window_link_account_linked_accounts_label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linkNewButton" />
 

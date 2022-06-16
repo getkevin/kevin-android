@@ -21,4 +21,16 @@
     <string name="kevin_dialog_payment_success_button">Ok</string>
     <string name="kevin_window_main_no_creditor_selected_error">Charity is not selected</string>
     <string name="kevin_window_main_amount_field_currency">EUR</string>
+    <string name="kevin_window_account_actions_remove">Remove</string>
+    <string name="kevin_window_choose_account_title">Choose bank account</string>
+    <string name="kevin_window_link_account_empty_state_title">Link your first bank account</string>
+    <string name="kevin_window_link_account_empty_state_subtitle">The one app for your money. Add bank accounts. Track your spendings. Control your budget. And so much more...</string>
+    <string name="kevin_window_link_account_empty_state_link_button">Link Bank Account</string>
+    <string name="kevin_window_link_account_title">Account linking</string>
+    <string name="kevin_window_link_account_link_new_button">Link new account</string>
+    <string name="kevin_window_link_account_linked_accounts_label">Linked accounts</string>
+    <string name="kevin_window_payment_type_title">Choose payment type</string>
+    <string name="kevin_window_payment_type_bank">Bank Payment</string>
+    <string name="kevin_window_payment_type_linked">Bank Payment via Linked Account</string>
+    <string name="kevin_window_payment_type_card">Card Payment</string>
 </resources>
