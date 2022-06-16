@@ -6,7 +6,9 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.savedstate.SavedStateRegistryOwner
+import eu.kevin.common.architecture.BaseViewModel
 import eu.kevin.common.entities.LoadingState
+import eu.kevin.core.entities.SessionResult
 import eu.kevin.core.enums.KevinCountry
 import eu.kevin.core.networking.exceptions.ApiError
 import eu.kevin.demo.auth.KevinApiClient
@@ -20,6 +22,14 @@ import eu.kevin.demo.routing.DemoRouter
 import eu.kevin.demo.screens.chooseaccount.ChooseAccountContract
 import eu.kevin.demo.screens.countryselection.CountrySelectionContract
 import eu.kevin.demo.screens.countryselection.CountrySelectionFragmentConfiguration
+import eu.kevin.demo.screens.payment.PaymentIntent.OnAccountSelected
+import eu.kevin.demo.screens.payment.PaymentIntent.OnAmountChanged
+import eu.kevin.demo.screens.payment.PaymentIntent.OnCountrySelected
+import eu.kevin.demo.screens.payment.PaymentIntent.OnCreditorSelected
+import eu.kevin.demo.screens.payment.PaymentIntent.OnDonationRequest
+import eu.kevin.demo.screens.payment.PaymentIntent.OnOpenCountrySelection
+import eu.kevin.demo.screens.payment.PaymentIntent.OnPaymentResult
+import eu.kevin.demo.screens.payment.PaymentIntent.OnPaymentTypeSelected
 import eu.kevin.demo.screens.payment.entities.CreditorListItem
 import eu.kevin.demo.screens.payment.entities.DonationRequest
 import eu.kevin.demo.screens.payment.entities.InitiateDonationRequest
@@ -35,37 +45,48 @@ import eu.kevin.demo.usecases.GetAccessTokenForAccountUseCase
 import eu.kevin.demo.usecases.InitialiseLinkedPaymentUseCase
 import eu.kevin.demo.usecases.RefreshAccessTokenUseCase
 import eu.kevin.inapppayments.KevinPaymentsPlugin
+import eu.kevin.inapppayments.paymentsession.PaymentSessionResult
 import eu.kevin.inapppayments.paymentsession.entities.PaymentSessionConfiguration
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
-import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 internal class PaymentViewModel constructor(
     private val getCreditorsUseCase: GetCreditorsUseCase,
     private val kevinApiClient: KevinApiClient,
     private val linkedAccountsDao: LinkedAccountsDao,
-    private val initialiseLinkedPaymentUseCase: InitialiseLinkedPaymentUseCase
-) : ViewModel() {
+    private val initialiseLinkedPaymentUseCase: InitialiseLinkedPaymentUseCase,
+    savedStateHandle: SavedStateHandle
+) : BaseViewModel<PaymentViewState, PaymentIntent>(savedStateHandle) {
 
-    private val _viewState = MutableStateFlow(PaymentViewState())
     private val _viewAction = Channel<PaymentViewAction>(Channel.BUFFERED)
-
-    val viewState: StateFlow<PaymentViewState> = _viewState
     val viewAction = _viewAction.receiveAsFlow()
 
     private var donationRequest: DonationRequest? = null
 
     init {
-        loadCreditors(_viewState.value.selectedCountry)
+        loadCreditors(state.value.selectedCountry)
     }
 
-    fun onCreditorSelected(creditor: CreditorListItem) {
-        _viewState.update {
+    override fun getInitialData() = PaymentViewState()
+
+    override suspend fun handleIntent(intent: PaymentIntent) {
+        when (intent) {
+            is OnAccountSelected -> onAccountSelected(intent.id)
+            is OnAmountChanged -> onAmountChanged(intent.amount)
+            is OnCountrySelected -> onCountrySelected(intent.iso)
+            is OnCreditorSelected -> onCreditorSelected(intent.creditor)
+            is OnDonationRequest -> onDonationRequest(intent.donationRequest)
+            is OnOpenCountrySelection -> openCountrySelection()
+            is OnPaymentResult -> onPaymentResult(intent.result)
+            is OnPaymentTypeSelected -> onPaymentTypeSelected(intent.paymentType)
+        }
+    }
+
+    private suspend fun onCreditorSelected(creditor: CreditorListItem) {
+        updateState {
             it.copy(
                 creditors = it.creditors.map {
                     it.copy(isSelected = it == creditor)
@@ -75,8 +96,8 @@ internal class PaymentViewModel constructor(
         }
     }
 
-    fun onCountrySelected(iso: String) {
-        _viewState.update {
+    private suspend fun onCountrySelected(iso: String) {
+        updateState {
             it.copy(
                 selectedCountry = iso,
                 loadingState = LoadingState.Loading(false)
@@ -85,8 +106,8 @@ internal class PaymentViewModel constructor(
         loadCreditors(iso)
     }
 
-    fun onPaymentTypeSelected(demoPaymentType: DemoPaymentType) {
-        val selectedCreditor = viewState.value.creditors.firstOrNull { it.isSelected }!!
+    private fun onPaymentTypeSelected(demoPaymentType: DemoPaymentType) {
+        val selectedCreditor = state.value.creditors.firstOrNull { it.isSelected }!!
 
         when (demoPaymentType) {
             DemoPaymentType.LINKED -> {
@@ -107,11 +128,11 @@ internal class PaymentViewModel constructor(
         }
     }
 
-    fun onAccountSelected(id: Long) {
+    private fun onAccountSelected(id: Long) {
         viewModelScope.launch(Dispatchers.IO) {
-            _viewState.update { it.copy(loadingState = LoadingState.Loading(true)) }
+            updateState { it.copy(loadingState = LoadingState.Loading(true)) }
             try {
-                val selectedCreditor = viewState.value.creditors.firstOrNull { it.isSelected }!!
+                val selectedCreditor = state.value.creditors.firstOrNull { it.isSelected }!!
 
                 val payment = initialiseLinkedPaymentUseCase.initialiseLinkedPayment(
                     InitiatePaymentRequest(
@@ -132,22 +153,22 @@ internal class PaymentViewModel constructor(
                             .build()
                     )
                 )
-                _viewState.update { it.copy(loadingState = LoadingState.Loading(false)) }
+                updateState { it.copy(loadingState = LoadingState.Loading(false)) }
             } catch (error: ApiError) {
-                _viewState.update { it.copy(loadingState = LoadingState.Failure(error)) }
+                updateState { it.copy(loadingState = LoadingState.Failure(error)) }
             }
         }
     }
 
-    fun openCountrySelection() {
+    private fun openCountrySelection() {
         val config = CountrySelectionFragmentConfiguration(
-            _viewState.value.selectedCountry
+            state.value.selectedCountry
         )
         DemoRouter.pushModalFragment(CountrySelectionContract.getFragment(config))
     }
 
-    fun onAmountChanged(amount: String) {
-        _viewState.update {
+    private suspend fun onAmountChanged(amount: String) {
+        updateState {
             it.copy(
                 buttonText = amount.toRepresentableBigDecimal() ?: "0.00",
                 loadingState = LoadingState.Loading(false)
@@ -155,7 +176,7 @@ internal class PaymentViewModel constructor(
         }
     }
 
-    fun onDoneClick(donationRequest: DonationRequest) {
+    private suspend fun onDonationRequest(donationRequest: DonationRequest) {
         this.donationRequest = donationRequest
 
         val emailValidationResult = EmailValidator.validate(donationRequest.email.trim())
@@ -174,10 +195,10 @@ internal class PaymentViewModel constructor(
             amountValidationResult.isValid() &&
             donationRequest.isTermsAccepted
         ) {
-            val selectedCreditor = viewState.value.creditors.firstOrNull { it.isSelected }
+            val selectedCreditor = state.value.creditors.firstOrNull { it.isSelected }
 
             if (selectedCreditor == null) {
-                _viewState.update {
+                updateState {
                     it.copy(
                         loadingState = LoadingState.Failure(CreditorNotSelectedException())
                     )
@@ -196,8 +217,20 @@ internal class PaymentViewModel constructor(
         }
     }
 
-    fun onPaymentSuccessful() {
-        _viewState.update {
+    private suspend fun onPaymentResult(result: SessionResult<PaymentSessionResult>) {
+        when (result) {
+            is SessionResult.Success -> {
+                onPaymentSuccessful()
+            }
+            is SessionResult.Failure -> {
+                onPaymentFailure(result.error)
+            }
+            is SessionResult.Canceled -> {}
+        }
+    }
+
+    private suspend fun onPaymentSuccessful() {
+        updateState {
             PaymentViewState(
                 creditors = it.creditors,
                 selectedCountry = it.selectedCountry
@@ -207,20 +240,20 @@ internal class PaymentViewModel constructor(
         _viewAction.trySend(PaymentViewAction.ShowSuccessDialog)
     }
 
-    fun onPaymentFailure(error: Throwable) {
-        _viewState.update { it.copy(loadingState = LoadingState.Failure(error)) }
+    private suspend fun onPaymentFailure(error: Throwable) {
+        updateState { it.copy(loadingState = LoadingState.Failure(error)) }
     }
 
     private fun loadCreditors(countryIso: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            _viewState.update {
+            updateState {
                 it.copy(loadingCreditors = true)
             }
             try {
                 val creditors = CreditorsListFactory.getCreditorsList(
                     creditors = getCreditorsUseCase.getCreditors(countryIso)
                 )
-                _viewState.update {
+                updateState {
                     it.copy(
                         creditors = creditors.mapIndexed { index, item ->
                             item.copy(isSelected = index == 0)
@@ -229,7 +262,7 @@ internal class PaymentViewModel constructor(
                     )
                 }
             } catch (e: Exception) {
-                _viewState.update {
+                updateState {
                     it.copy(
                         loadingCreditors = false,
                         loadingState = LoadingState.Failure(e)
@@ -244,7 +277,7 @@ internal class PaymentViewModel constructor(
         demoPaymentType: DemoPaymentType
     ) {
         viewModelScope.launch(Dispatchers.IO) {
-            _viewState.update { it.copy(loadingState = LoadingState.Loading(true)) }
+            updateState { it.copy(loadingState = LoadingState.Loading(true)) }
             try {
                 val initiatePaymentRequest = InitiatePaymentRequest(
                     amount = initiateDonationRequest.amount,
@@ -253,15 +286,18 @@ internal class PaymentViewModel constructor(
                     creditorName = initiateDonationRequest.creditorName,
                     redirectUrl = KevinPaymentsPlugin.getCallbackUrl()
                 )
-                val payment = when (demoPaymentType.toSdkPaymentType()) {
-                    PaymentType.BANK ->
+                val payment = when (demoPaymentType) {
+                    DemoPaymentType.BANK ->
                         kevinApiClient.initializeBankPayment(
                             initiatePaymentRequest
                         )
-                    PaymentType.CARD ->
+                    DemoPaymentType.CARD ->
                         kevinApiClient.initializeCardPayment(
                             initiatePaymentRequest
                         )
+                    else -> throw IllegalArgumentException(
+                        "Only bank, card and hybrid payments can be initiated as a single payment"
+                    )
                 }
                 _viewAction.send(
                     PaymentViewAction.OpenPaymentSession(
@@ -272,9 +308,9 @@ internal class PaymentViewModel constructor(
                             .build()
                     )
                 )
-                _viewState.update { it.copy(loadingState = LoadingState.Loading(false)) }
+                updateState { it.copy(loadingState = LoadingState.Loading(false)) }
             } catch (error: ApiError) {
-                _viewState.update { it.copy(loadingState = LoadingState.Failure(error)) }
+                updateState { it.copy(loadingState = LoadingState.Failure(error)) }
             }
         }
     }
@@ -310,7 +346,8 @@ internal class PaymentViewModel constructor(
                     ),
                     refreshAccessTokenUseCase = refreshAccessTokenUseCase,
                     linkedAccountsDao = linkedAccountsDao
-                )
+                ),
+                handle
             ) as T
         }
     }

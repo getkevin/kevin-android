@@ -11,7 +11,7 @@ android {
     compileSdkVersion 31
 
     defaultConfig {
-        minSdkVersion 23
+        minSdkVersion 21
         targetSdkVersion 31
 
         applicationId "eu.kevin.demo"

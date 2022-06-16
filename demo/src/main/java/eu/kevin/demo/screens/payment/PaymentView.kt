@@ -9,6 +9,7 @@ import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.widget.addTextChangedListener
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.entities.LoadingState
 import eu.kevin.common.entities.isLoading
 import eu.kevin.common.extensions.fadeIn
@@ -32,7 +33,7 @@ import eu.kevin.demo.screens.payment.entities.ValidationResult
 import eu.kevin.demo.screens.payment.entities.exceptions.CreditorNotSelectedException
 import eu.kevin.demo.views.NumberTextWatcher
 
-internal class PaymentView(context: Context) : FrameLayout(context) {
+internal class PaymentView(context: Context) : FrameLayout(context), IView<PaymentViewState> {
 
     var callback: PaymentViewCallback? = null
 
@@ -80,7 +81,7 @@ internal class PaymentView(context: Context) : FrameLayout(context) {
         initListeners()
     }
 
-    fun update(state: PaymentViewState) {
+    override fun render(state: PaymentViewState) {
         creditorsAdapter.update(state.creditors)
         when (state.loadingState) {
             is LoadingState.Loading -> startLoading(state.loadingState.isLoading())

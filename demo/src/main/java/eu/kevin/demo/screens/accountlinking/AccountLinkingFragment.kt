@@ -1,23 +1,26 @@
 package eu.kevin.demo.screens.accountlinking
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import android.content.Context
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import eu.kevin.accounts.accountsession.AccountSessionContract
 import eu.kevin.accounts.accountsession.entities.AccountSessionConfiguration
+import eu.kevin.common.architecture.BaseFragment
+import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.extensions.setFragmentResultListener
 import eu.kevin.core.enums.KevinCountry
 import eu.kevin.demo.screens.accountactions.AccountActionsContract
+import eu.kevin.demo.screens.accountlinking.AccountLinkingIntent.OnAccountActionSelected
+import eu.kevin.demo.screens.accountlinking.AccountLinkingIntent.OnAccountLinkingResult
+import eu.kevin.demo.screens.accountlinking.AccountLinkingIntent.OnStartAccountLinking
+import eu.kevin.demo.screens.accountlinking.AccountLinkingIntent.OpenMenuForAccount
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
-internal class AccountLinkingFragment : Fragment(), AccountLinkingViewCallback {
+internal class AccountLinkingFragment :
+    BaseFragment<AccountLinkingState, AccountLinkingIntent, AccountLinkingViewModel>(), AccountLinkingViewCallback {
 
-    private val viewModel: AccountLinkingViewModel by activityViewModels {
+    override val viewModel: AccountLinkingViewModel by activityViewModels {
         AccountLinkingViewModel.Factory(
             requireActivity().applicationContext,
             this
@@ -25,36 +28,25 @@ internal class AccountLinkingFragment : Fragment(), AccountLinkingViewCallback {
     }
 
     private val linkAccount = registerForActivityResult(AccountSessionContract()) { result ->
-        viewModel.onAccountLinkingResult(result)
+        viewModel.intents.trySend(OnAccountLinkingResult(result))
     }
 
-    private lateinit var contentView: AccountLinkingView
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(context: Context): IView<AccountLinkingState> {
         observeChanges()
         listenForAccountActionSelectedResult()
-        return AccountLinkingView(inflater.context).also {
+        return AccountLinkingView(context).also {
             it.callback = this
-            contentView = it
         }
     }
 
     private fun listenForAccountActionSelectedResult() {
         parentFragmentManager.setFragmentResultListener(AccountActionsContract, this) {
-            viewModel.onAccountActionSelected(it)
+            viewModel.intents.trySend(OnAccountActionSelected(it))
         }
     }
 
     private fun observeChanges() {
         lifecycleScope.launchWhenStarted {
-            viewModel.viewState.onEach { viewState ->
-                contentView.update(viewState)
-            }.launchIn(this)
-
             viewModel.viewAction.onEach { action ->
                 when (action) {
                     is AccountLinkingAction.OpenAccountLinkingSession -> {
@@ -74,10 +66,10 @@ internal class AccountLinkingFragment : Fragment(), AccountLinkingViewCallback {
     }
 
     override fun onLinkAccountClick() {
-        viewModel.startAccountLinking()
+        viewModel.intents.trySend(OnStartAccountLinking)
     }
 
     override fun onOpenMenuClick(id: Long) {
-        viewModel.openMenu(id)
+        viewModel.intents.trySend(OpenMenuForAccount(id))
     }
 }

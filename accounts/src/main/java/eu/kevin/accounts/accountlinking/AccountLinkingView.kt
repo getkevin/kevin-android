@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
+import androidx.core.view.updateLayoutParams
 import androidx.webkit.WebViewClientCompat
 import eu.kevin.accounts.KevinAccountsPlugin
 import eu.kevin.accounts.R
@@ -14,8 +15,10 @@ import eu.kevin.common.architecture.BaseView
 import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.extensions.applySystemInsetsMargin
 import eu.kevin.common.extensions.applySystemInsetsPadding
+import eu.kevin.common.extensions.dp
 import eu.kevin.common.extensions.getColorFromAttr
 import eu.kevin.common.extensions.hideKeyboard
+import eu.kevin.common.managers.KeyboardManager
 
 internal class AccountLinkingView(context: Context) :
     BaseView<KevinFragmentAccountLinkingBinding>(context),
@@ -42,6 +45,19 @@ internal class AccountLinkingView(context: Context) :
                 lastClickPosition = v.height - event.y.toInt()
             }
             false
+        }
+
+        KeyboardManager(binding.root).apply {
+            onKeyboardSizeChanged {
+                binding.root.updateLayoutParams<MarginLayoutParams> {
+                    bottomMargin = it
+                }
+            }
+            onKeyboardVisibilityChanged {
+                if (lastClickPosition < it) {
+                    binding.accountLinkWebView.scrollBy(0, (it - lastClickPosition) + dp(64))
+                }
+            }
         }
 
         with(binding.accountLinkWebView) {

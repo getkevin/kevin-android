@@ -6,12 +6,13 @@ import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.demo.R
 import eu.kevin.demo.databinding.KevinFragmentLinkAccountBinding
 import eu.kevin.demo.screens.accountlinking.adapters.LinkedAccountsListAdapter
 import eu.kevin.demo.views.DividerItemDecoration
 
-internal class AccountLinkingView(context: Context) : FrameLayout(context) {
+internal class AccountLinkingView(context: Context) : FrameLayout(context), IView<AccountLinkingState> {
 
     var callback: AccountLinkingViewCallback? = null
 
@@ -39,7 +40,7 @@ internal class AccountLinkingView(context: Context) : FrameLayout(context) {
         }
     }
 
-    fun update(state: AccountLinkingState) {
+    override fun render(state: AccountLinkingState) {
         with(binding) {
             progressView.isVisible = state.isLoading
             emptyStateContainer.isVisible = state.linkedAccounts.isEmpty()

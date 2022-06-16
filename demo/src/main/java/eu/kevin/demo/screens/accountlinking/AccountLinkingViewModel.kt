@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.savedstate.SavedStateRegistryOwner
 import eu.kevin.accounts.KevinAccountsPlugin
 import eu.kevin.accounts.accountsession.AccountSessionResult
+import eu.kevin.common.architecture.BaseViewModel
 import eu.kevin.core.entities.SessionResult
 import eu.kevin.demo.auth.KevinApiClient
 import eu.kevin.demo.auth.entities.InitiateAuthenticationRequest
@@ -22,32 +23,31 @@ import eu.kevin.demo.screens.accountactions.AccountActionsContract
 import eu.kevin.demo.screens.accountactions.AccountActionsFragmentConfiguration
 import eu.kevin.demo.screens.accountactions.entities.AccountAction
 import eu.kevin.demo.screens.accountactions.enums.AccountActionType
+import eu.kevin.demo.screens.accountlinking.AccountLinkingIntent.OnAccountActionSelected
+import eu.kevin.demo.screens.accountlinking.AccountLinkingIntent.OnAccountLinkingResult
+import eu.kevin.demo.screens.accountlinking.AccountLinkingIntent.OnStartAccountLinking
+import eu.kevin.demo.screens.accountlinking.AccountLinkingIntent.OpenMenuForAccount
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.receiveAsFlow
-import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 internal class AccountLinkingViewModel(
     private val kevinApiClient: KevinApiClient,
     private val linkedAccountsDao: LinkedAccountsDao,
-    private val accessTokenPreferences: AccountAccessTokenPreferences
-) : ViewModel() {
+    private val accessTokenPreferences: AccountAccessTokenPreferences,
+    savedStateHandle: SavedStateHandle
+) : BaseViewModel<AccountLinkingState, AccountLinkingIntent>(savedStateHandle) {
 
-    private val _viewState = MutableStateFlow(AccountLinkingState())
     private val _viewAction = Channel<AccountLinkingAction>(Channel.BUFFERED)
-
-    val viewState: StateFlow<AccountLinkingState> = _viewState
     val viewAction = _viewAction.receiveAsFlow()
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
             linkedAccountsDao.getLinkedAccountsFlow().onEach { linkedAccounts ->
-                _viewState.update {
+                updateState {
                     it.copy(
                         linkedAccounts = linkedAccounts
                     )
@@ -56,9 +56,20 @@ internal class AccountLinkingViewModel(
         }
     }
 
-    fun startAccountLinking() {
+    override fun getInitialData() = AccountLinkingState()
+
+    override suspend fun handleIntent(intent: AccountLinkingIntent) {
+        when (intent) {
+            is OnAccountActionSelected -> onAccountActionSelected(intent.action)
+            is OnAccountLinkingResult -> onAccountLinkingResult(intent.accountSessionResult)
+            is OnStartAccountLinking -> startAccountLinking()
+            is OpenMenuForAccount -> openMenu(intent.id)
+        }
+    }
+
+    private fun startAccountLinking() {
         viewModelScope.launch(Dispatchers.IO) {
-            _viewState.update {
+            updateState {
                 it.copy(isLoading = true)
             }
             try {
@@ -73,15 +84,15 @@ internal class AccountLinkingViewModel(
                 )
                 _viewAction.send(AccountLinkingAction.OpenAccountLinkingSession(state))
             } catch (ignored: Exception) {
-                _viewState.update {
+                updateState {
                     it.copy(isLoading = false)
                 }
             }
         }
     }
 
-    fun onAccountLinkingResult(accountSessionResult: SessionResult<AccountSessionResult>) {
-        _viewState.update {
+    private suspend fun onAccountLinkingResult(accountSessionResult: SessionResult<AccountSessionResult>) {
+        updateState {
             it.copy(isLoading = false)
         }
         when (accountSessionResult) {
@@ -93,13 +104,13 @@ internal class AccountLinkingViewModel(
         }
     }
 
-    fun onAccountActionSelected(action: AccountAction) {
+    private fun onAccountActionSelected(action: AccountAction) {
         when (action.accountAction) {
             AccountActionType.REMOVE -> removeBank(action.id)
         }
     }
 
-    fun openMenu(id: Long) {
+    private fun openMenu(id: Long) {
         DemoRouter.pushModalFragment(
             AccountActionsContract.getFragment(
                 AccountActionsFragmentConfiguration(id)
@@ -146,7 +157,8 @@ internal class AccountLinkingViewModel(
             return AccountLinkingViewModel(
                 ClientProvider.kevinDemoApiClient,
                 DatabaseProvider.getDatabase(context).linkedAccountsDao(),
-                AccountAccessTokenPreferences(context)
+                AccountAccessTokenPreferences(context),
+                handle
             ) as T
         }
     }
