@@ -7,7 +7,7 @@ import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.view.View
 
-object SpannableStringHelper {
+internal object SpannableStringHelper {
 
     fun getSpannableWithLinks(
         text: String,
@@ -37,7 +37,7 @@ object SpannableStringHelper {
     }
 }
 
-data class SpannableStringLink(
+internal data class SpannableStringLink(
     val text: String,
     val onClick: () -> Unit
 )

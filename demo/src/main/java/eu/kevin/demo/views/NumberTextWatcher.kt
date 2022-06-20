@@ -7,9 +7,9 @@ import java.math.RoundingMode
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 import java.text.ParseException
-import java.util.*
+import java.util.Locale
 
-class NumberTextWatcher(
+internal class NumberTextWatcher(
     private val editText: EditText,
     locale: Locale?,
     private val numberOfDecimals: Int

@@ -8,7 +8,7 @@ buildscript {
         coil_version = '1.4.0'
         ktor_version = '1.6.8'
         logback_version = '1.2.11'
-        material_version = '1.5.0'
+        material_version = '1.6.1'
         webkit_version = '1.4.0'
         appcompat_version = '1.4.1'
         recycler_version = '1.2.1'
@@ -16,6 +16,7 @@ buildscript {
         fragment_ktx_version = '1.4.1'
         crypto_version = '1.1.0-alpha03'
         serialization_json_version = '1.2.2'
+        room_version = '2.4.2'
 
         junit_version = '4.13.2'
         androidx_junit_version = '1.1.3'

@@ -6,7 +6,7 @@ import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import io.ktor.client.request.parameter
 
-class KevinDataApiClient(private val httpClient: HttpClient) : KevinDataClient {
+internal class KevinDataApiClient(private val httpClient: HttpClient) : KevinDataClient {
 
     override suspend fun getSupportedCountries(): GetCountriesResponse {
         return httpClient.get("countries")

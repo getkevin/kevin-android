@@ -1,14 +1,30 @@
 package eu.kevin.demo.auth
 
+import eu.kevin.demo.auth.entities.ApiAccessToken
 import eu.kevin.demo.auth.entities.ApiAuthState
 import eu.kevin.demo.auth.entities.ApiPayment
 import eu.kevin.demo.auth.entities.InitiateAuthenticationRequest
 import eu.kevin.demo.auth.entities.InitiatePaymentRequest
+import eu.kevin.demo.auth.entities.RefreshAccessTokenRequest
 import io.ktor.client.HttpClient
+import io.ktor.client.request.get
 import io.ktor.client.request.header
+import io.ktor.client.request.parameter
 import io.ktor.client.request.post
 
-class KevinClient(private val httpClient: HttpClient) : KevinApiClient {
+internal class KevinClient(private val httpClient: HttpClient) : KevinApiClient {
+
+    override suspend fun getAccessToken(authorizationCode: String): ApiAccessToken {
+        return httpClient.get("auth/tokens/") {
+            parameter("authorizationCode", authorizationCode)
+        }
+    }
+
+    override suspend fun refreshAccessToken(request: RefreshAccessTokenRequest): ApiAccessToken {
+        return httpClient.post("auth/refreshToken/") {
+            body = request
+        }
+    }
 
     override suspend fun getAuthState(request: InitiateAuthenticationRequest): String {
         return httpClient.post<ApiAuthState>("auth/initiate/") {
@@ -42,14 +58,6 @@ class KevinClient(private val httpClient: HttpClient) : KevinApiClient {
         request: InitiatePaymentRequest
     ): ApiPayment {
         return httpClient.post("payments/card/") {
-            body = request
-        }
-    }
-
-    override suspend fun initializeHybridPayment(
-        request: InitiatePaymentRequest
-    ): ApiPayment {
-        return httpClient.post("payments/hybrid/") {
             body = request
         }
     }

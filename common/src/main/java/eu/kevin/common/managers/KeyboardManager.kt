@@ -10,7 +10,7 @@ import androidx.core.view.WindowInsetsAnimationCompat
 import androidx.core.view.WindowInsetsCompat
 
 @Suppress("DEPRECATION")
-class KeyboardManager(private val rootView: View) {
+class KeyboardManager(private val rootView: View, val excludeNavBarInsets: Boolean = true) {
 
     private var onKeyboardSizeChanged: (Int) -> Unit = {}
     private var onKeyboardVisibilityChanged: (Int) -> Unit = {}
@@ -46,10 +46,15 @@ class KeyboardManager(private val rootView: View) {
         ViewCompat.setOnApplyWindowInsetsListener(rootView) { _, windowInsets ->
             lastWindowInsets = windowInsets
             if (!deferredInsets) {
-                val typesInset = windowInsets.getInsets(WindowInsetsCompat.Type.ime())
-                val otherInset = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
-                val diff = Insets.subtract(typesInset, otherInset).let {
-                    Insets.max(it, Insets.NONE)
+                val imeInsets = windowInsets.getInsets(WindowInsetsCompat.Type.ime())
+                val diff = if (excludeNavBarInsets) {
+                    val typesInset = windowInsets.getInsets(WindowInsetsCompat.Type.ime())
+                    val systemBarInsets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+                    Insets.subtract(typesInset, systemBarInsets).let {
+                        Insets.max(it, Insets.NONE)
+                    }
+                } else {
+                    imeInsets
                 }
                 onKeyboardSizeChanged.invoke(diff.bottom)
                 lastKeyboardHeight = diff.bottom
@@ -74,10 +79,14 @@ class KeyboardManager(private val rootView: View) {
                     insets: WindowInsetsCompat,
                     runningAnimations: MutableList<WindowInsetsAnimationCompat>
                 ): WindowInsetsCompat {
-                    val typesInset = insets.getInsets(WindowInsetsCompat.Type.ime())
-                    val otherInset = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-                    val diff = Insets.subtract(typesInset, otherInset).let {
-                        Insets.max(it, Insets.NONE)
+                    val imeInsets = insets.getInsets(WindowInsetsCompat.Type.ime())
+                    val diff = if (excludeNavBarInsets) {
+                        val systemBarInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+                        Insets.subtract(imeInsets, systemBarInsets).let {
+                            Insets.max(it, Insets.NONE)
+                        }
+                    } else {
+                        imeInsets
                     }
                     onKeyboardSizeChanged.invoke(diff.bottom)
                     return insets

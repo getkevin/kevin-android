@@ -1,6 +1,6 @@
 package eu.kevin.demo.auth.enums
 
-enum class AuthenticationScope(val value: String) {
+internal enum class AuthenticationScope(val value: String) {
     PAYMENTS("payments"),
     PAYMENTS_POS("payments_pos"),
     ACCOUNT_DETAILS("accounts_details"),

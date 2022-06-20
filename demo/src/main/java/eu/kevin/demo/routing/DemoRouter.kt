@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
-object DemoRouter {
+internal object DemoRouter {
 
     private val mainModalRouterChannel = Channel<BottomSheetDialogFragment>(capacity = 1)
     private val fragmentResultChannel = Channel<RouterFragmentResultWrapper>(capacity = 1)
@@ -18,6 +18,7 @@ object DemoRouter {
     fun pushModalFragment(fragment: BottomSheetDialogFragment) {
         mainModalRouterChannel.trySend(fragment)
     }
+
     fun <T> returnFragmentResult(contract: FragmentResultContract<T>, result: T) {
         fragmentResultChannel.trySend(RouterFragmentResultWrapper(contract, result))
     }

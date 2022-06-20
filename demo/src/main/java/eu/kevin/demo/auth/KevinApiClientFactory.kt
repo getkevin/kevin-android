@@ -3,7 +3,7 @@ package eu.kevin.demo.auth
 import eu.kevin.core.networking.BaseApiFactory
 import io.ktor.client.features.logging.LogLevel
 
-class KevinApiClientFactory(
+internal class KevinApiClientFactory(
     baseUrl: String,
     userAgent: String,
     timeout: Int? = null,
