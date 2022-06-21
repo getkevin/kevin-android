@@ -36,6 +36,7 @@ import eu.kevin.inapppayments.cardpaymentredirect.CardPaymentRedirectContract
 import eu.kevin.inapppayments.cardpaymentredirect.CardPaymentRedirectFragmentConfiguration
 import eu.kevin.inapppayments.networking.KevinPaymentsClient
 import eu.kevin.inapppayments.networking.KevinPaymentsClientProvider
+import eu.kevin.inapppayments.common.enums.PaymentStatus
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -140,14 +141,16 @@ internal class CardPaymentViewModel(
     }
 
     private fun handlePaymentResult(uri: Uri) {
-        val status = uri.getQueryParameter("statusGroup")
-        if (status == "completed") {
-            val result = CardPaymentResult(
-                uri.getQueryParameter("paymentId") ?: ""
-            )
-            GlobalRouter.returnFragmentResult(CardPaymentContract, FragmentResult.Success(result))
-        } else {
-            GlobalRouter.returnFragmentResult(CardPaymentContract, FragmentResult.Canceled)
+        when (PaymentStatus.fromString(uri.getQueryParameter("statusGroup"))) {
+            PaymentStatus.COMPLETED, PaymentStatus.PENDING -> {
+                val result = CardPaymentResult(
+                    uri.getQueryParameter("paymentId") ?: ""
+                )
+                GlobalRouter.returnFragmentResult(CardPaymentContract, FragmentResult.Success(result))
+            }
+            PaymentStatus.UNKNOWN -> {
+                GlobalRouter.returnFragmentResult(CardPaymentContract, FragmentResult.Canceled)
+            }
         }
     }
 

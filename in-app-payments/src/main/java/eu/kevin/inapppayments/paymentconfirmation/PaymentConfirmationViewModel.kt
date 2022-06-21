@@ -15,6 +15,7 @@ import eu.kevin.inapppayments.KevinPaymentsPlugin
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.HandleBackClicked
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.HandlePaymentCompleted
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.Initialize
+import eu.kevin.inapppayments.common.enums.PaymentStatus
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType.BANK
 
 internal class PaymentConfirmationViewModel(
@@ -78,17 +79,19 @@ internal class PaymentConfirmationViewModel(
     private fun handlePaymentCompleted(uri: Uri) {
         if (!uri.toString().startsWith(KevinPaymentsPlugin.getCallbackUrl())) return
 
-        val status = uri.getQueryParameter("statusGroup")
-        if (status == "completed") {
-            val result = PaymentConfirmationResult(
-                uri.getQueryParameter("paymentId") ?: ""
-            )
-            GlobalRouter.returnFragmentResult(
-                PaymentConfirmationContract,
-                FragmentResult.Success(result)
-            )
-        } else {
-            GlobalRouter.returnFragmentResult(PaymentConfirmationContract, FragmentResult.Canceled)
+        when (PaymentStatus.fromString(uri.getQueryParameter("statusGroup"))) {
+            PaymentStatus.COMPLETED, PaymentStatus.PENDING -> {
+                val result = PaymentConfirmationResult(
+                    uri.getQueryParameter("paymentId") ?: ""
+                )
+                GlobalRouter.returnFragmentResult(
+                    PaymentConfirmationContract,
+                    FragmentResult.Success(result)
+                )
+            }
+            PaymentStatus.UNKNOWN -> {
+                GlobalRouter.returnFragmentResult(PaymentConfirmationContract, FragmentResult.Canceled)
+            }
         }
     }
 
