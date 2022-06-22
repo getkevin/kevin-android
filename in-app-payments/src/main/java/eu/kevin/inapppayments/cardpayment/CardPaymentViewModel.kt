@@ -141,14 +141,15 @@ internal class CardPaymentViewModel(
     }
 
     private fun handlePaymentResult(uri: Uri) {
-        when (PaymentStatus.fromString(uri.getQueryParameter("statusGroup"))) {
+        when (val status = PaymentStatus.fromString(uri.getQueryParameter("statusGroup"))) {
             PaymentStatus.COMPLETED, PaymentStatus.PENDING -> {
                 val result = CardPaymentResult(
-                    uri.getQueryParameter("paymentId") ?: ""
+                    paymentId = uri.getQueryParameter("paymentId") ?: "",
+                    status = status
                 )
                 GlobalRouter.returnFragmentResult(CardPaymentContract, FragmentResult.Success(result))
             }
-            PaymentStatus.UNKNOWN -> {
+            else -> {
                 GlobalRouter.returnFragmentResult(CardPaymentContract, FragmentResult.Canceled)
             }
         }

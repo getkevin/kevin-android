@@ -3,6 +3,7 @@ package eu.kevin.inapppayments.common.enums
 enum class PaymentStatus(val value: String) {
     COMPLETED("completed"),
     PENDING("pending"),
+    FAILED("failed"),
     UNKNOWN("unknown");
 
     companion object {
@@ -10,6 +11,7 @@ enum class PaymentStatus(val value: String) {
             return when (value) {
                 COMPLETED.value -> COMPLETED
                 PENDING.value -> PENDING
+                FAILED.value -> FAILED
                 else -> UNKNOWN
             }
         }

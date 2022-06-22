@@ -79,17 +79,18 @@ internal class PaymentConfirmationViewModel(
     private fun handlePaymentCompleted(uri: Uri) {
         if (!uri.toString().startsWith(KevinPaymentsPlugin.getCallbackUrl())) return
 
-        when (PaymentStatus.fromString(uri.getQueryParameter("statusGroup"))) {
+        when (val status = PaymentStatus.fromString(uri.getQueryParameter("statusGroup"))) {
             PaymentStatus.COMPLETED, PaymentStatus.PENDING -> {
                 val result = PaymentConfirmationResult(
-                    uri.getQueryParameter("paymentId") ?: ""
+                    paymentId = uri.getQueryParameter("paymentId") ?: "",
+                    status = status
                 )
                 GlobalRouter.returnFragmentResult(
                     PaymentConfirmationContract,
                     FragmentResult.Success(result)
                 )
             }
-            PaymentStatus.UNKNOWN -> {
+            else -> {
                 GlobalRouter.returnFragmentResult(PaymentConfirmationContract, FragmentResult.Canceled)
             }
         }
