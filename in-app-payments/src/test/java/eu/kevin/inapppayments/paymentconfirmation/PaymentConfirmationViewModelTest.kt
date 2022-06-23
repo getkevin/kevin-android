@@ -5,6 +5,7 @@ import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.extensions.appendQuery
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.inapppayments.BuildConfig
+import eu.kevin.inapppayments.common.enums.PaymentStatus
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 import eu.kevin.testcore.base.BaseViewModelTest
 import io.mockk.every
@@ -105,7 +106,7 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
     @Test
     fun `test handleIntent() handlePaymentCompleted success`() = testCoroutineScope.runTest {
         val paymentId = "1234567"
-        val expectedResult = PaymentConfirmationResult(paymentId)
+        val expectedResult = PaymentConfirmationResult(paymentId, PaymentStatus.COMPLETED)
         val mockUri = mockkClass(Uri::class)
         every { mockUri.getQueryParameter("statusGroup") } returns "completed"
         every { mockUri.getQueryParameter("paymentId") } returns paymentId
