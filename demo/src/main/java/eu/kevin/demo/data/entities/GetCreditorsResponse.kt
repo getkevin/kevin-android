@@ -17,5 +17,5 @@ internal data class Creditor(
 @Serializable
 internal data class CreditorAccount(
     val currencyCode: String,
-    val iban: String,
+    val iban: String
 )
