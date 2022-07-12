@@ -10,7 +10,7 @@ internal object CreditorsListFactory {
             CreditorListItem(
                 logo = it.logo,
                 name = it.name,
-                iban = it.iban,
+                iban = it.accounts.first().iban,
                 isSelected = false
             )
         }
