@@ -20,7 +20,7 @@ internal class GetSupportedBanksUseCase(
         } else {
             apiBanks
         }
-        return if (supportedBanksFilter.isAccountLinking) {
+        return if (supportedBanksFilter.showOnlyAccountLinkingSupportedBanks) {
             filteredByName.filter { it.isAccountLinkingSupported }
         } else {
             filteredByName

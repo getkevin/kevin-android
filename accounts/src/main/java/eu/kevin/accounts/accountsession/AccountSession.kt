@@ -7,6 +7,7 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.savedstate.SavedStateRegistryOwner
+import eu.kevin.accounts.KevinAccountsPlugin
 import eu.kevin.accounts.accountlinking.AccountLinkingContract
 import eu.kevin.accounts.accountlinking.AccountLinkingFragmentConfiguration
 import eu.kevin.accounts.accountsession.entities.AccountSessionConfiguration
@@ -149,7 +150,7 @@ internal class AccountSession(
                     configuration.bankFilter,
                     sessionData.selectedBank?.id,
                     configuration.state,
-                    isAccountLinking = true
+                    !KevinAccountsPlugin.isShowUnsupportedBanks()
                 )
                 BankSelectionContract.getFragment(config)
             }

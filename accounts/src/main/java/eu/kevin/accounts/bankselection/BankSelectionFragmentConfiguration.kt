@@ -12,5 +12,5 @@ data class BankSelectionFragmentConfiguration(
     val bankFilter: List<String>,
     val selectedBankId: String?,
     val authState: String,
-    val isAccountLinking: Boolean
+    val showOnlyAccountLinkingSupportedBanks: Boolean
 ) : Parcelable
