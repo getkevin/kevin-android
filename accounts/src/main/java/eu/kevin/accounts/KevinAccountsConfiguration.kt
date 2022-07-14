@@ -38,7 +38,7 @@ class KevinAccountsConfiguration private constructor(
          * used only for testing, shouldn't be changed in normal scenarios
          * default - false
          */
-        fun setShowUnsupportedBanksInAccountLinking(show: Boolean): Builder  {
+        fun setShowUnsupportedBanksInAccountLinking(show: Boolean): Builder {
             this.showUnsupportedBanksInAccountLinking = show
             return this
         }
