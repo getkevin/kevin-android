@@ -150,7 +150,7 @@ internal class AccountSession(
                     configuration.bankFilter,
                     sessionData.selectedBank?.id,
                     configuration.state,
-                    !KevinAccountsPlugin.getShowUnsupportedBanksInAccountLinking()
+                    !KevinAccountsPlugin.isShowUnsupportedBanks()
                 )
                 BankSelectionContract.getFragment(config)
             }

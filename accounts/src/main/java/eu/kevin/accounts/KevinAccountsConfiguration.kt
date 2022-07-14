@@ -4,7 +4,7 @@ import eu.kevin.core.plugin.KevinException
 
 class KevinAccountsConfiguration private constructor(
     private val callbackUrl: String,
-    private val showUnsupportedBanksInAccountLinking: Boolean
+    private val showUnsupportedBanks: Boolean
 ) {
     companion object {
         fun builder(): Builder {
@@ -16,14 +16,14 @@ class KevinAccountsConfiguration private constructor(
         return callbackUrl
     }
 
-    fun getShowUnsupportedBanksInAccountLinking(): Boolean {
-        return showUnsupportedBanksInAccountLinking
+    fun isShowUnsupportedBanks(): Boolean {
+        return showUnsupportedBanks
     }
 
     class Builder {
 
         private lateinit var callbackUrl: String
-        private var showUnsupportedBanksInAccountLinking: Boolean = false
+        private var showUnsupportedBanks: Boolean = false
 
         /**
          * @param url callback url to be used in accounts plugin
@@ -38,8 +38,8 @@ class KevinAccountsConfiguration private constructor(
          * used only for testing, shouldn't be changed in normal scenarios
          * default - false
          */
-        fun setShowUnsupportedBanksInAccountLinking(show: Boolean): Builder {
-            this.showUnsupportedBanksInAccountLinking = show
+        fun setShowUnsupportedBanks(show: Boolean): Builder {
+            this.showUnsupportedBanks = show
             return this
         }
 
@@ -49,7 +49,7 @@ class KevinAccountsConfiguration private constructor(
             }
             return KevinAccountsConfiguration(
                 callbackUrl = callbackUrl,
-                showUnsupportedBanksInAccountLinking = showUnsupportedBanksInAccountLinking
+                showUnsupportedBanks = showUnsupportedBanks
             )
         }
     }
