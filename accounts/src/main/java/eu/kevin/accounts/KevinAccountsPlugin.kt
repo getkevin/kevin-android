@@ -22,4 +22,8 @@ object KevinAccountsPlugin : KevinPlugin {
     fun getCallbackUrl(): String {
         return configuration.getCallbackUrl()
     }
+
+    fun getShowUnsupportedBanksInAccountLinking(): Boolean {
+        return configuration.getShowUnsupportedBanksInAccountLinking()
+    }
 }

@@ -94,7 +94,7 @@ internal class BankSelectionViewModel constructor(
                     configuration.authState,
                     SupportedBanksFilter(
                         banks = configuration.bankFilter,
-                        isAccountLinking = configuration.isAccountLinking
+                        isAccountLinking = configuration.showOnlyAccountLinkingSupportedBanks
                     )
                 )
 
@@ -155,7 +155,7 @@ internal class BankSelectionViewModel constructor(
                     configuration.authState,
                     SupportedBanksFilter(
                         banks = configuration.bankFilter,
-                        isAccountLinking = configuration.isAccountLinking
+                        isAccountLinking = configuration.showOnlyAccountLinkingSupportedBanks
                     )
                 )
                 banks = apiBanks.map {
