@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.LinearLayoutManager
 import eu.kevin.common.architecture.BaseView
-import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.common.architecture.interfaces.View
 import eu.kevin.common.entities.LoadingState
 import eu.kevin.common.entities.isLoading
 import eu.kevin.common.extensions.applySystemInsetsPadding
@@ -19,7 +19,7 @@ import eu.kevin.demo.screens.countryselection.helpers.CountryHelper
 
 internal class CountrySelectionView(context: Context) :
     BaseView<KevinFragmentSelectCountryBinding>(context),
-    IView<CountrySelectionState> {
+    View<CountrySelectionState> {
 
     override val binding = KevinFragmentSelectCountryBinding.inflate(LayoutInflater.from(context), this)
 

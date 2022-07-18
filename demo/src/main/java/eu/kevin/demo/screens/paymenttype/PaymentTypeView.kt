@@ -4,13 +4,13 @@ import android.content.Context
 import android.view.LayoutInflater
 import androidx.core.view.isVisible
 import eu.kevin.common.architecture.BaseView
-import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.common.architecture.interfaces.View
 import eu.kevin.common.extensions.applySystemInsetsPadding
 import eu.kevin.demo.databinding.KevinFragmentPaymentTypeBinding
 
 internal class PaymentTypeView(context: Context) :
     BaseView<KevinFragmentPaymentTypeBinding>(context),
-    IView<PaymentTypeState> {
+    View<PaymentTypeState> {
 
     var callback: PaymentTypeViewCallback? = null
 

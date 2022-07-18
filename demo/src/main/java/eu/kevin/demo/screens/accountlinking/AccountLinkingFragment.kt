@@ -6,7 +6,7 @@ import androidx.lifecycle.lifecycleScope
 import eu.kevin.accounts.accountsession.AccountSessionContract
 import eu.kevin.accounts.accountsession.entities.AccountSessionConfiguration
 import eu.kevin.common.architecture.BaseFragment
-import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.common.architecture.interfaces.View
 import eu.kevin.common.extensions.setFragmentResultListener
 import eu.kevin.core.enums.KevinCountry
 import eu.kevin.demo.screens.accountactions.AccountActionsContract
@@ -31,7 +31,7 @@ internal class AccountLinkingFragment :
         viewModel.intents.trySend(OnAccountLinkingResult(result))
     }
 
-    override fun onCreateView(context: Context): IView<AccountLinkingState> {
+    override fun onCreateView(context: Context): View<AccountLinkingState> {
         observeChanges()
         listenForAccountActionSelectedResult()
         return AccountLinkingView(context).also {

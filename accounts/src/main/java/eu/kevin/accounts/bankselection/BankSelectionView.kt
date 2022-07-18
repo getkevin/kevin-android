@@ -11,7 +11,7 @@ import eu.kevin.accounts.bankselection.exceptions.BankNotSelectedException
 import eu.kevin.accounts.countryselection.helpers.CountryHelper
 import eu.kevin.accounts.databinding.KevinFragmentBankSelectionBinding
 import eu.kevin.common.architecture.BaseView
-import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.common.architecture.interfaces.View
 import eu.kevin.common.entities.LoadingState
 import eu.kevin.common.entities.isLoading
 import eu.kevin.common.extensions.applySystemInsetsMargin
@@ -28,7 +28,7 @@ import eu.kevin.common.views.GridListItemDecoration
 
 internal class BankSelectionView(context: Context) :
     BaseView<KevinFragmentBankSelectionBinding>(context),
-    IView<BankSelectionState> {
+    View<BankSelectionState> {
 
     override val binding = KevinFragmentBankSelectionBinding.inflate(LayoutInflater.from(context), this)
 

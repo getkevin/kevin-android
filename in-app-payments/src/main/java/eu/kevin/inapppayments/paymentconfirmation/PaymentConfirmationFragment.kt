@@ -6,7 +6,7 @@ import android.net.Uri
 import androidx.fragment.app.viewModels
 import eu.kevin.common.architecture.BaseFragment
 import eu.kevin.common.architecture.interfaces.DeepLinkHandler
-import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.common.architecture.interfaces.View
 import eu.kevin.common.helpers.IntentHandlerHelper
 import eu.kevin.common.helpers.WebFrameHelper
 import eu.kevin.core.plugin.Kevin
@@ -27,7 +27,7 @@ internal class PaymentConfirmationFragment :
 
     private lateinit var view: PaymentConfirmationView
 
-    override fun onCreateView(context: Context): IView<PaymentConfirmationState> {
+    override fun onCreateView(context: Context): View<PaymentConfirmationState> {
         return PaymentConfirmationView(context).also {
             it.delegate = this
             view = it

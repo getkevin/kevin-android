@@ -1,9 +1,9 @@
 package eu.kevin.inapppayments.cardpayment
 
-import eu.kevin.common.architecture.interfaces.IIntent
+import eu.kevin.common.architecture.interfaces.Intent
 import eu.kevin.inapppayments.cardpayment.inputvalidation.ValidationResult
 
-internal sealed class CardPaymentViewAction : IIntent {
+internal sealed class CardPaymentViewAction : Intent {
     data class ShowFieldValidations(
         val cardholderNameValidation: ValidationResult,
         val cardNumberValidation: ValidationResult,

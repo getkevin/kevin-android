@@ -6,13 +6,13 @@ import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
-import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.common.architecture.interfaces.View
 import eu.kevin.demo.R
 import eu.kevin.demo.databinding.KevinFragmentLinkAccountBinding
 import eu.kevin.demo.screens.accountlinking.adapters.LinkedAccountsListAdapter
 import eu.kevin.demo.views.DividerItemDecoration
 
-internal class AccountLinkingView(context: Context) : FrameLayout(context), IView<AccountLinkingState> {
+internal class AccountLinkingView(context: Context) : FrameLayout(context), View<AccountLinkingState> {
 
     var callback: AccountLinkingViewCallback? = null
 

@@ -3,7 +3,7 @@ package eu.kevin.demo.screens.countryselection
 import android.content.Context
 import androidx.fragment.app.viewModels
 import eu.kevin.common.architecture.BaseModalFragment
-import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.common.architecture.interfaces.View
 import eu.kevin.demo.screens.countryselection.CountrySelectionIntent.HandleCountrySelection
 import eu.kevin.demo.screens.countryselection.CountrySelectionIntent.Initialize
 
@@ -17,7 +17,7 @@ internal class CountrySelectionFragment :
         CountrySelectionViewModel.Factory(this)
     }
 
-    override fun onCreateView(context: Context): IView<CountrySelectionState> {
+    override fun onCreateView(context: Context): View<CountrySelectionState> {
         return CountrySelectionView(context).also {
             it.delegate = this
         }

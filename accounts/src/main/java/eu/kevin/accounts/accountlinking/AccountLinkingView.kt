@@ -12,7 +12,7 @@ import eu.kevin.accounts.R
 import eu.kevin.accounts.accountsession.enums.AccountLinkingType
 import eu.kevin.accounts.databinding.KevinFragmentAccountLinkingBinding
 import eu.kevin.common.architecture.BaseView
-import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.common.architecture.interfaces.View
 import eu.kevin.common.extensions.applySystemInsetsMargin
 import eu.kevin.common.extensions.applySystemInsetsPadding
 import eu.kevin.common.extensions.dp
@@ -22,7 +22,7 @@ import eu.kevin.common.managers.KeyboardManager
 
 internal class AccountLinkingView(context: Context) :
     BaseView<KevinFragmentAccountLinkingBinding>(context),
-    IView<AccountLinkingState> {
+    View<AccountLinkingState> {
 
     override val binding = KevinFragmentAccountLinkingBinding.inflate(LayoutInflater.from(context), this)
 

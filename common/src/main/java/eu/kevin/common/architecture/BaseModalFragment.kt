@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import eu.kevin.common.architecture.interfaces.IIntent
-import eu.kevin.common.architecture.interfaces.IState
-import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.common.architecture.interfaces.Intent
 import eu.kevin.common.architecture.interfaces.Navigable
+import eu.kevin.common.architecture.interfaces.State
+import eu.kevin.common.architecture.interfaces.View
 import eu.kevin.common.providers.SavedStateProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -19,7 +19,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlin.coroutines.CoroutineContext
 
-abstract class BaseModalFragment<S : IState, I : IIntent, M : BaseViewModel<S, I>> :
+abstract class BaseModalFragment<S : State, I : Intent, M : BaseViewModel<S, I>> :
     BottomSheetDialogFragment(),
     CoroutineScope,
     Navigable {
@@ -30,9 +30,9 @@ abstract class BaseModalFragment<S : IState, I : IIntent, M : BaseViewModel<S, I
     private val savable = Bundle()
 
     protected abstract val viewModel: M
-    protected lateinit var contentView: IView<S>
+    protected lateinit var contentView: eu.kevin.common.architecture.interfaces.View<S>
 
-    abstract fun onCreateView(context: Context): IView<S>
+    abstract fun onCreateView(context: Context): eu.kevin.common.architecture.interfaces.View<S>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         if (savedInstanceState != null) {

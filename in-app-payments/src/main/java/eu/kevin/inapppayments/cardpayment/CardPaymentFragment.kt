@@ -5,7 +5,7 @@ import android.net.Uri
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import eu.kevin.common.architecture.BaseFragment
-import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.common.architecture.interfaces.View
 import eu.kevin.common.extensions.setFragmentResultListener
 import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandleBackClicked
 import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandleCardPaymentEvent
@@ -35,7 +35,7 @@ internal class CardPaymentFragment :
 
     private lateinit var view: CardPaymentView
 
-    override fun onCreateView(context: Context): IView<CardPaymentState> {
+    override fun onCreateView(context: Context): View<CardPaymentState> {
         return CardPaymentView(context).also {
             it.delegate = this
             view = it

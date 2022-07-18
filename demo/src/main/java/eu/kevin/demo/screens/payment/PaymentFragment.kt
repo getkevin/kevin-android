@@ -6,7 +6,7 @@ import android.net.Uri
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import eu.kevin.common.architecture.BaseFragment
-import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.common.architecture.interfaces.View
 import eu.kevin.common.extensions.setFragmentResultListener
 import eu.kevin.demo.screens.chooseaccount.ChooseAccountContract
 import eu.kevin.demo.screens.countryselection.CountrySelectionContract
@@ -39,7 +39,7 @@ internal class PaymentFragment :
         viewModel.intents.trySend(OnPaymentResult(result))
     }
 
-    override fun onCreateView(context: Context): IView<PaymentViewState> {
+    override fun onCreateView(context: Context): View<PaymentViewState> {
         observeChanges()
         listenForCountrySelectedResult()
         listenForPaymentTypeSelectedResult()

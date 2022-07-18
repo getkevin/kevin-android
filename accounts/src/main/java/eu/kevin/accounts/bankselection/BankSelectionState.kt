@@ -2,7 +2,7 @@ package eu.kevin.accounts.bankselection
 
 import android.os.Parcelable
 import eu.kevin.accounts.bankselection.entities.BankListItem
-import eu.kevin.common.architecture.interfaces.IState
+import eu.kevin.common.architecture.interfaces.State
 import eu.kevin.common.entities.LoadingState
 import kotlinx.parcelize.Parcelize
 
@@ -12,4 +12,4 @@ internal data class BankSelectionState(
     val isCountrySelectionDisabled: Boolean = true,
     val bankListItems: List<BankListItem> = emptyList(),
     val loadingState: LoadingState? = null
-) : IState, Parcelable
+) : State, Parcelable

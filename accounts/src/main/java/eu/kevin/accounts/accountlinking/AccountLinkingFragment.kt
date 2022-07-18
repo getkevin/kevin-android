@@ -9,7 +9,7 @@ import eu.kevin.accounts.accountlinking.AccountLinkingIntent.HandleBackClicked
 import eu.kevin.accounts.accountlinking.AccountLinkingIntent.Initialize
 import eu.kevin.common.architecture.BaseFragment
 import eu.kevin.common.architecture.interfaces.DeepLinkHandler
-import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.common.architecture.interfaces.View
 import eu.kevin.common.helpers.IntentHandlerHelper
 import eu.kevin.common.helpers.WebFrameHelper
 import eu.kevin.core.plugin.Kevin
@@ -27,7 +27,7 @@ internal class AccountLinkingFragment :
         AccountLinkingViewModel.Factory(this)
     }
 
-    override fun onCreateView(context: Context): IView<AccountLinkingState> {
+    override fun onCreateView(context: Context): View<AccountLinkingState> {
         return AccountLinkingView(context).also {
             it.delegate = this
             view = it

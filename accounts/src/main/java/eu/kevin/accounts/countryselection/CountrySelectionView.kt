@@ -8,7 +8,7 @@ import eu.kevin.accounts.countryselection.entities.Country
 import eu.kevin.accounts.countryselection.helpers.CountryHelper
 import eu.kevin.accounts.databinding.KevinFragmentCountrySelectionBinding
 import eu.kevin.common.architecture.BaseView
-import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.common.architecture.interfaces.View
 import eu.kevin.common.entities.LoadingState
 import eu.kevin.common.entities.isLoading
 import eu.kevin.common.extensions.applySystemInsetsPadding
@@ -19,7 +19,7 @@ import eu.kevin.common.helpers.SnackbarHelper
 
 internal class CountrySelectionView(context: Context) :
     BaseView<KevinFragmentCountrySelectionBinding>(context),
-    IView<CountrySelectionState> {
+    View<CountrySelectionState> {
 
     override val binding = KevinFragmentCountrySelectionBinding.inflate(LayoutInflater.from(context), this)
 

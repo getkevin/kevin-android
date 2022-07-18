@@ -13,7 +13,7 @@ import eu.kevin.accounts.bankselection.BankSelectionIntent.HandleCountrySelectio
 import eu.kevin.accounts.bankselection.BankSelectionIntent.Initialize
 import eu.kevin.accounts.countryselection.CountrySelectionContract
 import eu.kevin.common.architecture.BaseFragment
-import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.common.architecture.interfaces.View
 import eu.kevin.common.extensions.setFragmentResultListener
 
 internal class BankSelectionFragment :
@@ -26,7 +26,7 @@ internal class BankSelectionFragment :
         BankSelectionViewModel.Factory(this)
     }
 
-    override fun onCreateView(context: Context): IView<BankSelectionState> {
+    override fun onCreateView(context: Context): View<BankSelectionState> {
         return BankSelectionView(context).also {
             it.delegate = this
         }

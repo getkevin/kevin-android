@@ -1,13 +1,13 @@
 package eu.kevin.demo.screens.payment
 
-import eu.kevin.common.architecture.interfaces.IIntent
+import eu.kevin.common.architecture.interfaces.Intent
 import eu.kevin.core.entities.SessionResult
 import eu.kevin.demo.screens.payment.entities.CreditorListItem
 import eu.kevin.demo.screens.payment.entities.DonationRequest
 import eu.kevin.demo.screens.paymenttype.enums.DemoPaymentType
 import eu.kevin.inapppayments.paymentsession.PaymentSessionResult
 
-internal sealed class PaymentIntent : IIntent {
+internal sealed class PaymentIntent : Intent {
     data class OnCreditorSelected(val creditor: CreditorListItem) : PaymentIntent()
     data class OnCountrySelected(val iso: String) : PaymentIntent()
     data class OnPaymentTypeSelected(val paymentType: DemoPaymentType) : PaymentIntent()

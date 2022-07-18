@@ -1,5 +1,5 @@
 package eu.kevin.common.architecture.interfaces
 
-interface IView<S : IState> {
+interface View<S : State> {
     fun render(state: S)
 }

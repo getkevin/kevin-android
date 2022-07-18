@@ -1,8 +1,8 @@
 package eu.kevin.accounts.bankselection
 
-import eu.kevin.common.architecture.interfaces.IIntent
+import eu.kevin.common.architecture.interfaces.Intent
 
-internal sealed class BankSelectionIntent : IIntent {
+internal sealed class BankSelectionIntent : Intent {
     data class Initialize(val configuration: BankSelectionFragmentConfiguration) : BankSelectionIntent()
     data class HandleCountrySelectionClick(
         val configuration: BankSelectionFragmentConfiguration
