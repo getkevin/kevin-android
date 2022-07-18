@@ -6,7 +6,7 @@
         <activity
             android:name="eu.kevin.inapppayments.paymentsession.PaymentSessionActivity"
             android:exported="true"
-            android:launchMode="singleInstance" />
+            android:launchMode="singleTop" />
     </application>
 
 </manifest>
