@@ -2,7 +2,7 @@ package eu.kevin.accounts.bankselection.managers
 
 import eu.kevin.accounts.networking.entities.ApiBank
 
-class BankTestManager : BankManagerInterface {
+class TestBankManager : BankManager {
 
     override suspend fun getSupportedBanks(country: String, authState: String): List<ApiBank> {
         val banks = listOf(

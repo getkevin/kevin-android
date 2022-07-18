@@ -1,6 +1,6 @@
 package eu.kevin.accounts.countryselection.managers
 
-class CountriesTestManager : CountriesManagerInterface {
+class TestCountriesManager : CountriesManager {
 
     override suspend fun getSupportedCountries(authState: String): List<String> {
         return listOf(

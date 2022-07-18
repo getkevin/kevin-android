@@ -1,6 +1,6 @@
 package eu.kevin.accounts.countryselection.usecases
 
-import eu.kevin.accounts.countryselection.managers.CountriesTestManager
+import eu.kevin.accounts.countryselection.managers.TestCountriesManager
 import eu.kevin.core.enums.KevinCountry
 import eu.kevin.testcore.base.BaseUnitTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -17,7 +17,7 @@ class SupportedCountryUseCaseTest : BaseUnitTest() {
     @Before
     override fun setUp() {
         super.setUp()
-        countryUseCase = SupportedCountryUseCase(CountriesTestManager())
+        countryUseCase = SupportedCountryUseCase(TestCountriesManager())
     }
 
     @Test

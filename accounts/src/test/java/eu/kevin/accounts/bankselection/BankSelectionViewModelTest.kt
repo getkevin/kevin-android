@@ -3,9 +3,9 @@ package eu.kevin.accounts.bankselection
 import android.os.Bundle
 import eu.kevin.accounts.bankselection.entities.Bank
 import eu.kevin.accounts.bankselection.factories.BankListItemFactory
-import eu.kevin.accounts.bankselection.managers.BankTestManager
+import eu.kevin.accounts.bankselection.managers.TestBankManager
 import eu.kevin.accounts.bankselection.usecases.GetSupportedBanksUseCase
-import eu.kevin.accounts.countryselection.managers.CountriesTestManager
+import eu.kevin.accounts.countryselection.managers.TestCountriesManager
 import eu.kevin.accounts.countryselection.usecases.SupportedCountryUseCase
 import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.entities.LoadingState
@@ -33,8 +33,8 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
     override fun setUp() {
         super.setUp()
         viewModel = BankSelectionViewModel(
-            SupportedCountryUseCase(CountriesTestManager()),
-            GetSupportedBanksUseCase(BankTestManager()),
+            SupportedCountryUseCase(TestCountriesManager()),
+            GetSupportedBanksUseCase(TestBankManager()),
             TestCoroutineDispatchers,
             savedStateHandle
         )
@@ -150,7 +150,7 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
         val preselectedBank = "SWEDBANK_LT"
         viewModel.updateInternalState(
             BankSelectionState(
-                bankListItems = BankListItemFactory.getBankList(BankTestManager().getSupportedBanks("lt", ""), null)
+                bankListItems = BankListItemFactory.getBankList(TestBankManager().getSupportedBanks("lt", ""), null)
             )
         )
         val states = mutableListOf<BankSelectionState>()

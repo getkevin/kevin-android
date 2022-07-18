@@ -1,10 +1,10 @@
 package eu.kevin.accounts.countryselection.usecases
 
-import eu.kevin.accounts.countryselection.managers.CountriesManagerInterface
+import eu.kevin.accounts.countryselection.managers.CountriesManager
 import eu.kevin.core.enums.KevinCountry
 
 internal class SupportedCountryUseCase(
-    private val countriesManager: CountriesManagerInterface
+    private val countriesManager: CountriesManager
 ) {
 
     suspend fun getSupportedCountries(authState: String, filter: List<KevinCountry>): List<String> {

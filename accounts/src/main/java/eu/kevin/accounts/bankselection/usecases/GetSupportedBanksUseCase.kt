@@ -1,11 +1,11 @@
 package eu.kevin.accounts.bankselection.usecases
 
 import eu.kevin.accounts.bankselection.entities.SupportedBanksFilter
-import eu.kevin.accounts.bankselection.managers.BankManagerInterface
+import eu.kevin.accounts.bankselection.managers.BankManager
 import eu.kevin.accounts.networking.entities.ApiBank
 
 internal class GetSupportedBanksUseCase(
-    private val bankManager: BankManagerInterface
+    private val bankManager: BankManager
 ) {
     suspend fun getSupportedBanks(
         country: String,

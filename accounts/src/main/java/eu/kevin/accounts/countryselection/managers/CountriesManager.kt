@@ -1,5 +1,5 @@
 package eu.kevin.accounts.countryselection.managers
 
-interface CountriesManagerInterface {
+interface CountriesManager {
     suspend fun getSupportedCountries(authState: String): List<String>
 }

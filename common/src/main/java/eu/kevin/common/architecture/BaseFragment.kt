@@ -3,7 +3,6 @@ package eu.kevin.common.architecture
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import eu.kevin.common.architecture.interfaces.Intent
@@ -18,6 +17,7 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlin.coroutines.CoroutineContext
+import android.view.View as ViewAndroid
 
 abstract class BaseFragment<S : State, I : Intent, M : BaseViewModel<S, I>> :
     Fragment(),
@@ -30,9 +30,9 @@ abstract class BaseFragment<S : State, I : Intent, M : BaseViewModel<S, I>> :
     private val savable = Bundle()
 
     protected abstract val viewModel: M
-    protected lateinit var contentView: eu.kevin.common.architecture.interfaces.View<S>
+    protected lateinit var contentView: View<S>
 
-    abstract fun onCreateView(context: Context): eu.kevin.common.architecture.interfaces.View<S>
+    abstract fun onCreateView(context: Context): View<S>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         if (savedInstanceState != null) {
@@ -45,12 +45,12 @@ abstract class BaseFragment<S : State, I : Intent, M : BaseViewModel<S, I>> :
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): ViewAndroid? {
         job = SupervisorJob()
         observeChanges()
         return onCreateView(inflater.context).also {
             contentView = it
-        } as View
+        } as ViewAndroid
     }
 
     override fun onDestroyView() {

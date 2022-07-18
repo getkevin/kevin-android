@@ -1,7 +1,7 @@
 package eu.kevin.accounts.countryselection
 
 import eu.kevin.accounts.countryselection.entities.Country
-import eu.kevin.accounts.countryselection.managers.CountriesTestManager
+import eu.kevin.accounts.countryselection.managers.TestCountriesManager
 import eu.kevin.accounts.countryselection.usecases.SupportedCountryUseCase
 import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.entities.LoadingState
@@ -29,7 +29,7 @@ class CountrySelectionViewModelTest : BaseViewModelTest() {
     override fun setUp() {
         super.setUp()
         viewModel = CountrySelectionViewModel(
-            SupportedCountryUseCase(CountriesTestManager()),
+            SupportedCountryUseCase(TestCountriesManager()),
             TestCoroutineDispatchers,
             savedStateHandle
         )
@@ -86,7 +86,7 @@ class CountrySelectionViewModelTest : BaseViewModelTest() {
     fun `test handleIntent() HandleCountrySelection`() = testCoroutineScope.runTest {
         viewModel.updateInternalState(
             CountrySelectionState(
-                CountriesTestManager().getSupportedCountries("").map {
+                TestCountriesManager().getSupportedCountries("").map {
                     Country(it)
                 }
             )
