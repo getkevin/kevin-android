@@ -27,6 +27,7 @@ internal class PaymentConfirmationView(context: Context) :
     var delegate: PaymentConfirmationViewDelegate? = null
 
     private var lastClickPosition: Int = 0
+    private var previousStateUrl: String? = null
 
     init {
         setBackgroundColor(context.getColorFromAttr(android.R.attr.colorBackground))
@@ -90,8 +91,9 @@ internal class PaymentConfirmationView(context: Context) :
     }
 
     override fun render(state: PaymentConfirmationState) = with(binding) {
-        if (state.url.isNotBlank()) {
+        if (state.url.isNotBlank() && state.url != previousStateUrl) {
             confirmationWebView.loadUrl(state.url)
+            previousStateUrl = state.url
         }
     }
 

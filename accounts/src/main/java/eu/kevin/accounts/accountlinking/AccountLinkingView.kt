@@ -29,6 +29,7 @@ internal class AccountLinkingView(context: Context) :
     var delegate: AccountLinkingViewDelegate? = null
 
     private var lastClickPosition: Int = 0
+    private var previousStateUrl: String? = null
 
     init {
         setBackgroundColor(context.getColorFromAttr(android.R.attr.colorBackground))
@@ -92,8 +93,9 @@ internal class AccountLinkingView(context: Context) :
     }
 
     override fun render(state: AccountLinkingState) = with(binding) {
-        if (state.bankRedirectUrl.isNotBlank()) {
+        if (state.bankRedirectUrl.isNotBlank() && state.bankRedirectUrl != previousStateUrl) {
             accountLinkWebView.loadUrl(state.bankRedirectUrl)
+            previousStateUrl = state.bankRedirectUrl
         }
         if (state.accountLinkingType == AccountLinkingType.BANK) {
             binding.actionBar.title = context.getString(R.string.kevin_window_account_linking_title)
