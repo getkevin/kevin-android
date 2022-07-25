@@ -2,7 +2,7 @@ package eu.kevin.demo.screens.paymenttype
 
 import android.os.Parcelable
 import eu.kevin.common.architecture.interfaces.IState
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
 internal data class PaymentTypeState(
