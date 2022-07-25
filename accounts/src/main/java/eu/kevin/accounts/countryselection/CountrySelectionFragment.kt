@@ -17,7 +17,7 @@ internal class CountrySelectionFragment :
         CountrySelectionViewModel.Factory(this)
     }
 
-    override fun onCreateView(context: Context): IView<CountrySelectionState> {
+    override fun onCreateView(context: Context): IView<CountrySelectionState, *> {
         return CountrySelectionView(context).also {
             it.delegate = this
         }

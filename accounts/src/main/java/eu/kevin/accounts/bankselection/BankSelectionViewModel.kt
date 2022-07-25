@@ -35,7 +35,7 @@ internal class BankSelectionViewModel constructor(
     private val banksUseCase: GetSupportedBanksUseCase,
     private val dispatchers: CoroutineDispatchers,
     savedStateHandle: SavedStateHandle
-) : BaseViewModel<BankSelectionState, BankSelectionIntent>(savedStateHandle) {
+) : BaseViewModel<BankSelectionState, BankSelectionIntent, Nothing>(savedStateHandle) {
 
     override fun getInitialData() = BankSelectionState()
 

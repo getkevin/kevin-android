@@ -10,7 +10,7 @@ import eu.kevin.demo.databinding.KevinFragmentPaymentTypeBinding
 
 internal class PaymentTypeView(context: Context) :
     BaseView<KevinFragmentPaymentTypeBinding>(context),
-    IView<PaymentTypeState> {
+    IView<PaymentTypeState, Nothing> {
 
     var callback: PaymentTypeViewCallback? = null
 

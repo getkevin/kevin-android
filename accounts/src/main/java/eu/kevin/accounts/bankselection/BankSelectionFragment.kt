@@ -17,7 +17,7 @@ import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.extensions.setFragmentResultListener
 
 internal class BankSelectionFragment :
-    BaseFragment<BankSelectionState, BankSelectionIntent, BankSelectionViewModel>(),
+    BaseFragment<BankSelectionState, BankSelectionIntent, Nothing, BankSelectionViewModel>(),
     BankSelectionViewDelegate {
 
     var configuration: BankSelectionFragmentConfiguration? by savedState()
@@ -26,7 +26,7 @@ internal class BankSelectionFragment :
         BankSelectionViewModel.Factory(this)
     }
 
-    override fun onCreateView(context: Context): IView<BankSelectionState> {
+    override fun onCreateView(context: Context): IView<BankSelectionState, Nothing> {
         return BankSelectionView(context).also {
             it.delegate = this
         }

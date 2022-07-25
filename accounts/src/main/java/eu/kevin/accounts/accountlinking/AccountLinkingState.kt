@@ -7,6 +7,5 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 internal data class AccountLinkingState(
-    val bankRedirectUrl: String = "",
     val accountLinkingType: AccountLinkingType = AccountLinkingType.BANK
 ) : IState, Parcelable

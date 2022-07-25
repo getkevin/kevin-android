@@ -15,7 +15,7 @@ import eu.kevin.common.helpers.WebFrameHelper
 import eu.kevin.core.plugin.Kevin
 
 internal class AccountLinkingFragment :
-    BaseFragment<AccountLinkingState, AccountLinkingIntent, AccountLinkingViewModel>(),
+    BaseFragment<AccountLinkingState, AccountLinkingIntent, AccountLinkingEvent, AccountLinkingViewModel>(),
     AccountLinkingViewDelegate,
     DeepLinkHandler {
 
@@ -27,7 +27,7 @@ internal class AccountLinkingFragment :
         AccountLinkingViewModel.Factory(this)
     }
 
-    override fun onCreateView(context: Context): IView<AccountLinkingState> {
+    override fun onCreateView(context: Context): IView<AccountLinkingState, AccountLinkingEvent> {
         return AccountLinkingView(context).also {
             it.delegate = this
             view = it

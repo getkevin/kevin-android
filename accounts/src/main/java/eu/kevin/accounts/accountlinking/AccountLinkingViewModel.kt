@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
 import eu.kevin.accounts.BuildConfig
 import eu.kevin.accounts.KevinAccountsPlugin
+import eu.kevin.accounts.accountlinking.AccountLinkingEvent.LoadWebPage
 import eu.kevin.accounts.accountlinking.AccountLinkingIntent.HandleAuthorization
 import eu.kevin.accounts.accountlinking.AccountLinkingIntent.HandleBackClicked
 import eu.kevin.accounts.accountlinking.AccountLinkingIntent.Initialize
@@ -19,7 +20,7 @@ import eu.kevin.core.plugin.Kevin
 
 internal class AccountLinkingViewModel(
     savedStateHandle: SavedStateHandle
-) : BaseViewModel<AccountLinkingState, AccountLinkingIntent>(savedStateHandle) {
+) : BaseViewModel<AccountLinkingState, AccountLinkingIntent, AccountLinkingEvent>(savedStateHandle) {
 
     override fun getInitialData() = AccountLinkingState()
 
@@ -63,10 +64,11 @@ internal class AccountLinkingViewModel(
 
         updateState {
             it.copy(
-                bankRedirectUrl = url,
                 accountLinkingType = configuration.linkingType
             )
         }
+
+        sendEvent(LoadWebPage(url))
     }
 
     private fun handleAuthorizationReceived(uri: Uri) {

@@ -3,6 +3,7 @@ package eu.kevin.common.architecture
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import eu.kevin.common.architecture.interfaces.IEvent
 import eu.kevin.common.architecture.interfaces.IIntent
 import eu.kevin.common.architecture.interfaces.IModel
 import eu.kevin.common.architecture.interfaces.IState
@@ -10,18 +11,22 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.consumeAsFlow
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-abstract class BaseViewModel<S : IState, I : IIntent>(
+abstract class BaseViewModel<S : IState, I : IIntent, E : IEvent>(
     protected val savedStateHandle: SavedStateHandle
-) : ViewModel(), IModel<S, I> {
+) : ViewModel(), IModel<S, I, E> {
 
     override val intents = Channel<I>(Channel.UNLIMITED)
+
+    private val _state: MutableStateFlow<S>
     override val state: StateFlow<S>
         get() = _state
 
-    private val _state: MutableStateFlow<S>
+    private val _events = Channel<E>(Channel.BUFFERED)
+    override val events = _events.receiveAsFlow()
 
     init {
         _state = MutableStateFlow(getInitialData())
@@ -32,9 +37,8 @@ abstract class BaseViewModel<S : IState, I : IIntent>(
         }
     }
 
-    protected fun getSavedState(): S? {
-        return savedStateHandle.get("saved_state")
-    }
+    protected fun getSavedState(): S? =
+        savedStateHandle.get("saved_state")
 
     protected abstract fun getInitialData(): S
     protected abstract suspend fun handleIntent(intent: I)
@@ -42,5 +46,9 @@ abstract class BaseViewModel<S : IState, I : IIntent>(
     protected suspend fun updateState(handler: suspend (intent: S) -> S) {
         _state.update { handler(_state.value) }
         savedStateHandle.set("saved_state", _state.value)
+    }
+
+    protected suspend fun sendEvent(event: E) {
+        _events.send(event)
     }
 }

@@ -24,7 +24,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 internal class CardPaymentFragment :
-    BaseFragment<CardPaymentState, CardPaymentIntent, CardPaymentViewModel>(),
+    BaseFragment<CardPaymentState, CardPaymentIntent, Nothing, CardPaymentViewModel>(),
     CardPaymentViewDelegate {
 
     override val viewModel: CardPaymentViewModel by viewModels {
@@ -35,7 +35,7 @@ internal class CardPaymentFragment :
 
     private lateinit var view: CardPaymentView
 
-    override fun onCreateView(context: Context): IView<CardPaymentState> {
+    override fun onCreateView(context: Context): IView<CardPaymentState, Nothing> {
         return CardPaymentView(context).also {
             it.delegate = this
             view = it

@@ -28,7 +28,7 @@ import eu.kevin.common.views.GridListItemDecoration
 
 internal class BankSelectionView(context: Context) :
     BaseView<KevinFragmentBankSelectionBinding>(context),
-    IView<BankSelectionState> {
+    IView<BankSelectionState, Nothing> {
 
     override val binding = KevinFragmentBankSelectionBinding.inflate(LayoutInflater.from(context), this)
 

@@ -40,7 +40,7 @@ import eu.kevin.inapppayments.databinding.KevinFragmentCardPaymentBinding
 
 internal class CardPaymentView(context: Context) :
     BaseView<KevinFragmentCardPaymentBinding>(context),
-    IView<CardPaymentState> {
+    IView<CardPaymentState, Nothing> {
 
     override val binding = KevinFragmentCardPaymentBinding.inflate(LayoutInflater.from(context), this)
 

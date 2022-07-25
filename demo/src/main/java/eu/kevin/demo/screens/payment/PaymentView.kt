@@ -33,7 +33,7 @@ import eu.kevin.demo.screens.payment.entities.ValidationResult
 import eu.kevin.demo.screens.payment.entities.exceptions.CreditorNotSelectedException
 import eu.kevin.demo.views.NumberTextWatcher
 
-internal class PaymentView(context: Context) : FrameLayout(context), IView<PaymentViewState> {
+internal class PaymentView(context: Context) : FrameLayout(context), IView<PaymentViewState, Nothing> {
 
     var callback: PaymentViewCallback? = null
 

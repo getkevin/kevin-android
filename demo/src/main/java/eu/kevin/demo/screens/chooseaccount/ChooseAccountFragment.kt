@@ -16,7 +16,7 @@ internal class ChooseAccountFragment :
         )
     }
 
-    override fun onCreateView(context: Context): IView<ChooseAccountState> {
+    override fun onCreateView(context: Context): IView<ChooseAccountState, *> {
         return ChooseAccountView(context).also {
             it.callback = this
         }

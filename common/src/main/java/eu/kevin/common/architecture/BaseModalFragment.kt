@@ -16,16 +16,16 @@ import eu.kevin.common.architecture.interfaces.Navigable
 import eu.kevin.common.providers.SavedStateProvider
 import kotlinx.coroutines.launch
 
-abstract class BaseModalFragment<S : IState, I : IIntent, M : BaseViewModel<S, I>> :
+abstract class BaseModalFragment<S : IState, I : IIntent, M : BaseViewModel<S, I, *>> :
     BottomSheetDialogFragment(),
     Navigable {
 
     private val savable = Bundle()
 
     protected abstract val viewModel: M
-    protected lateinit var contentView: IView<S>
+    protected lateinit var contentView: IView<S, *>
 
-    abstract fun onCreateView(context: Context): IView<S>
+    abstract fun onCreateView(context: Context): IView<S, *>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         if (savedInstanceState != null) {

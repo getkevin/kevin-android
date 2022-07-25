@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 internal class ChooseAccountViewModel(
     private val linkedAccountsDao: LinkedAccountsDao,
     savedStateHandle: SavedStateHandle
-) : BaseViewModel<ChooseAccountState, ChooseAccountIntent>(savedStateHandle) {
+) : BaseViewModel<ChooseAccountState, ChooseAccountIntent, Nothing>(savedStateHandle) {
 
     override fun getInitialData() = ChooseAccountState()
 

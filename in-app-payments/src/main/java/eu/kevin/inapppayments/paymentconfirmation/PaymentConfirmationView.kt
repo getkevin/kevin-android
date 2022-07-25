@@ -20,7 +20,7 @@ import eu.kevin.inapppayments.databinding.KevinFragmentPaymentConfirmationBindin
 
 internal class PaymentConfirmationView(context: Context) :
     BaseView<KevinFragmentPaymentConfirmationBinding>(context),
-    IView<PaymentConfirmationState> {
+    IView<PaymentConfirmationState, Nothing> {
 
     override val binding = KevinFragmentPaymentConfirmationBinding.inflate(LayoutInflater.from(context), this)
 

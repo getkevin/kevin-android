@@ -20,7 +20,7 @@ import eu.kevin.inapppayments.paymentsession.enums.PaymentType.BANK
 
 internal class PaymentConfirmationViewModel(
     savedStateHandle: SavedStateHandle
-) : BaseViewModel<PaymentConfirmationState, PaymentConfirmationIntent>(savedStateHandle) {
+) : BaseViewModel<PaymentConfirmationState, PaymentConfirmationIntent, Nothing>(savedStateHandle) {
 
     override fun getInitialData() = PaymentConfirmationState()
 

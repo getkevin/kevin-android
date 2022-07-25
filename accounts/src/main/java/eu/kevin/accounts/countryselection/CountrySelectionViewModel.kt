@@ -22,7 +22,7 @@ internal class CountrySelectionViewModel constructor(
     private val countryUseCase: SupportedCountryUseCase,
     private val dispatchers: CoroutineDispatchers,
     savedStateHandle: SavedStateHandle
-) : BaseViewModel<CountrySelectionState, CountrySelectionIntent>(savedStateHandle) {
+) : BaseViewModel<CountrySelectionState, CountrySelectionIntent, Nothing>(savedStateHandle) {
 
     override fun getInitialData() = CountrySelectionState()
 

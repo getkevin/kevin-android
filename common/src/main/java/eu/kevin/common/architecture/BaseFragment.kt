@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import eu.kevin.common.architecture.interfaces.IEvent
 import eu.kevin.common.architecture.interfaces.IIntent
 import eu.kevin.common.architecture.interfaces.IState
 import eu.kevin.common.architecture.interfaces.IView
@@ -16,16 +17,16 @@ import eu.kevin.common.architecture.interfaces.Navigable
 import eu.kevin.common.providers.SavedStateProvider
 import kotlinx.coroutines.launch
 
-abstract class BaseFragment<S : IState, I : IIntent, M : BaseViewModel<S, I>> :
+abstract class BaseFragment<S : IState, I : IIntent, E : IEvent, M : BaseViewModel<S, I, E>> :
     Fragment(),
     Navigable {
 
     private val savable = Bundle()
 
     protected abstract val viewModel: M
-    protected lateinit var contentView: IView<S>
+    protected lateinit var contentView: IView<S, E>
 
-    abstract fun onCreateView(context: Context): IView<S>
+    abstract fun onCreateView(context: Context): IView<S, E>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         if (savedInstanceState != null) {
@@ -50,9 +51,8 @@ abstract class BaseFragment<S : IState, I : IIntent, M : BaseViewModel<S, I>> :
         with(viewLifecycleOwner) {
             lifecycleScope.launch {
                 repeatOnLifecycle(Lifecycle.State.STARTED) {
-                    viewModel.state.collect {
-                        contentView.render(it)
-                    }
+                    launch { viewModel.state.collect { contentView.render(it) } }
+                    launch { viewModel.events.collect { contentView.handleEvent(it) } }
                 }
             }
         }

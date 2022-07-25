@@ -15,7 +15,7 @@ import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.Hand
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.Initialize
 
 internal class PaymentConfirmationFragment :
-    BaseFragment<PaymentConfirmationState, PaymentConfirmationIntent, PaymentConfirmationViewModel>(),
+    BaseFragment<PaymentConfirmationState, PaymentConfirmationIntent, Nothing, PaymentConfirmationViewModel>(),
     PaymentConfirmationViewDelegate,
     DeepLinkHandler {
 
@@ -27,7 +27,7 @@ internal class PaymentConfirmationFragment :
 
     private lateinit var view: PaymentConfirmationView
 
-    override fun onCreateView(context: Context): IView<PaymentConfirmationState> {
+    override fun onCreateView(context: Context): IView<PaymentConfirmationState, Nothing> {
         return PaymentConfirmationView(context).also {
             it.delegate = this
             view = it

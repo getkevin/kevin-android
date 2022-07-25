@@ -19,7 +19,7 @@ import eu.kevin.demo.screens.countryselection.helpers.CountryHelper
 
 internal class CountrySelectionView(context: Context) :
     BaseView<KevinFragmentSelectCountryBinding>(context),
-    IView<CountrySelectionState> {
+    IView<CountrySelectionState, Nothing> {
 
     override val binding = KevinFragmentSelectCountryBinding.inflate(LayoutInflater.from(context), this)
 

@@ -45,7 +45,7 @@ import java.util.Currency
 internal class CardPaymentViewModel(
     savedStateHandle: SavedStateHandle,
     private val kevinPaymentsClient: KevinPaymentsClient
-) : BaseViewModel<CardPaymentState, CardPaymentIntent>(savedStateHandle) {
+) : BaseViewModel<CardPaymentState, CardPaymentIntent, Nothing>(savedStateHandle) {
     override fun getInitialData() = CardPaymentState()
 
     private val _viewAction = Channel<CardPaymentViewAction>(Channel.BUFFERED)

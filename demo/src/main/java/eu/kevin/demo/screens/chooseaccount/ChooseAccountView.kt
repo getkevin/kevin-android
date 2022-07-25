@@ -11,7 +11,7 @@ import eu.kevin.demo.screens.chooseaccount.adapters.AccountsListAdapter
 
 internal class ChooseAccountView(context: Context) :
     BaseView<KevinFragmentChooseAccountBinding>(context),
-    IView<ChooseAccountState> {
+    IView<ChooseAccountState, Nothing> {
 
     override val binding = KevinFragmentChooseAccountBinding.inflate(LayoutInflater.from(context), this)
 

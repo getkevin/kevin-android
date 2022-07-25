@@ -11,7 +11,7 @@ import eu.kevin.demo.screens.paymenttype.PaymentTypeIntent.OnPaymentTypeChosen
 
 internal class PaymentTypeViewModel(
     savedStateHandle: SavedStateHandle
-) : BaseViewModel<PaymentTypeState, PaymentTypeIntent>(savedStateHandle) {
+) : BaseViewModel<PaymentTypeState, PaymentTypeIntent, Nothing>(savedStateHandle) {
 
     override fun getInitialData() = PaymentTypeState()
 
