@@ -2,6 +2,9 @@ package eu.kevin.accounts.accountlinking
 
 import android.net.Uri
 import eu.kevin.accounts.BuildConfig
+import eu.kevin.accounts.KevinAccountsConfiguration
+import eu.kevin.accounts.KevinAccountsPlugin
+import eu.kevin.accounts.accountlinking.AccountLinkingEvent.LoadWebPage
 import eu.kevin.accounts.accountsession.enums.AccountLinkingType
 import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.extensions.appendQuery
@@ -28,6 +31,13 @@ class AccountLinkingViewModelTest : BaseViewModelTest() {
     @Before
     override fun setUp() {
         super.setUp()
+
+        KevinAccountsPlugin.configure(
+            KevinAccountsConfiguration.builder()
+                .setCallbackUrl("")
+                .build()
+        )
+
         viewModel = AccountLinkingViewModel(savedStateHandle)
         every { savedStateHandle.get<Any>(any()) } returns null
     }
@@ -44,9 +54,10 @@ class AccountLinkingViewModelTest : BaseViewModelTest() {
         val config = AccountLinkingFragmentConfiguration(state, selectedBank, AccountLinkingType.BANK)
 
         val states = mutableListOf<AccountLinkingState>()
-        val job = launch {
-            viewModel.state.toList(states)
-        }
+        val events = mutableListOf<AccountLinkingEvent>()
+
+        val jobState = launch { viewModel.state.toList(states) }
+        val jobEvents = launch { viewModel.events.toList(events) }
 
         viewModel.intents.trySend(
             AccountLinkingIntent.Initialize(
@@ -55,10 +66,10 @@ class AccountLinkingViewModelTest : BaseViewModelTest() {
             )
         )
 
-        assertEquals(2, states.size)
-        assertEquals("", states[0].bankRedirectUrl)
-        assertEquals(expectedRedirectUrl, states[1].bankRedirectUrl)
-        job.cancel()
+        assertEquals(1, states.size)
+        assertEquals(LoadWebPage(expectedRedirectUrl), events[0])
+        jobState.cancel()
+        jobEvents.cancel()
     }
 
     @Test
