@@ -14,8 +14,9 @@ import eu.kevin.common.extensions.removeWhiteSpaces
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.core.plugin.Kevin
 import eu.kevin.inapppayments.BuildConfig
+import eu.kevin.inapppayments.cardpayment.CardPaymentEvent.LoadWebPage
 import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandleBackClicked
-import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandleCardPaymentEvent
+import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandleCardPaymentWebEvent
 import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandleOnContinueClicked
 import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandlePageFinishedLoading
 import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandlePageStartLoading
@@ -24,10 +25,10 @@ import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandleUserSoftRedire
 import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.Initialize
 import eu.kevin.inapppayments.cardpayment.CardPaymentViewAction.ShowFieldValidations
 import eu.kevin.inapppayments.cardpayment.CardPaymentViewAction.SubmitCardForm
-import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent
-import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent.HardRedirect
-import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent.SoftRedirect
-import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent.SubmittingCardData
+import eu.kevin.inapppayments.cardpayment.events.CardPaymentWebEvent
+import eu.kevin.inapppayments.cardpayment.events.CardPaymentWebEvent.HardRedirect
+import eu.kevin.inapppayments.cardpayment.events.CardPaymentWebEvent.SoftRedirect
+import eu.kevin.inapppayments.cardpayment.events.CardPaymentWebEvent.SubmittingCardData
 import eu.kevin.inapppayments.cardpayment.inputvalidation.CardExpiryDateValidator
 import eu.kevin.inapppayments.cardpayment.inputvalidation.CardNumberValidator
 import eu.kevin.inapppayments.cardpayment.inputvalidation.CardholderNameValidator
@@ -45,7 +46,9 @@ import java.util.Currency
 internal class CardPaymentViewModel(
     savedStateHandle: SavedStateHandle,
     private val kevinPaymentsClient: KevinPaymentsClient
-) : BaseViewModel<CardPaymentState, CardPaymentIntent, Nothing>(savedStateHandle) {
+) : BaseViewModel<CardPaymentState, CardPaymentIntent, eu.kevin.inapppayments.cardpayment.CardPaymentEvent>(
+    savedStateHandle
+) {
     override fun getInitialData() = CardPaymentState()
 
     private val _viewAction = Channel<CardPaymentViewAction>(Channel.BUFFERED)
@@ -72,7 +75,7 @@ internal class CardPaymentViewModel(
                 )
             }
             is HandlePaymentResult -> handlePaymentResult(intent.uri)
-            is HandleCardPaymentEvent -> handleCardPaymentEvent(intent.event)
+            is HandleCardPaymentWebEvent -> handleCardPaymentWebEvent(intent.event)
             is HandleUserSoftRedirect -> handleUserSoftRedirect(intent.shouldRedirect)
         }
     }
@@ -84,11 +87,7 @@ internal class CardPaymentViewModel(
         } else {
             BuildConfig.KEVIN_CARD_PAYMENT_URL
         }
-        updateState {
-            it.copy(
-                url = baseCardPaymentUrl.format(configuration.paymentId)
-            )
-        }
+        sendEvent(LoadWebPage(baseCardPaymentUrl.format(configuration.paymentId)))
         val paymentInfo = kevinPaymentsClient.getCardPaymentInfo(configuration.paymentId)
 
         val amount = try {
@@ -155,7 +154,7 @@ internal class CardPaymentViewModel(
         }
     }
 
-    private suspend fun handleCardPaymentEvent(event: CardPaymentEvent) {
+    private suspend fun handleCardPaymentWebEvent(event: CardPaymentWebEvent) {
         when (event) {
             is SoftRedirect -> {
                 val bankName = try {

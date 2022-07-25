@@ -8,7 +8,7 @@ import eu.kevin.common.architecture.BaseFragment
 import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.extensions.setFragmentResultListener
 import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandleBackClicked
-import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandleCardPaymentEvent
+import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandleCardPaymentWebEvent
 import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandleOnContinueClicked
 import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandlePageFinishedLoading
 import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandlePageStartLoading
@@ -18,13 +18,13 @@ import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.Initialize
 import eu.kevin.inapppayments.cardpayment.CardPaymentViewAction.ShowFieldValidations
 import eu.kevin.inapppayments.cardpayment.CardPaymentViewAction.SubmitCardForm
 import eu.kevin.inapppayments.cardpayment.CardPaymentViewAction.SubmitUserRedirect
-import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent
+import eu.kevin.inapppayments.cardpayment.events.CardPaymentWebEvent
 import eu.kevin.inapppayments.cardpaymentredirect.CardPaymentRedirectContract
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 internal class CardPaymentFragment :
-    BaseFragment<CardPaymentState, CardPaymentIntent, Nothing, CardPaymentViewModel>(),
+    BaseFragment<CardPaymentState, CardPaymentIntent, CardPaymentEvent, CardPaymentViewModel>(),
     CardPaymentViewDelegate {
 
     override val viewModel: CardPaymentViewModel by viewModels {
@@ -35,7 +35,7 @@ internal class CardPaymentFragment :
 
     private lateinit var view: CardPaymentView
 
-    override fun onCreateView(context: Context): IView<CardPaymentState, Nothing> {
+    override fun onCreateView(context: Context): IView<CardPaymentState, CardPaymentEvent> {
         return CardPaymentView(context).also {
             it.delegate = this
             view = it
@@ -109,7 +109,7 @@ internal class CardPaymentFragment :
         viewModel.intents.trySend(HandlePaymentResult(uri))
     }
 
-    override fun onEvent(event: CardPaymentEvent) {
-        viewModel.intents.trySend(HandleCardPaymentEvent(event))
+    override fun onWebEvent(event: CardPaymentWebEvent) {
+        viewModel.intents.trySend(HandleCardPaymentWebEvent(event))
     }
 }

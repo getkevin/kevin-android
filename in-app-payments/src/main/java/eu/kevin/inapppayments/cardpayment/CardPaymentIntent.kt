@@ -2,7 +2,7 @@ package eu.kevin.inapppayments.cardpayment
 
 import android.net.Uri
 import eu.kevin.common.architecture.interfaces.IIntent
-import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent
+import eu.kevin.inapppayments.cardpayment.events.CardPaymentWebEvent
 
 internal sealed class CardPaymentIntent : IIntent {
     object HandleBackClicked : CardPaymentIntent()
@@ -18,6 +18,6 @@ internal sealed class CardPaymentIntent : IIntent {
     data class HandlePaymentResult(
         val uri: Uri
     ) : CardPaymentIntent()
-    data class HandleCardPaymentEvent(val event: CardPaymentEvent) : CardPaymentIntent()
+    data class HandleCardPaymentWebEvent(val event: CardPaymentWebEvent) : CardPaymentIntent()
     data class HandleUserSoftRedirect(val shouldRedirect: Boolean) : CardPaymentIntent()
 }

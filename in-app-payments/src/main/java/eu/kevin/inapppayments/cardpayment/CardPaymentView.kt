@@ -27,12 +27,13 @@ import eu.kevin.common.extensions.setOnNextActionListener
 import eu.kevin.common.managers.KeyboardManager
 import eu.kevin.inapppayments.KevinPaymentsPlugin
 import eu.kevin.inapppayments.R
+import eu.kevin.inapppayments.cardpayment.CardPaymentEvent.LoadWebPage
 import eu.kevin.inapppayments.cardpayment.enums.CardPaymentMessage.CARD_PAYMENT_SUBMITTING
 import eu.kevin.inapppayments.cardpayment.enums.CardPaymentMessage.HARD_REDIRECT_MODAL
 import eu.kevin.inapppayments.cardpayment.enums.CardPaymentMessage.SOFT_REDIRECT_MODAL
-import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent.HardRedirect
-import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent.SoftRedirect
-import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent.SubmittingCardData
+import eu.kevin.inapppayments.cardpayment.events.CardPaymentWebEvent.HardRedirect
+import eu.kevin.inapppayments.cardpayment.events.CardPaymentWebEvent.SoftRedirect
+import eu.kevin.inapppayments.cardpayment.events.CardPaymentWebEvent.SubmittingCardData
 import eu.kevin.inapppayments.cardpayment.inputformatters.CardNumberFormatter
 import eu.kevin.inapppayments.cardpayment.inputformatters.DateFormatter
 import eu.kevin.inapppayments.cardpayment.inputvalidation.ValidationResult
@@ -40,12 +41,11 @@ import eu.kevin.inapppayments.databinding.KevinFragmentCardPaymentBinding
 
 internal class CardPaymentView(context: Context) :
     BaseView<KevinFragmentCardPaymentBinding>(context),
-    IView<CardPaymentState, Nothing> {
+    IView<CardPaymentState, CardPaymentEvent> {
 
     override val binding = KevinFragmentCardPaymentBinding.inflate(LayoutInflater.from(context), this)
 
     var delegate: CardPaymentViewDelegate? = null
-    private var previousStateUrl: String? = null
 
     init {
         with(binding.actionBar) {
@@ -130,14 +130,14 @@ internal class CardPaymentView(context: Context) :
                     fun postMessage(message: String) {
                         when (message) {
                             SOFT_REDIRECT_MODAL.value -> {
-                                delegate?.onEvent(
+                                delegate?.onWebEvent(
                                     SoftRedirect(
                                         binding.cardNumberInput.getInputText().removeWhiteSpaces()
                                     )
                                 )
                             }
-                            HARD_REDIRECT_MODAL.value -> delegate?.onEvent(HardRedirect)
-                            CARD_PAYMENT_SUBMITTING.value -> delegate?.onEvent(SubmittingCardData)
+                            HARD_REDIRECT_MODAL.value -> delegate?.onWebEvent(HardRedirect)
+                            CARD_PAYMENT_SUBMITTING.value -> delegate?.onWebEvent(SubmittingCardData)
                         }
                     }
                 },
@@ -173,10 +173,6 @@ internal class CardPaymentView(context: Context) :
 
     override fun render(state: CardPaymentState) {
         with(binding) {
-            if (state.url.isNotBlank() && previousStateUrl != state.url) {
-                previousStateUrl = state.url
-                webView.loadUrl(state.url)
-            }
             binding.continueButton.isEnabled = state.isContinueEnabled
             binding.amountView.text = state.amount?.getDisplayString(context)
             showCardDetails(state.showCardDetails)
@@ -186,6 +182,16 @@ internal class CardPaymentView(context: Context) :
                 binding.progressView.fadeIn()
             } else {
                 binding.progressView.fadeOut()
+            }
+        }
+    }
+
+    override fun handleEvent(event: CardPaymentEvent) {
+        when (event) {
+            is LoadWebPage -> {
+                if (event.url.isNotBlank()) {
+                    binding.webView.loadUrl(event.url)
+                }
             }
         }
     }

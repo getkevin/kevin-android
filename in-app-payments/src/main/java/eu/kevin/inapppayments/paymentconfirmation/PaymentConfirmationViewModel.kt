@@ -13,6 +13,7 @@ import eu.kevin.core.plugin.Kevin
 import eu.kevin.inapppayments.BuildConfig
 import eu.kevin.inapppayments.KevinPaymentsPlugin
 import eu.kevin.inapppayments.common.enums.PaymentStatus
+import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationEvent.LoadWebPage
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.HandleBackClicked
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.HandlePaymentCompleted
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.Initialize
@@ -20,9 +21,9 @@ import eu.kevin.inapppayments.paymentsession.enums.PaymentType.BANK
 
 internal class PaymentConfirmationViewModel(
     savedStateHandle: SavedStateHandle
-) : BaseViewModel<PaymentConfirmationState, PaymentConfirmationIntent, Nothing>(savedStateHandle) {
+) : BaseViewModel<PaymentConfirmationState, PaymentConfirmationIntent, PaymentConfirmationEvent>(savedStateHandle) {
 
-    override fun getInitialData() = PaymentConfirmationState()
+    override fun getInitialData() = PaymentConfirmationState
 
     override suspend fun handleIntent(intent: PaymentConfirmationIntent) {
         when (intent) {
@@ -71,9 +72,8 @@ internal class PaymentConfirmationViewModel(
                     .appendQuery(webFrameQueryParameters)
             }
         }
-        updateState {
-            it.copy(url = url)
-        }
+
+        sendEvent(LoadWebPage(url))
     }
 
     private fun handlePaymentCompleted(uri: Uri) {

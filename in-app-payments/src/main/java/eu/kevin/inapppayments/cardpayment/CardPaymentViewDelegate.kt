@@ -1,7 +1,7 @@
 package eu.kevin.inapppayments.cardpayment
 
 import android.net.Uri
-import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent
+import eu.kevin.inapppayments.cardpayment.events.CardPaymentWebEvent
 
 internal interface CardPaymentViewDelegate {
     fun onBackClicked()
@@ -14,5 +14,5 @@ internal interface CardPaymentViewDelegate {
     fun onPageStartLoading()
     fun onPageFinishedLoading()
     fun onPaymentResult(uri: Uri)
-    fun onEvent(event: CardPaymentEvent)
+    fun onWebEvent(event: CardPaymentWebEvent)
 }
