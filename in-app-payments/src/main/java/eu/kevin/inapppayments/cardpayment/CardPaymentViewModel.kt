@@ -46,9 +46,7 @@ import java.util.Currency
 internal class CardPaymentViewModel(
     savedStateHandle: SavedStateHandle,
     private val kevinPaymentsClient: KevinPaymentsClient
-) : BaseViewModel<CardPaymentState, CardPaymentIntent>(
-    savedStateHandle
-) {
+) : BaseViewModel<CardPaymentState, CardPaymentIntent>(savedStateHandle) {
 
     private val _events = Channel<CardPaymentEvent>(Channel.BUFFERED)
     val events = _events.receiveAsFlow()
