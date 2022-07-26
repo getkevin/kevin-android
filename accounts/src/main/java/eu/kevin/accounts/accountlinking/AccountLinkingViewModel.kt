@@ -17,10 +17,15 @@ import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.extensions.appendQuery
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.core.plugin.Kevin
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.receiveAsFlow
 
 internal class AccountLinkingViewModel(
     savedStateHandle: SavedStateHandle
-) : BaseViewModel<AccountLinkingState, AccountLinkingIntent, AccountLinkingEvent>(savedStateHandle) {
+) : BaseViewModel<AccountLinkingState, AccountLinkingIntent>(savedStateHandle) {
+
+    private val _events = Channel<AccountLinkingEvent>(Channel.BUFFERED)
+    val events = _events.receiveAsFlow()
 
     override fun getInitialData() = AccountLinkingState()
 
@@ -68,7 +73,7 @@ internal class AccountLinkingViewModel(
             )
         }
 
-        sendEvent(LoadWebPage(url))
+        _events.send(LoadWebPage(url))
     }
 
     private fun handleAuthorizationReceived(uri: Uri) {

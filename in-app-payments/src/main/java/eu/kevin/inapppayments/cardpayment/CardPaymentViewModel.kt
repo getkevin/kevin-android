@@ -46,15 +46,19 @@ import java.util.Currency
 internal class CardPaymentViewModel(
     savedStateHandle: SavedStateHandle,
     private val kevinPaymentsClient: KevinPaymentsClient
-) : BaseViewModel<CardPaymentState, CardPaymentIntent, eu.kevin.inapppayments.cardpayment.CardPaymentEvent>(
+) : BaseViewModel<CardPaymentState, CardPaymentIntent>(
     savedStateHandle
 ) {
-    override fun getInitialData() = CardPaymentState()
+
+    private val _events = Channel<CardPaymentEvent>(Channel.BUFFERED)
+    val events = _events.receiveAsFlow()
 
     private val _viewAction = Channel<CardPaymentViewAction>(Channel.BUFFERED)
     val viewAction = _viewAction.receiveAsFlow()
 
     private lateinit var configuration: CardPaymentFragmentConfiguration
+
+    override fun getInitialData() = CardPaymentState()
 
     override suspend fun handleIntent(intent: CardPaymentIntent) {
         when (intent) {
@@ -87,7 +91,7 @@ internal class CardPaymentViewModel(
         } else {
             BuildConfig.KEVIN_CARD_PAYMENT_URL
         }
-        sendEvent(LoadWebPage(baseCardPaymentUrl.format(configuration.paymentId)))
+        _events.send(LoadWebPage(baseCardPaymentUrl.format(configuration.paymentId)))
         val paymentInfo = kevinPaymentsClient.getCardPaymentInfo(configuration.paymentId)
 
         val amount = try {

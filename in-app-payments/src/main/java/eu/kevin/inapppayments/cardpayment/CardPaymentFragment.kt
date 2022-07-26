@@ -2,10 +2,13 @@ package eu.kevin.inapppayments.cardpayment
 
 import android.content.Context
 import android.net.Uri
+import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import eu.kevin.common.architecture.BaseFragment
 import eu.kevin.common.architecture.interfaces.IView
+import eu.kevin.common.extensions.launchOnRepeat
 import eu.kevin.common.extensions.setFragmentResultListener
 import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandleBackClicked
 import eu.kevin.inapppayments.cardpayment.CardPaymentIntent.HandleCardPaymentWebEvent
@@ -24,7 +27,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 internal class CardPaymentFragment :
-    BaseFragment<CardPaymentState, CardPaymentIntent, CardPaymentEvent, CardPaymentViewModel>(),
+    BaseFragment<CardPaymentState, CardPaymentIntent, CardPaymentViewModel>(),
     CardPaymentViewDelegate {
 
     override val viewModel: CardPaymentViewModel by viewModels {
@@ -35,11 +38,18 @@ internal class CardPaymentFragment :
 
     private lateinit var view: CardPaymentView
 
-    override fun onCreateView(context: Context): IView<CardPaymentState, CardPaymentEvent> {
+    override fun onCreateView(context: Context): IView<CardPaymentState> {
         return CardPaymentView(context).also {
             it.delegate = this
             view = it
             observeViewActions()
+        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        launchOnRepeat {
+            viewModel.events.collect { this@CardPaymentFragment.view.handleEvent(it) }
         }
     }
 

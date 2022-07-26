@@ -12,6 +12,7 @@ import androidx.core.view.updateLayoutParams
 import androidx.core.widget.addTextChangedListener
 import androidx.webkit.WebViewClientCompat
 import eu.kevin.common.architecture.BaseView
+import eu.kevin.common.architecture.interfaces.EventHandler
 import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.entities.LoadingState
 import eu.kevin.common.extensions.applySystemInsetsMargin
@@ -41,7 +42,8 @@ import eu.kevin.inapppayments.databinding.KevinFragmentCardPaymentBinding
 
 internal class CardPaymentView(context: Context) :
     BaseView<KevinFragmentCardPaymentBinding>(context),
-    IView<CardPaymentState, CardPaymentEvent> {
+    IView<CardPaymentState>,
+    EventHandler<CardPaymentEvent> {
 
     override val binding = KevinFragmentCardPaymentBinding.inflate(LayoutInflater.from(context), this)
 

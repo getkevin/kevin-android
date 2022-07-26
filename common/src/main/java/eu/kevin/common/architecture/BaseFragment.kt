@@ -6,27 +6,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
-import eu.kevin.common.architecture.interfaces.IEvent
 import eu.kevin.common.architecture.interfaces.IIntent
 import eu.kevin.common.architecture.interfaces.IState
 import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.architecture.interfaces.Navigable
+import eu.kevin.common.extensions.launchOnRepeat
 import eu.kevin.common.providers.SavedStateProvider
-import kotlinx.coroutines.launch
 
-abstract class BaseFragment<S : IState, I : IIntent, E : IEvent, M : BaseViewModel<S, I, E>> :
+abstract class BaseFragment<S : IState, I : IIntent, M : BaseViewModel<S, I>> :
     Fragment(),
     Navigable {
 
     private val savable = Bundle()
 
     protected abstract val viewModel: M
-    protected lateinit var contentView: IView<S, E>
+    protected lateinit var contentView: IView<S>
 
-    abstract fun onCreateView(context: Context): IView<S, E>
+    abstract fun onCreateView(context: Context): IView<S>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         if (savedInstanceState != null) {
@@ -47,14 +43,8 @@ abstract class BaseFragment<S : IState, I : IIntent, E : IEvent, M : BaseViewMod
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        with(viewLifecycleOwner) {
-            lifecycleScope.launch {
-                repeatOnLifecycle(Lifecycle.State.STARTED) {
-                    launch { viewModel.state.collect { contentView.render(it) } }
-                    launch { viewModel.events.collect { contentView.handleEvent(it) } }
-                }
-            }
+        launchOnRepeat {
+            viewModel.state.collect { contentView.render(it) }
         }
     }
 

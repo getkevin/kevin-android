@@ -18,10 +18,15 @@ import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.Hand
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.HandlePaymentCompleted
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.Initialize
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType.BANK
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.receiveAsFlow
 
 internal class PaymentConfirmationViewModel(
     savedStateHandle: SavedStateHandle
-) : BaseViewModel<PaymentConfirmationState, PaymentConfirmationIntent, PaymentConfirmationEvent>(savedStateHandle) {
+) : BaseViewModel<PaymentConfirmationState, PaymentConfirmationIntent>(savedStateHandle) {
+
+    private val _events = Channel<PaymentConfirmationEvent>(Channel.BUFFERED)
+    val events = _events.receiveAsFlow()
 
     override fun getInitialData() = PaymentConfirmationState
 
@@ -73,7 +78,7 @@ internal class PaymentConfirmationViewModel(
             }
         }
 
-        sendEvent(LoadWebPage(url))
+        _events.send(LoadWebPage(url))
     }
 
     private fun handlePaymentCompleted(uri: Uri) {

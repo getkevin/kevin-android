@@ -19,7 +19,7 @@ import eu.kevin.common.helpers.SnackbarHelper
 
 internal class CountrySelectionView(context: Context) :
     BaseView<KevinFragmentCountrySelectionBinding>(context),
-    IView<CountrySelectionState, Nothing> {
+    IView<CountrySelectionState> {
 
     override val binding = KevinFragmentCountrySelectionBinding.inflate(LayoutInflater.from(context), this)
 

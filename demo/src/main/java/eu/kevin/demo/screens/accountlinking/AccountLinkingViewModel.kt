@@ -39,7 +39,7 @@ internal class AccountLinkingViewModel(
     private val linkedAccountsDao: LinkedAccountsDao,
     private val accessTokenPreferences: AccountAccessTokenPreferences,
     savedStateHandle: SavedStateHandle
-) : BaseViewModel<AccountLinkingState, AccountLinkingIntent, Nothing>(savedStateHandle) {
+) : BaseViewModel<AccountLinkingState, AccountLinkingIntent>(savedStateHandle) {
 
     private val _viewAction = Channel<AccountLinkingAction>(Channel.BUFFERED)
     val viewAction = _viewAction.receiveAsFlow()

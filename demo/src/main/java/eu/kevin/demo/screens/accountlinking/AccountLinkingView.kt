@@ -12,7 +12,7 @@ import eu.kevin.demo.databinding.KevinFragmentLinkAccountBinding
 import eu.kevin.demo.screens.accountlinking.adapters.LinkedAccountsListAdapter
 import eu.kevin.demo.views.DividerItemDecoration
 
-internal class AccountLinkingView(context: Context) : FrameLayout(context), IView<AccountLinkingState, Nothing> {
+internal class AccountLinkingView(context: Context) : FrameLayout(context), IView<AccountLinkingState> {
 
     var callback: AccountLinkingViewCallback? = null
 

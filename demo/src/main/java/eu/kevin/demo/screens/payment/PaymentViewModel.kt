@@ -59,7 +59,7 @@ internal class PaymentViewModel constructor(
     private val linkedAccountsDao: LinkedAccountsDao,
     private val initialiseLinkedPaymentUseCase: InitialiseLinkedPaymentUseCase,
     savedStateHandle: SavedStateHandle
-) : BaseViewModel<PaymentViewState, PaymentIntent, Nothing>(savedStateHandle) {
+) : BaseViewModel<PaymentViewState, PaymentIntent>(savedStateHandle) {
 
     private val _viewAction = Channel<PaymentViewAction>(Channel.BUFFERED)
     val viewAction = _viewAction.receiveAsFlow()

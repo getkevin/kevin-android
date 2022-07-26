@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 internal class AccountActionsViewModel(
     private val linkedAccountsDao: LinkedAccountsDao,
     savedStateHandle: SavedStateHandle
-) : BaseViewModel<AccountActionsState, AccountActionsIntent, Nothing>(savedStateHandle) {
+) : BaseViewModel<AccountActionsState, AccountActionsIntent>(savedStateHandle) {
 
     private var id: Long? = null
 

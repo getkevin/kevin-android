@@ -13,6 +13,7 @@ import eu.kevin.accounts.accountlinking.AccountLinkingEvent.LoadWebPage
 import eu.kevin.accounts.accountsession.enums.AccountLinkingType
 import eu.kevin.accounts.databinding.KevinFragmentAccountLinkingBinding
 import eu.kevin.common.architecture.BaseView
+import eu.kevin.common.architecture.interfaces.EventHandler
 import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.extensions.applySystemInsetsMargin
 import eu.kevin.common.extensions.applySystemInsetsPadding
@@ -23,7 +24,8 @@ import eu.kevin.common.managers.KeyboardManager
 
 internal class AccountLinkingView(context: Context) :
     BaseView<KevinFragmentAccountLinkingBinding>(context),
-    IView<AccountLinkingState, AccountLinkingEvent> {
+    IView<AccountLinkingState>,
+    EventHandler<AccountLinkingEvent> {
 
     override val binding = KevinFragmentAccountLinkingBinding.inflate(LayoutInflater.from(context), this)
 

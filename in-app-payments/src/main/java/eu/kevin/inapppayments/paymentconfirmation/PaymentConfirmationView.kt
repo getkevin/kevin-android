@@ -8,6 +8,7 @@ import android.webkit.WebView
 import androidx.core.view.updateLayoutParams
 import androidx.webkit.WebViewClientCompat
 import eu.kevin.common.architecture.BaseView
+import eu.kevin.common.architecture.interfaces.EventHandler
 import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.extensions.applySystemInsetsMargin
 import eu.kevin.common.extensions.applySystemInsetsPadding
@@ -21,7 +22,8 @@ import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationEvent.LoadW
 
 internal class PaymentConfirmationView(context: Context) :
     BaseView<KevinFragmentPaymentConfirmationBinding>(context),
-    IView<PaymentConfirmationState, PaymentConfirmationEvent> {
+    IView<PaymentConfirmationState>,
+    EventHandler<PaymentConfirmationEvent> {
 
     override val binding = KevinFragmentPaymentConfirmationBinding.inflate(LayoutInflater.from(context), this)
 

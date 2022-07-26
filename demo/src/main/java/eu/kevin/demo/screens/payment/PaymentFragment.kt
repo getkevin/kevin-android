@@ -26,7 +26,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 internal class PaymentFragment :
-    BaseFragment<PaymentViewState, PaymentIntent, Nothing, PaymentViewModel>(),
+    BaseFragment<PaymentViewState, PaymentIntent, PaymentViewModel>(),
     PaymentViewCallback {
     override val viewModel: PaymentViewModel by activityViewModels {
         PaymentViewModel.Factory(
@@ -39,7 +39,7 @@ internal class PaymentFragment :
         viewModel.intents.trySend(OnPaymentResult(result))
     }
 
-    override fun onCreateView(context: Context): IView<PaymentViewState, Nothing> {
+    override fun onCreateView(context: Context): IView<PaymentViewState> {
         observeChanges()
         listenForCountrySelectedResult()
         listenForPaymentTypeSelectedResult()

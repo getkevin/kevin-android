@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 internal class AccountLinkingFragment :
-    BaseFragment<AccountLinkingState, AccountLinkingIntent, Nothing, AccountLinkingViewModel>(),
+    BaseFragment<AccountLinkingState, AccountLinkingIntent, AccountLinkingViewModel>(),
     AccountLinkingViewCallback {
 
     override val viewModel: AccountLinkingViewModel by activityViewModels {
@@ -32,7 +32,7 @@ internal class AccountLinkingFragment :
         viewModel.intents.trySend(OnAccountLinkingResult(result))
     }
 
-    override fun onCreateView(context: Context): IView<AccountLinkingState, Nothing> {
+    override fun onCreateView(context: Context): IView<AccountLinkingState> {
         observeChanges()
         listenForAccountActionSelectedResult()
         return AccountLinkingView(context).also {

@@ -22,7 +22,7 @@ internal class AccountActionsFragment :
         viewModel.initialise(configuration!!)
     }
 
-    override fun onCreateView(context: Context): IView<AccountActionsState, Nothing> {
+    override fun onCreateView(context: Context): IView<AccountActionsState> {
         return AccountActionsView(context).also {
             it.callback = this
         }

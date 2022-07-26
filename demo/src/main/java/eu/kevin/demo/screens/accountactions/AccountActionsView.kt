@@ -9,7 +9,7 @@ import eu.kevin.demo.databinding.KevinFragmentAccountActionsBinding
 
 internal class AccountActionsView(context: Context) :
     BaseView<KevinFragmentAccountActionsBinding>(context),
-    IView<AccountActionsState, Nothing> {
+    IView<AccountActionsState> {
 
     override val binding = KevinFragmentAccountActionsBinding.inflate(LayoutInflater.from(context), this)
 
