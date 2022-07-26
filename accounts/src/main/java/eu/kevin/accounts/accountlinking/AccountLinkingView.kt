@@ -93,7 +93,6 @@ internal class AccountLinkingView(context: Context) :
     }
 
     override fun render(state: AccountLinkingState) = with(binding) {
-
         if (state.accountLinkingType == AccountLinkingType.BANK) {
             binding.actionBar.title = context.getString(R.string.kevin_window_account_linking_title)
         } else {

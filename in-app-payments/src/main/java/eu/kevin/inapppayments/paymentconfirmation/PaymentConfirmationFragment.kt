@@ -15,7 +15,10 @@ import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.Hand
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationIntent.Initialize
 
 internal class PaymentConfirmationFragment :
-    BaseFragment<PaymentConfirmationState, PaymentConfirmationIntent, PaymentConfirmationEvent, PaymentConfirmationViewModel>(),
+    BaseFragment<PaymentConfirmationState,
+        PaymentConfirmationIntent,
+        PaymentConfirmationEvent,
+        PaymentConfirmationViewModel>(),
     PaymentConfirmationViewDelegate,
     DeepLinkHandler {
 
