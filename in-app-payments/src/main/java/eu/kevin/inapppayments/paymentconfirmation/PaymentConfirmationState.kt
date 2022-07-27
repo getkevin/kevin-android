@@ -5,6 +5,4 @@ import eu.kevin.common.architecture.interfaces.IState
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-internal data class PaymentConfirmationState(
-    val url: String = ""
-) : IState, Parcelable
+internal object PaymentConfirmationState : IState, Parcelable

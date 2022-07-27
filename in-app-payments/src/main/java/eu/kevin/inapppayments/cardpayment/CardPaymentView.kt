@@ -12,6 +12,7 @@ import androidx.core.view.updateLayoutParams
 import androidx.core.widget.addTextChangedListener
 import androidx.webkit.WebViewClientCompat
 import eu.kevin.common.architecture.BaseView
+import eu.kevin.common.architecture.interfaces.EventHandler
 import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.entities.LoadingState
 import eu.kevin.common.extensions.applySystemInsetsMargin
@@ -27,12 +28,13 @@ import eu.kevin.common.extensions.setOnNextActionListener
 import eu.kevin.common.managers.KeyboardManager
 import eu.kevin.inapppayments.KevinPaymentsPlugin
 import eu.kevin.inapppayments.R
+import eu.kevin.inapppayments.cardpayment.CardPaymentEvent.LoadWebPage
 import eu.kevin.inapppayments.cardpayment.enums.CardPaymentMessage.CARD_PAYMENT_SUBMITTING
 import eu.kevin.inapppayments.cardpayment.enums.CardPaymentMessage.HARD_REDIRECT_MODAL
 import eu.kevin.inapppayments.cardpayment.enums.CardPaymentMessage.SOFT_REDIRECT_MODAL
-import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent.HardRedirect
-import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent.SoftRedirect
-import eu.kevin.inapppayments.cardpayment.events.CardPaymentEvent.SubmittingCardData
+import eu.kevin.inapppayments.cardpayment.events.CardPaymentWebEvent.HardRedirect
+import eu.kevin.inapppayments.cardpayment.events.CardPaymentWebEvent.SoftRedirect
+import eu.kevin.inapppayments.cardpayment.events.CardPaymentWebEvent.SubmittingCardData
 import eu.kevin.inapppayments.cardpayment.inputformatters.CardNumberFormatter
 import eu.kevin.inapppayments.cardpayment.inputformatters.DateFormatter
 import eu.kevin.inapppayments.cardpayment.inputvalidation.ValidationResult
@@ -40,63 +42,74 @@ import eu.kevin.inapppayments.databinding.KevinFragmentCardPaymentBinding
 
 internal class CardPaymentView(context: Context) :
     BaseView<KevinFragmentCardPaymentBinding>(context),
-    IView<CardPaymentState> {
+    IView<CardPaymentState>,
+    EventHandler<CardPaymentEvent> {
 
     override val binding = KevinFragmentCardPaymentBinding.inflate(LayoutInflater.from(context), this)
 
     var delegate: CardPaymentViewDelegate? = null
-    private var previousStateUrl: String? = null
 
     init {
-        with(binding.actionBar) {
-            setNavigationOnClickListener {
-                delegate?.onBackClicked()
-            }
-            setNavigationContentDescription(eu.kevin.accounts.R.string.kevin_navigate_back_content_description)
-            applySystemInsetsPadding(top = true)
-        }
-
         with(binding) {
-            cardholderNameInput.editText?.addTextChangedListener {
-                cardholderNameInput.error = null
-                cardholderNameInput.isErrorEnabled = false
+            with(actionBar) {
+                setNavigationOnClickListener {
+                    delegate?.onBackClicked()
+                }
+                setNavigationContentDescription(eu.kevin.accounts.R.string.kevin_navigate_back_content_description)
+                applySystemInsetsPadding(top = true)
             }
-            cardholderNameInput.editText?.setOnNextActionListener {
-                expiryDateInput.requestFocus()
+
+            with(cardholderNameInput) {
+                editText?.addTextChangedListener {
+                    error = null
+                    isErrorEnabled = false
+                }
+                editText?.setOnNextActionListener {
+                    expiryDateInput.requestFocus()
+                }
             }
-            cardNumberInput.editText?.addTextChangedListener(CardNumberFormatter())
-            cardNumberInput.editText?.addTextChangedListener {
-                cardNumberInput.error = null
-                cardNumberInput.isErrorEnabled = false
-                binding.webView.evaluateJavascript(
-                    "window.cardDetails.setCardNumber('${it?.toString() ?: ""}');"
-                ) {}
+
+            with(cardNumberInput) {
+                editText?.addTextChangedListener(CardNumberFormatter())
+                editText?.addTextChangedListener {
+                    error = null
+                    isErrorEnabled = false
+                    webView.evaluateJavascript(
+                        "window.cardDetails.setCardNumber('${it?.toString() ?: ""}');"
+                    ) {}
+                }
+                editText?.setOnNextActionListener {
+                    cardholderNameInput.requestFocus()
+                }
             }
-            cardNumberInput.editText?.setOnNextActionListener {
-                cardholderNameInput.requestFocus()
+
+            with(expiryDateInput) {
+                editText?.addTextChangedListener(DateFormatter())
+                editText?.addTextChangedListener {
+                    error = null
+                    isErrorEnabled = false
+                }
+                editText?.setOnNextActionListener {
+                    cvvInput.requestFocus()
+                }
             }
-            expiryDateInput.editText?.addTextChangedListener(DateFormatter())
-            expiryDateInput.editText?.addTextChangedListener {
-                expiryDateInput.error = null
-                expiryDateInput.isErrorEnabled = false
+
+            with(cvvInput) {
+                editText?.addTextChangedListener {
+                    error = null
+                    isErrorEnabled = false
+                }
+                editText?.setOnDoneActionListener {
+                    handleContinueClick()
+                }
             }
-            expiryDateInput.editText?.setOnNextActionListener {
-                cvvInput.requestFocus()
-            }
-            cvvInput.editText?.addTextChangedListener {
-                cvvInput.error = null
-                cvvInput.isErrorEnabled = false
-            }
-            cvvInput.editText?.setOnDoneActionListener {
+
+            continueButton.setDebounceClickListener {
                 handleContinueClick()
             }
+            scrollView.applySystemInsetsPadding(bottom = true)
         }
 
-        binding.continueButton.setDebounceClickListener {
-            handleContinueClick()
-        }
-
-        binding.scrollView.applySystemInsetsPadding(bottom = true)
         KeyboardManager(binding.root).apply {
             onKeyboardSizeChanged {
                 binding.root.updateLayoutParams<MarginLayoutParams> {
@@ -130,14 +143,14 @@ internal class CardPaymentView(context: Context) :
                     fun postMessage(message: String) {
                         when (message) {
                             SOFT_REDIRECT_MODAL.value -> {
-                                delegate?.onEvent(
+                                delegate?.onWebEvent(
                                     SoftRedirect(
                                         binding.cardNumberInput.getInputText().removeWhiteSpaces()
                                     )
                                 )
                             }
-                            HARD_REDIRECT_MODAL.value -> delegate?.onEvent(HardRedirect)
-                            CARD_PAYMENT_SUBMITTING.value -> delegate?.onEvent(SubmittingCardData)
+                            HARD_REDIRECT_MODAL.value -> delegate?.onWebEvent(HardRedirect)
+                            CARD_PAYMENT_SUBMITTING.value -> delegate?.onWebEvent(SubmittingCardData)
                         }
                     }
                 },
@@ -173,24 +186,49 @@ internal class CardPaymentView(context: Context) :
 
     override fun render(state: CardPaymentState) {
         with(binding) {
-            if (state.url.isNotBlank() && previousStateUrl != state.url) {
-                previousStateUrl = state.url
-                webView.loadUrl(state.url)
-            }
-            binding.continueButton.isEnabled = state.isContinueEnabled
-            binding.amountView.text = state.amount?.getDisplayString(context)
+            continueButton.isEnabled = state.isContinueEnabled
+            amountView.text = state.amount?.getDisplayString(context)
             showCardDetails(state.showCardDetails)
 
             val loadingState = state.loadingState
             if (loadingState is LoadingState.Loading && loadingState.isLoading) {
-                binding.progressView.fadeIn()
+                progressView.fadeIn()
             } else {
-                binding.progressView.fadeOut()
+                progressView.fadeOut()
             }
         }
     }
 
-    fun submitCardForm(
+    override fun handleEvent(event: CardPaymentEvent) {
+        when (event) {
+            is LoadWebPage -> {
+                if (event.url.isNotBlank()) {
+                    binding.webView.loadUrl(event.url)
+                }
+            }
+            is CardPaymentEvent.SubmitCardForm -> {
+                submitCardForm(
+                    event.cardholderName,
+                    event.cardNumber,
+                    event.expiryDate,
+                    event.cvv
+                )
+            }
+            is CardPaymentEvent.ShowFieldValidations -> {
+                showInputFieldValidations(
+                    event.cardholderNameValidation,
+                    event.cardNumberValidation,
+                    event.expiryDateValidation,
+                    event.cvvValidation
+                )
+            }
+            is CardPaymentEvent.SubmitUserRedirect -> {
+                submitUserRedirect(event.shouldRedirect)
+            }
+        }
+    }
+
+    private fun submitCardForm(
         cardholderName: String,
         cardNumber: String,
         expiryDate: String,
@@ -205,7 +243,7 @@ internal class CardPaymentView(context: Context) :
         }
     }
 
-    fun showInputFieldValidations(
+    private fun showInputFieldValidations(
         cardholderNameValidation: ValidationResult,
         cardNumberValidation: ValidationResult,
         expiryDateValidation: ValidationResult,
@@ -219,7 +257,7 @@ internal class CardPaymentView(context: Context) :
         }
     }
 
-    fun submitUserRedirect(shouldRedirect: Boolean) {
+    private fun submitUserRedirect(shouldRedirect: Boolean) {
         if (shouldRedirect) {
             binding.webView.evaluateJavascript("window.cardDetails.confirmBank();") {}
         } else {
@@ -228,24 +266,28 @@ internal class CardPaymentView(context: Context) :
     }
 
     private fun showCardDetails(show: Boolean) {
-        if (show) {
-            binding.webView.fadeOut(250L) {
-                binding.scrollView.fadeIn()
-            }
-        } else {
-            binding.scrollView.fadeOut(250L) {
-                binding.webView.fadeIn()
+        with(binding) {
+            if (show) {
+                webView.fadeOut(250L) {
+                    scrollView.fadeIn()
+                }
+            } else {
+                scrollView.fadeOut(250L) {
+                    webView.fadeIn()
+                }
             }
         }
     }
 
     private fun handleContinueClick() {
         hideKeyboard()
-        delegate?.onContinueClicked(
-            binding.cardholderNameInput.getInputText(),
-            binding.cardNumberInput.getInputText(),
-            binding.expiryDateInput.getInputText(),
-            binding.cvvInput.getInputText()
-        )
+        with(binding) {
+            delegate?.onContinueClicked(
+                cardholderNameInput.getInputText(),
+                cardNumberInput.getInputText(),
+                expiryDateInput.getInputText(),
+                cvvInput.getInputText()
+            )
+        }
     }
 }

@@ -9,9 +9,11 @@ import androidx.core.view.updateLayoutParams
 import androidx.webkit.WebViewClientCompat
 import eu.kevin.accounts.KevinAccountsPlugin
 import eu.kevin.accounts.R
+import eu.kevin.accounts.accountlinking.AccountLinkingEvent.LoadWebPage
 import eu.kevin.accounts.accountsession.enums.AccountLinkingType
 import eu.kevin.accounts.databinding.KevinFragmentAccountLinkingBinding
 import eu.kevin.common.architecture.BaseView
+import eu.kevin.common.architecture.interfaces.EventHandler
 import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.extensions.applySystemInsetsMargin
 import eu.kevin.common.extensions.applySystemInsetsPadding
@@ -22,14 +24,14 @@ import eu.kevin.common.managers.KeyboardManager
 
 internal class AccountLinkingView(context: Context) :
     BaseView<KevinFragmentAccountLinkingBinding>(context),
-    IView<AccountLinkingState> {
+    IView<AccountLinkingState>,
+    EventHandler<AccountLinkingEvent> {
 
     override val binding = KevinFragmentAccountLinkingBinding.inflate(LayoutInflater.from(context), this)
 
     var delegate: AccountLinkingViewDelegate? = null
 
     private var lastClickPosition: Int = 0
-    private var previousStateUrl: String? = null
 
     init {
         setBackgroundColor(context.getColorFromAttr(android.R.attr.colorBackground))
@@ -93,14 +95,20 @@ internal class AccountLinkingView(context: Context) :
     }
 
     override fun render(state: AccountLinkingState) = with(binding) {
-        if (state.bankRedirectUrl.isNotBlank() && state.bankRedirectUrl != previousStateUrl) {
-            accountLinkWebView.loadUrl(state.bankRedirectUrl)
-            previousStateUrl = state.bankRedirectUrl
-        }
         if (state.accountLinkingType == AccountLinkingType.BANK) {
             binding.actionBar.title = context.getString(R.string.kevin_window_account_linking_title)
         } else {
             binding.actionBar.title = context.getString(R.string.kevin_window_account_linking_card_title)
+        }
+    }
+
+    override fun handleEvent(event: AccountLinkingEvent) {
+        when (event) {
+            is LoadWebPage -> {
+                if (event.url.isNotBlank()) {
+                    binding.accountLinkWebView.loadUrl(event.url)
+                }
+            }
         }
     }
 

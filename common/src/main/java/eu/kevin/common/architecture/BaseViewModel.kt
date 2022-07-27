@@ -18,10 +18,10 @@ abstract class BaseViewModel<S : IState, I : IIntent>(
 ) : ViewModel(), IModel<S, I> {
 
     override val intents = Channel<I>(Channel.UNLIMITED)
-    override val state: StateFlow<S>
-        get() = _state
 
     private val _state: MutableStateFlow<S>
+    override val state: StateFlow<S>
+        get() = _state
 
     init {
         _state = MutableStateFlow(getInitialData())
@@ -32,9 +32,8 @@ abstract class BaseViewModel<S : IState, I : IIntent>(
         }
     }
 
-    protected fun getSavedState(): S? {
-        return savedStateHandle.get("saved_state")
-    }
+    protected fun getSavedState(): S? =
+        savedStateHandle.get("saved_state")
 
     protected abstract fun getInitialData(): S
     protected abstract suspend fun handleIntent(intent: I)

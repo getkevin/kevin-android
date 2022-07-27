@@ -5,7 +5,10 @@ import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.extensions.appendQuery
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.inapppayments.BuildConfig
+import eu.kevin.inapppayments.KevinPaymentsConfiguration
+import eu.kevin.inapppayments.KevinPaymentsPlugin
 import eu.kevin.inapppayments.common.enums.PaymentStatus
+import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationEvent.LoadWebPage
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 import eu.kevin.testcore.base.BaseViewModelTest
 import io.mockk.every
@@ -28,6 +31,13 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
     @Before
     override fun setUp() {
         super.setUp()
+
+        KevinPaymentsPlugin.configure(
+            KevinPaymentsConfiguration.builder()
+                .setCallbackUrl("")
+                .build()
+        )
+
         viewModel = PaymentConfirmationViewModel(savedStateHandle)
         every { savedStateHandle.get<Any>(any()) } returns null
     }
@@ -49,9 +59,10 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
         )
 
         val states = mutableListOf<PaymentConfirmationState>()
-        val job = launch {
-            viewModel.state.toList(states)
-        }
+        val events = mutableListOf<PaymentConfirmationEvent>()
+
+        val jobStates = launch { viewModel.state.toList(states) }
+        val jobEvents = launch { viewModel.events.toList(events) }
 
         viewModel.intents.trySend(
             PaymentConfirmationIntent.Initialize(
@@ -60,10 +71,11 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
             )
         )
 
-        Assert.assertEquals(2, states.size)
-        Assert.assertEquals("", states[0].url)
-        Assert.assertEquals(expectedRedirectUrl, states[1].url)
-        job.cancel()
+        Assert.assertEquals(1, states.size)
+        Assert.assertEquals(LoadWebPage(expectedRedirectUrl), events[0])
+
+        jobStates.cancel()
+        jobEvents.cancel()
     }
 
     @Test
@@ -79,9 +91,10 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
         )
 
         val states = mutableListOf<PaymentConfirmationState>()
-        val job = launch {
-            viewModel.state.toList(states)
-        }
+        val events = mutableListOf<PaymentConfirmationEvent>()
+
+        val jobStates = launch { viewModel.state.toList(states) }
+        val jobEvents = launch { viewModel.events.toList(events) }
 
         viewModel.intents.trySend(
             PaymentConfirmationIntent.Initialize(
@@ -90,10 +103,11 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
             )
         )
 
-        Assert.assertEquals(2, states.size)
-        Assert.assertEquals("", states[0].url)
-        Assert.assertEquals(expectedRedirectUrl, states[1].url)
-        job.cancel()
+        Assert.assertEquals(1, states.size)
+        Assert.assertEquals(LoadWebPage(expectedRedirectUrl), events[0])
+
+        jobStates.cancel()
+        jobEvents.cancel()
     }
 
     @Test

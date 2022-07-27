@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
 import eu.kevin.accounts.BuildConfig
 import eu.kevin.accounts.KevinAccountsPlugin
+import eu.kevin.accounts.accountlinking.AccountLinkingEvent.LoadWebPage
 import eu.kevin.accounts.accountlinking.AccountLinkingIntent.HandleAuthorization
 import eu.kevin.accounts.accountlinking.AccountLinkingIntent.HandleBackClicked
 import eu.kevin.accounts.accountlinking.AccountLinkingIntent.Initialize
@@ -16,10 +17,15 @@ import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.extensions.appendQuery
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.core.plugin.Kevin
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.receiveAsFlow
 
 internal class AccountLinkingViewModel(
     savedStateHandle: SavedStateHandle
 ) : BaseViewModel<AccountLinkingState, AccountLinkingIntent>(savedStateHandle) {
+
+    private val _events = Channel<AccountLinkingEvent>(Channel.BUFFERED)
+    val events = _events.receiveAsFlow()
 
     override fun getInitialData() = AccountLinkingState()
 
@@ -63,10 +69,11 @@ internal class AccountLinkingViewModel(
 
         updateState {
             it.copy(
-                bankRedirectUrl = url,
                 accountLinkingType = configuration.linkingType
             )
         }
+
+        _events.send(LoadWebPage(url))
     }
 
     private fun handleAuthorizationReceived(uri: Uri) {

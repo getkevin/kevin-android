@@ -8,6 +8,7 @@ import android.webkit.WebView
 import androidx.core.view.updateLayoutParams
 import androidx.webkit.WebViewClientCompat
 import eu.kevin.common.architecture.BaseView
+import eu.kevin.common.architecture.interfaces.EventHandler
 import eu.kevin.common.architecture.interfaces.IView
 import eu.kevin.common.extensions.applySystemInsetsMargin
 import eu.kevin.common.extensions.applySystemInsetsPadding
@@ -17,17 +18,18 @@ import eu.kevin.common.extensions.hideKeyboard
 import eu.kevin.common.managers.KeyboardManager
 import eu.kevin.inapppayments.KevinPaymentsPlugin
 import eu.kevin.inapppayments.databinding.KevinFragmentPaymentConfirmationBinding
+import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationEvent.LoadWebPage
 
 internal class PaymentConfirmationView(context: Context) :
     BaseView<KevinFragmentPaymentConfirmationBinding>(context),
-    IView<PaymentConfirmationState> {
+    IView<PaymentConfirmationState>,
+    EventHandler<PaymentConfirmationEvent> {
 
     override val binding = KevinFragmentPaymentConfirmationBinding.inflate(LayoutInflater.from(context), this)
 
     var delegate: PaymentConfirmationViewDelegate? = null
 
     private var lastClickPosition: Int = 0
-    private var previousStateUrl: String? = null
 
     init {
         setBackgroundColor(context.getColorFromAttr(android.R.attr.colorBackground))
@@ -90,10 +92,15 @@ internal class PaymentConfirmationView(context: Context) :
         super.onDetachedFromWindow()
     }
 
-    override fun render(state: PaymentConfirmationState) = with(binding) {
-        if (state.url.isNotBlank() && state.url != previousStateUrl) {
-            confirmationWebView.loadUrl(state.url)
-            previousStateUrl = state.url
+    override fun render(state: PaymentConfirmationState) = Unit
+
+    override fun handleEvent(event: PaymentConfirmationEvent) {
+        when (event) {
+            is LoadWebPage -> {
+                if (event.url.isNotBlank()) {
+                    binding.confirmationWebView.loadUrl(event.url)
+                }
+            }
         }
     }
 
