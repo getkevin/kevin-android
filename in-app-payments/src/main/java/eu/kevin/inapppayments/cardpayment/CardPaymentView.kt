@@ -195,6 +195,25 @@ internal class CardPaymentView(context: Context) :
                     binding.webView.loadUrl(event.url)
                 }
             }
+            is CardPaymentEvent.SubmitCardForm -> {
+                submitCardForm(
+                    event.cardholderName,
+                    event.cardNumber,
+                    event.expiryDate,
+                    event.cvv
+                )
+            }
+            is CardPaymentEvent.ShowFieldValidations -> {
+                showInputFieldValidations(
+                    event.cardholderNameValidation,
+                    event.cardNumberValidation,
+                    event.expiryDateValidation,
+                    event.cvvValidation
+                )
+            }
+            is CardPaymentEvent.SubmitUserRedirect -> {
+                submitUserRedirect(event.shouldRedirect)
+            }
         }
     }
 
