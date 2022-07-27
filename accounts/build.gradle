@@ -24,11 +24,11 @@ android {
         resConfigs("en", "lt", "ru", "bg", "ro", "hu", "el", "et", "pt", "pl", "lv", "sk", "cs", "fi", "sv", "no", "da", "de", "nl", "fr", "es", "it", "sl", "is")
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String", "KEVIN_ACCOUNTS_API_URL", "\"https://api.kevin.eu\""
+        buildConfigField "String", "KEVIN_ACCOUNTS_API_URL", "\"https://api.kevin.eu/\""
         buildConfigField "String", "KEVIN_LINK_ACCOUNT_URL", "\"https://psd2.kevin.eu/login/%s/%s/preview\""
         buildConfigField "String", "KEVIN_LINK_CARD_URL", "\"https://psd2.kevin.eu/card-details/%s\""
 
-        buildConfigField "String", "KEVIN_SANDBOX_ACCOUNTS_API_URL", "\"https://sandbox-api.getkevin.eu\""
+        buildConfigField "String", "KEVIN_SANDBOX_ACCOUNTS_API_URL", "\"https://sandbox-api.getkevin.eu/\""
         buildConfigField "String", "KEVIN_SANDBOX_LINK_ACCOUNT_URL", "\"https://psd2-sandbox.kevin.eu/login/%s/%s/preview\""
         buildConfigField "String", "KEVIN_SANDBOX_LINK_CARD_URL", "\"https://psd2-sandbox.kevin.eu/card-details/%s\""
 
@@ -40,10 +40,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
-            buildConfigField "io.ktor.client.features.logging.LogLevel", "HTTP_LOGGING_LEVEL", "io.ktor.client.features.logging.LogLevel.NONE"
+            buildConfigField "io.ktor.client.plugins.logging.LogLevel", "HTTP_LOGGING_LEVEL", "io.ktor.client.plugins.logging.LogLevel.NONE"
         }
         debug {
-            buildConfigField "io.ktor.client.features.logging.LogLevel", "HTTP_LOGGING_LEVEL", "io.ktor.client.features.logging.LogLevel.ALL"
+            buildConfigField "io.ktor.client.plugins.logging.LogLevel", "HTTP_LOGGING_LEVEL", "io.ktor.client.plugins.logging.LogLevel.ALL"
         }
     }
 

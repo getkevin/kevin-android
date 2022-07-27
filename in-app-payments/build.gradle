@@ -39,10 +39,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "io.ktor.client.features.logging.LogLevel", "HTTP_LOGGING_LEVEL", "io.ktor.client.features.logging.LogLevel.NONE"
+            buildConfigField "io.ktor.client.plugins.logging.LogLevel", "HTTP_LOGGING_LEVEL", "io.ktor.client.plugins.logging.LogLevel.NONE"
         }
         debug {
-            buildConfigField "io.ktor.client.features.logging.LogLevel", "HTTP_LOGGING_LEVEL", "io.ktor.client.features.logging.LogLevel.ALL"
+            buildConfigField "io.ktor.client.plugins.logging.LogLevel", "HTTP_LOGGING_LEVEL", "io.ktor.client.plugins.logging.LogLevel.ALL"
         }
     }
 

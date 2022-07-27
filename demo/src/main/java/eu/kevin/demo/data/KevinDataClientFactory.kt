@@ -1,7 +1,7 @@
 package eu.kevin.demo.data
 
 import eu.kevin.core.networking.BaseApiFactory
-import io.ktor.client.features.logging.LogLevel
+import io.ktor.client.plugins.logging.LogLevel
 
 internal class KevinDataClientFactory(
     baseUrl: String,

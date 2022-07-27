@@ -21,14 +21,14 @@ android {
         resConfigs("en", "lt", "ru", "bg", "ro", "hu", "el", "et", "pt", "pl", "lv", "sk", "cs", "fi", "sv", "no", "da", "de", "nl", "fr", "es", "it", "sl", "is")
 
         manifestPlaceholders = [
-            appIcon: "@mipmap/ic_launcher",
-            appIconRound: "@mipmap/ic_launcher_round"
+                appIcon     : "@mipmap/ic_launcher",
+                appIconRound: "@mipmap/ic_launcher_round"
         ]
 
         resValue 'string', 'config_app_name', 'kevin. Demo'
 
-        buildConfigField "String", "KEVIN_API_URL", "\"https://api.getkevin.eu/demo\""
-        buildConfigField "String", "KEVIN_MOBILE_DEMO_API", "\"https://mobile-demo.kevin.eu/api/v1\""
+        buildConfigField "String", "KEVIN_API_URL", "\"https://api.getkevin.eu/demo/\""
+        buildConfigField "String", "KEVIN_MOBILE_DEMO_API_URL", "\"https://mobile-demo.kevin.eu/api/v1/\""
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -44,10 +44,10 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
-            buildConfigField "io.ktor.client.features.logging.LogLevel", "HTTP_LOGGING_LEVEL", "io.ktor.client.features.logging.LogLevel.NONE"
+            buildConfigField "io.ktor.client.plugins.logging.LogLevel", "HTTP_LOGGING_LEVEL", "io.ktor.client.plugins.logging.LogLevel.NONE"
         }
         debug {
-            buildConfigField "io.ktor.client.features.logging.LogLevel", "HTTP_LOGGING_LEVEL", "io.ktor.client.features.logging.LogLevel.ALL"
+            buildConfigField "io.ktor.client.plugins.logging.LogLevel", "HTTP_LOGGING_LEVEL", "io.ktor.client.plugins.logging.LogLevel.ALL"
         }
     }
 

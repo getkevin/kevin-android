@@ -1,7 +1,7 @@
 package eu.kevin.accounts.networking
 
 import eu.kevin.core.networking.BaseApiFactory
-import io.ktor.client.features.logging.LogLevel
+import io.ktor.client.plugins.logging.LogLevel
 
 /**
  * Factory class for creating [KevinAccountsClient]
