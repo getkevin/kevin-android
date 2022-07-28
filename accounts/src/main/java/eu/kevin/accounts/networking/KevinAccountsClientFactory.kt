@@ -1,7 +1,7 @@
 package eu.kevin.accounts.networking
 
+import eu.kevin.core.enums.KevinLogLevel
 import eu.kevin.core.networking.BaseApiFactory
-import io.ktor.client.plugins.logging.LogLevel
 
 /**
  * Factory class for creating [KevinAccountsClient]
@@ -14,7 +14,7 @@ class KevinAccountsClientFactory(
     baseUrl: String,
     userAgent: String,
     timeout: Int? = null,
-    logLevel: LogLevel = LogLevel.NONE
+    logLevel: KevinLogLevel = KevinLogLevel.NONE
 ) : BaseApiFactory<KevinAccountsClient>(
     baseUrl,
     userAgent,

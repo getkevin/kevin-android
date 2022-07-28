@@ -44,10 +44,10 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
-            buildConfigField "io.ktor.client.plugins.logging.LogLevel", "HTTP_LOGGING_LEVEL", "io.ktor.client.plugins.logging.LogLevel.NONE"
+            buildConfigField "eu.kevin.core.enums.KevinLogLevel", "HTTP_LOGGING_LEVEL", "eu.kevin.core.enums.KevinLogLevel.NONE"
         }
         debug {
-            buildConfigField "io.ktor.client.plugins.logging.LogLevel", "HTTP_LOGGING_LEVEL", "io.ktor.client.plugins.logging.LogLevel.ALL"
+            buildConfigField "eu.kevin.core.enums.KevinLogLevel", "HTTP_LOGGING_LEVEL", "eu.kevin.core.enums.KevinLogLevel.ALL"
         }
     }
 

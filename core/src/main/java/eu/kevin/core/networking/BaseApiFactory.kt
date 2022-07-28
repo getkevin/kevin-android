@@ -1,5 +1,6 @@
 package eu.kevin.core.networking
 
+import eu.kevin.core.enums.KevinLogLevel
 import eu.kevin.core.networking.exceptions.ApiError
 import eu.kevin.core.networking.exceptions.ErrorResponse
 import eu.kevin.core.networking.serializers.DateSerializer
@@ -30,7 +31,7 @@ abstract class BaseApiFactory<T : BaseApiClient>(
     private val baseUrl: String,
     private val userAgent: String,
     private val timeout: Int? = null,
-    private val logLevel: LogLevel = LogLevel.NONE
+    private val logLevel: KevinLogLevel = KevinLogLevel.NONE
 ) {
 
     private val jsonContentNegotiation = Json {
@@ -81,7 +82,13 @@ abstract class BaseApiFactory<T : BaseApiClient>(
 
             install(Logging) {
                 logger = Logger.ANDROID
-                level = logLevel
+                level = when (logLevel) {
+                    KevinLogLevel.ALL -> LogLevel.ALL
+                    KevinLogLevel.HEADERS -> LogLevel.HEADERS
+                    KevinLogLevel.BODY -> LogLevel.BODY
+                    KevinLogLevel.INFO -> LogLevel.INFO
+                    KevinLogLevel.NONE -> LogLevel.NONE
+                }
             }
         }
     }
