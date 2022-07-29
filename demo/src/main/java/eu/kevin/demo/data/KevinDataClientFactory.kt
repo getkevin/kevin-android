@@ -1,13 +1,13 @@
 package eu.kevin.demo.data
 
+import eu.kevin.core.enums.KevinLogLevel
 import eu.kevin.core.networking.BaseApiFactory
-import io.ktor.client.features.logging.LogLevel
 
 internal class KevinDataClientFactory(
     baseUrl: String,
     userAgent: String,
     timeout: Int? = null,
-    logLevel: LogLevel
+    logLevel: KevinLogLevel
 ) : BaseApiFactory<KevinDataClient>(
     baseUrl,
     userAgent,

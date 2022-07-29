@@ -57,6 +57,10 @@ internal class BankListAdapter(
             val imageRequest = ImageRequest.Builder(root.context)
                 .data(url)
                 .target(
+                    onStart = {
+                        bankTitleView.visibility = VISIBLE
+                        bankImageView.visibility = INVISIBLE
+                    },
                     onSuccess = {
                         bankImageView.setImageDrawable(it)
                         bankTitleView.visibility = INVISIBLE

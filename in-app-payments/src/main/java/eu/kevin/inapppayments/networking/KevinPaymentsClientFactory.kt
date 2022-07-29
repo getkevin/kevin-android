@@ -1,7 +1,7 @@
 package eu.kevin.inapppayments.networking
 
+import eu.kevin.core.enums.KevinLogLevel
 import eu.kevin.core.networking.BaseApiFactory
-import io.ktor.client.features.logging.LogLevel
 
 /**
  * Factory class for creating [KevinPaymentsClient]
@@ -14,7 +14,7 @@ class KevinPaymentsClientFactory(
     baseUrl: String,
     userAgent: String,
     timeout: Int? = null,
-    logLevel: LogLevel = LogLevel.NONE
+    logLevel: KevinLogLevel = KevinLogLevel.NONE
 ) : BaseApiFactory<KevinPaymentsClient>(
     baseUrl,
     userAgent,
