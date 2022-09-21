@@ -8,11 +8,13 @@ plugins {
 }
 
 android {
-    compileSdk 31
+    namespace "eu.kevin.testcore"
+
+    compileSdk 33
 
     defaultConfig {
         minSdk 21
-        targetSdk 31
+        targetSdk 33
 
         consumerProguardFiles "proguard-rules.pro"
         resConfigs("en", "lt", "ru", "bg", "ro", "hu", "el", "et", "pt", "pl", "lv", "sk", "cs", "fi", "sv", "no", "da", "de", "nl", "fr", "es", "it", "sl", "is")
@@ -41,7 +43,7 @@ android {
         viewBinding true
     }
 
-    lintOptions {
+    lint {
         checkReleaseBuilds false
         abortOnError false
     }
