@@ -27,7 +27,7 @@ fun View.fadeOut(duration: Long = 200L, onFinished: () -> Unit = {}) {
         this.duration = duration
         alpha(0f)
         setListener(object : AnimatorListenerAdapter() {
-            override fun onAnimationEnd(animation: Animator?) {
+            override fun onAnimationEnd(animation: Animator) {
                 this@fadeOut.visibility = GONE
                 onFinished()
             }
@@ -43,7 +43,7 @@ fun View.fadeIn(duration: Long = 200L) {
         this.duration = duration
         alpha(1f)
         setListener(object : AnimatorListenerAdapter() {
-            override fun onAnimationStart(animation: Animator?) {
+            override fun onAnimationStart(animation: Animator) {
                 this@fadeIn.visibility = VISIBLE
             }
         })
