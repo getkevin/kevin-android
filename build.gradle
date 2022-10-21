@@ -52,8 +52,4 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-task check {
-    dependsOn "installKotlinterPrePushHook"
-}
-
 apply from: "${rootDir}/maven/publish-root.gradle"
