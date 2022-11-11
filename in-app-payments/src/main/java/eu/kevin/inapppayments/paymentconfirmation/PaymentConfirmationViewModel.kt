@@ -99,7 +99,7 @@ internal class PaymentConfirmationViewModel(
                 GlobalRouter.returnFragmentResult(
                     PaymentConfirmationContract,
                     FragmentResult.Failure(
-                        error = Throwable(message = "Payment was canceled!")
+                        error = Exception("Payment was canceled!")
                     )
                 )
             }

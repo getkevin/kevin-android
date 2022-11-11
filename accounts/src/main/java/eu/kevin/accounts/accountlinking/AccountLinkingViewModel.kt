@@ -93,7 +93,7 @@ internal class AccountLinkingViewModel(
             GlobalRouter.returnFragmentResult(
                 AccountLinkingContract,
                 FragmentResult.Failure(
-                    error = Throwable(message = "Account linking was canceled!")
+                    error = Exception("Account linking was canceled!")
                 )
             )
         }
