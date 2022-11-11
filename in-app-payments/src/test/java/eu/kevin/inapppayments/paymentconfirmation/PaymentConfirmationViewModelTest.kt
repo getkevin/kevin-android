@@ -145,7 +145,9 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
         verify(exactly = 1) {
             GlobalRouter.returnFragmentResult(
                 PaymentConfirmationContract,
-                FragmentResult.Canceled
+                withArg {
+                    Assert.assertTrue((it is FragmentResult.Failure) && it.error.message == "Payment was canceled!")
+                }
             )
         }
     }

@@ -149,7 +149,12 @@ internal class CardPaymentViewModel(
                 GlobalRouter.returnFragmentResult(CardPaymentContract, FragmentResult.Success(result))
             }
             else -> {
-                GlobalRouter.returnFragmentResult(CardPaymentContract, FragmentResult.Canceled)
+                GlobalRouter.returnFragmentResult(
+                    CardPaymentContract,
+                    FragmentResult.Failure(
+                        error = Throwable("Payment was canceled!")
+                    )
+                )
             }
         }
     }
