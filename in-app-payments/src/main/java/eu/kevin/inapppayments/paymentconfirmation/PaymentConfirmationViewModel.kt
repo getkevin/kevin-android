@@ -96,7 +96,12 @@ internal class PaymentConfirmationViewModel(
                 )
             }
             else -> {
-                GlobalRouter.returnFragmentResult(PaymentConfirmationContract, FragmentResult.Canceled)
+                GlobalRouter.returnFragmentResult(
+                    PaymentConfirmationContract,
+                    FragmentResult.Failure(
+                        error = Exception("Payment was canceled!")
+                    )
+                )
             }
         }
     }

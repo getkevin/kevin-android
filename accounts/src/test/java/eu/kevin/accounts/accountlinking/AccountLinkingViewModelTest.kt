@@ -109,7 +109,9 @@ class AccountLinkingViewModelTest : BaseViewModelTest() {
         verify(exactly = 1) {
             GlobalRouter.returnFragmentResult(
                 AccountLinkingContract,
-                FragmentResult.Canceled
+                withArg {
+                    assertTrue((it is FragmentResult.Failure) && it.error.message == "Account linking was canceled!")
+                }
             )
         }
     }
