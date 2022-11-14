@@ -5,8 +5,7 @@ import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import coil.ImageLoader
-import coil.request.ImageRequest
+import coil.load
 import eu.kevin.accounts.bankselection.entities.BankListItem
 import eu.kevin.accounts.databinding.KevinViewBankListItemBinding
 import eu.kevin.common.R
@@ -54,25 +53,24 @@ internal class BankListAdapter(
             logoUrl
         }
         with(binding) {
-            val imageRequest = ImageRequest.Builder(root.context)
-                .data(url)
-                .target(
+            bankImageView.load(
+                uri = url
+            ) {
+                listener(
                     onStart = {
                         bankTitleView.visibility = VISIBLE
                         bankImageView.visibility = INVISIBLE
                     },
-                    onSuccess = {
-                        bankImageView.setImageDrawable(it)
+                    onSuccess = { _, _ ->
                         bankTitleView.visibility = INVISIBLE
                         bankImageView.visibility = VISIBLE
                     },
-                    onError = {
+                    onError = { _, _ ->
                         bankTitleView.visibility = VISIBLE
                         bankImageView.visibility = INVISIBLE
                     }
                 )
-                .build()
-            ImageLoader.invoke(root.context).enqueue(imageRequest)
+            }
         }
     }
 }
