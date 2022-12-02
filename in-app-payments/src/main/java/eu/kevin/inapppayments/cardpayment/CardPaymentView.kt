@@ -45,12 +45,15 @@ internal class CardPaymentView(context: Context) :
     IView<CardPaymentState>,
     EventHandler<CardPaymentEvent> {
 
-    override val binding = KevinFragmentCardPaymentBinding.inflate(LayoutInflater.from(context), this)
+    override var binding: KevinFragmentCardPaymentBinding? = KevinFragmentCardPaymentBinding.inflate(
+        LayoutInflater.from(context),
+        this
+    )
 
     var delegate: CardPaymentViewDelegate? = null
 
     init {
-        with(binding) {
+        with(requireBinding()) {
             with(actionBar) {
                 setNavigationOnClickListener {
                     delegate?.onBackClicked()
@@ -110,15 +113,15 @@ internal class CardPaymentView(context: Context) :
             scrollView.applySystemInsetsPadding(bottom = true)
         }
 
-        KeyboardManager(binding.root).apply {
+        KeyboardManager(requireBinding().root).apply {
             onKeyboardSizeChanged {
-                binding.root.updateLayoutParams<MarginLayoutParams> {
+                requireBinding().root.updateLayoutParams<MarginLayoutParams> {
                     bottomMargin = it
                 }
             }
         }
 
-        with(binding.cvvTooltipIcon) {
+        with(requireBinding().cvvTooltipIcon) {
             TooltipCompat.setTooltipText(
                 this,
                 context.getString(R.string.kevin_window_card_payment_cvv_tooltip)
@@ -133,7 +136,7 @@ internal class CardPaymentView(context: Context) :
 
     @SuppressLint("JavascriptInterface")
     private fun configureWebView() {
-        with(binding.webView) {
+        with(requireBinding().webView) {
             applySystemInsetsMargin(bottom = true)
             settings.javaScriptEnabled = true
             settings.domStorageEnabled = true
@@ -145,7 +148,7 @@ internal class CardPaymentView(context: Context) :
                             SOFT_REDIRECT_MODAL.value -> {
                                 delegate?.onWebEvent(
                                     SoftRedirect(
-                                        binding.cardNumberInput.getInputText().removeWhiteSpaces()
+                                        requireBinding().cardNumberInput.getInputText().removeWhiteSpaces()
                                     )
                                 )
                             }
@@ -177,7 +180,7 @@ internal class CardPaymentView(context: Context) :
 
                 override fun onPageFinished(view: WebView?, url: String?) {
                     super.onPageFinished(view, url)
-                    binding.webView.evaluateJavascript("window.cardDetails.enableEventMessages();") {}
+                    requireBinding().webView.evaluateJavascript("window.cardDetails.enableEventMessages();") {}
                     delegate?.onPageFinishedLoading()
                 }
             }
@@ -185,7 +188,7 @@ internal class CardPaymentView(context: Context) :
     }
 
     override fun render(state: CardPaymentState) {
-        with(binding) {
+        with(requireBinding()) {
             continueButton.isEnabled = state.isContinueEnabled
             amountView.text = state.amount?.getDisplayString(context)
             showCardDetails(state.showCardDetails)
@@ -203,7 +206,7 @@ internal class CardPaymentView(context: Context) :
         when (event) {
             is LoadWebPage -> {
                 if (event.url.isNotBlank()) {
-                    binding.webView.loadUrl(event.url)
+                    requireBinding().webView.loadUrl(event.url)
                 }
             }
             is CardPaymentEvent.SubmitCardForm -> {
@@ -234,7 +237,7 @@ internal class CardPaymentView(context: Context) :
         expiryDate: String,
         cvv: String
     ) {
-        with(binding.webView) {
+        with(requireBinding().webView) {
             evaluateJavascript("window.cardDetails.setCardholderName('$cardholderName');") {}
             evaluateJavascript("window.cardDetails.setCardNumber('$cardNumber');") {}
             evaluateJavascript("window.cardDetails.setExpirationDate('$expiryDate');") {}
@@ -249,7 +252,7 @@ internal class CardPaymentView(context: Context) :
         expiryDateValidation: ValidationResult,
         cvvValidation: ValidationResult
     ) {
-        with(binding) {
+        with(requireBinding()) {
             cardholderNameInput.error = cardholderNameValidation.getMessage(context)
             cardNumberInput.error = cardNumberValidation.getMessage(context)
             expiryDateInput.error = expiryDateValidation.getMessage(context)
@@ -259,14 +262,14 @@ internal class CardPaymentView(context: Context) :
 
     private fun submitUserRedirect(shouldRedirect: Boolean) {
         if (shouldRedirect) {
-            binding.webView.evaluateJavascript("window.cardDetails.confirmBank();") {}
+            requireBinding().webView.evaluateJavascript("window.cardDetails.confirmBank();") {}
         } else {
-            binding.webView.evaluateJavascript("window.cardDetails.cancelBank();") {}
+            requireBinding().webView.evaluateJavascript("window.cardDetails.cancelBank();") {}
         }
     }
 
     private fun showCardDetails(show: Boolean) {
-        with(binding) {
+        with(requireBinding()) {
             if (show) {
                 webView.fadeOut(250L) {
                     scrollView.fadeIn()
@@ -281,7 +284,7 @@ internal class CardPaymentView(context: Context) :
 
     private fun handleContinueClick() {
         hideKeyboard()
-        with(binding) {
+        with(requireBinding()) {
             delegate?.onContinueClicked(
                 cardholderNameInput.getInputText(),
                 cardNumberInput.getInputText(),

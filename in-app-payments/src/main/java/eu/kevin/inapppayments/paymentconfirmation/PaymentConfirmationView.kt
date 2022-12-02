@@ -25,7 +25,10 @@ internal class PaymentConfirmationView(context: Context) :
     IView<PaymentConfirmationState>,
     EventHandler<PaymentConfirmationEvent> {
 
-    override val binding = KevinFragmentPaymentConfirmationBinding.inflate(LayoutInflater.from(context), this)
+    override var binding: KevinFragmentPaymentConfirmationBinding? = KevinFragmentPaymentConfirmationBinding.inflate(
+        LayoutInflater.from(context),
+        this
+    )
 
     var delegate: PaymentConfirmationViewDelegate? = null
 
@@ -33,7 +36,7 @@ internal class PaymentConfirmationView(context: Context) :
 
     init {
         setBackgroundColor(context.getColorFromAttr(android.R.attr.colorBackground))
-        with(binding.actionBar) {
+        with(requireBinding().actionBar) {
             setNavigationOnClickListener {
                 delegate?.onBackClicked()
             }
@@ -41,27 +44,27 @@ internal class PaymentConfirmationView(context: Context) :
             applySystemInsetsPadding(top = true)
         }
 
-        binding.confirmationWebView.setOnTouchListener { v, event ->
+        requireBinding().confirmationWebView.setOnTouchListener { v, event ->
             if (event.action == MotionEvent.ACTION_UP) {
                 lastClickPosition = v.height - event.y.toInt()
             }
             false
         }
 
-        KeyboardManager(binding.root).apply {
+        KeyboardManager(requireBinding().root).apply {
             onKeyboardSizeChanged {
-                binding.root.updateLayoutParams<MarginLayoutParams> {
+                requireBinding().root.updateLayoutParams<MarginLayoutParams> {
                     bottomMargin = it
                 }
             }
             onKeyboardVisibilityChanged {
                 if (lastClickPosition < it) {
-                    binding.confirmationWebView.scrollBy(0, (it - lastClickPosition) + dp(64))
+                    requireBinding().confirmationWebView.scrollBy(0, (it - lastClickPosition) + dp(64))
                 }
             }
         }
 
-        with(binding.confirmationWebView) {
+        with(requireBinding().confirmationWebView) {
             setBackgroundColor(context.getColorFromAttr(android.R.attr.colorBackground))
             applySystemInsetsMargin(bottom = true)
             settings.javaScriptEnabled = true
@@ -87,7 +90,7 @@ internal class PaymentConfirmationView(context: Context) :
     }
 
     override fun onDetachedFromWindow() {
-        binding.confirmationWebView.destroy()
+        requireBinding().confirmationWebView.destroy()
         hideKeyboard()
         super.onDetachedFromWindow()
     }
@@ -98,15 +101,15 @@ internal class PaymentConfirmationView(context: Context) :
         when (event) {
             is LoadWebPage -> {
                 if (event.url.isNotBlank()) {
-                    binding.confirmationWebView.loadUrl(event.url)
+                    requireBinding().confirmationWebView.loadUrl(event.url)
                 }
             }
         }
     }
 
     fun handleWebViewBackPress(): Boolean {
-        return if (binding.confirmationWebView.canGoBack()) {
-            binding.confirmationWebView.goBack()
+        return if (requireBinding().confirmationWebView.canGoBack()) {
+            requireBinding().confirmationWebView.goBack()
             true
         } else {
             false

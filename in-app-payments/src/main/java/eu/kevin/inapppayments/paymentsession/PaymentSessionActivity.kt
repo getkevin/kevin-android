@@ -5,7 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.WindowCompat
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import eu.kevin.common.architecture.BaseFragmentActivity
 import eu.kevin.common.architecture.routing.GlobalRouter
@@ -91,20 +93,33 @@ class PaymentSessionActivity : BaseFragmentActivity(), PaymentSessionListener {
 
     private fun startListeningForRouteRequests() {
         lifecycleScope.launch {
-            GlobalRouter.addOnPushFragmentListener(this) { fragment ->
-                pushFragment(R.id.main_router_container, fragment)
+            launch {
+                repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    GlobalRouter.mainRouterFlow.collect { fragment ->
+                        pushFragment(eu.kevin.accounts.R.id.main_router_container, fragment)
+                    }
+                }
             }
-
-            GlobalRouter.addOnPushModalFragmentListener(this) { modalFragment ->
-                modalFragment.show(supportFragmentManager, modalFragment::class.simpleName)
+            launch {
+                repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    GlobalRouter.mainModalRouterFlow.collect { modalFragment ->
+                        modalFragment.show(supportFragmentManager, modalFragment::class.simpleName)
+                    }
+                }
             }
-
-            GlobalRouter.addOnPopCurrentFragmentListener(this) {
-                handleBack()
+            launch {
+                repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    GlobalRouter.popFragmentFlow.collect {
+                        handleBack()
+                    }
+                }
             }
-
-            GlobalRouter.addOnReturnFragmentResultListener(this) { result ->
-                supportFragmentManager.setFragmentResult(result.contract, result.data)
+            launch {
+                repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    GlobalRouter.fragmentResultFlow.collect { result ->
+                        supportFragmentManager.setFragmentResult(result.contract, result.data)
+                    }
+                }
             }
         }
     }

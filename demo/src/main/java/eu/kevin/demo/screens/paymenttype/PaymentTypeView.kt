@@ -14,14 +14,17 @@ internal class PaymentTypeView(context: Context) :
 
     var callback: PaymentTypeViewCallback? = null
 
-    override val binding = KevinFragmentPaymentTypeBinding.inflate(LayoutInflater.from(context), this)
+    override var binding: KevinFragmentPaymentTypeBinding? = KevinFragmentPaymentTypeBinding.inflate(
+        LayoutInflater.from(context),
+        this
+    )
 
     override fun render(state: PaymentTypeState) {
-        binding.linkedPaymentContainer.isVisible = state.showLinkedAccountOption
+        requireBinding().linkedPaymentContainer.isVisible = state.showLinkedAccountOption
     }
 
     init {
-        with(binding) {
+        with(requireBinding()) {
             root.applySystemInsetsPadding(bottom = true)
             bankPaymentContainer.setOnClickListener {
                 callback?.onBankPaymentSelected()

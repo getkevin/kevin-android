@@ -27,7 +27,10 @@ internal class AccountLinkingView(context: Context) :
     IView<AccountLinkingState>,
     EventHandler<AccountLinkingEvent> {
 
-    override val binding = KevinFragmentAccountLinkingBinding.inflate(LayoutInflater.from(context), this)
+    override var binding: KevinFragmentAccountLinkingBinding? = KevinFragmentAccountLinkingBinding.inflate(
+        LayoutInflater.from(context),
+        this
+    )
 
     var delegate: AccountLinkingViewDelegate? = null
 
@@ -35,7 +38,7 @@ internal class AccountLinkingView(context: Context) :
 
     init {
         setBackgroundColor(context.getColorFromAttr(android.R.attr.colorBackground))
-        with(binding.actionBar) {
+        with(requireBinding().actionBar) {
             setNavigationOnClickListener {
                 delegate?.onBackClicked()
             }
@@ -43,27 +46,27 @@ internal class AccountLinkingView(context: Context) :
             applySystemInsetsPadding(top = true)
         }
 
-        binding.accountLinkWebView.setOnTouchListener { v, event ->
+        requireBinding().accountLinkWebView.setOnTouchListener { v, event ->
             if (event.action == MotionEvent.ACTION_UP) {
                 lastClickPosition = v.height - event.y.toInt()
             }
             false
         }
 
-        KeyboardManager(binding.root).apply {
+        KeyboardManager(requireBinding().root).apply {
             onKeyboardSizeChanged {
-                binding.root.updateLayoutParams<MarginLayoutParams> {
+                requireBinding().root.updateLayoutParams<MarginLayoutParams> {
                     bottomMargin = it
                 }
             }
             onKeyboardVisibilityChanged {
                 if (lastClickPosition < it) {
-                    binding.accountLinkWebView.scrollBy(0, (it - lastClickPosition) + dp(64))
+                    requireBinding().accountLinkWebView.scrollBy(0, (it - lastClickPosition) + dp(64))
                 }
             }
         }
 
-        with(binding.accountLinkWebView) {
+        with(requireBinding().accountLinkWebView) {
             setBackgroundColor(context.getColorFromAttr(android.R.attr.colorBackground))
             applySystemInsetsMargin(bottom = true)
             settings.javaScriptEnabled = true
@@ -89,16 +92,16 @@ internal class AccountLinkingView(context: Context) :
     }
 
     override fun onDetachedFromWindow() {
-        binding.accountLinkWebView.destroy()
+        requireBinding().accountLinkWebView.destroy()
         hideKeyboard()
         super.onDetachedFromWindow()
     }
 
-    override fun render(state: AccountLinkingState) = with(binding) {
+    override fun render(state: AccountLinkingState) = with(requireBinding()) {
         if (state.accountLinkingType == AccountLinkingType.BANK) {
-            binding.actionBar.title = context.getString(R.string.kevin_window_account_linking_title)
+            actionBar.title = context.getString(R.string.kevin_window_account_linking_title)
         } else {
-            binding.actionBar.title = context.getString(R.string.kevin_window_account_linking_card_title)
+            actionBar.title = context.getString(R.string.kevin_window_account_linking_card_title)
         }
     }
 
@@ -106,15 +109,15 @@ internal class AccountLinkingView(context: Context) :
         when (event) {
             is LoadWebPage -> {
                 if (event.url.isNotBlank()) {
-                    binding.accountLinkWebView.loadUrl(event.url)
+                    requireBinding().accountLinkWebView.loadUrl(event.url)
                 }
             }
         }
     }
 
     fun handleWebViewBackPress(): Boolean {
-        return if (binding.accountLinkWebView.canGoBack()) {
-            binding.accountLinkWebView.goBack()
+        return if (requireBinding().accountLinkWebView.canGoBack()) {
+            requireBinding().accountLinkWebView.goBack()
             true
         } else {
             false

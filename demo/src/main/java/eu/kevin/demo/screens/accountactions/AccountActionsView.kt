@@ -11,16 +11,19 @@ internal class AccountActionsView(context: Context) :
     BaseView<KevinFragmentAccountActionsBinding>(context),
     IView<AccountActionsState> {
 
-    override val binding = KevinFragmentAccountActionsBinding.inflate(LayoutInflater.from(context), this)
+    override var binding: KevinFragmentAccountActionsBinding? = KevinFragmentAccountActionsBinding.inflate(
+        LayoutInflater.from(context),
+        this
+    )
 
     var callback: AccountActionsCallback? = null
 
     init {
-        binding.root.applySystemInsetsPadding(bottom = true)
+        requireBinding().root.applySystemInsetsPadding(bottom = true)
     }
 
     override fun render(state: AccountActionsState) {
-        with(binding) {
+        with(requireBinding()) {
             titleTextView.text = state.bankName
             removeAccountButton.setOnClickListener {
                 callback?.onRemoveAccountClick()
