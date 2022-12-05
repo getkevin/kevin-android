@@ -261,10 +261,12 @@ internal class CardPaymentView(context: Context) :
     }
 
     private fun submitUserRedirect(shouldRedirect: Boolean) {
-        if (shouldRedirect) {
-            requireBinding().webView.evaluateJavascript("window.cardDetails.confirmBank();") {}
-        } else {
-            requireBinding().webView.evaluateJavascript("window.cardDetails.cancelBank();") {}
+        with(requireBinding()) {
+            if (shouldRedirect) {
+                webView.evaluateJavascript("window.cardDetails.confirmBank();") {}
+            } else {
+                webView.evaluateJavascript("window.cardDetails.cancelBank();") {}
+            }
         }
     }
 

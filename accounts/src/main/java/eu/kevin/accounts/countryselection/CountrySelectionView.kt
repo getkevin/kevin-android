@@ -33,8 +33,8 @@ internal class CountrySelectionView(context: Context) :
     }
 
     init {
-        requireBinding().countriesRecyclerView.applySystemInsetsPadding(bottom = true)
         with(requireBinding().countriesRecyclerView) {
+            applySystemInsetsPadding(bottom = true)
             layoutManager = LinearLayoutManager(context)
             adapter = countriesAdapter
         }

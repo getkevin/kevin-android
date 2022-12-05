@@ -29,8 +29,8 @@ internal class ChooseAccountView(context: Context) :
     }
 
     init {
-        requireBinding().accountsRecyclerView.applySystemInsetsPadding(bottom = true)
         with(requireBinding().accountsRecyclerView) {
+            applySystemInsetsPadding(bottom = true)
             layoutManager = LinearLayoutManager(context)
             adapter = accountsListAdapter
         }

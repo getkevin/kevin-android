@@ -69,9 +69,9 @@ abstract class BaseModalFragment<S : IState, I : IIntent, M : BaseViewModel<S, I
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
         (contentView as? BaseView<*>)?.onDestroyView()
         contentView = null
+        super.onDestroyView()
     }
 
     protected open fun onAttached() {}

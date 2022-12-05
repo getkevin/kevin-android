@@ -129,14 +129,16 @@ internal class BankSelectionView(context: Context) :
     }
 
     private fun showEmptyState(visible: Boolean) {
-        if (visible) {
-            requireBinding().bankSelectionLabel.visibility = GONE
-            requireBinding().emptyStateGroup.visibility = VISIBLE
-            requireBinding().banksRecyclerView.visibility = GONE
-        } else {
-            requireBinding().bankSelectionLabel.visibility = VISIBLE
-            requireBinding().emptyStateGroup.visibility = GONE
-            requireBinding().banksRecyclerView.visibility = VISIBLE
+        with(requireBinding()) {
+            if (visible) {
+                bankSelectionLabel.visibility = GONE
+                emptyStateGroup.visibility = VISIBLE
+                banksRecyclerView.visibility = GONE
+            } else {
+                bankSelectionLabel.visibility = VISIBLE
+                emptyStateGroup.visibility = GONE
+                banksRecyclerView.visibility = VISIBLE
+            }
         }
     }
 }
