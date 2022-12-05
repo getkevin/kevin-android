@@ -110,6 +110,8 @@ dependencies {
 
     implementation "io.ktor:ktor-client-logging:$ktor_version"
 
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:2.10"
+
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$androidx_junit_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"

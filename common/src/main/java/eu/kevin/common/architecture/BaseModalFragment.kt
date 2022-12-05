@@ -23,7 +23,7 @@ abstract class BaseModalFragment<S : IState, I : IIntent, M : BaseViewModel<S, I
     private val savable = Bundle()
 
     protected abstract val viewModel: M
-    protected lateinit var contentView: IView<S>
+    private var contentView: IView<S>? = null
 
     abstract fun onCreateView(context: Context): IView<S>
 
@@ -51,7 +51,7 @@ abstract class BaseModalFragment<S : IState, I : IIntent, M : BaseViewModel<S, I
             lifecycleScope.launch {
                 repeatOnLifecycle(Lifecycle.State.STARTED) {
                     viewModel.state.collect {
-                        contentView.render(it)
+                        contentView?.render(it)
                     }
                 }
             }
@@ -66,6 +66,12 @@ abstract class BaseModalFragment<S : IState, I : IIntent, M : BaseViewModel<S, I
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putBundle("_state", savable)
         super.onSaveInstanceState(outState)
+    }
+
+    override fun onDestroyView() {
+        (contentView as? BaseView<*>)?.onDestroyView()
+        contentView = null
+        super.onDestroyView()
     }
 
     protected open fun onAttached() {}

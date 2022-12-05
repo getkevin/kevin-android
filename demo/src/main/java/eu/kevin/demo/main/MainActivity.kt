@@ -8,7 +8,9 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import eu.kevin.common.extensions.setFragmentResult
 import eu.kevin.common.managers.KeyboardManager
 import eu.kevin.demo.R
@@ -66,12 +68,19 @@ internal class MainActivity : AppCompatActivity() {
 
     private fun startListeningForRouteRequests() {
         lifecycleScope.launch {
-            DemoRouter.addOnPushModalFragmentListener(this) { modalFragment ->
-                modalFragment.show(supportFragmentManager, modalFragment::class.simpleName)
+            launch {
+                repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    DemoRouter.mainModalRouterFlow.collect { modalFragment ->
+                        modalFragment.show(supportFragmentManager, modalFragment::class.simpleName)
+                    }
+                }
             }
-
-            DemoRouter.addOnReturnFragmentResultListener(this) { result ->
-                supportFragmentManager.setFragmentResult(result.contract, result.data)
+            launch {
+                repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    DemoRouter.fragmentResultFlow.collect { result ->
+                        supportFragmentManager.setFragmentResult(result.contract, result.data)
+                    }
+                }
             }
         }
     }

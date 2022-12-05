@@ -13,7 +13,10 @@ internal class ChooseAccountView(context: Context) :
     BaseView<KevinFragmentChooseAccountBinding>(context),
     IView<ChooseAccountState> {
 
-    override val binding = KevinFragmentChooseAccountBinding.inflate(LayoutInflater.from(context), this)
+    override var binding: KevinFragmentChooseAccountBinding? = KevinFragmentChooseAccountBinding.inflate(
+        LayoutInflater.from(context),
+        this
+    )
 
     var callback: ChooseAccountViewCallback? = null
 
@@ -26,8 +29,8 @@ internal class ChooseAccountView(context: Context) :
     }
 
     init {
-        binding.accountsRecyclerView.applySystemInsetsPadding(bottom = true)
-        with(binding.accountsRecyclerView) {
+        with(requireBinding().accountsRecyclerView) {
+            applySystemInsetsPadding(bottom = true)
             layoutManager = LinearLayoutManager(context)
             adapter = accountsListAdapter
         }

@@ -28,6 +28,7 @@ import kotlinx.coroutines.flow.onEach
 internal class PaymentFragment :
     BaseFragment<PaymentViewState, PaymentIntent, PaymentViewModel>(),
     PaymentViewCallback {
+
     override val viewModel: PaymentViewModel by activityViewModels {
         PaymentViewModel.Factory(
             requireContext(),

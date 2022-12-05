@@ -30,7 +30,10 @@ internal class BankSelectionView(context: Context) :
     BaseView<KevinFragmentBankSelectionBinding>(context),
     IView<BankSelectionState> {
 
-    override val binding = KevinFragmentBankSelectionBinding.inflate(LayoutInflater.from(context), this)
+    override var binding: KevinFragmentBankSelectionBinding? = KevinFragmentBankSelectionBinding.inflate(
+        LayoutInflater.from(context),
+        this
+    )
 
     var delegate: BankSelectionViewDelegate? = null
 
@@ -39,7 +42,7 @@ internal class BankSelectionView(context: Context) :
     }
 
     init {
-        with(binding) {
+        with(requireBinding()) {
             with(banksRecyclerView) {
                 addItemDecoration(GridListItemDecoration())
                 layoutManager = GridLayoutManager(context, 2)
@@ -72,7 +75,7 @@ internal class BankSelectionView(context: Context) :
         }
     }
 
-    override fun render(state: BankSelectionState) = with(binding) {
+    override fun render(state: BankSelectionState) = with(requireBinding()) {
         banksAdapter.updateItems(state.bankListItems)
         countrySelectionView.image = CountryHelper.getCountryFlagDrawable(context, state.selectedCountry)
         countrySelectionView.title = CountryHelper.getCountryName(context, state.selectedCountry)
@@ -94,7 +97,7 @@ internal class BankSelectionView(context: Context) :
 
     private fun showCountrySelection(show: Boolean) {
         val visibility = if (show) VISIBLE else GONE
-        with(binding) {
+        with(requireBinding()) {
             TransitionManager.beginDelayedTransition(this@BankSelectionView)
             countrySelectionLabel.visibility = visibility
             countrySelectionView.visibility = visibility
@@ -102,7 +105,7 @@ internal class BankSelectionView(context: Context) :
     }
 
     private fun startLoading(isLoading: Boolean) {
-        with(binding) {
+        with(requireBinding()) {
             if (isLoading) {
                 progressView.fadeIn()
             } else {
@@ -121,19 +124,21 @@ internal class BankSelectionView(context: Context) :
     }
 
     private fun showErrorMessage(message: String) {
-        binding.progressView.fadeOut()
+        requireBinding().progressView.fadeOut()
         SnackbarHelper.showError(this, message)
     }
 
     private fun showEmptyState(visible: Boolean) {
-        if (visible) {
-            binding.bankSelectionLabel.visibility = GONE
-            binding.emptyStateGroup.visibility = VISIBLE
-            binding.banksRecyclerView.visibility = GONE
-        } else {
-            binding.bankSelectionLabel.visibility = VISIBLE
-            binding.emptyStateGroup.visibility = GONE
-            binding.banksRecyclerView.visibility = VISIBLE
+        with(requireBinding()) {
+            if (visible) {
+                bankSelectionLabel.visibility = GONE
+                emptyStateGroup.visibility = VISIBLE
+                banksRecyclerView.visibility = GONE
+            } else {
+                bankSelectionLabel.visibility = VISIBLE
+                emptyStateGroup.visibility = GONE
+                banksRecyclerView.visibility = VISIBLE
+            }
         }
     }
 }

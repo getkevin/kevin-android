@@ -20,7 +20,7 @@ abstract class BaseFragment<S : IState, I : IIntent, M : BaseViewModel<S, I>> :
     private val savable = Bundle()
 
     protected abstract val viewModel: M
-    protected lateinit var contentView: IView<S>
+    protected var contentView: IView<S>? = null
 
     abstract fun onCreateView(context: Context): IView<S>
 
@@ -44,7 +44,7 @@ abstract class BaseFragment<S : IState, I : IIntent, M : BaseViewModel<S, I>> :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         launchOnRepeat {
-            viewModel.state.collect { contentView.render(it) }
+            viewModel.state.collect { contentView?.render(it) }
         }
     }
 
@@ -56,6 +56,12 @@ abstract class BaseFragment<S : IState, I : IIntent, M : BaseViewModel<S, I>> :
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putBundle("_state", savable)
         super.onSaveInstanceState(outState)
+    }
+
+    override fun onDestroyView() {
+        (contentView as? BaseView<*>)?.onDestroyView()
+        contentView = null
+        super.onDestroyView()
     }
 
     protected open fun onAttached() {}

@@ -21,7 +21,10 @@ internal class CountrySelectionView(context: Context) :
     BaseView<KevinFragmentSelectCountryBinding>(context),
     IView<CountrySelectionState> {
 
-    override val binding = KevinFragmentSelectCountryBinding.inflate(LayoutInflater.from(context), this)
+    override var binding: KevinFragmentSelectCountryBinding? = KevinFragmentSelectCountryBinding.inflate(
+        LayoutInflater.from(context),
+        this
+    )
 
     var delegate: CountrySelectionViewDelegate? = null
 
@@ -30,14 +33,14 @@ internal class CountrySelectionView(context: Context) :
     }
 
     init {
-        binding.countriesRecyclerView.applySystemInsetsPadding(bottom = true)
-        with(binding.countriesRecyclerView) {
+        with(requireBinding().countriesRecyclerView) {
+            applySystemInsetsPadding(bottom = true)
             layoutManager = LinearLayoutManager(context)
             adapter = countriesAdapter
         }
     }
 
-    override fun render(state: CountrySelectionState) = with(binding) {
+    override fun render(state: CountrySelectionState) = with(requireBinding()) {
         when (state.loadingState) {
             is LoadingState.Loading -> showLoading(state.loadingState.isLoading())
             is LoadingState.FailureWithMessage -> showError(state.loadingState.message)
@@ -57,7 +60,7 @@ internal class CountrySelectionView(context: Context) :
     }
 
     private fun showLoading(isLoading: Boolean) {
-        with(binding) {
+        with(requireBinding()) {
             if (isLoading) {
                 progressView.fadeIn()
             } else {
@@ -67,7 +70,7 @@ internal class CountrySelectionView(context: Context) :
     }
 
     private fun showError(message: String) {
-        binding.progressView.fadeOut()
+        requireBinding().progressView.fadeOut()
         SnackbarHelper.showError(this, message)
     }
 }
