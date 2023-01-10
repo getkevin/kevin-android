@@ -25,6 +25,7 @@ import eu.kevin.common.extensions.removeWhiteSpaces
 import eu.kevin.common.extensions.setDebounceClickListener
 import eu.kevin.common.extensions.setOnDoneActionListener
 import eu.kevin.common.extensions.setOnNextActionListener
+import eu.kevin.common.helpers.WebFrameHeadersHelper
 import eu.kevin.common.managers.KeyboardManager
 import eu.kevin.inapppayments.KevinPaymentsPlugin
 import eu.kevin.inapppayments.R
@@ -138,8 +139,13 @@ internal class CardPaymentView(context: Context) :
     private fun configureWebView() {
         with(requireBinding().webView) {
             applySystemInsetsMargin(bottom = true)
-            settings.javaScriptEnabled = true
-            settings.domStorageEnabled = true
+            with(settings) {
+                javaScriptEnabled = true
+                domStorageEnabled = true
+                userAgentString = WebFrameHeadersHelper.appendTelemetryInfoToUserAgent(
+                    originalUserAgent = userAgentString
+                )
+            }
             addJavascriptInterface(
                 object {
                     @JavascriptInterface

@@ -15,6 +15,7 @@ import eu.kevin.common.extensions.applySystemInsetsPadding
 import eu.kevin.common.extensions.dp
 import eu.kevin.common.extensions.getColorFromAttr
 import eu.kevin.common.extensions.hideKeyboard
+import eu.kevin.common.helpers.WebFrameHeadersHelper
 import eu.kevin.common.managers.KeyboardManager
 import eu.kevin.inapppayments.KevinPaymentsPlugin
 import eu.kevin.inapppayments.databinding.KevinFragmentPaymentConfirmationBinding
@@ -67,8 +68,13 @@ internal class PaymentConfirmationView(context: Context) :
         with(requireBinding().confirmationWebView) {
             setBackgroundColor(context.getColorFromAttr(android.R.attr.colorBackground))
             applySystemInsetsMargin(bottom = true)
-            settings.javaScriptEnabled = true
-            settings.domStorageEnabled = true
+            with(settings) {
+                javaScriptEnabled = true
+                domStorageEnabled = true
+                userAgentString = WebFrameHeadersHelper.appendTelemetryInfoToUserAgent(
+                    originalUserAgent = userAgentString
+                )
+            }
             webViewClient = object : WebViewClientCompat() {
                 override fun shouldOverrideUrlLoading(
                     view: WebView,
