@@ -53,9 +53,7 @@ internal class BankListAdapter(
             logoUrl
         }
         with(binding) {
-            bankImageView.load(
-                uri = url
-            ) {
+            bankImageView.load(url) {
                 listener(
                     onStart = {
                         bankTitleView.visibility = VISIBLE
