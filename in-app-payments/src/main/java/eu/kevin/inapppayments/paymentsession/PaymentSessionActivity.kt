@@ -40,6 +40,11 @@ class PaymentSessionActivity : BaseFragmentActivity(), PaymentSessionListener {
 
         paymentSessionConfiguration = intent?.extras?.getParcelable(PaymentSessionContract.CONFIGURATION_KEY)
 
+        if (paymentSessionConfiguration == null) {
+            finish()
+            return
+        }
+
         paymentSession = PaymentSession(
             supportFragmentManager,
             paymentSessionConfiguration!!,

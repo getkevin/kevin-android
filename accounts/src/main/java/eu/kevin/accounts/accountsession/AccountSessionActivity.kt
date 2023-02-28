@@ -41,6 +41,11 @@ class AccountSessionActivity : BaseFragmentActivity(), AccountSessionListener {
 
         accountSessionConfiguration = intent?.extras?.getParcelable(AccountSessionContract.CONFIGURATION_KEY)
 
+        if (accountSessionConfiguration == null) {
+            finish()
+            return
+        }
+
         accountLinkingSession = AccountSession(
             supportFragmentManager,
             accountSessionConfiguration!!,
