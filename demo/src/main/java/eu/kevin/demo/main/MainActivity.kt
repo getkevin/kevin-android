@@ -2,6 +2,7 @@ package eu.kevin.demo.main
 
 import android.os.Bundle
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
@@ -56,9 +57,13 @@ internal class MainActivity : AppCompatActivity() {
                     }
                 }
         }
+
+        onBackPressedDispatcher.addCallback(this) {
+            handleBackPressed()
+        }
     }
 
-    override fun onBackPressed() {
+    private fun handleBackPressed() {
         if (binding.mainFragmentContainer.currentItem == 0) {
             finish()
         } else {
