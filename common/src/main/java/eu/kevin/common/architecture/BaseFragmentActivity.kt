@@ -1,6 +1,8 @@
 package eu.kevin.common.architecture
 
 import android.content.Context
+import android.os.Bundle
+import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
@@ -14,7 +16,15 @@ import eu.kevin.core.plugin.Kevin
 
 abstract class BaseFragmentActivity : AppCompatActivity() {
 
-    override fun onBackPressed() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        onBackPressedDispatcher.addCallback(this) {
+            handleBackPress()
+        }
+    }
+
+    private fun handleBackPress() {
         with(supportFragmentManager) {
             fragments.lastOrNull { it.isVisible }?.let { fragment ->
                 if (fragment !is Navigable || !fragment.onBackPressed()) {
