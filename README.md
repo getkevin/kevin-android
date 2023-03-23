@@ -5,7 +5,7 @@
 
 The kevin. Android SDK enables to easily integrate AIS and PIS services in your mobile application. We provide neat, customisable UI screens so integration would be as quick as possible. We also expose the low-level APIs that power those UIs so that you can build fully custom experiences.
 
-Get started with our [SDK reference](https://developer.kevin.eu/mobile/) and checkout our [Demo App](https://github.com/getkevin/kevin-android/tree/master/demo).
+Get started with our [SDK reference](https://developer.kevin.eu/home/mobile-sdk/android) and checkout our [Demo App](https://github.com/getkevin/kevin-android/tree/master/demo).
 
 ## Features
 
