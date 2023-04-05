@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        kotlin_version = '1.7.0'
+        kotlin_version = '1.8.20'
         coroutines_version = '1.6.4'
         okhttp3_loggin_interceptor_version = '4.9.1'
         androidx_core_ktx_version = '1.9.0'
@@ -38,6 +38,7 @@ buildscript {
 plugins {
     id "io.github.gradle-nexus.publish-plugin" version "1.1.0"
     id "org.jmailen.kotlinter" version "3.10.0"
+    id 'org.jetbrains.kotlin.android' version '1.7.20' apply false
 }
 
 allprojects {

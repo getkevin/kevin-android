@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/root_layout"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:theme="@style/BaseTheme"
+  >
+
+  <com.google.android.material.button.MaterialButton
+    android:id="@+id/link_account_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:text="@string/text_link_account"
+    />
+
+  <com.google.android.material.progressindicator.CircularProgressIndicator
+    android:id="@+id/link_account_progress"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:indeterminate="true"
+    android:indeterminateTint="@color/blue"
+    android:visibility="gone"
+    />
+
+</FrameLayout>
