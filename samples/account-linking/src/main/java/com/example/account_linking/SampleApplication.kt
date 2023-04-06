@@ -13,7 +13,8 @@ internal class SampleApplication : Application() {
     }
 
     /**
-     * Setup required account linking plugin in the Application class.
+     * Setup required account linking plugin in your Application class.
+     *
      * More info: https://developer.kevin.eu/home/mobile-sdk/android/installation
      */
     private fun setupKevinSdk() {
@@ -23,7 +24,7 @@ internal class SampleApplication : Application() {
         */
         Kevin.setDeepLinkingEnabled(true)
 
-        // Initialize account linking plugin with callback url.
+        // Configure account linking plugin with callback url.
         val configuration = KevinAccountsConfiguration.builder()
             .setCallbackUrl("kevin://redirect.authorization")
             .build()
