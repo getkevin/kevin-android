@@ -49,6 +49,7 @@ internal class MainActivity : AppCompatActivity() {
     private fun updateUiState(uiState: MainUiState) {
         with(binding) {
             linkAccountButton.visibility = if (uiState.isLoading) GONE else VISIBLE
+            linkAccountText.visibility = if (uiState.isLoading) GONE else VISIBLE
             linkAccountProgress.visibility = if (uiState.isLoading) VISIBLE else GONE
 
             uiState.accountLinkingState?.let { state -> launchAccountLinking(state) }

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:id="@+id/root_layout"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
+  android:gravity="center"
+  android:orientation="vertical"
   android:theme="@style/BaseTheme"
   >
 
@@ -11,7 +13,6 @@
     android:id="@+id/link_account_button"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
     android:text="@string/text_link_account"
     />
 
@@ -19,10 +20,18 @@
     android:id="@+id/link_account_progress"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
     android:indeterminate="true"
     android:indeterminateTint="@color/blue"
     android:visibility="gone"
     />
 
-</FrameLayout>
+  <TextView
+    android:id="@+id/link_account_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:text="@string/text_link_account_description"
+    android:textSize="12sp"
+    />
+
+</LinearLayout>

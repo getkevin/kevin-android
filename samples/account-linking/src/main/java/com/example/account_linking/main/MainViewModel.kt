@@ -21,10 +21,7 @@ internal class MainViewModel : ViewModel() {
     private val kevinApi = KevinApiProvider.provideKevinApi()
 
     /**
-     * For the account linking, you will need to get a state. Asking a user to authenticate within his account
-     * will allow you to skip authentication steps when initiating a payment and even skip low value
-     * payment SCA steps on some certain banks.
-     *
+     * For the account linking, you will need to get a state using our API.
      * More info: https://developer.kevin.eu/home/mobile-sdk/backend/authentication
      */
     fun initiateAccountLinking() {

@@ -7,7 +7,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 internal object KevinApiProvider {
 
-    private const val BASE_API_URL = "https://mobile-demo.kevin.eu/api/v1/"
+    private const val BASE_SAMPLE_API_URL = "https://mobile-demo.kevin.eu/api/v1/"
 
     fun provideKevinApi(): KevinApi {
         val retrofit = createRetrofit()
@@ -26,7 +26,7 @@ internal object KevinApiProvider {
         return Retrofit.Builder()
             .client(okHttpClient)
             .addConverterFactory(MoshiConverterFactory.create(moshi))
-            .baseUrl(BASE_API_URL)
+            .baseUrl(BASE_SAMPLE_API_URL)
             .build()
     }
 }
