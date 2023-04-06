@@ -1,5 +1,6 @@
 package com.example.account_linking.main
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.account_linking.networking.KevinApiProvider
@@ -21,7 +22,8 @@ internal class MainViewModel : ViewModel() {
     private val kevinApi = KevinApiProvider.provideKevinApi()
 
     /**
-     * For the account linking, you will need to get a state using our API.
+     * For initialising account linking session, you'll need to use kevin. API to fetch authentication state.
+     *
      * More info: https://developer.kevin.eu/home/mobile-sdk/backend/authentication
      */
     fun initiateAccountLinking() {
@@ -52,16 +54,29 @@ internal class MainViewModel : ViewModel() {
         }
     }
 
+    /**
+     * After the account is successfully linked, our SDK will return a result with authorizationCode
+     * which can be used to fetch the tokens required for further AIS services like
+     * fetching account's details, transactions or balances.
+     *
+     * More info: https://developer.kevin.eu/home/mobile-sdk/backend/authentication#getting-authentication-tokens
+     */
     fun handleAccountLinkingResult(result: SessionResult<AccountSessionResult>) {
         when (result) {
             is SessionResult.Success -> _uiState.update {
+                // Authorization code can be retrieved from callback's result.
+                val authorizationCode = result.value.authorizationCode
+                Log.d("MainViewModel", authorizationCode)
+
                 val bankName = result.value.bank?.name
-                it.copy(userMessage = "Success! $bankName account has been linked.")
+                it.copy(userMessage = "Success! $bankName has been linked.")
             }
             is SessionResult.Failure -> _uiState.update {
+                // Account linking session has failed.Handle errors accordingly in you application.
                 it.copy(userMessage = "Account linking has failed!")
             }
             is SessionResult.Canceled -> _uiState.update {
+                // Account linking session has been abandoned along the way.
                 it.copy(userMessage = "Account linking has been cancelled.")
             }
         }

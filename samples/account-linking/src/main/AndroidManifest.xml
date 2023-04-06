@@ -9,13 +9,13 @@
   <application
     android:name="com.example.account_linking.SampleApplication"
     android:icon="@mipmap/kevin_ic_launcher"
+    android:label="@string/text_app_name"
     android:roundIcon="@mipmap/kevin_ic_launcher_round"
     >
 
     <activity
       android:name="com.example.account_linking.main.MainActivity"
       android:exported="true"
-      android:label="@string/title_activity_main"
       android:screenOrientation="portrait"
       android:theme="@style/BaseTheme"
       tools:ignore="LockedOrientationActivity"
