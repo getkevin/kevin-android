@@ -38,7 +38,6 @@ buildscript {
 plugins {
     id "io.github.gradle-nexus.publish-plugin" version "1.1.0"
     id "org.jmailen.kotlinter" version "3.10.0"
-    id 'org.jetbrains.kotlin.android' version '1.7.20' apply false
 }
 
 allprojects {
