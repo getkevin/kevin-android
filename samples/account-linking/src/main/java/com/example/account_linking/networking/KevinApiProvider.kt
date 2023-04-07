@@ -2,6 +2,7 @@ package com.example.account_linking.networking
 
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
@@ -18,6 +19,11 @@ internal object KevinApiProvider {
 
     private fun createRetrofit(): Retrofit {
         val okHttpClient = OkHttpClient.Builder()
+            // Adding OkHttp logging interceptor so network traffic can be monitored via Logcat.
+            .addInterceptor(
+                HttpLoggingInterceptor().apply {
+                    setLevel(HttpLoggingInterceptor.Level.BODY)
+                })
             .build()
 
         val moshi = Moshi.Builder()

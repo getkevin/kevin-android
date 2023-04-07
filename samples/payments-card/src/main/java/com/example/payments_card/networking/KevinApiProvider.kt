@@ -1,9 +1,9 @@
-package com.example.payments_bank.networking
+package com.example.payments_card.networking
 
-import com.example.payments_bank.networking.api.KevinApi
-import com.example.payments_bank.networking.api.KevinDataApi
-import com.example.payments_bank.networking.services.KevinApiService
-import com.example.payments_bank.networking.services.KevinDataApiService
+import com.example.payments_card.networking.api.KevinApi
+import com.example.payments_card.networking.api.KevinDataApi
+import com.example.payments_card.networking.services.KevinApiService
+import com.example.payments_card.networking.services.KevinDataApiService
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
