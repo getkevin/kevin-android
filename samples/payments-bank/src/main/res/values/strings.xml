@@ -1,0 +1,6 @@
+<resources>
+  <string name="text_app_name">kevin. Account Linking</string>
+  <string name="text_initiate_payment">Initiate Bank Payment</string>
+  <string name="text_initiate_payment_description">Tap the button to initiate bank payment process.</string>
+  <string name="text_creditor_info">Creditor: %s\nCurrency: %s</string>
+</resources>

@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-    namespace "eu.kevin.samples.account_linking"
+    namespace "eu.kevin.samples.payments_bank"
     compileSdk 33
 
     defaultConfig {
         minSdk 24
-        applicationId "eu.kevin.samples.account_linking"
+        applicationId "eu.kevin.samples.payments_bank"
         versionName "1.0.0"
         versionCode 1
     }
@@ -48,5 +48,5 @@ dependencies {
 
     // kevin. SDK
     implementation "eu.kevin.android:core:2.6.2"
-    implementation "eu.kevin.android:accounts:2.6.2"
+    implementation "eu.kevin.android:in-app-payments:2.6.2"
 }

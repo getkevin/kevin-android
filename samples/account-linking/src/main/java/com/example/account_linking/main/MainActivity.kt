@@ -22,6 +22,7 @@ internal class MainActivity : AppCompatActivity() {
 
     /**
      * ActivityResult callback used to obtain account linking session result.
+     *
      * More info: https://developer.kevin.eu/home/mobile-sdk/android/account-linking#initialise-linking-callback
      */
     private val accountLinkingResult = registerForActivityResult(AccountSessionContract()) { result ->

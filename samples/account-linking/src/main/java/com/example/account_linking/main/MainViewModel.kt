@@ -72,7 +72,8 @@ internal class MainViewModel : ViewModel() {
                 it.copy(userMessage = "Success! $bankName has been linked.")
             }
             is SessionResult.Failure -> _uiState.update {
-                // Account linking session has failed.Handle errors accordingly in you application.
+                // Account linking session has failed.
+                // Handle failures in you application accordingly.
                 it.copy(userMessage = "Account linking has failed!")
             }
             is SessionResult.Canceled -> _uiState.update {
