@@ -1,4 +1,4 @@
-package com.example.account_linking.main
+package com.example.ui_customization.main
 
 import android.os.Bundle
 import android.view.View.GONE
@@ -12,7 +12,7 @@ import com.google.android.material.snackbar.Snackbar
 import eu.kevin.accounts.accountsession.AccountSessionContract
 import eu.kevin.accounts.accountsession.entities.AccountSessionConfiguration
 import eu.kevin.core.enums.KevinCountry
-import eu.kevin.samples.account_linking.databinding.KevinActivityMainBinding
+import eu.kevin.samples.ui_customization.databinding.KevinActivityMainBinding
 import kotlinx.coroutines.launch
 
 internal class MainActivity : AppCompatActivity() {
