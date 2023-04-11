@@ -43,7 +43,7 @@ internal class MainViewModel : ViewModel() {
 
                 val creditors = kevinDataApi.fetchCreditors(country)
                 if (creditors.isEmpty()) {
-                    // Inform user if there are creditors available for specified country.
+                    // Inform user if there are no creditors available for specified country.
                     _uiState.update {
                         it.copy(userMessage = "No creditors available for ${country.name}")
                     }
