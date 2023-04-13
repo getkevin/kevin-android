@@ -1,6 +1,5 @@
 package eu.kevin.sample.samples.accountlinking
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import eu.kevin.accounts.KevinAccountsPlugin
@@ -66,7 +65,6 @@ internal class AccountLinkingViewModel : ViewModel() {
             is SessionResult.Success -> _uiState.update {
                 // Authorization code can be retrieved from callback's result.
                 val authorizationCode = result.value.authorizationCode
-                Log.d("MainViewModel", authorizationCode)
 
                 val bankName = result.value.bank?.name
                 it.copy(userMessage = "Success! $bankName has been linked.")
