@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:theme="@style/BaseTheme"
+    >
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/account_linking_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="200dp"
+        android:text="@string/text_account_linking"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bank_payment_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:width="200dp"
+        android:text="@string/text_bank_payment"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/card_payment_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:width="200dp"
+        android:text="@string/text_card_payment"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/ui_customization_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:width="200dp"
+        android:text="@string/text_ui_customization"
+        />
+
+</LinearLayout>

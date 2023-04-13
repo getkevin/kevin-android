@@ -1,5 +1,0 @@
-<resources>
-  <string name="text_app_name">kevin. Account Linking</string>
-  <string name="text_link_account">Link Account</string>
-  <string name="text_link_account_description">Tap the button to initiate Account Linking process.</string>
-</resources>
