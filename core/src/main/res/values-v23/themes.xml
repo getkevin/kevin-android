@@ -1,14 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ResourceName">
 
     <style name="Theme.Kevin.Base" parent="Theme.Kevin.Base.21">
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
+    <style name="Theme.Kevin.Base.Light" parent="Theme.Kevin.Base.21.Light">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Kevin.Base.Dark" parent="Theme.Kevin.Base.21.Dark">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
     <style name="Theme.Kevin.BottomSheet.Base" parent="Theme.Kevin.BottomSheet.Base.21">
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Kevin.BottomSheet.Base.Light" parent="Theme.Kevin.BottomSheet.Base.21.Light">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Kevin.BottomSheet.Base.Dark" parent="Theme.Kevin.BottomSheet.Base.21.Light">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
     </style>
 
 </resources>
