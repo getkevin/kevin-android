@@ -26,7 +26,7 @@
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
-    <style name="Theme.Kevin.BottomSheet.Base.Dark" parent="Theme.Kevin.BottomSheet.Base.21.Light">
+    <style name="Theme.Kevin.BottomSheet.Base.Dark" parent="Theme.Kevin.BottomSheet.Base.21.Dark">
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">false</item>
     </style>
