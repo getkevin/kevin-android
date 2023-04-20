@@ -2,7 +2,11 @@
 <resources>
     <!--    Base themes    -->
     <public name="Theme.Kevin.Base" type="style" />
+    <public name="Theme.Kevin.Base.Light" type="style" />
+    <public name="Theme.Kevin.Base.Dark" type="style" />
     <public name="Theme.Kevin.BottomSheet.Base" type="style" />
+    <public name="Theme.Kevin.BottomSheet.Base.Light" type="style" />
+    <public name="Theme.Kevin.BottomSheet.Base.Dark" type="style" />
 
     <!--    Component styles    -->
     <public name="Kevin.Toolbar" type="style" />
