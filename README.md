@@ -10,7 +10,7 @@ We also expose the low-level APIs that power those UIs so that you can build a f
 If you're a developer:
 
 - Get started with our [Developer Portal](https://developer.kevin.eu/home/mobile-sdk/android)
-- Check out our [Sample](https://github.com/getkevin/kevin-android/tree/master/sample) for an example of how you can easily integrate kevin. Android SDK most common cases
+- Check out our [Samples](https://github.com/getkevin/kevin-android/tree/master/sample) for an example of how you can easily integrate kevin. Android SDK for the most common cases
 
 Optionally:
 
