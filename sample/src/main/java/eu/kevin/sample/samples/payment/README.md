@@ -1,4 +1,4 @@
-![kevin.](../../images/logo.png)
+![kevin.](../../../../../../../../../images/logo.png)
 
 This samples provide a basic example of how you can use kevin. Mobile SDK as an easy solution to initiate a payment
 with unlinked bank account or a card.

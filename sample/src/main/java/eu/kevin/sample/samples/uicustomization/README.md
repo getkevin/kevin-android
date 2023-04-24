@@ -1,4 +1,4 @@
-![kevin.](../../images/logo.png)
+![kevin.](../../../../../../../../../images/logo.png)
 
 This sample provides a basic example of how you can customize kevin. Mobile SDK UI to suit your own application.
 
