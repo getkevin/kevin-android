@@ -1,8 +1,7 @@
 buildscript {
     ext {
-        kotlin_version = '1.7.0'
+        kotlin_version = '1.8.20'
         coroutines_version = '1.6.4'
-        okhttp3_loggin_interceptor_version = '4.9.1'
         androidx_core_ktx_version = '1.9.0'
         lifecycle_version = '2.5.1'
         coil_version = '2.2.2'
