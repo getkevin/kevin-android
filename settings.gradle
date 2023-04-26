@@ -1,5 +1,4 @@
 rootProject.name = "kevin. SDK"
-include ':demo'
 include ':core'
 include ':accounts'
 include ':in-app-payments'
