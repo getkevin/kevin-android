@@ -24,7 +24,7 @@ We provide an easy solution to authenticate and manage user bank accounts.
 
 - **Bank Payments**
 
-We provide a possibility to integrate bank payments in your app with both SCA and non-SCA options.
+We provide a possibility to easily integrate bank payments in your app.
 
 - **Card Payments**
 
