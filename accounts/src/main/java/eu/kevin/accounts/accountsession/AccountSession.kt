@@ -19,6 +19,8 @@ import eu.kevin.accounts.accountsession.enums.AccountSessionFlowItem.LINK_ACCOUN
 import eu.kevin.accounts.bankselection.BankSelectionContract
 import eu.kevin.accounts.bankselection.BankSelectionFragmentConfiguration
 import eu.kevin.accounts.bankselection.entities.Bank
+import eu.kevin.accounts.bankselection.usecases.ValidateBanksConfigUseCase
+import eu.kevin.accounts.bankselection.usecases.ValidateBanksConfigUseCase.Status
 import eu.kevin.accounts.networking.AccountsClientProvider
 import eu.kevin.common.architecture.BaseFlowSession
 import eu.kevin.common.architecture.interfaces.DeepLinkHandler
@@ -45,7 +47,7 @@ internal class AccountSession(
     }
 
     private val flowItems = mutableListOf<AccountSessionFlowItem>()
-    private val accountsClient = AccountsClientProvider.kevinAccountsClient
+    private val validateBanksConfigUseCase = ValidateBanksConfigUseCase(AccountsClientProvider.kevinAccountsClient)
     private var currentFlowIndex by savedState(-1)
     private var sessionData by savedState(AccountSessionData())
 
@@ -70,17 +72,54 @@ internal class AccountSession(
     fun beginFlow(listener: AccountSessionListener?) {
         sessionListener = listener
 
-        if (configuration.accountLinkingType == AccountLinkingType.BANK && configuration.preselectedBank != null) {
-            sessionListener?.showLoading(true)
-            lifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-                val selectedBank = getSelectedBank()
-                withContext(Dispatchers.Main) {
-                    sessionListener?.showLoading(false)
-                    initializeFlow(selectedBank)
-                }
-            }
+        if (configuration.accountLinkingType == AccountLinkingType.BANK) {
+            validateBanksAndInitializeFlow()
         } else {
             initializeFlow(selectedBank = null)
+        }
+    }
+
+    private fun validateBanksAndInitializeFlow() {
+        sessionListener?.showLoading(true)
+        lifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                val banksConfigStatus = validateBanksConfigUseCase.validateBanksConfig(
+                    authState = configuration.state,
+                    country = configuration.preselectedCountry?.iso,
+                    preselectedBank = configuration.preselectedBank,
+                    banksFilter = configuration.bankFilter
+                )
+
+                when (banksConfigStatus) {
+                    is Status.FiltersInvalid -> {
+                        withContext(Dispatchers.Main) {
+                            sessionListener?.onSessionFinished(
+                                SessionResult.Failure(Error("Provided bank filter does not contain supported banks"))
+                            )
+                        }
+                    }
+                    is Status.PreselectedInvalid -> {
+                        withContext(Dispatchers.Main) {
+                            sessionListener?.onSessionFinished(
+                                SessionResult.Failure(Error("Provided preselected bank is not supported"))
+                            )
+                        }
+                    }
+                    is Status.Valid -> {
+                        val selectedBank = banksConfigStatus.selectedBank
+                            ?.let { Bank(it.id, it.name, it.officialName, it.imageUri, it.bic) }
+
+                        withContext(Dispatchers.Main) {
+                            sessionListener?.showLoading(false)
+                            initializeFlow(selectedBank)
+                        }
+                    }
+                }
+            } catch (error: Exception) {
+                withContext(Dispatchers.IO) {
+                    sessionListener?.onSessionFinished(SessionResult.Failure(error))
+                }
+            }
         }
     }
 
@@ -95,23 +134,6 @@ internal class AccountSession(
         updateFlowItems()
         if (currentFlowIndex == -1) {
             GlobalRouter.pushFragment(getFlowFragment(0))
-        }
-    }
-
-    private suspend fun getSelectedBank(): Bank? {
-        return try {
-            val apiBanks = accountsClient.getSupportedBanks(
-                configuration.state,
-                configuration.preselectedCountry?.iso
-            )
-            apiBanks.data.firstOrNull { it.id == configuration.preselectedBank }?.let {
-                Bank(it.id, it.name, it.officialName, it.imageUri, it.bic)
-            }
-        } catch (error: Exception) {
-            withContext(Dispatchers.Main) {
-                sessionListener?.onSessionFinished(SessionResult.Failure(error))
-            }
-            null
         }
     }
 

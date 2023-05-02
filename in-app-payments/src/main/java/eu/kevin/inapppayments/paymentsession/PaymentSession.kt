@@ -7,18 +7,18 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.savedstate.SavedStateRegistryOwner
-import eu.kevin.accounts.BuildConfig
 import eu.kevin.accounts.bankselection.BankSelectionContract
 import eu.kevin.accounts.bankselection.BankSelectionFragmentConfiguration
 import eu.kevin.accounts.bankselection.entities.Bank
-import eu.kevin.accounts.networking.KevinAccountsClientFactory
+import eu.kevin.accounts.bankselection.usecases.ValidateBanksConfigUseCase
+import eu.kevin.accounts.bankselection.usecases.ValidateBanksConfigUseCase.Status
 import eu.kevin.common.architecture.BaseFlowSession
 import eu.kevin.common.architecture.interfaces.DeepLinkHandler
 import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.extensions.setFragmentResultListener
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.core.entities.SessionResult
-import eu.kevin.core.plugin.Kevin
+import eu.kevin.inapppayments.networking.AccountsClientProvider
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationContract
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationFragmentConfiguration
 import eu.kevin.inapppayments.paymentsession.entities.PaymentSessionConfiguration
@@ -46,19 +46,9 @@ internal class PaymentSession(
     private var sessionListener: PaymentSessionListener? = null
 
     private val flowItems = mutableListOf<PaymentSessionFlowItem>()
+    private val validateBanksConfigUseCase = ValidateBanksConfigUseCase(AccountsClientProvider.kevinAccountsClient)
     private var currentFlowIndex by savedState(-1)
     private var sessionData by savedState(PaymentSessionData())
-
-    private val accountsClient = KevinAccountsClientFactory(
-        baseUrl = if (Kevin.isSandbox()) {
-            BuildConfig.KEVIN_SANDBOX_ACCOUNTS_API_URL
-        } else {
-            BuildConfig.KEVIN_ACCOUNTS_API_URL
-        },
-        userAgent = "",
-        timeout = BuildConfig.HTTP_CLIENT_TIMEOUT,
-        logLevel = BuildConfig.HTTP_LOGGING_LEVEL
-    ).createClient()
 
     init {
         lifecycleOwner.lifecycle.addObserver(this)
@@ -81,36 +71,54 @@ internal class PaymentSession(
     fun beginFlow(listener: PaymentSessionListener) {
         sessionListener = listener
 
-        if (configuration.skipAuthentication) {
-            initializeFlow(selectedBank = null)
-        } else if (configuration.paymentType == PaymentType.BANK && configuration.preselectedBank != null) {
-            sessionListener?.showLoading(true)
-            lifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-                val selectedBank = getSelectedBank()
-                withContext(Dispatchers.Main) {
-                    sessionListener?.showLoading(false)
-                    initializeFlow(selectedBank)
-                }
-            }
+        if (!configuration.skipAuthentication && configuration.paymentType == PaymentType.BANK) {
+            validateBanksAndInitializeFlow()
         } else {
             initializeFlow(selectedBank = null)
         }
     }
 
-    private suspend fun getSelectedBank(): Bank? {
-        return try {
-            val apiBanks = accountsClient.getSupportedBanks(
-                configuration.paymentId,
-                configuration.preselectedCountry?.iso
-            )
-            apiBanks.data.firstOrNull { it.id == configuration.preselectedBank }?.let {
-                Bank(it.id, it.name, it.officialName, it.imageUri, it.bic)
+    private fun validateBanksAndInitializeFlow() {
+        sessionListener?.showLoading(true)
+        lifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                val banksConfigStatus = validateBanksConfigUseCase.validateBanksConfig(
+                    authState = configuration.paymentId,
+                    country = configuration.preselectedCountry?.iso,
+                    preselectedBank = configuration.preselectedBank,
+                    banksFilter = configuration.bankFilter
+                )
+
+                when (banksConfigStatus) {
+                    is Status.FiltersInvalid -> {
+                        withContext(Dispatchers.Main) {
+                            sessionListener?.onSessionFinished(
+                                SessionResult.Failure(Error("Provided bank filter does not contain supported banks"))
+                            )
+                        }
+                    }
+                    is Status.PreselectedInvalid -> {
+                        withContext(Dispatchers.Main) {
+                            sessionListener?.onSessionFinished(
+                                SessionResult.Failure(Error("Provided preselected bank is not supported"))
+                            )
+                        }
+                    }
+                    is Status.Valid -> {
+                        val selectedBank = banksConfigStatus.selectedBank
+                            ?.let { Bank(it.id, it.name, it.officialName, it.imageUri, it.bic) }
+
+                        withContext(Dispatchers.Main) {
+                            sessionListener?.showLoading(false)
+                            initializeFlow(selectedBank)
+                        }
+                    }
+                }
+            } catch (error: Exception) {
+                withContext(Dispatchers.IO) {
+                    sessionListener?.onSessionFinished(SessionResult.Failure(error))
+                }
             }
-        } catch (error: Exception) {
-            withContext(Dispatchers.Main) {
-                sessionListener?.onSessionFinished(SessionResult.Failure(error))
-            }
-            null
         }
     }
 
