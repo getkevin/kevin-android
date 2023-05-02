@@ -114,7 +114,7 @@ internal class BankSelectionViewModel constructor(
             } catch (e: Exception) {
                 GlobalRouter.returnFragmentResult(
                     BankSelectionContract,
-                    FragmentResult.Failure(e),
+                    FragmentResult.Failure(e)
                 )
             }
         }
