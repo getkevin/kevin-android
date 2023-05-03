@@ -1,5 +1,7 @@
 package eu.kevin.accounts.bankselection
 
+import android.content.Context
+import android.telephony.TelephonyManager
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -16,6 +18,7 @@ import eu.kevin.accounts.bankselection.entities.SupportedBanksFilter
 import eu.kevin.accounts.bankselection.exceptions.BankNotSelectedException
 import eu.kevin.accounts.bankselection.factories.BankListItemFactory
 import eu.kevin.accounts.bankselection.managers.KevinBankManager
+import eu.kevin.accounts.bankselection.providers.DefaultCountryIsoProvider
 import eu.kevin.accounts.bankselection.usecases.GetSupportedBanksUseCase
 import eu.kevin.accounts.countryselection.CountrySelectionContract
 import eu.kevin.accounts.countryselection.CountrySelectionFragmentConfiguration
@@ -31,6 +34,7 @@ import eu.kevin.common.entities.isLoading
 import kotlinx.coroutines.launch
 
 internal class BankSelectionViewModel constructor(
+    private val defaultCountryIsoProvider: DefaultCountryIsoProvider,
     private val countryUseCase: SupportedCountryUseCase,
     private val banksUseCase: GetSupportedBanksUseCase,
     private val dispatchers: CoroutineDispatchers,
@@ -87,7 +91,10 @@ internal class BankSelectionViewModel constructor(
                 var selectedCountry = supportedCountries.firstOrNull { it == configuration.selectedCountry }
                 if (selectedCountry == null) {
                     disableCountrySelection = false
-                    selectedCountry = supportedCountries.first()
+                    val defaultCountry = defaultCountryIsoProvider.getDefaultCountryIso()
+                    selectedCountry = supportedCountries
+                        .firstOrNull { it.equals(defaultCountry, ignoreCase = true) }
+                        ?: supportedCountries.first()
                 }
                 val apiBanks = banksUseCase.getSupportedBanks(
                     selectedCountry,
@@ -198,13 +205,20 @@ internal class BankSelectionViewModel constructor(
     }
 
     @Suppress("UNCHECKED_CAST")
-    class Factory(owner: SavedStateRegistryOwner) : AbstractSavedStateViewModelFactory(owner, null) {
+    class Factory(
+        private val context: Context,
+        owner: SavedStateRegistryOwner
+    ) : AbstractSavedStateViewModelFactory(owner, null) {
         override fun <T : ViewModel?> create(
             key: String,
             modelClass: Class<T>,
             handle: SavedStateHandle
         ): T {
             return BankSelectionViewModel(
+                DefaultCountryIsoProvider(
+                    context,
+                    context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+                ),
                 SupportedCountryUseCase(
                     KevinCountriesManager(AccountsClientProvider.kevinAccountsClient)
                 ),
