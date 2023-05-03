@@ -86,7 +86,8 @@ internal class PaymentSession(
                     authState = configuration.paymentId,
                     country = configuration.preselectedCountry?.iso,
                     preselectedBank = configuration.preselectedBank,
-                    banksFilter = configuration.bankFilter
+                    banksFilter = configuration.bankFilter,
+                    requireAccountLinkingSupport = false
                 )
 
                 when (banksConfigStatus) {

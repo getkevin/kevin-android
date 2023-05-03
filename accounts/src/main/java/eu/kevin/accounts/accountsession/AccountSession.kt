@@ -87,7 +87,8 @@ internal class AccountSession(
                     authState = configuration.state,
                     country = configuration.preselectedCountry?.iso,
                     preselectedBank = configuration.preselectedBank,
-                    banksFilter = configuration.bankFilter
+                    banksFilter = configuration.bankFilter,
+                    requireAccountLinkingSupport = true
                 )
 
                 when (banksConfigStatus) {

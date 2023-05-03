@@ -11,9 +11,17 @@ class ValidateBanksConfigUseCase(
         authState: String,
         country: String?,
         preselectedBank: String?,
-        banksFilter: List<String>
+        banksFilter: List<String>,
+        requireAccountLinkingSupport: Boolean
     ): Status {
         val apiBanks = accountsClient.getSupportedBanks(authState, country).data
+            .let {
+                if (requireAccountLinkingSupport) {
+                    it.filter { it.isAccountLinkingSupported }
+                } else {
+                    it
+                }
+            }
 
         var validFilters = apiBanks
         if (banksFilter.isNotEmpty()) {
