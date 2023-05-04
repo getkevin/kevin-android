@@ -94,7 +94,7 @@ internal class AccountSession(
                     country = configuration.preselectedCountry?.iso,
                     preselectedBank = configuration.preselectedBank,
                     banksFilter = configuration.bankFilter,
-                    requireAccountLinkingSupport = true
+                    requireAccountLinkingSupport = !KevinAccountsPlugin.isShowUnsupportedBanks()
                 )
 
                 when (banksConfigStatus) {
