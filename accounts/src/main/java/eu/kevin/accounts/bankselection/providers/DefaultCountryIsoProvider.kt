@@ -12,9 +12,10 @@ internal class DefaultCountryIsoProvider(
     fun getDefaultCountryIso(): String {
         if (
             context.packageManager.hasSystemFeature(PackageManager.FEATURE_TELEPHONY) &&
+            context.packageManager.hasSystemFeature(PackageManager.FEATURE_TELEPHONY_SUBSCRIPTION) &&
             telephonyManager.phoneType != TelephonyManager.PHONE_TYPE_CDMA
         ) {
-            return telephonyManager.networkCountryIso
+            return telephonyManager.simCountryIso
         }
 
         return context.getCurrentLocale().language
