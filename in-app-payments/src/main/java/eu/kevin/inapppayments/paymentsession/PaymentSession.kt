@@ -74,7 +74,10 @@ internal class PaymentSession(
     fun beginFlow(listener: PaymentSessionListener) {
         sessionListener = listener
 
-        if (!configuration.skipAuthentication && configuration.paymentType == PaymentType.BANK) {
+        if (
+            !configuration.skipAuthentication && configuration.paymentType == PaymentType.BANK &&
+            (!configuration.preselectedBank.isNullOrBlank() || configuration.bankFilter.isNotEmpty())
+        ) {
             validateBanksAndInitializeFlow()
         } else {
             initializeFlow(selectedBank = null)

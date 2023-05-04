@@ -75,7 +75,10 @@ internal class AccountSession(
     fun beginFlow(listener: AccountSessionListener?) {
         sessionListener = listener
 
-        if (configuration.accountLinkingType == AccountLinkingType.BANK) {
+        if (
+            configuration.accountLinkingType == AccountLinkingType.BANK &&
+            (!configuration.preselectedBank.isNullOrBlank() || configuration.bankFilter.isNotEmpty())
+        ) {
             validateBanksAndInitializeFlow()
         } else {
             initializeFlow(selectedBank = null)
