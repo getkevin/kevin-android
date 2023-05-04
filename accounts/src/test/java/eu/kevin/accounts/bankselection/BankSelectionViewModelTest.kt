@@ -22,7 +22,8 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 
@@ -66,11 +67,11 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
 
         viewModel.intents.trySend(BankSelectionIntent.Initialize(config))
 
-        Assert.assertEquals(3, states.size)
-        Assert.assertEquals(LoadingState.Loading(true), states[1].loadingState)
-        Assert.assertEquals(LoadingState.Loading(false), states[2].loadingState)
-        Assert.assertTrue(states[2].bankListItems.isNotEmpty())
-        Assert.assertEquals(false, states[2].isCountrySelectionDisabled)
+        assertEquals(3, states.size)
+        assertEquals(LoadingState.Loading(true), states[1].loadingState)
+        assertEquals(LoadingState.Loading(false), states[2].loadingState)
+        assertTrue(states[2].bankListItems.isNotEmpty())
+        assertEquals(false, states[2].isCountrySelectionDisabled)
         job.cancel()
     }
 
@@ -95,12 +96,12 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
 
         viewModel.intents.trySend(BankSelectionIntent.Initialize(config))
 
-        Assert.assertEquals(3, states.size)
-        Assert.assertEquals(LoadingState.Loading(true), states[1].loadingState)
-        Assert.assertEquals(LoadingState.Loading(false), states[2].loadingState)
-        Assert.assertTrue(states[2].bankListItems.isNotEmpty())
-        Assert.assertTrue(states[2].bankListItems.firstOrNull { it.isSelected }?.bankId == preselectedBank)
-        Assert.assertEquals(false, states[2].isCountrySelectionDisabled)
+        assertEquals(3, states.size)
+        assertEquals(LoadingState.Loading(true), states[1].loadingState)
+        assertEquals(LoadingState.Loading(false), states[2].loadingState)
+        assertTrue(states[2].bankListItems.isNotEmpty())
+        assertTrue(states[2].bankListItems.firstOrNull { it.isSelected }?.bankId == preselectedBank)
+        assertEquals(false, states[2].isCountrySelectionDisabled)
         job.cancel()
     }
 
@@ -125,12 +126,12 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
 
         viewModel.intents.trySend(BankSelectionIntent.Initialize(config))
 
-        Assert.assertEquals(3, states.size)
-        Assert.assertEquals(LoadingState.Loading(true), states[1].loadingState)
-        Assert.assertEquals(LoadingState.Loading(false), states[2].loadingState)
-        Assert.assertTrue(states[2].bankListItems.isNotEmpty())
-        Assert.assertTrue(states[2].bankListItems.firstOrNull { it.isSelected }?.bankId != preselectedBank)
-        Assert.assertEquals(false, states[2].isCountrySelectionDisabled)
+        assertEquals(3, states.size)
+        assertEquals(LoadingState.Loading(true), states[1].loadingState)
+        assertEquals(LoadingState.Loading(false), states[2].loadingState)
+        assertTrue(states[2].bankListItems.isNotEmpty())
+        assertTrue(states[2].bankListItems.firstOrNull { it.isSelected }?.bankId != preselectedBank)
+        assertEquals(false, states[2].isCountrySelectionDisabled)
         job.cancel()
     }
 
@@ -157,12 +158,12 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
 
         verify(exactly = 1) { defaultCountryIsoProvider.getDefaultCountryIso() }
 
-        Assert.assertEquals(3, states.size)
-        Assert.assertEquals(LoadingState.Loading(true), states[1].loadingState)
-        Assert.assertEquals(LoadingState.Loading(false), states[2].loadingState)
-        Assert.assertTrue(states[2].bankListItems.isNotEmpty())
-        Assert.assertEquals(false, states[2].isCountrySelectionDisabled)
-        Assert.assertEquals("lt", states[2].selectedCountry)
+        assertEquals(3, states.size)
+        assertEquals(LoadingState.Loading(true), states[1].loadingState)
+        assertEquals(LoadingState.Loading(false), states[2].loadingState)
+        assertTrue(states[2].bankListItems.isNotEmpty())
+        assertEquals(false, states[2].isCountrySelectionDisabled)
+        assertEquals("lt", states[2].selectedCountry)
         job.cancel()
     }
 
@@ -190,12 +191,12 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
 
             verify(exactly = 1) { defaultCountryIsoProvider.getDefaultCountryIso() }
 
-            Assert.assertEquals(3, states.size)
-            Assert.assertEquals(LoadingState.Loading(true), states[1].loadingState)
-            Assert.assertEquals(LoadingState.Loading(false), states[2].loadingState)
-            Assert.assertTrue(states[2].bankListItems.isEmpty())
-            Assert.assertEquals(false, states[2].isCountrySelectionDisabled)
-            Assert.assertEquals("at", states[2].selectedCountry)
+            assertEquals(3, states.size)
+            assertEquals(LoadingState.Loading(true), states[1].loadingState)
+            assertEquals(LoadingState.Loading(false), states[2].loadingState)
+            assertTrue(states[2].bankListItems.isEmpty())
+            assertEquals(false, states[2].isCountrySelectionDisabled)
+            assertEquals("at", states[2].selectedCountry)
             job.cancel()
         }
 
@@ -230,7 +231,7 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
 
         viewModel.intents.trySend(BankSelectionIntent.HandleBankSelection(preselectedBank))
 
-        Assert.assertTrue(states[0].bankListItems.firstOrNull { it.isSelected }?.bankId != preselectedBank)
+        assertTrue(states[0].bankListItems.firstOrNull { it.isSelected }?.bankId != preselectedBank)
 
         job.cancel()
     }
@@ -279,11 +280,11 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
 
         viewModel.intents.trySend(BankSelectionIntent.HandleCountrySelected(selectedCountry, config))
 
-        Assert.assertEquals(3, states.size)
-        Assert.assertEquals(LoadingState.Loading(true), states[1].loadingState)
-        Assert.assertEquals(LoadingState.Loading(false), states[2].loadingState)
-        Assert.assertTrue(states[2].bankListItems.isNotEmpty())
-        Assert.assertEquals(selectedCountry, states[2].selectedCountry)
+        assertEquals(3, states.size)
+        assertEquals(LoadingState.Loading(true), states[1].loadingState)
+        assertEquals(LoadingState.Loading(false), states[2].loadingState)
+        assertTrue(states[2].bankListItems.isNotEmpty())
+        assertEquals(selectedCountry, states[2].selectedCountry)
         job.cancel()
     }
 
