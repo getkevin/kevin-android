@@ -25,12 +25,11 @@ import eu.kevin.accounts.networking.AccountsClientProvider
 import eu.kevin.common.architecture.BaseFlowSession
 import eu.kevin.common.architecture.interfaces.DeepLinkHandler
 import eu.kevin.common.architecture.routing.GlobalRouter
+import eu.kevin.common.dispatchers.DefaultCoroutineDispatchers
 import eu.kevin.common.extensions.setFragmentResultListener
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.core.entities.SessionResult
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import kotlin.math.min
 
 internal class AccountSession(
@@ -40,6 +39,11 @@ internal class AccountSession(
     registryOwner: SavedStateRegistryOwner
 ) : BaseFlowSession(lifecycleOwner, registryOwner), DefaultLifecycleObserver {
 
+    private val validateBanksConfigUseCase = ValidateBanksConfigUseCase(
+        dispatchers = DefaultCoroutineDispatchers,
+        accountsClient = AccountsClientProvider.kevinAccountsClient
+    )
+
     private var sessionListener: AccountSessionListener? = null
 
     private val backStackListener = FragmentManager.OnBackStackChangedListener {
@@ -47,7 +51,6 @@ internal class AccountSession(
     }
 
     private val flowItems = mutableListOf<AccountSessionFlowItem>()
-    private val validateBanksConfigUseCase = ValidateBanksConfigUseCase(AccountsClientProvider.kevinAccountsClient)
     private var currentFlowIndex by savedState(-1)
     private var sessionData by savedState(AccountSessionData())
 
@@ -81,7 +84,7 @@ internal class AccountSession(
 
     private fun validateBanksAndInitializeFlow() {
         sessionListener?.showLoading(true)
-        lifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+        lifecycleOwner.lifecycleScope.launch {
             try {
                 val banksConfigStatus = validateBanksConfigUseCase.validateBanksConfig(
                     authState = configuration.state,
@@ -93,33 +96,25 @@ internal class AccountSession(
 
                 when (banksConfigStatus) {
                     is Status.FiltersInvalid -> {
-                        withContext(Dispatchers.Main) {
-                            sessionListener?.onSessionFinished(
-                                SessionResult.Failure(Error("Provided bank filter does not contain supported banks"))
-                            )
-                        }
+                        sessionListener?.onSessionFinished(
+                            SessionResult.Failure(Error("Provided bank filter does not contain supported banks"))
+                        )
                     }
                     is Status.PreselectedInvalid -> {
-                        withContext(Dispatchers.Main) {
-                            sessionListener?.onSessionFinished(
-                                SessionResult.Failure(Error("Provided preselected bank is not supported"))
-                            )
-                        }
+                        sessionListener?.onSessionFinished(
+                            SessionResult.Failure(Error("Provided preselected bank is not supported"))
+                        )
                     }
                     is Status.Valid -> {
                         val selectedBank = banksConfigStatus.selectedBank
                             ?.let { Bank(it.id, it.name, it.officialName, it.imageUri, it.bic) }
 
-                        withContext(Dispatchers.Main) {
-                            sessionListener?.showLoading(false)
-                            initializeFlow(selectedBank)
-                        }
+                        sessionListener?.showLoading(false)
+                        initializeFlow(selectedBank)
                     }
                 }
             } catch (error: Exception) {
-                withContext(Dispatchers.IO) {
-                    sessionListener?.onSessionFinished(SessionResult.Failure(error))
-                }
+                sessionListener?.onSessionFinished(SessionResult.Failure(error))
             }
         }
     }

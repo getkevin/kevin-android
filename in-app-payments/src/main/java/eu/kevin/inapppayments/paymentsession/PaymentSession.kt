@@ -15,6 +15,7 @@ import eu.kevin.accounts.bankselection.usecases.ValidateBanksConfigUseCase.Statu
 import eu.kevin.common.architecture.BaseFlowSession
 import eu.kevin.common.architecture.interfaces.DeepLinkHandler
 import eu.kevin.common.architecture.routing.GlobalRouter
+import eu.kevin.common.dispatchers.DefaultCoroutineDispatchers
 import eu.kevin.common.extensions.setFragmentResultListener
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.core.entities.SessionResult
@@ -27,9 +28,7 @@ import eu.kevin.inapppayments.paymentsession.enums.PaymentSessionFlowItem
 import eu.kevin.inapppayments.paymentsession.enums.PaymentSessionFlowItem.BANK_SELECTION
 import eu.kevin.inapppayments.paymentsession.enums.PaymentSessionFlowItem.PAYMENT_CONFIRMATION
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import kotlin.math.min
 
 internal class PaymentSession(
@@ -39,6 +38,11 @@ internal class PaymentSession(
     registryOwner: SavedStateRegistryOwner
 ) : BaseFlowSession(lifecycleOwner, registryOwner), DefaultLifecycleObserver {
 
+    private val validateBanksConfigUseCase = ValidateBanksConfigUseCase(
+        dispatchers = DefaultCoroutineDispatchers,
+        accountsClient = AccountsClientProvider.kevinAccountsClient
+    )
+
     private val backStackListener = FragmentManager.OnBackStackChangedListener {
         currentFlowIndex = fragmentManager.backStackEntryCount - 1
     }
@@ -46,7 +50,6 @@ internal class PaymentSession(
     private var sessionListener: PaymentSessionListener? = null
 
     private val flowItems = mutableListOf<PaymentSessionFlowItem>()
-    private val validateBanksConfigUseCase = ValidateBanksConfigUseCase(AccountsClientProvider.kevinAccountsClient)
     private var currentFlowIndex by savedState(-1)
     private var sessionData by savedState(PaymentSessionData())
 
@@ -80,7 +83,7 @@ internal class PaymentSession(
 
     private fun validateBanksAndInitializeFlow() {
         sessionListener?.showLoading(true)
-        lifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+        lifecycleOwner.lifecycleScope.launch {
             try {
                 val banksConfigStatus = validateBanksConfigUseCase.validateBanksConfig(
                     authState = configuration.paymentId,
@@ -92,33 +95,25 @@ internal class PaymentSession(
 
                 when (banksConfigStatus) {
                     is Status.FiltersInvalid -> {
-                        withContext(Dispatchers.Main) {
-                            sessionListener?.onSessionFinished(
-                                SessionResult.Failure(Error("Provided bank filter does not contain supported banks"))
-                            )
-                        }
+                        sessionListener?.onSessionFinished(
+                            SessionResult.Failure(Error("Provided bank filter does not contain supported banks"))
+                        )
                     }
                     is Status.PreselectedInvalid -> {
-                        withContext(Dispatchers.Main) {
-                            sessionListener?.onSessionFinished(
-                                SessionResult.Failure(Error("Provided preselected bank is not supported"))
-                            )
-                        }
+                        sessionListener?.onSessionFinished(
+                            SessionResult.Failure(Error("Provided preselected bank is not supported"))
+                        )
                     }
                     is Status.Valid -> {
                         val selectedBank = banksConfigStatus.selectedBank
                             ?.let { Bank(it.id, it.name, it.officialName, it.imageUri, it.bic) }
 
-                        withContext(Dispatchers.Main) {
-                            sessionListener?.showLoading(false)
-                            initializeFlow(selectedBank)
-                        }
+                        sessionListener?.showLoading(false)
+                        initializeFlow(selectedBank)
                     }
                 }
             } catch (error: Exception) {
-                withContext(Dispatchers.IO) {
-                    sessionListener?.onSessionFinished(SessionResult.Failure(error))
-                }
+                sessionListener?.onSessionFinished(SessionResult.Failure(error))
             }
         }
     }

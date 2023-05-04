@@ -5,6 +5,7 @@ import eu.kevin.accounts.networking.KevinAccountsClient
 import eu.kevin.accounts.networking.entities.ApiBank
 import eu.kevin.core.networking.entities.KevinResponse
 import eu.kevin.testcore.base.BaseUnitTest
+import eu.kevin.testcore.dispatchers.TestCoroutineDispatchers
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -28,7 +29,10 @@ class ValidateBanksConfigUseCaseTest : BaseUnitTest() {
 
         coEvery { accountsClient.getSupportedBanks(any(), any()) } returns KevinResponse(listOf(testBank1, testBank2))
 
-        useCase = ValidateBanksConfigUseCase(accountsClient)
+        useCase = ValidateBanksConfigUseCase(
+            dispatchers = TestCoroutineDispatchers,
+            accountsClient = accountsClient
+        )
     }
 
     @Test
