@@ -1,9 +1,8 @@
 package eu.kevin.accounts.bankselection.usecases
 
+import eu.kevin.accounts.bankselection.entities.SupportedBanksFilter
 import eu.kevin.accounts.bankselection.usecases.ValidateBanksConfigUseCase.Status
-import eu.kevin.accounts.networking.KevinAccountsClient
 import eu.kevin.accounts.networking.entities.ApiBank
-import eu.kevin.core.networking.entities.KevinResponse
 import eu.kevin.testcore.base.BaseUnitTest
 import eu.kevin.testcore.dispatchers.TestCoroutineDispatchers
 import io.mockk.coEvery
@@ -17,7 +16,7 @@ import org.junit.Test
 @OptIn(ExperimentalCoroutinesApi::class)
 class ValidateBanksConfigUseCaseTest : BaseUnitTest() {
 
-    private val accountsClient = mockk<KevinAccountsClient>(relaxed = true)
+    private val getSupportedBanksUseCase = mockk<GetSupportedBanksUseCase>(relaxed = true)
     private lateinit var useCase: ValidateBanksConfigUseCase
 
     private val testBank1 = ApiBank("SWEDBANK_LT", "Swedbank", "Swedbank", "LT", false, "", "HABALT22", false, true)
@@ -27,11 +26,11 @@ class ValidateBanksConfigUseCaseTest : BaseUnitTest() {
     override fun setUp() {
         super.setUp()
 
-        coEvery { accountsClient.getSupportedBanks(any(), any()) } returns KevinResponse(listOf(testBank1, testBank2))
+        coEvery { getSupportedBanksUseCase.getSupportedBanks(any(), any(), any()) } returns listOf(testBank1, testBank2)
 
         useCase = ValidateBanksConfigUseCase(
             dispatchers = TestCoroutineDispatchers,
-            accountsClient = accountsClient
+            getSupportedBanksUseCase = getSupportedBanksUseCase
         )
     }
 
@@ -41,8 +40,7 @@ class ValidateBanksConfigUseCaseTest : BaseUnitTest() {
             authState = "state",
             country = null,
             preselectedBank = null,
-            banksFilter = emptyList(),
-            requireAccountLinkingSupport = false
+            supportedBanksFilter = SupportedBanksFilter()
         )
 
         assertEquals(Status.Valid(null), result)
@@ -50,12 +48,13 @@ class ValidateBanksConfigUseCaseTest : BaseUnitTest() {
 
     @Test
     fun `Should return Valid status if at least one provided filter is supported`() = testCoroutineScope.runTest {
+        coEvery { getSupportedBanksUseCase.getSupportedBanks(any(), any(), any()) } returns listOf(testBank2)
+
         val result = useCase.validateBanksConfig(
             authState = "state",
             country = null,
             preselectedBank = null,
-            banksFilter = listOf("REVOLUT_LT", "ABC"),
-            requireAccountLinkingSupport = false
+            supportedBanksFilter = SupportedBanksFilter(listOf("REVOLUT_LT", "ABC"))
         )
 
         assertEquals(Status.Valid(null), result)
@@ -67,8 +66,7 @@ class ValidateBanksConfigUseCaseTest : BaseUnitTest() {
             authState = "state",
             country = null,
             preselectedBank = "REVOLUT_LT",
-            banksFilter = emptyList(),
-            requireAccountLinkingSupport = false
+            supportedBanksFilter = SupportedBanksFilter()
         )
 
         assertEquals(Status.Valid(testBank2), result)
@@ -76,12 +74,13 @@ class ValidateBanksConfigUseCaseTest : BaseUnitTest() {
 
     @Test
     fun `Should return FiltersInvalid status if provided filters are not supported`() = testCoroutineScope.runTest {
+        coEvery { getSupportedBanksUseCase.getSupportedBanks(any(), any(), any()) } returns emptyList()
+
         val result = useCase.validateBanksConfig(
             authState = "state",
             country = null,
             preselectedBank = null,
-            banksFilter = listOf("ABC", "ZXC"),
-            requireAccountLinkingSupport = false
+            supportedBanksFilter = SupportedBanksFilter(listOf("ABC"))
         )
 
         assertEquals(Status.FiltersInvalid, result)
@@ -93,8 +92,7 @@ class ValidateBanksConfigUseCaseTest : BaseUnitTest() {
             authState = "state",
             country = null,
             preselectedBank = "ABC",
-            banksFilter = emptyList(),
-            requireAccountLinkingSupport = false
+            supportedBanksFilter = SupportedBanksFilter()
         )
 
         assertEquals(Status.PreselectedInvalid, result)
@@ -103,27 +101,15 @@ class ValidateBanksConfigUseCaseTest : BaseUnitTest() {
     @Test
     fun `Should return PreselectedInvalid status if preselected bank is not present in supported filters`() =
         testCoroutineScope.runTest {
+            coEvery { getSupportedBanksUseCase.getSupportedBanks(any(), any(), any()) } returns listOf(testBank1)
+
             val result = useCase.validateBanksConfig(
                 authState = "state",
                 country = null,
                 preselectedBank = "REVOLUT_LT",
-                banksFilter = listOf("SWEDBANK_LT"),
-                requireAccountLinkingSupport = false
+                supportedBanksFilter = SupportedBanksFilter(listOf("SWEDBANK_LT"))
             )
 
             assertEquals(Status.PreselectedInvalid, result)
         }
-
-    @Test
-    fun `Should filter out banks without account linking support`() = testCoroutineScope.runTest {
-        val result = useCase.validateBanksConfig(
-            authState = "state",
-            country = null,
-            preselectedBank = "REVOLUT_LT",
-            banksFilter = emptyList(),
-            requireAccountLinkingSupport = true
-        )
-
-        assertEquals(Status.PreselectedInvalid, result)
-    }
 }

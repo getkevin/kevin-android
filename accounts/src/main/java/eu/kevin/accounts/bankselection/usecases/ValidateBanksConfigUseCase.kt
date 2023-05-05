@@ -1,46 +1,35 @@
 package eu.kevin.accounts.bankselection.usecases
 
-import eu.kevin.accounts.networking.KevinAccountsClient
+import eu.kevin.accounts.bankselection.entities.SupportedBanksFilter
 import eu.kevin.accounts.networking.entities.ApiBank
 import eu.kevin.common.dispatchers.CoroutineDispatchers
 import kotlinx.coroutines.withContext
 
 class ValidateBanksConfigUseCase(
     private val dispatchers: CoroutineDispatchers,
-    private val accountsClient: KevinAccountsClient
+    private val getSupportedBanksUseCase: GetSupportedBanksUseCase
 ) {
 
     suspend fun validateBanksConfig(
         authState: String,
         country: String?,
         preselectedBank: String?,
-        banksFilter: List<String>,
-        requireAccountLinkingSupport: Boolean
+        supportedBanksFilter: SupportedBanksFilter
     ): Status {
         return withContext(dispatchers.io) {
-            val apiBanks = accountsClient.getSupportedBanks(authState, country).data
-                .let {
-                    if (requireAccountLinkingSupport) {
-                        it.filter { it.isAccountLinkingSupported }
-                    } else {
-                        it
-                    }
-                }
+            val supportedBanks = getSupportedBanksUseCase.getSupportedBanks(
+                country = country,
+                authState = authState,
+                supportedBanksFilter = supportedBanksFilter
+            )
 
-            var validFilters = apiBanks
-            if (banksFilter.isNotEmpty()) {
-                validFilters = banksFilter.mapNotNull { bank ->
-                    apiBanks.find { it.id.equals(bank, true) }
-                }
-
-                if (validFilters.isEmpty()) {
-                    return@withContext Status.FiltersInvalid
-                }
+            if (supportedBanksFilter.banks.isNotEmpty() && supportedBanks.isEmpty()) {
+                return@withContext Status.FiltersInvalid
             }
 
             var selectedBank: ApiBank? = null
             if (!preselectedBank.isNullOrBlank()) {
-                selectedBank = validFilters.find { it.id.equals(preselectedBank, true) }
+                selectedBank = supportedBanks.find { it.id.equals(preselectedBank, true) }
 
                 if (selectedBank == null) {
                     return@withContext Status.PreselectedInvalid

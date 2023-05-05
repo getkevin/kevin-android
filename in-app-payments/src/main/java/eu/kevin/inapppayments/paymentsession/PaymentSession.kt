@@ -10,6 +10,9 @@ import androidx.savedstate.SavedStateRegistryOwner
 import eu.kevin.accounts.bankselection.BankSelectionContract
 import eu.kevin.accounts.bankselection.BankSelectionFragmentConfiguration
 import eu.kevin.accounts.bankselection.entities.Bank
+import eu.kevin.accounts.bankselection.entities.SupportedBanksFilter
+import eu.kevin.accounts.bankselection.managers.KevinBankManager
+import eu.kevin.accounts.bankselection.usecases.GetSupportedBanksUseCase
 import eu.kevin.accounts.bankselection.usecases.ValidateBanksConfigUseCase
 import eu.kevin.accounts.bankselection.usecases.ValidateBanksConfigUseCase.Status
 import eu.kevin.common.architecture.BaseFlowSession
@@ -40,7 +43,9 @@ internal class PaymentSession(
 
     private val validateBanksConfigUseCase = ValidateBanksConfigUseCase(
         dispatchers = DefaultCoroutineDispatchers,
-        accountsClient = AccountsClientProvider.kevinAccountsClient
+        getSupportedBanksUseCase = GetSupportedBanksUseCase(
+            KevinBankManager(AccountsClientProvider.kevinAccountsClient)
+        )
     )
 
     private val backStackListener = FragmentManager.OnBackStackChangedListener {
@@ -92,8 +97,7 @@ internal class PaymentSession(
                     authState = configuration.paymentId,
                     country = configuration.preselectedCountry?.iso,
                     preselectedBank = configuration.preselectedBank,
-                    banksFilter = configuration.bankFilter,
-                    requireAccountLinkingSupport = false
+                    supportedBanksFilter = SupportedBanksFilter(configuration.bankFilter)
                 )
 
                 when (banksConfigStatus) {

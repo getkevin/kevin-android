@@ -19,6 +19,9 @@ import eu.kevin.accounts.accountsession.enums.AccountSessionFlowItem.LINK_ACCOUN
 import eu.kevin.accounts.bankselection.BankSelectionContract
 import eu.kevin.accounts.bankselection.BankSelectionFragmentConfiguration
 import eu.kevin.accounts.bankselection.entities.Bank
+import eu.kevin.accounts.bankselection.entities.SupportedBanksFilter
+import eu.kevin.accounts.bankselection.managers.KevinBankManager
+import eu.kevin.accounts.bankselection.usecases.GetSupportedBanksUseCase
 import eu.kevin.accounts.bankselection.usecases.ValidateBanksConfigUseCase
 import eu.kevin.accounts.bankselection.usecases.ValidateBanksConfigUseCase.Status
 import eu.kevin.accounts.networking.AccountsClientProvider
@@ -41,7 +44,9 @@ internal class AccountSession(
 
     private val validateBanksConfigUseCase = ValidateBanksConfigUseCase(
         dispatchers = DefaultCoroutineDispatchers,
-        accountsClient = AccountsClientProvider.kevinAccountsClient
+        getSupportedBanksUseCase = GetSupportedBanksUseCase(
+            KevinBankManager(AccountsClientProvider.kevinAccountsClient)
+        )
     )
 
     private var sessionListener: AccountSessionListener? = null
@@ -93,8 +98,10 @@ internal class AccountSession(
                     authState = configuration.state,
                     country = configuration.preselectedCountry?.iso,
                     preselectedBank = configuration.preselectedBank,
-                    banksFilter = configuration.bankFilter,
-                    requireAccountLinkingSupport = !KevinAccountsPlugin.isShowUnsupportedBanks()
+                    supportedBanksFilter = SupportedBanksFilter(
+                        banks = configuration.bankFilter,
+                        showOnlyAccountLinkingSupportedBanks = !KevinAccountsPlugin.isShowUnsupportedBanks()
+                    )
                 )
 
                 when (banksConfigStatus) {
