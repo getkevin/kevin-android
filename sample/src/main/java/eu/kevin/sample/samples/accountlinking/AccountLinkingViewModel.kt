@@ -73,7 +73,7 @@ internal class AccountLinkingViewModel : ViewModel() {
             is SessionResult.Failure -> _uiState.update {
                 // Account linking session has failed.
                 // Handle failures in you application accordingly.
-                it.copy(userMessage = "Account linking has failed!")
+                it.copy(userMessage = "Account linking has failed! ${result.error.message}")
             }
 
             is SessionResult.Canceled -> _uiState.update {

@@ -4,11 +4,11 @@ import eu.kevin.accounts.bankselection.entities.SupportedBanksFilter
 import eu.kevin.accounts.bankselection.managers.BankManagerInterface
 import eu.kevin.accounts.networking.entities.ApiBank
 
-internal class GetSupportedBanksUseCase(
+class GetSupportedBanksUseCase(
     private val bankManager: BankManagerInterface
 ) {
     suspend fun getSupportedBanks(
-        country: String,
+        country: String?,
         authState: String,
         supportedBanksFilter: SupportedBanksFilter = SupportedBanksFilter()
     ): List<ApiBank> {
