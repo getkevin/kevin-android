@@ -10,13 +10,16 @@ import eu.kevin.accounts.countryselection.managers.CountriesTestManager
 import eu.kevin.accounts.countryselection.usecases.SupportedCountryUseCase
 import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.entities.LoadingState
+import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.testcore.base.BaseViewModelTest
 import eu.kevin.testcore.dispatchers.TestCoroutineDispatchers
 import eu.kevin.testcore.extensions.updateInternalState
+import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkConstructor
 import io.mockk.mockkObject
+import io.mockk.spyk
 import io.mockk.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.toList
@@ -30,16 +33,16 @@ import org.junit.Test
 @ExperimentalCoroutinesApi
 class BankSelectionViewModelTest : BaseViewModelTest() {
 
-    private lateinit var viewModel: BankSelectionViewModel
-
     private val defaultCountryIsoProvider = mockk<DefaultCountryIsoProvider>()
+    private val countriesTestManager = spyk<CountriesTestManager>()
+    private lateinit var viewModel: BankSelectionViewModel
 
     @Before
     override fun setUp() {
         super.setUp()
         viewModel = BankSelectionViewModel(
             defaultCountryIsoProvider,
-            SupportedCountryUseCase(CountriesTestManager()),
+            SupportedCountryUseCase(countriesTestManager),
             GetSupportedBanksUseCase(BankTestManager()),
             TestCoroutineDispatchers,
             savedStateHandle
@@ -133,6 +136,33 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
         assertTrue(states[2].bankListItems.firstOrNull { it.isSelected }?.bankId != preselectedBank)
         assertEquals(false, states[2].isCountrySelectionDisabled)
         job.cancel()
+    }
+
+    @Test
+    fun `test handleIntent() Initialize with preselected bank and incorrect auth state`() = testCoroutineScope.runTest {
+        val expectedError = Exception()
+
+        coEvery { countriesTestManager.getSupportedCountries("") } throws expectedError
+        mockkObject(GlobalRouter)
+
+        val config = BankSelectionFragmentConfiguration(
+            "lt",
+            false,
+            emptyList(),
+            emptyList(),
+            "SWEDBANK_LT",
+            "",
+            true
+        )
+        viewModel.intents.trySend(BankSelectionIntent.Initialize(config))
+        verify(exactly = 1) {
+            GlobalRouter.returnFragmentResult(
+                BankSelectionContract,
+                withArg {
+                    assertTrue((it is FragmentResult.Failure) && it.error == expectedError)
+                }
+            )
+        }
     }
 
     @Test
@@ -290,6 +320,7 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
 
     @Test
     fun `test handleIntent() handleContinueClicked`() = testCoroutineScope.runTest {
+        val expectedResult = Bank("SWEDBANK_LT", "Swedbank", "Swedbank AB", "", "HABALT22")
         mockkObject(GlobalRouter)
         val config = BankSelectionFragmentConfiguration(
             "lt",
@@ -305,7 +336,9 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
         verify(exactly = 1) {
             GlobalRouter.returnFragmentResult(
                 BankSelectionContract,
-                Bank("SWEDBANK_LT", "Swedbank", "Swedbank AB", "", "HABALT22")
+                withArg {
+                    assertTrue((it is FragmentResult.Success) && it.value == expectedResult)
+                }
             )
         }
     }

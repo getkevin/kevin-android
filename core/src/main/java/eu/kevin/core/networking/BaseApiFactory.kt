@@ -45,6 +45,8 @@ abstract class BaseApiFactory<T : BaseApiClient>(
 
     protected fun createKtorClient(): HttpClient {
         return HttpClient(Android) {
+            expectSuccess = true
+
             engine {
                 timeout?.let {
                     connectTimeout = it
@@ -100,11 +102,11 @@ abstract class BaseApiFactory<T : BaseApiClient>(
                 try {
                     val error = jsonContentNegotiation.decodeFromString(ErrorResponse.serializer(), errorString).error
                     ApiError(
-                        error.name,
-                        error.description,
-                        error.code,
-                        requestError.response.status.value,
-                        requestError
+                        name = error.name,
+                        description = error.description,
+                        code = error.code,
+                        statusCode = requestError.response.status.value,
+                        cause = requestError
                     )
                 } catch (e: Exception) {
                     ApiError(
