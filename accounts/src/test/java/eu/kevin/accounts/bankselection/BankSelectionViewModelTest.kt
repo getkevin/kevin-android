@@ -4,6 +4,7 @@ import android.os.Bundle
 import eu.kevin.accounts.bankselection.entities.Bank
 import eu.kevin.accounts.bankselection.factories.BankListItemFactory
 import eu.kevin.accounts.bankselection.managers.BankTestManager
+import eu.kevin.accounts.bankselection.providers.DefaultCountryIsoProvider
 import eu.kevin.accounts.bankselection.usecases.GetSupportedBanksUseCase
 import eu.kevin.accounts.countryselection.managers.CountriesTestManager
 import eu.kevin.accounts.countryselection.usecases.SupportedCountryUseCase
@@ -15,6 +16,7 @@ import eu.kevin.testcore.dispatchers.TestCoroutineDispatchers
 import eu.kevin.testcore.extensions.updateInternalState
 import io.mockk.coEvery
 import io.mockk.every
+import io.mockk.mockk
 import io.mockk.mockkConstructor
 import io.mockk.mockkObject
 import io.mockk.spyk
@@ -31,6 +33,7 @@ import org.junit.Test
 @ExperimentalCoroutinesApi
 class BankSelectionViewModelTest : BaseViewModelTest() {
 
+    private val defaultCountryIsoProvider = mockk<DefaultCountryIsoProvider>()
     private val countriesTestManager = spyk<CountriesTestManager>()
     private lateinit var viewModel: BankSelectionViewModel
 
@@ -38,6 +41,7 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
     override fun setUp() {
         super.setUp()
         viewModel = BankSelectionViewModel(
+            defaultCountryIsoProvider,
             SupportedCountryUseCase(countriesTestManager),
             GetSupportedBanksUseCase(BankTestManager()),
             TestCoroutineDispatchers,
@@ -160,6 +164,71 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
             )
         }
     }
+
+    @Test
+    fun `test handleIntent() Initialize without country`() = testCoroutineScope.runTest {
+        every { defaultCountryIsoProvider.getDefaultCountryIso() } returns "lt"
+
+        val config = BankSelectionFragmentConfiguration(
+            null,
+            false,
+            emptyList(),
+            emptyList(),
+            null,
+            "",
+            true
+        )
+
+        val states = mutableListOf<BankSelectionState>()
+        val job = launch {
+            viewModel.state.toList(states)
+        }
+
+        viewModel.intents.trySend(BankSelectionIntent.Initialize(config))
+
+        verify(exactly = 1) { defaultCountryIsoProvider.getDefaultCountryIso() }
+
+        assertEquals(3, states.size)
+        assertEquals(LoadingState.Loading(true), states[1].loadingState)
+        assertEquals(LoadingState.Loading(false), states[2].loadingState)
+        assertTrue(states[2].bankListItems.isNotEmpty())
+        assertEquals(false, states[2].isCountrySelectionDisabled)
+        assertEquals("lt", states[2].selectedCountry)
+        job.cancel()
+    }
+
+    @Test
+    fun `test handleIntent() Initialize without country and unsupported default country`() =
+        testCoroutineScope.runTest {
+            every { defaultCountryIsoProvider.getDefaultCountryIso() } returns "qwe"
+
+            val config = BankSelectionFragmentConfiguration(
+                null,
+                false,
+                emptyList(),
+                emptyList(),
+                null,
+                "",
+                true
+            )
+
+            val states = mutableListOf<BankSelectionState>()
+            val job = launch {
+                viewModel.state.toList(states)
+            }
+
+            viewModel.intents.trySend(BankSelectionIntent.Initialize(config))
+
+            verify(exactly = 1) { defaultCountryIsoProvider.getDefaultCountryIso() }
+
+            assertEquals(3, states.size)
+            assertEquals(LoadingState.Loading(true), states[1].loadingState)
+            assertEquals(LoadingState.Loading(false), states[2].loadingState)
+            assertTrue(states[2].bankListItems.isEmpty())
+            assertEquals(false, states[2].isCountrySelectionDisabled)
+            assertEquals("at", states[2].selectedCountry)
+            job.cancel()
+        }
 
     @Test
     fun `test handleIntent() HandleBackClicked while loading`() = testCoroutineScope.runTest {
