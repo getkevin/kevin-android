@@ -28,6 +28,7 @@ import eu.kevin.common.dispatchers.CoroutineDispatchers
 import eu.kevin.common.dispatchers.DefaultCoroutineDispatchers
 import eu.kevin.common.entities.LoadingState
 import eu.kevin.common.entities.isLoading
+import eu.kevin.common.fragment.FragmentResult
 import kotlinx.coroutines.launch
 
 internal class BankSelectionViewModel constructor(
@@ -111,11 +112,10 @@ internal class BankSelectionViewModel constructor(
                     )
                 }
             } catch (e: Exception) {
-                updateState {
-                    it.copy(
-                        loadingState = LoadingState.Failure(e)
-                    )
-                }
+                GlobalRouter.returnFragmentResult(
+                    BankSelectionContract,
+                    FragmentResult.Failure(e)
+                )
             }
         }
     }
@@ -193,7 +193,7 @@ internal class BankSelectionViewModel constructor(
         }
         GlobalRouter.returnFragmentResult(
             BankSelectionContract,
-            banks.first { it.id == selectedBank.bankId }
+            FragmentResult.Success(banks.first { it.id == selectedBank.bankId })
         )
     }
 

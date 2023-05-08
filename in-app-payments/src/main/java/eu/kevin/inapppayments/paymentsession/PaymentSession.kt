@@ -177,9 +177,15 @@ internal class PaymentSession(
     }
 
     private fun listenForFragmentResults() {
-        fragmentManager.setFragmentResultListener(BankSelectionContract, lifecycleOwner) {
-            sessionData = sessionData.copy(selectedBank = it)
-            navigateToNextWindow()
+        fragmentManager.setFragmentResultListener(BankSelectionContract, lifecycleOwner) { result ->
+            when (result) {
+                is FragmentResult.Success -> {
+                    sessionData = sessionData.copy(selectedBank = result.value)
+                    navigateToNextWindow()
+                }
+                is FragmentResult.Canceled -> sessionListener?.onSessionFinished(SessionResult.Canceled)
+                is FragmentResult.Failure -> sessionListener?.onSessionFinished(SessionResult.Failure(result.error))
+            }
         }
         fragmentManager.setFragmentResultListener(PaymentConfirmationContract, lifecycleOwner) { result ->
             when (result) {
