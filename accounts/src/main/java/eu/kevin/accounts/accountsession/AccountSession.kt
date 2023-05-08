@@ -195,9 +195,19 @@ internal class AccountSession(
 
     private fun initFragmentResultListeners() {
         with(fragmentManager) {
-            setFragmentResultListener(BankSelectionContract, lifecycleOwner) { selectedBank ->
-                sessionData = sessionData.copy(selectedBank = selectedBank)
-                navigateToNextWindow()
+            setFragmentResultListener(BankSelectionContract, lifecycleOwner) { result ->
+                when (result) {
+                    is FragmentResult.Success -> {
+                        sessionData = sessionData.copy(selectedBank = result.value)
+                        navigateToNextWindow()
+                    }
+                    is FragmentResult.Canceled -> sessionListener?.onSessionFinished(SessionResult.Canceled)
+                    is FragmentResult.Failure -> sessionListener?.onSessionFinished(
+                        SessionResult.Failure(
+                            result.error
+                        )
+                    )
+                }
             }
             setFragmentResultListener(AccountLinkingContract, lifecycleOwner) { result ->
                 when (result) {
