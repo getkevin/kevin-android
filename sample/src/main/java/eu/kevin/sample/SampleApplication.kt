@@ -27,6 +27,12 @@ internal class SampleApplication : Application() {
         */
         Kevin.setDeepLinkingEnabled(true)
 
+        /*
+        For the sake of SDK samples we are using kevin. Sandbox environment
+        to avoid making a real money payment / account linking attempts.
+         */
+        Kevin.setSandbox(true)
+
         // Configure account linking plugin with callback url.
         val configurationAccounts = KevinAccountsConfiguration.builder()
             .setCallbackUrl("kevin://redirect.authorization")
