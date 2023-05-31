@@ -12,6 +12,7 @@
 
     <string name="text_initiate_bank_payment">Initiate Bank Payment</string>
     <string name="text_initiate_bank_payment_description">Tap the button to initiate bank payment process.</string>
+    <string name="text_initiate_bank_payment_warning">In this sample we use live production banks, so by completing the payment flow 0.01 EUR will be deducted from your account.</string>
 
     <string name="text_initiate_card_payment">Initiate Card Payment</string>
     <string name="text_initiate_card_payment_description">Tap the button to initiate card payment process.</string>

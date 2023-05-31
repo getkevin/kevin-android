@@ -89,7 +89,7 @@ internal class CardPaymentViewModel : ViewModel() {
                 val creditorAccount = creditor.accounts.first()
 
                 val request = InitiatePaymentRequest(
-                    amount = "0.01",
+                    amount = "0.01", // Some banks may refuse low amount transactions such as 0.01
                     email = "sample@sample.com",
                     creditorName = creditor.name,
                     iban = creditorAccount.iban,

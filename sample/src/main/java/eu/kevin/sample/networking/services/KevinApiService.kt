@@ -13,17 +13,17 @@ import retrofit2.http.POST
  */
 internal interface KevinApiService {
 
-    @POST("auth/initiate?environment=SANDBOX&bankMode=TEST")
+    @POST("auth/initiate")
     suspend fun fetchAuthState(
         @Body request: AuthStateRequest,
     ): AuthStateResponse
 
-    @POST("payments/bank?environment=SANDBOX&bankMode=TEST")
+    @POST("payments/bank")
     suspend fun initiateBankPayment(
         @Body request: InitiatePaymentRequest,
     ): InitiatePaymentResponse
 
-    @POST("payments/card?environment=SANDBOX&bankMode=TEST")
+    @POST("payments/card")
     suspend fun initiateCardPayment(
         @Body request: InitiatePaymentRequest,
     ): InitiatePaymentResponse
