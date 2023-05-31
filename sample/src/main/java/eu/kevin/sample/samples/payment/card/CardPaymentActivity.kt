@@ -55,6 +55,7 @@ internal class CardPaymentActivity : AppCompatActivity() {
             initiatePaymentButton.visibility = if (uiState.isLoading) GONE else VISIBLE
             paymentText.visibility = if (uiState.isLoading) GONE else VISIBLE
             creditorText.visibility = if (uiState.isLoading) GONE else VISIBLE
+            paymentWarningText.visibility = if (uiState.isLoading) GONE else VISIBLE
             progressBar.visibility = if (uiState.isLoading) VISIBLE else GONE
 
             uiState.paymentId?.let { paymentId ->
