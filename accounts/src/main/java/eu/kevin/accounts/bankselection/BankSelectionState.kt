@@ -10,6 +10,7 @@ import kotlinx.parcelize.Parcelize
 internal data class BankSelectionState(
     val selectedCountry: String = "",
     val isCountrySelectionDisabled: Boolean = true,
+    val isContinueVisible: Boolean = true,
     val bankListItems: List<BankListItem> = emptyList(),
     val loadingState: LoadingState? = null
 ) : IState, Parcelable

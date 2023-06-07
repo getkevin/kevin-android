@@ -77,6 +77,7 @@ internal class BankSelectionView(context: Context) :
 
     override fun render(state: BankSelectionState) = with(requireBinding()) {
         banksAdapter.updateItems(state.bankListItems)
+        bottomContainer.visibility = if (state.isContinueVisible) VISIBLE else GONE
         countrySelectionView.image = CountryHelper.getCountryFlagDrawable(context, state.selectedCountry)
         countrySelectionView.title = CountryHelper.getCountryName(context, state.selectedCountry)
         emptyStateTitle.text = context.getString(
