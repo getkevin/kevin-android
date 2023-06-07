@@ -88,7 +88,6 @@ internal class BankSelectionView(context: Context) :
         showCountrySelection(!state.isCountrySelectionDisabled)
         when (state.loadingState) {
             is LoadingState.Loading -> startLoading(state.loadingState.isLoading)
-            is LoadingState.FailureWithMessage -> showErrorMessage(state.loadingState.message)
             is LoadingState.Failure -> showFailure(state.loadingState.error)
             null -> startLoading(false)
         }

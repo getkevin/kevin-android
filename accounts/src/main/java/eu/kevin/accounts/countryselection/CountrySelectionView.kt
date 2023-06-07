@@ -43,7 +43,6 @@ internal class CountrySelectionView(context: Context) :
     override fun render(state: CountrySelectionState) = with(requireBinding()) {
         when (state.loadingState) {
             is LoadingState.Loading -> showLoading(state.loadingState.isLoading())
-            is LoadingState.FailureWithMessage -> showError(state.loadingState.message)
             is LoadingState.Failure -> {
                 showError(ErrorHelper.getMessage(context, state.loadingState.error))
             }
