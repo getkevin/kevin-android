@@ -55,6 +55,8 @@
     <!--    Other attributes    -->
     <public name="kevinOverrideCountryBackground" type="attr" />
     <public name="kevinUseLightBankIcons" type="attr" />
-    <public name="colorWarningBackground" type="attr" />
+    <public name="kevinColorWarningBackground" type="attr" />
     <public name="kevinEmptyStateSubtitleTextStyle" type="attr" />
+    <public name="kevinSheetHandleColor" type="attr" />
+    <public name="kevinLinkColor" type="attr" />
 </resources>

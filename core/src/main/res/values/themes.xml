@@ -25,7 +25,7 @@
         <item name="colorControlHighlight">@color/kevin_blue</item>
         <item name="colorControlActivated">@color/kevin_gray_5</item>
 
-        <item name="colorWarningBackground">@color/kevin_blue_transparent</item>
+        <item name="kevinColorWarningBackground">@color/kevin_blue_transparent</item>
 
         <item name="android:windowAnimationStyle">?kevinWindowTransitionStyle</item>
 
@@ -92,7 +92,7 @@
         <item name="colorControlHighlight">@color/kevin_blue</item>
         <item name="colorControlActivated">@color/kevin_gray_5</item>
 
-        <item name="colorWarningBackground">@color/kevin_blue_transparent</item>
+        <item name="kevinColorWarningBackground">@color/kevin_blue_transparent</item>
 
         <item name="android:windowAnimationStyle">?kevinWindowTransitionStyle</item>
 
@@ -159,7 +159,7 @@
         <item name="colorControlHighlight">@color/kevin_blue</item>
         <item name="colorControlActivated">@color/kevin_blue</item>
 
-        <item name="colorWarningBackground">@color/kevin_blue_transparent</item>
+        <item name="kevinColorWarningBackground">@color/kevin_blue_transparent</item>
 
         <item name="android:windowAnimationStyle">?kevinWindowTransitionStyle</item>
 
