@@ -88,12 +88,12 @@ internal class AccountLinkingFragment :
 
     override fun openAppIfAvailable(uri: Uri): Boolean {
         if (!Kevin.isDeepLinkingEnabled()) return false
-        val intent = IntentHandlerHelper.getIntentForUri(requireContext(), uri) ?: return false
-        return try {
+        try {
+            val intent = IntentHandlerHelper.getIntentForUri(requireContext(), uri) ?: return false
             startActivity(intent)
-            true
+            return true
         } catch (ignored: Exception) {
-            false
+            return false
         }
     }
 }
