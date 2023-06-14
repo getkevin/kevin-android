@@ -28,12 +28,33 @@
 
         <activity
             android:name=".samples.accountlinking.AccountLinkingActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity
+            android:name=".samples.payment.bank.BankPaymentActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity
+            android:name=".samples.payment.card.CardPaymentActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity
+            android:name=".samples.uicustomization.UiCustomizationActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <!-- Update AndroidManifest with deep links configuration for your callback url -->
+        <!-- More info: https://developer.kevin.eu/home/mobile-sdk/deep-linking-support -->
+
+        <activity
+            android:name="eu.kevin.accounts.accountsession.AccountSessionActivity"
             android:exported="true"
             android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             >
-
-            <!-- Update AndroidManifest with deep links configuration for your callback url -->
-            <!-- More info: https://developer.kevin.eu/home/mobile-sdk/android/deep-linking-support -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -48,13 +69,9 @@
         </activity>
 
         <activity
-            android:name=".samples.payment.bank.BankPaymentActivity"
+            android:name="eu.kevin.inapppayments.paymentsession.PaymentSessionActivity"
             android:exported="true"
-            android:screenOrientation="portrait"
             >
-
-            <!-- Update AndroidManifest with deep links configuration for your callback url -->
-            <!-- More info: https://developer.kevin.eu/home/mobile-sdk/android/deep-linking-support -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -67,33 +84,6 @@
                     />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".samples.payment.card.CardPaymentActivity"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            >
-
-            <!-- Update AndroidManifest with deep links configuration for your callback url -->
-            <!-- More info: https://developer.kevin.eu/home/mobile-sdk/android/deep-linking-support -->
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="redirect.payments"
-                    android:scheme="kevin"
-                    />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".samples.uicustomization.UiCustomizationActivity"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            />
 
     </application>
 
