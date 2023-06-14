@@ -35,6 +35,7 @@
         <item name="android:statusBarColor">@color/kevin_black_30</item>
 
         <item name="kevinSheetHandleColor">@color/kevin_gray_2</item>
+        <item name="kevinLinkColor">@color/kevin_blue</item>
 
         <item name="kevinWindowTitleTextStyle">@style/Kevin.Text.Headline3</item>
         <item name="kevinWindowSubtitleTextStyle">@style/Kevin.Text.Subtitle1</item>
@@ -101,6 +102,7 @@
         <item name="android:statusBarColor">@color/kevin_black_30</item>
 
         <item name="kevinSheetHandleColor">@color/kevin_gray_2</item>
+        <item name="kevinLinkColor">@color/kevin_blue</item>
 
         <item name="kevinWindowTitleTextStyle">@style/Kevin.Text.Headline3</item>
         <item name="kevinWindowSubtitleTextStyle">@style/Kevin.Text.Subtitle1</item>
@@ -167,6 +169,7 @@
         <item name="android:statusBarColor">@color/kevin_black_30</item>
 
         <item name="kevinSheetHandleColor">@color/kevin_gray_2</item>
+        <item name="kevinLinkColor">@color/kevin_blue</item>
 
         <item name="kevinWindowTitleTextStyle">@style/Kevin.Text.Headline3</item>
         <item name="kevinWindowSubtitleTextStyle">@style/Kevin.Text.Subtitle1</item>

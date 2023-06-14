@@ -4,7 +4,6 @@ import android.text.SpannableStringBuilder
 import android.text.Spanned.SPAN_EXCLUSIVE_INCLUSIVE
 import android.text.TextPaint
 import android.text.style.ClickableSpan
-import android.text.style.ForegroundColorSpan
 import android.view.View
 
 object SpannableStringHelper {
@@ -27,9 +26,9 @@ object SpannableStringHelper {
                 override fun updateDrawState(ds: TextPaint) {
                     super.updateDrawState(ds)
                     ds.isUnderlineText = false
+                    ds.color = linkColor
                 }
             }
-            spannableString.setSpan(ForegroundColorSpan(linkColor), startIndex, endIndex, SPAN_EXCLUSIVE_INCLUSIVE)
             spannableString.setSpan(clickableSpan, startIndex, endIndex, SPAN_EXCLUSIVE_INCLUSIVE)
         }
 
