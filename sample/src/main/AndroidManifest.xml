@@ -79,7 +79,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="redirect.payment"
+                    android:host="redirect.payments"
                     android:scheme="kevin"
                     />
             </intent-filter>
