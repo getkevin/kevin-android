@@ -18,6 +18,7 @@
         <!-- 3. As an example we will switch background color to red and below we will update Toolbar's title color -->
         <item name="android:colorBackground">#FF5B5B</item>
         <item name="kevinToolbarStyle">@style/CustomToolbarTheme</item>
+        <item name="kevinLinkColor">#9C27B0</item>
 
         <!-- 4. For a full list of all possible customizable parameters please visit
              https://developer.kevin.eu/home/mobile-sdk/android/frame-customisation -->
