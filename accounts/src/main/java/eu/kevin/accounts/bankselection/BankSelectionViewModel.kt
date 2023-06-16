@@ -110,12 +110,18 @@ internal class BankSelectionViewModel constructor(
                     Bank(it.id, it.name, it.officialName, it.imageUri, it.bic)
                 }
 
+                val bankListItems = BankListItemFactory.getBankList(
+                    apiBanks = apiBanks,
+                    selectedBankId = configuration.selectedBankId
+                )
+
                 updateState {
                     it.copy(
                         selectedCountry = selectedCountry,
                         isCountrySelectionDisabled = disableCountrySelection,
+                        isContinueVisible = bankListItems.any { item -> item.isSelected },
                         loadingState = LoadingState.Loading(false),
-                        bankListItems = BankListItemFactory.getBankList(apiBanks, configuration.selectedBankId)
+                        bankListItems = bankListItems
                     )
                 }
             } catch (e: Exception) {
@@ -129,10 +135,12 @@ internal class BankSelectionViewModel constructor(
 
     private suspend fun handleBankSelection(bankId: String) {
         updateState { oldState ->
+            val bankListItems = state.value.bankListItems.map {
+                it.copy(isSelected = it.bankId == bankId)
+            }
             oldState.copy(
-                bankListItems = state.value.bankListItems.map {
-                    it.copy(isSelected = it.bankId == bankId)
-                }
+                bankListItems = bankListItems,
+                isContinueVisible = bankListItems.any { it.isSelected }
             )
         }
     }
@@ -168,12 +176,14 @@ internal class BankSelectionViewModel constructor(
                 banks = apiBanks.map {
                     Bank(it.id, it.name, it.officialName, it.imageUri, it.bic)
                 }
+                val bankListItems = BankListItemFactory.getBankList(apiBanks)
 
                 updateState {
                     it.copy(
                         selectedCountry = selectedCountry,
                         loadingState = LoadingState.Loading(false),
-                        bankListItems = BankListItemFactory.getBankList(apiBanks)
+                        bankListItems = bankListItems,
+                        isContinueVisible = bankListItems.any { item -> item.isSelected }
                     )
                 }
             } catch (e: Exception) {

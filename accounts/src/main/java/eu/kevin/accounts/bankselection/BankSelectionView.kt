@@ -77,6 +77,7 @@ internal class BankSelectionView(context: Context) :
 
     override fun render(state: BankSelectionState) = with(requireBinding()) {
         banksAdapter.updateItems(state.bankListItems)
+        bottomContainer.visibility = if (state.isContinueVisible) VISIBLE else GONE
         countrySelectionView.image = CountryHelper.getCountryFlagDrawable(context, state.selectedCountry)
         countrySelectionView.title = CountryHelper.getCountryName(context, state.selectedCountry)
         emptyStateTitle.text = context.getString(
@@ -88,7 +89,6 @@ internal class BankSelectionView(context: Context) :
         showCountrySelection(!state.isCountrySelectionDisabled)
         when (state.loadingState) {
             is LoadingState.Loading -> startLoading(state.loadingState.isLoading)
-            is LoadingState.FailureWithMessage -> showErrorMessage(state.loadingState.message)
             is LoadingState.Failure -> showFailure(state.loadingState.error)
             null -> startLoading(false)
         }
