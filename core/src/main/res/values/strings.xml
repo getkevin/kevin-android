@@ -7,4 +7,5 @@
     <string name="kevin_no">No</string>
     <string name="kevin_dialog_exit_confirmation_title">Warning!</string>
     <string name="kevin_navigate_back_content_description">Navigate back</string>
+    <string name="kevin_processing">Processing…</string>
 </resources>

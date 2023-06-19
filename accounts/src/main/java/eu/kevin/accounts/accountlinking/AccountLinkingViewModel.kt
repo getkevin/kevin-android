@@ -1,5 +1,6 @@
 package eu.kevin.accounts.accountlinking
 
+import android.content.Context
 import android.net.Uri
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
@@ -11,6 +12,8 @@ import eu.kevin.accounts.accountlinking.AccountLinkingEvent.LoadWebPage
 import eu.kevin.accounts.accountlinking.AccountLinkingIntent.HandleAuthorization
 import eu.kevin.accounts.accountlinking.AccountLinkingIntent.HandleBackClicked
 import eu.kevin.accounts.accountlinking.AccountLinkingIntent.Initialize
+import eu.kevin.accounts.accountlinking.preferences.AccountLinkingPreferences
+import eu.kevin.accounts.accountlinking.preferences.AccountLinkingPreferencesProvider
 import eu.kevin.accounts.accountsession.enums.AccountLinkingType
 import eu.kevin.common.architecture.BaseViewModel
 import eu.kevin.common.architecture.routing.GlobalRouter
@@ -21,7 +24,8 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 
 internal class AccountLinkingViewModel(
-    savedStateHandle: SavedStateHandle
+    savedStateHandle: SavedStateHandle,
+    private val accountLinkingPreferences: AccountLinkingPreferences
 ) : BaseViewModel<AccountLinkingState, AccountLinkingIntent>(savedStateHandle) {
 
     private val _events = Channel<AccountLinkingEvent>(Channel.BUFFERED)
@@ -69,9 +73,20 @@ internal class AccountLinkingViewModel(
 
         updateState {
             it.copy(
-                accountLinkingType = configuration.linkingType
+                accountLinkingType = configuration.linkingType,
+                isLoading = false
             )
         }
+
+        if (accountLinkingPreferences.lastRedirect == url) {
+            updateState {
+                it.copy(
+                    isLoading = true
+                )
+            }
+            return
+        }
+        accountLinkingPreferences.lastRedirect = url
 
         _events.send(LoadWebPage(url))
     }
@@ -100,15 +115,18 @@ internal class AccountLinkingViewModel(
     }
 
     @Suppress("UNCHECKED_CAST")
-    class Factory(owner: SavedStateRegistryOwner) :
-        AbstractSavedStateViewModelFactory(owner, null) {
-        override fun <T : ViewModel?> create(
+    class Factory(
+        private val context: Context,
+        owner: SavedStateRegistryOwner,
+    ) : AbstractSavedStateViewModelFactory(owner, null) {
+        override fun <T : ViewModel> create(
             key: String,
             modelClass: Class<T>,
             handle: SavedStateHandle
         ): T {
             return AccountLinkingViewModel(
-                handle
+                handle,
+                AccountLinkingPreferencesProvider.providePreferences(context)
             ) as T
         }
     }

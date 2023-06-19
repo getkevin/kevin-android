@@ -86,7 +86,7 @@ internal class CountrySelectionViewModel constructor(
     @Suppress("UNCHECKED_CAST")
     class Factory(owner: SavedStateRegistryOwner) :
         AbstractSavedStateViewModelFactory(owner, null) {
-        override fun <T : ViewModel?> create(
+        override fun <T : ViewModel> create(
             key: String,
             modelClass: Class<T>,
             handle: SavedStateHandle

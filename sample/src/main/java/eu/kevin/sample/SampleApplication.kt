@@ -30,6 +30,7 @@ internal class SampleApplication : Application() {
         // Configure account linking plugin with callback url.
         val configurationAccounts = KevinAccountsConfiguration.builder()
             .setCallbackUrl("kevin://redirect.authorization")
+            .setShowUnsupportedBanks(true)
             .build()
 
         KevinAccountsPlugin.configure(configurationAccounts)
