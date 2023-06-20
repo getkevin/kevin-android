@@ -16,7 +16,6 @@ import eu.kevin.accounts.accountsession.entities.AccountSessionConfiguration
 import eu.kevin.accounts.databinding.KevinActivityAccountLinkingBinding
 import eu.kevin.common.architecture.BaseFragmentActivity
 import eu.kevin.common.architecture.routing.GlobalRouter
-import eu.kevin.common.extensions.optionalParcelable
 import eu.kevin.common.extensions.setFragmentResult
 import eu.kevin.core.entities.SessionResult
 import eu.kevin.core.plugin.Kevin
@@ -40,7 +39,7 @@ class AccountSessionActivity : BaseFragmentActivity(), AccountSessionListener {
         binding = KevinActivityAccountLinkingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        accountSessionConfiguration = intent?.extras?.optionalParcelable(AccountSessionContract.CONFIGURATION_KEY)
+        accountSessionConfiguration = intent?.extras?.getParcelable(AccountSessionContract.CONFIGURATION_KEY)
 
         if (accountSessionConfiguration == null) {
             finish()

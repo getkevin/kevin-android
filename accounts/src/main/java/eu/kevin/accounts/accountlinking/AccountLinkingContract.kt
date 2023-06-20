@@ -2,7 +2,6 @@ package eu.kevin.accounts.accountlinking
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import eu.kevin.common.extensions.requireParcelable
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.common.fragment.FragmentResultContract
 
@@ -17,6 +16,6 @@ object AccountLinkingContract : FragmentResultContract<FragmentResult<AccountLin
     }
 
     override fun parseResult(data: Bundle): FragmentResult<AccountLinkingFragmentResult> {
-        return data.requireParcelable(requestKey)
+        return data.getParcelable(resultKey)!!
     }
 }

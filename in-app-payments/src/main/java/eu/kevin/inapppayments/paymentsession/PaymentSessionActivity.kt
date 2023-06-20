@@ -11,7 +11,6 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import eu.kevin.common.architecture.BaseFragmentActivity
 import eu.kevin.common.architecture.routing.GlobalRouter
-import eu.kevin.common.extensions.optionalParcelable
 import eu.kevin.common.extensions.setFragmentResult
 import eu.kevin.core.entities.SessionResult
 import eu.kevin.core.plugin.Kevin
@@ -39,7 +38,7 @@ class PaymentSessionActivity : BaseFragmentActivity(), PaymentSessionListener {
         binding = KevinActivityPaymentSessionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        paymentSessionConfiguration = intent?.extras?.optionalParcelable(PaymentSessionContract.CONFIGURATION_KEY)
+        paymentSessionConfiguration = intent?.extras?.getParcelable(PaymentSessionContract.CONFIGURATION_KEY)
 
         if (paymentSessionConfiguration == null) {
             finish()

@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContract
 import eu.kevin.accounts.accountsession.entities.AccountSessionConfiguration
-import eu.kevin.common.extensions.requireParcelable
 import eu.kevin.core.entities.SessionResult
 
 /**
@@ -26,7 +25,7 @@ class AccountSessionContract :
     override fun parseResult(resultCode: Int, result: Intent?): SessionResult<AccountSessionResult> {
         return if (resultCode == Activity.RESULT_OK) {
             try {
-                result?.extras?.requireParcelable(RESULT_KEY)!!
+                result?.extras?.getParcelable<SessionResult<AccountSessionResult>>(RESULT_KEY)!!
             } catch (error: Exception) {
                 SessionResult.Failure(error)
             }

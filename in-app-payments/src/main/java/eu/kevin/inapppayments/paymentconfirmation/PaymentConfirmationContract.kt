@@ -2,7 +2,6 @@ package eu.kevin.inapppayments.paymentconfirmation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import eu.kevin.common.extensions.requireParcelable
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.common.fragment.FragmentResultContract
 
@@ -17,6 +16,6 @@ object PaymentConfirmationContract : FragmentResultContract<FragmentResult<Payme
     }
 
     override fun parseResult(data: Bundle): FragmentResult<PaymentConfirmationResult> {
-        return data.requireParcelable(resultKey)
+        return data.getParcelable(resultKey)!!
     }
 }
