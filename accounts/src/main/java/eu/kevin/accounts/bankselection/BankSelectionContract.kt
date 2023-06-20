@@ -3,6 +3,7 @@ package eu.kevin.accounts.bankselection
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import eu.kevin.accounts.bankselection.entities.Bank
+import eu.kevin.common.extensions.requireParcelable
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.common.fragment.FragmentResultContract
 
@@ -15,7 +16,8 @@ object BankSelectionContract : FragmentResultContract<FragmentResult<Bank>>() {
             it.configuration = configuration
         }
     }
+
     override fun parseResult(data: Bundle): FragmentResult<Bank> {
-        return data.getParcelable(resultKey)!!
+        return data.requireParcelable(resultKey)
     }
 }

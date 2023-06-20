@@ -2,6 +2,7 @@ package eu.kevin.inapppayments.cardpayment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import eu.kevin.common.extensions.requireParcelable
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.common.fragment.FragmentResultContract
 
@@ -16,6 +17,6 @@ object CardPaymentContract : FragmentResultContract<FragmentResult<CardPaymentRe
     }
 
     override fun parseResult(data: Bundle): FragmentResult<CardPaymentResult> {
-        return data.getParcelable(resultKey)!!
+        return data.requireParcelable(resultKey)
     }
 }

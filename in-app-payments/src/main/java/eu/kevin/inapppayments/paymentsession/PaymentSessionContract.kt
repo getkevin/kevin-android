@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContract
+import eu.kevin.common.extensions.requireParcelable
 import eu.kevin.core.entities.SessionResult
 import eu.kevin.inapppayments.paymentsession.entities.PaymentSessionConfiguration
 
@@ -25,7 +26,7 @@ class PaymentSessionContract :
     override fun parseResult(resultCode: Int, result: Intent?): SessionResult<PaymentSessionResult> {
         return if (resultCode == Activity.RESULT_OK) {
             try {
-                result?.extras?.getParcelable<SessionResult<PaymentSessionResult>>(RESULT_KEY)!!
+                result?.extras?.requireParcelable(RESULT_KEY)!!
             } catch (error: Exception) {
                 SessionResult.Failure(error)
             }

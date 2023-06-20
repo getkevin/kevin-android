@@ -7,15 +7,15 @@ internal class AccountLinkingPreferences(
 ) {
 
     private companion object Key {
-        const val KEVIN_LAST_REDIRECT = "KEVIN_LAST_REDIRECT"
+        const val LAST_REDIRECT = "LAST_REDIRECT"
     }
 
     var lastRedirect: String?
         set(value) {
-            sharedPreferences.edit().putString(KEVIN_LAST_REDIRECT, value).apply()
+            sharedPreferences.edit().putString(LAST_REDIRECT, value).apply()
         }
         get() {
-            return sharedPreferences.getString(KEVIN_LAST_REDIRECT, null)
+            return sharedPreferences.getString(LAST_REDIRECT, null)
         }
 
     fun clear() {

@@ -109,7 +109,7 @@ internal class AccountLinkingView(context: Context) :
         } else {
             actionBar.title = context.getString(R.string.kevin_window_account_linking_card_title)
         }
-        with(state.isLoading) {
+        with(state.isProcessing) {
             accountLinkProgressView.visibility = if (this) VISIBLE else GONE
             accountLinkProgressText.visibility = if (this) VISIBLE else GONE
         }

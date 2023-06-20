@@ -74,14 +74,14 @@ internal class AccountLinkingViewModel(
         updateState {
             it.copy(
                 accountLinkingType = configuration.linkingType,
-                isLoading = false
+                isProcessing = false
             )
         }
 
         if (accountLinkingPreferences.lastRedirect == url) {
             updateState {
                 it.copy(
-                    isLoading = true
+                    isProcessing = true
                 )
             }
             return
@@ -112,6 +112,8 @@ internal class AccountLinkingViewModel(
                 )
             )
         }
+
+        accountLinkingPreferences.clear()
     }
 
     @Suppress("UNCHECKED_CAST")
