@@ -78,15 +78,22 @@ internal class AccountLinkingViewModel(
             )
         }
 
-        if (accountLinkingPreferences.lastRedirect == url) {
+        initializeWebUrl(url)
+    }
+
+    private suspend fun initializeWebUrl(url: String) {
+        val isDeepLinkingEnabled = Kevin.isDeepLinkingEnabled()
+
+        if (isDeepLinkingEnabled && accountLinkingPreferences.lastRedirect == url) {
             updateState {
-                it.copy(
-                    isProcessing = true
-                )
+                it.copy(isProcessing = true)
             }
             return
         }
-        accountLinkingPreferences.lastRedirect = url
+
+        if (isDeepLinkingEnabled) {
+            accountLinkingPreferences.lastRedirect = url
+        }
 
         _events.send(LoadWebPage(url))
     }

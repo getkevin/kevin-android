@@ -1,6 +1,7 @@
 package eu.kevin.accounts.bankselection
 
 import android.os.Bundle
+import eu.kevin.accounts.accountlinking.preferences.AccountLinkingPreferences
 import eu.kevin.accounts.bankselection.entities.Bank
 import eu.kevin.accounts.bankselection.factories.BankListItemFactory
 import eu.kevin.accounts.bankselection.managers.BankTestManager
@@ -36,17 +37,20 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
 
     private val defaultCountryIsoProvider = mockk<DefaultCountryIsoProvider>()
     private val countriesTestManager = spyk<CountriesTestManager>()
+    private val accountLinkingPreferences = mockk<AccountLinkingPreferences>(relaxed = true)
+
     private lateinit var viewModel: BankSelectionViewModel
 
     @Before
     override fun setUp() {
         super.setUp()
         viewModel = BankSelectionViewModel(
-            defaultCountryIsoProvider,
-            SupportedCountryUseCase(countriesTestManager),
-            GetSupportedBanksUseCase(BankTestManager()),
-            TestCoroutineDispatchers,
-            savedStateHandle
+            defaultCountryIsoProvider = defaultCountryIsoProvider,
+            countryUseCase = SupportedCountryUseCase(countriesTestManager),
+            banksUseCase = GetSupportedBanksUseCase(BankTestManager()),
+            accountLinkingPreferences = accountLinkingPreferences,
+            dispatchers = TestCoroutineDispatchers,
+            savedStateHandle = savedStateHandle
         )
         every { savedStateHandle.get<Any>(any()) } returns null
     }

@@ -5,12 +5,14 @@ import eu.kevin.accounts.BuildConfig
 import eu.kevin.accounts.KevinAccountsConfiguration
 import eu.kevin.accounts.KevinAccountsPlugin
 import eu.kevin.accounts.accountlinking.AccountLinkingEvent.LoadWebPage
+import eu.kevin.accounts.accountlinking.preferences.AccountLinkingPreferences
 import eu.kevin.accounts.accountsession.enums.AccountLinkingType
 import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.extensions.appendQuery
 import eu.kevin.common.fragment.FragmentResult
 import eu.kevin.testcore.base.BaseViewModelTest
 import io.mockk.every
+import io.mockk.mockk
 import io.mockk.mockkClass
 import io.mockk.mockkObject
 import io.mockk.verify
@@ -24,7 +26,9 @@ import org.junit.Before
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
-class AccountLinkingViewModelTest : BaseViewModelTest() {
+open class AccountLinkingViewModelTest : BaseViewModelTest() {
+
+    private val accountLinkingPreferences = mockk<AccountLinkingPreferences>(relaxed = true)
 
     private lateinit var viewModel: AccountLinkingViewModel
 
@@ -38,7 +42,10 @@ class AccountLinkingViewModelTest : BaseViewModelTest() {
                 .build()
         )
 
-        viewModel = AccountLinkingViewModel(savedStateHandle)
+        viewModel = AccountLinkingViewModel(
+            savedStateHandle = savedStateHandle,
+            accountLinkingPreferences = accountLinkingPreferences
+        )
         every { savedStateHandle.get<Any>(any()) } returns null
     }
 
@@ -68,6 +75,7 @@ class AccountLinkingViewModelTest : BaseViewModelTest() {
 
         assertEquals(1, states.size)
         assertEquals(LoadWebPage(expectedRedirectUrl), events[0])
+
         jobState.cancel()
         jobEvents.cancel()
     }
