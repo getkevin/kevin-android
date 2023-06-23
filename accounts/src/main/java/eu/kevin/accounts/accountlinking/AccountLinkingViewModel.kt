@@ -117,10 +117,6 @@ internal class AccountLinkingViewModel(
         }
     }
 
-    companion object {
-
-    }
-
     @Suppress("UNCHECKED_CAST")
     class Factory(
         owner: SavedStateRegistryOwner

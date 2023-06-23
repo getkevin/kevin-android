@@ -41,7 +41,7 @@ open class AccountLinkingViewModelTest : BaseViewModelTest() {
         )
 
         viewModel = AccountLinkingViewModel(
-            savedStateHandle = savedStateHandle,
+            savedStateHandle = savedStateHandle
         )
         every { savedStateHandle.get<Any>(any()) } returns null
     }
