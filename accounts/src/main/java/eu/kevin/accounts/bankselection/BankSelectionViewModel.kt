@@ -7,8 +7,6 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.savedstate.SavedStateRegistryOwner
-import eu.kevin.accounts.accountlinking.preferences.AccountLinkingPreferences
-import eu.kevin.accounts.accountlinking.preferences.AccountLinkingPreferencesProvider
 import eu.kevin.accounts.bankselection.BankSelectionIntent.HandleBackClicked
 import eu.kevin.accounts.bankselection.BankSelectionIntent.HandleBankSelection
 import eu.kevin.accounts.bankselection.BankSelectionIntent.HandleContinueClicked
@@ -40,7 +38,6 @@ internal class BankSelectionViewModel constructor(
     private val defaultCountryIsoProvider: DefaultCountryIsoProvider,
     private val countryUseCase: SupportedCountryUseCase,
     private val banksUseCase: GetSupportedBanksUseCase,
-    private val accountLinkingPreferences: AccountLinkingPreferences,
     private val dispatchers: CoroutineDispatchers,
     savedStateHandle: SavedStateHandle
 ) : BaseViewModel<BankSelectionState, BankSelectionIntent>(savedStateHandle) {
@@ -210,8 +207,6 @@ internal class BankSelectionViewModel constructor(
             return
         }
 
-        accountLinkingPreferences.clear()
-
         GlobalRouter.returnFragmentResult(
             BankSelectionContract,
             FragmentResult.Success(banks.first { it.id == selectedBank.bankId })
@@ -239,7 +234,6 @@ internal class BankSelectionViewModel constructor(
                 banksUseCase = GetSupportedBanksUseCase(
                     KevinBankManager(AccountsClientProvider.kevinAccountsClient)
                 ),
-                accountLinkingPreferences = AccountLinkingPreferencesProvider.providePreferences(context),
                 dispatchers = DefaultCoroutineDispatchers,
                 savedStateHandle = handle
             ) as T

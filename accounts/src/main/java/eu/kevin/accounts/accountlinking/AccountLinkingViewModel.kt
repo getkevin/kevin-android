@@ -1,6 +1,5 @@
 package eu.kevin.accounts.accountlinking
 
-import android.content.Context
 import android.net.Uri
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
@@ -12,8 +11,6 @@ import eu.kevin.accounts.accountlinking.AccountLinkingEvent.LoadWebPage
 import eu.kevin.accounts.accountlinking.AccountLinkingIntent.HandleAuthorization
 import eu.kevin.accounts.accountlinking.AccountLinkingIntent.HandleBackClicked
 import eu.kevin.accounts.accountlinking.AccountLinkingIntent.Initialize
-import eu.kevin.accounts.accountlinking.preferences.AccountLinkingPreferences
-import eu.kevin.accounts.accountlinking.preferences.AccountLinkingPreferencesProvider
 import eu.kevin.accounts.accountsession.enums.AccountLinkingType
 import eu.kevin.common.architecture.BaseViewModel
 import eu.kevin.common.architecture.routing.GlobalRouter
@@ -24,8 +21,7 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 
 internal class AccountLinkingViewModel(
-    savedStateHandle: SavedStateHandle,
-    private val accountLinkingPreferences: AccountLinkingPreferences
+    savedStateHandle: SavedStateHandle
 ) : BaseViewModel<AccountLinkingState, AccountLinkingIntent>(savedStateHandle) {
 
     private val _events = Channel<AccountLinkingEvent>(Channel.BUFFERED)
@@ -84,7 +80,7 @@ internal class AccountLinkingViewModel(
     private suspend fun initializeWebUrl(url: String) {
         val isDeepLinkingEnabled = Kevin.isDeepLinkingEnabled()
 
-        if (isDeepLinkingEnabled && accountLinkingPreferences.lastRedirect == url) {
+        if (isDeepLinkingEnabled && savedStateHandle.get<String>("redirect_url") == url) {
             updateState {
                 it.copy(isProcessing = true)
             }
@@ -92,7 +88,7 @@ internal class AccountLinkingViewModel(
         }
 
         if (isDeepLinkingEnabled) {
-            accountLinkingPreferences.lastRedirect = url
+            savedStateHandle["redirect_url"] = url
         }
 
         _events.send(LoadWebPage(url))
@@ -119,13 +115,14 @@ internal class AccountLinkingViewModel(
                 )
             )
         }
+    }
 
-        accountLinkingPreferences.clear()
+    companion object {
+
     }
 
     @Suppress("UNCHECKED_CAST")
     class Factory(
-        private val context: Context,
         owner: SavedStateRegistryOwner
     ) : AbstractSavedStateViewModelFactory(owner, null) {
         override fun <T : ViewModel> create(
@@ -134,8 +131,7 @@ internal class AccountLinkingViewModel(
             handle: SavedStateHandle
         ): T {
             return AccountLinkingViewModel(
-                handle,
-                AccountLinkingPreferencesProvider.providePreferences(context)
+                handle
             ) as T
         }
     }

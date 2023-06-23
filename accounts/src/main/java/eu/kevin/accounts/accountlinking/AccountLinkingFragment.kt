@@ -27,7 +27,7 @@ internal class AccountLinkingFragment :
     private lateinit var view: AccountLinkingView
 
     override val viewModel: AccountLinkingViewModel by viewModels {
-        AccountLinkingViewModel.Factory(requireContext(), this)
+        AccountLinkingViewModel.Factory(this)
     }
 
     override fun onCreateView(context: Context): IView<AccountLinkingState> {
