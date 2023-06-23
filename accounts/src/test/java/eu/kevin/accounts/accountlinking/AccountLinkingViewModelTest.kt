@@ -26,7 +26,7 @@ import org.junit.Before
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
-open class AccountLinkingViewModelTest : BaseViewModelTest() {
+class AccountLinkingViewModelTest : BaseViewModelTest() {
 
     private lateinit var viewModel: AccountLinkingViewModel
 
