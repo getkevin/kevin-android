@@ -80,6 +80,10 @@ internal class AccountLinkingViewModel(
     private suspend fun initializeWebUrl(url: String) {
         val isDeepLinkingEnabled = Kevin.isDeepLinkingEnabled()
 
+        /*
+        We are checking for an existing redirect to avoid some
+        possible extensive redirects after process death restoration.
+        */
         if (isDeepLinkingEnabled && savedStateHandle.get<String>("redirect_url") == url) {
             updateState {
                 it.copy(isProcessing = true)
