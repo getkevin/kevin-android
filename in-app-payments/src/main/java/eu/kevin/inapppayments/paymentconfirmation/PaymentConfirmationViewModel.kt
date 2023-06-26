@@ -28,7 +28,7 @@ internal class PaymentConfirmationViewModel(
     private val _events = Channel<PaymentConfirmationEvent>(Channel.BUFFERED)
     val events = _events.receiveAsFlow()
 
-    override fun getInitialData() = PaymentConfirmationState
+    override fun getInitialData() = PaymentConfirmationState()
 
     override suspend fun handleIntent(intent: PaymentConfirmationIntent) {
         when (intent) {
@@ -76,6 +76,31 @@ internal class PaymentConfirmationViewModel(
                 baseCardPaymentUrl.format(configuration.paymentId)
                     .appendQuery(webFrameQueryParameters)
             }
+        }
+
+        updateState {
+            it.copy(isProcessing = false)
+        }
+
+        initializeWebUrl(url)
+    }
+
+    private suspend fun initializeWebUrl(url: String) {
+        val isDeepLinkingEnabled = Kevin.isDeepLinkingEnabled()
+
+        /*
+        We are checking for an existing redirect to avoid some
+        possible extensive redirects after process death restoration.
+         */
+        if (isDeepLinkingEnabled && savedStateHandle.get<String>("redirect_url") == url) {
+            updateState {
+                it.copy(isProcessing = true)
+            }
+            return
+        }
+
+        if (isDeepLinkingEnabled) {
+            savedStateHandle["redirect_url"] = url
         }
 
         _events.send(LoadWebPage(url))
