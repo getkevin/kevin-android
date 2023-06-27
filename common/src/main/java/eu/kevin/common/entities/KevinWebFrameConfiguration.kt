@@ -18,6 +18,10 @@ data class KevinWebFrameConfiguration(
     @SerialName("bic")
     val bankIconColor: String,
     @SerialName("dbc")
-    val defaultButtonColor: String
+    val buttonColor: String,
+    @SerialName("dbfc")
+    val buttonFontColor: String,
+    @SerialName("br")
+    val buttonRadius: String
 )
 
