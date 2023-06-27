@@ -4,7 +4,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class KevinWebFrameColorsConfiguration(
+data class KevinWebFrameConfiguration(
+    @SerialName("cl")
+    val customLayout: List<String>,
     @SerialName("bc")
     val backgroundColor: String,
     @SerialName("bsc")
@@ -18,3 +20,4 @@ data class KevinWebFrameColorsConfiguration(
     @SerialName("dbc")
     val defaultButtonColor: String
 )
+

@@ -3,7 +3,7 @@ package eu.kevin.common.helpers
 import android.content.Context
 import androidx.core.content.ContextCompat
 import eu.kevin.common.R
-import eu.kevin.common.entities.KevinWebFrameColorsConfiguration
+import eu.kevin.common.entities.KevinWebFrameConfiguration
 import eu.kevin.common.extensions.getBooleanFromAttr
 import eu.kevin.common.extensions.getColorFromAttr
 import eu.kevin.common.extensions.getCurrentLocale
@@ -17,13 +17,14 @@ object WebFrameHelper {
     fun getStyleAndLanguageQueryParameters(context: Context): String {
         return ""
             .appendQueryParameter("lang", getActiveLocaleCode(context))
-            .appendQueryParameter("cs", Json.encodeToString(getKevinWebFrameColorsConfigurationFromTheme(context)))
+            .appendQueryParameter("cs", Json.encodeToString(getKevinWebFrameConfiguration(context)))
     }
 
-    private fun getKevinWebFrameColorsConfigurationFromTheme(context: Context): KevinWebFrameColorsConfiguration {
+    private fun getKevinWebFrameConfiguration(context: Context): KevinWebFrameConfiguration {
         with(context) {
             val useLightIcons = getBooleanFromAttr(R.attr.kevinUseLightBankIcons)
-            return KevinWebFrameColorsConfiguration(
+            return KevinWebFrameConfiguration(
+                customLayout = listOf("hl"),
                 backgroundColor = getColorFromAttr(android.R.attr.colorBackground).toHexColor(),
                 baseColor = getColorFromAttr(android.R.attr.colorBackground).toHexColor(),
                 headingsColor = getColorFromAttr(android.R.attr.textColorPrimary).toHexColor(),
