@@ -22,6 +22,8 @@ data class KevinWebFrameConfiguration(
     @SerialName("dbfc")
     val buttonFontColor: String,
     @SerialName("br")
-    val buttonRadius: String
+    val buttonRadius: String,
+    @SerialName("ibc")
+    val inputBorderColor: String
 )
 

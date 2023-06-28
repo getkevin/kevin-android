@@ -24,18 +24,22 @@ object WebFrameHelper {
 
     private fun getKevinWebFrameConfiguration(context: Context): KevinWebFrameConfiguration {
         with(context) {
-            val useLightIcons = getBooleanFromAttr(R.attr.kevinUseLightBankIcons)
             val buttonConfiguration = getButtonConfiguration(context)
+            val useLightIcons = getBooleanFromAttr(R.attr.kevinUseLightBankIcons)
+            val backgroundColor = getColorFromAttr(android.R.attr.colorBackground).toHexColor()
+            val textColor = getColorFromAttr(android.R.attr.textColorPrimary).toHexColor()
+
             return KevinWebFrameConfiguration(
                 customLayout = listOf("hl"),
-                backgroundColor = getColorFromAttr(android.R.attr.colorBackground).toHexColor(),
-                baseColor = getColorFromAttr(android.R.attr.colorBackground).toHexColor(),
-                headingsColor = getColorFromAttr(android.R.attr.textColorPrimary).toHexColor(),
-                fontColor = getColorFromAttr(android.R.attr.textColorPrimary).toHexColor(),
+                backgroundColor = backgroundColor,
+                baseColor = backgroundColor,
+                headingsColor = textColor,
+                fontColor = textColor,
                 bankIconColor = if (useLightIcons) "white" else "default",
                 buttonColor = buttonConfiguration.buttonColor.toHexColor(),
                 buttonFontColor = buttonConfiguration.fontColor.toHexColor(),
                 buttonRadius = "${pxToDp(buttonConfiguration.cornerRadius)}px",
+                inputBorderColor = textColor
             )
         }
     }
