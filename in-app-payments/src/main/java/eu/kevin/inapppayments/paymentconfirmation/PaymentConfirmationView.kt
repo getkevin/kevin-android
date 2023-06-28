@@ -104,7 +104,6 @@ internal class PaymentConfirmationView(context: Context) :
     override fun render(state: PaymentConfirmationState) {
         with(requireBinding()) {
             progressView.visibility = if (state.isProcessing) VISIBLE else GONE
-            progressText.visibility = if (state.isProcessing) VISIBLE else GONE
         }
     }
 

@@ -111,7 +111,6 @@ internal class AccountLinkingView(context: Context) :
         }
         with(state.isProcessing) {
             accountLinkProgressView.visibility = if (this) VISIBLE else GONE
-            accountLinkProgressText.visibility = if (this) VISIBLE else GONE
         }
     }
 
