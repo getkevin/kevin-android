@@ -1,5 +1,6 @@
 package eu.kevin.common.helpers
 
+import android.annotation.SuppressLint
 import android.content.Context
 import androidx.core.content.ContextCompat
 import eu.kevin.common.R
@@ -48,10 +49,11 @@ object WebFrameHelper {
         return Kevin.getLocale()?.language ?: context.getCurrentLocale().language
     }
 
+    @SuppressLint("ResourceType")
     private fun getButtonConfiguration(context: Context): ButtonConfiguration {
         val attrs = intArrayOf(
-            R.attr.backgroundTint,
             android.R.attr.textColor,
+            R.attr.backgroundTint,
             R.attr.cornerRadius
         )
         val obtainedAttrs = context.obtainStyledAttributes(
@@ -59,15 +61,15 @@ object WebFrameHelper {
             attrs
         )
 
-        val buttonColor = obtainedAttrs.getColor(0, ContextCompat.getColor(context, R.color.kevin_blue))
-        val fontColor = obtainedAttrs.getColor(1, ContextCompat.getColor(context, R.color.kevin_white))
+        val fontColor = obtainedAttrs.getColor(0, ContextCompat.getColor(context, R.color.kevin_white))
+        val buttonColor = obtainedAttrs.getColor(1, ContextCompat.getColor(context, R.color.kevin_blue))
         val cornerRadius = obtainedAttrs.getDimension(2, 8F).toInt()
 
         obtainedAttrs.recycle()
 
         return ButtonConfiguration(
-            buttonColor = buttonColor,
             fontColor = fontColor,
+            buttonColor = buttonColor,
             cornerRadius = cornerRadius
         )
     }
