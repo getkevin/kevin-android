@@ -26,4 +26,3 @@ data class KevinWebFrameConfiguration(
     @SerialName("ibc")
     val inputBorderColor: String
 )
-
