@@ -80,7 +80,7 @@ object WebFrameHelper {
         }
     }
 
-    data class ButtonConfiguration(
+    private data class ButtonConfiguration(
         val buttonColor: Int,
         val fontColor: Int,
         val cornerRadius: Int
