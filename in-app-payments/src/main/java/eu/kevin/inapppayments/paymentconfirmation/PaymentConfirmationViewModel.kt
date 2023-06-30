@@ -67,15 +67,6 @@ internal class PaymentConfirmationViewModel(
                     ).appendQuery(webFrameQueryParameters)
                 }
             }
-            else -> {
-                val baseCardPaymentUrl = if (Kevin.isSandbox()) {
-                    BuildConfig.KEVIN_SANDBOX_CARD_PAYMENT_URL
-                } else {
-                    BuildConfig.KEVIN_CARD_PAYMENT_URL
-                }
-                baseCardPaymentUrl.format(configuration.paymentId)
-                    .appendQuery(webFrameQueryParameters)
-            }
         }
 
         updateState {

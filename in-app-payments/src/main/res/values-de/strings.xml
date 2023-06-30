@@ -2,22 +2,4 @@
 <resources>
     <string name="kevin_window_payment_confirmation_title">Zahlungsbestätigung</string>
     <string name="kevin_dialog_exit_confirmation_payments_message">Sind Sie sicher, dass Sie diese Zahlung abbrechen möchten?</string>
-    <string name="kevin_window_card_payment_label">Kartenzahlung</string>
-    <string name="kevin_window_card_payment_cardholder_name_label">Karteninhaber</string>
-    <string name="kevin_window_card_payment_cardholder_name_hint">Max Mustermann</string>
-    <string name="kevin_window_card_payment_card_number_label">Kartennummer</string>
-    <string name="kevin_window_card_payment_expiry_date_label">Ablaufdatum</string>
-    <string name="kevin_window_card_payment_notice">kevin. speichert keinerlei persönliche oder Karten Informationen.</string>
-    <string name="kevin_window_card_payment_cvv_tooltip">CVV ist ein dreistelliger Code auf der Kartenrückseite.</string>
-    <string name="kevin_error_no_cardholder_name">Karteninhaber muss angegeben werden</string>
-    <string name="kevin_error_invalid_cvv">Geben Sie eine gültige CVV ein</string>
-    <string name="kevin_error_no_cvv">CVV muss angegeben werden</string>
-    <string name="kevin_error_invalid_expiry_date">Ungültiges Ablaufdatum</string>
-    <string name="kevin_error_no_expiry_date">Ablaufdatum muss eingegeben werden</string>
-    <string name="kevin_error_card_expired">Die Karte ist abgelaufen.</string>
-    <string name="kevin_error_invalid_card_number">Ungültige Kartennummer</string>
-    <string name="kevin_error_no_card_number">Die Kartennummer muss eingegeben werden.</string>
-    <string name="kevin_window_card_payment_redirect_title">Zahlung per Banküberweisung fortsetzen?</string>
-    <string name="kevin_window_card_payment_redirect_subtitle">Wollen Sie die Zahlung per Banküberweisung fortsetzen?</string>
-    <string name="kevin_window_card_payment_bank_redirect_subtitle">Wir haben festgestellt, dass Ihre Karten von %s ausgegeben wurde. Möchten Sie die Zahlung per Banküberweisung fortsetzen?</string>
 </resources>

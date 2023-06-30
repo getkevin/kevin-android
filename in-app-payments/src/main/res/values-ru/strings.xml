@@ -2,22 +2,4 @@
 <resources>
     <string name="kevin_window_payment_confirmation_title">Подтверждение платежа</string>
     <string name="kevin_dialog_exit_confirmation_payments_message">Вы уверены, что хотите отменить этот платеж?</string>
-    <string name="kevin_window_card_payment_label">Оплата картой</string>
-    <string name="kevin_window_card_payment_cardholder_name_label">Имя владельца карты</string>
-    <string name="kevin_window_card_payment_cardholder_name_hint">Иван Иванов</string>
-    <string name="kevin_window_card_payment_card_number_label">Номер карты</string>
-    <string name="kevin_window_card_payment_expiry_date_label">Срок действия</string>
-    <string name="kevin_window_card_payment_notice">kevin. не хранит вашу личную информацию или данные карты.</string>
-    <string name="kevin_window_card_payment_cvv_tooltip">CVV – это 3-значный код, указанный на обратной стороне вашей карты</string>
-    <string name="kevin_error_no_cardholder_name">Необходимо ввести имя владельца карты</string>
-    <string name="kevin_error_invalid_cvv">Введите действительный CVV</string>
-    <string name="kevin_error_no_cvv">Необходимо ввести CVV</string>
-    <string name="kevin_error_invalid_expiry_date">Срок действия недействителен</string>
-    <string name="kevin_error_no_expiry_date">Необходимо ввести срок действия</string>
-    <string name="kevin_error_card_expired">Срок действия карты истек</string>
-    <string name="kevin_error_invalid_card_number">Номер карты недействителен</string>
-    <string name="kevin_error_no_card_number">Необходимо ввести номер карты</string>
-    <string name="kevin_window_card_payment_redirect_title">Продолжить оплату банковским переводом?</string>
-    <string name="kevin_window_card_payment_redirect_subtitle">Вы хотите продолжить оплату банковским переводом?</string>
-    <string name="kevin_window_card_payment_bank_redirect_subtitle">Мы заметили, что ваша платежная карта выпущена %s. Вы хотите продолжить оплату банковским переводом?</string>
 </resources>

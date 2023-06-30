@@ -2,22 +2,4 @@
 <resources>
     <string name="kevin_window_payment_confirmation_title">Confirmação do pagamento</string>
     <string name="kevin_dialog_exit_confirmation_payments_message">Tem a certeza de que pretende cancelar este pagamento?</string>
-    <string name="kevin_window_card_payment_label">Pagamento por cartão</string>
-    <string name="kevin_window_card_payment_cardholder_name_label">Nome do Titular do Cartão</string>
-    <string name="kevin_window_card_payment_cardholder_name_hint">John Appleseed</string>
-    <string name="kevin_window_card_payment_card_number_label">Número do cartão</string>
-    <string name="kevin_window_card_payment_expiry_date_label">Data de expiração</string>
-    <string name="kevin_window_card_payment_notice">A kevin. não armazena nenhuma das suas informações pessoais ou dados do cartão.</string>
-    <string name="kevin_window_card_payment_cvv_tooltip">O CVV é um código de 3 dígitos que é exibido na parte de trás do seu cartão</string>
-    <string name="kevin_error_no_cardholder_name">É necessário introduzir o nome do titular do cartão</string>
-    <string name="kevin_error_invalid_cvv">Introduza um CVV válido</string>
-    <string name="kevin_error_no_cvv">É necessário introduzir o CVV</string>
-    <string name="kevin_error_invalid_expiry_date">A data de expiração é inválida</string>
-    <string name="kevin_error_no_expiry_date">É necessário introduzir a data de expiração</string>
-    <string name="kevin_error_card_expired">O cartão expirou</string>
-    <string name="kevin_error_invalid_card_number">O número do cartão é inválido</string>
-    <string name="kevin_error_no_card_number">É necessário introduzir o número do cartão</string>
-    <string name="kevin_window_card_payment_redirect_title">Continuar o pagamento por meio de transferência bancária?</string>
-    <string name="kevin_window_card_payment_redirect_subtitle">Gostaria de continuar o pagamento por meio de Transferência Bancária?</string>
-    <string name="kevin_window_card_payment_bank_redirect_subtitle">Reparámos que o seu cartão de pagamento foi emitido por %s. Gostaria de continuar o pagamento por meio de Transferência Bancária?</string>
 </resources>
