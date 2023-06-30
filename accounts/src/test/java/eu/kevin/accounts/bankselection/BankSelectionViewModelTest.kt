@@ -36,17 +36,18 @@ class BankSelectionViewModelTest : BaseViewModelTest() {
 
     private val defaultCountryIsoProvider = mockk<DefaultCountryIsoProvider>()
     private val countriesTestManager = spyk<CountriesTestManager>()
+
     private lateinit var viewModel: BankSelectionViewModel
 
     @Before
     override fun setUp() {
         super.setUp()
         viewModel = BankSelectionViewModel(
-            defaultCountryIsoProvider,
-            SupportedCountryUseCase(countriesTestManager),
-            GetSupportedBanksUseCase(BankTestManager()),
-            TestCoroutineDispatchers,
-            savedStateHandle
+            defaultCountryIsoProvider = defaultCountryIsoProvider,
+            countryUseCase = SupportedCountryUseCase(countriesTestManager),
+            banksUseCase = GetSupportedBanksUseCase(BankTestManager()),
+            dispatchers = TestCoroutineDispatchers,
+            savedStateHandle = savedStateHandle
         )
         every { savedStateHandle.get<Any>(any()) } returns null
     }

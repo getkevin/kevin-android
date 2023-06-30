@@ -5,4 +5,6 @@ import eu.kevin.common.architecture.interfaces.IState
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-internal object PaymentConfirmationState : IState, Parcelable
+internal data class PaymentConfirmationState(
+    val isProcessing: Boolean = false
+) : IState, Parcelable

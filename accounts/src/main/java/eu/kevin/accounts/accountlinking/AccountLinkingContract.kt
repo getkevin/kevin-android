@@ -14,6 +14,7 @@ object AccountLinkingContract : FragmentResultContract<FragmentResult<AccountLin
             it.configuration = configuration
         }
     }
+
     override fun parseResult(data: Bundle): FragmentResult<AccountLinkingFragmentResult> {
         return data.getParcelable(resultKey)!!
     }

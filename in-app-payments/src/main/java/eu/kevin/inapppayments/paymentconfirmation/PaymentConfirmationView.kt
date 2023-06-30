@@ -101,7 +101,11 @@ internal class PaymentConfirmationView(context: Context) :
         super.onDetachedFromWindow()
     }
 
-    override fun render(state: PaymentConfirmationState) = Unit
+    override fun render(state: PaymentConfirmationState) {
+        with(requireBinding()) {
+            progressView.visibility = if (state.isProcessing) VISIBLE else GONE
+        }
+    }
 
     override fun handleEvent(event: PaymentConfirmationEvent) {
         when (event) {
