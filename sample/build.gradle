@@ -48,7 +48,10 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:4.10.0"
 
     // kevin. SDK
-    implementation "eu.kevin.android:core:2.6.4"
-    implementation "eu.kevin.android:accounts:2.6.4"
-    implementation "eu.kevin.android:in-app-payments:2.6.4"
+    implementation project(":core")
+    implementation project(":accounts")
+    implementation project(":in-app-payments")
+//    implementation "eu.kevin.android:core:2.6.4"
+//    implementation "eu.kevin.android:accounts:2.6.4"
+//    implementation "eu.kevin.android:in-app-payments:2.6.4"
 }
