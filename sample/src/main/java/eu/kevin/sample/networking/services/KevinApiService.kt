@@ -22,9 +22,4 @@ internal interface KevinApiService {
     suspend fun initiateBankPayment(
         @Body request: InitiatePaymentRequest,
     ): InitiatePaymentResponse
-
-    @POST("payments/card")
-    suspend fun initiateCardPayment(
-        @Body request: InitiatePaymentRequest,
-    ): InitiatePaymentResponse
 }
