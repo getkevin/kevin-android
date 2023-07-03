@@ -19,7 +19,6 @@
     <attr name="kevinWindowTitleTextStyle" format="reference" />
     <attr name="kevinWindowSubtitleTextStyle" format="reference" />
     <attr name="kevinModalTitleTextStyle" format="reference" />
-    <attr name="kevinInputLabelTextStyle" format="reference" />
     <attr name="kevinHeaderTextStyle" format="reference" />
     <attr name="kevinItemTitleTextStyle" format="reference" />
     <attr name="kevinTermsAndConditionsTextStyle" format="reference" />
