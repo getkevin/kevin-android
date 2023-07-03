@@ -40,18 +40,13 @@
         <item name="kevinWindowTitleTextStyle">@style/Kevin.Text.Headline3</item>
         <item name="kevinWindowSubtitleTextStyle">@style/Kevin.Text.Subtitle1</item>
         <item name="kevinModalTitleTextStyle">@style/Kevin.Text.ModalTitle</item>
-        <item name="kevinInputLabelTextStyle">@style/Kevin.Text.Subtitle1</item>
         <item name="kevinHeaderTextStyle">@style/Kevin.Text.Caption1</item>
         <item name="kevinItemTitleTextStyle">@style/Kevin.Text.Title1</item>
-        <item name="kevinTextAmount">@style/Kevin.Text.Amount</item>
         <item name="kevinTermsAndConditionsTextStyle">@style/Kevin.Text.TermsAndConditions</item>
         <item name="kevinEmptyStateSubtitleTextStyle">@style/Kevin.Text.EmptyStateSubtitle</item>
 
         <item name="kevinPrimaryButtonStyle">@style/Kevin.Button.Primary</item>
-        <item name="kevinSecondaryButtonStyle">@style/Kevin.Button.Secondary</item>
         <item name="kevinToolbarStyle">@style/Kevin.Toolbar</item>
-        <item name="kevinTextInputContainerStyle">@style/Kevin.TextInput.Layout</item>
-        <item name="kevinTextInputStyle">@style/Kevin.TextInput</item>
         <item name="kevinWindowTransitionStyle">@style/Kevin.Window.Transition</item>
         <item name="kevinSelectionViewStyle">@style/Kevin.SelectionView</item>
         <item name="kevinProgressViewStyle">@style/Kevin.ProgressView</item>
@@ -107,18 +102,13 @@
         <item name="kevinWindowTitleTextStyle">@style/Kevin.Text.Headline3</item>
         <item name="kevinWindowSubtitleTextStyle">@style/Kevin.Text.Subtitle1</item>
         <item name="kevinModalTitleTextStyle">@style/Kevin.Text.ModalTitle</item>
-        <item name="kevinInputLabelTextStyle">@style/Kevin.Text.Subtitle1</item>
         <item name="kevinHeaderTextStyle">@style/Kevin.Text.Caption1</item>
         <item name="kevinItemTitleTextStyle">@style/Kevin.Text.Title1</item>
-        <item name="kevinTextAmount">@style/Kevin.Text.Amount</item>
         <item name="kevinTermsAndConditionsTextStyle">@style/Kevin.Text.TermsAndConditions</item>
         <item name="kevinEmptyStateSubtitleTextStyle">@style/Kevin.Text.EmptyStateSubtitle</item>
 
         <item name="kevinPrimaryButtonStyle">@style/Kevin.Button.Primary</item>
-        <item name="kevinSecondaryButtonStyle">@style/Kevin.Button.Secondary</item>
         <item name="kevinToolbarStyle">@style/Kevin.Toolbar</item>
-        <item name="kevinTextInputContainerStyle">@style/Kevin.TextInput.Layout</item>
-        <item name="kevinTextInputStyle">@style/Kevin.TextInput</item>
         <item name="kevinWindowTransitionStyle">@style/Kevin.Window.Transition</item>
         <item name="kevinSelectionViewStyle">@style/Kevin.SelectionView</item>
         <item name="kevinProgressViewStyle">@style/Kevin.ProgressView</item>
@@ -174,18 +164,13 @@
         <item name="kevinWindowTitleTextStyle">@style/Kevin.Text.Headline3</item>
         <item name="kevinWindowSubtitleTextStyle">@style/Kevin.Text.Subtitle1</item>
         <item name="kevinModalTitleTextStyle">@style/Kevin.Text.ModalTitle</item>
-        <item name="kevinInputLabelTextStyle">@style/Kevin.Text.Subtitle1</item>
         <item name="kevinHeaderTextStyle">@style/Kevin.Text.Caption1</item>
         <item name="kevinItemTitleTextStyle">@style/Kevin.Text.Title1</item>
-        <item name="kevinTextAmount">@style/Kevin.Text.Amount</item>
         <item name="kevinTermsAndConditionsTextStyle">@style/Kevin.Text.TermsAndConditions</item>
         <item name="kevinEmptyStateSubtitleTextStyle">@style/Kevin.Text.EmptyStateSubtitle</item>
 
         <item name="kevinPrimaryButtonStyle">@style/Kevin.Button.Primary</item>
-        <item name="kevinSecondaryButtonStyle">@style/Kevin.Button.Secondary</item>
         <item name="kevinToolbarStyle">@style/Kevin.Toolbar</item>
-        <item name="kevinTextInputContainerStyle">@style/Kevin.TextInput.Layout</item>
-        <item name="kevinTextInputStyle">@style/Kevin.TextInput</item>
         <item name="kevinWindowTransitionStyle">@style/Kevin.Window.Transition</item>
         <item name="kevinSelectionViewStyle">@style/Kevin.SelectionView</item>
         <item name="kevinProgressViewStyle">@style/Kevin.ProgressView</item>

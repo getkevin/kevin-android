@@ -17,8 +17,6 @@
     <public name="Kevin.Header" type="style" />
     <public name="Kevin.List.BankContainer" type="style" />
     <public name="Kevin.List.CountryContainer" type="style" />
-    <public name="Kevin.TextInput.Layout" type="style" />
-    <public name="Kevin.TextInput" type="style" />
 
     <!--    Base transitions    -->
     <public name="Kevin.Window.Transition" type="style" />
@@ -26,7 +24,6 @@
     <!--    Component attributes    -->
     <public name="kevinToolbarStyle" type="attr" />
     <public name="kevinPrimaryButtonStyle" type="attr" />
-    <public name="kevinSecondaryButtonStyle" type="attr" />
     <public name="kevinWindowTransitionStyle" type="attr" />
     <public name="kevinTextInputContainerStyle" type="attr" />
     <public name="kevinTextInputStyle" type="attr" />
@@ -40,10 +37,8 @@
     <public name="kevinWindowTitleTextStyle" type="attr" />
     <public name="kevinWindowSubtitleTextStyle" type="attr" />
     <public name="kevinModalTitleTextStyle" type="attr" />
-    <public name="kevinInputLabelTextStyle" type="attr" />
     <public name="kevinHeaderTextStyle" type="attr" />
     <public name="kevinItemTitleTextStyle" type="attr" />
-    <public name="kevinTextAmount" type="attr" />
     <public name="kevinTermsAndConditionsTextStyle" type="attr" />
 
     <!--    Dimension attributes    -->

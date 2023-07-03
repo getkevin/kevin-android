@@ -8,10 +8,7 @@
     <!--    Component attributes    -->
     <attr name="kevinToolbarStyle" format="reference" />
     <attr name="kevinPrimaryButtonStyle" format="reference" />
-    <attr name="kevinSecondaryButtonStyle" format="reference" />
     <attr name="kevinWindowTransitionStyle" format="reference" />
-    <attr name="kevinTextInputContainerStyle" format="reference" />
-    <attr name="kevinTextInputStyle" format="reference" />
     <attr name="kevinSelectionViewStyle" format="reference" />
     <attr name="kevinProgressViewStyle" format="reference" />
     <attr name="kevinHeaderStyle" format="reference" />
@@ -25,7 +22,6 @@
     <attr name="kevinInputLabelTextStyle" format="reference" />
     <attr name="kevinHeaderTextStyle" format="reference" />
     <attr name="kevinItemTitleTextStyle" format="reference" />
-    <attr name="kevinTextAmount" format="reference" />
     <attr name="kevinTermsAndConditionsTextStyle" format="reference" />
     <attr name="kevinEmptyStateSubtitleTextStyle" format="reference" />
 
