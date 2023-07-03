@@ -32,7 +32,6 @@
     <string name="kevin_country_name_is">Island</string>
     <string name="kevin_country_name_li">Lichtenstein</string>
     <string name="kevin_window_account_linking_title">Kontokoppling</string>
-    <string name="kevin_window_account_linking_card_title">Kortkoppling</string>
     <string name="kevin_window_country_selection_title">Välj land</string>
     <string name="kevin_window_bank_selection_title">Bankval</string>
     <string name="kevin_window_bank_selection_select_country_label">Välj land</string>

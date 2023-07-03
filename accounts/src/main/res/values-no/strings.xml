@@ -32,7 +32,6 @@
     <string name="kevin_country_name_is">Island</string>
     <string name="kevin_country_name_li">Liechtenstein</string>
     <string name="kevin_window_account_linking_title">Kontolenking</string>
-    <string name="kevin_window_account_linking_card_title">Kortlenking</string>
     <string name="kevin_window_country_selection_title">Velg land</string>
     <string name="kevin_window_bank_selection_title">Bankvalg</string>
     <string name="kevin_window_bank_selection_select_country_label">Velg land</string>

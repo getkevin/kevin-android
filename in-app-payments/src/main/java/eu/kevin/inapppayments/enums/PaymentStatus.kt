@@ -1,4 +1,4 @@
-package eu.kevin.inapppayments.common.enums
+package eu.kevin.inapppayments.enums
 
 enum class PaymentStatus(val value: String) {
     COMPLETED("completed"),

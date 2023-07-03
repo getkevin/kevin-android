@@ -32,7 +32,6 @@
     <string name="kevin_country_name_is">Исландия</string>
     <string name="kevin_country_name_li">Лихтенштейн</string>
     <string name="kevin_window_account_linking_title">Привязка аккаунта</string>
-    <string name="kevin_window_account_linking_card_title">Привязка карты</string>
     <string name="kevin_window_country_selection_title">Выбрать страну</string>
     <string name="kevin_window_bank_selection_title">Выбор банка</string>
     <string name="kevin_window_bank_selection_select_country_label">Выбрать страну</string>

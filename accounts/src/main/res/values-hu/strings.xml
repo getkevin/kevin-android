@@ -32,7 +32,6 @@
     <string name="kevin_country_name_is">Izland</string>
     <string name="kevin_country_name_li">Liechtenstein</string>
     <string name="kevin_window_account_linking_title">Fiók összekapcsolása</string>
-    <string name="kevin_window_account_linking_card_title">Kártya összekapcsolása</string>
     <string name="kevin_window_country_selection_title">Ország kiválasztása</string>
     <string name="kevin_window_bank_selection_title">Bank kiválasztása</string>
     <string name="kevin_window_bank_selection_select_country_label">Ország kiválasztása</string>

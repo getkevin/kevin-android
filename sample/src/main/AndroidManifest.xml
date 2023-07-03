@@ -37,11 +37,6 @@
             />
 
         <activity
-            android:name=".samples.payment.card.CardPaymentActivity"
-            android:screenOrientation="portrait"
-            />
-
-        <activity
             android:name=".samples.uicustomization.UiCustomizationActivity"
             android:screenOrientation="portrait"
             />

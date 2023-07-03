@@ -8,7 +8,7 @@ import eu.kevin.core.plugin.Kevin
 import eu.kevin.inapppayments.BuildConfig
 import eu.kevin.inapppayments.KevinPaymentsConfiguration
 import eu.kevin.inapppayments.KevinPaymentsPlugin
-import eu.kevin.inapppayments.common.enums.PaymentStatus
+import eu.kevin.inapppayments.enums.PaymentStatus
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationEvent.LoadWebPage
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 import eu.kevin.testcore.base.BaseViewModelTest

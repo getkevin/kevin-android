@@ -32,7 +32,6 @@
     <string name="kevin_country_name_is">Ισλανδία</string>
     <string name="kevin_country_name_li">Λιχτενστάιν</string>
     <string name="kevin_window_account_linking_title">Σύνδεση λογαριασμού</string>
-    <string name="kevin_window_account_linking_card_title">Σύνδεση κάρτας</string>
     <string name="kevin_window_country_selection_title">Επιλέξτε χώρα</string>
     <string name="kevin_window_bank_selection_title">Επιλογή τράπεζας</string>
     <string name="kevin_window_bank_selection_select_country_label">Επιλογή χώρας</string>

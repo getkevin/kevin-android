@@ -32,7 +32,6 @@
     <string name="kevin_country_name_is">Island</string>
     <string name="kevin_country_name_li">Liechtenstein</string>
     <string name="kevin_window_account_linking_title">Konto linkimine</string>
-    <string name="kevin_window_account_linking_card_title">Kaardi linkimine</string>
     <string name="kevin_window_country_selection_title">Valige riik</string>
     <string name="kevin_window_bank_selection_title">Panga valik</string>
     <string name="kevin_window_bank_selection_select_country_label">Valige riik</string>
