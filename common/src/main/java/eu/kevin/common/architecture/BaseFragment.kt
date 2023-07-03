@@ -20,7 +20,7 @@ abstract class BaseFragment<S : IState, I : IIntent, M : BaseViewModel<S, I>> :
     private val savable = Bundle()
 
     protected abstract val viewModel: M
-    protected var contentView: IView<S>? = null
+    private var contentView: IView<S>? = null
 
     abstract fun onCreateView(context: Context): IView<S>
 

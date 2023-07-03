@@ -36,11 +36,11 @@ android {
 }
 
 dependencies {
-    implementation "androidx.core:core-ktx:1.10.0"
+    implementation "androidx.core:core-ktx:1.10.1"
     implementation "androidx.appcompat:appcompat:1.6.1"
-    implementation "androidx.activity:activity-ktx:1.7.0"
+    implementation "androidx.activity:activity-ktx:1.7.2"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
-    implementation "com.google.android.material:material:1.8.0"
+    implementation "com.google.android.material:material:1.9.0"
 
     // Networking
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
@@ -48,7 +48,7 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:4.10.0"
 
     // kevin. SDK
-    implementation "eu.kevin.android:core:2.6.4"
-    implementation "eu.kevin.android:accounts:2.6.4"
-    implementation "eu.kevin.android:in-app-payments:2.6.4"
+    implementation "eu.kevin.android:core:2.7.0"
+    implementation "eu.kevin.android:accounts:2.7.0"
+    implementation "eu.kevin.android:in-app-payments:2.7.0"
 }

@@ -19,6 +19,7 @@
         <item name="android:colorBackground">#FF5B5B</item>
         <item name="kevinToolbarStyle">@style/CustomToolbarTheme</item>
         <item name="kevinLinkColor">#9C27B0</item>
+        <item name="kevinBankListItemContainerStyle">@style/KevinBankContainer</item>
 
         <!-- 4. For a full list of all possible customizable parameters please visit
              https://developer.kevin.eu/home/mobile-sdk/android/frame-customisation -->
@@ -28,4 +29,7 @@
         <item name="titleTextColor">#FF9800</item>
     </style>
 
+    <style name="KevinBankContainer" parent="Kevin.List.BankContainer">
+        <item name="android:background">@drawable/bank_list_item_background</item>
+    </style>
 </resources>

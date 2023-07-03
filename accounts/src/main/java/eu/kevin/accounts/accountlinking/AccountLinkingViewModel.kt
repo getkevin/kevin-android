@@ -69,8 +69,30 @@ internal class AccountLinkingViewModel(
 
         updateState {
             it.copy(
-                accountLinkingType = configuration.linkingType
+                accountLinkingType = configuration.linkingType,
+                isProcessing = false
             )
+        }
+
+        initializeWebUrl(url)
+    }
+
+    private suspend fun initializeWebUrl(url: String) {
+        val isDeepLinkingEnabled = Kevin.isDeepLinkingEnabled()
+
+        /*
+        We are checking for an existing redirect to avoid some
+        possible extensive redirects after process death restoration.
+         */
+        if (isDeepLinkingEnabled && savedStateHandle.get<String>("redirect_url") == url) {
+            updateState {
+                it.copy(isProcessing = true)
+            }
+            return
+        }
+
+        if (isDeepLinkingEnabled) {
+            savedStateHandle["redirect_url"] = url
         }
 
         _events.send(LoadWebPage(url))
@@ -100,9 +122,10 @@ internal class AccountLinkingViewModel(
     }
 
     @Suppress("UNCHECKED_CAST")
-    class Factory(owner: SavedStateRegistryOwner) :
-        AbstractSavedStateViewModelFactory(owner, null) {
-        override fun <T : ViewModel?> create(
+    class Factory(
+        owner: SavedStateRegistryOwner
+    ) : AbstractSavedStateViewModelFactory(owner, null) {
+        override fun <T : ViewModel> create(
             key: String,
             modelClass: Class<T>,
             handle: SavedStateHandle

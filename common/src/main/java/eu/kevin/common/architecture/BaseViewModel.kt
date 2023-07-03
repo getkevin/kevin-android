@@ -32,14 +32,13 @@ abstract class BaseViewModel<S : IState, I : IIntent>(
         }
     }
 
-    protected fun getSavedState(): S? =
-        savedStateHandle.get("saved_state")
+    protected fun getSavedState(): S? = savedStateHandle["saved_state"]
 
     protected abstract fun getInitialData(): S
     protected abstract suspend fun handleIntent(intent: I)
 
     protected suspend fun updateState(handler: suspend (intent: S) -> S) {
         _state.update { handler(_state.value) }
-        savedStateHandle.set("saved_state", _state.value)
+        savedStateHandle["saved_state"] = _state.value
     }
 }

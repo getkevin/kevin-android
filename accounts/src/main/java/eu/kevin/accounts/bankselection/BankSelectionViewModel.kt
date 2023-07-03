@@ -47,13 +47,11 @@ internal class BankSelectionViewModel constructor(
     private var banks: List<Bank> = emptyList()
         set(value) {
             field = value
-            savedStateHandle.set("banks", value)
+            savedStateHandle["banks"] = value
         }
         get() {
-            return if (field.isNotEmpty()) {
-                field
-            } else {
-                savedStateHandle.get("banks") ?: emptyList()
+            return field.ifEmpty {
+                savedStateHandle["banks"] ?: emptyList()
             }
         }
 
@@ -208,6 +206,7 @@ internal class BankSelectionViewModel constructor(
             }
             return
         }
+
         GlobalRouter.returnFragmentResult(
             BankSelectionContract,
             FragmentResult.Success(banks.first { it.id == selectedBank.bankId })
@@ -219,24 +218,24 @@ internal class BankSelectionViewModel constructor(
         private val context: Context,
         owner: SavedStateRegistryOwner
     ) : AbstractSavedStateViewModelFactory(owner, null) {
-        override fun <T : ViewModel?> create(
+        override fun <T : ViewModel> create(
             key: String,
             modelClass: Class<T>,
             handle: SavedStateHandle
         ): T {
             return BankSelectionViewModel(
-                DefaultCountryIsoProvider(
+                defaultCountryIsoProvider = DefaultCountryIsoProvider(
                     context,
                     context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
                 ),
-                SupportedCountryUseCase(
+                countryUseCase = SupportedCountryUseCase(
                     KevinCountriesManager(AccountsClientProvider.kevinAccountsClient)
                 ),
-                GetSupportedBanksUseCase(
+                banksUseCase = GetSupportedBanksUseCase(
                     KevinBankManager(AccountsClientProvider.kevinAccountsClient)
                 ),
-                DefaultCoroutineDispatchers,
-                handle
+                dispatchers = DefaultCoroutineDispatchers,
+                savedStateHandle = handle
             ) as T
         }
     }

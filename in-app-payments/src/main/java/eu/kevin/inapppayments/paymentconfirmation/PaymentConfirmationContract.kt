@@ -14,6 +14,7 @@ object PaymentConfirmationContract : FragmentResultContract<FragmentResult<Payme
             it.configuration = configuration
         }
     }
+
     override fun parseResult(data: Bundle): FragmentResult<PaymentConfirmationResult> {
         return data.getParcelable(resultKey)!!
     }

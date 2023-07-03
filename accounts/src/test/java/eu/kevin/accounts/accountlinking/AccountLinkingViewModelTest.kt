@@ -9,6 +9,7 @@ import eu.kevin.accounts.accountsession.enums.AccountLinkingType
 import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.extensions.appendQuery
 import eu.kevin.common.fragment.FragmentResult
+import eu.kevin.core.plugin.Kevin
 import eu.kevin.testcore.base.BaseViewModelTest
 import io.mockk.every
 import io.mockk.mockkClass
@@ -19,6 +20,7 @@ import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
@@ -38,7 +40,9 @@ class AccountLinkingViewModelTest : BaseViewModelTest() {
                 .build()
         )
 
-        viewModel = AccountLinkingViewModel(savedStateHandle)
+        viewModel = AccountLinkingViewModel(
+            savedStateHandle = savedStateHandle
+        )
         every { savedStateHandle.get<Any>(any()) } returns null
     }
 
@@ -68,9 +72,47 @@ class AccountLinkingViewModelTest : BaseViewModelTest() {
 
         assertEquals(1, states.size)
         assertEquals(LoadWebPage(expectedRedirectUrl), events[0])
+
         jobState.cancel()
         jobEvents.cancel()
     }
+
+    @Test
+    fun `test handleIntent() Initialize after process death when Deep Linking is enabled`() =
+        testCoroutineScope.runTest {
+            val urlQuery = ""
+            val state = "state"
+            val selectedBank = "SWEDBANK_LT"
+            val expectedRedirectUrl = BuildConfig.KEVIN_LINK_ACCOUNT_URL.format(
+                state,
+                selectedBank
+            ).appendQuery(urlQuery)
+            val config = AccountLinkingFragmentConfiguration(state, selectedBank, AccountLinkingType.BANK)
+
+            val states = mutableListOf<AccountLinkingState>()
+            val events = mutableListOf<AccountLinkingEvent>()
+
+            val jobState = launch { viewModel.state.toList(states) }
+            val jobEvents = launch { viewModel.events.toList(events) }
+
+            Kevin.setDeepLinkingEnabled(true)
+            every { savedStateHandle.get<String>("redirect_url") } returns expectedRedirectUrl
+
+            viewModel.intents.trySend(
+                AccountLinkingIntent.Initialize(
+                    config,
+                    urlQuery
+                )
+            )
+
+            assertEquals(2, states.size)
+            assertFalse(states[0].isProcessing)
+            assertTrue(states[1].isProcessing)
+            assertTrue(events.isEmpty())
+
+            jobState.cancel()
+            jobEvents.cancel()
+        }
 
     @Test
     fun `test handleIntent() HandleBackClicked`() = testCoroutineScope.runTest {

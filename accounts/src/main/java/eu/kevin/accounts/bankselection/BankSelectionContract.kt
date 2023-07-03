@@ -15,6 +15,7 @@ object BankSelectionContract : FragmentResultContract<FragmentResult<Bank>>() {
             it.configuration = configuration
         }
     }
+
     override fun parseResult(data: Bundle): FragmentResult<Bank> {
         return data.getParcelable(resultKey)!!
     }
