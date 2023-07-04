@@ -30,7 +30,7 @@ object WebFrameHelper {
             val textColor = getColorFromAttr(android.R.attr.textColorPrimary).toHexColor()
 
             return KevinWebFrameConfiguration(
-                customLayout = listOf("hl"),
+                customLayout = listOf("hl", "cdd"),
                 backgroundColor = backgroundColor,
                 baseColor = backgroundColor,
                 headingsColor = textColor,
