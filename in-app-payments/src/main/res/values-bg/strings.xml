@@ -2,22 +2,4 @@
 <resources>
     <string name="kevin_window_payment_confirmation_title">Потвърждение на плащането</string>
     <string name="kevin_dialog_exit_confirmation_payments_message">Сигурни ли сте, че искате да откажете това плащане?</string>
-    <string name="kevin_window_card_payment_label">Картово плащане</string>
-    <string name="kevin_window_card_payment_cardholder_name_label">Име на картодържателя</string>
-    <string name="kevin_window_card_payment_cardholder_name_hint">Присъединете се към Appleseed</string>
-    <string name="kevin_window_card_payment_card_number_label">Карта номер</string>
-    <string name="kevin_window_card_payment_expiry_date_label">Дата на валидност</string>
-    <string name="kevin_window_card_payment_notice">kevin. Не съхранява никаква част от данните на картата ви.</string>
-    <string name="kevin_window_card_payment_cvv_tooltip">CW е 3-цифрен код, изписан на гърба на картата</string>
-    <string name="kevin_error_no_cardholder_name">Трябва да бъде въведено име на картодържателя</string>
-    <string name="kevin_error_invalid_cvv">Въведете валиден CW код</string>
-    <string name="kevin_error_no_cvv">Трябва да бъде въведен CW код</string>
-    <string name="kevin_error_invalid_expiry_date">Датата на валидност е невалидна</string>
-    <string name="kevin_error_no_expiry_date">Трябва да бъде въведена дата на валидност</string>
-    <string name="kevin_error_card_expired">Картата е изтекла</string>
-    <string name="kevin_error_invalid_card_number">Номерът на картата е невалиден</string>
-    <string name="kevin_error_no_card_number">Трябва да бъде въведен номер на карта</string>
-    <string name="kevin_window_card_payment_redirect_title">Продължете плащането с банков трансфер?</string>
-    <string name="kevin_window_card_payment_redirect_subtitle">Искате ли да продължите плащането с Банков трансфер?</string>
-    <string name="kevin_window_card_payment_bank_redirect_subtitle">Забелязахме, че картата ви за разплащания е издадена от %s. Искате ли да продължите плащането с банков трансфер?</string>
 </resources>

@@ -2,22 +2,4 @@
 <resources>
     <string name="kevin_window_payment_confirmation_title">Potwierdzenie płatności</string>
     <string name="kevin_dialog_exit_confirmation_payments_message">Czy na pewno chcesz anulować tę płatność?</string>
-    <string name="kevin_window_card_payment_label">Płatność kartą</string>
-    <string name="kevin_window_card_payment_cardholder_name_label">Imię i nazwisko właściciela karty</string>
-    <string name="kevin_window_card_payment_cardholder_name_hint">Jan Nowak</string>
-    <string name="kevin_window_card_payment_card_number_label">Numer karty</string>
-    <string name="kevin_window_card_payment_expiry_date_label">Data ważności</string>
-    <string name="kevin_window_card_payment_notice">kevin. nie przechowuje żadnych danych osobowych ani danych karty.</string>
-    <string name="kevin_window_card_payment_cvv_tooltip">CVV to 3-cyfrowy kod znajdujący się na odwrocie karty</string>
-    <string name="kevin_error_no_cardholder_name">Należy wpisać imię i nazwisko właściciela karty</string>
-    <string name="kevin_error_invalid_cvv">Podaj poprawny kod CVV</string>
-    <string name="kevin_error_no_cvv">Należy podać kod CVV</string>
-    <string name="kevin_error_invalid_expiry_date">Data ważności jest nieprawidłowa</string>
-    <string name="kevin_error_no_expiry_date">Należy podać datę ważności</string>
-    <string name="kevin_error_card_expired">Karta straciła ważność</string>
-    <string name="kevin_error_invalid_card_number">Numer karty jest nieprawidłowy</string>
-    <string name="kevin_error_no_card_number">Należy podać numer karty</string>
-    <string name="kevin_window_card_payment_redirect_title">Kontynuować płatność przelewem bankowym?</string>
-    <string name="kevin_window_card_payment_redirect_subtitle">Czy chcesz kontynuować płatność przelewem bankowym?</string>
-    <string name="kevin_window_card_payment_bank_redirect_subtitle">Zauważyliśmy, że Twoja karta została wydana przez %s. </string>
 </resources>

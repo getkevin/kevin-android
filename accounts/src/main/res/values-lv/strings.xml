@@ -32,7 +32,6 @@
     <string name="kevin_country_name_is">Islande</string>
     <string name="kevin_country_name_li">Lihtenšteina</string>
     <string name="kevin_window_account_linking_title">Doties uz kontu</string>
-    <string name="kevin_window_account_linking_card_title">Pievienot karti</string>
     <string name="kevin_window_country_selection_title">Izvēlieties valsti</string>
     <string name="kevin_window_bank_selection_title">Izvēlieties banku</string>
     <string name="kevin_window_bank_selection_select_country_label">Izvēlieties valsti</string>

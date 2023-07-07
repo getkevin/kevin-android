@@ -23,11 +23,4 @@ internal class KevinApi(
         }
         return UUID.fromString(paymentId)
     }
-
-    suspend fun initiateCardPayment(request: InitiatePaymentRequest): UUID {
-        val paymentId = withContext(Dispatchers.IO) {
-            service.initiateCardPayment(request).id
-        }
-        return UUID.fromString(paymentId)
-    }
 }

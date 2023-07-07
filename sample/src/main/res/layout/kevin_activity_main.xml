@@ -27,15 +27,6 @@
         />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/card_payment_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:width="200dp"
-        android:text="@string/text_card_payment"
-        />
-
-    <com.google.android.material.button.MaterialButton
         android:id="@+id/ui_customization_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -56,15 +56,6 @@ internal class AccountLinkingViewModel(
                     configuration.selectedBankId
                 ).appendQuery(webFrameQueryParameters)
             }
-            else -> {
-                val baseCardPaymentUrl = if (Kevin.isSandbox()) {
-                    BuildConfig.KEVIN_SANDBOX_LINK_CARD_URL
-                } else {
-                    BuildConfig.KEVIN_LINK_CARD_URL
-                }
-                baseCardPaymentUrl.format(configuration.state)
-                    .appendQuery(webFrameQueryParameters)
-            }
         }
 
         updateState {

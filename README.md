@@ -26,10 +26,6 @@ We provide an easy solution to authenticate and manage user bank accounts.
 
 We provide a possibility to easily integrate bank payments in your app.
 
-- **Card Payments**
-
-We also provide card payments with a hybrid payment support, so the payment would be performed via bank if we detect that the card belongs to one of our supported banks.
-
 ## Documentation
 
 - SDK Documentation can be found [here](https://developer.kevin.eu/mobile/)

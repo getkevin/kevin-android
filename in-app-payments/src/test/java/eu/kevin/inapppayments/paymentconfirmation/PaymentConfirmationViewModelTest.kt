@@ -8,7 +8,7 @@ import eu.kevin.core.plugin.Kevin
 import eu.kevin.inapppayments.BuildConfig
 import eu.kevin.inapppayments.KevinPaymentsConfiguration
 import eu.kevin.inapppayments.KevinPaymentsPlugin
-import eu.kevin.inapppayments.common.enums.PaymentStatus
+import eu.kevin.inapppayments.enums.PaymentStatus
 import eu.kevin.inapppayments.paymentconfirmation.PaymentConfirmationEvent.LoadWebPage
 import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 import eu.kevin.testcore.base.BaseViewModelTest
@@ -122,38 +122,6 @@ class PaymentConfirmationViewModelTest : BaseViewModelTest() {
             jobStates.cancel()
             jobEvents.cancel()
         }
-
-    @Test
-    fun `test handleIntent() Initialize with card payment`() = testCoroutineScope.runTest {
-        val urlQuery = ""
-        val paymentId = "1234567"
-        val expectedRedirectUrl = BuildConfig.KEVIN_CARD_PAYMENT_URL.format(paymentId).appendQuery(urlQuery)
-        val config = PaymentConfirmationFragmentConfiguration(
-            paymentId,
-            PaymentType.CARD,
-            selectedBank = null,
-            skipAuthentication = false
-        )
-
-        val states = mutableListOf<PaymentConfirmationState>()
-        val events = mutableListOf<PaymentConfirmationEvent>()
-
-        val jobStates = launch { viewModel.state.toList(states) }
-        val jobEvents = launch { viewModel.events.toList(events) }
-
-        viewModel.intents.trySend(
-            PaymentConfirmationIntent.Initialize(
-                config,
-                ""
-            )
-        )
-
-        assertEquals(1, states.size)
-        assertEquals(LoadWebPage(expectedRedirectUrl), events[0])
-
-        jobStates.cancel()
-        jobEvents.cancel()
-    }
 
     @Test
     fun `test handleIntent() HandleBackClicked`() = testCoroutineScope.runTest {

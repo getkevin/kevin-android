@@ -2,22 +2,4 @@
 <resources>
     <string name="kevin_window_payment_confirmation_title">Betalingsbekræftelse</string>
     <string name="kevin_dialog_exit_confirmation_payments_message">Er du sikker på, at du vil annullere denne betaling?</string>
-    <string name="kevin_window_card_payment_label">Kortbetaling</string>
-    <string name="kevin_window_card_payment_cardholder_name_label">Kortholders navn</string>
-    <string name="kevin_window_card_payment_cardholder_name_hint">Jens Jensen</string>
-    <string name="kevin_window_card_payment_card_number_label">Kortnummer</string>
-    <string name="kevin_window_card_payment_expiry_date_label">Udløbsdato</string>
-    <string name="kevin_window_card_payment_notice">kevin. opbevarer ikke nogle af dine personlige oplysninger eller kortoplysninger.</string>
-    <string name="kevin_window_card_payment_cvv_tooltip">CVV er en 3-cifret kode, som findes på bagsiden af dit kort</string>
-    <string name="kevin_error_no_cardholder_name">Kortholders navn skal indtastes</string>
-    <string name="kevin_error_invalid_cvv">Indtast gyldigt CVV</string>
-    <string name="kevin_error_no_cvv">CVV skal indtastes</string>
-    <string name="kevin_error_invalid_expiry_date">Udløbsdato er ugyldig</string>
-    <string name="kevin_error_no_expiry_date">Udløbsdato skal indtastes</string>
-    <string name="kevin_error_card_expired">Kort er udløbet</string>
-    <string name="kevin_error_invalid_card_number">Kortnummer er ugyldigt</string>
-    <string name="kevin_error_no_card_number">Kortnummer skal indtastes</string>
-    <string name="kevin_window_card_payment_redirect_title">Fortsæt betaling med bankoverførsel?</string>
-    <string name="kevin_window_card_payment_redirect_subtitle">Ønsker du at fortsætte betaling via Bankoverførsel?</string>
-    <string name="kevin_window_card_payment_bank_redirect_subtitle">Vi har bemærket, at dit betalingskort er udstedt af %s. Ønsker du at fortsætte betaling via bankoverførsel?</string>
 </resources>

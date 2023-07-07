@@ -4,7 +4,6 @@
     <string name="text_back">Back</string>
     <string name="text_account_linking">Account Linking</string>
     <string name="text_bank_payment">Bank Payment</string>
-    <string name="text_card_payment">Card Payment</string>
     <string name="text_ui_customization">UI Customization</string>
 
     <string name="text_link_account">Link Account</string>
@@ -13,9 +12,6 @@
     <string name="text_initiate_bank_payment">Initiate Bank Payment</string>
     <string name="text_initiate_bank_payment_description">Tap the button to initiate bank payment process.</string>
     <string name="text_initiate_bank_payment_warning">In this sample we use live production banks, so by completing the payment flow 0.01 EUR will be deducted from your account.</string>
-
-    <string name="text_initiate_card_payment">Initiate Card Payment</string>
-    <string name="text_initiate_card_payment_description">Tap the button to initiate card payment process.</string>
 
     <string name="text_custom_ui_info">kevin. SDK allows developers to customize SDK\'s components to match their own application.\n\nGet started by visiting SampleApplication class and learning how to setup custom styling.</string>
     <string name="text_creditor_info">Creditor: %s\nCurrency: %s</string>

@@ -32,7 +32,6 @@
     <string name="kevin_country_name_is">Islândia</string>
     <string name="kevin_country_name_li">Liechtenstein</string>
     <string name="kevin_window_account_linking_title">Associação da conta</string>
-    <string name="kevin_window_account_linking_card_title">Associação do cartão</string>
     <string name="kevin_window_country_selection_title">Selecione o país</string>
     <string name="kevin_window_bank_selection_title">Seleção do banco</string>
     <string name="kevin_window_bank_selection_select_country_label">Selecione o país</string>

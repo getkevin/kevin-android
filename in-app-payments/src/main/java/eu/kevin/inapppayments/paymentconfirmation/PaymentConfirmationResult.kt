@@ -1,7 +1,7 @@
 package eu.kevin.inapppayments.paymentconfirmation
 
 import android.os.Parcelable
-import eu.kevin.inapppayments.common.enums.PaymentStatus
+import eu.kevin.inapppayments.enums.PaymentStatus
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

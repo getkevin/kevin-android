@@ -32,7 +32,6 @@
     <string name="kevin_country_name_is">Исландия</string>
     <string name="kevin_country_name_li">Лихтенщайн</string>
     <string name="kevin_window_account_linking_title">Свързване на профил</string>
-    <string name="kevin_window_account_linking_card_title">Свързване на карта</string>
     <string name="kevin_window_country_selection_title">Изберете държава</string>
     <string name="kevin_window_bank_selection_title">Избор на банка</string>
     <string name="kevin_window_bank_selection_select_country_label">Изберете държава</string>

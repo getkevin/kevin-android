@@ -106,8 +106,6 @@ internal class AccountLinkingView(context: Context) :
     override fun render(state: AccountLinkingState) = with(requireBinding()) {
         if (state.accountLinkingType == AccountLinkingType.BANK) {
             actionBar.title = context.getString(R.string.kevin_window_account_linking_title)
-        } else {
-            actionBar.title = context.getString(R.string.kevin_window_account_linking_card_title)
         }
         with(state.isProcessing) {
             accountLinkProgressView.visibility = if (this) VISIBLE else GONE

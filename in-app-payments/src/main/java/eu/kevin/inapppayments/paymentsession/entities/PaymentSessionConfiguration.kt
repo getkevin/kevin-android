@@ -58,6 +58,10 @@ data class PaymentSessionConfiguration(
          *
          * Default [PaymentType.BANK]
          */
+        @Deprecated(
+            "This method will be removed in the future versions of the SDK. " +
+                "You can safely remove it from you configuration."
+        )
         fun setPaymentType(paymentType: PaymentType): Builder {
             this.paymentType = paymentType
             return this

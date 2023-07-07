@@ -32,7 +32,6 @@
     <string name="kevin_country_name_is">Ísland</string>
     <string name="kevin_country_name_li">Liechtenstein</string>
     <string name="kevin_window_account_linking_title">Reikningstenging</string>
-    <string name="kevin_window_account_linking_card_title">Kortatenging</string>
     <string name="kevin_window_country_selection_title">Veldu land</string>
     <string name="kevin_window_bank_selection_title">Bankaval</string>
     <string name="kevin_window_bank_selection_select_country_label">Veldu land</string>

@@ -2,22 +2,4 @@
 <resources>
     <string name="kevin_window_payment_confirmation_title">Mokėjimo patvirtinimas</string>
     <string name="kevin_dialog_exit_confirmation_payments_message">Ar tikrai norite atšaukti šį mokėjimą?</string>
-    <string name="kevin_window_card_payment_label">Mokėjimas kortele</string>
-    <string name="kevin_window_card_payment_cardholder_name_label">Kortelės savininko vardas</string>
-    <string name="kevin_window_card_payment_cardholder_name_hint">John Appleseed</string>
-    <string name="kevin_window_card_payment_card_number_label">Kortelės numeris</string>
-    <string name="kevin_window_card_payment_expiry_date_label">Galiojimo data</string>
-    <string name="kevin_window_card_payment_notice">kevin. nesaugo jūsų asmens ar kortelės duomenų.</string>
-    <string name="kevin_window_card_payment_cvv_tooltip">CVV yra 3 skaitmenų kodas galinėje kortelės dalyje</string>
-    <string name="kevin_error_no_cardholder_name">Turite įvesti kortelės savininko vardą</string>
-    <string name="kevin_error_invalid_cvv">Įveskite tinkamą CVV</string>
-    <string name="kevin_error_no_cvv">Turite įvesti CVV</string>
-    <string name="kevin_error_invalid_expiry_date">Galiojimo pabaigos data netinkama</string>
-    <string name="kevin_error_no_expiry_date">Įveskite galiojimo pabaigos datą</string>
-    <string name="kevin_error_card_expired">Kortelės galiojimas pasibaigė</string>
-    <string name="kevin_error_invalid_card_number">Kortelės numeris netinkamas</string>
-    <string name="kevin_error_no_card_number">Įveskite kortelės numerį</string>
-    <string name="kevin_window_card_payment_redirect_title">Tęsti mokėjimą banko pavedimu?</string>
-    <string name="kevin_window_card_payment_redirect_subtitle">Ar norite tęsti mokėjimą banko pavedimu?</string>
-    <string name="kevin_window_card_payment_bank_redirect_subtitle">Pastebėjome, kad jūsų mokėjimo kortelę išdavė %s. Ar norite tęsti mokėjimą banko pavedimu?</string>
 </resources>

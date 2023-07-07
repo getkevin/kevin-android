@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import eu.kevin.sample.databinding.KevinActivityMainBinding
 import eu.kevin.sample.samples.accountlinking.AccountLinkingActivity
 import eu.kevin.sample.samples.payment.bank.BankPaymentActivity
-import eu.kevin.sample.samples.payment.card.CardPaymentActivity
 import eu.kevin.sample.samples.uicustomization.UiCustomizationActivity
 
 internal class MainActivity : AppCompatActivity() {
@@ -25,10 +24,6 @@ internal class MainActivity : AppCompatActivity() {
 
             bankPaymentButton.setOnClickListener {
                 openActivity(BankPaymentActivity::class.java)
-            }
-
-            cardPaymentButton.setOnClickListener {
-                openActivity(CardPaymentActivity::class.java)
             }
 
             uiCustomizationButton.setOnClickListener {

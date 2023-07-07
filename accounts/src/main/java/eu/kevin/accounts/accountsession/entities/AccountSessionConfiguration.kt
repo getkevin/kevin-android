@@ -55,6 +55,10 @@ data class AccountSessionConfiguration internal constructor(
          *
          * Default [AccountLinkingType.BANK]
          */
+        @Deprecated(
+            "This method will be removed in the future versions of the SDK. " +
+                "You can safely remove it from you configuration."
+        )
         fun setLinkingType(linkingType: AccountLinkingType): Builder {
             accountLinkingType = linkingType
             return this
