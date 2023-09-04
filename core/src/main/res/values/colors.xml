@@ -7,10 +7,10 @@
 
     <color name="kevin_warning_red">#ff3b30</color>
 
-    <color name="kevin_blue">#5d80fe</color>
+    <color name="kevin_blue">#192739</color>
     <color name="kevin_blue_transparent">#1a5d80fe</color>
     <color name="kevin_dark_blue">#0b1e42</color>
-    <color name="kevin_extra_light_blue">#f2f2f7</color>
+    <color name="kevin_extra_light_blue">#F5F2F3</color>
 
     <color name="kevin_gray_0">#373c42</color>
     <color name="kevin_gray_1">#7c8894</color>
