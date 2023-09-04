@@ -13,7 +13,7 @@ internal sealed class BankSelectionIntent : IIntent {
         val configuration: BankSelectionFragmentConfiguration
     ) : BankSelectionIntent()
 
-    object HandleContinueClicked : BankSelectionIntent()
-    object HandleBackClicked : BankSelectionIntent()
+    data object HandleContinueClicked : BankSelectionIntent()
+    data object HandleBackClicked : BankSelectionIntent()
     data class HandleBankSelection(val bankId: String) : BankSelectionIntent()
 }

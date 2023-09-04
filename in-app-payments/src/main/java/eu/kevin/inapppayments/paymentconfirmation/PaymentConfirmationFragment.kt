@@ -23,7 +23,7 @@ internal class PaymentConfirmationFragment :
     DeepLinkHandler {
 
     override val viewModel: PaymentConfirmationViewModel by viewModels {
-        PaymentConfirmationViewModel.Factory(this)
+        PaymentConfirmationViewModel.Factory
     }
 
     var configuration: PaymentConfirmationFragmentConfiguration? by savedState()
