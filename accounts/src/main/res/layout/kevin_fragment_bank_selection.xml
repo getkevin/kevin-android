@@ -124,7 +124,7 @@
         android:id="@+id/bottom_container"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="?colorSurface"
+        android:background="?android:colorBackground"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
