@@ -2,8 +2,8 @@
 <resources>
 
     <style name="BaseTheme" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/blue</item>
-        <item name="colorPrimaryDark">@color/blue</item>
+        <item name="colorPrimary">@color/dark_blue</item>
+        <item name="colorPrimaryDark">@color/dark_blue</item>
     </style>
 
     <!-- Only relevant for UI customization sample. -->
