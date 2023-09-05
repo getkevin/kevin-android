@@ -169,7 +169,7 @@
         <item name="kevinTermsAndConditionsTextStyle">@style/Kevin.Text.TermsAndConditions</item>
         <item name="kevinEmptyStateSubtitleTextStyle">@style/Kevin.Text.EmptyStateSubtitle</item>
 
-        <item name="kevinPrimaryButtonStyle">@style/Kevin.Button.Primary.Dark</item>
+        <item name="kevinPrimaryButtonStyle">@style/Kevin.Button.Primary</item>
         <item name="kevinToolbarStyle">@style/Kevin.Toolbar</item>
         <item name="kevinWindowTransitionStyle">@style/Kevin.Window.Transition</item>
         <item name="kevinSelectionViewStyle">@style/Kevin.SelectionView</item>
