@@ -26,8 +26,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:indeterminate="true"
-        android:indeterminateTint="@color/primary_accent"
         android:visibility="gone"
+        app:indicatorColor="@color/primary_accent"
         />
 
     <TextView
