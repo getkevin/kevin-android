@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="BaseTheme" parent="Theme.Material3.DayNight.NoActionBar" />
+    <style name="BaseTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@color/primary_background</item>
+    </style>
 
     <!-- Only relevant for UI customization sample. -->
 
