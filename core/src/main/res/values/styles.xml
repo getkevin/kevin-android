@@ -20,6 +20,11 @@
         <item name="backgroundTint">@color/kevin_blue</item>
     </style>
 
+    <style name="Kevin.Button.Primary.Dark" parent="Kevin.Button.Primary">
+        <item name="android:textColor">@color/kevin_dark_blue</item>
+        <item name="backgroundTint">@color/kevin_neon_yellow</item>
+    </style>
+
     <style name="Kevin.Button.Secondary" parent="Widget.MaterialComponents.Button">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
@@ -48,7 +53,7 @@
         <item name="android:layout_marginStart">?kevinMarginStart</item>
         <item name="android:layout_marginEnd">?kevinMarginEnd</item>
         <item name="android:textAppearance">?kevinHeaderTextStyle</item>
-        <item name="android:textColor">@color/kevin_gray_1</item>
+        <item name="android:textColor">?android:textColorSecondary</item>
     </style>
 
     <style name="Kevin.List.BankContainer" parent="android:Widget">
@@ -119,8 +124,9 @@
     </style>
 
     <style name="Kevin.Text.TermsAndConditions" parent="@android:style/TextAppearance">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">15sp</item>
         <item name="fontFamily">@font/kevin_circular_std_book</item>
+        <item name="android:lineSpacingExtra">1dp</item>
         <item name="android:textColor">?android:attr/textColorSecondary</item>
         <item name="android:gravity">start</item>
         <item name="android:textStyle">normal</item>

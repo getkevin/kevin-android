@@ -5,6 +5,7 @@
     android:id="@+id/root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary_background"
     android:gravity="center"
     android:orientation="vertical"
     android:theme="@style/BaseTheme"
@@ -15,6 +16,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/text_link_account"
+        android:textColor="@color/primary_on_accent"
+        app:backgroundTint="@color/primary_accent"
         app:cornerRadius="8dp"
         />
 
@@ -23,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:indeterminate="true"
-        android:indeterminateTint="@color/dark_blue"
+        android:indeterminateTint="@color/primary_accent"
         android:visibility="gone"
         />
 

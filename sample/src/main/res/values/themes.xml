@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="BaseTheme" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/dark_blue</item>
-        <item name="colorPrimaryDark">@color/dark_blue</item>
-    </style>
+    <style name="BaseTheme" parent="Theme.Material3.DayNight.NoActionBar" />
 
     <!-- Only relevant for UI customization sample. -->
 

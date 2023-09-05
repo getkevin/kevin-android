@@ -3,6 +3,7 @@ package eu.kevin.sample
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import eu.kevin.sample.databinding.KevinActivityMainBinding
 import eu.kevin.sample.samples.accountlinking.AccountLinkingActivity
 import eu.kevin.sample.samples.payment.bank.BankPaymentActivity
@@ -16,6 +17,7 @@ internal class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = KevinActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.primary_background)
 
         with(binding) {
             accountLinkingButton.setOnClickListener {
