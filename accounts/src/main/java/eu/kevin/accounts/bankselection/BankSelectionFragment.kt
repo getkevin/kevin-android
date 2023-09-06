@@ -23,7 +23,7 @@ internal class BankSelectionFragment :
     var configuration: BankSelectionFragmentConfiguration? by savedState()
 
     override val viewModel: BankSelectionViewModel by viewModels {
-        BankSelectionViewModel.Factory(requireContext(), this)
+        BankSelectionViewModel.createViewModelFactory(requireContext())
     }
 
     override fun onCreateView(context: Context): IView<BankSelectionState> {

@@ -1,10 +1,11 @@
 package eu.kevin.accounts.countryselection
 
-import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewModelScope
-import androidx.savedstate.SavedStateRegistryOwner
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
 import eu.kevin.accounts.countryselection.CountrySelectionIntent.HandleCountrySelection
 import eu.kevin.accounts.countryselection.CountrySelectionIntent.Initialize
 import eu.kevin.accounts.countryselection.entities.Country
@@ -83,23 +84,19 @@ internal class CountrySelectionViewModel constructor(
         GlobalRouter.returnFragmentResult(CountrySelectionContract, selectedCountry!!.iso)
     }
 
-    @Suppress("UNCHECKED_CAST")
-    class Factory(owner: SavedStateRegistryOwner) :
-        AbstractSavedStateViewModelFactory(owner, null) {
-        override fun <T : ViewModel> create(
-            key: String,
-            modelClass: Class<T>,
-            handle: SavedStateHandle
-        ): T {
-            return CountrySelectionViewModel(
-                SupportedCountryUseCase(
-                    KevinCountriesManager(
-                        kevinAccountsClient = AccountsClientProvider.kevinAccountsClient
-                    )
-                ),
-                DefaultCoroutineDispatchers,
-                handle
-            ) as T
+    companion object {
+        val Factory: ViewModelProvider.Factory = viewModelFactory {
+            initializer {
+                CountrySelectionViewModel(
+                    savedStateHandle = createSavedStateHandle(),
+                    countryUseCase = SupportedCountryUseCase(
+                        KevinCountriesManager(
+                            kevinAccountsClient = AccountsClientProvider.kevinAccountsClient
+                        )
+                    ),
+                    dispatchers = DefaultCoroutineDispatchers
+                )
+            }
         }
     }
 }

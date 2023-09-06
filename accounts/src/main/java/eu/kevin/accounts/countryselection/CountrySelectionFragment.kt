@@ -14,7 +14,7 @@ internal class CountrySelectionFragment :
     var configuration: CountrySelectionFragmentConfiguration? by savedState()
 
     override val viewModel: CountrySelectionViewModel by viewModels {
-        CountrySelectionViewModel.Factory(this)
+        CountrySelectionViewModel.Factory
     }
 
     override fun onCreateView(context: Context): IView<CountrySelectionState> {
