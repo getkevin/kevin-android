@@ -8,6 +8,7 @@ internal sealed class AccountLinkingIntent : IIntent {
         val configuration: AccountLinkingFragmentConfiguration,
         val webFrameQueryParameters: String
     ) : AccountLinkingIntent()
+
     data class HandleAuthorization(val uri: Uri) : AccountLinkingIntent()
-    object HandleBackClicked : AccountLinkingIntent()
+    data object HandleBackClicked : AccountLinkingIntent()
 }

@@ -8,6 +8,6 @@ internal sealed class PaymentConfirmationIntent : IIntent {
         val configuration: PaymentConfirmationFragmentConfiguration,
         val webFrameQueryParameters: String
     ) : PaymentConfirmationIntent()
-    object HandleBackClicked : PaymentConfirmationIntent()
+    data object HandleBackClicked : PaymentConfirmationIntent()
     data class HandlePaymentCompleted(val uri: Uri) : PaymentConfirmationIntent()
 }
