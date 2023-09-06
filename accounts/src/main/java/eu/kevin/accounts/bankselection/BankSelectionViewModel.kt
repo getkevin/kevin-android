@@ -2,11 +2,12 @@ package eu.kevin.accounts.bankselection
 
 import android.content.Context
 import android.telephony.TelephonyManager
-import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewModelScope
-import androidx.savedstate.SavedStateRegistryOwner
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
 import eu.kevin.accounts.bankselection.BankSelectionIntent.HandleBackClicked
 import eu.kevin.accounts.bankselection.BankSelectionIntent.HandleBankSelection
 import eu.kevin.accounts.bankselection.BankSelectionIntent.HandleContinueClicked
@@ -213,30 +214,26 @@ internal class BankSelectionViewModel constructor(
         )
     }
 
-    @Suppress("UNCHECKED_CAST")
-    class Factory(
-        private val context: Context,
-        owner: SavedStateRegistryOwner
-    ) : AbstractSavedStateViewModelFactory(owner, null) {
-        override fun <T : ViewModel> create(
-            key: String,
-            modelClass: Class<T>,
-            handle: SavedStateHandle
-        ): T {
-            return BankSelectionViewModel(
-                defaultCountryIsoProvider = DefaultCountryIsoProvider(
-                    context,
-                    context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-                ),
-                countryUseCase = SupportedCountryUseCase(
-                    KevinCountriesManager(AccountsClientProvider.kevinAccountsClient)
-                ),
-                banksUseCase = GetSupportedBanksUseCase(
-                    KevinBankManager(AccountsClientProvider.kevinAccountsClient)
-                ),
-                dispatchers = DefaultCoroutineDispatchers,
-                savedStateHandle = handle
-            ) as T
+    companion object {
+        fun createViewModelFactory(context: Context): ViewModelProvider.Factory {
+            return viewModelFactory {
+                initializer {
+                    BankSelectionViewModel(
+                        savedStateHandle = createSavedStateHandle(),
+                        defaultCountryIsoProvider = DefaultCountryIsoProvider(
+                            context,
+                            context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+                        ),
+                        countryUseCase = SupportedCountryUseCase(
+                            KevinCountriesManager(AccountsClientProvider.kevinAccountsClient)
+                        ),
+                        banksUseCase = GetSupportedBanksUseCase(
+                            KevinBankManager(AccountsClientProvider.kevinAccountsClient)
+                        ),
+                        dispatchers = DefaultCoroutineDispatchers
+                    )
+                }
+            }
         }
     }
 }

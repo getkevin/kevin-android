@@ -1,10 +1,11 @@
 package eu.kevin.inapppayments.paymentconfirmation
 
 import android.net.Uri
-import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
-import androidx.savedstate.SavedStateRegistryOwner
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.createSavedStateHandle
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
 import eu.kevin.common.architecture.BaseViewModel
 import eu.kevin.common.architecture.routing.GlobalRouter
 import eu.kevin.common.extensions.appendQuery
@@ -122,18 +123,13 @@ internal class PaymentConfirmationViewModel(
         }
     }
 
-    @Suppress("UNCHECKED_CAST")
-    class Factory(
-        owner: SavedStateRegistryOwner
-    ) : AbstractSavedStateViewModelFactory(owner, null) {
-        override fun <T : ViewModel> create(
-            key: String,
-            modelClass: Class<T>,
-            handle: SavedStateHandle
-        ): T {
-            return PaymentConfirmationViewModel(
-                handle
-            ) as T
+    companion object {
+        val Factory: ViewModelProvider.Factory = viewModelFactory {
+            initializer {
+                PaymentConfirmationViewModel(
+                    savedStateHandle = createSavedStateHandle()
+                )
+            }
         }
     }
 }

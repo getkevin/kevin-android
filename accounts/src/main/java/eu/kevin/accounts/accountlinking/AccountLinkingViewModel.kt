@@ -1,10 +1,11 @@
 package eu.kevin.accounts.accountlinking
 
 import android.net.Uri
-import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
-import androidx.savedstate.SavedStateRegistryOwner
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.createSavedStateHandle
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
 import eu.kevin.accounts.BuildConfig
 import eu.kevin.accounts.KevinAccountsPlugin
 import eu.kevin.accounts.accountlinking.AccountLinkingEvent.LoadWebPage
@@ -112,18 +113,13 @@ internal class AccountLinkingViewModel(
         }
     }
 
-    @Suppress("UNCHECKED_CAST")
-    class Factory(
-        owner: SavedStateRegistryOwner
-    ) : AbstractSavedStateViewModelFactory(owner, null) {
-        override fun <T : ViewModel> create(
-            key: String,
-            modelClass: Class<T>,
-            handle: SavedStateHandle
-        ): T {
-            return AccountLinkingViewModel(
-                handle
-            ) as T
+    companion object {
+        val Factory: ViewModelProvider.Factory = viewModelFactory {
+            initializer {
+                AccountLinkingViewModel(
+                    savedStateHandle = createSavedStateHandle()
+                )
+            }
         }
     }
 }
