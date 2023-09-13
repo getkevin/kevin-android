@@ -4,7 +4,7 @@
     <style name="Theme.Kevin.Base" parent="Theme.Kevin.Base.21">
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">false</item>
-        <item name="android:navigationBarColor">@color/kevin_black</item>
+        <item name="android:navigationBarColor">@color/kevin_blue</item>
         <item name="android:windowLightNavigationBar">false</item>
     </style>
 
