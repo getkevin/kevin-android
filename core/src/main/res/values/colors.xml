@@ -2,18 +2,23 @@
 <resources>
     <color name="kevin_black">#121212</color>
     <color name="kevin_black_30">#4d000000</color>
-
     <color name="kevin_white">#ffffff</color>
+    <color name="kevin_white_2">#DED3D8</color>
 
     <color name="kevin_warning_red">#ff3b30</color>
 
-    <color name="kevin_blue">#5d80fe</color>
+    <color name="kevin_blue">#192739</color>
+    <color name="kevin_blue_2">#303D4D</color>
     <color name="kevin_blue_transparent">#1a5d80fe</color>
     <color name="kevin_dark_blue">#0b1e42</color>
-    <color name="kevin_extra_light_blue">#f2f2f7</color>
+
+    <color name="kevin_extra_light_blue">#F5F2F3</color>
+    <color name="kevin_neon_yellow">#E1FA70</color>
 
     <color name="kevin_gray_0">#373c42</color>
     <color name="kevin_gray_1">#7c8894</color>
     <color name="kevin_gray_2">#bcc4cc</color>
     <color name="kevin_gray_5">#e6e7ee</color>
+    <color name="kevin_gray_6">#E0E1E5</color>
+    <color name="kevin_gray_7">#757D88</color>
 </resources>

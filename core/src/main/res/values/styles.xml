@@ -9,13 +9,13 @@
         <item name="titleTextColor">?android:attr/textColorPrimary</item>
     </style>
 
-    <style name="Kevin.Button.Primary" parent="Widget.MaterialComponents.Button">
+    <style name="Kevin.Button.Primary" parent="Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:minHeight">58dp</item>
         <item name="cornerRadius">8dp</item>
         <item name="android:textAppearance">@style/Kevin.Text.Button</item>
-        <item name="android:textColor">@color/kevin_white</item>
+        <item name="android:textColor">@color/kevin_white_2</item>
         <item name="android:textAllCaps">false</item>
         <item name="backgroundTint">@color/kevin_blue</item>
     </style>
@@ -41,14 +41,14 @@
     <style name="Kevin.ProgressView" parent="Widget.AppCompat.ProgressBar">
         <item name="android:indeterminate">true</item>
         <item name="android:indeterminateTintMode">src_atop</item>
-        <item name="android:indeterminateTint">@color/kevin_blue</item>
+        <item name="android:indeterminateTint">?android:colorPrimary</item>
     </style>
 
     <style name="Kevin.Header" parent="android:Widget">
         <item name="android:layout_marginStart">?kevinMarginStart</item>
         <item name="android:layout_marginEnd">?kevinMarginEnd</item>
         <item name="android:textAppearance">?kevinHeaderTextStyle</item>
-        <item name="android:textColor">@color/kevin_gray_1</item>
+        <item name="android:textColor">?android:textColorSecondary</item>
     </style>
 
     <style name="Kevin.List.BankContainer" parent="android:Widget">
@@ -119,8 +119,9 @@
     </style>
 
     <style name="Kevin.Text.TermsAndConditions" parent="@android:style/TextAppearance">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">15sp</item>
         <item name="fontFamily">@font/kevin_circular_std_book</item>
+        <item name="android:lineSpacingExtra">1dp</item>
         <item name="android:textColor">?android:attr/textColorSecondary</item>
         <item name="android:gravity">start</item>
         <item name="android:textStyle">normal</item>

@@ -22,7 +22,7 @@
         <item name="android:colorBackground">@color/kevin_extra_light_blue</item>
         <item name="colorOnBackground">@color/kevin_black</item>
 
-        <item name="colorControlHighlight">@color/kevin_blue</item>
+        <item name="colorControlHighlight">@color/kevin_gray_2</item>
         <item name="colorControlActivated">@color/kevin_gray_5</item>
 
         <item name="kevinColorWarningBackground">@color/kevin_blue_transparent</item>
@@ -84,7 +84,7 @@
         <item name="android:colorBackground">@color/kevin_extra_light_blue</item>
         <item name="colorOnBackground">@color/kevin_black</item>
 
-        <item name="colorControlHighlight">@color/kevin_blue</item>
+        <item name="colorControlHighlight">@color/kevin_gray_2</item>
         <item name="colorControlActivated">@color/kevin_gray_5</item>
 
         <item name="kevinColorWarningBackground">@color/kevin_blue_transparent</item>
@@ -126,7 +126,7 @@
     </style>
 
     <style name="Theme.Kevin.Base.21.Dark" parent="Theme.MaterialComponents.NoActionBar">
-        <item name="colorPrimary">@color/kevin_blue</item>
+        <item name="colorPrimary">@color/kevin_neon_yellow</item>
         <item name="colorPrimaryVariant">@color/kevin_dark_blue</item>
         <item name="colorOnPrimary">@color/kevin_white</item>
 
@@ -137,16 +137,16 @@
         <item name="colorError">@color/kevin_warning_red</item>
         <item name="colorOnError">@color/kevin_white</item>
 
-        <item name="colorSurface">@color/kevin_gray_0</item>
+        <item name="colorSurface">@color/kevin_blue_2</item>
         <item name="colorOnSurface">@color/kevin_white</item>
 
         <item name="android:textColorPrimary">@color/kevin_white</item>
-        <item name="android:textColorSecondary">@color/kevin_gray_1</item>
+        <item name="android:textColorSecondary">@color/kevin_gray_6</item>
 
-        <item name="android:colorBackground">@color/kevin_black</item>
+        <item name="android:colorBackground">@color/kevin_blue</item>
         <item name="colorOnBackground">@color/kevin_white</item>
 
-        <item name="colorControlHighlight">@color/kevin_blue</item>
+        <item name="colorControlHighlight">@color/kevin_gray_7</item>
         <item name="colorControlActivated">@color/kevin_blue</item>
 
         <item name="kevinColorWarningBackground">@color/kevin_blue_transparent</item>
@@ -155,11 +155,11 @@
 
         <item name="bottomSheetDialogTheme">@style/Theme.Kevin.BottomSheet.Base</item>
 
-        <item name="android:navigationBarColor">@color/kevin_black_30</item>
+        <item name="android:navigationBarColor">@color/kevin_blue</item>
         <item name="android:statusBarColor">@color/kevin_black_30</item>
 
         <item name="kevinSheetHandleColor">@color/kevin_gray_2</item>
-        <item name="kevinLinkColor">@color/kevin_blue</item>
+        <item name="kevinLinkColor">@color/kevin_neon_yellow</item>
 
         <item name="kevinWindowTitleTextStyle">@style/Kevin.Text.Headline3</item>
         <item name="kevinWindowSubtitleTextStyle">@style/Kevin.Text.Subtitle1</item>
@@ -208,7 +208,7 @@
         <item name="colorSurface">@color/kevin_white</item>
         <item name="colorOnSurface">@color/kevin_black</item>
 
-        <item name="colorControlHighlight">@color/kevin_blue</item>
+        <item name="colorControlHighlight">@color/kevin_gray_2</item>
         <item name="colorControlActivated">@color/kevin_gray_5</item>
 
         <item name="bottomSheetStyle">@style/Kevin.BottomSheet.Style</item>
@@ -234,7 +234,7 @@
         <item name="colorSurface">@color/kevin_white</item>
         <item name="colorOnSurface">@color/kevin_black</item>
 
-        <item name="colorControlHighlight">@color/kevin_blue</item>
+        <item name="colorControlHighlight">@color/kevin_gray_2</item>
         <item name="colorControlActivated">@color/kevin_gray_5</item>
 
         <item name="bottomSheetStyle">@style/Kevin.BottomSheet.Style</item>
@@ -257,11 +257,11 @@
         <item name="colorError">@color/kevin_warning_red</item>
         <item name="colorOnError">@color/kevin_white</item>
 
-        <item name="colorSurface">@color/kevin_gray_0</item>
+        <item name="colorSurface">@color/kevin_blue_2</item>
         <item name="colorOnSurface">@color/kevin_white</item>
 
-        <item name="colorControlHighlight">@color/kevin_blue</item>
-        <item name="colorControlActivated">@color/kevin_blue</item>
+        <item name="colorControlHighlight">@color/kevin_gray_7</item>
+        <item name="colorControlActivated">@color/kevin_gray_7</item>
 
         <item name="elevationOverlayEnabled">false</item>
         <item name="bottomSheetStyle">@style/Kevin.BottomSheet.Style.Dark</item>
@@ -285,7 +285,7 @@
 
     <style name="Kevin.BottomSheet.Style.Dark" parent="Widget.MaterialComponents.BottomSheet">
         <item name="shapeAppearanceOverlay">@style/Kevin.BottomSheet.Style.ShapeOverlay</item>
-        <item name="backgroundTint">@color/kevin_black</item>
+        <item name="backgroundTint">@color/kevin_blue</item>
     </style>
 
 </resources>

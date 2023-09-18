@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--  Component styles  -->
+    <style name="Kevin.Button.Primary" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">58dp</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:textAppearance">@style/Kevin.Text.Button</item>
+        <item name="android:textColor">@color/kevin_dark_blue</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="backgroundTint">@color/kevin_neon_yellow</item>
+    </style>
+
+</resources>

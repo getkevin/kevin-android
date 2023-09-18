@@ -2,5 +2,8 @@
 <resources>
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
-    <color name="blue">#5d80fe</color>
+
+    <color name="primary_background">#F5F2F3</color>
+    <color name="primary_accent">#192739</color>
+    <color name="primary_on_accent">#FFFFFF</color>
 </resources>
