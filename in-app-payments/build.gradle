@@ -58,7 +58,7 @@ android {
     publishing {
         singleVariant("release") {
             withSourcesJar()
-            // withJavadocJar()
+            // withJavadocJar() https://github.com/Kotlin/dokka/issues/2956
         }
     }
 
