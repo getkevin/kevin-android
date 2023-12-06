@@ -16,7 +16,6 @@ import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 import eu.kevin.sample.R
 import eu.kevin.sample.databinding.KevinActivityPaymentsBankBinding
 import kotlinx.coroutines.launch
-import java.util.UUID
 
 internal class BankPaymentActivity : AppCompatActivity() {
 

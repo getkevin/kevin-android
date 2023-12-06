@@ -26,7 +26,7 @@ android {
         targetSdk 34
 
         consumerProguardFiles "proguard-rules.pro"
-        resConfigs("en", "lt", "ru", "bg", "ro", "hu", "el", "et", "pt", "pl", "lv", "sk", "cs", "fi", "sv", "no", "da", "de", "nl", "fr", "es", "it", "sl", "is")
+        resourceConfigurations += ['en', 'lt', 'ru', 'bg', 'ro', 'hu', 'el', 'et', 'pt', 'pl', 'lv', 'sk', 'cs', 'fi', 'sv', 'no', 'da', 'de', 'nl', 'fr', 'es', 'it', 'sl', 'is']
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
