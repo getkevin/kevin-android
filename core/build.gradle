@@ -16,7 +16,7 @@ apply from: "${rootProject.projectDir}/maven/publish-module.gradle"
 android {
     namespace "eu.kevin.core"
 
-    compileSdk 33
+    compileSdk 34
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
@@ -29,7 +29,7 @@ android {
 
     defaultConfig {
         minSdk 21
-        targetSdk 33
+        targetSdk 34
 
         consumerProguardFiles "proguard-rules.pro"
         resConfigs("en", "lt", "ru", "bg", "ro", "hu", "el", "et", "pt", "pl", "lv", "sk", "cs", "fi", "sv", "no", "da", "de", "nl", "fr", "es", "it", "sl", "is")

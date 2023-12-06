@@ -16,7 +16,7 @@ apply from: "${rootProject.projectDir}/maven/publish-module.gradle"
 android {
     namespace "eu.kevin.common"
 
-    compileSdk 33
+    compileSdk 34
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
@@ -29,7 +29,7 @@ android {
 
     defaultConfig {
         minSdk 21
-        targetSdk 33
+        targetSdk 34
 
         buildConfigField "String", "KEVIN_SDK_VERSION", "\"$sdkVersion\""
 
