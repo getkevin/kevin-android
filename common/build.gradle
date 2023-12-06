@@ -16,7 +16,7 @@ apply from: "${rootProject.projectDir}/maven/publish-module.gradle"
 android {
     namespace "eu.kevin.common"
 
-    compileSdk 33
+    compileSdk 34
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
@@ -29,12 +29,12 @@ android {
 
     defaultConfig {
         minSdk 21
-        targetSdk 33
+        targetSdk 34
 
         buildConfigField "String", "KEVIN_SDK_VERSION", "\"$sdkVersion\""
 
         consumerProguardFiles "proguard-rules.pro"
-        resConfigs("en", "lt", "ru", "bg", "ro", "hu", "el", "et", "pt", "pl", "lv", "sk", "cs", "fi", "sv", "no", "da", "de", "nl", "fr", "es", "it", "sl", "is")
+        resourceConfigurations += ['en', 'lt', 'ru', 'bg', 'ro', 'hu', 'el', 'et', 'pt', 'pl', 'lv', 'sk', 'cs', 'fi', 'sv', 'no', 'da', 'de', 'nl', 'fr', 'es', 'it', 'sl', 'is']
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -92,7 +92,7 @@ dependencies {
     implementation "io.ktor:ktor-client-android:$ktor_version"
     implementation "io.ktor:ktor-client-serialization:$ktor_version"
     implementation "io.ktor:ktor-client-logging:$ktor_version"
-    implementation "ch.qos.logback:logback-classic:$logback_version"
+    debugImplementation "ch.qos.logback:logback-classic:$logback_version"
 
     implementation "io.coil-kt:coil:$coil_version"
 }

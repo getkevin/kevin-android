@@ -5,7 +5,6 @@ import eu.kevin.sample.networking.entities.payments.InitiatePaymentRequest
 import eu.kevin.sample.networking.services.KevinApiService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.util.UUID
 
 internal class KevinApi(
     private val service: KevinApiService
@@ -17,10 +16,9 @@ internal class KevinApi(
         }
     }
 
-    suspend fun initiateBankPayment(request: InitiatePaymentRequest): UUID {
-        val paymentId = withContext(Dispatchers.IO) {
+    suspend fun initiateBankPayment(request: InitiatePaymentRequest): String {
+        return withContext(Dispatchers.IO) {
             service.initiateBankPayment(request).id
         }
-        return UUID.fromString(paymentId)
     }
 }

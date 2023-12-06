@@ -16,7 +16,6 @@ import eu.kevin.inapppayments.paymentsession.enums.PaymentType
 import eu.kevin.sample.R
 import eu.kevin.sample.databinding.KevinActivityPaymentsBankBinding
 import kotlinx.coroutines.launch
-import java.util.UUID
 
 internal class BankPaymentActivity : AppCompatActivity() {
 
@@ -80,11 +79,11 @@ internal class BankPaymentActivity : AppCompatActivity() {
      * More info: https://developer.kevin.eu/home/mobile-sdk/android/payment-initiation
      */
     private fun initiateBankPayment(
-        paymentId: UUID,
+        paymentId: String,
         paymentCountry: KevinCountry?
     ) {
         // Payment session must be initiated with paymentId obtained via kevin. API
-        val configuration = PaymentSessionConfiguration.Builder(paymentId.toString())
+        val configuration = PaymentSessionConfiguration.Builder(paymentId)
             .setPaymentType(PaymentType.BANK)
             .setCountryFilter(listOf(paymentCountry))
             .build()
