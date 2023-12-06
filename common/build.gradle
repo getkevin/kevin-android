@@ -92,7 +92,7 @@ dependencies {
     implementation "io.ktor:ktor-client-android:$ktor_version"
     implementation "io.ktor:ktor-client-serialization:$ktor_version"
     implementation "io.ktor:ktor-client-logging:$ktor_version"
-    implementation "ch.qos.logback:logback-classic:$logback_version"
+    debugImplementation "ch.qos.logback:logback-classic:$logback_version"
 
     implementation "io.coil-kt:coil:$coil_version"
 }
