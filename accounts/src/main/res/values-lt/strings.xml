@@ -38,7 +38,7 @@
     <string name="kevin_window_bank_selection_select_bank_label">Pasirinkite banką</string>
     <string name="kevin_error_bank_not_selected">Turite pasirinkti banką</string>
     <string name="kevin_dialog_exit_confirmation_accounts_message">Ar norite nutraukti paskyrų susiejimą?</string>
-    <string name="kevin_window_bank_selection_terms_and_conditions_text">Spausdami Tęsti, Jūs sutinkate su taisyklėmis ir nuostatomis bei privatumo politika</string>
-    <string name="kevin_window_bank_selection_privacy_clickable_text">privatumo politika</string>
-    <string name="kevin_window_bank_selection_terms_clickable_text">taisyklėmis ir nuostatomis</string>
+    <string name="kevin_window_bank_selection_terms_and_conditions_text">Tęsdamas jūs sutinkate su Kevin EU, UAB Privatumo Politika bei Taisyklėmis ir Sąlygomis</string>
+    <string name="kevin_window_bank_selection_privacy_clickable_text">Privatumo Politika</string>
+    <string name="kevin_window_bank_selection_terms_clickable_text">Taisyklėmis ir Sąlygomis</string>
 </resources>

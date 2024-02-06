@@ -36,7 +36,7 @@
     <string name="kevin_window_bank_selection_title">Bank selection</string>
     <string name="kevin_window_bank_selection_select_country_label">Select country</string>
     <string name="kevin_window_bank_selection_select_bank_label">Select bank</string>
-    <string name="kevin_window_bank_selection_terms_and_conditions_text">By pressing Continue, I read and agree with Terms &amp; Conditions and Privacy Policy</string>
+    <string name="kevin_window_bank_selection_terms_and_conditions_text">By continuing you agree with Kevin EU, UAB Terms &amp; Conditions and Privacy Policy</string>
     <string name="kevin_window_bank_selection_terms_clickable_text">Terms &amp; Conditions</string>
     <string name="kevin_window_bank_selection_privacy_clickable_text">Privacy Policy</string>
     <string name="kevin_window_bank_selection_privacy_policy_url" translatable="false">https://www.kevin.eu/docs/privacy-policy</string>
